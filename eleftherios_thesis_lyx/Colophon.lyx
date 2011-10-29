@@ -1,0 +1,441 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+\usepackage{preamble}
+\end_preamble
+\options twoside,openright,titlepage,fleqn,pointlessnumbers,headinclude,10pt,a4paper,BCOR5mm,footinclude,cleardoubleempty
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 10
+\spacing onehalf
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine natbib_numerical
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pdfbookmark[0]{Colophon}{colophon}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section*
+Colophon
+\end_layout
+
+\begin_layout Standard
+This thesis was typeset with LaTeX2e
+\begin_inset space \space{}
+\end_inset
+
+using Hermann Zapf's 
+\emph on
+Palatino
+\emph default
+ and 
+\emph on
+Euler
+\emph default
+ type faces (Type
+\begin_inset space ~
+\end_inset
+
+1 PostScript fonts 
+\emph on
+URW Palladio L
+\emph default
+ and 
+\emph on
+FPL
+\emph default
+ were used).
+ The listings are typeset in 
+\emph on
+Bera Mono
+\emph default
+, originally developed by Bitstream, Inc.
+ as 
+\begin_inset Quotes eld
+\end_inset
+
+Bitstream Vera
+\begin_inset Quotes erd
+\end_inset
+
+.
+ (Type
+\begin_inset space ~
+\end_inset
+
+1 PostScript fonts were made available by Malte Rosenau and Ulrich Dirr.)
+\end_layout
+
+\begin_layout Standard
+The typographic style was inspired by 
+\begin_inset CommandInset citation
+LatexCommand citeauthor
+key "bringhurst:2002"
+
+\end_inset
+
+'s genius as presented in 
+\emph on
+The Elements of Typographic Style
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "bringhurst:2002"
+
+\end_inset
+
+.
+ It is available for LaTeX
+\begin_inset space \space{}
+\end_inset
+
+via 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsmaller
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+CTAN
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ as 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{http://www.ctan.org/tex-archive/macros/latex/contrib/classicthesis/}{
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+classicthesis
+\family default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+note:
+\end_layout
+
+\begin_layout Standard
+The custom size of the textblock was calculated using the directions given
+ by Mr.
+ Bringhurst (pages 26--29 and 175/176).
+ 10
+\begin_inset space ~
+\end_inset
+
+pt Palatino needs 133.21
+\begin_inset space ~
+\end_inset
+
+pt for the string 
+\begin_inset Quotes eld
+\end_inset
+
+abcdefghijklmnopqrstuvwxyz
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This yields a good line length between 24--26
+\begin_inset space ~
+\end_inset
+
+pc (288--312
+\begin_inset space ~
+\end_inset
+
+pt).
+ Using a 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+double square textblock
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ with a 1:2 ratio this results in a textblock of 312:624
+\begin_inset space ~
+\end_inset
+
+pt (which includes the headline in this design).
+ A good alternative would be the 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+golden section textblock
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ with a ratio of 1:1.62, here 312:505.44
+\begin_inset space ~
+\end_inset
+
+pt.
+ For comparison, 
+\family typewriter
+DIV9
+\family default
+ of the 
+\family typewriter
+typearea
+\family default
+ package results in a line length of 389
+\begin_inset space ~
+\end_inset
+
+pt (32.4
+\begin_inset space ~
+\end_inset
+
+pc), which is by far too long.
+ However, this information will only be of interest for hardcore pseudo-typograp
+hers like me.
+\end_layout
+
+\begin_layout Standard
+To make your own calculations, use the following commands and look up the
+ corresponding lengths in the book:
+\end_layout
+
+\begin_layout Standard
+\align block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}    
+\backslash
+settowidth{
+\backslash
+abcd}{abcdefghijklmnopqrstuvwxyz}
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+the
+\backslash
+abcd % prints the value of the length
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Please see the file 
+\family typewriter
+classicthesis.sty
+\family default
+ for some precalculated values for Palatino and Minion.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%    
+\backslash
+settowidth{
+\backslash
+abcd}{abcdefghijklmnopqrstuvwxyz}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%    
+\backslash
+the
+\backslash
+abcd
+\backslash
+ % prints the value of the length
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+finalVersionString
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

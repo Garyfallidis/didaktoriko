@@ -1,0 +1,417 @@
+% **************************************************************************************************************
+%  A LyX port of:
+%  "A Classic Thesis Style" by André Miede
+%  LyX port by: Nick Mariette. March, 2009.
+%  http://soundsorange.net/resources/classic-thesis-for-lyx/
+%
+%  Nick Mariette: If you appreciate my LyX port of André Miede's style
+%  please visit my homepage and consider making a donation.
+%  Also, please consider sending a postcard to André who wrote the original LaTeX (see details below)
+% 
+%  Note: nm_classicthesis.sty is adapted from classicthesis.sty version 2.5 by André Miede
+%  [2008/10/01 v2.5 Typographic Style for a classic-looking thesis]
+%
+%  All modifications are in the new preamble.sty, the nm_classicthesis.sty, and the .lyx files.
+%
+% **************************************************************************************************************
+%
+% A Classic Thesis Style 
+% An Homage to The Elements of Typographic Style
+% 
+% Copyright (C) 2008 André Miede http://www.miede.de
+%
+% If you like the style then I would appreciate a postcard. My address 
+% can be found in the file ClassicThesis.pdf. A collection of the 
+% postcards I received so far is available online at 
+% http://postcards.miede.de
+%
+%
+% License:
+% This program is free software; you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation; either version 2 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program; see the file COPYING.  If not, write to
+% the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+% Boston, MA 02111-1307, USA.
+%
+% **************************************************************************************************************
+% Note:
+%    * You must not use "u etc. in strings/commands that will be spaced out (use \"u or real umlauts instead)
+%    * Chapters must be marked with the \myChapter{Foo} command (sorry for the inconvenience at this point)
+%    * New enumeration (small caps): \begin{aenumerate} \end{aenumerate}
+%    * For margin notes: \graffito{}
+%    * Do not use bold fonts in this style, it is designed around them
+%    * Use tables as in the examples
+%    * See classicthesis-ldpkg.sty for useful commands
+% **************************************************************************************************************
+% To Do:
+%    * support a List of Listings that looks like the other lists
+%    * mathbb in section-titles/chapter-titles => disappears somehow in headlines!!!
+%    * think about processing a4paper, a5paper, 10pt, 11pt, 12pt etc. options for typearea layout
+%      (store values in internal variables and handle by \AtEndOfPackage{\areaset...})
+% **************************************************************************************************************
+
+% ********************************************************************
+% KOMA-Script setup http://www.komascript.de/betaKOMAoptions
+% ********************************************************************
+%\KOMAoptions{%
+%    paper=a4,%
+%    fontsize=10pt,%
+%    cleardoublepage=empty,%
+%    footinclude=true,%
+%    %abstract=false%
+%}
+% ********************************************************************
+% Development Stuff
+% ********************************************************************
+\listfiles
+%\usepackage[l2tabu, orthodox, abort]{nag}
+%\usepackage[warning, all]{onlyamsmath}
+% ********************************************************************
+% Re-usable information
+% ********************************************************************
+
+%\newcommand{\myTitle}{A Classic Thesis Style\xspace}
+%\newcommand{\myDegree}{An Homage to The Elements of Typographic Style\xspace}
+%\newcommand{\myName}{Andr\'e Miede\xspace}
+%\newcommand{\myProf}{Put name here\xspace}
+%\newcommand{\myOtherProf}{Put name here\xspace}
+%\newcommand{\mySupervisor}{Supervisor's Name\xspace}
+%\newcommand{\myFaculty}{My Faculty\xspace}
+%\newcommand{\myDepartment}{My Department\xspace}
+%\newcommand{\myUni}{\protect{My University}\xspace}
+%\newcommand{\myLocation}{City\xspace}
+%\newcommand{\myTime}{March 2009\xspace}
+%\newcommand{\myVersion}{Version 2.5\xspace}
+
+% *******Eleftherios Version ********************
+
+\newcommand{\myTitle}{Towards an accurate brain tractography\xspace}
+\newcommand{\myDegree}{A dissertation submitted to the University of Cambridge for the degree of Doctor of Philosophy\xspace}
+\newcommand{\myName}{Eleftherios Garyfallidis\xspace}
+\newcommand{\myProf}{Dr. Ian Nimmo-Smith\xspace}
+\newcommand{\myOtherProf}{Dr. Guy Williams\xspace}
+\newcommand{\mySupervisor}{Dr. Ian Nimmo-Smith\xspace}
+\newcommand{\myFaculty}{Medical Research Council Cognition and Brain Sciences Unit\xspace}
+\newcommand{\myDepartment}{Wolfson College\xspace}
+\newcommand{\myUni}{\protect{University of Cambridge}\xspace}
+\newcommand{\myLocation}{UK\xspace}
+\newcommand{\myTime}{April 2011\xspace}
+\newcommand{\myVersion}{Version 0.1\xspace}
+
+
+
+
+
+
+
+
+% ********************************************************************
+% The following taken from classicthesis.tex 
+%	use these custom options for koma script:
+%	\options twoside,openright,titlepage,fleqn,pointlessnumbers,headinclude,10pt,a4paper,BCOR5mm,footinclude,cleardoubleempty
+%   change these settings in LyX > Document Settings > Document Class > Class options
+% ********************************************************************
+
+% ********************************************************************
+% Packages with options that might require adjustments
+% ********************************************************************
+% lyx clash \usepackage[latin1]{inputenc} 
+% not needed \usepackage[ngerman,american]{babel}           
+% lyx clash \usepackage[square,numbers]{natbib} 
+% lyx clash \usepackage[fleqn]{amsmath} % math environments and more by the AMS 
+% ********************************************************************
+% This would go here in latex: \usepackage{classicthesis-ldpkg} 
+% ********************************************************************
+
+
+% ********************************************************************
+% classicthesis-ldpkg.sty (formerly known as loadpackages.sty)
+%
+% Copyright (C) 2008 André Miede http://www.miede.de
+%
+% If you like the style then I would appreciate a postcard. My address 
+% can be found in the file ClassicThesis.pdf. A collection of the 
+% postcards I received so far is available online at 
+% http://postcards.miede.de
+%
+% License:
+% This program is free software; you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation; either version 2 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program; see the file COPYING.  If not, write to
+% the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+% Boston, MA 02111-1307, USA.
+%
+% ********************************************************************  
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{classicthesis-ldpkg}[2008/10/01 v2.5 Package Loader for Classic Thesis Style]
+ 
+\@ifpackageloaded{classicthesis}%
+    {\PackageWarningNoLine{classicthesis-ldpkg}{Package "classicthesis" should be loaded AFTER "classicthesis-ldpkg".}}%
+    {\relax}%    
+ 
+% ********************************************************************
+% Options
+% ******************************************************************** 
+\RequirePackage{ifthen}
+    \newboolean{cld@nochapters} % disable all chapter-specific commands
+\DeclareOption{nochapters}{\setboolean{cld@nochapters}{true}}
+\ProcessOptions\relax
+
+% ******************************************************************** 
+% Packages
+% ******************************************************************** 
+\RequirePackage[T1]{fontenc}                
+\RequirePackage{textcomp}
+%\RequirePackage[dvipsnames]{xcolor} 
+\RequirePackage{xspace} % to get the spacing after macros right
+\RequirePackage{tabularx} % better tables
+\RequirePackage{mparhack} % get marginpar right
+\RequirePackage{fixltx2e} % fixes some LaTeX stuff
+%\RequirePackage{ellipsis} % ... ;-)                  
+\RequirePackage{relsize} % scale font up or down                                        
+\RequirePackage[smaller]{acronym} % nice macros for handling all acronyms in the thesis
+\renewcommand{\bflabel}[1]{{#1}\hfill} % fix the list of acronyms
+\RequirePackage{natbib}
+
+% ********************************************************************
+% Commands
+% ********************************************************************                
+\newcounter{dummy} % necessary for correct hyperlinks (to index, bib, etc.)
+\newcommand{\longpage}{\enlargethispage{3\baselineskip}}
+\newcommand{\medpage}{\enlargethispage{2\baselineskip}}
+\newcommand{\shortpage}{\enlargethispage{\baselineskip}}
+\newcommand{\concskip}{\medskip}
+\newcommand{\myPrimRef}[1]{\textit{#1}} % how primary index entries will be marked 
+% ******************************************************************** 
+\newcommand{\ie}{i.\,e.}
+\newcommand{\Ie}{I.\,e.}
+\newcommand{\eg}{e.\,g.}
+\newcommand{\Eg}{E.\,g.}
+\newcommand{\etAl}{et al.\xspace}
+\newcommand{\twod}{2\textsc{d}\xspace}
+\newcommand{\threed}{3\textsc{d}\xspace}
+% ******************************************************************** 
+\newcommand{\system}[1]{\emph{#1}}
+\newcommand{\person}[1]{#1}
+\newcommand{\term}[1]{\emph{#1}}
+\newcommand{\cauthor}[1]{\relax}
+\@ifpackageloaded{natbib}%
+    {\renewcommand{\cauthor}[1]{\person{\citeauthor{#1}}}%
+    }{\PackageWarningNoLine{classicthesis-ldpk}{Package "natbib" not loaded, %
+        command "cauthor" will not work.}}
+\newcommand{\tableheadline}[1]{\multicolumn{1}{c}{\spacedlowsmallcaps{#1}}}
+% ******************************************************************** 
+\newcommand{\RA}{\ensuremath{\Rightarrow}}
+\newcommand{\ra}{\ensuremath{\rightarrow}}
+\newcommand{\lra}{\ensuremath{\leftrightarrow}}
+\newcommand{\On}{\ensuremath{O(n)}\xspace}
+\newcommand{\Ologn}{\ensuremath{O(\log n)}\xspace}
+\newcommand{\Oone}{\ensuremath{O(1)}\xspace}
+
+% ********************************************************************
+% take care of the caption fonts and sizes (tables and figures)
+% ********************************************************************
+\RequirePackage{caption}
+    
+% ********************************************************************
+% caption numbering now w/o chapter number (comment out to get Figure X.X)
+% ********************************************************************
+\RequirePackage{remreset}
+    \makeatletter
+        \ifthenelse{\boolean{cld@nochapters}}%
+        {\relax}{%
+            \@removefromreset{table}{chapter}  % requires remreset package
+        }
+        \renewcommand{\thetable}{\arabic{table}}
+    \makeatother
+    \makeatletter
+        \ifthenelse{\boolean{cld@nochapters}}%
+        {\relax}{%
+            \@removefromreset{figure}{chapter}  % requires remreset package
+        }
+        \renewcommand{\thefigure}{\arabic{figure}}  
+    \makeatother
+
+% ********************************************************************
+% enable subfigures in figures
+% ********************************************************************
+%\RequirePackage{subfig}  
+
+% ********************************************************************
+% fine typesetting of code listings
+% ********************************************************************
+\RequirePackage{listings}  
+\lstset{language=[LaTeX]Tex,%C++,
+    keywordstyle=\color{RoyalBlue},%\bfseries,
+    basicstyle=\small\ttfamily,
+    %identifierstyle=\color{NavyBlue},
+    commentstyle=\color{Green}\ttfamily,
+    stringstyle=\rmfamily,
+    numbers=none,%left,%
+    numberstyle=\scriptsize,%\tiny
+    stepnumber=5,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frameround=ftff,
+%    frame=single
+    frame=none
+%    frame=L
+}    
+
+% ********************************************************************
+% Using PDFLaTeX:  (comment to remove backrefs in bibliography)
+% ********************************************************************
+\RequirePackage[pdftex,hyperfootnotes=false,pdfpagelabels,pagebackref]{hyperref}  % backref linktocpage pagebackref
+\pdfcompresslevel=9
+\pdfadjustspacing=1 
+%\RequirePackage[pdftex]{graphicx} % PDFTeX driver for graphicx % clashes with graphicx
+%\DeclareGraphicsRule{*}{mps}{*}{} % enables use of MetaPost graphics with pdflatex 
+
+%% ********************************************************************
+%% for German texts to get \autoref macros right
+%\renewcommand{\figureautorefname}{Figure}
+%\renewcommand{\tableautorefname}{Table}
+%\renewcommand{\partautorefname}{Part}
+%\renewcommand{\chapterautorefname}{Chapter}
+%\renewcommand{\sectionautorefname}{Section}
+%\renewcommand{\subsectionautorefname}{Section}
+%\renewcommand{\subsubsectionautorefname}{Section}
+%%\renewcommand{\paragraphautorefname}{Absatz}
+%%\renewcommand{\subparagraphautorefname}{Unterabsatz}
+%%\renewcommand{\footnoteautorefname}{Fu\"snote}
+%%\renewcommand{\FancyVerbLineautorefname}{Zeile}
+%%\renewcommand{\theoremautorefname}{Theorem}
+%%\renewcommand{\appendixautorefname}{Anhang}
+%%\renewcommand{\equationautorefname}{Gleichung}        
+%%\renewcommand{\itemautorefname}{Punkt}                
+%%\newcommand*{\subfigureautorefname}{Abbildung}
+
+% ********************************************************************
+% get the links to the figures and tables right
+% ********************************************************************
+%\RequirePackage[all]{hypcap} % to be loaded after hyperref package
+
+% ********************************************************************
+% setup the style of the backrefs from the bibliography
+% ********************************************************************
+\newcommand{\backrefnotcitedstring}{\relax}%(Not cited.)
+\newcommand{\backrefcitedsinglestring}[1]{(Cited on page~#1.)}
+\newcommand{\backrefcitedmultistring}[1]{(Cited on pages~#1.)}
+
+\RequirePackage[hyperpageref]{backref} % to be loaded after hyperref package 
+   \renewcommand{\backreftwosep}{ and~} % seperate 2 pages
+   \renewcommand{\backreflastsep}{, and~} % seperate last of longer list
+   \renewcommand*{\backref}[1]{}  % Disable standard
+   \renewcommand*{\backrefalt}[4]{% Detailed backref
+      \ifcase #1 %
+         \backrefnotcitedstring%
+      \or
+         \backrefcitedsinglestring{#2}%
+      \else
+         \backrefcitedmultistring{#2}%
+      \fi}
+%   \hspace*{\fill}{\scriptsize\itshape\mbox{%
+%   \ifnum#1=1 %
+%     (Cited on page~%
+%   \else
+%     (Cited on pages~%
+%   \fi
+%   #2)}
+%}       
+
+
+
+% ********************************************************************
+% Extra packages to use in this LyX version of ClassicThesis.sty
+% Options for classicthesis.sty:
+% tocaligned eulerchapternumbers drafting linedheaders listsseparated
+% subfig nochapters beramono eulermath parts minionpro pdfspacing
+% ********************************************************************
+\usepackage[titles]{tocloft}	% conflicts with \RequirePackage{subfig}
+\usepackage[eulerchapternumbers,beramono,eulermath,subfig,parts]{nm_classicthesis}
+\usepackage{setspace}
+\usepackage{floatpag}
+\usepackage{textcomp}
+\usepackage{prettyref}
+\def\text{} % for tables from matlab matrix2latex function
+% override standard prettyrefs
+\newrefformat{ch}{Chapter \ref{#1}}
+\newrefformat{apx}{Appendix \ref{#1}}
+\newrefformat{tab}{Table \ref{#1}}
+\newrefformat{fig}{Figure \ref{#1}}
+\floatpagestyle{plain} 	% set all full page floats to plain! 
+% - see ftp://ftp.inria.fr/pub/TeX/CTAN/macros/latex/contrib/sttools/floatpag.sty
+
+
+% ********************************************************************
+%\usepackage[section,below]{placeins} <--- not everybody wants this
+%\usepackage[all]{hypcap} <--- does not work with MiKTeX 2.6
+
+% ********************************************************************
+% Language/strings for backrefs (change here, thanks, Lorenzo)
+% ********************************************************************
+%\renewcommand{\backrefnotcitedstring}{\relax}%(Not cited.)
+%\renewcommand{\backrefcitedsinglestring}[1]{(Citato a pagina~#1.)}
+%\renewcommand{\backrefcitedmultistring}[1]{(Citato alle pagine~#1.)}
+%\renewcommand{\backreftwosep}{ e~}
+%\renewcommand{\backreflastsep}{ e~}
+
+% ********************************************************************
+% Setup and Finetuning
+% ********************************************************************
+\newlength{\abcd} % for ab..z string length calculation
+\newcommand{\myfloatalign}{\centering} % how all the floats will be aligned
+\setlength{\extrarowheight}{3pt} % increase table row height
+
+% ********************************************************************
+% Captions look and feel
+% ********************************************************************
+\captionsetup{format=hang,font=small}
+
+% ********************************************************************
+% Where to look for graphics
+% ********************************************************************
+%\graphicspath{{gfx/}{misc/}} % considered harmful according to l2tabu
+
+% ********************************************************************
+% Hyperreferences
+% ********************************************************************
+\hypersetup{%
+    colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+    hypertexnames=true, pdfhighlight=/O,%hyperfootnotes=true,%nesting=true,%frenchlinks,%
+    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
+    % uncomment the following line if you want to have black links (e.g., for printing)
+    %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+    pdftitle={\myTitle},%
+    pdfauthor={\textcopyright\ \myName, \myUni, \myFaculty},%
+    pdfsubject={},%
+    pdfkeywords={},%
+    pdfcreator={pdfLaTeX},%
+    pdfproducer={LaTeX with hyperref and classicthesis}%
+}
+
+% ********************************************************************
+% Hyphenation
+% ********************************************************************
+%\hyphenation{put special hyphenation here}

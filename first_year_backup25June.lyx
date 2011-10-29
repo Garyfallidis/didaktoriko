@@ -1,0 +1,4089 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\let\margin\marginpar\newcommand\myMargin[1]{\margin{\raggedright\scriptsize #1}}\renewcommand{\marginpar}[1]{\myMargin{#1}}
+\end_preamble
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 4cm
+\headheight 2cm
+\headsep 2cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Towards an accurate brain tractography using diffusion weighted imaging
+\end_layout
+
+\begin_layout Author
+Eleftherios Garyfallidis
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+Medical Research Council
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+Cognition and Brain Sciences Unit 
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+First Year Report
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction 
+\end_layout
+
+\begin_layout Standard
+Diffusion MRI (dMRI) is the only non-invasive method that provides information
+ about the neural tracts found in white matter and cortex.
+ dMRI acquires one or more T2-weighted reference images, and a collection
+ of diffusion-weighted images that attenuate the T2 signal according to
+ the amount of diffusion along prescribed gradient directions (cite Mori).
+ The information is not complete and the tracts cannot be reconstructed
+ in full detail 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "denislebihan2006aap"
+
+\end_inset
+
+.
+ However, some spatial structures and patterns can be visualized.
+ These are usually represented as trajectories or connectivity maps.
+ The unique new area that aims to reconstruct the neural tracts from diffusion
+ data is called diffusion brain tractography.
+ Other types of tractography are based in staining using for example luxol-fast
+ blue (cite Brandner) but these can only be used with dead brains and they
+ are very difficult and time consuming to repeat.
+ 
+\end_layout
+
+\begin_layout Standard
+The field of diffusion tractography is less than ten years old (site FACT)
+ and it is still under massive research and development.
+ We believe that the resolution of tractography today is weakened by the
+ following problems
+\end_layout
+
+\begin_layout Enumerate
+Poor acquisition schemes for tractography.
+\end_layout
+
+\begin_layout Enumerate
+Oversimplistic voxel-based fiber modeling.
+\end_layout
+
+\begin_layout Enumerate
+Lack of gold standard phantoms for dMRI.
+\end_layout
+
+\begin_layout Enumerate
+Lack of accurate tractography algorithms.
+\end_layout
+
+\begin_layout Standard
+The goal of this thesis is to investigate possible solutions or improvements
+ of existing solutions for all four problems.
+ However, we focus more on problems 2 and 4.
+ We want to be able to increase the resolution of tractography taking into
+ account global properties of the brain.
+ We believe that by using whole brain discrete optimization and bayesian
+ inference we will be able to remove many artifacts and ghosts (Section.
+ Future Plan).
+ In order to decide which is the best way to go forward we had to study
+ and test many different algorithms and approaches from other research groups
+ (Section.
+ Det and Prob., Section Exper.).
+ Furthermore, we developed a new software library in Python which is able
+ visualize and interact with 1D/2D/3D/4D datasets, open medical files, calculate
+ tensors, draw trajectories, and many other features (Section Software).
+ We proposed and tested a new acquisition protocol that will hopefully replace
+ the current default dMRI protocol in CBU (Section Exper.).
+ 
+\end_layout
+
+\begin_layout Standard
+Nothing of these would be possible without the help and collaboration of
+ the following people.
+\end_layout
+
+\begin_layout Standard
+Dr.
+ Ian Nimmo-Smith (supervisor MRC-CBU), Dr.
+ Christian Schwarzbauer (2nd-supervisor ), Dr.
+ Guy Williams (Wolfson Brain Sciences Unit), Matthew Brett (Berkeley University)
+, Lester Melie-García (Cuban Neuroscience Center), George Vogiatzis (Toshiba
+ Research), Carlos Hernández (Toshiba Research), Adam Hampshire, Mirjana
+ Boszic, John Griffiths, Daniel Wakeman, Hsiao-Lan Sharon Wang.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/DTI_FACT_low26mm_SIDE.png
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+FACT Result 26 mm thresholding
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Fig:FACT"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/DTI_RK2_low26mm_SIDE.png
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+R-K 26 mm thresholding
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Fig:RK"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Terminology
+\end_layout
+
+\begin_layout Standard
+Diffusion imaging has many terms, and one source of confusion has been lack
+ of clarity in the meaning of these terms.
+ We will try to be clear and consistent about our use of terms.
+ To start, we will use the term 
+\begin_inset Quotes eld
+\end_inset
+
+diffusion weighted imaging
+\begin_inset Quotes erd
+\end_inset
+
+ (DWI) to refer to any MRI image acquisition that is weighted to be sensitive
+ to diffusion.
+ 
+\end_layout
+
+\begin_layout Standard
+One major source of confusion is that terms are often used to refer both
+ the type of 
+\emph on
+acquisition
+\emph default
+ used to acquire the data, and to the subsequent 
+\emph on
+analysis
+\emph default
+ of the data.
+ The most egregious example is the term 
+\begin_inset Quotes eld
+\end_inset
+
+diffusion tensor imaging
+\begin_inset Quotes erd
+\end_inset
+
+ (DTI).
+ Used in a technical sense, the term refers to a very simple analysis model
+ for the per-voxel diffusion direction profiles - a single diffusion tensor
+ (SDT).
+ However, it is also used to refer to all diffusion weighted imaging, or
+ to a particular type of acquisition with a small number of diffusion gradient
+ directions (of which more below).
+ We will avoid the term DTI in this paper, and humbly suggest that it will
+ reduce confusion if others do the same.
+ We will avoid talking about the SDT as it heavily documented elsewhere
+ (Cite New Book and other).
+\end_layout
+
+\begin_layout Standard
+Tractography is the process of spatially integrating local estimates of
+ fiber directions throughout the brain.
+ Tractography gives only an estimation of the real tracts.
+ So, when using the term tracts it will probably mean computational tracts
+ or tracks, i.e.
+ trajectories, except if it stated as actual tract or existing tract.
+ The terms tract and fiber considered here equivalent.
+ Sometimes, we will be using the term fiber bundle which means that probably
+ we have many fibers that have the same orientation packed together.
+\end_layout
+
+\begin_layout Section
+Diffusion Weighted Imaging signal 
+\end_layout
+
+\begin_layout Subsection
+What is diffusion?
+\end_layout
+
+\begin_layout Standard
+Diffusion here implies molecular diffusion.
+ Molecular diffusion is the phenomenon observed when molecules move from
+ regions of higher concentration to regions of lower consentration using
+ random movement.
+ Usually, this happens inside fluid.
+ The result of diffusion is a gradual mixing of material and entropy maximizatio
+n where the molecules tend to take the shape of the container containing
+ the fluid.
+ Brownian motion is a specific type of diffusion when we consider only one
+ type of particle in a solvent e.g.
+ the diffusion of protons in water.
+ Fick's two laws are generally used to approximate diffusion and Einstein
+ was one of the many scientists who contributed to the understanding of
+ these laws 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "einstein1956itb"
+
+\end_inset
+
+.
+ Anisotropy is one of the terms that are very common in diffusion terminology.
+ Anisotropy means that the average displacement of the particles will move
+ towards a specific direction.
+ On the other hand, isotropy means that the particles will be equally likely
+ to move in any direction.
+ A simple way to visualize this is to think of filling with water a football
+ and a rugby ball.
+ If the balls are not moving and the temperature is normal then the water
+ molecules will have an isotropic distribution inside the football ball
+ and an anisotropic distribution inside the rugby ball.
+\end_layout
+
+\begin_layout Standard
+Usually the axons are generally very elongated and mostly contain water
+ as it is common with every other tissue in the human body.
+ We expect that the water molecules will move more along the orientation
+ of the axon than perpendicular to the axon.
+ In other words, the average displacement distribution of the hydrogen protons
+ (spins) will be more anisotropic if there are bounded inside fibers.
+ Suprisingly, the tissue component mainly responsible for the anisotropy
+ observed in white matter is not myelin, as one might expect but rather
+ the cell membrane
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Bea02"
+
+\end_inset
+
+.
+ However, that does not mean that myelination is not one of the diffusion
+ contrast enhancement factors.
+ One example where the impact of myelination can be visualized quite well
+ is when comparing diffusion images of the same children in different stages
+ of their early development 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ZLW+03"
+
+\end_inset
+
+.
+ In these images the change in contrast is highly visible and we can see
+ the increase of directionality of the fibers i.e.
+ increase of anisotropy in white matter areas from neonate brains to adult
+ brains.
+\end_layout
+
+\begin_layout Standard
+Imagine now that we start one imaginary diffusion weighted MRI experiment
+ where we are using as a solvent water; the diffused particles are hydrogen
+ protons (spins).
+ After processing the readout we obtain a volume where every voxel will
+ be representing the average displacement of the photon emitting spins in
+ that voxel.
+ In this case the probability displacement distribution of the spins in
+ that voxel will be a 3D gaussian distribution.
+ This is the simplest type of motion that we can have that is unbounded
+ and it is known as brownian motion.
+ This assumption is used in most diffusion related research.
+ Unfortunately, in reality things are much more complicated; inside our
+ brain the axons are semi-permeable, the water molecules interact with many
+ different elements in the complex intra fiber fluid, the fibers might cross,
+ kiss, divert or bent.
+ Therefore, assuming a gaussian distribution is a non-trivial approximation
+ and we should somehow recover the true probability displacement distribution
+ also known as diffusion propagator.
+ By using many different gradient directions, it is duable to calculate
+ the full diffusion propagator in every voxel (see q-space volume acquisitions
+ below).
+ In contrast, single diffusion tensor (SDT) models assume that the distribution
+ is gaussian 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MoriNeuron2006"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Acquisition sequences in use
+\end_layout
+
+\begin_layout Standard
+The best known method for generating diffusion-weighted images is called
+ Pulsed Gradient Spin Echo method (PGSE), also known as the Stejskal and
+ Tanner method 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Stejskal1965JChemPhys"
+
+\end_inset
+
+.
+ This has 90-180 degrees spin echo pair of RF pulses with one gradient before
+ the second pulse and one equal gradient after the second pulse (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mcrobbie2006mpp"
+
+\end_inset
+
+, p329), see fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Fig:pgse"
+
+\end_inset
+
+.
+ The refocusing is perfect only when the spins do not move between the two
+ pulses.
+ The diffusion weighted contrast acts like inverse 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ weighting i.e.
+ tissues with mobile water molecules give lower signal than more solid tissues
+ with smaller mobility.
+ Eddy currents caused by the onset and offset of the gradients are a problem
+ with PGSE and most systems (including Siemens) use twice-refocused spin
+ echo sequences 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Reese2003MRM"
+
+\end_inset
+
+ to reduce these artifacts.
+ Every time the magnetic field gradients switch they generate currents that
+ generate other smaller magnetic fields which disturb the spins.
+ The TRSE sequence is an improvement on the PGSE.
+ The improvement is made using another refocusing pulse surrounded by the
+ inverse mirror of the previous diffusion gradients (see fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Fig:pgse"
+
+\end_inset
+
+).
+ By adjusting the timing of the diffusion gradients, eddy currents can be
+ nulled or greatly reduced.
+ This sequence impoves the image quality without loss of scanning efficiency
+ i.e.
+ TR duration and it is the standard in most modern MRI scanners.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/PGSE_TRSE2.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+PGSE and TRSE
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Fig:pgse"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+What is a b-value?
+\end_layout
+
+\begin_layout Standard
+The b-value 
+\begin_inset Formula $b$
+\end_inset
+
+ is a function of the strength, duration and temporal spacing and timing
+ parameters of the specific paradigm.
+ This function is derived from the Bloch-Torrey equations
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Callaghan1991OUP"
+
+\end_inset
+
+.
+ In the case of the classical Stejskal-Tanner pulsed gradient spin-echo
+ (PGSE) sequence, at the time of readout
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+b=\gamma^{2}G^{2}\delta^{2}\left(\Delta-\frac{\delta}{3}\right),\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ is the gyromagnetic radio,
+\begin_inset Formula $\delta$
+\end_inset
+
+ denotes the pulse width, 
+\begin_inset Formula $G$
+\end_inset
+
+ is the gradient amplitude and 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ the centre to centre spacing.
+ 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ is a constant, but we can change the other three parameters and in that
+ way control change the b-value.
+\end_layout
+
+\begin_layout Standard
+Under the brownian motion assumption the signal strength is described by
+ the equation 
+\begin_inset Formula $S(b)=S(0)exp(-bD)$
+\end_inset
+
+ where 
+\begin_inset Formula $D$
+\end_inset
+
+ is the diffusion coefficient that we wish to measure and 
+\begin_inset Formula $b$
+\end_inset
+
+ the crucial experimental parameter diffusion weighting parameter or 
+\begin_inset Formula $b$
+\end_inset
+
+-value which summarises the diffusion sensitising gradient history.
+ Although the PGSE is useful for expository clarity, in reality more complicated
+ but related sequences such as the twice-refocused spin-echo (TRSE) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Heid2000ISMRM,Reese2003MRM"
+
+\end_inset
+
+ sequence and subsequent refinements such as TRASE 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Auerbach2004ISMRM"
+
+\end_inset
+
+ are employed as a means of removing the distortion effects from eddy currents
+ resulting from the initial and final ramps of the gradient pulses.
+ The important point is that we can control the size of the b-values by
+ changing the strength and timings of the gradient pulses and that depending
+ on the b-value, we can expect different amount of signal loss.
+ A further important simplifying assumption that us made is that the function
+ 
+\begin_inset Formula $S(b)$
+\end_inset
+
+ is described by a single exponential term (mono-exponential).
+ In fact there is evidence that this assumption may break down at higher
+ 
+\begin_inset Formula $b$
+\end_inset
+
+-values.
+ The units of 
+\begin_inset Formula $D$
+\end_inset
+
+ are 
+\begin_inset Formula $mm^{2}$
+\end_inset
+
+/sec (for water at 
+\begin_inset Formula $37^{o}$
+\end_inset
+
+
+\begin_inset Formula $D\approx$
+\end_inset
+
+
+\begin_inset Formula $3\cdot10^{-3}$
+\end_inset
+
+
+\begin_inset Formula $m^{2}$
+\end_inset
+
+/sec), and of 
+\begin_inset Formula $b$
+\end_inset
+
+ are sec/
+\begin_inset Formula $mm^{2}$
+\end_inset
+
+, typically in the range 0-5,000 sec/
+\begin_inset Formula $mm^{2}$
+\end_inset
+
+ though some DW-MRI acquisition paradigms can call for very much larger
+ values e.g.
+ 
+\begin_inset Formula $12,000$
+\end_inset
+
+ sec/
+\begin_inset Formula $mm^{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Fig: signals"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/various_signals.png
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Signal as a function of b for various values of D
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+What is DWI?
+\end_layout
+
+\begin_layout Standard
+Diffusion Weighted Imaging (DWI) is MRI imaging designed to be sensitive
+ to diffusion.
+ With this imaging technique we can delineate the axonal organization of
+ the brain.
+ A diffusion weighted image is a volume of voxels gathered by applying only
+ one gradient direction to our sequence.
+ Therefore, the signal in every voxel should be low if there is motion of
+ water molecules towards the specified the gradient direction or it should
+ be high if there is less movement in the same direction.
+ Therefore if inside a voxel there is an underlying fiber that is parallel
+ to this direction we should expect a lower value otherwise if the fiber
+ is not parallel or near parallel or if there is no underlying fiber we
+ should expect a higher value.
+\end_layout
+
+\begin_layout Subsection
+Directionally dependent DWI
+\end_layout
+
+\begin_layout Standard
+The directional dependence of the DWI signal is the cornerstone of diffusion
+ based tractography.
+ Signal from a specific voxel will be higher in directions where diffusivity
+ is high, e.g.
+ along the direction of a putative bundle of fibres, and lower into the
+ walls of the constituent fibres.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: directional"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: log-directional"
+
+\end_inset
+
+ show how signal for an anisotropic gaussian diffusion would change with
+ gradient direction.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/directional_signal.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Directional dependence of signal for two b-values
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: directional"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/directional_log_signal.png
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Minus log(signal) of the above
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: log-directional"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Motion and Eddy Correction
+\end_layout
+
+\begin_layout Standard
+We describe here a common procedure for registering the different DWIs of
+ the same subject in order to reduce the noise from the subject's motion
+ and eddy currents 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jones1999osm"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "HM96"
+
+\end_inset
+
+.
+ For each data set, we construct a reference/template volume by calculating
+ the mean intensity in each voxel from all the non-diffusion weighted images.
+ Next we compute the mutual information between the DWI and the reference
+ image and minimize their difference using a classic optimization method
+ e.g., the downhill simplex method.
+ Only affine movements are allowed during the registration process.
+ That is because the distortions from the eddy currents can be approximated
+ with stretches and shears in the DWIs.
+\end_layout
+
+\begin_layout Standard
+These distortions are different for every gradient direction.
+ Affine registration corrects for shearing and stretching but corrects as
+ well for head motion because the space of rigid transformatisons is a subset
+ of the space of affine transformations.
+ Eddy_correct is a tool in FSL/FDT that works in a similar way with what
+ we described above.
+ For more sophisticated approaches see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ZHK+06"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "andersson2002mbm"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A common raised question is how many non-diffusion images do we need for
+ maximal motion correction results.
+ Jones et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jones1999osm"
+
+\end_inset
+
+ showed that in order to obtain optimal tensor imaging we need approximately
+ 1 non-diffusion volume for every 7.5 diffusion weighted volumes.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+Other noise correction strategies include rician noise removal using wavelets
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WirestamMRM2006"
+
+\end_inset
+
+ and denoising in cardiac DWI using sparce representation
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BaoPMB2009"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Q-space methods 
+\end_layout
+
+\begin_layout Subsection
+What is q-space?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Matthew asks - why did the term q-space come to be used in DWI? It is a
+ general mathematical term? I couldn't see much use of q-space outside the
+ DWI context in a very rapid Google
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Q-space is the space of one or more 3D vectors 
+\begin_inset Formula $\mathbf{q}$
+\end_inset
+
+.
+ This vector is obtained by the formula
+\begin_inset Formula $\mathbf{q}=(2\pi)^{-1}\gamma\delta\mathbf{g}$
+\end_inset
+
+.
+ Every single vector 
+\begin_inset Formula $\mathbf{q}$
+\end_inset
+
+ has the same orientation of the direction of diffusion gradient 
+\begin_inset Formula $\mathbf{g}$
+\end_inset
+
+ and length proportional to the strength of the gradient 
+\begin_inset Formula $g$
+\end_inset
+
+.
+ Every single point in q-space corresponds to a 3D volume of the brain for
+ a specific gradient direction.
+ Therefore if for example we have programmed the scanner to apply 60 gradient
+ directions then our data should have 60 diffusion volumes with each volume
+ obtained for a specific gradient including 1 or more non-diffusion weighted
+ volumes with no applied gradient.
+ A Diffusion Weighted Image (DWI) is the volume acquired from only one direction
+ gradient.
+ Hence, in the previous example we would gather 60 DWI volumes.
+ 
+\end_layout
+
+\begin_layout Standard
+Note: An alternative way to see 
+\begin_inset Formula $\mathbf{q}$
+\end_inset
+
+ is in mathematical terms as the combination of parameters which produces
+ a Fourier transform relationship between the diffusion signal and the probabili
+ty displacement distribution.
+ 
+\end_layout
+
+\begin_layout Standard
+Another way to represent Diffusion MRI is the following.
+ Rather than going from the q-space to each different volume we can combine
+ all the DWIs together creating a new image where in each voxel we can see
+ the distribution of diffusion in all possible orientations.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/Acquisitions.png
+	lyxscale 16
+	scale 16
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Acquisition methods and defining terms
+\end_layout
+
+\begin_layout Standard
+In our introduction, we promised to be as clear as possible about the terms
+ we use.
+ One problem in diffusion imaging is that names for techniques often refer
+ both to a particular type of imaging acquisition, and to the subsequent
+ analysis model (see section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Local-estimates-of"
+
+\end_inset
+
+).
+ All acquisition methods acquire data in q-space, but the methods can be
+ categorized by the trajectories they follow in q-space.
+ 
+\end_layout
+
+\begin_layout Standard
+We refer to a method as a 
+\emph on
+q-space shell
+\emph default
+ method if it is an acquisition method collecting a series of points in
+ q-space that can be thought of as being on a curved surface, typically
+ a sphere.
+ Examples include techniques referred to as HARDI, Q-ball and HYDI.
+ A q-space shell method might involve collection of a single shell, or multiple
+ shells.
+\end_layout
+
+\begin_layout Standard
+A 
+\emph on
+q-space volume
+\emph default
+ method is an acquisition method that is more easily thought of as collecting
+ points distributed through a volume in q-space.
+ The characteristic example is diffusion spectrum imaging (DSI).
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Local-estimates-of"
+
+\end_inset
+
+Local estimates of diffusion direction 
+\end_layout
+
+\begin_layout Standard
+In order to get useful intervoxel information from DWI data it is necessary
+ to create some sort of model for the local directional dependence of the
+ diffusion weighted MR signal.
+ The models investigated to date involve a range of physical assumptions
+ about the complexity of the structure of the tissue, and the degree to
+ which signal reflects both the microscale on which the diffusion of water
+ molecules takes place, the intermediate scale which reflects the way this
+ diffusion displacement is modulated by the local structure of material
+ (for instance approaching the boundary of a white matter fibre), and the
+ yet larger, though still intravoxel, scale where there may be a mixture
+ of tissues with their own characteristic water displacement characteristics
+ (for instance cerebral spinal fluid, and white matter fibres with more
+ than one orientation).
+ None of these models for anisotropic diffusion is deduced rigorously from
+ a specification of the microscale content of the voxel.
+ Instead they are built up more empirically, using heuristic based on analogies
+ with better founded contexts such as crystalline material with a regular
+ but not rotationally invariant symmetry.
+\end_layout
+
+\begin_layout Subsection
+Visualizing voxel estimates of diffusion direction
+\end_layout
+
+\begin_layout Standard
+There are several ways of displaying the estimated diffusion direction distribut
+ions.
+ 
+\end_layout
+
+\begin_layout Subsection
+Tensor models
+\end_layout
+
+\begin_layout Subsubsection
+Single diffusion tensor
+\end_layout
+
+\begin_layout Standard
+The best known, the single diffusion tensor (SDT) model was also the first
+ to be published.
+ (Basser etc ...).
+ SDT is also sometimes called the 
+\emph on
+simple
+\emph default
+ diffusion tensor model.
+ The term single diffusion tensor is more useful, by contrast with multi-tensor
+ models (see below).
+ First principal direction identified with direction of fibre.
+ Problems identified with non-positivity of standard regression method of
+ fitting.
+ More seriously it breaks down when there are fibres crossing etc.
+ The SDT model is very simple, and assumes homogeneity and linearity of
+ the diffusion within each image voxel.
+ The model requires three, six, or more gradient directions, sufficient
+ to compute the diffusion tensor.
+ From the diffusion tensor, diffusion anisotropy measures such as the Fractional
+ Anisotropy (FA), can be computed.
+ Moreover, the principal direction of the diffusion tensor can be used to
+ infer the white-matter connectivity of the brain (See section of the fiber
+ tracking).
+\end_layout
+
+\begin_layout Subsubsection
+Higher order tensors
+\end_layout
+
+\begin_layout Standard
+Higher order non-negative tensor models (Barmpoutis) are algebraic extensions
+ which model the logarithm of the signal as a non-negative symmetric polynomial
+ of degree 4 (quartic) in the components of the gradient vector, by analogy
+ with SDT which is equivalent to fitting a symmetric polynomial of degree
+ 2.
+ No attempt at a physical analogy to justify.
+ The parameters do not yet have well formulated interpretations in relation
+ to the geometry of the correponding fitted function.
+ However a 'generalised trace' measure has been advanced as an analogy of
+ the classical apparent diffusivity coefficient (ADC).
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Multi-tensor models
+\end_layout
+
+\begin_layout Standard
+There are a number of multi-tensor models to consider.
+ Sometimes called multi-compartment by analogy with statistical thermodynamics.
+ Usually an isotropic component and one or more anisotropic tensor component.
+ Sometimes the latter are explicitly reduced to degenerate uni-dimensional
+ compartments ('ball and needles').
+ Behrens.
+ Kreher.
+\end_layout
+
+\begin_layout Subsection
+Spherical Harmonic Models
+\end_layout
+
+\begin_layout Standard
+SDT as originally formulated was expected to be based on a small or medium
+ number of gradient volumes.
+ The development of new faster MR sequences has meant that data can be collected
+ in a realistic timescale from a very large number of gradients.
+ These techniques (HARDI, Q-ball etc.) thus can sample the signal as a function
+ of the wavevector 
+\series bold
+q
+\series default
+ at a large number of locations in 
+\series bold
+q
+\series default
+-space.
+ This in turn allows for smoothing and interpolation with a function which
+ is a finite linear combination of basis functions (spherical harmonics)
+ which are the 'natural' analogues of Fourier smoothing for a function of
+ a single variable.
+\end_layout
+
+\begin_layout Subsection
+Model free
+\end_layout
+
+\begin_layout Standard
+The term model free is used here to stress that there is no assumption for
+ the probability displacement distribution in the voxel.
+ 
+\end_layout
+
+\begin_layout Standard
+One probability displacement distribution for every voxel (usage of odf's
+ etc).
+\end_layout
+
+\begin_layout Section
+Algorithms for defining fiber tracks 
+\end_layout
+
+\begin_layout Standard
+Note: defining better what a fiber tract is:
+\end_layout
+
+\begin_layout Standard
+The term tract here is used in the following way.
+ Tract is a path through voxels where there is coherence of the directional
+ characteristics of diffusivity from which we infer nerve fiber structure.
+\end_layout
+
+\begin_layout Standard
+Our aim in this section is to delineate ways of combining the local estimation
+ of diffusion direction in neighbooring voxels in order to reconstruct hypotheti
+cal underlying fibers of the microgeometry of the axonal map of the brain.
+ In order words we are going to present the current trends of tractography
+ using diffusion MRI.
+ A tract is a collection of points with specific values that have similar
+ properties i.e.
+ they live in the same neighborhoud and have similar orientation.
+ Because the voxels are discrete in order to generate a smooth path a common
+ practice is to interpolate between the voxels using splines.
+ The most useful information from the voxel for the tract generation process
+ is the primary diffusion direction.
+ In the tensor model the primary direction will be parallel with the eigen
+ vector of the tensor with the higher eigenvalue and in the q-ball model
+ the primary direction will be coalligned with the direction of the maximum
+ of the orientation distribution function.
+ In the most general view the primary direction will be coaligned with the
+ vector pointing the minimum of the probability displacement distribution
+ calculated for this voxel as the signal decays faster when there is more
+ directional movement.
+ However, a profound single direction in the voxel is more of an ideal situation
+ that can be unrealistic especially in the case of fiber crossings.
+ Furthermore, the problems do not restrict only in the crossing case but
+ they can be much more complicated and interesting.
+\end_layout
+
+\begin_layout Subsection
+Problems for fiber tracking
+\end_layout
+
+\begin_layout Standard
+Of course the fiber tracking algorithms are primarily being affected by
+ the presence of noise.
+ Typically, some of the noise is electronic noise that is added by the scanner
+ and can be well approximated with a Rician distribution
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hosey2005MagResMed,BPP+00"
+
+\end_inset
+
+.
+ Another noise factor is generated from partial volume effects where inside
+ a voxel we have more than one type of different tissues with different
+ diffusion behaviour.
+ This phenomenon is strengthened a lot as we go closer and closer to the
+ gray matter where the actual fibers are physiologically thiner and the
+ diffusion signal is more isotropic.
+ In the partial volume domain many different fiber configurations take place.
+ The fibers can possibly circulate, cross or kiss, merge or branch, bulge
+ or neck, terminate or kink (discontinuous) .
+ Other noise elements get into the final data that are useful for tractography
+ because of misregistration of DWIs caused by eddy currents, ghosting due
+ to motion artifacts and signal loss due to susceptibility variations.
+ Finally, the amount of smoothing or clustering applied to reduce the noise
+ might generate tracks that do not exist anatomically i.e.
+ false connections.
+ However, all the above noise factors can become generators of ghost tracks
+ and it is an issue of open research now to try to reduce the number of
+ these tracks and validate their results with anatomical maps.
+ 
+\end_layout
+
+\begin_layout Subsection
+Deterministic Tractography
+\end_layout
+
+\begin_layout Standard
+The number of different tractography algorithms for diffusion MRI data that
+ have been introduced the last years is enormous and impossible to discuss
+ all here.
+ However, we will begin decrypting here the simplest or most popular determinist
+ic approaches and then we will concentrate to the probabilistic approaches.
+ A tractographic algorithm belongs to the probabilistic domain if the fiber
+ model that is being used is assuming uncertainty i.e.
+ mistakes in the orientation of the fiber at every voxel.
+ If it does not assume any uncertainty along the path of the track then
+ it is deterministic.
+\end_layout
+
+\begin_layout Standard
+One of the simplest and first deterministic methods is fiber assignment
+ by continuous tracking (FACT) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MCC+99"
+
+\end_inset
+
+.
+ In order for FACT to operate we need to precalculate the tensors using
+ an SDT model and from the tensors store the primary eigenvectors for all
+ the voxels of the volume.
+ In that way we have a 3d discrete grid where in each position of the grid
+ there is vector showing the primary displacement direction in that voxel.
+ Now by following (tracking) the vectors from one voxel to the other we
+ can see the generation of a hypothetical fiber.
+ However, this fiber will probably be very jittery and discontinuous.
+ The discrete nature of the grid leads to deviation from the actual fiber
+ to be tracked.
+ Therefore, we need to make this field continuous by spatially interpollating
+ in between the voxels.
+ The interpolation makes the fiber smoother.
+ We usually interpollate in all three dimensions using B-splines.
+ The FACT procedure starts through the input of an arbitrary point in 3D
+ space in the volume and then we track both forward and backward.
+\end_layout
+
+\begin_layout Standard
+The most interesting part of these algorithms is how they decide when to
+ stop tracking.
+ FACT is using a single threshold variable 
+\begin_inset Formula $R={\displaystyle \sum_{i}^{s}\sum_{j}^{s}|\mathbf{e}_{i}\cdot\mathbf{e}_{j}|/s(s-1)}$
+\end_inset
+
+ where 
+\begin_inset Formula $s$
+\end_inset
+
+ is the number of neighbouring voxels and
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ 
+\begin_inset Formula $\mathbf{e}$
+\end_inset
+
+ is the eigenvector corresponing to the largest eigenvalue in each point.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+ The simplest case for definining a neighborhoud of a voxel is to use all
+ 26 other adjacent (touching) voxels.
+ Now, lets think of how 
+\begin_inset Formula $R$
+\end_inset
+
+ will behave in different neighbours.
+ When adjacent fibers are aligned strongly 
+\begin_inset Formula $R$
+\end_inset
+
+ will increase as the absolute value of the dot product grows bigger as
+ the normalized vectors become more colinear.
+ On the other side, 
+\begin_inset Formula $R$
+\end_inset
+
+ will grow shorter in regions without continuity in fiber direction, where
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $R=0$
+\end_inset
+
+ in perfect isotropic conditions.
+ In FACT all voxels with 
+\begin_inset Formula $R$
+\end_inset
+
+ less than 0.8 stop being followed and the fiber is considered discontinued
+ in these points.
+\end_layout
+
+\begin_layout Standard
+Specific problems with FACT are that a hole fiber might be missed just because
+ of noise in only one voxel along the tracking.
+ Of course, as all tractography methods it cannot distinguish between afferent
+ and efferent fibers.
+ However, one very important problem of this method is that if two pathways
+ actually touch, FACT might switch pathways.
+ This is one of the main reasons why FACT does not visualize accurately
+ the optic tract.
+ Furthermore, FACT fails to track axons leaving major pathways where it
+ tracks only one of the branches.
+ FACT is an example of local tractography because we provide as input only
+ one voxel and the fiber grows in opposite directions initiated from that
+ voxel.
+ The only way to get a hole brain overview of the fiber tracks using FACT
+ is to run it for every voxel gather the fibers and then try a second level
+ connectivity analysis for these fibers.
+\end_layout
+
+\begin_layout Standard
+Another popular deterministic approach very much inspired by the field of
+ fluid dynamics was introduced by Basser 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BPP+00"
+
+\end_inset
+
+assuming again a continuous vector field but now the tract is generated
+ by the solution of a system of differential equations subject to an initial
+ condition, the position of the seed point.
+ The solution of the system of ordinary differential equations (ODE) is
+ given by an iterative method called 
+\begin_inset Formula $4^{th}$
+\end_inset
+
+order Runge-Kutta scheme.
+ Here the authors propose that a fiber can be represented by a 3D curve
+ 
+\begin_inset Formula $\mathbf{r}$
+\end_inset
+
+ parameterized by the arc length 
+\begin_inset Formula $s$
+\end_inset
+
+ of the track.
+ The iterative solution of this equation 
+\begin_inset Formula $d\mathbf{r}/ds=\mathbf{e}$
+\end_inset
+
+ generates the trajectory of the underlying fiber.
+ R-K calculates by default higher order derivatives which can be used to
+ calculate the curvature and torsion of the fiber.
+ The radius of the curvature is then used as one of the stopping criteria
+ and in that way we can avoid discontinuous fibers.
+ Some other stopping criteria are the boundary of the imaging volume and
+ low anisotropy.
+ 
+\end_layout
+
+\begin_layout Standard
+Basser's method again is very sensitive in local noise and smoothing.
+ However, it is very streightforward and fast.
+ A similar method for tracking is used with Fourier analysis of q-space
+ volume imaging data in DSI-Studio and TrackVis 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WWS+08"
+
+\end_inset
+
+ it works both with Euler or R-K .
+ This time 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\mathbf{e}$
+\end_inset
+
+ is given from the local maximum of the ODF calculated in each voxel.
+ Because Fourier analysis of q space volume imaging data are model free
+ and can visualize crossing distributions the fluid field generated can
+ depict crossing fibers.
+ The results in 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WWS+08"
+
+\end_inset
+
+ show that, using Fourier reconstruction or Funk-Radon analysis on q-space
+ shells, we can generate much richer axonal architecture than SDT models
+ i.e.
+ many more fibers of complex or simple configuration.
+ This investigation suggests that diffusion MRI with sufficient SNR could
+ make tractography a mathematically well-posed problem.
+\end_layout
+
+\begin_layout Standard
+Other deterministic 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LWT+03"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CLC+99"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Deterministic Tensorlines is failing in relatively sharp turns and Meyer's
+ Loop.
+\end_layout
+
+\begin_layout Standard
+In summary, the deterministic algorithms generate paths by making a series
+ of discrete locally optimum decisions.
+ These are fast, simple and easy to interpret.
+ Usually, we depict them using streamlines.
+ A streamline is a curve that is always tangent to the velocity vector of
+ the flow.
+ The disandvantages of deterministic algorithms are that a pathway either
+ exists or not (no uncertainty) and that they do not explore the entire
+ space of likely white matter tracts.
+ In other words, local thresholding makes our tractography vulnerable to
+ small aberrations.
+\end_layout
+
+\begin_layout Subsection
+Probabilistic Tractography
+\end_layout
+
+\begin_layout Standard
+The purpose of tractography in diffusion imaging is to reveal the underlying
+ nerve fibers hidden under the noisy data.
+ This reconstruction of the fiber tracts is easier when the SNR and general
+ quality of our data are high and in that case deterministic algorithms
+ can generate sufficient results very fast.
+ However, in most cases our data will not be that clear, especially in clinical
+ settings and in these circumstances because of the increased noise levels
+ deterministic algorithms will generate very poor tracks.
+ Probabilistic tractography is ment to deal with this problem and generate
+ tracks even in regions that tracking is unclear.
+ The main difference between deterministic and probabilistic tractography
+ is that the latter assumes that there is uncertainty in the orientation
+ of the fiber at each point of the track.
+ We can illustrate this difference using a simplified 2D example shown in
+ Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:deterministic_probabilistic"
+
+\end_inset
+
+, generalizing afterwards in 3D is straightforward.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/probtrack2.svg
+	lyxscale 35
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:deterministic_probabilistic"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lets imagine that we have a 2D slice where in each pixel we have calculated
+ a vector showing the primary direction for that specific pixel.
+ This vector 
+\begin_inset Formula $\mathbf{e}$
+\end_inset
+
+ could have be calculated from the tensor as the primer eigenvector or as
+ a primer direction of a different model e.g.
+ the maximum point of the ODF.
+ Lets now think that we want to find the best path from seed A to seed Z.
+ When using deterministic tractography we are using only the local direction
+ information in every pixel therefore in a direction field as this of Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:deterministic_probabilistic"
+
+\end_inset
+
+(i) we will have to use only one track and this is the diagonal pathway
+ with yellow colour.
+ However there are other possible tracts as well in this diagram e.g rather
+ than taking the diagonal go first up north from A and then right.
+ Probabilistic tractography aims to identify all the possible tracts by
+ assigning to each one of them a weight.
+ All the weights together sum to 1.
+ This is possible by generating samples from a probability distribution
+ for every pixel.
+ In this toy example that is shown here the orientation of the blue vectors
+ can be represented by a single parameter, angle 
+\begin_inset Formula $\omega$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\omega$
+\end_inset
+
+ here is a random variable that takes values from a probability distribution
+ function (pdf) e.g.
+ a gaussian distribution centered at the angle of the primary eigenvector
+ 
+\begin_inset Formula $\mathbf{e}$
+\end_inset
+
+ or a different pdf defined from our modeling assumptions.
+ Now we have many possible directions to move next but with different probabilit
+ies.
+ The weights of all directions again sum to 1.
+ After this explanation we can identify in Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:deterministic_probabilistic"
+
+\end_inset
+
+(ii) that the most likely tract is again the diagonal (with deep red) but
+ there are other pathways (with lighter red) that are less likely.
+ In the same diagram we show with 3 combined red arrows some of the many
+ directions that are possible in each point.
+ However, some are more certain than others.
+\end_layout
+
+\begin_layout Standard
+We would like to try here to give a better insight of how a tract is selected
+ as more probable than others.
+ In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:deterministic_probabilistic"
+
+\end_inset
+
+(iii) we have drawn a very simple image with only two rows and we are assuming
+ that the probability of moving along the primary direction (shown with
+ blue arrow) is 0.9 and there is only a secondary direction given by 0.1 (1-0.9)
+ i.e.
+ we assume for easy of understanding here only 2 directions.
+ We can see that there is a discontinuouity in position K.
+ In that point an Euler based deterministic approach would have to stop
+ at K (see yellow line).
+ The probabilistic method will continue tracking and it will generate two
+ tracts that both reach the target.
+ To probability of each tract is calculated by multiplying the probability
+ of a specific direction of each point.
+ Therefore, the shorter and dark red path will have 
+\begin_inset Formula $p_{s}=0.9^{7}\times0.1$
+\end_inset
+
+ and the longer and lighter red path will have 
+\begin_inset Formula $p_{l}=0.9^{10}$
+\end_inset
+
+.
+ It is obvious that 
+\begin_inset Formula $p_{s}>p_{l}$
+\end_inset
+
+ and that the darker red path is more likely to exist.
+\end_layout
+
+\begin_layout Standard
+This method of multiplying the probabilities at each voxel along the paths
+ has been proposed by many Friman's and Westin's 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "FW05"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "anwander2007cbp"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bjornemoMICCAI02"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "HTJ+03"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hosey2005MagResMed"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lazar2002wmt"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PPC+05"
+
+\end_inset
+
+ and used in many software packages as well as Parker's PICO
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PHW03"
+
+\end_inset
+
+ in Camino , Berhens' FDT 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Behrens2003MRM,behrens2005rca,Behrens2003NatureNeuroscience"
+
+\end_inset
+
+ in FSL, and other ??.
+ 
+\end_layout
+
+\begin_layout Standard
+After the previous example someone might think here that probabilistic tractogra
+phy should be the ideal solution for any problematic dataset unfortunatelly
+ there are many questions and problems raised.
+ Although the probabilistic methods are able to identify many known tracts,
+ they miss several large tracts such as the visual pathways LGN-MT and callosal
+ MT.
+ The visual pathways are useful frameworks for algorithmic development and
+ testing because they diverge and bend significantly.
+ The current methods have the advantages that they expand the track search
+ space beyond deterministic algorithms and that they can easily expand with
+ complex models supporting crossings (usually not more than 2 crossings).
+ However, they don't compute an accurate probability of brain connections.
+ The statements 
+\begin_inset Quotes eld
+\end_inset
+
+Connection probabilities
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+estimation of global connectivity
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+the probability of the existence of a connection through the data field,
+ between any two distant points
+\begin_inset Quotes erd
+\end_inset
+
+ found in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Behrens2003MRM"
+
+\end_inset
+
+ can be very misleading because someone might believe that they represent
+ the actual connectivity profile of the subject.
+ For example we are certain (with probability 1) that LGN (lateral geniculate
+ nucleus) is connected to V1 and V2 (primary visual cortex) in a healthy
+ brain however the estimated connection probability in FDT is much less
+ than 1.
+ Also, current probabilistic algorithms fail to identify pathways even when
+ they are known to exist or in a few cases they generate pathways even when
+ they do not exist 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Behrens2007NeuroImage,jbabdi2007bfg,sherbondy2006mma"
+
+\end_inset
+
+.
+ For example no connections between left MT+ and the posterior portion of
+ Corpus Callosum were found in PiCo 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PHW03"
+
+\end_inset
+
+ or FDT.
+\end_layout
+
+\begin_layout Standard
+In 2008 Sherbondy 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Sherbondy2008JVision"
+
+\end_inset
+
+in order to try to deal with the problems explained in the previous paragraph
+ i.e ...
+ implemented in Contrack an algorithm that separates the pathway sampling
+ and scoring steps.
+ In that way the scoring does not depend any more one whether we are tracking
+ from seed A to seed B or from B to A therefore, it assumes symmetry when
+ the other probabilistic methods do not.
+ At the same time Sherbondy's method assumes independence between deferent
+ tracts i.e.
+ path 
+\begin_inset Formula $A\rightarrow B$
+\end_inset
+
+ is independent from 
+\begin_inset Formula $A\rightarrow C$
+\end_inset
+
+ or 
+\begin_inset Formula $K\rightarrow L$
+\end_inset
+
+.
+ This is not happening in most other prob.
+ methods where the pathways depend on other pathways starting from the same
+ seed.
+ So, ConTrack is designed to estimate connections that are known to exist.
+ Therefore the disadvantage of Sherbondy's method is that it needs a lot
+ of user interaction to add the known tracks and the user needs to be a
+ specialist in white matter anatomy otherwise the results might be biased.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="3">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Deterministic
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Probabilistic
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Voxel Noise Resistance
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+More
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Less
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Non-existing Tracts
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Yes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Execution Time
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Fast
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Slow
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Memory Size
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Less
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+More
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Biased on Tract Length
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Deterministic vs Probabilistic Tractography
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tbl:detvsprob"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+d.
+ Need for tools for surgery etc.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "powell2005mtp"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+e.
+ Way points
+\end_layout
+
+\begin_layout Section
+Using fiber tracks 
+\end_layout
+
+\begin_layout Subsection
+Defining connectivity
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Connectivity measures (how many tracts between two points divided the number
+ of paths generated, Anatomical Connectivity Density, Anatomical Connectivity
+ Probability and Anatomical Probability Strength coming from Graph Model).
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If we have two brain regions A and B, there are several questions we might
+ ask about the connection between them.
+ 
+\end_layout
+
+\begin_layout Standard
+We might want to ask whether there is evidence of any direct connection
+ between these areas.
+ A direct connection is mono-synaptic; that is, a connection in which the
+ nerve cells in A form synapses with area B or the other way round.
+ The diffusion signal does not allow us to ask which direction the connection
+ is going, so evidence of connection of A to B can also be interpreted as
+ evidence of B to A.
+ The question of whether a connection is direct is a difficult one.
+ We might have an estimated track between A and B, but the track might not
+ be direct.
+ For example, imagine a fiber tract that starts in Wernicke's area, and
+ projects into parietal cortex (real tract 1).
+ Another tract starts in lateral occipital cortex and projects into Broca's
+ area via the arcuate fasciculus (real tract 2).
+ When we run tractography, there is an estimated track that goes up to the
+ junction with the partietal lobe, but then curves round to join the arcuate
+ fasciculus.
+ Do we believe this track? We need to know the likelihood of the track,
+ as well as the likelihood that the track is a false positive created from
+ connecting real tract 1 and real tract 2 into a false new tract.
+ This is a complicated problem with few convincing solutions.
+ 
+\end_layout
+
+\begin_layout Standard
+A second question is - how 
+\emph on
+strongly
+\emph default
+ are A and B connected? We will probably also want to restrict the fibers
+ to those with mono-synaptic connections.
+ Here again we must ask - what do we mean by strongly? For example, if A
+ and B are at either end of track with very high reliability, and there
+ are no other tracks that can be found between the two areas, are A and
+ B strongly or weakly connected? If there are two areas C and D, that have
+ no very reliable track between them, but a large number of less reliable
+ tracks, are C and D more or less connected than A and B? If a strong connection
+ is more important than a weak one, we need to know how to weight the connection
+s for their strength - again - this is a difficult problem.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+How significant is the probability of connection between two voxels estimated
+ from DWI? (possible solution: See paper David et.
+ al.
+ 2008 Neuroimage).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Comparing across subjects
+\end_layout
+
+\begin_layout Standard
+In structural MRI when we want to compare across subjects we have to compare
+ only between 3D volumes.
+ In diffusion imaging things are much more complicated as we have many 3D
+ volumes for each subject.
+ For example in QBI we might have 515 or more directional volumes.
+ Comparing every single directional volume from two or more subjects is
+ highly impractical as it is very time consuming to process our datasets.
+ Therefore, research groups try to find new ways to reduce the dimensionality
+ while keeping most of the information.
+ 
+\end_layout
+
+\begin_layout Standard
+Three main approaches have been used for quantitative inter-subject analysis
+ in diffusion imaging, region of interest ROI-based methods, voxel-based
+ methods, and tract-based methods.
+ The ROI-based methods are by far the most popular in clinical practice.
+ Usually FA is calculated in manually defined ROIs and averaged over groups
+ of healthy and diseased populations e.g.
+ histogram analysis over a ROI.
+ With these methods it is easy to examine specific hypotheses associated
+ with specific brain disorders.
+ Apart from FA, the mean diffusivity (MD) volumes or primary eigenvalue
+ volumes could be used in a similar fashion.
+ 
+\end_layout
+
+\begin_layout Standard
+The disadvantages of ROI-based methods are that they are not time efficient
+ because they require user interaction and their accuracy is confined by
+ the reliability of defining the ROIs.
+ Kanaan et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KanaanPsych2006"
+
+\end_inset
+
+ showed that the ROI size, shape, number, and location not only affect the
+ measured quantities, but also influence the significance of the group analysis.
+ In voxel-based methods the datasets are compared voxel-by-voxel.
+ These methods are simple but precise alignment is very critical.
+ Registering scalar fields like FA does not employ all of the information
+ in the data and will not provide the most accurate analysis.
+ The advantages of voxel-based methods are that they are user-independent
+ and they are more holistic because they include the whole-brain.
+ Their disadvantages are that smoothing for statistical validity reduces
+ resolution, and significant group differences do not necessarily lie within
+ an anatomical tract.
+ Another important point is that it is relative common to use a DWI-based
+ atlas e.g.
+ Mori Atlas
+\begin_inset CommandInset citation
+LatexCommand cite
+key "moriBook"
+
+\end_inset
+
+.
+ However, reference to an anatomical atlas is hindered by the low resolution
+ of the obtained difference map by the limited resolution of the atlas itself
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KanaanPsych2006"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Tract-oriented methods offer advantages over ROI-based since they reveal
+ local variations of the fiber integrity which are lost when the quatitative
+ parameters are averaged over the entire fiber tract in ROI-based methods.
+ Clustering techniques are used to group trajectories (tracts) to single
+ fiber bundles.
+ The principal benefit is that observed differences are due to differences
+ in the properties of specific tracts rather than differences in the overall
+ anatomy/shape of the individual brains 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "maddah_phdthesis2008"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Regardless of the nature of tractography methods, whether deterministic
+ or probabilistic, the output trajectories often have discontinuities due
+ to the presence of noise and image imperfections.
+ Even with an ideal tractography algorithm and incredibly efficient preprocessin
+g of the data to remove noise artifacts, lesions and other brain abnormalities
+ may cause discontinuities in the trajectories.
+ Defining similarity between trajectories is not trivial.
+ The similarity between three-dimensional curves (trajectories or tracts)
+ is not uniquely defined and depends on the application.The space of the
+ fiber tracts can variate very much.
+ In deterministic tractography it is relatively common to represent them
+ as a list of paths where every path is a list of points on the diffusion
+ space.
+ Because of the anatomical differences comparing fiber tracts between different
+ subjects is an open problem.
+ A tract that pass through the x,y,z point in subject A doesn't mean it
+ will pass through the same point in subject B.
+ Actually, probably the path will not even start or end to the same points
+ if the subjects have small or profound anatomical differences.
+ Therefore in order to compare tracts we need to use more elaborate properties
+ of the tracks like higher order derivatives, curvature, kurtosity etc.
+ In addition, the general assumption that a fiber tract has one pixel thickness
+ should also be under consideration especially in virtual dissection application
+s.
+ A good strategy is to require the similarity measure to use both spatial
+ and shape information from the whole trajectory.
+ The point correspondence could be facilitated by the use of landmarks that
+ contain most of the information for the shape and location of trajectory.
+ Such landmarks can be specified using local extrema
+\begin_inset CommandInset citation
+LatexCommand cite
+key "deriche1990dcm"
+
+\end_inset
+
+ or minimum description length
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DavisTMI02"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+An unsupervised algorithm is not easy to produce the clusters of interest
+ for a given application because of over or under-fitting i.e., more or less
+ clusters are generated from the algorithm across subjects and therefore
+ cluster to cluster correspondence is difficult to achieve.
+ Mahnaz Maddah in her thesis used a supervised clustering algorithm with
+ SDT data that benefits from anatomical information.
+ By such a tract-based analysis, she was able to identify a significant
+ drop in FA in the vicinity of the lesion (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "maddah_phdthesis2008"
+
+\end_inset
+
+ p.31), without knowing where the lesion is located a priori (cite all Mahnaz's
+ papers and thesis).
+ The point correspondence between the trajectories is built using a distance
+ map and a Voronoi diagram on the same space.
+ The anatomical prior is given by an anatomical atlas or by a Dirichlet
+ distribution that controls the impact of the atlas.
+ Odonell et.
+ al 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ODonnell_MICCAI09"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Talk a bit about Odonell's work and track-based morphometry.
+\end_layout
+
+\begin_layout Standard
+We stressed in previous sections that FA is very restricted as it doesn't
+ give any directional local information and any crossing or merging is missed.
+ However, some of the major bundles are visible even in FA volumes.
+ Therefore, usualy for simplicity most of the current methods use FA to
+ compare across subjects.
+ The idea is to register all FA images together usually on a template that
+ is the mean FA image.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+TALK HERE ABOUT TBSS and Perhaps VBA
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Some problems of missing fibers here in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DoughertyPNAS2005"
+
+\end_inset
+
+and for comparison between connections that were visualized using injected
+ neural tract tracer and DWI tractography in the macaque brain 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DauguetNeuroImage2007"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Multi-subject registration
+\end_layout
+
+\begin_layout Standard
+-Use a model first 
+\end_layout
+
+\begin_layout Standard
+-TBSS(FA)
+\end_layout
+
+\begin_layout Standard
+-SPM (cooregist with b0 volume) + VBA on FA or e1
+\end_layout
+
+\begin_layout Standard
+ 
+\end_layout
+
+\begin_layout Section
+Software
+\end_layout
+
+\begin_layout Standard
+We write our software in Python with embedded C/C++ modules for speed if
+ necessary.
+ We choose Python because it is open source, multiplatform, free, it has
+ a very simple object oriented syntax and many interfaces with GUIs, scientific
+ computing libraries and other languages.
+ We also hope that some of our code will be used in a future version of
+ Nipy.
+ We coined the name Tractarian (TRN) for this python project but there are
+ many functions and files that are useful not only for tractography but
+ generally for machine learning, scientific visualization and medical imaging.
+ TRN consists of the following modules diffusion.py, art.py, lights.py, form.py,
+ eyes.py and external.py.
+ See Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tbl:trn"
+
+\end_inset
+
+ for a summary of their features.
+ 
+\end_layout
+
+\begin_layout Standard
+lights.py 
+\end_layout
+
+\begin_layout Standard
+cone, torus, cube, point, dots, sphere, line, polyline, trajectory, label,
+ arrow, plane, axes, splines, surfaces, volume, animation, record snapshot,
+ record video, wireframe, spherical grids, evenly distributed points on
+ a sphere (alg).
+\end_layout
+
+\begin_layout Standard
+diffusion.py
+\end_layout
+
+\begin_layout Standard
+calculate tensor (tensorfitsimple), generate FA results.
+\end_layout
+
+\begin_layout Standard
+Future calculate our own tractography algorithm.
+\end_layout
+
+\begin_layout Standard
+eyes.py
+\end_layout
+
+\begin_layout Standard
+pure opengl interaction, fast tractography generation
+\end_layout
+
+\begin_layout Standard
+form.py
+\end_layout
+
+\begin_layout Standard
+load nifti, analyze, dcm, compress-decompress files, bvals, bvecs, trk files,
+ excel files, gradient files.
+\end_layout
+
+\begin_layout Standard
+art.py
+\end_layout
+
+\begin_layout Standard
+wrap mdb and scipy optimization functions
+\end_layout
+
+\begin_layout Standard
+external.py
+\end_layout
+
+\begin_layout Standard
+run tractography using dtk , wrap mri_convert, find dcm files, find files,
+ list fiels.
+ 
+\end_layout
+
+\begin_layout Standard
+Future additions wrapping FSL, Camino, Freesurfer
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TRN Modules
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Main Features
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lights.py
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3D/4D visualisation using VTK & GUI using wxWindows
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+diffusion.py
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Calculate Tensors & FA
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+eyes.py
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+OpenGL & Fast Tractography visualisation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+form.py
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+File Reading & Writing
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+art.py
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Machine Learning & Artificial Intelligence
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+external.py
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Wrappers for external tools e.g.
+ Camino, FSL, Freesurfer.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Summary of the developed features in TRN.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tbl:trn"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Visualisation Library
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/lights_eyes.png
+	lyxscale 25
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+A, B, C are produced by TRN lights & D is generated using TRN eyes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Fig:Lights"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+FA Results
+\end_layout
+
+\begin_layout Subsection
+Trichotillomania
+\end_layout
+
+\begin_layout Standard
+Trichotillomania is a disease with the symptom of impulsive hair pulling.
+ It is also a disease that very little imaging data have been published.
+ Chamberlain et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chamberlain2008gma"
+
+\end_inset
+
+ showed grey matter abnormalities in anterior congulate cortex and pre SMA.
+ In collaboration with Adam Hampshire from MRC-CBU we tried to confirm and
+ extend this result using diffusion imaging.
+ The quality of the datasets was not good enough to generate tractography
+ but they were good enough to calculate and analyze fractional anisotropy
+ (FA) images.
+ We found 3 clusters of lowered FA in the trich group compared with controls.
+ A white matter cluster under the preSMA and ACC, mostly in the right hemisphere
+, another white matter cluster under the left hemisphere in the hand area
+ of the pre motor cortex and a large cluster in left hemisphere that spread
+ from underneath the premotor cortex.
+ These results are planned to be published at the Journal of American Psychiatry.
+ My contributions was mainly on planning the diffusion analysis and visualising
+ the datasets using our new software TRN.
+ In the begining we tried to use FSL for all the analysis however we had
+ better results when combined FSL, SPM & CAMBA.
+ This was inspired by a previous work of Chamberlain et al.
+ with an OCD study
+\begin_inset CommandInset citation
+LatexCommand cite
+key "menzies2008wma"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The data set included 20 patients with trichotillomania and 20 matched controls.
+ Data collected at the MRIS in Addenbrooks on the 1.5 T GE Signa scanner
+ using 25 gradient directions and one volume with b=0.
+ MPRAGE was also collected.
+ More information about the acquisition protocol and parameters can be found
+ here
+\begin_inset CommandInset citation
+LatexCommand cite
+key "menzies2008wma"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Eddy correction and calculations of FA maps carried out in FSL/FDT and followed
+ the standard on line directions.
+ Then, for each participant, the b0 was coregistered with the MPRAGE and
+ this transform was applied to the FA maps.
+ The MPRAGE was coregistered and normalised to the MNI template in SPM5
+ and these parameters were applied to the FA maps.
+ The FA maps were now in the same space as the MNI template in SPM5.
+ A spatial smooth was applied to the FA maps in SPM 5 using an 8mm Gaussian
+ kernel.
+ Group level analysis were carried out in CAMBA using cluster level correction.
+ A white matter mask was obtained (from Sam Chamberlains previous OCD study).
+ This white matter mask was defined by binarising the Statistical Parametric
+ Mapping a priori white matter template to a binary mask, i.e., thresholding
+ each voxel at 50% white matter to define white matter regions for analysis.
+ FA maps were then compared cross group and within the white matter mask
+ using a threshold of p < 1 false positive and two tailed cluster analysis.
+ 
+\end_layout
+
+\begin_layout Standard
+For the visualization of the results we used FreeSurfer to extract the cortical
+ surface from the MNI template.
+ Then we used our own TRN software for the visualization.
+ The cortical surface was plotted using surface and contour rendering and
+ the FA clusters were plotted inside the cortical surface using volumetric
+ rendering.
+ See fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Fig:Lights"
+
+\end_inset
+
+A.
+ For more information about how this visualization was possible look section
+ Software.
+ We are now under the process with Dr.
+ Adam Hampshire of making this visualization process automated so we can
+ use it in all our following analyses that combine volumetric with surface
+ data.
+ The difficult part usually to achieve this is how to register these two
+ data sets together.
+ However, this is high too technical and complicated for this report.
+\end_layout
+
+\begin_layout Standard
+We are running a larger cohort during automn 2009 with higher resolution
+ sequence and we will also be collecting functional fMRI data in this patient
+ group for the first time.
+ We plan to identify functional differences and generate beautiful and hopefully
+ meaningful tracts that will confirm our FA results.
+ 
+\end_layout
+
+\begin_layout Section
+Tractography Results
+\end_layout
+
+\begin_layout Subsection
+HARDI Experiments in CBU
+\end_layout
+
+\begin_layout Standard
+The default Siemens diffusion acquisition protocol that we are using in
+ CBU uses a rectangular voxel size of 
+\begin_inset Formula $1.8\times1.8\times2.5\, mm$
+\end_inset
+
+.
+ We found that this creates problems with many different tractography software
+ e.g.
+ DSI Studio developed by Fang-Cheng Yeh.
+ Tractography algorithms prefer cubic voxel size because that simplifies
+ the modeling, clustering and interpolation of the tracts.
+ This change would simplify as well our free model ideas described in section
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Future-Plan"
+
+\end_inset
+
+.
+ Furthermore, we were planning to test the accuracy of tractography using
+ acquisitions with different b-values.
+ After some fruitful discussions with Dr.
+ Guy Williams, Dr.
+ Christian Schwarzbauer we decided to run 4 acquisition schemes using 2
+ subjects and some fruits.
+ All acquisitions were held in our own MRC-CBU's Siemens Trio scaner.
+ 
+\end_layout
+
+\begin_layout Standard
+The first acquisition (1A) was using the following parameters: voxel size
+ 
+\begin_inset Formula $2.0\times2.0\times2.0\, mm$
+\end_inset
+
+, 64 directions, slice thickness 
+\begin_inset Formula $2.0\, mm$
+\end_inset
+
+, TR=9200 ms, TE=93 ms, FoV read 256 mm and b-value=
+\begin_inset Formula $1000\, s/mm^{2}$
+\end_inset
+
+.
+ One more volume was acquired with b-value = 
+\begin_inset Formula $0\, s/mm^{2}$
+\end_inset
+
+.
+ The total duration of the experiment was 10 minutes and 27 seconds.
+\end_layout
+
+\begin_layout Standard
+The second acquisition (2A) was exactly the same with the previous one but
+ using b-value = 
+\begin_inset Formula $3000\, s/mm^{2}$
+\end_inset
+
+, TR=10600 ms and TE= 114 ms.
+ The total duration was 12 min and 27 sec.
+\end_layout
+
+\begin_layout Standard
+The third acquisition (3A) was the same with the previous two but using
+ b-value = 
+\begin_inset Formula $5000\, s/mm^{2}$
+\end_inset
+
+, TR=11500 ms and TE = 127 ms.
+ The total duration was 13 min and 4 sec.
+\end_layout
+
+\begin_layout Standard
+All the first three acquisitions were using 64 directions but the fourth
+ one (4A) was using 12 directions with b-value 
+\begin_inset Formula $5000\, s/mm^{2}$
+\end_inset
+
+ and the following parameters: TR=11500 ms, TE=127 ms, Averages=5.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tbl:tracexp"
+
+\end_inset
+
+ summarises their main differences.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Acquisition
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+b-value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+directions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+repetitions
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+64
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+64
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+64
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tbl:tracexp"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/ROIsTrackVis.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Fig:TrackvisROIs"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Unfortunatelly, the scanner failed to run 3A and 4A because of overheating
+ problems.
+ We believe that it is very important to gather data with high b-values
+ because in that way we will be able to use algorithms that provide very
+ detailed tractography e.g.
+ QBI 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tuch2002ThesisMIT"
+
+\end_inset
+
+, EQBI 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "canalesrodriguez2009mdq"
+
+\end_inset
+
+ and DSI
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WWS+08"
+
+\end_inset
+
+ .
+ We are expecting technical experts from Siemens to solve this problem very
+ soon hopefully during the summer.
+ Furthermore, we scanned some fruits and vegetables with fiber structure
+ e.g.
+ a mango and a pineapple but the signal was too weak to be useful for tractograp
+hy validation.
+ 
+\end_layout
+
+\begin_layout Standard
+However, from 1A and 2A we gathered tracts using software and get the beautiful
+ and inspiring results shown in figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Fig:FACT"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Fig:RK"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Fig:TrackvisROIs"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Fig:DSIstudio"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/DSIStudio.png
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Fig:DSIstudio"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Future-Plan"
+
+\end_inset
+
+Future Plan
+\end_layout
+
+\begin_layout Standard
+Finish the review paper 
+\begin_inset Quotes eld
+\end_inset
+
+Find the connections ...
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Exact QBI in the Siemens scanner.
+\end_layout
+
+\begin_layout Standard
+Acquiring a phantom talk a bit about the software phantoms that we already
+ have.
+\end_layout
+
+\begin_layout Enumerate
+Dimensionality reduction and clustering in voxel using PCA or nonlinear
+ PCA e.g.
+ Isomap cite isomap.
+\begin_inset Newline newline
+\end_inset
+
+Clustering in specific pattern (put a shape here)
+\begin_inset Newline newline
+\end_inset
+
+Althernative: Work with the ODF.
+ cite Özarslan & Pickalov etc.
+\end_layout
+
+\begin_layout Enumerate
+Error correction and denoising using discrete optimization using the whole
+ brain.
+ Add some info about the (discrete optimization and cite Kolmogorov).
+\end_layout
+
+\begin_layout Enumerate
+Probabilistic tract reconstruction embedding prior knowledge e.g.
+ in normal healthy brains there will always be an actual optic radiation
+ underlying.
+ Could we use this info in a bayesian way? Cite Sherbondy.
+\end_layout
+
+\begin_layout Enumerate
+Find tracts that are similar in different subjects.
+ Similarity parameters could be the length, curvature, thickness, torsion,
+ distribution of thickness.
+ Then try to register 
+\end_layout
+
+\begin_layout Enumerate
+Combine tractography with surface reconstruction software e.g.
+ Freesurfer and try to use the information from tractography to segment/parcella
+te the cortex in meaningful areas.
+\end_layout
+
+\begin_layout Section
+Conclusion
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Section
+Appendix
+\end_layout
+
+\begin_layout Subsection
+Mathematical summary of dMRI
+\end_layout
+
+\begin_layout Standard
+From Fick's first law flux 
+\begin_inset Formula $J$
+\end_inset
+
+ is equal to the inverse of the gradient of concentration 
+\begin_inset Formula $C$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+J=-D\mathbf{\,\nabla}C\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $D$
+\end_inset
+
+ is the diffusion coefficient.
+\end_layout
+
+\begin_layout Standard
+Fick's second law derives from the conservation of mass
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\partial C/\partial t=D\mathbf{\,\nabla^{2}}C\end{equation}
+
+\end_inset
+
+and it just shows that when we have changes in concentration matter moves
+ in or out of the box.
+ This last differential equation is also know as the diffusion equation.
+\end_layout
+
+\begin_layout Standard
+In Brownian motion when a molecule is at position 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+, we cannot say where it will be after time 
+\begin_inset Formula $t$
+\end_inset
+
+, we can only model a distribution of locations.
+ This motion is descibed by a propagator 
+\begin_inset Formula $P(x;x_{o},t)$
+\end_inset
+
+ which defines the probability of being in 
+\begin_inset Formula $x$
+\end_inset
+
+ after a time 
+\begin_inset Formula $t$
+\end_inset
+
+, starting at 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The orientation distribution function (ODF) expresses the probability of
+ a spin displacing into a differential solid angle about a fiber direction
+ 
+\begin_inset Formula $u$
+\end_inset
+
+.
+ This is used in order to visualise the diffusion propagator and in simple
+ words it just projects the diffusion function on to the sphere by intergrating
+ over the radial coordinate of the diffusion function.
+ The ODF representation sacrifices all the radial information but retains
+ the relevant directional information.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+f(\mathbf{u})=\int_{0}^{\infty}P(\rho\mathbf{u})\, d\rho\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\mathbf{u}$
+\end_inset
+
+ is a unit normal vector and 
+\begin_inset Formula $\mathbf{\rho}$
+\end_inset
+
+ is the radial coordinate in the diffusion space.
+\end_layout
+
+\begin_layout Standard
+Stejskal and Tanner showed that the spin echo magnitude 
+\begin_inset Formula $S(\mathbf{q},t)$
+\end_inset
+
+ from a PGSE experiment is directly related with the diffusion propagator
+ by a Fourier relation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+S(\mathbf{q},t)=S_{0}\int P(\mathbf{R},t)e^{i\mathbf{q}^{T}\mathbf{R}}d\mathbf{R}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $S_{0}$
+\end_inset
+
+ is the signal in the absense of the applied diffusion gradient, 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+ is the relative spin displacement 
+\begin_inset Formula $\mathbf{x}-\mathbf{x}_{0}$
+\end_inset
+
+at diffusion time 
+\begin_inset Formula $t$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{q}$
+\end_inset
+
+ is the spin displacement wave vector.
+ With the inverse Fourier transform we can reconstruct the diffusion propagator
+ 
+\begin_inset Formula $P$
+\end_inset
+
+ by measuring the signal in different directions.
+ QSI and DSI are the best known methods which try to reconstruct the full
+ diffusion propagator in that way.
+\end_layout
+
+\begin_layout Standard
+Assuming that the diffusion propagator is given by a gaussian distribution
+ we can write 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+P(\mathbf{R},t)=\frac{1}{\sqrt{4\pi t^{3}\mid\mathbf{D}\mid}}exp(-\frac{\mathbf{R}^{T}\mathbf{D}^{-1}\mathbf{R}}{4t})\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\mathbf{D}$
+\end_inset
+
+ is known as the diffusion tensor.
+ This tensor is a 3D symmetric matrix that can be completely described by
+ a centered ellipsoid with axes 
+\begin_inset Formula $\lambda_{1},\lambda_{2},\lambda_{3}$
+\end_inset
+
+.
+ Fractional Anisotropy (FA) is a very common metric in diffusion imaging
+ which is calculated from these values.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+FA=\frac{1}{\sqrt{2}}\frac{\sqrt{(\lambda_{1}-\lambda_{2})^{2}+(\lambda_{2}-\lambda_{3})^{2}+(\lambda_{3}-\lambda_{1})^{2}}}{\sqrt{\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}}}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If FA is equal to 1 that means very anisotropic (infinitely prolonged ellipsoid)
+ and if FA is equal to 0 that means totally isotropic (spherical).
+ FA is used in clinical studies to diagnose diseases and asses the progress
+ of therapy.
+\end_layout
+
+\begin_layout Subsection
+TBSS 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/tbss_deproject_problem.png
+	scale 70
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Single-shell q-space acquisition
+\end_layout
+
+\begin_layout Standard
+The most often used terms in this category are Q-Ball Imaging (QBI) and
+ High Angular Resolution Diffusion Imaging (HARDI).
+ 
+\end_layout
+
+\begin_layout Standard
+HARDI is a very general term used to refer to a q-space shell method with
+ a single shell, and a relatively large number of gradient directions -
+ many more than 6.
+ It is not a very useful term because it is so vaguely defined.
+ There are a variety of ways of analyzing single-shell acquisitions.
+ If there are a sufficiently large number of gradient directions in the
+ acquisition, one possible analysis method is using the spherical tomographic
+ inversion called the Funk–Radon transform, also known as the spherical
+ Radon transform.
+ David Tuch coined the term Q-ball imaging for the combination of taking
+ a large number of gradient directions on a single shell and using the Funk-Rado
+n transform.
+ However, the term Q-ball is primarily a term for the analysis method and
+ not the acquisition, which is a single shell method (with many directions).
+ 
+\end_layout
+
+\begin_layout Standard
+Single shell methods have the advantage that they are less demanding of
+ scanner hardware and scanning time than the q-space volume methods (see
+ below).
+ Like these more time-consuming methods, with some analysis techniques,
+ they are capable of resolving detail like intravoxel fiber crossings.
+ One way of doing this is to use mixture model decomposition of the high
+ angular resolution signal, but mixture modeling requires a model of the
+ underlying diffusion process.
+ The Funk-Radon transform (Q-ball analysis) can resolve multiple intravoxel
+ fiber orientations and does not require any assumptions on the diffusion
+ process such as Gaussianity or multi-Gaussianity.
+ In theory, the efficiency gain of single shell methods would stem from
+ the need to sample only on a spherical shell as opposed to the three-dimensiona
+l Cartesian volume required by q-space volume imaging (See section below).
+ By selecting a sampling shell of a particular radius (b value) the acquisition
+ could also be targeted toward specific length scales of interest.
+ Notwithstanding the potential advantages of single shell methods, widespread
+ application of the technique has been limited by the unavailability of
+ a model-independent reconstruction scheme for single-shell data without
+ enough gradient directions to use the Funk-Radon transform.
+ Various models and numerical fitting procedures have been proposed to relate
+ the spherical diffusion signal to the underlying diffusion function, but
+ a model-free inversion has remained elusive.
+ The Funk-Radon transform has a number of benefits over previous single-shell
+ reconstruction approaches including model-independence, linearity in the
+ signal, an image resolution framework, and computational simplicity.
+ 
+\end_layout
+
+\begin_layout Subsection
+q-space volume acquisition
+\end_layout
+
+\begin_layout Standard
+These methods include q-space imaging (QSI) and diffusion spectrum imaging
+ (DSI).
+ The terms are effectively identical in meaning, and we will prefer q-space
+ volume imaging.
+\end_layout
+
+\begin_layout Standard
+The method measures the diffusion function directly by sampling the diffusion
+ signal on a three-dimensional Cartesian lattice in q-space.
+ Analysis employs the Fourier relation between the diffusion signal and
+ the diffusion function to measure the diffusion function directly, without
+ recourse to a model of the diffusion process.
+ Using this approach, researchers have found that in regions of fiber crossings
+ the diffusion function possesses significant multimodal structure.
+ This approach is also referred to as diffusion displacement imaging, or
+ dynamic NMR microscopy.
+ 
+\end_layout
+
+\begin_layout Standard
+q-space volume acquisition requires gradient sampling on a three-dimensional
+ Cartesian lattice, which is time intensive.
+ It requires large pulsed field gradients to satisfy the Nyquist condition
+ for diffusion in nerve tissue.
+ However, the method affords the capacity to resolve intravoxel diffusion
+ heterogeneity of compartments with sufficient angular separation and anisotropy
+ by measuring its diffusion density spectra estimator.
+ It generalizes the analysis of diffusion spectra by demonstrating that
+ the Fourier transform of the diffusion spectrum must be positive.
+\end_layout
+
+\begin_layout Standard
+Using high angular resolution, high b-value diffusion gradient sampling,
+ it is able to detect diffusion signals with multiple, discrete maxima/minima
+ as a function of gradient orientation, indicating the presence of multiple
+ underlying fiber populations.
+ 
+\end_layout
+
+\begin_layout Subsection
+Mutiple q-space shells
+\end_layout
+
+\begin_layout Standard
+The hybrid diffusion Imaging (HYDI) encoding scheme is composed of multiple
+ concentric q-space shells of constant diffusion weighting, which may be
+ used to characterize the signal behavior with low, moderate and high diffusion
+ weighting (b values).
+ HYDI facilitates the application of multiple data analysis strategies including
+ single diffusion tensor (SDT), multi-exponential diffusion measurements,
+ direct Fourier analysis as in q-space volume imaging, and analysis with
+ the Funk-Radon transform.
+ These different analysis strategies may provide complementary information.
+ The HYDI method is a flexible q-space encoding scheme that may be tailored
+ to emphasize specific diffusion features and is amenable to a wide range
+ of diffusion image analysis strategies.
+\end_layout
+
+\begin_layout Standard
+Exact q-ball is a multi-shell formulation that provides a direct relationship
+ between the orientation distribution function (ODF) and the diffusion data
+ without using any approximation.
+ Under this relationship, the exact ODF can be computed by means of the
+ Radon transform of the radial projection (in q-space) of the diffusion
+ MRI signal.
+ Exact q-ball imaging can be put into practice using an analytical ODF estimatio
+n in terms of spherical harmonics that allows model-free and model-based
+ reconstructions.
+ This is a framework for combining information coming from diffusion data
+ recorded on multiple spherical shells in q-space (hybrid diffusion imaging
+ encoding scheme), which is capable of mapping the ODF to a high accuracy.
+\end_layout
+
+\begin_layout Subsection
+SNR in DWI? 
+\end_layout
+
+\begin_layout Standard
+Since the degree of signal attenuation increases with b-value (and potentially
+ in anisotropic regions, with the direction of the applied diffusion gradient),
+ it is not easy to discuss the signal-to-noise ratio (SNR) of the whole
+ diffusion dataset.
+ Rather than quote SNR values for each individual volume, it is common to
+ quote the SNR of the b=0 volumes.
+ This represents the best SNR possible, although even a high value will
+ be dramatically reduced if a large b-value is used.
+ For example, for a medium with a diffusivity of 0.7 x 10
+\begin_inset Formula $^{\text{-3}}$
+\end_inset
+
+mm2/s (similar to brain tissue) and a b-value of 1500 s/mm2, the signal
+ to noise ratio will be reduced by a factor of 2.9.
+ 
+\end_layout
+
+\begin_layout Standard
+These reductions in SNR are of particular importance when considering the
+ optimum b-value to use, which depends on the diffusivity being measured
+ [ cite Xing et.
+ al.
+ ].
+ A high b-value may in turn may affect the possible TE of the acquisition,
+ increasing which may also adversely affect SNR [ cite Alexander ].
+ 
+\end_layout
+
+\begin_layout Standard
+There is an even more complicated relationship between SNR and measures
+ derived from the SDT model, such as anisotropy, diffusivity and directionality.
+ Due to the finite sampling of diffusion space, the asymmetric Rician nature
+ of the noise in the magnitude images that we use for analysis, different
+ acquisitions have different biases on the calculation of tensor metrics.
+ In general, combining images with low SNR can cause a systematic downwards
+ bias in diffusivity values.
+ This has less effect for FA calculations but does mean that the noise level
+ will vary for different anisotropy levels [ cite Correia].
+\end_layout
+
+\begin_layout Standard
+Since we do not have readily available phantoms for diffusion measurements
+ where the ground truth is known, much of the analysis of these problems
+ has been done in simulated data.
+ This has obvious implications if the models that we are using are imperfect,
+ will be the case if there exist partial volume effects or the diffusing
+ water molecules do not exhibit Gaussian diffusion (for example, due to
+ meeting an impermeable boundary)..
+ 
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "diffusion"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

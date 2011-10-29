@@ -1,0 +1,217 @@
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Building an open platform for advanced diffusion MRI analysis
+\end_layout
+
+\begin_layout Standard
+Diffusion-weighted MR imaging (dMRI) is a non-invasive technique which can
+ reveal important information about the directional organisation of the
+ white matter fibres of the brain.
+ Tractography is a way to approximate these neuronal pathways using streamlines
+ and connectivity profiles.
+ dMRI has been lately used not only to study the structure of the brain
+ but also of other organs such as heart, spine, and liver.
+ Deriving tractography from the raw MR data calls for a wide range of signal
+ processing, medical imaging and machine learning techniques.
+ These we have provided in the dipy toolbox.
+\end_layout
+
+\begin_layout Standard
+Dipy[1] stands for diffusion imaging in python and is a free, open source,
+ python toolbox.
+ It provides a library of algorithms to give a full data processing pathway
+ from raw diffusion magnetic resonance data to tractographies, with several
+ novel algorithms for analysing, comparing and displaying tractographies.
+ Our algorithms are designed to allow very quick analyses of the huge datasets
+ that typically are involved in tractography.
+ Dipy operates across all standard platforms and inter-operates with the
+ file formats of a wide range of other brain imaging software.
+\end_layout
+
+\begin_layout Standard
+Dipy was initially developed by researchers from the University of Cambridge
+ and the MRC Cognition and Brain Sciences Unit but now has many other internatio
+nal contributors.
+ The aim of dipy is to make it easier to do better diffusion MR imaging
+ research.
+ This it achieves by clearly written, and clearly explained, code with a
+ good fit to the underlying concepts, designed in a way that fosters large
+ scale collaborative development using the latest software engineering principle
+s.
+ 
+\end_layout
+
+\begin_layout Standard
+We believe that by understanding the underlying anatomy in vivo and by providing
+ the tools to compare different populations we will be able to help researchers
+ and medical practitioners with new ways to investigate and understand the
+ structure of the complex neuronal pathways in the brain in health or disease.
+\end_layout
+
+\begin_layout Standard
+[1] http://www.dipy.org
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+neuronal pathways
+\end_layout
+
+\begin_layout Standard
+what diffusion is useful for
+\end_layout
+
+\begin_layout Standard
+fibrous structures musle, heart, spine
+\end_layout
+
+\begin_layout Standard
+What our analysis does?
+\end_layout
+
+\begin_layout Standard
+* Reconstruction algorithms, e.g.
+ GQI, DTI 
+\end_layout
+
+\begin_layout Standard
+* Tractography generation algorithms, e.g.
+ EuDX 
+\end_layout
+
+\begin_layout Standard
+* Intelligent downsampling of tracks 
+\end_layout
+
+\begin_layout Standard
+* Ultra fast tractography clustering 
+\end_layout
+
+\begin_layout Standard
+* Resampling datasets with anisotropic voxels to isotropic 
+\end_layout
+
+\begin_layout Standard
+* Visualizing multiple brains simultaneously 
+\end_layout
+
+\begin_layout Standard
+* Finding track correspondence between different brains 
+\end_layout
+
+\begin_layout Standard
+* Warping tractographies into another space, e.g.
+ MNI space 
+\end_layout
+
+\begin_layout Standard
+* Reading many different file formats, e.g.
+ Trackvis or NIfTI 
+\end_layout
+
+\begin_layout Standard
+* Dealing with huge tractographies without memory restrictions 
+\end_layout
+
+\begin_layout Standard
+* Playing with datasets interactively without storing 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Why is it important?
+\end_layout
+
+\begin_layout Itemize
+A new way to investigate the structure of the neuronal pathways in the brain
+\end_layout
+
+\begin_layout Itemize
+It gives you an environment that you can clarify your thinking about problems
+ of tractography and their solutions interacting with visualizations
+\end_layout
+
+\begin_layout Itemize
+Better software engineering principles - free, open, fast, easy to understand
+ to understand the underlying principles & use and explore the similarities
+ and divergencies between different approaches.
+\end_layout
+
+\begin_layout Itemize
+Python is a human friendly language with no licencing issues.
+\end_layout
+
+\begin_layout Itemize
+New algorithms - simplifying complex datasets
+\end_layout
+
+\begin_layout Itemize
+Well documented with good examples
+\end_layout
+
+\begin_layout Standard
+How do we feel about this breakthrough?
+\end_layout
+
+\end_body
+\end_document

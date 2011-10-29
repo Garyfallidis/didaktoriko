@@ -1,0 +1,85 @@
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Taking the 'T' out of DTI: model-free diffusion imaging anisotropy
+\end_layout
+
+\begin_layout Standard
+Diffusion-weighted MR imaging (dMRI) is a non-invasive technique which can
+ reveal important information about the directional organisation of the
+ white matter fibres of the brain.
+ Local voxelwise measures based on dMRI - such as fractional anisotropy
+ (FA), apparent diffusivity coefficient (ADC), or mean diffusivity (MD)
+ - have been extensively adopted in clinical and applied research practice
+ and have been shown to relate to a range of neurodegenerative pathologies.
+\end_layout
+
+\begin_layout Standard
+Measures such as FA, ADC and MD are based on the parametric simple diffusion
+ tensor (SDT) model.
+ SDT works well when there is a single dominant fibre direction.
+ However SDT is also known not to give valid information if the local fibre
+ organisation is more complex.
+ This underlines the need to establish valid and reliable measures which
+ can indicate the degree of local organisation of white matter in the brain
+ in voxels where there are multiple fibre crossings as well as where there
+ is a single dominant fibre direction.
+\end_layout
+
+\begin_layout Standard
+We show how model-free alternatives can be established which yield non-parametri
+c anisotropy and directionality measures (NPA).
+ These are constructed from the spin orientation distribution function (sODF).
+ We apply exact analytical results which show the form of the sODF when
+ the single tensor model is correct, and further indicate how the tensor's
+ parameters may be estimated from this model-free approach.
+ We generalise these to define the NPA measure in cases where the SDT is
+ invalid.
+ We compare the performance of these parametric and non-parametric measures
+ for simulated and in vivo data and show that NPA is applicable over a wider
+ range of white matter than DTI based measures.
+\end_layout
+
+\end_body
+\end_document

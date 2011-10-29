@@ -1,0 +1,116 @@
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+SNR comparison 12 vs 32 channel coils
+\end_layout
+
+\begin_layout Standard
+See complimentary file DSI_comparison_marta.ods and pdf for results
+\end_layout
+
+\begin_layout Standard
+Registration:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+b0 & \rightarrow & MPRAGE\leftarrow ICBM\\
+b0 & \leftarrow & MPRAGE\leftarrow ROI\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Estimated noise sd computed using 
+\begin_inset Formula $\bar{M}=\sqrt{\pi/2}\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{M}^{2}=\sigma^{2}(2-\pi/2)$
+\end_inset
+
+ (estimated as Rician)
+\end_layout
+
+\begin_layout Standard
+And this is then deviated by the signals to calculate the baseline.
+\end_layout
+
+\begin_layout Standard
+The real signal A can be found by the measured signal 
+\begin_inset Formula $\left\langle M^{2}\right\rangle =\sqrt{A^{2}+\sigma^{2}}$
+\end_inset
+
+ then 
+\begin_inset Formula $SNR_{0}=\frac{A}{\sigma}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Here we use
+\begin_inset Formula $SNR_{0}=\frac{<ROI>}{\sigma}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Marta also said that another proper way to compute is 
+\begin_inset Formula $\left\langle M^{2}\right\rangle =\frac{1}{2}\sigma^{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,508 @@
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Connectomes
+\end_layout
+
+\begin_layout Section
+Saad 
+\end_layout
+
+\begin_layout Itemize
+Micro ~1mm
+\end_layout
+
+\begin_layout Itemize
+Meso 
+\end_layout
+
+\begin_layout Itemize
+Macro 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Rouiller 1998 tracer studies
+\end_layout
+
+\begin_layout Standard
+Catani Thiebaut 2009 
+\end_layout
+
+\begin_layout Standard
+Beckmann 2009
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Histological differences
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Ongur and Price, J.Comp.
+ Neurol.
+ 2003
+\end_layout
+
+\begin_layout Standard
+Mackey Petrides
+\end_layout
+
+\begin_layout Standard
+Vogt 2009
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Cortical areas 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Andrews, Halpern J.Neurosc 1997
+\end_layout
+
+\begin_layout Itemize
+Amunts, Zilles, Fischl
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+histological atlases not directly useful
+\end_layout
+
+\begin_layout Standard
+In vivo parcellation of cortex ICA, Jbabdi In prepation 
+\end_layout
+
+\begin_layout Itemize
+Modelling errors
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+voxel level
+\end_layout
+
+\begin_layout Itemize
+Jumping between tracks
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Measurement errors
+\end_layout
+
+\begin_layout Standard
+Lerch NeuroImage 2006 Cortical thickness
+\end_layout
+
+\begin_layout Itemize
+Tension Theory (van Essen)
+\end_layout
+
+\begin_layout Itemize
+Vincent Nature 2007
+\end_layout
+
+\begin_layout Section
+Vince Calhoun
+\end_layout
+
+\begin_layout Standard
+Connectome Sporns PLoS 2005
+\end_layout
+
+\begin_layout Itemize
+Functional Connectivity Biswal et al.
+ MRM 1995
+\end_layout
+
+\begin_layout Itemize
+Default mode Raichle 2010
+\end_layout
+
+\begin_layout Itemize
+Shannon 2006
+\end_layout
+
+\begin_layout Itemize
+ICA used for multiple networks Allen Frontiers in Human Neuroscience 2011
+\end_layout
+
+\begin_layout Itemize
+Calhoun 2001
+\end_layout
+
+\begin_layout Itemize
+Telesford 2010
+\end_layout
+
+\begin_layout Itemize
+Jafri 2008
+\end_layout
+
+\begin_layout Itemize
+Calhoun 2008, 2006, 2009
+\end_layout
+
+\begin_layout Itemize
+Smith 2009
+\end_layout
+
+\begin_layout Itemize
+Eichele 2008 (The not-so default mode of brain function)
+\end_layout
+
+\begin_layout Itemize
+Garrity 2007 Default mode & Schizophrenia
+\end_layout
+
+\begin_layout Itemize
+Wu, Calhoun EEG/fMRI 2010
+\end_layout
+
+\begin_layout Itemize
+Glahm Heritability
+\end_layout
+
+\begin_layout Section
+Robert Oostenveld
+\end_layout
+
+\begin_layout Itemize
+EEG/MEG
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+dipole fitting
+\end_layout
+
+\begin_layout Itemize
+minimum norm
+\end_layout
+
+\begin_layout Itemize
+spatial filtering - beamformer
+\end_layout
+
+\begin_layout Itemize
+blind source separation - ICA
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Coherence
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+consistency of the phase
+\end_layout
+
+\begin_layout Itemize
+consistency of the amplitude
+\end_layout
+
+\begin_layout Itemize
+pearson correlation in the frequency domain
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Granger causality
+\end_layout
+
+\begin_layout Section
+Wald
+\end_layout
+
+\begin_layout Itemize
+SNR in high b-values is poor
+\end_layout
+
+\begin_layout Itemize
+Stronger gradients give us high b with shorter TE
+\end_layout
+
+\begin_layout Itemize
+Julien Cohen
+\end_layout
+
+\begin_layout Itemize
+300 mT/m human gradients
+\end_layout
+
+\begin_layout Itemize
+Siemens Healthcare Erlangen
+\end_layout
+
+\begin_layout Itemize
+Heat removal favors whole-body design
+\end_layout
+
+\begin_layout Itemize
+Limit patient bore 56 cm 
+\end_layout
+
+\begin_layout Itemize
+12x2 megaWatt use as powerful engine as possible
+\end_layout
+
+\begin_layout Itemize
+Connectome Scanner Rocks!!
+\end_layout
+
+\begin_layout Itemize
+Simultaneous multi-slice
+\end_layout
+
+\begin_layout Itemize
+Setsompop ISMRM 2010
+\end_layout
+
+\begin_layout Itemize
+DSI in 14 minutes
+\end_layout
+
+\begin_layout Itemize
+Paul Thomson multi-tensors
+\end_layout
+
+\begin_layout Itemize
+Cortical Diffusion radiality MacNab
+\end_layout
+
+\begin_layout Itemize
+Fishl Unsupervised atlas 
+\end_layout
+
+\begin_layout Section
+Randy McIntosh
+\end_layout
+
+\begin_layout Itemize
+Functional Connectivity
+\end_layout
+
+\begin_layout Itemize
+Effective Connectivity
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Granger 
+\end_layout
+
+\begin_layout Itemize
+DCM
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Voxel-wise Methods
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Horwitz 1984 PET
+\end_layout
+
+\begin_layout Itemize
+Bisval 1995 Resting state
+\end_layout
+
+\begin_layout Itemize
+Linear regression 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Friston 1997
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Partial least squares
+\end_layout
+
+\begin_layout Itemize
+Melodic ICA
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+www.sfn.org some material there
+\end_layout
+
+\begin_layout Section
+Steve Petersen
+\end_layout
+
+\begin_layout Itemize
+graph theory
+\end_layout
+
+\begin_layout Itemize
+netsci
+\end_layout
+
+\begin_layout Itemize
+spring embedded graph
+\end_layout
+
+\begin_layout Itemize
+community detection (infomap)
+\end_layout
+
+\begin_layout Itemize
+local efficiency
+\end_layout
+
+\begin_layout Section
+Mark Woolrich
+\end_layout
+
+\begin_layout Itemize
+Craddock HBM 2011
+\end_layout
+
+\begin_layout Itemize
+Cohen Neuroimage 2009
+\end_layout
+
+\begin_layout Itemize
+Beckmann
+\end_layout
+
+\begin_layout Itemize
+pairwise - correlation, mi, coherence 
+\end_layout
+
+\begin_layout Itemize
+semi global - partial correlations , icov
+\end_layout
+
+\begin_layout Itemize
+global - multivariate AR (Granger), DCMs 
+\end_layout
+
+\begin_layout Itemize
+Smith 2011 - correlation good at edge detection - granger bad - directionality
+ hard to estimate
+\end_layout
+
+\begin_layout Itemize
+Li 2011 stochastic DCM
+\end_layout
+
+\begin_layout Itemize
+Friston Neuroimage 2011
+\end_layout
+
+\begin_layout Itemize
+Hilbert envelope MEG - Brookses 2011
+\end_layout
+
+\begin_layout Itemize
+Stephan 2007
+\end_layout
+
+\begin_layout Section
+Gael Varoquaux
+\end_layout
+
+\begin_layout Itemize
+adjacency matrix
+\end_layout
+
+\begin_layout Itemize
+scaled partial correlation
+\end_layout
+
+\begin_layout Itemize
+sparce inverse covariance Varoquaux NIPS 2010 - poster 662
+\end_layout
+
+\begin_layout Itemize
+z-transform to make them gaussians
+\end_layout
+
+\begin_layout Itemize
+SEM Marrelec 2007
+\end_layout
+
+\begin_layout Itemize
+DCM 
+\end_layout
+
+\begin_layout Itemize
+PClingam Hoyer 2008
+\end_layout
+
+\begin_layout Section
+Spinal Cord
+\end_layout
+
+\begin_layout Subsection
+Claudia Wheeler - Kingshott
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+Axonal Diameter - AxCaliber
+\end_layout
+
+\begin_layout Standard
+Active Imaging Daniel Alexander 
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_body
+\end_document

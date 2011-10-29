@@ -1,0 +1,1445 @@
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+\usepackage{preamble}
+\end_preamble
+\options twoside,openright,titlepage,fleqn,pointlessnumbers,headinclude,10pt,a4paper,BCOR5mm,footinclude,cleardoubleempty
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 10
+\spacing onehalf
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine natbib_numerical
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+myChapter
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Introduction
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "ch:introduction"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+This bundle for LaTeX
+\begin_inset space \space{}
+\end_inset
+
+has two goals: 
+\end_layout
+
+\begin_layout Enumerate
+Provide students with an easy-to-use template for their Master's or PhD
+ thesis.
+ (Though it might also be used by other types of authors for reports, books,
+ etc.) 
+\end_layout
+
+\begin_layout Enumerate
+Provide a classic, high quality typographic style which is inspired by 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+cauthor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+bringhurst:2002
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+'s 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+The Elements of Typographic Style
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "bringhurst:2002"
+
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+graffito
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+myTitle
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+myVersion
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+The bundle is configured to run with a 
+\emph on
+full
+\emph default
+ MiKTeX
+\begin_inset space \space{}
+\end_inset
+
+or TeXLive
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+See the file 
+\family typewriter
+LISTOFFILES
+\family default
+ for needed packages.
+ Furthermore, 
+\family typewriter
+classicthesis
+\family default
+ works with most other distributions and, thus, with most operating systems
+ LaTeX
+\begin_inset space \space{}
+\end_inset
+
+is available for.
+\end_layout
+
+\end_inset
+
+ installation right away and, therefore, it uses only freely available fonts.
+ (Minion fans can easily adjust the style to their needs.)
+\end_layout
+
+\begin_layout Standard
+People interested only in the nice style and not the whole bundle can now
+ use the style stand-alone via the file 
+\family typewriter
+classicthesis.sty
+\family default
+.
+ This works now also with 
+\begin_inset Quotes eld
+\end_inset
+
+plain
+\begin_inset Quotes erd
+\end_inset
+
+ LaTeX.
+\end_layout
+
+\begin_layout Standard
+This should enable anyone with a basic knowledge of LaTeX2e
+\begin_inset space \space{}
+\end_inset
+
+to produce beautiful documents without too much effort.
+ In the end, this is my overall goal: more beautiful documents, especially
+ theses, as I am tired of seeing so many ugly ones.
+\end_layout
+
+\begin_layout Standard
+The whole template and the used style is released under the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsmaller
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+GNU
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ General Public License.
+\end_layout
+
+\begin_layout Standard
+If you like the style then I would appreciate a postcard: 
+\end_layout
+
+\begin_layout Standard
+\align center
+André Miede 
+\begin_inset Newline newline
+\end_inset
+
+ Detmolder Straße 32 
+\begin_inset Newline newline
+\end_inset
+
+ 31737 Rinteln 
+\begin_inset Newline newline
+\end_inset
+
+ Germany 
+\end_layout
+
+\begin_layout Standard
+\noindent
+The postcards I got so far are available at 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://postcards.miede.de
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Hopefully, this thesis template is done well enough for your needs and does
+ not have too many flaws.
+ So far, a couple of theses have been typeset successfully with it.
+ If you are interested in some typographic details behind it, enjoy Robert
+ Bringhurst's wonderful book.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+graffito
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+A well-balanced line width improves the legibility of the text.
+ That's what typography is all about, right?
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Paragraph
+Important Note:
+\end_layout
+
+\begin_layout Standard
+Some things of this style might look unusual at first glance, many people
+ feel so in the beginning.
+ However, all things are intentionally designed to be as they are, especially
+ these: 
+\end_layout
+
+\begin_layout Itemize
+No bold fonts are used.
+ Italics or spaced small caps do the job quite well.
+ 
+\end_layout
+
+\begin_layout Itemize
+The size of the text body is intentionally shaped like it is.
+ It supports both legibility and allows a reasonable amount of information
+ to be on a page.
+ And, no: the lines are not too short.
+ 
+\end_layout
+
+\begin_layout Itemize
+The tables intentionally do not use vertical or double rules.
+ See the documentation for the 
+\family typewriter
+booktabs
+\family default
+ package for a nice discussion of this topic.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+To be found online at 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/booktabs/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+And last but not least, to provide the reader with a way easier access to
+ page numbers in the table of contents, the page numbers are right behind
+ the titles.
+ Yes, they are 
+\emph on
+not
+\emph default
+ neatly aligned at the right side and they are 
+\emph on
+not
+\emph default
+ connected with dots that help the eye to bridge a distance that is not
+ necessary.
+ If you are still not convinced: is your reader interested in the page number
+ or does she want to sum the numbers up? 
+\end_layout
+
+\begin_layout Standard
+Therefore, please do not break the beauty of the style by changing these
+ things unless you really know what you are doing! Please.
+\end_layout
+
+\begin_layout Section
+Organization
+\end_layout
+
+\begin_layout Standard
+A very important factor for successful thesis writing is the organization
+ of the material.
+ This template suggests a structure as the following: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+graffito
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+You can use these margins for summaries of the text body
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+dots
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+Chapters/
+\family default
+ is where all the 
+\begin_inset Quotes eld
+\end_inset
+
+real
+\begin_inset Quotes erd
+\end_inset
+
+ content goes in separate files such as 
+\family typewriter
+Chapter01.tex
+\family default
+ etc.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%  
+\backslash
+item
+\backslash
+texttt{Examples/} is where you store all listings and other
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%  examples you want to use for your text.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+FrontBackMatter/
+\family default
+ is where all the stuff goes that surrounds the 
+\begin_inset Quotes eld
+\end_inset
+
+real
+\begin_inset Quotes erd
+\end_inset
+
+ content, such as the acknowledgments, dedication, etc.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+gfx/
+\family default
+ is where you put all the graphics you use in the thesis.
+ Maybe they should be organized into subfolders depending on the chapter
+ they are used in, if you have a lot of graphics.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+Bibliography.bib
+\family default
+: the BibTeX
+\begin_inset space \space{}
+\end_inset
+
+database to organize all the references you might want to cite.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+classicthesis.sty
+\family default
+: the style definition to get this awesome look and feel.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+ClassicThesis.tcp
+\family default
+ a TeXnicCenter project file.
+ Great tool and it's free! 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+ClassicThesis.tex
+\family default
+: the main file of your thesis where all gets bundled together.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+classicthesis-ldpkg.sty
+\family default
+: a central place to load all nifty packages that are used.
+ The package has only one option available, 
+\family typewriter
+nochapters
+\family default
+, which defaults to 
+\family typewriter
+false
+\family default
+.
+ Activate it if you want to use the package with a class which does not
+ have chapter divisions, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+eg
+\end_layout
+
+\end_inset
+
+, an article.
+ 
+\end_layout
+
+\begin_layout Standard
+This should get you started in no time.
+\end_layout
+
+\begin_layout Section
+Style Options
+\end_layout
+
+\begin_layout Standard
+There are a couple of options for 
+\family typewriter
+classicthesis.sty
+\family default
+ that allow for a bit of freedom concerning the layout: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+graffito
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+dots
+\end_layout
+
+\end_inset
+
+ or your supervisor might use the margins for some comments of her own while
+ reading.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+drafting
+\family default
+: prints the date and time at the bottom of each page, so you always know
+ which version you are dealing with.
+ Might come in handy not to give your Prof.
+ that old draft.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+eulerchapternumbers
+\family default
+: use figures from Hermann Zapf's Euler math font for the chapter numbers.
+ By default, old style figures from the Palatino font are used.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+linedheaders
+\family default
+: changes the look of the chapter headings a bit by adding a horizontal
+ line above the chapter title.
+ The chapter number will also be moved to the top of the page, above the
+ chapter title.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+listsseparated
+\family default
+: will add extra space between table and figure entries of different chapters
+ in the list of tables or figures, respectively.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+tocaligned
+\family default
+: aligns the whole table of contents on the left side.
+ Some people like that, some don't.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+subfig
+\family default
+(
+\family typewriter
+ure
+\family default
+): is passed to the 
+\family typewriter
+tocloft
+\family default
+ package to enable compatibility with the 
+\family typewriter
+subfig
+\family default
+(
+\family typewriter
+ure
+\family default
+) package.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+nochapters
+\family default
+: allows to use the look-and-feel with classes that do not use chapters,
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+eg
+\end_layout
+
+\end_inset
+
+, for articles.
+ Automatically turns off a couple of other options: 
+\family typewriter
+eulerchapternumbers
+\family default
+, 
+\family typewriter
+linedheaders
+\family default
+, 
+\family typewriter
+listsseparated
+\family default
+, and 
+\family typewriter
+parts
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+beramono
+\family default
+: loads Bera Mono as typewriter font.
+ (Default setting is using the standard CM typewriter font.) 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+eulermath
+\family default
+: loads the awesome Euler fonts for math.
+ (Palatino is used as default font.) 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+parts
+\family default
+: if you use Part divisions for your document, you should choose this option.
+ It provides you with the command 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb|
+\backslash
+myPart{}|
+\end_layout
+
+\end_inset
+
+ which takes care of the style and the entry into the Table of Contents.
+ (Cannot be used together with 
+\family typewriter
+nochapters
+\family default
+.) 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+a5paper
+\family default
+: adjusts the page layout according to the global 
+\family typewriter
+a5paper
+\family default
+ option (
+\emph on
+experimental
+\emph default
+ feature).
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+minionpro
+\family default
+: sets Robert Slimbach's Minion as the main font of the document.
+ The textblock size is adjusted accordingly.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+pdfspacing
+\family default
+: makes use of pdftex' letter spacing capabilities via the 
+\family typewriter
+microtype
+\family default
+ package.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Use 
+\family typewriter
+microtype
+\family default
+'s 
+\family typewriter
+DVIoutput
+\family default
+ option to generate DVI with pdftex.
+\end_layout
+
+\end_inset
+
+ This fixes some serious issues regarding math formul
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ae
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+etc.
+ (
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+eg
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+ß
+\begin_inset Quotes erd
+\end_inset
+
+) in headers.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+minionprospacing
+\family default
+: uses the internal 
+\family typewriter
+textssc
+\family default
+ command of the 
+\family typewriter
+MinionPro
+\family default
+ package for letter spacing.
+ This automatically enables the 
+\family typewriter
+minionpro
+\family default
+ option and overrides the 
+\family typewriter
+pdfspacing
+\family default
+ option.
+ 
+\end_layout
+
+\begin_layout Standard
+The best way to figure these options out is to try the different possibilities
+ and see, what you and your supervisor like best.
+\end_layout
+
+\begin_layout Standard
+To make things in general easier, 
+\family typewriter
+classicthesis-ldpkg.sty
+\family default
+ contains some useful commands that might help you.
+\end_layout
+
+\begin_layout Section
+Future Work
+\end_layout
+
+\begin_layout Standard
+So far, this is a quite stable version that served a couple of people well
+ during their thesis time.
+ However, some things are still not as they should be.
+ Proper documentation in the standard format is still missing.
+ In the long run, the style should probably be published separately, with
+ the template bundle being only an application of the style.
+ Alas, there is no time for that at the moment
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+dots
+\end_layout
+
+\end_inset
+
+ it could be a nice task for a small group of LaTeXnicians.
+\end_layout
+
+\begin_layout Standard
+Please do not send me email with questions concerning LaTeX
+\begin_inset space \space{}
+\end_inset
+
+or the template, as I do not have time for an answer.
+ But if you have comments, suggestions, or improvements for the style or
+ the template in general, do not hesitate to write them on that postcard
+ of yours.
+\end_layout
+
+\begin_layout Section
+License
+\end_layout
+
+\begin_layout Paragraph
+GNU General Public License:
+\end_layout
+
+\begin_layout Standard
+This program is free software; you can redistribute it and/or modify it
+ under the terms of the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsmaller
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+GNU
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ General Public License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+\end_layout
+
+\begin_layout Standard
+This program is distributed in the hope that it will be useful, but 
+\emph on
+without any warranty
+\emph default
+; without even the implied warranty of 
+\emph on
+merchantability
+\emph default
+ or 
+\emph on
+fitness for a particular purpose
+\emph default
+.
+ See the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsmaller
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+GNU
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ General Public License for more details.
+\end_layout
+
+\begin_layout Standard
+You should have received a copy of the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsmaller
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+GNU
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ General Public License along with this program; see the file 
+\family typewriter
+COPYING
+\family default
+.
+ If not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite
+ 330, Boston, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsmaller
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+MA
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 02111-1307, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsmaller
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+USA
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Beyond a thesis
+\end_layout
+
+\begin_layout Standard
+It is easy to use the layout of 
+\family typewriter
+classicthesis.sty
+\family default
+ without the framework of this bundle.
+ To make it even easier, this section offers some plug-and-play-examples.
+\end_layout
+
+\begin_layout Standard
+The LaTeX-sources of these examples can be found in the folder with the
+ name 
+\family typewriter
+Examples
+\family default
+.
+ They have been tested with 
+\family typewriter
+latex
+\family default
+ and 
+\family typewriter
+pdflatex
+\family default
+ and are easy to compile.
+ To assure you even a bit more, PDFs built from the sources can also be
+ found the folder.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%(It might be necessary to adjust the path to 
+\backslash
+texttt{classicthesis.sty} and 
+\backslash
+texttt{Bibliography.bib} within the examples.)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[title=An Article]{Examples/classicthesis-article.tex}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[title=A Book]{Examples/classicthesis-book.tex}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[title=A Curriculum Vit]{Examples/classicthesis-cv.tex}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

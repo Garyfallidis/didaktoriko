@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<note version="0.3" xmlns:link="http://beatniksoftware.com/tomboy/link" xmlns:size="http://beatniksoftware.com/tomboy/size" xmlns="http://beatniksoftware.com/tomboy">
+  <title>Video Editing</title>
+  <text xml:space="preserve"><note-content version="0.1">Video Editing
+
+<highlight>Cinelerra</highlight>
+	<link:url>http://www.linux.com/feature/60624</link:url>
+
+<highlight>Subtitle Editor</highlight>
+	<link:url>http://home.gna.org/subtitleeditor/</link:url></note-content></text>
+  <last-change-date>2009-05-11T00:14:45.7502760+01:00</last-change-date>
+  <last-metadata-change-date>2009-05-11T00:14:45.7502760+01:00</last-metadata-change-date>
+  <create-date>2009-05-10T23:59:18.6729100+01:00</create-date>
+  <cursor-position>78</cursor-position>
+  <width>450</width>
+  <height>360</height>
+  <x>991</x>
+  <y>637</y>
+  <open-on-startup>False</open-on-startup>
+</note>

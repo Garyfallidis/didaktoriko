@@ -1,0 +1,314 @@
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes from Wedeen's talk
+\end_layout
+
+\begin_layout Standard
+Video available at 
+\end_layout
+
+\begin_layout Standard
+http://online.kitp.ucsb.edu/online/neuro10/wedeen/rm/flashtv.html
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In a crossing 
+\begin_inset Formula $f_{1}+f_{2}+f_{1}\otimes f_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f_{1}=exp(-g^{T}D_{1}^{-1}g)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f_{2}=exp(-g^{T}D_{2}^{-1}g)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f_{1}\otimes f_{2}=exp(-g^{T}(\frac{1}{D_{1}}+\frac{1}{D_{2}})g$
+\end_inset
+
+ but this is not a solution for our problem
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+MRI (12:40)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $G=B_{o}+G_{x}x$
+\end_inset
+
+ (a ramp)
+\end_layout
+
+\begin_layout Standard
+and then an opposite ramp
+\end_layout
+
+\begin_layout Standard
+6D images (21:05) 3 for position and 3 dimensions for displacements
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+What makes your quality better? (26:00)
+\end_layout
+
+\begin_layout Standard
+how quickly you encode diffusion?
+\end_layout
+
+\begin_layout Standard
+Getting that heat out of the head coils is what doesn't allow very big gradient
+ switches
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Models not enough for bayesian tractography(35:00)
+\end_layout
+
+\begin_layout Standard
+DSI (49:23) 500 q-samples, reconstruction with 3DFT (
+\begin_inset Formula $10\mu m$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+DTI 7 q-samples
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Optic chiasm (60:00) Working with DSI and not working with DTI (Wedeen Neuroimag
+e 2008)
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Centrum semiovale (66:09) Working with DSI not working with DTI 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Same with motor cortex (70:00)
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tractography in caudate nucleus (80:36) amygdalo-striate bundle of Muratoff
+ (Neuroimage 2008)
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Macaque DSI and isotope gold standard (81:27) Schmahmann et.
+ al.
+ Brain 2007
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Rat DSI (83:30)
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Owl monkey DSI (87:00)
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Connectome (91:05) (with resting state) Hagmann Sporns PLoS Biology 2008
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cocomac and DSI (92:22) Same paper
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cats (93:10) (Development of cortico-thalamic tracts in cats) Takahasi ISMRM
+ 2008
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Limbic system humen (94)
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cingulum bundle (94:36)
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Limbic system macaque (94:53)
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Human temporal lobe / hippocampus ex vivo (95:25)
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Owl monkey hippocampal associated pathways (96:38)
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cortical layers and areas revealed by 2D planes of maximum diffusion (98:29)
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mouse brain and Paxinos atlas (98:51)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+rabbit, galago, marmoset, macaque (99:46)
+\end_layout
+
+\begin_layout Standard
+rhesus monkey cortical paths a noninvasive brodmann map? (99:50)
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_body
+\end_document

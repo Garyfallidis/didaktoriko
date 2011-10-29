@@ -1,0 +1,1595 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\usetheme{Warsaw}
+% or ...
+
+\setbeamercovered{transparent}
+% or whatever (possibly just delete it)
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman times
+\font_sans helvet
+\font_typewriter courier
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 92
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Exploring the Land of Tracks
+\end_layout
+
+\begin_layout Subtitle
+...
+ riding a Python
+\end_layout
+
+\begin_layout Author
+Eleftherios
+\begin_inset space ~
+\end_inset
+
+Garyfallidis
+\begin_inset Flex InstituteMark
+status open
+
+\begin_layout Plain Layout
+1,2
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Ian
+\begin_inset space ~
+\end_inset
+
+Nimmo-Smith
+\begin_inset Flex InstituteMark
+status collapsed
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+- Give the names in the same order as the appear in the paper.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+- Use the 
+\backslash
+inst{?} command only if the authors have different affiliations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Institute
+\begin_inset Flex InstituteMark
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+University of Cambridge, UK, 
+\begin_inset Flex InstituteMark
+status collapsed
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+MRC Cognition and Brain Sciences Unit, UK.
+\end_layout
+
+\begin_layout Date
+Berkeley, March, 2010
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+- Either use conference name or its abbreviation.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+- Not really informative to the audience, more for people (including yourself)
+ who are reading the slides online
+\end_layout
+
+\end_inset
+
+
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Plain Layout
+CFP 2003
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional, should be abbreviation of conference name
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If you have a file called "institution-logo-filename.xxx", where xxx is a
+ graphic format that can be processed by latex or pdflatex, resp., then you
+ can add a logo by uncommenting the following:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+pgfdeclareimage[height=1.5cm]{institution-logo}{./Black-RGB-CBSU.jpg}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+logo{
+\backslash
+pgfuseimage{institution-logo}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The following causes the table of contents to be shown at the beginning
+ of every subsection.
+ Delete this, if you do not want it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AtBeginSubsection[]{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%    
+\backslash
+frametitle{Outline}   
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%    
+\backslash
+tableofcontents[currentsection,currentsubsection] 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If you wish to uncover everything in a step-wise fashion, uncomment the
+ following command:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+beamerdefaultoverlayspecification{<+->}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Structuring a talk is a difficult task and the following structure may not
+ be suitable.
+ Here are some rules that apply for this solution: 
+\end_layout
+
+\begin_layout Plain Layout
+- Exactly two or three sections (other than the summary).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+- At *most* three subsections per section.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+- Talk about 30s to 2min per frame.
+ So there should be between about 15 and 30 frames, all told.
+\end_layout
+
+\begin_layout Plain Layout
+- A conference audience is likely to know very little of what you are going
+ to talk about.
+ So *simplify*! 
+\end_layout
+
+\begin_layout Plain Layout
+- In a 20min talk, getting the main ideas across is hard enough.
+ Leave out details, even if it means being less precise than you think necessary.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+- If you omit details that are vital to the proof/implementation, just say
+ so once.
+ Everybody will be happy with that.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Motivation
+\end_layout
+
+\begin_layout BeginFrame
+Brain & White Matter
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename white_matter.jpg
+	scale 50
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Undifferentiated white matter (ignore labels) from Wikipedia.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Labeled Bundles
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pbc_figures/white_brain.png
+	scale 20
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+White matter tractography with labeled bundles.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Connecting cortical areas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/Screenshot-Lights-4.png
+	scale 20
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Produced by Freesurfer and visualized with Fos.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+What do we need?
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Diffusion MRI
+\series default
+ to find local directions
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tractography
+\series default
+ by integration along directions
+\end_layout
+
+\begin_layout Itemize
+Metric 
+\series bold
+clustering methods
+\series default
+ identify bundles in one brain 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Metrics
+\series default
+ can find correspondence between tracks and track bundles in multiple brains
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Software
+\series default
+ to achieve these goals 
+\end_layout
+
+\begin_layout Itemize
+Advanced
+\series bold
+ visualisation tools
+\series default
+ to understand the solutions
+\end_layout
+
+\begin_layout Subsection
+dMRI signal & modeling
+\end_layout
+
+\begin_layout BeginFrame
+dMRI
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename voxel_modeling.png
+	scale 70
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Figure from the Diffusion MRI Book Chapter 4 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DiffMRIBook"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+ODF
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename dODF.png
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+From the Diffusion MRI Book Ch.
+ 4 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DiffMRIBook"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+What is tractography?
+\end_layout
+
+\begin_layout BeginFrame
+Definitions
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\color red
+dMRI tractography
+\emph default
+\color inherit
+ is a family of methods for identifying fiber tracts in the brain or other
+ tissue.
+\end_layout
+
+\begin_layout Itemize
+3 categories - 
+\emph on
+deterministic
+\emph default
+, 
+\emph on
+probabilistic
+\emph default
+, 
+\emph on
+global
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\color red
+streamline tractography
+\emph default
+\color inherit
+ is the process of integrating voxel-wise fiber orientations into a pathway
+ that connects remote brain regions.
+\end_layout
+
+\begin_layout Itemize
+a 
+\emph on
+\color red
+track
+\emph default
+\color inherit
+ is simulating thousands of neuronal axons and is represented by a series
+ of line segments i.e.
+ discretized curves.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename streamline.svg
+	scale 30
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Tractography
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\lang british
+\begin_inset Graphics
+	filename figures/DTI_FACT_low26mm_SIDE.png
+	lyxscale 40
+	scale 25
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+DTK with FACT propagation - color distinguishes track orientation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WWS+08"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Tractography
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\lang british
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\lang british
+\begin_inset Graphics
+	filename figures/DTI_RK2_low26mm_SIDE.png
+	lyxscale 40
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+DTK Runge-Kutta 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WWS+08"
+
+\end_inset
+
+.
+ More on tractography of crossings in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "descoteaux2009deterministic"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Track distances
+\end_layout
+
+\begin_layout Itemize
+More than 20 different distance metrics to compare tracks used in the literature
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "maddah_phdthesis2008"
+
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Itemize
+However it would be useful to use a 
+\emph on
+metric distance
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+A 
+\emph on
+metric distance
+\emph default
+ has the following properties:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $d(a,b)\geq0$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $d(a,b)=0$
+\end_inset
+
+ iff 
+\begin_inset Formula $a=b$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $d(a,b)=d(b,a)$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $d(a,c)\leq d(a,b)+d(b,c)$
+\end_inset
+
+ where 
+\begin_inset Formula $a,b,c$
+\end_inset
+
+ are tracks and 
+\begin_inset Formula $d$
+\end_inset
+
+ is the distance function.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Average minimum distance has been also used successfully by others.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "corouge2004towards,zhang2008identifying"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Average Minimum Distances
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename avg_min.png
+	scale 80
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Contribution
+\end_layout
+
+\begin_layout Subsection
+Main Results
+\end_layout
+
+\begin_layout BeginFrame
+Distances - Avg.
+ Min.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename arcuate_zhang2.png
+	scale 20
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Arcuate Fasciculus - Reference track is coloured in yellow.
+\end_layout
+
+\begin_layout Plain Layout
+Red means very similar with the reference track.
+\end_layout
+
+\begin_layout Plain Layout
+Blue means not very similar with the reference track.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Detecting Individual Tracks 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pbc_figures/three_brains_golden.png
+	scale 20
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Red: Initially selected tracks, Cyan & Blue corresponding tracks.
+ CBU datasets.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Detecting Individual Tracks (cont.)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ISMRM2010_Final.png
+	scale 25
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Same as previously different angle all brains visualised simultaneously.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Detecting similar tracks towards bundles
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pbc_figures/references_4_8_regions.png
+	scale 20
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Detecting corresponding tracks in 3 different brains.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Fast Dimensionality Reduction & Fast Access
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename hbm_figures/hbm_skeleton4.png
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Left: Unclustered brain (list of tracks), Middle: After clustering - stored
+ as a tree where every node stores local information - navigation is now
+ easier, Right: Visualizing only the representative tracks for each cluster.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+BIRCH 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zhang1997birch"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Balancing Iterative Reducing Clustering using Hierarchies.
+\end_layout
+
+\begin_layout Itemize
+Belongs in the family of hierarchical agglomerative algorithms.
+\end_layout
+
+\begin_layout Itemize
+Designed for very large databases, incremental, able to find outliers, online,
+ very fast.
+\end_layout
+
+\begin_layout Itemize
+Every node in the tree stores only 3 elements 
+\begin_inset Formula $N\{n,\mathbf{t},s\}$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+where 
+\begin_inset Formula $n$
+\end_inset
+
+ is the number of points in the cluster, 
+\begin_inset Formula ${\displaystyle \mathbf{t}=\sum_{i=0}^{n}\mathbf{x}_{i}}$
+\end_inset
+
+ and 
+\begin_inset Formula ${\displaystyle s=\sum_{i=0}^{n}x_{i}^{2}}$
+\end_inset
+
+ where 
+\begin_inset Formula $x_{i}=||\mathbf{x}_{i}||$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+In that way the center 
+\begin_inset Formula $\mathbf{m}=\frac{1}{n}\mathbf{t}$
+\end_inset
+
+, diameter and distance between clusters can be computed only when is needed.
+\end_layout
+
+\begin_layout Itemize
+Then merging 2 clusters 
+\begin_inset Formula $N_{1},N_{2}$
+\end_inset
+
+ involves only additions and it is identical with the union of the two 
+\begin_inset Formula $N_{1,2}=N_{1}\cup N_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Splitting, searching and rebuilding the tree are now trivial computations.
+\end_layout
+
+\begin_layout BeginFrame
+LARCH Description
+\end_layout
+
+\begin_layout Itemize
+BIRCH is great for vector space but we running in track space.
+ We need something else ...
+\end_layout
+
+\begin_layout Itemize
+LocAl Rapid Clustering for tractograpHies.
+\end_layout
+
+\begin_layout Itemize
+Here every node 
+\begin_inset Formula $N$
+\end_inset
+
+ of the tree stores 
+\begin_inset Formula $\{n,z,i\}$
+\end_inset
+
+ where 
+\begin_inset Formula $n$
+\end_inset
+
+ is the number of the tracks inside the cluster 
+\begin_inset Formula $z$
+\end_inset
+
+ is a representative track and 
+\begin_inset Formula $i$
+\end_inset
+
+ holds the indices of the tracks belonging to the cluster.
+\end_layout
+
+\begin_layout Itemize
+This method is working very fast on 3-tracks (
+\series bold
+minutes
+\series default
+, not hours or days) 
+\end_layout
+
+\begin_layout Itemize
+We are extending it to work in the case when tracks have varying lengths
+ or numbers of points.
+\end_layout
+
+\begin_layout BeginFrame
+LARCH simple 2d example
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename larch_simple_example1.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Left: Unclustered lines, Middle: After clustering (5 clusters)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+LARCH example cont.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename larch_simple_example2.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Representative tracks for the clusters shown with white.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Clustering Fornix
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename hbm_figures/hbm_fornix_initial_5_10_20mm.png
+	scale 70
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Up left: Initial, Up right: 5mm, Down left: 10 mm, Down right: 20 mm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Removing Corpus Callosum
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pbc_figures/corpus_callosum.png
+	scale 50
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Corpus Callosum detected in two different brains.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Labelled Bundles
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pbc_figures/Lights_PBC.png
+	scale 20
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Supervised Learning
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pbc_figures/white_brain.png
+	scale 20
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Multimodal visualization
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/Lights5.png
+	scale 20
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Dipy - diffusion imaging in python
+\end_layout
+
+\begin_layout Standard
+Already in ...
+ and using python & cython
+\end_layout
+
+\begin_layout Itemize
+Dicom siemens reader for diffusion.
+\end_layout
+
+\begin_layout Itemize
+Trackvis reader/writer.
+\end_layout
+
+\begin_layout Itemize
+tracks are represented as lists of numpy arrays with shape Nx3.
+\end_layout
+
+\begin_layout Itemize
+track_metrics (length, curvature, torsion, gradients, midpoints, endpoints,
+ equidistant downsampling, sphere inters).
+\end_layout
+
+\begin_layout Itemize
+track_learning (detect cc, identify corresponding tracks in different datasets,
+ atlas 2 trackindex).
+\end_layout
+
+\begin_layout Itemize
+track_performance (track clustering, track distances, most similar tracks).
+\end_layout
+
+\begin_layout Itemize
+fos (multibrain visualization of tracks & volumes).
+\end_layout
+
+\begin_layout Standard
+Adding these days in Berkeley...
+ q-ball reconstruction using spherical harmonics, R-K integration with crossings
+, expanding larch with a kind of diameter for bundles.
+\end_layout
+
+\begin_layout BeginFrame
+Thank you
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+DiPY Mission of Statement
+\end_layout
+
+\begin_layout Standard
+The purpose of DiPy is to make it easier to do better diffusion MR imaging
+ research.
+ 
+\end_layout
+
+\begin_layout Standard
+Following up with the NiPy mission statement we aim to build software that
+ is
+\end_layout
+
+\begin_layout Itemize
+clearly written 
+\end_layout
+
+\begin_layout Itemize
+clearly explained 
+\end_layout
+
+\begin_layout Itemize
+a good fit for the underlying ideas 
+\end_layout
+
+\begin_layout Itemize
+a natural home for collaboration
+\end_layout
+
+\begin_layout Standard
+We hope that, if we fail to do this, you will let us know and we will try
+ and make it better.
+\end_layout
+
+\begin_layout BeginFrame
+Collaborations & Awards
+\end_layout
+
+\begin_layout Itemize
+A team is made of people.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Supervisor: Dr.
+ Ian Nimmo-Smith, MRC-CBU.
+\end_layout
+
+\begin_layout Itemize
+Dr.
+ Matthew Brett, University of Berkeley.
+\end_layout
+
+\begin_layout Itemize
+Dr.
+ Guy Williams, WBIC.
+\end_layout
+
+\begin_layout Itemize
+Dr.
+ Marta Correia, MRC-CBU.
+\end_layout
+
+\begin_layout Itemize
+Dr.
+ Christian Schwarzbauer, University of Aberdeen.
+\end_layout
+
+\begin_layout Itemize
+Dr.
+ Vassilis Tsiaras, University of Crete.
+\end_layout
+
+\begin_layout Itemize
+Dr.
+ George Vogiatzis, Toshiba Research.
+\end_layout
+
+\begin_layout Itemize
+Dr.
+ Adam Hampshire, MRC-CBU.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sponsorships
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Board of Graduate Studies, Cambridge University, UK.
+\end_layout
+
+\begin_layout Itemize
+Medical Research Council Cognition and Brain Sciences, UK.
+\end_layout
+
+\begin_layout Itemize
+Vergottis Foundation, UK.
+\end_layout
+
+\begin_layout Itemize
+Wolfson College, Cambridge, UK.
+\end_layout
+
+\begin_layout Itemize
+EPSRC Engineering & Physical Sciences Research Council, UK.
+\end_layout
+
+\end_deeper
+\begin_layout Section*
+\start_of_appendix
+Thank you
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "diffusion"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document

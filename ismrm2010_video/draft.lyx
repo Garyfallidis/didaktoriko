@@ -1,0 +1,727 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass paper
+\begin_preamble
+\usepackage{babel}
+\usepackage{apacite}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 1cm
+\topmargin 1cm
+\rightmargin 1cm
+\bottommargin 1cm
+\headheight 1cm
+\headsep 1cm
+\footskip 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\paragraph_spacing single
+\noindent
+\align center
+
+\family sans
+\series bold
+\size largest
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "90mm"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\paragraph_spacing single
+\noindent
+\align center
+
+\family sans
+\series bold
+\shape slanted
+\size huge
+\color black
+Identification of Corresponding Tracks in Diffusion MRI Tractographies
+\shape default
+\size largest
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\size larger
+Eleftherios Garyfallidis
+\size default
+ [1, 2]
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\size larger
+Matthew Brett
+\size default
+ [3]
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\size larger
+Vassilis Tsiaras
+\size default
+ [3]
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\size larger
+George Vogiatzis
+\size default
+ [1] 
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+&
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\size larger
+Ian Nimmo-Smith
+\size default
+ [2]
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+\lyxline
+
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+
+\shape smallcaps
+University of Cambridge
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+
+\shape smallcaps
+MRC Cognition and Brain Sciences Unit, Cambridge
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+U
+\shape smallcaps
+niversity of Berkeley, California
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+
+\shape smallcaps
+University of Crete, Greece
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename univ.gif
+	scale 70
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename CBU.eps
+	scale 79
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename UCSeal122x122.gif
+	scale 70
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename University_of_crete_logo.png
+	scale 70
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size larger
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\size larger
+Key Research Question
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align left
+
+\size larger
+How can we identify corresponding tracks between different diffusion MR
+ brain tractographies?
+\size default
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size larger
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align left
+
+\series bold
+\size larger
+Requirement to Create a Tractography
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\align left
+a local diffusion model (e.g.
+ simple tensor, Q-Ball)
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\align left
+a tractography algorithm (e.g.
+ FACT, Runge-Kutta)
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align left
+The quality and size of resulting tractographies may differ depending on
+ the choice of these options
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\align left
+e.g.
+ FACT 100,000; RK2 150,000)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size larger
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\size larger
+Comparison of tractographies
+\end_layout
+
+\begin_layout Plain Layout
+
+\size large
+A: Brain 1+ Simple Tensor + FACT
+\end_layout
+
+\begin_layout Plain Layout
+
+\size large
+B: Brain 1 + Simple Tensor + RK2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size larger
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\size larger
+Data compression
+\end_layout
+
+\begin_layout Plain Layout
+These large datasets take significant computational resources, in particular
+ long processing times.
+ We have developed geometric techniques which reduce the number of points
+ on the tracks of a tractography by a factor of 8.
+ More points are retained where the track has high curvatue and fewer are
+ needed where the track has low curvature.
+ The time performance exceeds that of information theory based techniques
+ such as 
+\emph on
+minimum description length
+\emph default
+ [1].
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Itemize
+
+\series bold
+\size larger
+Track Metrics
+\end_layout
+
+\begin_layout Plain Layout
+Metrics are needed to measure that similarity of two tracks, whether they
+ are in the same or different tractographies.
+ We have used the mean average minimum distance metric (MAM) [2]:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$
+\backslash
+mathrm{MAM}(A,B) = 
+\backslash
+frac{1}{2}
+\backslash
+Big[
+\backslash
+frac{1}{
+\backslash
+#A}
+\backslash
+sum_{p
+\backslash
+in A}
+\backslash
+min_{q
+\backslash
+in B} |p-q| + 
+\backslash
+frac{1}{
+\backslash
+#B}
+\backslash
+sum_{q
+\backslash
+in B}
+\backslash
+min_{p
+\backslash
+in A} |q-p|
+\backslash
+Big]$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\size larger
+Corresponding Tracks
+\end_layout
+
+\begin_layout Plain Layout
+We can pick tracks of interest in one brain, and use this metric to identify
+ corresponding tracks in other brains quickly and accurately.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\size larger
+Adding Prior Knowledge 
+\end_layout
+
+\begin_layout Plain Layout
+We can use a range of sources of prior knowledge
+\end_layout
+
+\begin_layout Itemize
+white matter atlases [3]
+\end_layout
+
+\begin_layout Itemize
+using experts to label regions of the brain e.g.
+ [4]
+\end_layout
+
+\begin_layout Itemize
+`picking' and expanding tracks to create ad hoc bundles 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\size larger
+Conclusion
+\end_layout
+
+\begin_layout Plain Layout
+The correspondence problem has been solved in a manner which is supported
+ by high speed algorithms and high quality visualisation tools.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+We are developing Python software
+\end_layout
+
+\begin_layout Itemize
+
+\shape smallcaps
+DiPy:
+\shape default
+ to support diffusion imaging analysis - now available in open source
+\end_layout
+
+\begin_layout Itemize
+
+\shape smallcaps
+Fos: 
+\shape default
+A 3d engine that supports multiple simultaneous visualisations 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\size larger
+References and Credits
+\end_layout
+
+\begin_layout Plain Layout
+[1] Lee = Minimum description length
+\end_layout
+
+\begin_layout Plain Layout
+[2] Corouge = 
+\end_layout
+
+\begin_layout Plain Layout
+[3] Mori = atlas
+\end_layout
+
+\begin_layout Plain Layout
+[4] PBC
+\end_layout
+
+\begin_layout Plain Layout
+[3] Demiralp - Boy's surface colormap
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

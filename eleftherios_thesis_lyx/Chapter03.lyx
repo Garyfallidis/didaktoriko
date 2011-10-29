@@ -1,0 +1,521 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+\usepackage{preamble}
+\end_preamble
+\options twoside,openright,titlepage,fleqn,pointlessnumbers,headinclude,10pt,a4paper,BCOR5mm,footinclude,cleardoubleempty
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 10
+\spacing onehalf
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine natbib_numerical
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+myChapter
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Math Test Chapter
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "ch:mathtest"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ei choro aeterno antiopam mea, labitur bonorum pri no.
+ His no decore nemore graecis.
+ In eos meis nominavi, liber soluta vim cu.
+ Sea commune suavitate interpretaris eu, vix eu libris efficiantur.
+\end_layout
+
+\begin_layout Section
+Some Formulas
+\end_layout
+
+\begin_layout Standard
+Due to the statistical nature of ionisation energy loss, large fluctuations
+ can occur in the amount of energy deposited by a particle traversing an
+ absorber element
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Examples taken from Walter Schmidt's great gallery: 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://home.vrweb.de/~was/mathfonts.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Continuous processes such as multiple scattering and energy loss play a
+ relevant role in the longitudinal and lateral development of electromagnetic
+ and hadronic showers, and in the case of sampling calorimeters the measured
+ resolution can be significantly affected by such fluctuations in their
+ active layers.
+ The description of ionisation fluctuations is characterised by the significance
+ parameter 
+\begin_inset Formula $\kappa$
+\end_inset
+
+, which is proportional to the ratio of mean energy loss to the maximum
+ allowed energy transfer in a single collision with an atomic electron:
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+graffito
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+You might get unexpected results using math in chapter or section heads.
+ Consider the 
+\family typewriter
+pdfspacing
+\family default
+ option.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula \[
+\kappa=\frac{\xi}{E_{\mathrm{max}}}\mathbb{ZNR}\]
+
+\end_inset
+
+ 
+\begin_inset Formula $E_{\mathrm{max}}$
+\end_inset
+
+ is the maximum transferable energy in a single collision with an atomic
+ electron.
+ 
+\begin_inset Formula \[
+E_{\mathrm{max}}=\frac{2m_{\mathrm{e}}\beta^{2}\gamma^{2}}{1+2\gamma m_{\mathrm{e}}/m_{\mathrm{x}}+\left(m_{\mathrm{e}}/m_{\mathrm{x}}\right)^{2}}\ ,\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $\gamma=E/m_{\mathrm{x}}$
+\end_inset
+
+, 
+\begin_inset Formula $E$
+\end_inset
+
+ is energy and 
+\begin_inset Formula $m_{\mathrm{x}}$
+\end_inset
+
+ the mass of the incident particle, 
+\begin_inset Formula $\beta^{2}=1-1/\gamma^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $m_{\mathrm{e}}$
+\end_inset
+
+ is the electron mass.
+ 
+\begin_inset Formula $\xi$
+\end_inset
+
+ comes from the Rutherford scattering cross section and is defined as: 
+\begin_inset Formula \begin{eqnarray*}
+\xi=\frac{2\pi z^{2}e^{4}N_{\mathrm{Av}}Z\rho\delta x}{m_{\mathrm{e}}\beta^{2}c^{2}A}=153.4\frac{z^{2}}{\beta^{2}}\frac{Z}{A}\rho\delta x\quad\mathrm{keV},\end{eqnarray*}
+
+\end_inset
+
+ where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $z$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+charge of the incident particle 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N_{\mathrm{Av}}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Avogadro's number 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Z$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+atomic number of the material 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $A$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+atomic weight of the material 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\rho$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+density 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta x$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+thickness of the material 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\kappa$
+\end_inset
+
+ measures the contribution of the collisions with energy transfer close
+ to 
+\begin_inset Formula $E_{\mathrm{max}}$
+\end_inset
+
+.
+ For a given absorber, 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ tends towards large values if 
+\begin_inset Formula $\delta x$
+\end_inset
+
+ is large and/or if 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is small.
+ Likewise, 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ tends towards zero if 
+\begin_inset Formula $\delta x$
+\end_inset
+
+ is small and/or if 
+\begin_inset Formula $\beta$
+\end_inset
+
+ approaches 
+\begin_inset Formula $1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The value of 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ distinguishes two regimes which occur in the description of ionisation
+ fluctuations:
+\end_layout
+
+\begin_layout Enumerate
+A large number of collisions involving the loss of all or most of the incident
+ particle energy during the traversal of an absorber.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+As the total energy transfer is composed of a multitude of small energy
+ losses, we can apply the central limit theorem and describe the fluctuations
+ by a Gaussian distribution.
+ This case is applicable to non-relativistic particles and is described
+ by the inequality 
+\begin_inset Formula $\kappa>10$
+\end_inset
+
+ (
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ie
+\end_layout
+
+\end_inset
+
+, when the mean energy loss in the absorber is greater than the maximum
+ energy transfer in a single collision).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Particles traversing thin counters and incident electrons under any conditions.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The relevant inequalities and distributions are 
+\begin_inset Formula $0.01<\kappa<10$
+\end_inset
+
+, Vavilov distribution, and 
+\begin_inset Formula $\kappa<0.01$
+\end_inset
+
+, Landau distribution.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Various Mathematical Examples
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $n>2$
+\end_inset
+
+, the identity 
+\begin_inset Formula \[
+t[u_{1},\dots,u_{n}]=t\bigl[t[u_{1},\dots,u_{n_{1}}],t[u_{2},\dots,u_{n}]\bigr]\]
+
+\end_inset
+
+ defines 
+\begin_inset Formula $t[u_{1},\dots,u_{n}]$
+\end_inset
+
+ recursively, and it can be shown that the alternative definition 
+\begin_inset Formula \[
+t[u_{1},\dots,u_{n}]=t\bigl[t[u_{1},u_{2}],\dots,t[u_{n-1},u_{n}]\bigr]\]
+
+\end_inset
+
+ gives the same result.
+\end_layout
+
+\end_body
+\end_document

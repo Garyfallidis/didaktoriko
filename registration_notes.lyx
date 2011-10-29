@@ -1,0 +1,326 @@
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Registration Notes
+\end_layout
+
+\begin_layout Section
+Overview
+\end_layout
+
+\begin_layout Standard
+A.
+ Roche, G.
+ Malandain, X.
+ Pennec, and N.
+ Ayache.
+ The Correlation Ratio as a New Similarity Measure for Multimodal Image
+ Registration.
+ In Proc.
+ 1st MICCAI, volume 1496 of Lecture Notes in Computer Science, Cambridge,
+ MA, pages 1115-1124, Oct.
+ 1998.
+ Springer Verlag.
+ ftp://ftp.cea.fr/pub/dsv/madic/publis/Roche98.pdf
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will try to understand some registration jargon with a simple 2d example.
+\end_layout
+
+\begin_layout Standard
+Lets think that we have two images 
+\begin_inset Formula $A$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+A=\left(\begin{array}{ccccc}
+1 & .5 & .2 & 0 & 0\\
+.5 & 1 & .5 & 0 & 0\\
+.2 & .5 & 1 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\end{array}\right)\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and 
+\begin_inset Formula $B$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+B=\left(\begin{array}{ccccc}
+0 & 0 & 0 & 0 & 0\\
+0 & 1 & .5 & .2 & 0\\
+0 & .5 & 1 & .5 & 0\\
+0 & .2 & .5 & 1 & 0\\
+0 & 0 & 0 & 0 & 0\end{array}\right)\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We first allocate the bins so lets assume 4 bins for each image: 
+\begin_inset Formula $bin_{A}=[-\infty,.1,.35,.75,+\infty]$
+\end_inset
+
+ and 
+\begin_inset Formula $bin_{B}=[-\infty,.1,.35,.75,+\infty]$
+\end_inset
+
+ which are the same for this example but they don't have to be the same
+ in general.
+\end_layout
+
+\begin_layout Standard
+Then we calculate the standard histograms 
+\begin_inset Formula $H_{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $H_{B}$
+\end_inset
+
+ for images 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ respectively.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+H_{A}=\left(16,2,4,3\right)\]
+
+\end_inset
+
+and 
+\begin_inset Formula \[
+H_{B}=\left(16,2,4,3\right)\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Calculating the probabilities that a pixel belongs in a specific bin cell
+ is now trivial 
+\begin_inset Formula $P_{A}=H_{A}/N_{A}$
+\end_inset
+
+ where 
+\begin_inset Formula $N_{A}$
+\end_inset
+
+ is the number of voxels/pixels per image 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ Similarly 
+\begin_inset Formula $P_{B}=H_{B}/N_{B}$
+\end_inset
+
+.
+ Therefore
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+P_{A}=\left(.64,.08,.16,0.12\right)\]
+
+\end_inset
+
+and 
+\begin_inset Formula \[
+P_{B}=\left(.64,.08,.16,0.12\right)\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Joint Histogram
+\end_layout
+
+\begin_layout Standard
+The joint histogram can be calculated by counting the number of pixel values
+ on 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ which correspond in 
+\begin_inset Formula $bin_{A}$
+\end_inset
+
+cell and 
+\begin_inset Formula $bin_{B}$
+\end_inset
+
+ cell simultaneously i.e.
+ on the same 
+\begin_inset Formula $i,j$
+\end_inset
+
+ point on 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+JH_{AB}=\left(\begin{array}{ccccc}
+B\setminus A & (-\infty,.1] & (1,.35] & (.35,.75] & (.75,+\infty)\\
+(-\infty,.1] & 11 & 2 & 2 & 1\\
+(1,.35] & 2 & 0 & 0 & 0\\
+(.35,.75] & 2 & 0 & 2 & 0\\
+(.75,+\infty) & 1 & 0 & 0 & 2\end{array}\right)\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Source code for generating a joint histogram (joint_hist.py) is in dipy.
+\end_layout
+
+\begin_layout Standard
+In order to calculate the joint probability 
+\begin_inset Formula $P(bin_{A},bin_{B})=JH_{AB}/N$
+\end_inset
+
+ where 
+\begin_inset Formula $N=N_{A}=N_{B}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Generalization in N-dimensions
+\end_layout
+
+\begin_layout Section
+Mutual Information
+\end_layout
+
+\begin_layout Standard
+Mutual information for 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ is just a scalar given by 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+I(A,B)=\sum_{i,j}P(i,j)\log_{2}\frac{P(i,j)}{P_{A}(i)P_{B}(j)}\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $i,j$
+\end_inset
+
+ is the indices for 
+\begin_inset Formula $bin_{A}$
+\end_inset
+
+and 
+\begin_inset Formula $bin_{B}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Correlation Ratio
+\end_layout
+
+\end_body
+\end_document

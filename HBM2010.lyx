@@ -1,0 +1,245 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Fast Dimensionality Reduction for Brain Tractography Clustering
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+Algorithms for clustering and classifying diffusion imaging white matter
+ tractographies are typically quite slow often needing days or weeks of
+ processing on a single CPU core.
+ Much of the computational burden of clustering techniques arises from the
+ need for detailed geometric comparisons between pairs of tracks in large
+ datasets often containing hundreds of thousands of tracks.
+ We have developed an approach that leaves this more detailed comparison
+ to a later stage after an initial first pass through the dataset to create
+ prototype bundles.
+ We present a fast method, which in less than 5 minutes generates preliminary
+ clusters from a whole brain tractography dataset of 250,000 tracks.
+ Our algorithm is inspired by the BIRCH algorithm (Zhang et al.
+ 1996).
+ When clusters are held in a tree structure this permits upwards amalgamations
+ to form bundles out of clusters, and downwards disaggregation to split
+ clusters into finer sub-clusters corresponding to a lower distance threshold.
+\end_layout
+
+\begin_layout Section
+Methods
+\end_layout
+
+\begin_layout Standard
+Current high definition fiber tracking methods can produce about 300,000
+ tracks.
+ A track is a curve simulating neural fibers consisting of up to several
+ hundreds of line segments.
+ To reduce the number of searches in this massive dataset we generate a
+ graph where each node consists of a virtual (representative) low dimensional
+ track, the number of tracks in the cluster and the indices of the tracks
+ in the cluster.
+ This virtual track is the mean of all the downsampled tracks in the node.
+ For the downsampling we found we could get useful results by approximating
+ a track with just 2 connected line segments.
+\end_layout
+
+\begin_layout Standard
+This first pass method is based on the observation that for two tracks to
+ be considered similar at least the start, end, and middle points of the
+ tracks should be close to each other.
+ Each track in the dataset is approximated by a three-point track (two ends
+ and the middle).
+ Clusters of 3-tracks are built by a fast agglomerative hierarchical clustering
+ algorithm using the 3TED distance metric.
+ If SP, MP and EP are the start, middle and endpoints, then 3TED = min(|SP1-SP2|
++|MP1-MP2|+|EP1-EP2|, |SP1-EP2|+|MP1-MP2|+|EP1-SP2|)/3.
+ As we create clusters, we generate the virtual track (r) for the cluster,
+ given by the centroid of the constituent 3-tracks.
+ The algorithm consists of 2 phases.
+ In the split phase we select the first track t_1, and place it in the first
+ cluster r_1={t_1}.
+ Then for all remaining tracks n where 2<n<=N (where N is the number of
+ tracks):
+\end_layout
+
+\begin_layout Standard
+1) Goto next track t_n.
+\end_layout
+
+\begin_layout Standard
+2) Calculate 3TED between this track and virtual tracks of all current clusters
+ r_m (where 1<=m<=M and M is the current number of clusters).
+ 
+\end_layout
+
+\begin_layout Standard
+3) Add the track to the cluster with the minimum 3TED, and update by adjoining
+ t_n to r_m if the minimum distance is smaller than threshold, otherwise
+ create a new cluster with just t_n.
+\end_layout
+
+\begin_layout Standard
+In the merge phase we create a higher node that aggregates nearby clusters
+ by comparing their virtual 3-tracks.
+ The new cluster is the union of the two previous clusters.
+\end_layout
+
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Standard
+Figure 1 shows how the algorithm performs in clustering a bundle from the
+ Fall 2009 Pittsburgh brain competition (PBC) (http://pbc.lrdc.pitt.edu).
+ The bundle consisted of the 1076 tracks labeled by the neuroanatomist as
+ being in the fornix.
+ The first panel shows all the tracks in white.
+ The rest of the figure shows detected clusters, with tracks in a cluster
+ sharing the same unique color.
+ The top right panel shows the results of our algorithm with a distance
+ threshold of 5mm.
+ There are 22 clusters.
+ Left and right clusters are distinct.
+ There are different clusters for short and long groups of tracks.
+ The bottom left panel shows the 7 clusters found with a distance threshold
+ of 10mm.
+ The left and right long bundles remain distinct, but the central part of
+ the fornix now has a single main cluster.
+ The bottom right panel shows the single cluster that found with a distance
+ threshold of 20mm.
+\end_layout
+
+\begin_layout Standard
+Figure 2 shows the result of our method for the whole brain from the first
+ PBC track dataset, consisting of 250K tracks.
+ The left panel shows all the tracks in white.
+ The middle panel shows the 158 clusters that result from whole brain clustering
+ with a distance threshold of 20mm.
+ There was plausible differentiation between bundles - for example note
+ the well-differentiated descending corticospinal tracks.
+ On the right we show the corresponding virtual 3-tracks.
+ It took around 5 minutes to run whole-brain clustering on one core of a
+ 2.5 GHz Intel PC.
+ 
+\end_layout
+
+\begin_layout Standard
+The algorithm is online in that it does not require that all the data is
+ available at the outset but additional tracks can be incorporated later
+ with the clusters being automatically updated.
+ This is useful for creating an average track dataset combining datasets
+ for several brains.
+ It also supports a multiresolution representation of the tractography.
+ The graph structure for holding the cluster information can be either a
+ tree or a graph whose nodes have links to their closest neighbours.
+ In cases where the distance threshold is very low we can use this latter
+ graph representation to increase our search speed.
+\end_layout
+
+\begin_layout Section
+Conclusions
+\end_layout
+
+\begin_layout Standard
+Our method reduces the search space between tracks in large trajectory datasets
+ from tractography.
+ The algorithm has has very low computation time and memory use.
+ It may be used for making a first pass clustering, to reduce the number
+ of detailed comparisons between full track descriptions.
+ Our method is hierarchical; clusters can be split into sub-clusters by
+ decreasing the distance threshold.
+ Making a graph of the cluster structure can be rapidly traversed to look
+ for similarity of clusters across different scales.
+ 
+\end_layout
+
+\begin_layout Standard
+The results here use only three points (the start, middle and end point).
+ This is not intrinsic to our technique; we can use more points to approximate
+ the tracks, and different distance measures (Corouge 2004; Jianu, 2009),
+ to detect similarity.
+ More detailed approximations consisting of more segments can be used at
+ a later stage.
+\end_layout
+
+\begin_layout Standard
+The Python / Cython code for our development work is published in the open-sourc
+e DiPy project, hosted at http://github.com/matthew-brett/dipy.
+\end_layout
+
+\begin_layout Standard
+Birch: An Efficient Data Clustering Method for Very Large Databases Author
+ Zhang, T.
+ Ramakrishnan, R.
+ Livny, M.
+ Journal title SIGMOD RECORD Bibliographic details 1996, VOL 25; NUMBER
+ 2, pages 103-114 
+\end_layout
+
+\begin_layout Standard
+@article{jianu2009exploring, title={{Exploring 3D DTI Fiber Tracts with
+ Linked 2D Representations}}, author={Jianu, R.
+ and Demiralp, C.
+ and Laidlaw, D.}, journal={IEEE Transactions on Visualization and Computer
+ Graphics}, volume={15}, number={6}, pages={1449--1456}, year={2009}, publisher=
+{IEEE Educational Activities Department} } 
+\end_layout
+
+\begin_layout Standard
+@conference{corouge2004towards, title={{Towards a shape model of white matter
+ fiber bundles using diffusion tensor MRI}}, author={Corouge, I.
+ and Gouttard, S.
+ and Gerig, G.}, booktitle={International Symposium on Biomedical Imaging},
+ pages={344--347}, year={2004}, organization={Citeseer} } 
+\end_layout
+
+\end_body
+\end_document

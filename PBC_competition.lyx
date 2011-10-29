@@ -1,0 +1,885 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Combining atlas and reference tracks for bundle detection.
+\end_layout
+
+\begin_layout Author
+E.Garyfallidis, M.Brett, I.Nimmo-Smith
+\end_layout
+
+\begin_layout Abstract
+We propose a new method which accurately detects preselected bundles from
+ the training set in the other brains.
+ We generate reference tracks for every bundle in the training set and detect
+ the corresponding tracks in the other datasets using the average mean minimum
+ distance.
+ Then we normalize the LONI atlas onto each of the track dataset brains.
+ For a given ROI value in the normalized atlas we extract all the tracks
+ going through the corresponding ROI in each dataset and then we remove
+ tracks that are not similar enough to the reference tracks.
+ Our results are very promising however we learned about the PBC competition
+ at a late stage and we didn't manage to complete our work towards the unsupervi
+sed learning tasks.
+ We have developed some interesting visualization tools, as well as techniques
+ for automatic identification of the entire corpus callosum and its removal
+ from our datasets.
+ This is to overcome the difficulty that the corpus callosum intersects
+ many other white matter areas and complicates any classification procedure.
+ In addition, we we have developed algorithms for down-sampling the tracks
+ in an intelligent fashion so that we do not lose any local or global shape
+ characteristics.
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+Figure 1 shows the whole dataset for subject 1, scan 1 and the bundles identifie
+d by the expert.
+ The supervised learning challenge is to create an algorithm to label this
+ and two other brains to maximise the agreement with the expert.
+ We identified that there were critical issues to do with the registrations
+ of these brains which we have addressed below.
+ In order to achieve consistency between bundles identified in the different
+ brains we have concentrated on combining prior information from a published
+ atlas together with the selection of a small set of tracks from each labelled
+ bundle to use as reference tracks.
+ Beyond this we have chosen to use simple but effective geometric measures
+ based on the individual tracks.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pbc_figures/white_brain.png
+	scale 20
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "white brain with expert bundles"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+In non-white color are the 8 bundles identified by the PBC competition.
+ The purpose of the supervised learning task was to identify these bundles
+ in other brain datasets.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Methods
+\end_layout
+
+\begin_layout Subsection
+Registration
+\end_layout
+
+\begin_layout Standard
+We wanted to use the LONI (ICBM DTI-81) atlas labels to find candidate regions
+ in the individual brains.
+ To make something like an anatomical image from the tracks, we took a binarized
+ track count image - that is an image for which there was a 1 in voxels
+ that had one or more tracks passing it, and zeros elsewhere.
+ We used SPM8 to calculate warping parameters to match the binarized track
+ count image to the ICBM white matter image.
+ To reslice the LONI label template, we inverted the SPM normalization parameter
+s using the SPM deformations utilities, and resliced with the inverted parameter
+s and nearest neighbour resampling.
+ Because of the size and orientation differences between the binarized track
+ count images for the same subject, we did this separately for each scan
+ for every subject.
+ This gave us a labeled image from the LONI atlas in the space of each brain
+ image.
+\end_layout
+
+\begin_layout Subsubsection
+Skeleton Track Atlas
+\end_layout
+
+\begin_layout Standard
+While developing techniques for this competition we have created tools to
+ create a skeletonised version of a track dataset in which the skeleton
+ tracks are ones which have multiple neighbours which are very similar.
+ This is detailed below.
+ 
+\end_layout
+
+\begin_layout Subsection
+Track Metrics
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pbc_figures/arcuate_zhang.png
+	scale 20
+	rotateOrigin center
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Arcuate fasciculus using the average mean minimum distances.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Average Mean Minimum Distance Metric
+\end_layout
+
+\begin_layout Standard
+We explored a number of metrics for the similarity or closeness of two tracks.
+ This is based on the work of 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "corouge2004towards"
+
+\end_inset
+
+ as developed by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zhang2008identifying"
+
+\end_inset
+
+; the method was also used by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ODonnell_MICCAI06"
+
+\end_inset
+
+.
+ If 
+\begin_inset Formula $P=[p_{0},p_{1},\ldots,p_{N}]$
+\end_inset
+
+ and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $Q=[q_{0},q_{1},\ldots,q_{M}]$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+ are two tracks then the mean minimum distance of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+P
+\end_layout
+
+\end_inset
+
+ from 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Q
+\end_layout
+
+\end_inset
+
+ is defined as 
+\begin_inset Formula \[
+\mathrm{m.m.d.(P,Q})=\frac{1}{N}{\displaystyle \sum_{i=0}^{N-1}\,\min_{0\le j\le M-1}|p_{i}-q_{j}|}.\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In general 
+\begin_inset Formula \[
+\mathrm{{m.m.d.}(P,Q)}\ne\mathrm{{m.m.d.}(Q,P)}\]
+
+\end_inset
+
+To provide a symmetric distance measure we define the average mean minimum
+ distance between P and Q as 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$
+\backslash
+frac{
+\backslash
+mathrm{m.m.d.}(P,Q)+
+\backslash
+mathrm{m.m.d.}(Q,P)}{2}$$
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "corouge2004towards"
+
+\end_inset
+
+ introduced two other symmetrisations of the two m.m.d.
+ measures, either selecting the greater or the lesser of the two.
+ This appears to be a very effective metric for filtering a collection of
+ candidate tracks to identify ones which are reasonably similar to a specified
+ reference track (see Figure 2).
+\end_layout
+
+\begin_layout Subsection
+Down-sampling
+\end_layout
+
+\begin_layout Standard
+Doing calculations with all the miles of identified tracks is computationally
+ very demanding.
+ Therefore, we developed three different types of down-sampling to speed
+ up our calculations.
+ We used the two first types of down-sampling (see Figure 3) to reduce the
+ number of points needed to describe a track and the third type we used
+ to select tracks that had many other tracks that were very similar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pbc_figures/Left_raw_center_mdl_right_down.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Left: Raw bundle, centre: MDL approximation, Right: Simple down-sampling
+ along the length.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Minimum description length approximation
+\end_layout
+
+\begin_layout Standard
+This is based on the work of 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "lee2007trajectory"
+
+\end_inset
+
+ who devised an information theoretic approach based on minimum description
+ length (MDL) to generate adaptive sub-samplings of tracks as a precursor
+ to breaking them up into their constituent component line-segments.
+ The criteria for the sub-sampling are based on the degree to which sections
+ of the track can be approximated by the chord joining its end points, with
+ an MDL penalty function that compares the loss of local position and direction
+ information in the approximation with the information required to represent
+ the full data.
+ However, instead of then partitioning the tracks into segments, we used
+ this MDL version as an approximation for the entire track.
+ The sub-sampling ratio was approximately 1:8 and automatically produced
+ tracks with long segments on the straighter elements and a higher density
+ of shorter segments where there was significant curvature.
+ This appears to preserve essential shape characteristics of the tracks
+ with good fidelity (see Figure 3).
+\end_layout
+
+\begin_layout Subsubsection
+Three Point Tracks
+\end_layout
+
+\begin_layout Standard
+We needed a very fast way to remove tracks that are very far away from a
+ reference track.
+ In order to do this we have used a three-point distance as a coarse filter
+ to remove tracks which are distant from a reference track or bundle.
+ This metric is the arithmetic average of the euclidean distances between
+ the end points and the mid-points of the two tracks.
+\end_layout
+
+\begin_layout Subsubsection
+Skeletal Tracks
+\end_layout
+
+\begin_layout Standard
+Here we tried to identify some core tracks that could possibly be good represent
+atives of many of their neighbouring tracks.
+ In order to do this we randomly selected 5000 tracks from the 250000 given
+ tracks (2%) and for these tracks we kept only those who had at least 50
+ other tracks in the full dataset which had every single point closer than
+ 5mm from the closest point in the reference track.
+ For all three brains the number of skeletal tracks was reduced from 5000
+ to approximately 1800 by this technique.
+\end_layout
+
+\begin_layout Subsection
+Object Detection
+\end_layout
+
+\begin_layout Subsubsection
+Corpus Callosum
+\end_layout
+
+\begin_layout Standard
+The corpus callosum (CC) is the major white matter fibre structure connecting
+ the two hemispheres.
+ We found that it accounted for more than 40% of the tracks in the competition
+ datasets.
+ Because the CC is such a massive structure with ramifications throughout
+ the brain we saw that if we could remove it, we would be better able to
+ identify other structures near the CC.
+ To do that we tried the following very simple technique.
+ We know that in a normal brain there will be plenty of fibres passing through
+ the mid plane separating the two hemispheres.
+ Finding this mid-plane is very easy with normalized brains in MNI space
+ because this is the sagittal plane passing though the centre of the volume.
+ Then we find all the points of intersection of tracks with this plane and
+ mapped them from the track space to a 2d binary image space so that every
+ pixel in the image plane has 1 if one or more tracks passes through it
+ and 0 if none.
+ In this 2d image the biggest visible object is the corpus callosum (CC)
+ which is very easy to identify and label, thus separating it from the other
+ smaller objects in the plane using standard morphological operations i.e.
+ erosion followed by dilation.
+ After the CC has been detected in the 2d image it is straightforward to
+ find the tracks that pass through the corresponding voxel in MNI space.
+ The corpus callosums detected in this way are shown in Figure 4 for two
+ different brains.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pbc_figures/corpus_callosum.png
+	scale 80
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Detecting and separating corpus callosum.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Bottleneck Finding - Cut Plane
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pbc_figures/blue_green_dragon.png
+	scale 30
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Cut plane - hidden dragon
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One of the techniques that we have partially developed as a tool for the
+ unsupervised learning task is based on the use of cutting-planes generated
+ from a reference track.
+ Given a bundle of tracks 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+B
+\end_layout
+
+\end_inset
+
+, and a reference track 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R = [r_0, r_1, 
+\backslash
+ldots, r_N]$
+\end_layout
+
+\end_inset
+
+ , we construct the family of planes 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+pi_j$
+\end_layout
+
+\end_inset
+
+ normal to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+R
+\end_layout
+
+\end_inset
+
+ at each point 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$r_j, j=1,
+\backslash
+ldots,N-1$
+\end_layout
+
+\end_inset
+
+, and consider the local geometry of the hit sets, i.e.
+ the intersections 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+pi_j 
+\backslash
+cap B$
+\end_layout
+
+\end_inset
+
+.
+ The metric we have introduced is the radial divergence metric (RDM), which
+ is given by the radial component towards or away from 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$r_j$
+\end_layout
+
+\end_inset
+
+ of the tangent vector of each track 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$b 
+\backslash
+in B$
+\end_layout
+
+\end_inset
+
+ where it meets 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+pi_j$
+\end_layout
+
+\end_inset
+
+.
+ Preliminary evidence is that RDM is a useful metric in identifying tracks
+ which maintain a course parallel to a reference track though displaced
+ some distance.
+ This is particularly relevant in trying to identify tracks which may belong
+ to a broad, thin, strap-like bundle.
+ Figure 5 shows features of this implementation where the blue points indicate
+ cutting points with low divergence.
+\end_layout
+
+\begin_layout Subsection
+Algorithmic Description
+\end_layout
+
+\begin_layout Standard
+We have developed many more tools than those we actually incorporated in
+ our submission - for example the corpus callosum finding algorithm and
+ cut plane.
+ Here we give a short algorithmic description restricted to those used to
+ make the results we submitted for the supervised learning challenge.
+\end_layout
+
+\begin_layout Enumerate
+Normalize ICBM atlas with all brains, as described in the registration section.
+\end_layout
+
+\begin_layout Enumerate
+Generate most similar tracks (
+\noun on
+reference tracks
+\noun default
+) using minimum average distances and manually pick some extra fibres so
+ you can have a better shape description of the bundle.
+\end_layout
+
+\begin_layout Enumerate
+For an ROI value in the atlas corresponding to each dataset, generate the
+ tracks (
+\noun on
+value tracks
+\noun default
+) which pass through the region having that value.
+\end_layout
+
+\begin_layout Enumerate
+Remove very far tracks from the 
+\noun on
+reference tracks
+\noun default
+ using the 3-point method.
+\end_layout
+
+\begin_layout Enumerate
+Compare the 
+\noun on
+reference tracks
+\noun default
+ with the 
+\noun on
+value tracks
+\noun default
+.
+ If they do not have any tracks in common then 
+\noun on
+the value tracks
+\noun default
+ are used in place of the 
+\noun on
+reference tracks
+\noun default
+.
+\end_layout
+
+\begin_layout Enumerate
+Finally, use the minimum average minimum distances to reduce the number
+ of 
+\noun on
+value tracks
+\noun default
+ which are far from every corresponding 
+\noun on
+reference track
+\noun default
+.
+\end_layout
+
+\begin_layout Enumerate
+Compare with the training set.
+\end_layout
+
+\begin_layout Enumerate
+If the intersection of the training set with the current bundle set is not
+ maximised go to 6 else 
+\noun on
+stop
+\noun default
+.
+\end_layout
+
+\begin_layout Standard
+The results we obtained after running this algorithm were very accurate
+ as can be seen in Figure 6 below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pbc_figures/OhYeah.png
+	scale 30
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Detecting all 8 bundles
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Software
+\end_layout
+
+\begin_layout Standard
+We developed all our software in Python for fast code development, and Cython
+ for fast execution whenever it was necessary.
+ Our core-detection functions and IO readers were build in the 
+\noun on
+DiPy
+\noun default
+ module which we plan to embed in the Neuroimaging in Python (
+\noun on
+NiPy
+\noun default
+) suite.
+ We developed our visualization methods in a package we called 
+\noun on
+Fos
+\noun default
+ which is our python-vtk implementation for visualizing tractographic and
+ brain imaging datasets.
+ All pictures shown in this paper were obtained from 
+\noun on
+Fos
+\noun default
+.
+ 
+\noun on
+Fos
+\noun default
+ has also the property that it is able to visualize many track datasets
+ simultaneously.
+ For example you could visualize in the 3d space simultaneously all 5 brains
+ of the datasets or even more.
+ It also allows you to pick and select specific fibres with the mouse.
+\end_layout
+
+\begin_layout Section
+Conclusion
+\end_layout
+
+\begin_layout Standard
+With a simple geometric approach to this problem, incorporating prior informatio
+n, we have managed to get very promising results for all 5 datasets.
+ Unfortunately, we didn't have time to test these for the unsupervised learning
+ Challenges 2a/b/c, however this competition has inspired us to continue
+ working on this problem full hearted and batteries included!
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "diffusion"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

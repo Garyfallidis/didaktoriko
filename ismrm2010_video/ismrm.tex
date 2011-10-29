@@ -1,0 +1,394 @@
+% Preview source code
+
+%% LyX 1.6.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[a4paper,english]{paper}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\pagestyle{empty}
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{setspace}
+
+\usepackage{type1cm}
+\renewcommand{\rmdefault}{pnc}
+\usepackage{helvet}
+\usepackage{courier}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\newcommand{\lyxline}[1][1pt]{%
+  \par\noindent%
+  \rule[.5ex]{\linewidth}{#1}\par}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{babel}
+\usepackage{apacite}
+
+\makeatother
+
+\usepackage{babel}
+
+\begin{document}
+
+\textbf{\Large }%
+\begin{minipage}[t]{1\columnwidth}%
+
+    \sffamily
+    \raggedright
+
+
+\textbf{\Large Key Research Question}{\Large \par}
+
+\noindent \begin{flushleft}
+{\Large How can we identify corresponding tracks within different
+diffusion MR brain tractographies?} 
+\par\end{flushleft}%
+\end{minipage}{\Large \par}
+
+\newpage
+
+\textbf{\Large }%
+\begin{minipage}[t]{1\columnwidth}%
+
+    \sffamily
+    \raggedright
+
+\noindent \begin{flushleft}
+\textbf{\Large Requirements to Produce a Tractography}
+\par\end{flushleft}{\Large \par}
+
+\begin{itemize}
+\item \begin{flushleft} a local diffusion model (e.g. simple tensor, Q-Ball)
+\par\end{flushleft}
+\item \begin{flushleft} a tractography algorithm (e.g. FACT, Runge-Kutta)
+\par\end{flushleft}
+\end{itemize}
+
+\noindent \begin{flushleft} The quality and size of resulting tractographies may differ depending
+on the choice of these options.
+\par\end{flushleft}
+
+\begin{flushleft} For example, based on the same diffusion tensor principal direction vector field and the same sub-grid, 
+the FACT algorithm produced $\sim 100,000$ tracks, whereas the Runge-Kutta algorithm of order 2 (RK2) 
+produced $\sim 150,000$.
+\par\end{flushleft}
+%
+\end{minipage}{\Large \par}
+
+\newpage
+
+\textbf{\Large }%
+\begin{minipage}[t]{1\columnwidth}%
+
+    \sffamily
+    \raggedright
+
+
+
+\textbf{\Large Comparison of Tractographies}{\Large \par}
+
+\bigskip
+
+Because the datasets are so different in size and number of tracks, 
+identifying corresponding tracks is a \emph{hard} problem. 
+
+\end{minipage}{\Large \par}
+
+\newpage
+
+\textbf{\Large }%
+\begin{minipage}[t]{1\columnwidth}%
+    \sffamily
+    \raggedright
+
+
+\noindent \begin{flushleft}
+\textbf{\Large Track Compression}{\Large \par}
+\par\end{flushleft}{\Large \par}
+
+\noindent \begin{flushleft}
+Tractography datasets are large and algorithms to analyse them need significant computational resources, in
+particular long processing times. 
+\par\end{flushleft}{\Large \par}
+
+\noindent \begin{flushleft}
+We have developed a geometric technique -- \textsc{Apol} --
+which reduces the number of points on the tracks of a tractography
+by a factor of 8. 
+\par\end{flushleft}{\Large \par}
+
+\noindent \begin{flushleft}
+More points are retained where the track has high
+curvature and fewer are needed where the track has low curvature. The
+time performance exceeds that of information theory based techniques
+such as \emph{minimum description length} {[}1{]}.%
+\par\end{flushleft}{\Large \par}
+
+\end{minipage}{\Large \par}
+
+\newpage
+
+%
+\begin{minipage}[t]{1\columnwidth}%
+    \sffamily
+    \raggedright
+
+
+\noindent \begin{flushleft}
+\textbf{\Large Track Metrics}{\Large \par}
+{\Large \par}
+\par\end{flushleft}{\Large \par}
+
+\noindent \begin{flushleft}
+Metrics are needed to measure that similarity of two tracks, whether
+they are in the same or different tractographies. We have used the
+mean average minimum distance metric (MAM) {[}2{]}:
+{\Large \par}
+\par\end{flushleft}{\Large \par}
+
+$$\mathrm{MAM}(P,Q) = \frac{1}{2}\Big[\frac{1}{\#P}\sum_{p\in P}\min_{q\in Q} |p-q| + \frac{1}{\#Q}\sum_{q\in Q}\min_{p\in P} |q-p|\Big]$$%
+\end{minipage}
+
+
+
+\newpage
+
+%
+\begin{minipage}[t]{1\columnwidth}%
+    \sffamily
+    \raggedright
+
+
+
+\noindent \begin{flushleft}
+
+The \emph{minimum distances} between point of P and points of Q are coloured Red.
+
+The \emph{average mimimum distance of P from Q} is the average length of the Red lines.
+
+The \emph{minimum distances} between point of Q and points of P are coloured Blue.
+
+The \emph{average mimimum distance of P from Q} is the average length of the Blue lines.
+
+The \emph{mean average minimum distance between P and Q} is the mean of these two average. It is symmetric.
+
+{\Large \par}
+\par\end{flushleft}{\Large \par}
+
+\end{minipage}
+
+
+
+\newpage
+
+%
+\begin{minipage}[t]{1\columnwidth}%
+    \sffamily
+    \raggedright
+
+\textbf{\Large Corresponding Tracks}{\Large \par}
+
+\bigskip
+
+We can pick tracks of interest in one brain, and use the MAM metric to
+identify corresponding tracks in other brains quickly and accurately.%
+\end{minipage}
+
+\newpage
+
+%
+\begin{minipage}[t]{1\columnwidth}%
+    \sffamily
+    \raggedright
+
+\textbf{\Large Colour Map}{\Large \par}
+
+\bigskip
+
+We have coloured the individual tracks in our tractographies in a way which
+uses a wider range of colours than conventional colour maps.
+
+\bigskip
+
+We use the projective plane mapping of [3] by assigning
+to a track a colour that corresponds to the direction of the middle segment of a 
+5-segment approximation of the track.
+
+\bigskip
+
+This can help with recognising structures such as the \emph{corpus callosum}
+whose fibers are roughly parallel across the sagittal plane. 
+
+\end{minipage}
+
+\newpage
+
+%
+\begin{minipage}[t]{1\columnwidth}%
+    \sffamily
+    \raggedright
+
+\textbf{\Large Adding Prior Knowledge }{\Large \par}
+
+\bigskip
+
+We can use a range of sources of prior knowledge
+\begin{itemize}
+\item white matter atlases {[}4{]}
+\item using experts to label regions of the brain e.g. {[}5{]}
+\item selecting individual tracks 
+\end{itemize}
+%
+\end{minipage}
+
+\newpage
+
+%
+\begin{minipage}[t]{1\columnwidth}%
+    \sffamily
+    \raggedright
+
+\textbf{\Large Conclusion}{\Large \par}
+
+\bigskip
+
+The correspondence problem has been solved in a manner which is supported
+by high speed algorithms and high quality visualisation tools.%
+\end{minipage}
+
+\newpage
+
+%
+
+
+\begin{minipage}[t]{1\columnwidth}%
+    \sffamily
+    \raggedright
+
+
+\textbf{\Large Software}{\Large \par}
+
+\bigskip
+
+We are developing Python software
+\begin{itemize}
+\item \textsc{DiPy:} to support diffusion imaging analysis - now available
+in open source at \texttt{http://nipy.sourceforge.net/dipy/}
+
+\item \textsc{Fos: }A 3D engine that supports multiple simultaneous visualisations, see
+\texttt{http://github.com/Garyfallidis/Fos}
+\end{itemize}
+%
+\end{minipage}
+
+\newpage
+
+%
+\begin{minipage}[t]{1\columnwidth}%
+
+    \sffamily
+    \raggedright
+
+\textbf{\Large References}{\Large \par}
+
+\begin{itemize}
+
+\item {{[}1{]}} Lee JG, Han J, Whang KY (2007). Trajectory clustering: a partition-and-group framework. Proc. 2007 ACM SIGMOD 
+
+\item {{[}2{]}} Corouge I, Goutthard S, Gerig G (2004). Towards a shape clustering model of white matter fiber bundles using diffusion tensor MRI.
+ISBI 2004, 344--347. 
+
+\item {{[}3{]}} Demiralp C, Hughes JF, Laidlaw DH (2009) Coloring 3D Line Fields Using Boy's Real Projective Plane Immersion,
+IEEE Transactions on Visualization and Computer Graphics,
+15, 1457--1464,
+
+\item {{[}4{]}} Mori S, Crain BJ, Chacko VP, Van Zijl PCM (1999). 
+Three-dimensional tracking of axonal projections in the brain by magnetic resonance imaging. 
+Annals of Neurology, 45 (2) 265--269.
+
+\item {{[}5{]}} Pittsburgh Brain Connectivity Challenge (2009). \texttt{http://pbc.lrdc.pitt.edu/?q=2009b-home}
+
+\end{itemize}
+
+\end{minipage}
+
+
+\newpage
+
+\begin{minipage}[t]{1\columnwidth}%
+
+    \sffamily
+    \raggedright
+
+Picking individual tracks with the mouse is fun!!!
+
+\end{minipage}
+
+
+
+\newpage
+
+\begin{minipage}[t]{1\columnwidth}%
+
+    \sffamily
+    \raggedright
+
+Subject 1 (FACT) in \emph{red}: selected tracks in yellow \\
+
+Subject 2 (FACT) in \emph{cyan}: corresponding tracks found \\
+
+\end{minipage}
+
+
+
+
+\newpage
+
+\begin{minipage}[t]{1\columnwidth}%
+
+    \sffamily
+    \raggedright
+
+Subject 1 (FACT) in \emph{red}: selected tracks in yellow \\
+
+Subject 2 (FACT) in \emph{cyan}: corresponding tracks found \\
+
+Subject 1 (RK2): in \emph{blue}: corresponding tracks found \\
+
+\end{minipage}
+
+
+
+\newpage
+
+\begin{minipage}[t]{1\columnwidth}%
+
+    \sffamily
+    \raggedright
+
+All visualised in 3D simultaneously using a modest graphics card
+
+\end{minipage}
+
+
+
+\newpage
+
+
+\begin{minipage}[t]{1\columnwidth}%
+
+    \sffamily
+    \raggedright
+
+\textsc{DiPy} -- Diffusion Imaging in Python
+
+\end{minipage}
+
+
+\end{document}

@@ -1,0 +1,1327 @@
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass beamer
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout BeginFrame
+Using spheres to navigate the brain ...
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+Ian Nimmo-Smith and Eleftherios Garyfallidis
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\size small
+MRC Cognition and Brain Sciences Unit and University of Cambridge
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+...
+ enroute from white matter to tractography
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename B0X60.png
+	lyxscale 25
+	scale 15
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename clustered_ap.png
+	lyxscale 25
+	scale 7.5
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename B0X60.png
+	lyxscale 25
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename clustered_ap.png
+	lyxscale 25
+	scale 10
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename B0Y60.png
+	lyxscale 25
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename HARDI_65.png
+	lyxscale 25
+	scale 7
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Diffusion MR scanner sequence
+\end_layout
+
+\begin_layout Itemize
+This is the classical Pulsed Gradient Spin Echo (PGSE) sequence of Stejskal
+ and Tanner (1965).
+ More refined sequences are typically used nowadays though the underlying
+ principles are the same.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename stejskal-tanner-pgse.png
+	lyxscale 20
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Diffusion MR physics
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+Protons in water molecules receive gradient pulses 
+\series bold
+G 
+\series default
+of width 
+\begin_inset Formula $\delta$
+\end_inset
+
+, separated by time 
+\begin_inset Formula $\Delta$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+The spins precess during this period.
+ The rate of precession is proportional to the local magnetic gradient.
+ A proton spin will experience a phase shift proportional to its molecular
+ diffusion displacement in the direction 
+\series bold
+G
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+The refocusing pulse will elicit a signal at each location which is attenuated
+ by the amount of diffusion displacement in the direction 
+\series bold
+G
+\series default
+.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Schematic (Mori)
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+Diffusion gradient is in left-right direction
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+Displacement in this direction is not completely refocused
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename WaterMotion_GradientMoriNeuron.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Shape matters: isotropic diffusion
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/ian/Devel/tractarian/scripts/isotropic_diffusion.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Shape matters: non-isotropic diffusion
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/ian/Devel/tractarian/scripts/anisotropic_diffusion.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Signal dependence on direction
+\end_layout
+
+\begin_layout Itemize
+The distribution of displacements - or diffusion propagator - is an indicator
+ of underlying structures
+\end_layout
+
+\begin_layout Itemize
+Linear fibrous tissue containing water will hinder movement towards the
+ walls of the fibres by comparison with movements along the fibre
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename directional_signal.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename directional_log_signal.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+signal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-log(signal)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Signal dependence on diffusivity
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename various_signals.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Fourier relationship
+\end_layout
+
+\begin_layout Itemize
+The diffusion MR signal is in essence a Fourier Transform of the diffusion
+ propagator
+\end_layout
+
+\begin_layout Itemize
+In the idealised gaussian, brownian motion case if the propagator is 
+\begin_inset Formula $p(r|r_{0})~\exp(-\frac{1}{2}(r-r_{0})^{T}D(r-r_{0}))$
+\end_inset
+
+ then the signal is 
+\begin_inset Formula $S~\exp(-kG^{T}D^{-1}G))$
+\end_inset
+
+ where 
+\begin_inset Formula $G$
+\end_inset
+
+ is the diffusion gradient and 
+\begin_inset Formula $k$
+\end_inset
+
+ depends on 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\Delta$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+, 
+\begin_inset Formula $\delta$
+\end_inset
+
+ and other physical constants.
+\end_layout
+
+\begin_layout Itemize
+Directions of maximum diffusivity are directions of minimum signal and vice
+ versa
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+One volume of data (g=[0,1,0])
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename SlicesThroughBrain.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+One slice
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features>
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename G1Y60.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Slice j=60
+\end_layout
+
+\begin_layout Plain Layout
+Gradient [0,1,0] perpendicular to slice
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+
+\end_layout
+
+\begin_layout Standard
+The same slice for six different (nearly) in-plane gradient directions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename SixInplaneDiffusionGradients.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+6 dimensional data
+\end_layout
+
+\begin_layout Itemize
+we are thus dealing with 6 (or 3+3) dimensional datasets.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+3 dimensions coding the location 
+\begin_inset Formula $\mathbf{r}=[x,y,z]$
+\end_inset
+
+ in scanner (or subject) space
+\end_layout
+
+\begin_layout Itemize
+3 dimensions coding the direction 
+\begin_inset Formula $\mathbf{G=}[u,v,w]$
+\end_inset
+
+ in gradient-direction-and-strength space
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+in order to create pictures like these we need to have
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+a means of charcterising local directional information
+\end_layout
+
+\begin_layout Itemize
+a means of creating streamlines
+\end_layout
+
+\begin_layout Itemize
+finite resolution means that there may well be more than one direction in
+ which we want to lead the streamlines
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Acquisition and reconstruction
+\end_layout
+
+\begin_layout Itemize
+We need a set of directions and gradient strengths in 
+\series bold
+q-space
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+time is important so we may need keep the number down
+\end_layout
+
+\begin_layout Itemize
+as equally distributed as possible
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The choice may depend on the reconstruction algorithm we will use
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+direct discrete Fourier transform from q-space would predicate a grid of
+ sampling values
+\end_layout
+
+\begin_layout Itemize
+orientation distribution methods want a 'good' set of directions on the
+ unit sphere
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+We need a sphere to represent the directional information in the voxel
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Two acquisition spheres
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename siemens64.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename dsi102.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Siemens standard 64 directions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yeh's 102 direction DSI design
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+\size tiny
+These plots were created using
+\family default
+\size scriptsize
+ 
+\family typewriter
+\size tiny
+dipy/scratch/very_scratch/get_vertices
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Some reconstruction spheres
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 20h2.png
+	lyxscale 50
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 20h3.png
+	lyxscale 50
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+\size tiny
+This is an icosahedron F=20, E=30, V=12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+\size tiny
+Subdividedx2: F=80, E=, V=
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 20h4.png
+	lyxscale 50
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 20h5.png
+	lyxscale 50
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+\size tiny
+Subdividedx3: F=160, E=, V=
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+\size tiny
+Subdividedx4: F=320, E=, V=
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+\size tiny
+These plots were created using
+\family default
+\size scriptsize
+ 
+\family typewriter
+\size tiny
+dipy/scratch/very_scratch/get_vertices
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Transfer matrix
+\end_layout
+
+\begin_layout Itemize
+The transfer matrix 
+\begin_inset Formula $\mathbf{T}$
+\end_inset
+
+ is important in considering how the acquisition paradigm and the reconstruction
+ representation interact with each other 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\mathbf{G}$
+\end_inset
+
+ is the matrix of acquisition directions (MR gradients), and 
+\begin_inset Formula $\mathbf{V}$
+\end_inset
+
+ is matrix of vertices on the reconstruction sphere
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\mathbf{T}=\mathbf{GV^{T}}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathbf{T}$
+\end_inset
+
+ is the matrix of cosines of angles between acquisition gradients and reconstruc
+tion vertices
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+we are interested in various elementwise transforms of 
+\begin_inset Formula $\mathbf{T}$
+\end_inset
+
+: 
+\begin_inset Formula $|\mathbf{T}|$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{|\mathbf{T}|^{k}}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathrm{{sinc}}(|\mathbf{T}|/\lambda)$
+\end_inset
+
+ ...
+ 
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Point spread functions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="40mm">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pointspread-abs.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pointspread-squares.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+\size tiny
+These plots were created using
+\family default
+\size scriptsize
+ 
+\family typewriter
+\size tiny
+dipy/scratch/very_scratch/get_vertices
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+abs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+squared
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pointspread-fourth.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pointspread-1-sinc.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+fourth power
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sinc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Complex matter
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename dODF.png
+	lyxscale 60
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+The end
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename B0X60.png
+	lyxscale 25
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename clustered_ap.png
+	lyxscale 25
+	scale 10
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename B0Y60.png
+	lyxscale 25
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename HARDI_65.png
+	lyxscale 25
+	scale 7
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document

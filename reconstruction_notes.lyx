@@ -1,0 +1,169 @@
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+Notes from ExactQBI
+\end_layout
+
+\begin_layout Itemize
+The performance of QBI depends on intravoxel tissue properties; therefore,
+ its accuracy of reconstruction will be different for every voxel in the
+ brain
+\end_layout
+
+\begin_layout Itemize
+QBI can be considered as as special case or approximation to the more general
+ EQBI methodology.
+\end_layout
+
+\begin_layout Itemize
+DOT methodology computes analytically the Fourier integral 
+\begin_inset Formula $P(\mathbf{r})=\int E(\mathbf{q})\exp(-2\pi\mathbf{r}\mathbf{q})d\mathbf{q}$
+\end_inset
+
+ under the assumption that the normalized diffusion signal attenuates monoexpone
+ntially as 
+\begin_inset Formula $E(q,\hat{\mathbf{q}})=exp[-4\pi^{2}tq^{2}ADC(\hat{\mathbf{q}})]$
+\end_inset
+
+ where ADC is the diffusivity profile.
+ Under this assumption 
+\begin_inset Formula $S(\hat{\mathbf{q}})\varpropto\frac{1}{ADC(\hat{\mathbf{q}})}$
+\end_inset
+
+ and the ODF can be computed using the harmonic coefficients 
+\begin_inset Formula $\frac{1}{ADC(\hat{\mathbf{q}})}=\sum_{l=0}^{\infty}\sum_{m=-l}^{l}s_{lm}Y_{lm}(\hat{\mathbf{q}})$
+\end_inset
+
+.
+ This provides a closed form relationship between the ADC and the ODF enabling
+ one to transform the diffusivity profiles into ODF profiles by means of
+ the Radon transform of the inverse of the diffusivity profiles (MeEQBI-
+ Monoexponential).
+\end_layout
+
+\begin_layout Itemize
+Under the multitensor model 
+\begin_inset Formula $E(q,\hat{\mathbf{q}})=E_{o}\sum_{i=1}^{M}f_{i}exp(-b\hat{\mathbf{q}}^{T}D^{(i)}\hat{\mathbf{q}})$
+\end_inset
+
+ where 
+\begin_inset Formula $M$
+\end_inset
+
+ is the number of fiber-compartments, 
+\begin_inset Formula $b$
+\end_inset
+
+ the b-value 
+\begin_inset Formula $b=4\pi^{2}tq^{2}$
+\end_inset
+
+, the volume fraction of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+compartment is denoted by 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+, so that
+\begin_inset Formula $\sum_{i=1}^{M}f_{i}=1$
+\end_inset
+
+, 
+\begin_inset Formula $D^{(i)}$
+\end_inset
+
+represents the second-order self-diffusion tensor of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ compartment.
+ 
+\begin_inset Formula $D^{(i)}=R^{T}(\theta,\phi)AR(\theta,\phi)$
+\end_inset
+
+ and 
+\begin_inset Formula $A=\left[\begin{array}{ccc}
+\lambda_{1} & 0 & 0\\
+0 & \lambda_{2} & 0\\
+0 & 0 & \lambda_{3}\end{array}\right]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+The exact ODF for the single diffusion tensor was derived in Tuch MRM (2004).
+ This result can be extended to the multitensor model by linearity and the
+ superposition principle as 
+\begin_inset Formula $ODF(\hat{\mathbf{r}})=\frac{1}{Z}(\pi t)^{1/2}\sum_{i=1}^{M}f_{i}(\hat{\mathbf{r}}^{T}D^{(i)-1}\hat{\mathbf{r}})^{-1/2}$
+\end_inset
+
+ where 
+\begin_inset Formula $Z$
+\end_inset
+
+ is a normalization constant.
+\end_layout
+
+\begin_layout Itemize
+In DSI diffusion images are premultiplied by a Hanning window to ensure
+ a smooth attenuation of the signal at high values of q.
+\end_layout
+
+\begin_layout Standard
+Notes from Mapping Complex Tissue Wedeen 2005
+\end_layout
+
+\begin_layout Itemize
+Under the narrow pulse approximation 
+\end_layout
+
+\end_body
+\end_document

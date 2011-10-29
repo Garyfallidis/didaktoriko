@@ -1,0 +1,2074 @@
+%PDF-1.3
+%“Œ‹ž ReportLab Generated PDF document http://www.reportlab.com
+% 'BasicFonts': class PDFDictionary 
+1 0 obj
+% The standard fonts dictionary
+<< /F1 2 0 R
+ /F2 3 0 R
+ /F3 4 0 R >>
+endobj
+% 'F1': class PDFType1Font 
+2 0 obj
+% Font Helvetica
+<< /BaseFont /Helvetica
+ /Encoding /WinAnsiEncoding
+ /Name /F1
+ /Subtype /Type1
+ /Type /Font >>
+endobj
+% 'F2': class PDFType1Font 
+3 0 obj
+% Font Helvetica-Bold
+<< /BaseFont /Helvetica-Bold
+ /Encoding /WinAnsiEncoding
+ /Name /F2
+ /Subtype /Type1
+ /Type /Font >>
+endobj
+% 'F3': class PDFType1Font 
+4 0 obj
+% Font Times-Roman
+<< /BaseFont /Times-Roman
+ /Encoding /WinAnsiEncoding
+ /Name /F3
+ /Subtype /Type1
+ /Type /Font >>
+endobj
+% 'Page1': class PDFPage 
+5 0 obj
+% Page dictionary
+<< /Contents 19 0 R
+ /MediaBox [ 0
+ 0
+ 595.2756
+ 841.8898 ]
+ /Parent 18 0 R
+ /Resources << /Font 1 0 R
+ /ProcSet [ /PDF
+ /Text
+ /ImageB
+ /ImageC
+ /ImageI ] >>
+ /Rotate 0
+ /Trans <<  >>
+ /Type /Page >>
+endobj
+% 'Page2': class PDFPage 
+6 0 obj
+% Page dictionary
+<< /Contents 20 0 R
+ /MediaBox [ 0
+ 0
+ 595.2756
+ 841.8898 ]
+ /Parent 18 0 R
+ /Resources << /Font 1 0 R
+ /ProcSet [ /PDF
+ /Text
+ /ImageB
+ /ImageC
+ /ImageI ] >>
+ /Rotate 0
+ /Trans <<  >>
+ /Type /Page >>
+endobj
+% 'Page3': class PDFPage 
+7 0 obj
+% Page dictionary
+<< /Contents 21 0 R
+ /MediaBox [ 0
+ 0
+ 595.2756
+ 841.8898 ]
+ /Parent 18 0 R
+ /Resources << /Font 1 0 R
+ /ProcSet [ /PDF
+ /Text
+ /ImageB
+ /ImageC
+ /ImageI ] >>
+ /Rotate 0
+ /Trans <<  >>
+ /Type /Page >>
+endobj
+% 'R8': class PDFCatalog 
+8 0 obj
+% Document Root
+<< /Outlines 10 0 R
+ /PageLabels 22 0 R
+ /PageMode /UseNone
+ /Pages 18 0 R
+ /Type /Catalog >>
+endobj
+% 'R9': class PDFInfo 
+9 0 obj
+<< /Author ()
+ /CreationDate (D:20110110152807+00'00')
+ /Keywords ()
+ /Producer (ReportLab http://www.reportlab.com)
+ /Subject (\(unspecified\))
+ /Title (Dipy - a library for diffusion MR and tractography) >>
+endobj
+% 'R10': class PDFOutlines 
+10 0 obj
+<< /Count 7
+ /First 11 0 R
+ /Last 17 0 R
+ /Type /Outlines >>
+endobj
+% 'Outline.0': class OutlineEntryObject 
+11 0 obj
+<< /Dest [ 5 0 R
+ /XYZ
+ 62.69291
+ 729.0236
+ 0 ]
+ /Next 12 0 R
+ /Parent 10 0 R
+ /Title (Introduction) >>
+endobj
+% 'Outline.1': class OutlineEntryObject 
+12 0 obj
+<< /Dest [ 5 0 R
+ /XYZ
+ 62.69291
+ 648.0236
+ 0 ]
+ /Next 13 0 R
+ /Parent 10 0 R
+ /Prev 11 0 R
+ /Title (Methods) >>
+endobj
+% 'Outline.2': class OutlineEntryObject 
+13 0 obj
+<< /Dest [ 5 0 R
+ /XYZ
+ 62.69291
+ 615.0236
+ 0 ]
+ /Next 14 0 R
+ /Parent 10 0 R
+ /Prev 12 0 R
+ /Title (Results) >>
+endobj
+% 'Outline.3': class OutlineEntryObject 
+14 0 obj
+<< /Dest [ 5 0 R
+ /XYZ
+ 62.69291
+ 582.0236
+ 0 ]
+ /Next 15 0 R
+ /Parent 10 0 R
+ /Prev 13 0 R
+ /Title (Conclusions) >>
+endobj
+% 'Outline.4': class OutlineEntryObject 
+15 0 obj
+<< /Dest [ 5 0 R
+ /XYZ
+ 62.69291
+ 507.0236
+ 0 ]
+ /Next 16 0 R
+ /Parent 10 0 R
+ /Prev 14 0 R
+ /Title (References) >>
+endobj
+% 'Outline.5': class OutlineEntryObject 
+16 0 obj
+<< /Dest [ 5 0 R
+ /XYZ
+ 62.69291
+ 474.0236
+ 0 ]
+ /Next 17 0 R
+ /Parent 10 0 R
+ /Prev 15 0 R
+ /Title (Figures) >>
+endobj
+% 'Outline.6': class OutlineEntryObject 
+17 0 obj
+<< /Dest [ 5 0 R
+ /XYZ
+ 62.69291
+ 441.0236
+ 0 ]
+ /Parent 10 0 R
+ /Prev 16 0 R
+ /Title (Bullets) >>
+endobj
+% 'R18': class PDFPages 
+18 0 obj
+% page tree
+<< /Count 3
+ /Kids [ 5 0 R
+ 6 0 R
+ 7 0 R ]
+ /Type /Pages >>
+endobj
+% 'R19': class PDFStream 
+19 0 obj
+% page stream
+<< /Length 6567 >>
+stream
+1 0 0 1 0 0 cm BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 741.0236 cm
+q
+BT 1 0 0 1 0 9.64 Tm 1.574882 0 Td 24 TL /F2 20 Tf 0 0 0 rg (Dipy - a library for diffusion MR and tractography) Tj T* -1.574882 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 708.0236 cm
+q
+BT 1 0 0 1 0 8.435 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Introduction) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 690.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Dipy stands for diffusion imaging in python and is) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 660.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 16.82 Tm /F1 10 Tf 12 TL .294983 Tw (Dipy is an international, free and open software project for diffusion magnetic resonance imaging analysis) Tj T* 0 Tw (in Python.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 627.0236 cm
+q
+BT 1 0 0 1 0 8.435 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Methods) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 594.0236 cm
+q
+BT 1 0 0 1 0 8.435 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Results) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 561.0236 cm
+q
+BT 1 0 0 1 0 8.435 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Conclusions) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 519.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 28.82 Tm /F1 10 Tf 12 TL 1.344988 Tw (dipy is on the way to being the software platform of choice for brain scientists who want to be able to) Tj T* 0 Tw .868651 Tw (expl0ore new approaches to white matter tractography using diffusion weighted MR. Where it goes is in) Tj T* 0 Tw (the hands of those who join us in its development.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 486.0236 cm
+q
+BT 1 0 0 1 0 8.435 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (References) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 453.0236 cm
+q
+BT 1 0 0 1 0 8.435 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Figures) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 420.0236 cm
+q
+BT 1 0 0 1 0 8.435 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Bullets) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 402.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (What is dipy?) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 396.0236 cm
+Q
+q
+1 0 0 1 62.69291 360.0236 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 30 cm
+Q
+q
+1 0 0 1 20 30 cm
+Q
+q
+1 0 0 1 20 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 15 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 16.82 Tm /F1 10 Tf 12 TL .709979 Tw (free, open source, python toolbox, growing, extensive, library, API, multiplatform, developed by) Tj T* 0 Tw (research scientists across different labs and countries.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 360.0236 cm
+Q
+q
+1 0 0 1 62.69291 342.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (What is the aim of dipy?) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 336.0236 cm
+Q
+q
+1 0 0 1 62.69291 312.0236 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (to make it easier to do better diffusion MR imaging research.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 312.0236 cm
+Q
+q
+1 0 0 1 62.69291 258.0236 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 0 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F2 10 Tf 12 TL (How does it achieve its aim?) Tj T* ET
+Q
+Q
+BT 1 0 0 1 0 26 Tm  T* ET
+q
+1 0 0 1 10 30 cm
+Q
+q
+1 0 0 1 10 30 cm
+Q
+q
+1 0 0 1 10 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 15 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 16.82 Tm /F1 10 Tf 12 TL 1.66881 Tw (by being clearly written, clearly explained with a good fit to the underlying ideas in a way that) Tj T* 0 Tw (fosters collaborative development.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 0 cm
+Q
+q
+1 0 0 1 10 0 cm
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 240.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (What is new in dipy?) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 234.0236 cm
+Q
+q
+1 0 0 1 62.69291 210.0236 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (everything is new) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 210.0236 cm
+Q
+q
+1 0 0 1 62.69291 192.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Which other libaries does dipy use? It depends on) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 186.0236 cm
+Q
+q
+1 0 0 1 62.69291 108.0236 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 72 cm
+Q
+q
+1 0 0 1 20 72 cm
+Q
+q
+1 0 0 1 20 54 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (python) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 54 cm
+Q
+q
+1 0 0 1 20 54 cm
+Q
+q
+1 0 0 1 20 36 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (numpy) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 36 cm
+Q
+q
+1 0 0 1 20 36 cm
+Q
+q
+1 0 0 1 20 18 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (scipy) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (cython) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 108.0236 cm
+Q
+q
+1 0 0 1 62.69291 90.02362 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (optionally, it can use) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 84.02362 cm
+Q
+ 
+endstream
+
+endobj
+% 'R20': class PDFStream 
+20 0 obj
+% page stream
+<< /Length 9278 >>
+stream
+1 0 0 1 0 0 cm BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 687.0236 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 72 cm
+Q
+q
+1 0 0 1 20 72 cm
+Q
+q
+1 0 0 1 20 54 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (python-vtk) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 54 cm
+Q
+q
+1 0 0 1 20 54 cm
+Q
+q
+1 0 0 1 20 36 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (pytables) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 36 cm
+Q
+q
+1 0 0 1 20 36 cm
+Q
+q
+1 0 0 1 20 18 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (matplotlib) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (ipython) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 687.0236 cm
+Q
+q
+1 0 0 1 62.69291 669.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Which operating system does it require? Any.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 663.0236 cm
+Q
+q
+1 0 0 1 62.69291 603.0236 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 54 cm
+Q
+q
+1 0 0 1 20 54 cm
+Q
+q
+1 0 0 1 20 36 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Windows) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 36 cm
+Q
+q
+1 0 0 1 20 36 cm
+Q
+q
+1 0 0 1 20 18 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Linux) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Macosx) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 603.0236 cm
+Q
+q
+1 0 0 1 62.69291 585.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Does dipy provide visualisation tools?) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 579.0236 cm
+Q
+q
+1 0 0 1 62.69291 555.0236 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (fvtk) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 555.0236 cm
+Q
+q
+1 0 0 1 62.69291 537.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Does size matter?) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 531.0236 cm
+Q
+q
+1 0 0 1 62.69291 507.0236 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (dipy overcomes size constraints that come with the very large datasets typical of tractography) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 507.0236 cm
+Q
+q
+1 0 0 1 62.69291 489.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Does dipy interoperate with other brain imaging software?) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 483.0236 cm
+Q
+q
+1 0 0 1 62.69291 441.0236 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 36 cm
+Q
+q
+1 0 0 1 20 36 cm
+Q
+q
+1 0 0 1 20 18 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (fsl) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (camino) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 441.0236 cm
+Q
+q
+1 0 0 1 62.69291 423.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Which file formats does it support?) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 417.0236 cm
+Q
+q
+1 0 0 1 62.69291 393.0236 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 16.82 Tm /F1 10 Tf 12 TL .171318 Tw (Nifti \(.nii\), Dicom \(Siemens\), Trackvis \(.trk\), Dipy \(.dpy\), Numpy \(.npy, ,npz\), text and all other formats) Tj T* 0 Tw (supported by nibabel,nifti and pydicom.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 393.0236 cm
+Q
+q
+1 0 0 1 62.69291 375.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Which are the killer applications?) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 369.0236 cm
+Q
+q
+1 0 0 1 62.69291 219.0236 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 144 cm
+Q
+q
+1 0 0 1 20 144 cm
+Q
+q
+1 0 0 1 20 126 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Reconstruction algorithms e.g. DTI, GQI) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 126 cm
+Q
+q
+1 0 0 1 20 126 cm
+Q
+q
+1 0 0 1 20 108 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Tractography generation algorithms e.g. EuDX) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 108 cm
+Q
+q
+1 0 0 1 20 108 cm
+Q
+q
+1 0 0 1 20 90 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Intelligent downsampling of tracks) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 90 cm
+Q
+q
+1 0 0 1 20 90 cm
+Q
+q
+1 0 0 1 20 72 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Clustering tractography) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 72 cm
+Q
+q
+1 0 0 1 20 72 cm
+Q
+q
+1 0 0 1 20 54 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Resampling datasests with anisotropic voxels to isotropic) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 54 cm
+Q
+q
+1 0 0 1 20 54 cm
+Q
+q
+1 0 0 1 20 36 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Visualize multiple brains simultaneously) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 36 cm
+Q
+q
+1 0 0 1 20 36 cm
+Q
+q
+1 0 0 1 20 18 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Find track correspondence between different brains) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 18 cm
+Q
+q
+1 0 0 1 20 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Warping tractographies into another space e.g. MNI space) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 219.0236 cm
+Q
+q
+1 0 0 1 62.69291 201.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (Which are the main modules in dipy? Just a glimpse) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 195.0236 cm
+Q
+q
+1 0 0 1 62.69291 195.0236 cm
+Q
+ 
+endstream
+
+endobj
+% 'R21': class PDFStream 
+21 0 obj
+% page stream
+<< /Length 7419 >>
+stream
+1 0 0 1 0 0 cm BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 321.0236 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 429 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 0 423 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F2 10 Tf 12 TL (dipy) Tj T* ET
+Q
+Q
+BT 1 0 0 1 0 410 Tm  T* ET
+q
+1 0 0 1 10 414 cm
+Q
+q
+1 0 0 1 10 414 cm
+Q
+q
+1 0 0 1 10 366 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 33 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 0 27 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F2 10 Tf 12 TL (core) Tj T* ET
+Q
+Q
+BT 1 0 0 1 0 14 Tm  T* ET
+q
+1 0 0 1 10 18 cm
+Q
+q
+1 0 0 1 10 18 cm
+Q
+q
+1 0 0 1 10 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (graph) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 0 cm
+Q
+q
+1 0 0 1 10 0 cm
+Q
+q
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 366 cm
+Q
+q
+1 0 0 1 10 366 cm
+Q
+q
+1 0 0 1 10 318 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 33 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 0 27 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F2 10 Tf 12 TL (align) Tj T* ET
+Q
+Q
+BT 1 0 0 1 0 14 Tm  T* ET
+q
+1 0 0 1 10 18 cm
+Q
+q
+1 0 0 1 10 18 cm
+Q
+q
+1 0 0 1 10 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (aniso2iso) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 0 cm
+Q
+q
+1 0 0 1 10 0 cm
+Q
+q
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 318 cm
+Q
+q
+1 0 0 1 10 318 cm
+Q
+q
+1 0 0 1 10 234 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 69 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 0 63 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F2 10 Tf 12 TL (reconst) Tj T* ET
+Q
+Q
+BT 1 0 0 1 0 50 Tm  T* ET
+q
+1 0 0 1 10 54 cm
+Q
+q
+1 0 0 1 10 54 cm
+Q
+q
+1 0 0 1 10 36 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (dti) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 36 cm
+Q
+q
+1 0 0 1 10 36 cm
+Q
+q
+1 0 0 1 10 18 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (gqi) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 18 cm
+Q
+q
+1 0 0 1 10 18 cm
+Q
+q
+1 0 0 1 10 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (qball) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 0 cm
+Q
+q
+1 0 0 1 10 0 cm
+Q
+q
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 234 cm
+Q
+q
+1 0 0 1 10 234 cm
+Q
+q
+1 0 0 1 10 132 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 87 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 0 81 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F2 10 Tf 12 TL (tracking) Tj T* ET
+Q
+Q
+BT 1 0 0 1 0 68 Tm  T* ET
+q
+1 0 0 1 10 72 cm
+Q
+q
+1 0 0 1 10 72 cm
+Q
+q
+1 0 0 1 10 54 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (distances) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 54 cm
+Q
+q
+1 0 0 1 10 54 cm
+Q
+q
+1 0 0 1 10 36 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (metrics) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 36 cm
+Q
+q
+1 0 0 1 10 36 cm
+Q
+q
+1 0 0 1 10 18 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (propagation) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 18 cm
+Q
+q
+1 0 0 1 10 18 cm
+Q
+q
+1 0 0 1 10 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (learning) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 0 cm
+Q
+q
+1 0 0 1 10 0 cm
+Q
+q
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 132 cm
+Q
+q
+1 0 0 1 10 132 cm
+Q
+q
+1 0 0 1 10 48 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 69 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 0 63 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F2 10 Tf 12 TL (io) Tj T* ET
+Q
+Q
+BT 1 0 0 1 0 50 Tm  T* ET
+q
+1 0 0 1 10 54 cm
+Q
+q
+1 0 0 1 10 54 cm
+Q
+q
+1 0 0 1 10 36 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (dpy) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 36 cm
+Q
+q
+1 0 0 1 10 36 cm
+Q
+q
+1 0 0 1 10 18 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (bvectxt) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 18 cm
+Q
+q
+1 0 0 1 10 18 cm
+Q
+q
+1 0 0 1 10 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (pickles) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 0 cm
+Q
+q
+1 0 0 1 10 0 cm
+Q
+q
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 48 cm
+Q
+q
+1 0 0 1 10 48 cm
+Q
+q
+1 0 0 1 10 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 33 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 0 27 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F2 10 Tf 12 TL (external) Tj T* ET
+Q
+Q
+BT 1 0 0 1 0 14 Tm  T* ET
+q
+1 0 0 1 10 18 cm
+Q
+q
+1 0 0 1 10 18 cm
+Q
+q
+1 0 0 1 10 0 cm
+0 0 0 rg
+BT /F3 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.82 Tm /F1 10 Tf 12 TL (fsl) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 0 cm
+Q
+q
+1 0 0 1 10 0 cm
+Q
+q
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 10 0 cm
+Q
+q
+1 0 0 1 10 0 cm
+Q
+q
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 321.0236 cm
+Q
+q
+1 0 0 1 62.69291 321.0236 cm
+Q
+ 
+endstream
+
+endobj
+% 'R22': class PDFPageLabels 
+22 0 obj
+% Document Root
+<< /Nums [ 0
+ 23 0 R
+ 1
+ 24 0 R
+ 2
+ 25 0 R ] >>
+endobj
+% 'R23': class PDFPageLabel 
+23 0 obj
+% None
+<< /S /D
+ /St 1 >>
+endobj
+% 'R24': class PDFPageLabel 
+24 0 obj
+% None
+<< /S /D
+ /St 2 >>
+endobj
+% 'R25': class PDFPageLabel 
+25 0 obj
+% None
+<< /S /D
+ /St 3 >>
+endobj
+xref
+0 26
+0000000000 65535 f
+0000000113 00000 n
+0000000233 00000 n
+0000000398 00000 n
+0000000573 00000 n
+0000000740 00000 n
+0000001019 00000 n
+0000001298 00000 n
+0000001577 00000 n
+0000001734 00000 n
+0000001995 00000 n
+0000002120 00000 n
+0000002292 00000 n
+0000002474 00000 n
+0000002656 00000 n
+0000002842 00000 n
+0000003027 00000 n
+0000003209 00000 n
+0000003360 00000 n
+0000003483 00000 n
+0000010151 00000 n
+0000019530 00000 n
+0000027054 00000 n
+0000027173 00000 n
+0000027250 00000 n
+0000027327 00000 n
+trailer
+<< /ID 
+ % ReportLab generated PDF document -- digest (http://www.reportlab.com) 
+ [(\241~\223\2008\015\370s\233\225'\231\354\001\256\324) (\241~\223\2008\015\370s\233\225'\231\354\001\256\324)] 
+
+ /Info 9 0 R
+ /Root 8 0 R
+ /Size 26 >>
+startxref
+27374
+%%EOF

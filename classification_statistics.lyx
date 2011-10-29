@@ -1,0 +1,1137 @@
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{amsmath}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\gini}{\mathtt{gini}}
+\newcommand{\rce}{\mathtt{rce}}
+\end_preamble
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
+\headheight 3cm
+\headsep 3cm
+\footskip 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+Measures to compare classifications
+\end_layout
+
+\begin_layout Standard
+Considerable attention has been paid to measuring the performance of one
+ or more classifiers in the context of supervised learning.
+ 
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\mathcal{A}=\{A_{1},A_{2},\ldots,A_{m}\}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}=\{B_{1},B_{2},\ldots,B_{n}\}$
+\end_inset
+
+ be two classifications of 
+\begin_inset Formula $N$
+\end_inset
+
+ items.
+ Let the number of items in 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $B_{j}$
+\end_inset
+
+ be 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{j}$
+\end_inset
+
+, with 
+\begin_inset Formula $t_{ij}$
+\end_inset
+
+ items in the intersection 
+\begin_inset Formula $A_{i}\cap B_{j}$
+\end_inset
+
+.
+ There are a number of ways of measuring the similarity or dissimilarity
+ of 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+.
+ The first two are based on ways we might impute the 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+-labels if we just have the 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+-labelling.
+\end_layout
+
+\begin_layout Subsection*
+Gini impurity
+\end_layout
+
+\begin_layout Standard
+Suppose we have a probability distribution 
+\begin_inset Formula $P=(p_{1},p_{2},\ldots,p_{k})$
+\end_inset
+
+ on 
+\begin_inset Formula $k$
+\end_inset
+
+ items, and we randomly assign labels 
+\begin_inset Formula $(1,2,\ldots,k)$
+\end_inset
+
+ to items sampled from 
+\begin_inset Formula $P$
+\end_inset
+
+ using the same distribution 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Then the probability of assigning the wrong label is 
+\begin_inset Formula $1-{\displaystyle \sum_{i=1}^{k}}p_{i}^{2}$
+\end_inset
+
+.
+ This is the Gini impurity of 
+\begin_inset Formula $P$
+\end_inset
+
+ -
+\emph on
+ 
+\emph default
+
+\begin_inset Formula $\mathtt{\gini}(P)$
+\end_inset
+
+ - with 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $0\le\mathrm{\mathtt{\gini}}(P)\le1-\frac{1}{k}$
+\end_inset
+
+.
+ The lower limit occurs when 
+\begin_inset Formula $P$
+\end_inset
+
+ assigns probability 
+\begin_inset Formula $1$
+\end_inset
+
+ to just one label (i.e.
+ a very pure, concentrated distribution); the upper limit occurs when all
+ labels have equal probability 
+\begin_inset Formula $\frac{1}{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $P_{\mathcal{A}|B_{j}}$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ is the observed conditional probability distribution 
+\begin_inset Formula $(p_{i|j}=\frac{t_{ij}}{b_{j}},\, i=1,\ldots,m)$
+\end_inset
+
+ of 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ given 
+\begin_inset Formula $B_{j},$
+\end_inset
+
+ then we define the Gini impurity of 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ as 
+\begin_inset Formula $\gini(\mathcal{A}|\mathcal{B})={\displaystyle \sum_{j=1}^{n}\frac{b_{j}}{N}\thinspace\mathrm{\mathtt{\gini}}(P_{\mathcal{A}|B_{j}})}$
+\end_inset
+
+.
+ In terms of the matrix 
+\begin_inset Formula $T=(t_{ij})$
+\end_inset
+
+ this is the 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+-weighted average of the impurities of the rows of 
+\begin_inset Formula $T.$
+\end_inset
+
+ We similarly define 
+\begin_inset Formula $\gini(\mathcal{B}|\mathcal{A})$
+\end_inset
+
+ and it is equal to the 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+-weighted average of the impurities of the columns of 
+\begin_inset Formula $T.$
+\end_inset
+
+ It is convenient to arrange our comparison metrics so that they are similarity
+ measures, with high values indicating high dissimilarity.
+ So we define and report the complementary 
+\begin_inset Formula $\mathtt{{gini\_purity}}$
+\end_inset
+
+as 
+\begin_inset Formula $1-\gini$
+\end_inset
+
+.
+ We also restrict ourselves to reporting the symmetrised value 
+\begin_inset Formula $(\gini(\mathcal{A}|\mathcal{B})+\gini(\mathcal{B}|\mathcal{A}))/2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Random classification errors
+\end_layout
+
+\begin_layout Standard
+In this case given 
+\begin_inset Formula $P$
+\end_inset
+
+ we assign to each item the label with maximum probability 
+\begin_inset Formula $i_{\mathrm{max}}=\argmax_{i}p_{i}$
+\end_inset
+
+.
+ The classification error in this case is 
+\begin_inset Formula $1-p_{\mathrm{max}}=1-\max_{i}p_{i}$
+\end_inset
+
+.
+ When we do this conditional on the 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+-label and average over those labels, we get the random classification error
+ of 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ conditional on 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathrm{\rce}(\mathcal{A}|\mathcal{B})={\displaystyle \sum_{j=1}^{n}\frac{b_{j}}{N}\thinspace(1-p_{B_{j}}^{*})}$
+\end_inset
+
+.
+ We define 
+\begin_inset Formula $\rce(\mathcal{B}|\mathcal{A})$
+\end_inset
+
+ similarly, and the complementary 
+\begin_inset Formula $\mathtt{{random\_classification\_accuracy}}.$
+\end_inset
+
+ A further simplification is to use the symmetrised value 
+\begin_inset Formula $(\rce(\mathcal{A}|\mathcal{B})+\rce(\mathcal{B}|\mathcal{A}))/2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Correctness and completeness (splitting and lumping pairs of items)
+\end_layout
+
+\begin_layout Standard
+Here the focus moves to the labels assigned by 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ to pairs of items.
+ Differences in the partitions
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ are reflected in two ways.
+ Items assigned the same label by 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ are said to be split by 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ if their 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+-labels are not equal; alternatively items assigned different 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+-labels are said to be lumped 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+by 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ if they are assigned the same 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+-label.
+ Note that what is lumped (split) by 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ will equally be split (lumped) by 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The total number of pairs from 
+\begin_inset Formula $N$
+\end_inset
+
+ items is 
+\begin_inset Formula $\mathtt{pairs(\mathcal{A})=}\binom{N}{2}=\frac{N(N-1)}{2}$
+\end_inset
+
+.
+ The number of pairs assigned the same 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+-labels is 
+\begin_inset Formula ${\displaystyle \mathtt{together}(\mathcal{A})=\sum_{i=1}^{m}\binom{a_{i}}{2}}$
+\end_inset
+
+.
+ The number of pairs assigned different labels is 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\mathtt{apart}(\mathcal{A})=\mathtt{pairs}(\mathcal{A})-\mathtt{together}(\mathcal{A})$
+\end_inset
+
+.
+ This can also be written as 
+\begin_inset Formula ${\displaystyle \sum_{1\le i\ne i'\le m}a_{i}a_{i'}}$
+\end_inset
+
+which in turn can be expressed in terms of the cumulative sum of 
+\begin_inset Formula $(a_{i})$
+\end_inset
+
+ which is an efficient way of programming these calculation of sums of all
+ products with unequal subscripts.
+ The number of 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+-pairs split by 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ is 
+\begin_inset Formula \[
+\mathtt{split}(\mathcal{A}|\mathcal{B}){\displaystyle =\sum_{i=1}^{m}}\bigl({\displaystyle \sum_{1\le j\ne j'\le n}n_{ij}n_{ij'}}\bigr)=\mathtt{lumped}(\mathcal{B}|\mathcal{A}).\]
+
+\end_inset
+
+ Similarly 
+\begin_inset Formula \[
+\mathtt{lumped}(\mathcal{A}|\mathcal{B}){\displaystyle =\sum_{j=1}^{n}}\bigl({\displaystyle \sum_{1\le i\ne i'\le m}n_{ij}n_{i'j}}\bigr)=\mathtt{split}(\mathcal{B}|\mathcal{A}).\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Completeness
+\emph default
+ and 
+\emph on
+correctness
+\emph default
+ are define in terms of these quantities: 
+\begin_inset Formula \[
+\mathtt{completeness}(\mathcal{A}|\mathcal{B})=1-\mathtt{split}(\mathcal{A}|\mathcal{B})/\mathtt{together}(\mathcal{A})\]
+
+\end_inset
+
+ and 
+\begin_inset Formula \[
+\mathtt{correctness}(\mathcal{A}|\mathcal{B})=1-\mathtt{lumped}(\mathcal{A}|\mathcal{B})/\mathtt{apart}(\mathcal{A}).\]
+
+\end_inset
+
+ A combined measure of 
+\emph on
+discordance
+\emph default
+ between 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ is defined as 
+\begin_inset Formula \[
+\mathtt{\mathtt{discord}(\mathcal{A},\mathcal{B})=(lumped}(\mathcal{A}|\mathcal{B})+\mathtt{split}(\mathcal{A}|\mathcal{B})/\mathtt{pairs}(\mathcal{A}).\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the clusterings we encounter in tractography typically the number of
+ apart pairs in 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ is very high, and only a small percentage (e.g.
+ 0.5%) of these pairs will be lumped by 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+.
+ This is because [claim on the basis of little analysis] the average cluster
+ size is small by comparison with the number of clusters.
+ [Needs numerical evaluation.] As a consequence, the 
+\bar under
+correctness
+\bar default
+ measure is not a particularly useful metric.
+ By contrast the number of together pairs is modest, and the 
+\bar under
+completeness
+\bar default
+ measure is more sensitive.
+ Because apart pairs seem to dominate together pairs, the 
+\bar under
+discord
+\bar default
+ measure has the same limited sensitivity as correctness.
+\end_layout
+
+\begin_layout Subsection*
+Maximum Agreement (
+\begin_inset Formula $\kappa_{\max}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+Cohen's 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ is a well-known measure of agreement between raters on the assignment of
+ a set of items to a shared classification scheme.
+ It adjusts the agreements -- items on which the rates agree -- for the
+ number of agreements that might have ocurred by chance:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula \[
+\kappa=\mathtt{\frac{observed\: proportion\: of\: agreements-\mathtt{expected\: proportion\: of\: chance\: agreements}}{\mathtt{expected\: proportion}\: of\: non-chance\: agreements}}.\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This can be simply represented in terms of the overlap matrix 
+\begin_inset Formula $T=(t_{ij})$
+\end_inset
+
+ by the formula:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\kappa(T)=\frac{{\displaystyle \sum_{i=1}^{M}}t_{ii}/N-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{i}/N^{2}}{1-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{i}/N^{2}},\]
+
+\end_inset
+
+where 
+\begin_inset Formula $r_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{j}$
+\end_inset
+
+ represent the row and column totals of 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ We have extended 
+\begin_inset Formula $T$
+\end_inset
+
+ to a square matrix of size 
+\begin_inset Formula $M=\max(m,n)$
+\end_inset
+
+ by adding if necessary rows or columns of zeros.
+ When we adapt this measure to the case of comparing two clusterings we
+ need further to take account of the lack of prior correspondence between
+ the two sets of labels.
+ The 
+\begin_inset Formula $\kappa_{\max}$
+\end_inset
+
+ statistic is the result of maximising 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ over all possible correspondences:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\kappa_{\max}=\mathrm{max}_{\pi}\kappa(T_{\pi})=\frac{{\displaystyle \sum_{i=1}^{M}}t_{i\pi(i)}/N-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{\pi(i)}/N^{2}}{1-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{\pi(i)}/N^{2}},\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $T_{\pi}$
+\end_inset
+
+ is the matrix 
+\begin_inset Formula $T$
+\end_inset
+
+ with columns reordered by a permutation 
+\begin_inset Formula $\pi.$
+\end_inset
+
+ The principal trouble with the 
+\begin_inset Formula $\kappa_{\max}$
+\end_inset
+
+ statistic is that its computation is 
+\begin_inset Formula $O(n!)$
+\end_inset
+
+ if all permutations are tried.
+ One suggested way out of the problem caused by the size of the search set
+ is to use a randomised search strategy for instance based on a simulated
+ annealing approach [ref].
+ An alternative is to redefine the objective.
+ One obvious choice in this setting is the 
+\begin_inset Formula $\mathtt{number\; of\; agreeements}={\displaystyle \sum_{i=1}^{M}}t_{i\pi(i)}$
+\end_inset
+
+ corresponding to the permutation 
+\begin_inset Formula $\pi$
+\end_inset
+
+, which the leading term in the numerator of 
+\begin_inset Formula $\kappa_{\max}$
+\end_inset
+
+.
+ Seeking to maximise the 
+\begin_inset Formula $\mathtt{number\; of\; agreeements}$
+\end_inset
+
+ amongst all permutations 
+\begin_inset Formula $\pi$
+\end_inset
+
+ is a combinatorial optimization problem (weighted assignment problem on
+ a bipartite graph) that can be reformulated as a linear programming problem
+ whose efficient solution by the `Hungarian algorithm' is well known [ref].
+\end_layout
+
+\begin_layout Subsection*
+`Hungarian' matching
+\end_layout
+
+\begin_layout Standard
+We observe that is 
+\begin_inset Formula ${\displaystyle \sum_{i=1}^{M}}t_{i\pi(i)}/N$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+>>>>>> Working with  5  classes 
+\end_layout
+
+\begin_layout Plain Layout
+
+>>> Annealing approximation ...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+time       1.83583498001 
+\end_layout
+
+\begin_layout Plain Layout
+
+maxkappa   0.0364367 
+\end_layout
+
+\begin_layout Plain Layout
+
+max order  [3 4 0 1 2] 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+>>> Exhaustive search ...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+time       0.0178101062775 
+\end_layout
+
+\begin_layout Plain Layout
+
+maxkappa   0.0364366903912 
+\end_layout
+
+\begin_layout Plain Layout
+
+max order  (3, 4, 0, 1, 2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+>>> Hungarian matching ...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+total agreements: 229 229.0 
+\end_layout
+
+\begin_layout Plain Layout
+
+optimal assignment [3 4 0 1 2] 
+\end_layout
+
+\begin_layout Plain Layout
+
+kappa 0.0364366903912 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+>>>>>> Working with  6  classes (1000, 2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+>>> Annealing approximation ...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+time       2.82582712173 
+\end_layout
+
+\begin_layout Plain Layout
+
+maxkappa   0.043579 
+\end_layout
+
+\begin_layout Plain Layout
+
+max order  [0 2 3 4 5 1] 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+>>> Exhaustive search ...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+time       0.107719898224 
+\end_layout
+
+\begin_layout Plain Layout
+
+maxkappa   0.0435789587371 
+\end_layout
+
+\begin_layout Plain Layout
+
+max order  (0, 2, 3, 4, 5, 1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+>>> Hungarian matching ...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+total agreements: 203 203.0 
+\end_layout
+
+\begin_layout Plain Layout
+
+optimal assignment [0 2 3 4 5 1] 
+\end_layout
+
+\begin_layout Plain Layout
+
+kappa 0.0435789587371 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+>>>>>> Working with  7  classes 
+\end_layout
+
+\begin_layout Plain Layout
+
+>>> Annealing approximation ...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+time       8.03185606003 
+\end_layout
+
+\begin_layout Plain Layout
+
+maxkappa   0.0350449 
+\end_layout
+
+\begin_layout Plain Layout
+
+max order  [2 6 5 3 0 4 1] 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+>>> Exhaustive search ...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+time       0.759663820267 
+\end_layout
+
+\begin_layout Plain Layout
+
+maxkappa   0.0350448855631 
+\end_layout
+
+\begin_layout Plain Layout
+
+max order  (2, 6, 5, 3, 0, 4, 1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+>>> Hungarian matching ...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+total agreements: 172 172.0 
+\end_layout
+
+\begin_layout Plain Layout
+
+optimal assignment [2 0 5 3 6 4 1] 
+\end_layout
+
+\begin_layout Plain Layout
+
+kappa 0.0335074109438 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+>>>>>> Working with  8  classes
+\end_layout
+
+\begin_layout Plain Layout
+
+>>> Annealing approximation ...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+time       3.76319408417 
+\end_layout
+
+\begin_layout Plain Layout
+
+maxkappa   0.0408217 
+\end_layout
+
+\begin_layout Plain Layout
+
+max order  [7 3 1 6 2 0 5 4]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+>>> Exhaustive search ...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+time       6.19923996925 
+\end_layout
+
+\begin_layout Plain Layout
+
+maxkappa   0.0408216694276 
+\end_layout
+
+\begin_layout Plain Layout
+
+max order  (7, 3, 1, 6, 2, 0, 5, 4) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+>>> Hungarian matching ...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+total agreements: 161 161.0 
+\end_layout
+
+\begin_layout Plain Layout
+
+optimal assignment [7 3 1 6 2 0 5 4] 
+\end_layout
+
+\begin_layout Plain Layout
+
+kappa 0.0408216694276 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+>>>>>> Working with  9  classes
+\end_layout
+
+\begin_layout Plain Layout
+
+>>> Annealing approximation ...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+time       9.2730679512 
+\end_layout
+
+\begin_layout Plain Layout
+
+maxkappa   0.0323183 
+\end_layout
+
+\begin_layout Plain Layout
+
+max order  [7 6 1 0 5 4 2 8 3]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+>>> Exhaustive search ...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+time       56.1402289867 
+\end_layout
+
+\begin_layout Plain Layout
+
+maxkappa   0.034482913836 
+\end_layout
+
+\begin_layout Plain Layout
+
+max order  (7, 8, 1, 0, 5, 4, 6, 2, 3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+>>> Hungarian matching ...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+total agreements: 142 142.0 
+\end_layout
+
+\begin_layout Plain Layout
+
+optimal assignment [7 4 1 0 5 8 6 2 3] 
+\end_layout
+
+\begin_layout Plain Layout
+
+kappa 0.0343699038534
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have tried various published coded implementations of the Hungarian algorithm.
+ 
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,131 @@
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Fact Delta eXtended
+\end_layout
+
+\begin_layout Section
+Overview
+\end_layout
+
+\begin_layout Section
+Extensions
+\end_layout
+
+\begin_layout Itemize
+Multiple peaks (crossings)
+\end_layout
+
+\begin_layout Itemize
+Non-isotropic voxel size (image affine)
+\end_layout
+
+\begin_layout Itemize
+Modularity ( different interpolations)
+\end_layout
+
+\begin_layout Itemize
+Errors along the tracks
+\end_layout
+
+\begin_layout Itemize
+Delta function accumulating all different stopping criteria
+\end_layout
+
+\begin_layout Itemize
+Works on a uniform grid of seeds
+\end_layout
+
+\begin_layout Section
+
+\series bold
+Algorithm
+\end_layout
+
+\begin_layout Itemize
+find the closest index in the image data from the seed
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+closest_index=floor(seed +.5 ) then you can access QA & IND
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+do for all QA peaks
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+check against QA threshold and if higher then return initial_direction from
+ IND[closest_index]
+\end_layout
+
+\begin_layout Itemize
+While delta is True
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+calculate the weights from the neighbors
+\end_layout
+
+\begin_layout Itemize
+fow all 8 neighbors(weights)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+calculate new directions saved in direction
+\end_layout
+
+\begin_layout Itemize
+new_direction += w[i]*directions
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\end_body
+\end_document

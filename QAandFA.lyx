@@ -1,0 +1,1016 @@
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Spin propagator and diffusion crossings
+\end_layout
+
+\begin_layout Section
+Overview
+\end_layout
+
+\begin_layout Standard
+The idea that only the orientation information from the diffusion signal
+ is adequate for accurate tractography generation is under question.
+ We propose a new method based on the work of Yeh.
+ et.
+ al 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
+
+\end_inset
+
+ who extends the current derivations for diffusion signal reconstruction
+ and provides both scalar and vector metrics that facilitate the understanding
+ of the underlying signal and its use for fast and accurate tractography.
+ The key issue is the reentrance of the spin density as an important part
+ of the diffusion voxel reconstruction.
+ The spin density together with the diffusion propagator give rise to the
+ spin propagator.
+ From the spin propagator both old metrics like FA and MD can be calculated
+ non-parametricly along with new metrics as QA and XA (FA for X) which give
+ higher insight on the underlying signal in a model free fashion.
+\end_layout
+
+\begin_layout Section
+From k-space to q-space
+\end_layout
+
+\begin_layout Standard
+The starting point is the classical formulation seen in eq.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:kq"
+
+\end_inset
+
+ of joint k-space and q-space imaging (Calaghan 8.3.1 p.
+ 438)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Callaghan1991OUP"
+
+\end_inset
+
+ using the narrow pulse gradient spin echo (PGSE) sequence of Tanner and
+ Stejskal
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula \begin{eqnarray}
+\mathit{\mathcal{RF}}(\mathbf{k},\mathbf{q}) & = & \int\rho(\mathbf{r})\exp(j2\pi\mathbf{k}\cdot\mathbf{r})\int p_{\Delta}(\mathbf{r},\mathbf{R})\exp(j2\pi\mathbf{q}\cdot\mathbf{R})d\mathbf{R}d\mathbf{r}\label{eq:kq}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here 
+\begin_inset Formula $RF$
+\end_inset
+
+ is the complex RF signal measured at spatial wave number 
+\begin_inset Formula $\mathbf{k}$
+\end_inset
+
+ and magnetic gradient wave number 
+\begin_inset Formula $\mathbf{q}$
+\end_inset
+
+, 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is the local spin density (number of protons per unit volume contributing
+ to the RF signal), 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ is the diffusion time scale of the sequence, 
+\begin_inset Formula $p_{\Delta}$
+\end_inset
+
+ is the average diffusion propagator (transition probability distribution),
+ 
+\series bold
+
+\begin_inset Formula $\mathbf{r}$
+\end_inset
+
+
+\series default
+ is the voxel coordinate and 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+ is the diffusion displacement.
+ 
+\end_layout
+
+\begin_layout Standard
+The k-space reconstruction gives us diffusion weighted image data 
+\begin_inset Formula $S$
+\end_inset
+
+ which reveal the average propagator 
+\begin_inset Formula $p_{\Delta}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wedeen"
+
+\end_inset
+
+ of each voxel [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:W"
+
+\end_inset
+
+]
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula \begin{eqnarray}
+S(\mathbf{r},\mathbf{q}) & = & \int\rho(\mathbf{r})p_{\Delta}(\mathbf{r},\mathbf{R})\exp(j2\pi\mathbf{q}\cdot\mathbf{R})d\mathbf{R}\label{eq:W}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to represent the average propagator in the scale of spin quantity
+ Yeh et.al.
+ introduced a 
+\emph on
+spin density function 
+\emph default
+which is estimated by scaling the average propagator 
+\begin_inset Formula $p_{\Delta}$
+\end_inset
+
+with the spin density
+\begin_inset Formula $\rho$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $Q(\mathbf{r},\mathbf{R})=\rho(\mathbf{r})p_{\Delta}(\mathbf{r},\mathbf{R})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+\begin_inset Formula \begin{eqnarray}
+S(\mathbf{r},\mathbf{q}) & = & \int Q(\mathbf{r},\mathbf{R})\exp(j2\pi\mathbf{q}\cdot\mathbf{R})d\mathbf{R}\label{eq:W2Q}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can apply the inverse fourier transform in eq.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:W2Q"
+
+\end_inset
+
+ and obtain
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+Q(\mathbf{r},\mathbf{R}) & = & \int S(\mathbf{r},\mathbf{q})exp(-j2\pi\mathbf{q}\cdot\mathbf{R})d\mathbf{q}\label{eq:Q2S_complex}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+ 
+\begin_inset Formula $Q(\mathbf{r},\mathbf{R})$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+ is real, 
+\begin_inset Formula $S(\mathbf{r},\mathbf{q})$
+\end_inset
+
+ is symmetric (even) in q-space, i.e.
+ 
+\begin_inset Formula $S(\mathbf{r},\mathbf{q})=S(\mathbf{r},-\mathbf{q})$
+\end_inset
+
+ we can use directly the fourier cosine transform 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+Q(\mathbf{r},\mathbf{R}) & = & \int S(\mathbf{r},\mathbf{q})cos(2\pi\mathbf{q}\cdot\mathbf{R})d\mathbf{q}\label{eq:cosine_transform}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and obtain the spin distribution function 
+\begin_inset Formula $\psi$
+\end_inset
+
+ from an unweighted trancated radial projection 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\psi_{Q}(\mathbf{r},\mathbf{\hat{u}}) & = & \intop_{0}^{L_{\Delta}}Q(\mathbf{r},L\mathbf{\hat{u}})dL\label{eq:SDF}\end{eqnarray}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+!!! add here equations 5 & 6 from Frank's paper and their matrix form
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $L_{\Delta}$
+\end_inset
+
+is the diffusion sampling length.
+ This parameter acts like a smoothing factor.
+ The highest the 
+\begin_inset Formula $L_{\Delta}$
+\end_inset
+
+more detailed the SDF will be but also more noisy.
+ Typical values for the diffusion sampling length are 
+\begin_inset Formula $[1.1-1.3]$
+\end_inset
+
+.
+ Usually 
+\begin_inset Formula $L_{\Delta}=1.2$
+\end_inset
+
+ is a good ballance between noisy reconstruction and over-smoothing.
+\end_layout
+
+\begin_layout Standard
+Assuming that the diffusion voxel can be represented by a single tensor
+ model eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:W"
+
+\end_inset
+
+ can be written in the form
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula \begin{eqnarray}
+S(\mathbf{q}) & = & S_{0}exp(-b\mathbf{q}^{T}D\mathbf{q})\label{eq:Tensor}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $S_{0}$
+\end_inset
+
+ is the image when b-value is equal to 0, 
+\begin_inset Formula $b$
+\end_inset
+
+ is the b-value for a specific direction and 
+\begin_inset Formula $D$
+\end_inset
+
+ is a 
+\begin_inset Formula $3x3$
+\end_inset
+
+ matrix, known as the diffusion tensor.
+ Then from eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Q2S_complex"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Tensor"
+
+\end_inset
+
+ the Fourier transform of 
+\begin_inset Formula $S$
+\end_inset
+
+ is equal to 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula \begin{eqnarray}
+Q(\mathbf{R}) & = & \int S_{0}\exp(-b\mathbf{q}^{T}D\mathbf{q})\exp(-j2\pi\mathbf{q}\cdot\mathbf{R})d\mathbf{q}\label{eq:FourierW}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The same equation in its triple integral form can be written as 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+Q(R) & =S_{0} & \iiint\exp(-b\sum_{i=1}^{3}q_{i}^{2}\lambda_{i}-j2\pi\sum_{i=1}^{3}q_{i}R_{i})dq_{1}dq_{2}dq_{3}\nonumber \\
+ & =S_{0} & \iiint\prod_{i=1}^{3}exp(-bq_{i}^{2}\lambda_{i}-j2\pi q_{i}R_{i})dq_{1}dq_{2}dq_{3}\nonumber \\
+ & =S_{0} & \prod_{i=1}^{3}\int\exp(-bq_{i}^{2}\lambda_{i}-j2\pi q_{i}R_{i})dq_{i}\nonumber \\
+ & =S_{0} & \prod_{i=1}^{3}\int\exp(-b\lambda_{i}[q_{i}^{2}+\frac{j2\pi R_{i}}{b\lambda_{i}}q_{i}])dq_{i}\nonumber \\
+ & =S_{0} & \prod_{i=1}^{3}\int\exp\{-b\lambda_{i}[(q_{i}+\frac{j\pi R_{i}}{b\lambda_{i}})^{2}+\frac{\pi^{2}R_{i}^{2}}{b^{2}\lambda_{i}^{2}}]\}\nonumber \\
+ & =S_{0} & \prod_{i=1}^{3}\int\exp\{-b\lambda_{i}(q_{i}+\frac{j\pi R_{i}}{b\lambda_{i}})^{2}\}exp\{-\frac{\pi^{2}R_{i}^{2}}{b\lambda_{i}}\}\label{eq:NextQ}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In that stage we could try to make use of the formula 
+\begin_inset Formula $\int\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp(-\frac{(x-\mu)^{2}}{2\sigma^{2}})dx=1$
+\end_inset
+
+.
+ Now we can see that 
+\begin_inset Formula $b\lambda_{i}=1/2\sigma^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ corresponds to 
+\begin_inset Formula $\mu=-jR_{i}/b\lambda_{i}$
+\end_inset
+
+.
+ Therefore, eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:NextQ"
+
+\end_inset
+
+ can now be written as 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+Q(\mathbf{R}) & =S_{0} & \prod_{i=1}^{3}\sqrt{\frac{\pi}{b\lambda_{i}}}\exp(-\frac{\pi^{2}R_{i}^{2}}{b\lambda_{i}})\nonumber \\
+ & =S_{0} & \left(\frac{\pi}{b}\right)^{3/2}\frac{1}{\sqrt{\prod_{i=1}^{3}\lambda_{i}}}\exp(-\frac{\,\,\pi^{2}}{b}\mathbf{R}^{T}D^{-1}\mathbf{R})\label{eq:TensorQ}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $D$
+\end_inset
+
+ is the diffusion tensor.
+ We can replace the displacement vector 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+ with a scalar value 
+\begin_inset Formula $L$
+\end_inset
+
+ and a unit vertor 
+\begin_inset Formula $\hat{u}$
+\end_inset
+
+ i.e.
+ 
+\begin_inset Formula $\mathbf{R}=L\hat{\mathbf{u}}$
+\end_inset
+
+ and from eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:TensorQ"
+
+\end_inset
+
+ we can replace 
+\begin_inset Formula $\frac{2\pi^{2}}{b}\mathbf{\hat{u}}^{T}D^{-1}\mathbf{\hat{u}}$
+\end_inset
+
+ with 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+
+\begin_inset Formula $S_{0}\left(\frac{\pi}{b}\right)^{3/2}\frac{1}{\lambda_{1}\lambda_{2}\lambda_{3}}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+ with 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ Using that last change of variables we can now write 
+\begin_inset Formula \begin{eqnarray}
+\psi_{Q}(\mathbf{r},\mathbf{\hat{u}}) & = & \intop_{0}^{L_{\Delta}}Q(\mathbf{r},L\mathbf{\hat{u}})dL\nonumber \\
+ & = & \alpha\intop_{0}^{L_{\Delta}}\exp(-L^{2}\frac{k}{2})dL\label{eq:TensorQ2}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Setting 
+\begin_inset Formula $m=\sqrt{k}L$
+\end_inset
+
+ and using the derivation for the error function eq.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:TensorQ2"
+
+\end_inset
+
+ illustrates the remarkable result that we can calculate analyticaly the
+ spin odf for gaussian diffusion using the cumulative distribution function
+ 
+\begin_inset Formula $CDF$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula \begin{eqnarray}
+\psi_{Q}(\mathbf{\hat{u}}) & = & \frac{\alpha}{\sqrt{k}}\intop_{0}^{\sqrt{k}L_{\Delta}}e^{-m^{2}/2}dm\\
+ & = & \alpha\sqrt{\frac{2\pi}{k}}\left[CDF(\sqrt{k}L_{\Delta})-\frac{1}{2}\right]\label{eq:spinodf_cdf}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This can be used as a check to compare the approximated/sampled spin odf
+ that is derived in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
+
+\end_inset
+
+ with eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:spinodf_cdf"
+
+\end_inset
+
+ for the case of gaussian diffusion.
+ 
+\end_layout
+
+\begin_layout Standard
+What is also very interesting is to try to derive what the normalization
+ factor should be for the spin odf in eq.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:TensorQ2"
+
+\end_inset
+
+.
+ Because calculating a spherical intergral from eq.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:spinodf_cdf"
+
+\end_inset
+
+ seems at the moment very complicated we first work with the simpler gaussian
+ diffusion ODF derived by Tuch 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tuch2004"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\psi_{p_{\Delta}}=\frac{1}{Z}\sqrt{\frac{\pi\tau}{\mathbf{u}^{T}D^{-1}\mathbf{u}}}\label{eq:tuchs_gaussian_odf}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\frac{Z}{\sqrt{\pi\tau}} & = & \iintop_{S^{2}}(\mathbf{u}^{T}D^{-1}\mathbf{u})^{-\frac{1}{2}}d\mathbf{u}\label{eq:spherical_integral_Z}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lets now define 
+\begin_inset Formula $f_{D}(\mathbf{u})=(\mathbf{u}^{T}D^{-1}\mathbf{u})^{-\frac{1}{2}}$
+\end_inset
+
+.
+ From 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "olver2010nist"
+
+\end_inset
+
+ (19.31.2) we know that we can calculate the following integral on the entire
+ space (eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:hole_space_known"
+
+\end_inset
+
+).
+ By expanding it in polar form we can find surface integral needed in eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:spherical_integral_Z"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+MHG & = & \iiint f_{D}(x)e^{-|x|^{2}}dx\label{eq:hole_space_known}\\
+ & = & \intop_{0}^{\infty}\left[\iint f_{D}(ru)du\right]e^{-r^{2}}r^{2}dr,\qquad x=ru\:(polar)\label{eq:hole_space_polar}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+However we know that 
+\begin_inset Formula $f_{D}(r\mathbf{u})=((r\mathbf{u})^{T}D^{-1}(r\mathbf{u}))^{-\frac{1}{2}}=r^{-1}(\mathbf{u}^{T}D^{-1}\mathbf{u})^{-\frac{1}{2}}$
+\end_inset
+
+ therefore 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+MHG & = & \intop_{0}^{\infty}\left[\iint f_{D}(u)du\right]e^{-r^{2}}rdr\\
+ & = & \iint f_{D}(u)du\intop_{0}^{\infty}re^{-r^{2}}dr\\
+ & = & \frac{1}{2}\iint f_{D}(u)du\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consequently,
+\begin_inset Formula $\frac{Z}{\sqrt{\pi\tau}}=2MHG$
+\end_inset
+
+ where MHG is the multivariate hypergeometric function with 
+\begin_inset Formula $\mu=-\frac{1}{2}$
+\end_inset
+
+,
+\begin_inset Formula $B=I$
+\end_inset
+
+,
+\begin_inset Formula $n=3$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{1},\lambda_{2},\lambda_{3}$
+\end_inset
+
+the eigenvalues of 
+\begin_inset Formula $A$
+\end_inset
+
+ derived from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "olver2010nist"
+
+\end_inset
+
+ (19.31.2) & (19.16.9).
+ Therefore, 
+\begin_inset Formula \begin{eqnarray*}
+\frac{Z}{\sqrt{\pi\tau}} & = & 2MHG\\
+ & = & \frac{2\pi^{\frac{3}{2}}\Gamma(1)}{\sqrt{det(I)}\Gamma(\frac{3}{2})}R_{-\frac{1}{2}}(\frac{1}{2},\frac{1}{2},\frac{1}{2};\lambda_{1},\lambda_{2},\lambda_{3})\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $R_{-\frac{1}{2}}=\frac{1}{2}\intop_{0}^{\infty}t^{0}(t+\lambda_{1})^{-\frac{1}{2}}(t+\lambda_{2})^{-\frac{1}{2}}(t+\lambda_{3})^{-\frac{1}{2}}dt$
+\end_inset
+
+ with 
+\begin_inset Formula $\alpha=\frac{1}{2}$
+\end_inset
+
+and 
+\begin_inset Formula $\alpha'=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Given 
+\begin_inset Formula $\lambda_{1},\lambda_{2},\lambda_{3}$
+\end_inset
+
+we can integrate numerically or even possibly analytically.
+ For the isotropic case the integral simplifies to 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\frac{1}{2}\intop_{0}^{\infty}t^{0}(t+\lambda)^{-\frac{3}{2}}dt=\frac{1}{\sqrt{\lambda}}$
+\end_inset
+
+ and for the cylindrical case (
+\begin_inset Formula $\lambda_{2}=\lambda_{3}$
+\end_inset
+
+) to 
+\begin_inset Formula $\frac{1}{2}\intop_{0}^{\infty}(t+\lambda_{1})^{-\frac{1}{2}}(t+\lambda_{2})^{-1}dt$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+From the spin density ODF to FA
+\end_layout
+
+\begin_layout Standard
+As 
+\begin_inset Formula $FA(\lambda_{1},\lambda_{2},\lambda_{3})$
+\end_inset
+
+ is a function of the eigen-values of the diffusion tensor model we could
+ try to approximate directly FA from the sODF by finding 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\lambda_{1},\lambda_{2},\lambda_{3}$
+\end_inset
+
+ through the global maximum , equatorial maximum and inferior maximum of
+ the sODF.
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Ldelta1_Ldelta_10.png
+	scale 80
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang british
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+import scipy.stats.distributions as ssd 
+\begin_inset Newline newline
+\end_inset
+
+used ssd.norm.cdf
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+if k=0 then cdf = NaN but 
+\begin_inset Formula $\lim_{k\rightarrow0}\backsimeq0.398$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+What is QA then?
+\end_layout
+
+\begin_layout Standard
+QA is defined by the sODF value at the resolved fiber orientation 
+\begin_inset Formula $\hat{u}$
+\end_inset
+
+ (local maximum) minus the isotropic component (global minimum) for the
+ voxel.
+ QA can be also very easily normalized by the maximum sODF value of all
+ voxels.
+\end_layout
+
+\begin_layout Section
+Appendix
+\end_layout
+
+\begin_layout Subsection
+The cosine transform
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\int_{0}^{\infty}\cos(st)g(t)dt$
+\end_inset
+
+ where 
+\begin_inset Formula $g(t)$
+\end_inset
+
+ defined on 
+\begin_inset Formula $[t,\infty)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $f(t)$
+\end_inset
+
+ be an even function 
+\begin_inset Formula $f(t)=f(-t)$
+\end_inset
+
+ defined for 
+\begin_inset Formula $-\infty<t<\infty$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+F(s) & = & \int_{-\infty}^{\infty}f(t)e^{its}dt\\
+ & = & \int_{0}^{\infty}f(t)e^{its}dt+\int_{-\infty}^{0}f(t)e^{its}dt\\
+ & = & \int_{0}^{\infty}f(t)e^{its}dt-\int_{-\infty}^{0}f(-t)e^{-its}dt\\
+ & = & \int_{0}^{\infty}f(t)e^{its}dt+\int_{0}^{\infty}f(t)e^{-its}dt\\
+ & = & \int_{0}^{\infty}f(t)[e^{its}+e^{-its}]dt\\
+ & = & \int_{0}^{\infty}f(t)[cos(its)+isin(its)+cos(its)-isin(its)]dt\\
+ & = & 2\int_{0}^{\infty}f(t)cos(st)dt\end{eqnarray*}
+
+\end_inset
+
+ In the third row above we replace 
+\begin_inset Formula $t\rightarrow-t$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+If you want to compute the integral in the hole space because of symmetry
+ you have 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $F(s)=\int_{-\infty}^{\infty}f(t)cos(st)dt$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "diffusion"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

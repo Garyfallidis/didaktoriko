@@ -1,0 +1,194 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes from Mahnaz Maddah's Thesis
+\end_layout
+
+\begin_layout Section
+Quantitative Analysis of Diffusion MRI
+\end_layout
+
+\begin_layout Enumerate
+Region of interest (ROI)-based methods 
+\begin_inset Newline newline
+\end_inset
+
+Non-time efficient (require user interaction) 
+\begin_inset Newline newline
+\end_inset
+
+ROI size, shape, number, and location not only affect the measured quantities,
+ but also influence the significance of the group analysis.(cite Kanaan 2006)
+\end_layout
+
+\begin_layout Enumerate
+Voxel-based methods
+\begin_inset Newline newline
+\end_inset
+
+Datasets compared voxel-by-voxel.
+ Simple but alignment very critical.
+\begin_inset Newline newline
+\end_inset
+
+Registering scalar fields like FA does not employ all of the information
+ in the data and will not provide the most accurate analysis.
+\begin_inset Newline newline
+\end_inset
+
+Advantages: 1.user-independent, 2.
+ whole-brain analyses.
+\begin_inset Newline newline
+\end_inset
+
+Disadvantages: smoothing for statistical validity reduces resolution, significan
+t group differences do not necessarily lie within an anatomical tract.
+ Reference to an anatomical atlas is hindered by the low resolution of the
+ obtained difference map by the limited resolution of the atlas itself (cite
+ Kannaan 2006).
+\end_layout
+
+\begin_layout Enumerate
+Tract-oriented methods.
+\begin_inset Newline newline
+\end_inset
+
+Tract-oriented methods offers advantages over ROI-based since it reveals
+ local variations of the fiber integrity which are lost when the quatitative
+ parameters are averaged over the entire fiber tract in ROI-based methods.
+\begin_inset Newline newline
+\end_inset
+
+Clustering could group trajectories to single 
+\begin_inset Quotes eld
+\end_inset
+
+anatomical
+\begin_inset Quotes erd
+\end_inset
+
+ fiber tracts.
+\begin_inset Newline newline
+\end_inset
+
+The principal benefit is that observed differences are due to differences
+ in the properties of specific tracts rather than differences in the overall
+ anatomy/shape of the individual brains.
+\end_layout
+
+\begin_layout Section
+Problems with Tract-oriented methods
+\end_layout
+
+\begin_layout Enumerate
+Regardless of the nature of tractography methods, whether deterministic
+ or probabilistic, the output trajectories often have discontinuities due
+ to the presence of noise and image imperfections.
+\end_layout
+
+\begin_layout Enumerate
+Even with an ideal tractography algorithm and incredibly efficient preprocessing
+ of the data to remove noise artifacts, lesions and other brain abnormalities
+ may cause discontinuities in the trajectories.
+\end_layout
+
+\begin_layout Enumerate
+Defining similarity between trajectories is not trivial.
+ The similarity between three-dimensional curves (trajectories) is not uniquely
+ defined and depends on the application.
+ A good strategy is to require the similarity measure to use both spatial
+ and shape information from the whole trajectory.
+ The point correspondence could be facilitated by the use of landmarks that
+ contain most of the information for the shape and location of trajectory.
+ Such landmarks can be specified using local extrema
+\begin_inset CommandInset citation
+LatexCommand cite
+key "deriche1990dcm"
+
+\end_inset
+
+ or minimum description length
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DavisTMI02"
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+An unsupervised algorithm is not guaranteed to produce the clusters of interest
+ for a given application (fear of over or under-clustering).
+ Mahnaz Maddah in her thesis uses a supervised clustering algorithm in DTI
+ data that benefits from anatomical information.
+ By such a tract-based analysis, she was able to identify a significant
+ drop in FA in the vicinity of the lesion (cite Mahnaz's thesis figure p.31),
+ without knowing where the lesion is located a priori (cite all Mahnaz's
+ papers and thesis).
+ The point correspondence between the trajectories is built using a distance
+ map and a Voronoi diagram on the same space.
+ The anatomical prior is given by an anatomical atlas or by a Dirichlet
+ distribution that controls the impact of the atlas.
+ By using an atlas, the correspondence between clusters is different subjects
+ is automatically known.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "/home/eg01/Documents/diffusion_review/devel/diffusion"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

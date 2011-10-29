@@ -1,0 +1,32 @@
+% book example for classicthesis.sty
+\documentclass[12pt,a5paper]{scrbook} % KOMA-Script book
+\usepackage{lipsum}
+\usepackage[linedheaders,parts]{../classicthesis}
+%\hypersetup{linktocpage=true,bookmarksnumbered=true,pageanchor=true,hypertexnames=false,naturalnames=true,plainpages=false}
+
+\begin{document}
+    \tableofcontents
+
+    % use \cleardoublepage here to avoid problems with pdfbookmark
+    \cleardoublepage\myPart{Test Part}
+    \myChapter{Test Chapter}
+    \lipsum[1]
+    
+    \section{A Section}
+    \lipsum[1]
+    
+    \myChapter{Test Chapter}
+    \lipsum[1]
+    
+    \section{A Section}
+    \lipsum[1]
+
+    \appendix
+    \cleardoublepage\myPart{Appendix}
+    \myChapter{Appendix Chapter}
+    \lipsum[1]
+    
+    \section{A Section}
+    \lipsum[1]
+
+\end{document}

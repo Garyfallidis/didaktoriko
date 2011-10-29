@@ -1,0 +1,250 @@
+========================================================
+Dipy - a library for diffusion MR and tractography
+========================================================
+
+Introduction
+============
+
+Dipy stands for diffusion imaging in python and is an international, free and open software project for diffusion magnetic resonance imaging analysis in Python. 
+
+It is a free, open source, python toolbox, which is growing, with an already extensive core. It provides a library or API of methods to give a full pathway from raw diffusion MR data to tractographies, with several novel algorithms for analysing and displaying tractographies. Dipy operates across all standard platforms, and has been developed by research scientists from a variety of different countries and laboratories. 
+
+The aim of dipy is to make it easier to do better diffusion MR imaging research. It achieves this aim
+by being clearly written, clearly explained, with a good fit to the underlying concepts in a way that fosters collaborative development.
+
+Dipy sits alongside and interoperates with other python based neuroimaging toolboxes of the Nipy suite.
+
+Methods
+=======
+
+Dipy depends on a few standard libraries: python (the core language), numpy (for numerical computation), scipy (mathematical functions), and cython (to get C speed from compiled routines which would otherwise create computational bottlenecks). Optionally, it can use python-vtk (for visualisation), pytables (for handling large datasets), matplotlib (for scientific plotting), and ipython (for interaction with the code and its results).
+
+Dipy is multiplatform and will run under standard operating systems such as Windows, Linux and Mac OS X.
+
+For visualisation we have provided the fvtk module which is based on the vtk library. With this we have achieved fast simultaneous rendering of large tractography datasets which can be manipulated (zoomed, rotated) in real time in 3-dimensions.
+
+Dipy overcomes size constraints that come with the very large datasets typical of tractography by a variety of techniques. Dipy interoperate with other diffusion imaging software such as fsl and camino. Dipy supports many file formats such as Nifti (.nii), Dicom (.dcm), Trackvis (.trk), Dipy (.dpy), Numpy (.npy, ,npz), text and all other formats supported by nibabel, nifti and pydicom.
+	 
+
+
+Results
+=======
+
+There are many significant novel applications in dipy. 
+
+- Reconstruction algorithms e.g. DTI, GQI: as well as the implementation of standard single diffusion 
+  tensor modelling (DTI) there is generalized q-sampling imaging (GQI) which enables the detection and
+  propagation of track crossings.
+
+- Tractography generation algorithms e.g. EuDX: this is an extended Euler integration method with 
+  local streamline directions derived from an input option e.g. principal direction for DTI or multiple 
+  QA peaks for GQI (e.g. Fig. 1 lower). Integration stopping criteria can be specified based on metrics 
+  such as fractional anisotropy (FA) and quantitative anisotropy (QA). Different tractography algorithms 
+  can thus be directly compared.
+
+- Intelligent downsampling of tracks: there is redundant information in segments of tracks which lie
+  close to a straight line - tractography datasets can be compressed in size by as much as 8:1 
+  without losing significant information.
+
+- Clustering and skeletonization of tractography: similar tracks are grouped in clusters, and 
+  highly representative tracks (ones with a lot of other similar tracks, see Fig. 3 upper) 
+  become the bones of a skeleton (see Fig. 3 lower). 
+
+- Resampling datasets with anisotropic voxels to isotropic: or indeed resampling between any two voxel sizes.
+
+- Visualize multiple brains simultaneously (see Fig. 2 upper) and  spherical maps (see Fig. 1 upper)
+
+- Warping tractographies into another space e.g. MNI space.
+
+For illustrations of dipy at work see the Figures and their captions.
+
+Conclusions
+===========
+
+Dipy has the potential to become the software platform of choice for brain scientists who want to be able to explore new approaches to white matter tractography using diffusion weighted MR. 
+
+References
+==========
+
+
+
+Figures
+=======
+
+- Fig. 1: 
+
+  - Upper panel: a 2-shell HARDI acquisition paradigm rendered as a spherical map using our fvtk toolbox. 
+
+  - Lower panel: a whole brain tractography based on data from a 101 direction GQI paradigm. The tractography was based on EuDX with multiple directions derived from GQI peaks.
+
+- Fig. 2:
+
+  - Upper panel: the tracks generated using Single Tensor Model principal directions (left, red) and Generalised Q-Imaging peak directions (right, green) for a region of interest in the same dataset. The GQI tractography exhibits a more complex structure derived from the evidence of crossings in the multiple peak directions.
+
+  - Lower panel: the peak GQI directions for 3 voxels with 1 (left, indigo), 2 (centre, blue) and 3 (right, azure) peaks.
+
+- Fig. 3:
+
+  - Upper panel: tracks in the arcuate fasciculus colour coded for degree of similarity to their most representative track (gold)
+
+  - Lower panel: correspondences between tractographies for two different brains. Tracks over 200mm in length were compared and pairs where the MAM (mean average minimum distance) < 5mm were selected and highlighted.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bullets
+=======
+
+What is dipy?
+
+- free, open source, python toolbox, growing, extensive, library, API, multiplatform, developed by research scientists across different labs and countries. 
+
+What is the aim of dipy?
+
+- to make it easier to do better diffusion MR imaging research. 
+
+How does it achieve its aim?
+- by being clearly written, clearly explained with a good fit to the underlying ideas in a way that fosters collaborative development. 
+
+What is new in dipy?	
+
+- everything is new 
+
+Which other libraries does dipy use? It depends on
+
+- python
+- numpy
+- scipy
+- cython
+
+optionally, it can use
+
+- python-vtk
+- pytables
+- matplotlib
+- ipython
+
+Which operating system does it require? Any.
+
+- Windows
+- Linux
+- Macosx
+
+Does dipy provide visualisation tools?
+
+- fvtk
+
+Does size matter?
+
+- dipy overcomes size constraints that come with the very large datasets typical of tractography
+
+Does dipy interoperate with other brain imaging software?
+
+- fsl
+- camino
+
+Which file formats does it support?
+	
+- Nifti (.nii)
+- Dicom (Siemens)
+- Trackvis (.trk)
+- Dipy (.dpy)
+- Numpy (.npy, ,npz)
+- text
+- all other formats supported by nibabel,nifti and pydicom.
+	 
+Which are the killer applications?
+
+- Reconstruction algorithms e.g. DTI, GQI 
+- Tractography generation algorithms e.g. EuDX
+- Intelligent downsampling of tracks
+- Clustering tractography
+- Resampling datasets with anisotropic voxels to isotropic
+- Visualize multiple brains simultaneously
+- Find track correspondence between different brains
+- Warping tractographies into another space e.g. MNI space
+
+Which are the main modules in dipy? Just a glimpse
+		
+* dipy
+
+  - core
+  - graph
+  - align
+
+    + aniso2iso
+
+  - reconst
+
+    + dti
+    + gqi
+    + qball
+
+  - tracking
+
+    + distances
+    + metrics
+    + propagation
+    + learning
+
+  - io
+
+    + dpy
+    + bvectxt
+    + pickles
+
+  - external	
+
+    + fsl
+
+  - viz
+
+    + fvtk
+	
+
+
+
+
+
+
+	 
+	
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
