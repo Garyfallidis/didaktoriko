@@ -3902,6 +3902,12 @@ There are correspondences between different subjects
 \end_layout
 
 \begin_layout Plain Layout
+10 means more than we keep clusters with more than 10 tracks and 100 means
+ more than 100 tracks.
+ I think!
+\end_layout
+
+\begin_layout Plain Layout
 For different subjects 
 \begin_inset Formula $\binom{10}{2}=45$
 \end_inset
@@ -3930,6 +3936,44 @@ t-test t-statistic -8.0359458956507464, p-value 3.5820657551255408e-10.
 
 
 \change_inserted 0 1319203524
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename last_figures/TC_comparisons_diff_subjects.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
