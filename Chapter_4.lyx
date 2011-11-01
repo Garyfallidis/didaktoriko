@@ -2718,6 +2718,32 @@ QB's powerful simplifications
 \end_layout
 
 \begin_layout Standard
+One of the major benefits of applying QB to tractographies is that it can
+ provide meaningful simplications and find structures that were previously
+ unseen or difficult to found because of the high density of the tractography.
+ For example we used QB to cluster the corticospinal tract (CST) selected
+ by an expert.
+ This tract was part of the datasets provided by the Pittsburgh Brain Competion
+ (PBC2009-ICDM).
+ The result is clearly shown in fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:cst_pbc"
+
+\end_inset
+
+ where every partition is represented by virtual tracks.
+ To generate those clusters we used a tight threshold of 
+\begin_inset Formula $10$
+\end_inset
+
+mm.
+ We can notice that only a few tracks travel from bottom to top and that
+ they are many tracks that are broken (i.e.
+ shorter than what was initially expected) or highly divergent.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -2734,7 +2760,7 @@ name "Flo:cst_pbc"
 
 \begin_inset Graphics
 	filename last_figures/cst_simplification.png
-	lyxscale 20
+	lyxscale 10
 	scale 30
 	rotateOrigin center
 
@@ -2751,7 +2777,7 @@ This is a part of the CST bundle consisting of
 \begin_inset Formula $11041$
 \end_inset
 
- tracks merged by an expert (PBC data) shown with red color.
+ tracks merged by an expert (PBC2009 data) shown with red color.
  Visually it looks like all tracks have similar shape and possibly merge
  towards the bottom and then spread when going upper.
  However, this is only an illusion.
@@ -2796,18 +2822,39 @@ This is a part of the CST bundle consisting of
 
 \end_layout
 
-\begin_layout Itemize
-Simulations
+\begin_layout Standard
+Another interesting QB asset is that it can be used to merge or divide together
+ different structures with changing the distance threshold.
+ This becomes clear in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:simulated_orbits"
+
+\end_inset
+
+; on the left we see simulated orbits made from simple sinusoidal and helicoidal
+ functions and colourcoded to distinguish the three different structures.
+ With a lower threshold the three different structures keep remain separated
+ but when we use a higher threshold the red and blue bundles are represented
+ by only one cluster; represented by a purple virtual.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:simulated_orbits"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename last_figures/helix_phantom.png
 	scale 80
@@ -2845,9 +2892,25 @@ On the left we see 3 bundles of simulated trajectories; red, blue and green
 \end_layout
 
 \begin_layout Standard
-asdfasfasf 
-\series bold
-[TEXT NEEDED HERE]
+Similarly, with the simulations shown on fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:simulated_orbits"
+
+\end_inset
+
+ we can see the same effect on real tracks as those of the fornix shown
+ at the left panel of fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:QB_fornix"
+
+\end_inset
+
+ where we can obtain different number of clusterings at different thresholds.
+ In that way we can stress thinner or larger sub-bundles inside other bigger
+ bundles.
 \end_layout
 
 \begin_layout Standard
@@ -2858,6 +2921,13 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:QB_fornix"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename last_figures/LSC_simple.png
 	lyxscale 30
@@ -2873,19 +2943,64 @@ status open
 
 \begin_layout Plain Layout
 Left - Here we see how QB clustered the fornix bundle with dataset from
- the PBC 2009 competition.
- The initial fornix shown with black colour consists of 1076 tracks.
- All tracks were equidistantly downsampled at 3 points in this example.
- With a 5mm threshold our method generates 22 clusters (top right).
- With 10mm generates 7 and with 20mm the whole fornix is determined by one
- cluster only (bottom right).
- Right - an example of a full tractography 250,000 tracks being clustered
- using QB with a distance threshold of 10mm.
- Here you see only 763 virtual tracks depicted which produce a useful simplifica
-tion of the initial tractography.
+ the PBC2009 competition.
+ The initial fornix shown with black colour consists of 
+\begin_inset Formula $1076$
+\end_inset
+
+ tracks.
+ All tracks were equidistantly downsampled at 
+\begin_inset Formula $3$
+\end_inset
+
+ points in this example.
+ With a 
+\begin_inset Formula $5$
+\end_inset
+
+mm threshold our method generates 
+\begin_inset Formula $22$
+\end_inset
+
+ clusters (top right).
+ With 
+\begin_inset Formula $10$
+\end_inset
+
+mm generates 
+\begin_inset Formula $7$
+\end_inset
+
+ and with 
+\begin_inset Formula $20$
+\end_inset
+
+mm the whole fornix is determined by one cluster only (bottom right).
+ Right - an example of a full tractography 
+\begin_inset Formula $250,000$
+\end_inset
+
+ tracks being clustered using QB with a distance threshold of 
+\begin_inset Formula $10$
+\end_inset
+
+mm.
+ Here you see only 
+\begin_inset Formula $763$
+\end_inset
+
+ virtual tracks depicted which produce a useful simplification of the initial
+ tractography.
  Small bundles have been removed.
- Every track shown here represents an entire cluster from 10 to 5000 tracks
- each.
+ Every track shown here represents an entire cluster from 
+\begin_inset Formula $10$
+\end_inset
+
+ to 
+\begin_inset Formula $5000$
+\end_inset
+
+ tracks each.
  These can be thought as fast access points to explore the entire dataset.
  The colour here just encodes track orientation.
  Therefore, you can click on a track and obtain the entire cluster/bundle
@@ -2906,11 +3021,56 @@ tion of the initial tractography.
 \end_layout
 
 \begin_layout Standard
-asfasdf 
-\series bold
-[TEXT NEEDED HERE]
-\change_deleted 0 1319710052
+A full tractography containing 
+\begin_inset Formula $250,000$
+\end_inset
 
+ tracks was clustered using QB with a distance threshold of 
+\begin_inset Formula $10$
+\end_inset
+
+mm (fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:QB_fornix"
+
+\end_inset
+
+).
+ We produced a useful reduction of the initial tractography leaving only
+ 
+\begin_inset Formula $763$
+\end_inset
+
+ virtual tracks.
+ Short bundles smaller than 
+\begin_inset Formula $10$
+\end_inset
+
+ are also removed.
+ Every track shown here represents an entire cluster containing from 
+\begin_inset Formula $10$
+\end_inset
+
+ to 
+\begin_inset Formula $5000$
+\end_inset
+
+ tracks each.
+ 
+\end_layout
+
+\begin_layout Standard
+The virtual tracks can be thought as fast access points to explore the entire
+ dataset.
+ Therefore, you can click on a virtual and obtain the entire cluster/bundle
+ that it represents.
+ Visualizing an entire dataset of that size is impossible on standard graphic
+ cards and most medical visualization tools e.g.
+ Trackvis or DSI studio will only show a random sample of the tractography
+ at real time because of the video memory size limitations.
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -3485,7 +3645,8 @@ Because a track is a sequence of points without a preferred direction, it
 \end_layout
 
 \begin_layout Standard
-Chose a fixed point or pole 
+For this purpose we figured out the following solution.
+ Chose a fixed point or pole 
 \begin_inset Formula $P$
 \end_inset
 
@@ -3501,7 +3662,7 @@ Chose a fixed point or pole
 \begin_inset Formula $(0,0,0)$
 \end_inset
 
- as the pole point; in MNI space we can use 
+ as the pole point; in MNI space we can use to point 
 \begin_inset Formula $(100,100,100)$
 \end_inset
 
@@ -3510,18 +3671,10 @@ Chose a fixed point or pole
  most tracks in the sense that similar tracks will have the same direction.
  However there will still be a small percentage for which the bi-directionality
  problem persists.
- We can correct for this by using exemplar rather than virtual tracks as
- virtuals can misrepresent a bundle if the bundle consists of bi-directional
- tracks 
-\series bold
-[Would it be better to say `tracks with ambiguous directionality'?]
-\series default
-.
- However, if we use an exemplar track as the feature of the track that track
- will have only one direction.
+ We can correct for this by using exemplars rather than virtual tracks as
+ virtuals can misrepresent a bundle if the bundle consists of tracks with
+ ambiguous directionality.
  
-\series bold
-[NEED TO CLARIFY THIS LAST REMARK.]
 \end_layout
 
 \begin_layout Subsection
@@ -5104,7 +5257,7 @@ wide false
 sideways false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
 name "alg:AP"
@@ -5796,8 +5949,11 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename last_figures/affinity_propagation_ok2.png
+	lyxscale 40
 	scale 40
 	rotateOrigin center
 
