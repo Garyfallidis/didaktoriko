@@ -3889,6 +3889,25 @@ where
 \end_layout
 
 \begin_layout Standard
+We run an experiment were we compared TC between pairs of 10 subjects with
+ their tractographies warped in MNI space (SEE SECTION).
+ This generated 
+\begin_inset Formula $\binom{10}{2}=45$
+\end_inset
+
+ TC values.
+ We did this experiment twice once with keeping only the bundles with more
+ than 10 tracks and once with keeping the bundles with more than 100 tracks.
+ The average value for TC10 was 0.47 and standard diviation 0.026.
+ As expected TC100 (bigger landmarks) did better with average value of 0.53
+ and standard diviation 0.049.
+ We then we calculated the t-statistic between TC10 and TC100 which was
+ -8.036 and p-value 3.58e-10.
+ This was a strong evidence that QB can be used in order to find agreements
+ between different brains.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
