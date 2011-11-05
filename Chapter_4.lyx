@@ -140,7 +140,7 @@ key "zhang2005dti"
 
 \end_inset
 
- with most common the Haussdorf distance found in 
+ with most common the Hausdorff distance found in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "corouge2004towards"
@@ -641,7 +641,7 @@ key "corouge2004towards"
 \end_inset
 
  used different types of track distances, e.g.
- Haussdorff distances, and other geometric properties such as torsion and
+ Hausdorff distances, and other geometric properties such as torsion and
  curvature, and in 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -846,15 +846,8 @@ reference "sub:Affinity-Propagation"
  using additional frontal and occipital AND masks and a NOT mask on the
  right cerebrum.
  However, the authors worked on a very small part of the entire tractography
-\change_inserted 0 1319124289
- were clustering is a much easier problem
-\change_unchanged
-.
-
-\change_inserted 0 1319124325
- Later 
-\change_unchanged
-Malcolm et al.
+ were clustering is a much easier problem.
+ Later Malcolm et al.
 \begin_inset space ~
 \end_inset
 
@@ -865,25 +858,9 @@ key "malcolm2009filtered"
 
 \end_inset
 
- used affinity propagation to cluster 
-\change_deleted 0 1319124766
-tracks
-\change_inserted 0 1319124771
-a full brain tractography
-\change_unchanged
- created using filtered tractography and 
-\change_deleted 0 1319126437
-re
-\change_inserted 0 1319126439
-suggested
-\change_unchanged
- that affinity propagation 
-\change_inserted 0 1319124955
-is not suitable
-\change_deleted 0 1319124947
-cannot be used
-\change_unchanged
- for group clustering.
+ used affinity propagation to cluster a full brain tractography created
+ using filtered tractography and suggested that affinity propagation is
+ not suitable for group clustering.
 \end_layout
 
 \begin_layout Standard
@@ -915,15 +892,9 @@ key "ODonnell_IEEETMI07"
 
 \begin_layout Standard
 In summary, most researchers had to use complete inter-track distance matrices
- or/and simplif
-\change_deleted 0 1319124997
-ied
-\change_inserted 0 1319124997
-y
-\change_unchanged
- the datasets by length biased filtering, or selections, or with masks,
- or extensive ROIs, or avoid track distances entirely because of CPU and
- memory constraints.
+ or/and simplify the datasets by length biased filtering, or selections,
+ or with masks, or extensive ROIs, or avoid track distances entirely because
+ of CPU and memory constraints.
  We address these capacity problems by taking a different approach.
 \end_layout
 
@@ -943,73 +914,122 @@ Materials and methods
 
 \end_layout
 
-\begin_layout Subsubsection
-HARDI/DSI datasets
+\begin_layout Standard
+
+\series bold
+Real subjects.
+ 
+\series default
+We collected data from 10 healthy subjects at the MRC-CBU 3T scanner (TIM
+ Trio, Siemens), using Siemens advanced diffusion work-in-progress sequence,
+ and STEAM 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "merboldt1992diffusion,MAB04"
+
+\end_inset
+
+ as the diffusion preparation method.
+ The field of view was 
+\begin_inset Formula $240x240mm^{2}$
+\end_inset
+
+, matrix size 
+\begin_inset Formula $96x96$
+\end_inset
+
+, and slice thickness 
+\begin_inset Formula $2.5mm$
+\end_inset
+
+ (no gap).
+ 55 slices were acquired to achieve full brain coverage, and the voxel resolutio
+n was 
+\begin_inset Formula $2.5x2.5x2.5mm{}^{3}$
+\end_inset
+
+.
+ A 102-point half grid acquisition with a maximum b-value of 
+\begin_inset Formula $4000\, s/mm^{2}$
+\end_inset
+
+ was used.
+ The total acquisition time was
+\begin_inset Formula $14\, min\,21s$
+\end_inset
+
+ with TR=
+\begin_inset Formula $8200ms$
+\end_inset
+
+ and TE=
+\begin_inset Formula $69ms$
+\end_inset
+
+.
+ XXXX Ethics Number - ASK Marta XXXX
 \end_layout
 
-\begin_layout Itemize
-Twelve healthy subjects
+\begin_layout Standard
+For the reconstruction of the real data sets we used Generalized Q-samping
+ with diffusion sampling length 
+\begin_inset Formula $1.2$
+\end_inset
+
+ and for the tractography propagation we used EuDX (euler integration with
+ trilinear interpolation) with 
+\begin_inset Formula $1$
+\end_inset
+
+ million random seeds, angular threshold 
+\begin_inset Formula $60^{\circ}$
+\end_inset
+
+, total weighting 
+\begin_inset Formula $0.5$
+\end_inset
+
+, propagation step size 
+\begin_inset Formula $0.5$
+\end_inset
+
+ and anisotropy stopping threshold 
+\begin_inset Formula $0.0239$
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Itemize
-Siemens Trio 3T
-\end_layout
+\begin_layout Standard
 
-\begin_layout Itemize
-b-values/directions
-\end_layout
+\series bold
+Simulated trajectories.
 
-\begin_layout Itemize
-voxel size
-\end_layout
+\series default
+ Generated 
+\begin_inset Formula $3$
+\end_inset
 
-\begin_layout Subsubsection
-Simulation datasets
-\end_layout
+ different bundles of orbits of 
+\begin_inset Formula $200$
+\end_inset
 
-\begin_layout Itemize
+ time points.
+ The orbits were made from different combinations of sinusoidal and helicoidal
+ functions.
+ In total this data set contained 
+\begin_inset Formula $450$
+\end_inset
 
-\change_deleted 0 1319126472
-Marta's dataset
-\change_unchanged
+ orbits see fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:simulated_orbits"
 
-\end_layout
+\end_inset
 
-\begin_layout Itemize
-
-\change_deleted 0 1319126489
-PBC Competition Datasets
-\change_unchanged
-
-\end_layout
-
-\begin_layout Itemize
-Generate orbits of different functions etc.
- cosines
-\end_layout
-
-\begin_layout Subsubsection
-Reconstruction algorithms
-\end_layout
-
-\begin_layout Itemize
-GQI/thresholds real datasets
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted 0 1319125463
-FA for fibre Cup
-\change_unchanged
-
-\end_layout
-
-\begin_layout Subsubsection
-Deterministic tractography
-\end_layout
-
-\begin_layout Itemize
-EuDX with which options? Random seeds, thresholds (angl=60, totalw=.5, step_sz)
+ .
 \end_layout
 
 \begin_layout Subsection
@@ -2719,12 +2739,12 @@ QB's powerful simplifications
 
 \begin_layout Standard
 One of the major benefits of applying QB to tractographies is that it can
- provide meaningful simplications and find structures that were previously
+ provide meaningful simplifications and find structures that were previously
  unseen or difficult to found because of the high density of the tractography.
  For example we used QB to cluster the corticospinal tract (CST) selected
  by an expert.
- This tract was part of the datasets provided by the Pittsburgh Brain Competion
- (PBC2009-ICDM).
+ This tract was part of the datasets provided by the Pittsburgh Brain Competitio
+n (PBC2009-ICDM).
  The result is clearly shown in fig.
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3898,9 +3918,9 @@ We run an experiment were we compared TC between pairs of 10 subjects with
  TC values.
  We did this experiment twice once with keeping only the bundles with more
  than 10 tracks and once with keeping the bundles with more than 100 tracks.
- The average value for TC10 was 0.47 and standard diviation 0.026.
+ The average value for TC10 was 0.47 and standard deviation 0.026.
  As expected TC100 (bigger landmarks) did better with average value of 0.53
- and standard diviation 0.049.
+ and standard divination 0.049.
  We then we calculated the t-statistic between TC10 and TC100 which was
  -8.036 and p-value 3.58e-10.
  This was a strong evidence that QB can be used in order to find agreements
@@ -5047,7 +5067,7 @@ Exemplar tracks vs ROIs vs Masks
 \end_layout
 
 \begin_layout Standard
-Medical practitioners and neuro-anatomists often argue that when they use
+Medical practitioners and neuroanatomists often argue that when they use
  multiple spherical or rectangular masks to select some bundles many tracks
  are thrown away because they are small and the mask operations cannot get
  hold of them.
@@ -5308,7 +5328,7 @@ Of course when we need to calculate distances between many points then the
  distance matrix becomes too big for the available memory.
  In that case if we are lucky and the datasets are sparse then we can use
  AP on sparse matrices but if the datasets are not sparse as it is the case
- with tractographies then we need to reduce the demionsality of the data
+ with tractographies then we need to reduce the dimensionality of the data
  sets and this is where QB could be very handy.
 \change_inserted 0 1319710607
 
@@ -6111,7 +6131,7 @@ key "leemans2006multiscale"
 \end_inset
 
 uses the invariance of curvature and torsion under rigid registration along
- with procrustes analysis to co-register together different tractographies.
+ with Procrustes analysis to co-register together different tractographies.
  Mayer et al.
 \begin_inset space ~
 \end_inset
@@ -6172,11 +6192,11 @@ key "Zvitia2010"
 \end_inset
 
 , used adaptive mean shift clustering to extract a number of representative
- ﬁber-modes.
+ ﬁbre-modes.
  Each fibre mode was assigned to a multivariate Gaussian distribution according
  to its population thereby leading to a Gaussian Mixture model (GMM) representat
 ion for the entire set of ﬁbres.
- The registration between two ﬁber sets was treated as the alignment of
+ The registration between two ﬁbre sets was treated as the alignment of
  two GMMs and is performed by maximizing their correlation ratio.
  A further refinement was added using RANSAC
 \begin_inset CommandInset citation
@@ -6185,7 +6205,11 @@ key "fischler1981random"
 
 \end_inset
 
- to obtain all 12 affine parameters.
+ to obtain all 
+\begin_inset Formula $12$
+\end_inset
+
+ affine parameters.
  Ziyan et al.
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -6626,7 +6650,7 @@ name "Flo:arcuate_close"
 \begin_layout Plain Layout
 A simple and vigorous strategy for handling short and long tracks together
  by picking a track of interest from one of our atlases.
- Colormap encodes track length.
+ Colourmap encodes track length.
  A: one picked selected atlas track, B: 245 subject tracks closer than 15mm
  (MDF distance), C: B tracks clustered in 23 skeletons, D: 3421 tracks closer
  than 6mm (MAM distance) from the skeletons of B are shown.
