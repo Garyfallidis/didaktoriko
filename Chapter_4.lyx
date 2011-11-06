@@ -3124,7 +3124,7 @@ QB is a super-efficient algorithm that its performance is influenced from
 \end_layout
 
 \begin_layout Standard
-Furthermore, 
+Furthermore, QB is 
 \begin_inset Formula $O(M)$
 \end_inset
 
@@ -3140,8 +3140,13 @@ Furthermore,
 
  we consider memory consumption to be negligible.
  Because in QB we store on the indices of the tracks even for very large
- tractographies 20 or more clusterings can be stored simultaneously in RAM
- without any problems.Therefore, another asset of QB is memory efficiency.
+ tractographies 
+\begin_inset Formula $20$
+\end_inset
+
+ or more clusterings can be stored simultaneously the RAM of simple notebook
+ without any problems.
+ Therefore, another asset of QB is memory efficiency.
 \end_layout
 
 \begin_layout Standard
