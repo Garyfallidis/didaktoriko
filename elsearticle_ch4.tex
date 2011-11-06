@@ -1,0 +1,140 @@
+%% LyX 1.6.7 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[twoside,english]{elsarticle}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\pagestyle{headings}
+\usepackage{url}
+\usepackage{amsthm}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+% specify here the journal
+\journal{Example: Nuclear Physics B}
+
+\makeatother
+
+\usepackage{babel}
+
+\begin{document}
+
+
+
+\title{This is a specimen title\tnoteref{t1,t2}}
+
+
+\tnotetext[t1]{This document is a collaborative effort.}
+
+
+\tnotetext[t2]{The second title footnote which is a longer longer than the first
+one and with an intention to fill in up more than one line while formatting.}
+
+
+\author[rvt]{C.V.~Radhakrishnan\fnref{fn1}\corref{cor1}\corref{cor2}}
+
+
+\ead{cvr@river-valley.com}
+
+
+\author[rvt,focal]{K.~Bazargan\fnref{fn2}}
+
+
+\ead[url]{http://www.elsevier.com}
+
+
+\fntext[fn1]{This is the specimen author footnote.}
+
+
+\fntext[fn2]{Another author footnote, but a little more longer.}
+
+
+\cortext[cor1]{Corresponding author}
+
+
+\cortext[cor2]{Principal corresponding author}
+
+
+\address[rvt]{River Valley Technologies, SJP Building, Cotton Hills, Trivandrum,
+Kerala, India 695014}
+
+
+\address[focal]{River Valley Technologies, 9, Browns Court, Kennford, Exeter, United
+Kingdom}
+\begin{abstract}
+Abstract, should normally be not longer than 200 words.\end{abstract}
+\begin{keyword}
+quadruple exiton \sep polariton \sep WGM \PACS 71.35.-y \sep 71.35.Lk
+\sep 71.36.+c \MSC[2008]23-557
+\end{keyword}
+\maketitle
+
+\section{Introduction}
+
+Bla bla, as listed in \citet{Parkin2005,LComp2004}.
+
+\begin{eqnarray}
+A & = & \prod_{i=1}^{\infty}B\nonumber \\
+ & = & C\end{eqnarray}
+
+\begin{thm}
+Theorem 1
+\end{thm}
+
+\begin{thm}
+Theorem 2
+\end{thm}
+
+\subsection{Subsection}
+\begin{enumerate}
+\item test
+\item test
+\end{enumerate}
+
+
+\renewcommand{\labelenumi}{(\roman{enumi})} 
+\begin{enumerate}
+\item test
+\item test
+\end{enumerate}
+\renewcommand{\labelenumi}{Step\,\alph{enumi})} 
+\begin{enumerate}
+\item test
+\item test
+\end{enumerate}
+
+\subsubsection{Subsubsection}
+
+Bla, bla
+
+\appendix
+
+\section{Appendix name}
+
+Appendix, only when needed.
+
+
+\section*{-----------------}
+
+You can use either Bib\TeX{}:
+
+\bibliographystyle{elsarticle-harv}
+\addcontentsline{toc}{section}{\refname}\bibliography{../examples/biblioExample}
+
+
+
+\section*{---------------------}
+
+\noindent Or plain bibliography:
+\begin{thebibliography}{2}
+\bibitem{key-1}Frank Mittelbach and Michel Goossens: \emph{The \LaTeX{}
+Companion Second Edition.} Addison-Wesley, 2004.
+
+\bibitem{key-2}Scott Pakin. The comprehensive \LaTeX{} symbol list,
+2005.
+\end{thebibliography}
+
+\end{document}

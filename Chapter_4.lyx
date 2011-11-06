@@ -1003,6 +1003,15 @@ For the reconstruction of the real data sets we used Generalized Q-samping
 \begin_layout Standard
 
 \series bold
+PBC real subjects
+\series default
+.
+ We used as well a few labeled data sets 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
 Simulated trajectories.
 
 \series default
@@ -3267,7 +3276,7 @@ Wang et al.
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3276,7 +3285,7 @@ Wang et al.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3285,7 +3294,7 @@ Visser et al.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3294,7 +3303,7 @@ Visser et al.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3303,7 +3312,7 @@ Visser et al.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3917,12 +3926,38 @@ We run an experiment were we compared TC between pairs of 10 subjects with
 
  TC values.
  We did this experiment twice once with keeping only the bundles with more
- than 10 tracks and once with keeping the bundles with more than 100 tracks.
- The average value for TC10 was 0.47 and standard deviation 0.026.
- As expected TC100 (bigger landmarks) did better with average value of 0.53
- and standard divination 0.049.
+ than 10 tracks and once with keeping the bundles with more than 
+\begin_inset Formula $100$
+\end_inset
+
+ tracks.
+ The average value for TC10 was 
+\begin_inset Formula $0.47$
+\end_inset
+
+ and standard deviation 
+\begin_inset Formula $0.026$
+\end_inset
+
+.
+ As expected TC100 (bigger landmarks) did better with average value of 
+\begin_inset Formula $0.53$
+\end_inset
+
+ and standard divination 
+\begin_inset Formula $0.049$
+\end_inset
+
+.
  We then we calculated the t-statistic between TC10 and TC100 which was
- -8.036 and p-value 3.58e-10.
+\begin_inset Formula $-8.036$
+\end_inset
+
+ and p-value 
+\begin_inset Formula $3.58e-10$
+\end_inset
+
+.
  This was a strong evidence that QB can be used in order to find agreements
  between different brains.
 \end_layout
@@ -4048,11 +4083,7 @@ QB is already a super-efficient algorithm however we wanted to make it even
  more efficient so that for example it is trivial to cluster hundreds of
  subjects together and use many CPUs or computers simultaneously.
  With the speed of QB that would mean that you would actually be able to
- create an atlas of hundreds of subjects in a
-\change_deleted 0 1319710798
- 
-\change_unchanged
- hours.
+ create an atlas of hundreds of subjects in a few hours.
  Therefore, we have extended QB to a parallel version which we call pQB.
  This algorithm works as follows.
  First we redirect and downsample all tracks.
