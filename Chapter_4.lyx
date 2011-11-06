@@ -1734,393 +1734,9 @@ name "Alg:QuickBundles"
 
 \begin_layout Standard
 
-\change_deleted 0 1319710123
-\begin_inset Float algorithm
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset listings
-lstparams "basicstyle={\small\rmfamily},breaklines=true,mathescape=true,numbers=left,numberstyle={\footnotesize},showstringspaces=false,tabsize=4"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-$
-\backslash
-textrm{
-\backslash
-#the first track becomes the first class}$
-\end_layout
-
-\begin_layout Plain Layout
-
-$c_{0}=
-\backslash
-left
-\backslash
-{0,s_{0},1
-\backslash
-right
-\backslash
-}$
-\end_layout
-
-\begin_layout Plain Layout
-
-$C=
-\backslash
-left
-\backslash
-{c_{0}
-\backslash
-right
-\backslash
-}$, $|C|=1$
-\end_layout
-
-\begin_layout Plain Layout
-
-$
-\backslash
-textrm{
-\backslash
-#for all the following tracks}$
-\end_layout
-
-\begin_layout Plain Layout
-
-$
-\backslash
-textbf{for}$ $i$ $
-\backslash
-textbf{from}$ $1$ $
-\backslash
-textbf{to}$ $|T|-1$
-\end_layout
-
-\begin_layout Plain Layout
-
-	$
-\backslash
-mathbf{t}=T_{i}$
-\end_layout
-
-\begin_layout Plain Layout
-
-	$
-\backslash
-textrm{
-\backslash
-#store distances with cluster features}$
-\end_layout
-
-\begin_layout Plain Layout
-
-	$
-\backslash
-mathrm{alld}=
-\backslash
-mathrm{zeros}(|C|)$
-\end_layout
-
-\begin_layout Plain Layout
-
-	$
-\backslash
-textsc{store flipping if needed}$
-\end_layout
-
-\begin_layout Plain Layout
-
-	$
-\backslash
-mathrm{flip}= 
-\backslash
-mathrm{zeros}(|C|)$
-\end_layout
-
-\begin_layout Plain Layout
-
-	$
-\backslash
-textrm{
-\backslash
-#for all the clusters}$
-\end_layout
-
-\begin_layout Plain Layout
-
-	$
-\backslash
-textbf{for}$ $k$ $
-\backslash
-textbf{from}$ $0$ $
-\backslash
-textbf{to}$ $|C|-1$
-\end_layout
-
-\begin_layout Plain Layout
-
-		$
-\backslash
-mathbf{v}=C_{k}.
-\backslash
-mathbf{h}/C_{k}.N$
-\end_layout
-
-\begin_layout Plain Layout
-
-		$d$=$d_{d}(
-\backslash
-mathbf{t},
-\backslash
-mathbf{v})$
-\end_layout
-
-\begin_layout Plain Layout
-
-		$f$=$d_{f}(
-\backslash
-mathbf{t},
-\backslash
-mathbf{v})$
-\end_layout
-
-\begin_layout Plain Layout
-
-		$
-\backslash
-textsc{if flip distance is smaller than direct distance}$
-\end_layout
-
-\begin_layout Plain Layout
-
-		$
-\backslash
-textbf{if}$ $f < d$
-\end_layout
-
-\begin_layout Plain Layout
-
-			$d = f$
-\end_layout
-
-\begin_layout Plain Layout
-
-			$
-\backslash
-mathrm{flip}_{k}=1$
-\end_layout
-
-\begin_layout Plain Layout
-
-		$
-\backslash
-mathrm{alld}_{k}=d$	
-\end_layout
-
-\begin_layout Plain Layout
-
-	$
-\backslash
-textsc{find minimum distance and index}$
-\end_layout
-
-\begin_layout Plain Layout
-
-	$m=
-\backslash
-min(
-\backslash
-mathrm{alld})$
-\end_layout
-
-\begin_layout Plain Layout
-
-	$l=
-\backslash
-mathrm{arg min}(
-\backslash
-mathrm{alld})$	
-\end_layout
-
-\begin_layout Plain Layout
-
-	$
-\backslash
-textsc{If smaller than any class threshold then}$ 
-\end_layout
-
-\begin_layout Plain Layout
-
-	$
-\backslash
-textsc{add track to that class}$
-\end_layout
-
-\begin_layout Plain Layout
-
-	$
-\backslash
-textbf{if}$ $m < thr$
-\end_layout
-
-\begin_layout Plain Layout
-
-		$
-\backslash
-textbf{if}$ $
-\backslash
-mathrm{flip}_{l}=1$
-\end_layout
-
-\begin_layout Plain Layout
-
-			$C_{l}.
-\backslash
-mathbf{h}+=t'$ $
-\backslash
-textsc{reverse direction}$
-\end_layout
-
-\begin_layout Plain Layout
-
-		$
-\backslash
-textbf{else}$
-\end_layout
-
-\begin_layout Plain Layout
-
-			$C_{l}.
-\backslash
-mathbf{h}+=t$ $
-\backslash
-textsc{same direction}$
-\end_layout
-
-\begin_layout Plain Layout
-
-		$C_{l}.N+=1$
-\end_layout
-
-\begin_layout Plain Layout
-
-		$C_{l}.I$.append(i)
-\end_layout
-
-\begin_layout Plain Layout
-
-	$
-\backslash
-textsc{Otherwise create a new class}$
-\end_layout
-
-\begin_layout Plain Layout
-
-	$
-\backslash
-textbf{else}$
-\end_layout
-
-\begin_layout Plain Layout
-
-		$|C|+=1$
-\end_layout
-
-\begin_layout Plain Layout
-
-		$C_{|C|-1}.I_{0}=l$
-\end_layout
-
-\begin_layout Plain Layout
-
-		$C_{|C|-1}.
-\backslash
-mathbf{h}=
-\backslash
-mathbf{t}$
-\end_layout
-
-\begin_layout Plain Layout
-
-		$C_{|C|-1}.N=1$
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-
-\series bold
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:LSC"
-
-\end_inset
-
-
-\series default
-QuickBundles 
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-Input
-\series default
-: tractography 
-\begin_inset Formula $T=\{s_{0},...,s_{i},...,s_{|T|-1}\}$
-\end_inset
-
-, distance threshold 
-\begin_inset Formula $\texttt{thr}$
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-Output
-\series default
-: clustering 
-\begin_inset Formula $C=\{c_{0},...,c_{k},...,c_{|C|-1}\}$
-\end_inset
-
-, where cluster 
-\begin_inset Formula $c=\{I,\mathbf{h},N\}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \change_inserted 0 1319710123
-
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2128,7 +1744,7 @@ status open
 \begin_inset Float algorithm
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3107,15 +2723,31 @@ Complexity and timings
 \end_layout
 
 \begin_layout Standard
+To apply QB to a tractography we need to specify three key parameters: 
+\begin_inset Formula $p$
+\end_inset
 
-\change_inserted 0 1319202585
-We compared QB with 
-\end_layout
+, the fixed number of downsampled points per track; 
+\begin_inset Formula $d$
+\end_inset
 
-\begin_layout Standard
+ the distance threshold, which controls the heterogeneity of clusters; and
+ 
+\begin_inset Formula $N$
+\end_inset
 
-\series bold
-[ALL THIS NEEDS EXPANDING]
+ the size of the subset of the tractography on which the clustering will
+ be performed.
+ When 
+\begin_inset Formula $d$
+\end_inset
+
+ is higher, fewer more heterogeneous clusters are assembled, and conversely
+ when 
+\begin_inset Formula $d$
+\end_inset
+
+ is low, more clusters of greater homogeneity are created.
 \end_layout
 
 \begin_layout Standard
@@ -3186,7 +2818,10 @@ Speedup
 \begin_inset Text
 
 \begin_layout Plain Layout
-1000
+\begin_inset Formula $1000$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3204,7 +2839,10 @@ Wang et al.
 \begin_inset Text
 
 \begin_layout Plain Layout
-30
+\begin_inset Formula $30$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3213,7 +2851,10 @@ Wang et al.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.07
+\begin_inset Formula $0.07$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3222,7 +2863,10 @@ Wang et al.
 \begin_inset Text
 
 \begin_layout Plain Layout
-429
+\begin_inset Formula $429$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3233,7 +2877,10 @@ Wang et al.
 \begin_inset Text
 
 \begin_layout Plain Layout
-60,000
+\begin_inset Formula $60,000$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3251,7 +2898,10 @@ Wang et al.
 \begin_inset Text
 
 \begin_layout Plain Layout
-14400
+\begin_inset Formula $14400$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3260,7 +2910,10 @@ Wang et al.
 \begin_inset Text
 
 \begin_layout Plain Layout
-14.7
+\begin_inset Formula $14.7$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3269,7 +2922,10 @@ Wang et al.
 \begin_inset Text
 
 \begin_layout Plain Layout
-980
+\begin_inset Formula $980$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3280,7 +2936,10 @@ Wang et al.
 \begin_inset Text
 
 \begin_layout Plain Layout
-400,000
+\begin_inset Formula $400,000$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3298,7 +2957,10 @@ Visser et al.
 \begin_inset Text
 
 \begin_layout Plain Layout
-75000
+\begin_inset Formula $75000$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3307,7 +2969,10 @@ Visser et al.
 \begin_inset Text
 
 \begin_layout Plain Layout
-160.1
+\begin_inset Formula $160.1$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3316,7 +2981,10 @@ Visser et al.
 \begin_inset Text
 
 \begin_layout Plain Layout
-468
+\begin_inset Formula $468$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3333,14 +3001,25 @@ Visser et al.
 \begin_inset Caption
 
 \begin_layout Plain Layout
-QB run on 12 point tracks and distance threshold at 10mm compared with some
- timings reported from other state of the art methods found in the literature.
+QB run on 
+\begin_inset Formula $12$
+\end_inset
+
+ point tracks and distance threshold at 
+\begin_inset Formula $10$
+\end_inset
+
+mm compared with some timings reported from other state of the art methods
+ found in the literature.
  Unfortunately timings were very rarely reported until today as most algorithms
  were very slow on full datasets.
  However the speedup that QB offers is obviously of great importance; allowing
- even for real-time clustering on subsets less than 20,000 tracks.
- QB was run on a single thread of Intel Xeon(R) CPU E5420 @ 2.50GHz to generate
- this timings.
+ even for real-time clustering on subsets containing less than 
+\begin_inset Formula $20,000$
+\end_inset
+
+ tracks.
+ QB was run on a simple PC using only one core.
  
 \end_layout
 
@@ -3355,36 +3034,40 @@ QB run on 12 point tracks and distance threshold at 10mm compared with some
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-[NEW INTRO BY IAN]
-\series default
- To apply QB to a tractography we need to specify three key parameters:
- 
-\begin_inset Formula $p$
+The complexity of QB is on average linear time 
+\begin_inset Formula $O(N)$
 \end_inset
 
-, the fixed number of downsampled points per track; 
-\begin_inset Formula $d$
-\end_inset
-
- the distance threshold, which controls the heterogeneity of clusters; and
- 
+ with the number of tracks 
 \begin_inset Formula $N$
 \end_inset
 
- the size of the subset of the tractography on which the clustering will
- be performed.
- When 
-\begin_inset Formula $d$
+ and worst case 
+\begin_inset Formula $O(N^{2})$
 \end_inset
 
- is higher, fewer more heterogeneous clusters are assembled, and conversely
- when 
-\begin_inset Formula $d$
+ when every cluster constains only one track.
+ We compared QB with QB run on 
+\begin_inset Formula $12$
 \end_inset
 
- is low, more clusters of greater homogeneity are created.
+ point tracks and distance threshold at 
+\begin_inset Formula $10$
+\end_inset
+
+mm compared with some timings reported from other state of the art methods
+ found in the literature.
+ Unfortunately timings were very rarely reported until today as most algorithms
+ were very slow on full data sets.
+ However the speedup that QB offers is obviously of great importance; allowing
+ even for real-time clustering on subsets less than 
+\begin_inset Formula $20,000$
+\end_inset
+
+ tracks.
+ QB was run on a single thread of Intel Xeon(R) CPU E5420 @ 2.50GHz to generate
+ these timings.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3440,23 +3123,8 @@ QB is a super-efficient algorithm that its performance is influenced from
 
 \end_layout
 
-\begin_layout Itemize
-plot cluster size along time
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $O(N)$
-\end_inset
-
- on the number of tracks when the number of clusters is small which is the
- average case worst case is 
-\begin_inset Formula $O(N^{2})$
-\end_inset
-
- when the number of clusters is the same as the number of tracks.
-\end_layout
-
-\begin_layout Itemize
+\begin_layout Standard
+Furthermore, 
 \begin_inset Formula $O(M)$
 \end_inset
 
@@ -3470,11 +3138,10 @@ plot cluster size along time
 \begin_inset Formula $N$
 \end_inset
 
- we considered memory consumption to be trivial.
- For example even for big tractographies 20 or more clusterings can be stored
- simultaneously in RAM with no problem.
-\change_inserted 0 1319811749
-
+ we consider memory consumption to be negligible.
+ Because in QB we store on the indices of the tracks even for very large
+ tractographies 20 or more clusterings can be stored simultaneously in RAM
+ without any problems.Therefore, another asset of QB is memory efficiency.
 \end_layout
 
 \begin_layout Standard
@@ -3518,8 +3185,8 @@ reference "Flo:Speed1"
 \end_inset
 
 .
- Notice how the linearity only reduces slightly when we use a very small
- threshold of 
+ Notice how the linearity only reduces slightly when we use a very low threshold
+ of 
 \begin_inset Formula $10$
 \end_inset
 
@@ -3528,10 +3195,6 @@ mm.
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
