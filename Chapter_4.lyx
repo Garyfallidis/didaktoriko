@@ -1006,7 +1006,19 @@ For the reconstruction of the real data sets we used Generalized Q-samping
 PBC real subjects
 \series default
 .
- We used as well a few labeled data sets 
+ We used as well a few labeled data sets from the freely available tractography
+ database used in the Pittsburgh Brain Competion Fall 2009 ICDM 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+http://pbc.lrdc.pitt.edu
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
