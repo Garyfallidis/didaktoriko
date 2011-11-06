@@ -51,7 +51,7 @@
 \output_changes false
 \author "Eleftherios Garyfallidis,,," 
 \author "" 
-\author "Ian Nimmo-Smith,,," 
+\author "" 
 \end_header
 
 \begin_body
@@ -3013,8 +3013,9 @@ mm compared with some timings reported from other state of the art methods
  found in the literature.
  Unfortunately timings were very rarely reported until today as most algorithms
  were very slow on full datasets.
- However the speedup that QB offers is obviously of great importance; allowing
- even for real-time clustering on subsets containing less than 
+ Nonetheless, the speedup that QB offers is obviously of great importance;
+ allowing even for real-time clustering on subsets containing less than
+ 
 \begin_inset Formula $20,000$
 \end_inset
 
@@ -3109,7 +3110,8 @@ QB is a super-efficient algorithm that its performance is influenced from
  of the data which is expressed by the number of final clusters.
  We used a full tractography to generate these figures without removing
  or preselecting any parts.
- This results run of a single thread Intel(R) Xeon(R) CPU E5420 @ 2.50GHz.
+ This results run of a single thread Intel(R) Xeon(R) CPU E5420 @ 2.50GHz
+ of a simple PC.
  
 \end_layout
 
@@ -3213,20 +3215,13 @@ Virtual tracks, exemplar tracks and other features.
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-[ARE YOU GOING TO USE THIS BIT ABOUT VARIANCE etc.
- LATER? IT NEEDS MOTIVATING.
- I think it could be left out here and go straight into exemplar (representative
-) tracks]
-\series default
- The virtual tracks created by QB have very nice properties as they represent
+The virtual tracks created by QB have very nice properties as they represent
  an average track which can stand as the most important feature of the cluster
  that they belong to.
  However, now that we have segmented our tractography into small bundles
  we can calculate many more important features for the cluster.
- The first thing in mind is the variance which now can be computed for every
- cluster 
+ The first thing in mind is the cluster variance which now can be computed
+ for every cluster 
 \begin_inset Formula $c_{i}$
 \end_inset
 
@@ -3242,67 +3237,95 @@ Virtual tracks, exemplar tracks and other features.
 \begin_inset Formula $j$
 \end_inset
 
-th point
-\change_deleted 2 1319016646
- 
-\change_unchanged
- in a track in that cluster and 
+-th point in a track in that cluster and 
 \begin_inset Formula $v_{j}$
 \end_inset
 
  is the corresponding point of the virtual track.
- Many other variance related or higher order statistics can be easily computed
- in an analogous fashion.
- 
+ Many other similar or higher order statistics can be easily computed in
+ an analogous fashion.
+ One of the most useful feature is the calculation of exemplars!
 \end_layout
 
 \begin_layout Standard
-Another fruitful idea relating to the virtual track is to try to identify
+
+\series bold
+Exemplars
+\series default
+.
+ Another fruitful idea relating to the virtual track is to try to identify
  a corresponding feature for the bundle which actually belongs to the tractograp
 hy.
  In other words to find an exemplar or centroid track.
  Remember that the virtual tracks do not exist as real tracks as they are
  but are just the outcome of massive amalgamations.
  There are many strategies for how to select good exemplars for the bundles.
- A very fast procedure that we use in this work is to find which track from
- the cluster is closest to the virtual track.
- We denote this exemplar track with the letter 
-\change_deleted 0 1319142683
-
-\begin_inset Formula $e=\mathrm{arg}\min_{x\in C}||v-x||_{2}$
+ A very fast procedure that we use in this work is to find which real track
+ from the cluster is closest (by MDF distance) to the virtual track.
+ Lets call this exemplar track 
+\begin_inset Formula $e_{0}$
 \end_inset
 
+ such that 
+\begin_inset Formula $e_{0}=arg$
+\end_inset
 
-\change_inserted 0 1319142504
+minMDF
+\begin_inset Formula $_{x}$
+\end_inset
 
-\series bold
-READ Exemplars
-\change_unchanged
+(
+\begin_inset Formula $v,x$
+\end_inset
 
-\series default
-.
- Another exemplar could be selected as the most similar track among all
- tracks in the bundle which we denote with 
+).
+ Finding 
+\begin_inset Formula $e_{0}$
+\end_inset
+
+ is still linear and that will be very useful if we have created clusters
+ with more than 
+\begin_inset Formula $\sim5000$
+\end_inset
+
+ tracks depending on your system memory.
+ 
+\end_layout
+
+\begin_layout Standard
+Another exemplar could be defined as the most similar track among all tracks
+ in the bundle which we denote with 
 \begin_inset Formula $e_{2}=\mathrm{arg}\min_{x\in C}\sum_{y\in C}||y-x||_{2}$
 \end_inset
 
-.
- 
-\series bold
-[ARE THESE FORMULAS RIGHT? I added them to try to make the text clearer.]
-\series default
- Identification of exemplar tracks will be efficient only for small bundles
- of less than 
+ or if we want to work with tracks of different size we could use the 
+\begin_inset Formula $e_{3}=arg$
+\end_inset
+
+minMAM
+\begin_inset Formula $_{x,y\in C}$
+\end_inset
+
+(
+\begin_inset Formula $y,x$
+\end_inset
+
+).
+ if we want to work with.
+ Identification of exemplar tracks of type 
+\begin_inset Formula $e_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{3}$
+\end_inset
+
+ will be efficient only for small bundles of less than 
 \begin_inset Formula $5000$
 \end_inset
 
  tracks because we need to calculate all pairwise distances in the bundle
  and then choose that which has most neighbours.
- 
-\series bold
-[DO YOU MEAN THAT BIT ABOUT having the most neighbours? If so the formulas
- above need changing.]
-\series default
  We will see in the section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3735,18 +3758,6 @@ Algorithm
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1 1319018206
-
-\series bold
-Are you actually planning to set down the pQB algorithm formally?]
-\change_inserted 0 1319710771
-NO sorry...
-\change_inserted 1 1319018206
-
-\end_layout
-
-\begin_layout Standard
 QB is already a super-efficient algorithm however we wanted to make it even
  more efficient so that for example it is trivial to cluster hundreds of
  subjects together and use many CPUs or computers simultaneously.
@@ -3771,8 +3782,6 @@ QB is already a super-efficient algorithm however we wanted to make it even
 Merging
 \series default
  two sets of bundles
-\change_inserted 1 1319018337
-
 \end_layout
 
 \begin_layout Standard
@@ -3881,32 +3890,18 @@ We found that QB has numerous applications from detecting erroneous tracks
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted 0 1319710561
-Rapidly detecting
-\change_unchanged
- erroneous tracks
+Rapidly detecting erroneous tracks
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 0 1319698576
-
-\series bold
-[This is not just a QB technique.
- It can be used as a stand alone tool?]
-\change_inserted 0 1319698752
-[The idea here is that QB speeds up the search for erroneous tracks.
- Of course the winding idea can be used as stand alone tool as well].
-
-\change_unchanged
-
-\series default
- It is well known that there are different artifacts seen in tractographies
+It is well known that there are different artifacts seen in tractographies
  caused by subject motion, poor voxel reconstruction, incorrect tracking
  and many other reasons.
  However there is no known automatic method to try and detect these tracks
  and therefore remove them from the datasets.
+ The idea here is that QB speeds up the search for erroneous tracks.
+ We will concentrate here on tracks that loop one or many times; something
+ that it is considered impossible to happen in nature.
 \end_layout
 
 \begin_layout Standard
@@ -4068,35 +4063,17 @@ reference "Flo:cst_pbc"
  where the red large bundle has been merged by an expert and then with QB
  we can extract the skeleton of the bundle and see which parts create that
  structure.
- Without QB it would be too 
-\change_deleted 0 1319698847
-dense
-\change_inserted 0 1319698867
-difficult
-\change_unchanged
- to work out that this bundle consists of many small or divergent parts
-\change_deleted 0 1319699010
-; possibly because of the noise in the real datasets
-\change_unchanged
-.
+ Without QB it would be too difficult to work out that this bundle consists
+ of many small or divergent parts.
  In this figure both very diverging, small or broken tracks can be identified
  after the simplification provided by QB.
  
-\change_inserted 1 1319018861
-
 \end_layout
 
 \begin_layout Standard
-In summary, we have shown that QB can 
-\change_deleted 0 1319141950
-provide
-\change_inserted 0 1319141959
-facilitate
-\change_deleted 0 1319141953
- 
-\change_unchanged
-a fully automatic, efficient and robust detection system for erroneous tracks
- in specific bundles or entire tractographies.
+In summary, we have shown that QB can facilitatea fully automatic, efficient
+ and robust detection system for erroneous tracks in specific bundles or
+ entire tractographies.
 \end_layout
 
 \begin_layout Standard
@@ -4555,7 +4532,25 @@ Most clustering algorithms need to calculate all pairwise distances between
 \end_layout
 
 \begin_layout Standard
-Algorithm:
+
+\series bold
+Procedure
+\series default
+:
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We need a different name than algorithm so that we don't have any 
+\end_layout
+
+\begin_layout Plain Layout
+conflicts with the float algorithms
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4697,20 +4692,6 @@ mm.
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 0 1319699781
-\begin_inset CommandInset citation
-LatexCommand cite
-key "eades1984heuristic"
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -4739,12 +4720,25 @@ name "Flo:LSC+HC+AP"
 \begin_inset Caption
 
 \begin_layout Plain Layout
-2 examples were QB output is used to cluster an entire set of 10 tractographies
- together and then the result is given as input to hierarchical clustering
- (HC) using single linkage on the left and to affinity propagation (AP)
- on the right.
- Colours encode cluster labels and on the left we see 19 clusters and on
- the right 23.
+\begin_inset Formula $2$
+\end_inset
+
+examples were QB output is used to cluster an entire set of 
+\begin_inset Formula $10$
+\end_inset
+
+ tractographies together and then the result is given as input to hierarchical
+ clustering (HC) using single linkage on the left and to affinity propagation
+ (AP) on the right.
+ Colours encode cluster labels and on the left we see 
+\begin_inset Formula $19$
+\end_inset
+
+ clusters and on the right 
+\begin_inset Formula $23$
+\end_inset
+
+.
  QB facilitates massively the operation of the other two algorithms which
  would not be able to cluster the entire datasets on current computers.
  Pay attention at the top left panel where QB+HC have managed to cluster
@@ -4759,6 +4753,43 @@ name "Flo:LSC+HC+AP"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+For the hierarching clustering we used the software 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+hcluster
+\end_layout
+
+\end_inset
+
+ and for affinity propagation we used the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+scikit-learn
+\end_layout
+
+\end_inset
+
+ both implemented in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Python
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4843,7 +4874,73 @@ key "pearl1988probabilistic"
  Every data point is a node in a network and AP recursively transmits real-value
 d messages along the edges of the network until a good set of exemplars
  and corresponding clusters emerges.
- AP takes as input a collection of similarities between data points, where
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename last_figures/affinity_propagation_ok2.png
+	lyxscale 40
+	scale 40
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Fig:AP_2d"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Simple example of affinity propagation at work where it can precisely identify
+ 4 different normal distributions with means 
+\begin_inset Formula $(1,1),\;(-1,-1),\:(1,-1),$
+\end_inset
+
+
+\begin_inset Formula $(-2,2)$
+\end_inset
+
+ and standard deviation 
+\begin_inset Formula $.5$
+\end_inset
+
+.
+ You can see the exemplars - most representative actual points - with thicker
+ dots perfectly aligned with the means.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+AP takes as input a collection of similarities between data points, where
  the similarity 
 \begin_inset Formula $S(i,k)$
 \end_inset
@@ -5029,8 +5126,14 @@ Of course when we need to calculate distances between many points then the
  AP on sparse matrices but if the datasets are not sparse as it is the case
  with tractographies then we need to reduce the dimensionality of the data
  sets and this is where QB could be very handy.
-\change_inserted 0 1319710607
+ The complete algorithm for AP is given in alg.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:AP"
 
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -5389,10 +5492,10 @@ caption{Affinity Propagation}
 
 \begin_layout Plain Layout
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Using now the labels we can add an extra step  in AP where we create a tree
+Using now the labels we can add an extra step in AP where we create a tree
  structure $C_{AP}=
 \backslash
 {c_{0},...,c_{k},...,c_{|C_{AP}|-1}
@@ -5407,373 +5510,6 @@ mathbf{e},N
 \backslash
 mathbf{e}$, the indices $I$ of the cluster elements and $N$ the number of
  elements in a cluster so that it resembles with the output of QB.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset listings
-lstparams "basicstyle={\footnotesize},mathescape=true"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-$
-\backslash
-forall i,k:
-\backslash
-: A(i,k)=R(i,k)=0$
-\end_layout
-
-\begin_layout Plain Layout
-
-Remove degeneracies
-\end_layout
-
-\begin_layout Plain Layout
-
-$S=S+n$ 
-\end_layout
-
-\begin_layout Plain Layout
-
-Set damping factor and last iteration
-\end_layout
-
-\begin_layout Plain Layout
-
-d=0.5
-\end_layout
-
-\begin_layout Plain Layout
-
-last_iter=100
-\end_layout
-
-\begin_layout Plain Layout
-
-For every iteration
-\end_layout
-
-\begin_layout Plain Layout
-
-for iter from 1 to last_iter:	
-\end_layout
-
-\begin_layout Plain Layout
-
-	$R_{old}=R$
-\end_layout
-
-\begin_layout Plain Layout
-
-	Update responsibilities
-\end_layout
-
-\begin_layout Plain Layout
-
-	$
-\backslash
-forall i,k:
-\backslash
-: R(i,k)=S(i,k)-max_{k':k'
-\backslash
-neq k}[S(i,k')+A(i,k')]$
-\end_layout
-
-\begin_layout Plain Layout
-
-	Dampen responsibilities
-\end_layout
-
-\begin_layout Plain Layout
-
-	$R=(1-d)R+d*R_{old}$ 	
-\end_layout
-
-\begin_layout Plain Layout
-
-	$A_{old}=A$
-\end_layout
-
-\begin_layout Plain Layout
-
-	Update availabilities
-\end_layout
-
-\begin_layout Plain Layout
-
-	$
-\backslash
-forall i,k:
-\backslash
-: A(i,k)=
-\backslash
-begin{cases} 
-\backslash
-sum_{i':i'
-\backslash
-neq i} & max[0,
-\backslash
-: R(i',k)],
-\backslash
-: for
-\backslash
-:
-\backslash
-: k=i
-\backslash
-
-\backslash
- 
-\backslash
-min & 
-\backslash
-left[0,
-\backslash
-: 	R(k,k)+{
-\backslash
-displaystyle 
-\backslash
-sum
-\backslash
-max_{i':i'
-\backslash
-notin
-\backslash
-{i,k
-\backslash
-}}[0,R(i',k)]}
-\backslash
-right],
-\backslash
-: for
-\backslash
-:
-\backslash
-: k
-\backslash
-neq i
-\backslash
-end{cases}$
-\end_layout
-
-\begin_layout Plain Layout
-
-	Dampen availabilities
-\end_layout
-
-\begin_layout Plain Layout
-
-	$A=(1-d)A+dA_{old}$
-\end_layout
-
-\begin_layout Plain Layout
-
-Find positive pseudomarginals
-\end_layout
-
-\begin_layout Plain Layout
-
-$I_{d}=where(diag(E)>0)$
-\end_layout
-
-\begin_layout Plain Layout
-
-Find indices of exemplars
-\end_layout
-
-\begin_layout Plain Layout
-
-$
-\backslash
-forall i, I_{e}=argmax
-\backslash
-: S(i,I_{d})$
-\end_layout
-
-\begin_layout Plain Layout
-
-$I_{e}(I_{d})=1:size
-\backslash
-: (I_{d})$
-\end_layout
-
-\begin_layout Plain Layout
-
-Assing labels
-\end_layout
-
-\begin_layout Plain Layout
-
-$L=I_{d}(I_{e})$
-\end_layout
-
-\begin_layout Plain Layout
-
-Using now the labels we can add an extra step 
-\end_layout
-
-\begin_layout Plain Layout
-
-in AP where we create a tree structure
-\end_layout
-
-\begin_layout Plain Layout
-
-$C_{AP}=
-\backslash
-{c_{0},...,c_{k},...,c_{|C_{AP}|-1}
-\backslash
-}$, where a cluster $c=
-\backslash
-{I,
-\backslash
-mathbf{e},N
-\backslash
-}$}
-\end_layout
-
-\begin_layout Plain Layout
-
-holds the exemplars $
-\backslash
-mathbf{e}$, the indices $I$ of the cluster elements and $N$ the
-\end_layout
-
-\begin_layout Plain Layout
-
-number of elements in a cluster so that it resembles with the output of
- QB
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Affinity Propagation
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-Input
-\series default
-: similarity/affinity matrix 
-\begin_inset Formula $S$
-\end_inset
-
- where the diagonal elements of 
-\begin_inset Formula $S(k,k)$
-\end_inset
-
- indicate the a priori preference for 
-\begin_inset Formula $k$
-\end_inset
-
- to be chosen as an exemplar 
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-Output
-\series default
-: clustering 
-\begin_inset Formula $CAP=\{c_{o},...,c_{k},...,c_{|CAP|-1}\}$
-\end_inset
-
-, where a cluster 
-\begin_inset Formula $c=\{I,\mathbf{e},N\}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename last_figures/affinity_propagation_ok2.png
-	lyxscale 40
-	scale 40
-	rotateOrigin center
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Fig:AP_2d"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Simple example of affinity propagation at work where it can precisely identify
- 4 different normal distributions with means 
-\begin_inset Formula $(1,1),\;(-1,-1),\:(1,-1),$
-\end_inset
-
-
-\begin_inset Formula $(-2,2)$
-\end_inset
-
- and standard deviation 
-\begin_inset Formula $.5$
-\end_inset
-
-.
- You can see the exemplars - most representative actual points - with thicker
- dots perfectly aligned with the means.
 \end_layout
 
 \end_inset
@@ -6627,7 +6363,18 @@ We worked mostly with long tracks but strategies for short tracks or bundles
 
 \begin_layout Standard
 We showed results with simulated, single or multiple real subjects and the
- code for QuickBundles is freely available at dipy.org
+ code for QuickBundles is freely available at 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+dipy.org
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
