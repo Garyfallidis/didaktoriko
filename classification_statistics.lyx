@@ -706,11 +706,48 @@ where
 \end_layout
 
 \begin_layout Standard
-We observe that is 
-\begin_inset Formula ${\displaystyle \sum_{i=1}^{M}}t_{i\pi(i)}/N$
+We observe that it is the term 
+\begin_inset Formula ${\displaystyle \mu_{\max}=\sum_{i=1}^{M}}t_{i\pi(i)}$
+\end_inset
+
+ that has key role in the behaviour of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\kappa_{\max}$
 \end_inset
 
 .
+ 
+\begin_inset Formula $\kappa_{\max}$
+\end_inset
+
+Can we find a mapping 
+\begin_inset Formula $\pi$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+ that maximises 
+\begin_inset Formula $\mu_{max}$
+\end_inset
+
+? This turns out to be a classical assignment problem in bipartite graph
+ theory for which the so-called Hungarian Algorithm [ref] is an efficient
+ solution.
  
 \end_layout
 
@@ -1129,8 +1166,11 @@ kappa 0.0343699038534
 \end_layout
 
 \begin_layout Standard
-We have tried various published coded implementations of the Hungarian algorithm.
- 
+We have tried various published coded implementations of the version by
+ Lawler [ref Lawler2001] of the Hungarian Algorithm and have found that
+ the version published by Carpaneto et al.
+ [ref Carpaneto1988] and implemented by them [ref CarpanetoAPC] is both
+ fast and capable of handling assignment problems of unlimited size.
 \end_layout
 
 \end_body
