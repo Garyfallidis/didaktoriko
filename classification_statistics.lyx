@@ -581,8 +581,8 @@ Cohen's
 
  is a well-known measure of agreement between raters on the assignment of
  a set of items to a shared classification scheme.
- It adjusts the agreements -- items on which the rates agree -- for the
- number of agreements that might have ocurred by chance:
+ It adjusts the agreements (items on which the raters agree) for the number
+ of agreements that might have ocurred by chance:
 \end_layout
 
 \begin_layout LyX-Code
@@ -667,7 +667,7 @@ where
 \end_inset
 
  statistic is that its computation is 
-\begin_inset Formula $O(n!)$
+\begin_inset Formula $O(N!)$
 \end_inset
 
  if all permutations are tried.
