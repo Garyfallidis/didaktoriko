@@ -706,431 +706,56 @@ where
 \end_layout
 
 \begin_layout Standard
-We observe that is 
-\begin_inset Formula ${\displaystyle \sum_{i=1}^{M}}t_{i\pi(i)}/N$
+We observe that it is the term 
+\begin_inset Formula ${\displaystyle \mu_{\max}=\sum_{i=1}^{M}}t_{i\pi(i)}$
+\end_inset
+
+ that has key role in the behaviour of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\kappa_{\max}$
 \end_inset
 
 .
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
->>>>>> Working with  5  classes 
-\end_layout
-
-\begin_layout Plain Layout
-
->>> Annealing approximation ...
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-time       1.83583498001 
-\end_layout
-
-\begin_layout Plain Layout
-
-maxkappa   0.0364367 
-\end_layout
-
-\begin_layout Plain Layout
-
-max order  [3 4 0 1 2] 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
->>> Exhaustive search ...
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-time       0.0178101062775 
-\end_layout
-
-\begin_layout Plain Layout
-
-maxkappa   0.0364366903912 
-\end_layout
-
-\begin_layout Plain Layout
-
-max order  (3, 4, 0, 1, 2) 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
->>> Hungarian matching ...
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-total agreements: 229 229.0 
-\end_layout
-
-\begin_layout Plain Layout
-
-optimal assignment [3 4 0 1 2] 
-\end_layout
-
-\begin_layout Plain Layout
-
-kappa 0.0364366903912 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
->>>>>> Working with  6  classes (1000, 2) 
-\end_layout
-
-\begin_layout Plain Layout
-
->>> Annealing approximation ...
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-time       2.82582712173 
-\end_layout
-
-\begin_layout Plain Layout
-
-maxkappa   0.043579 
-\end_layout
-
-\begin_layout Plain Layout
-
-max order  [0 2 3 4 5 1] 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
->>> Exhaustive search ...
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-time       0.107719898224 
-\end_layout
-
-\begin_layout Plain Layout
-
-maxkappa   0.0435789587371 
-\end_layout
-
-\begin_layout Plain Layout
-
-max order  (0, 2, 3, 4, 5, 1) 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
->>> Hungarian matching ...
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-total agreements: 203 203.0 
-\end_layout
-
-\begin_layout Plain Layout
-
-optimal assignment [0 2 3 4 5 1] 
-\end_layout
-
-\begin_layout Plain Layout
-
-kappa 0.0435789587371 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
->>>>>> Working with  7  classes 
-\end_layout
-
-\begin_layout Plain Layout
-
->>> Annealing approximation ...
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-time       8.03185606003 
-\end_layout
-
-\begin_layout Plain Layout
-
-maxkappa   0.0350449 
-\end_layout
-
-\begin_layout Plain Layout
-
-max order  [2 6 5 3 0 4 1] 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
->>> Exhaustive search ...
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-time       0.759663820267 
-\end_layout
-
-\begin_layout Plain Layout
-
-maxkappa   0.0350448855631 
-\end_layout
-
-\begin_layout Plain Layout
-
-max order  (2, 6, 5, 3, 0, 4, 1) 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
->>> Hungarian matching ...
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-total agreements: 172 172.0 
-\end_layout
-
-\begin_layout Plain Layout
-
-optimal assignment [2 0 5 3 6 4 1] 
-\end_layout
-
-\begin_layout Plain Layout
-
-kappa 0.0335074109438 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
->>>>>> Working with  8  classes
-\end_layout
-
-\begin_layout Plain Layout
-
->>> Annealing approximation ...
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-time       3.76319408417 
-\end_layout
-
-\begin_layout Plain Layout
-
-maxkappa   0.0408217 
-\end_layout
-
-\begin_layout Plain Layout
-
-max order  [7 3 1 6 2 0 5 4]
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
->>> Exhaustive search ...
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-time       6.19923996925 
-\end_layout
-
-\begin_layout Plain Layout
-
-maxkappa   0.0408216694276 
-\end_layout
-
-\begin_layout Plain Layout
-
-max order  (7, 3, 1, 6, 2, 0, 5, 4) 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
->>> Hungarian matching ...
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-total agreements: 161 161.0 
-\end_layout
-
-\begin_layout Plain Layout
-
-optimal assignment [7 3 1 6 2 0 5 4] 
-\end_layout
-
-\begin_layout Plain Layout
-
-kappa 0.0408216694276 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
->>>>>> Working with  9  classes
-\end_layout
-
-\begin_layout Plain Layout
-
->>> Annealing approximation ...
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-time       9.2730679512 
-\end_layout
-
-\begin_layout Plain Layout
-
-maxkappa   0.0323183 
-\end_layout
-
-\begin_layout Plain Layout
-
-max order  [7 6 1 0 5 4 2 8 3]
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
->>> Exhaustive search ...
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-time       56.1402289867 
-\end_layout
-
-\begin_layout Plain Layout
-
-maxkappa   0.034482913836 
-\end_layout
-
-\begin_layout Plain Layout
-
-max order  (7, 8, 1, 0, 5, 4, 6, 2, 3) 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
->>> Hungarian matching ...
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-total agreements: 142 142.0 
-\end_layout
-
-\begin_layout Plain Layout
-
-optimal assignment [7 4 1 0 5 8 6 2 3] 
-\end_layout
-
-\begin_layout Plain Layout
-
-kappa 0.0343699038534
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
+\begin_inset Formula $\kappa_{\max}$
+\end_inset
+
+Can we find a mapping 
+\begin_inset Formula $\pi$
 \end_inset
 
 
-\end_layout
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+ that maximises 
+\begin_inset Formula $\mu_{max}$
+\end_inset
 
-\begin_layout Standard
-We have tried various published coded implementations of the Hungarian algorithm.
- 
+? This turns out to be a classical assignment problem in bipartite graph
+ theory for which the so-called Hungarian Algorithm [ref] is an efficient
+ solution.
+ We have tried various published coded implementations of the version by
+ Lawler [ref Lawler2001] of the Hungarian Algorithm and have found that
+ the one published by Carpaneto et al.
+ [ref Carpaneto1988] and implemented by them [ref CarpanetoAPC] in 
+\begin_inset Formula $\textsc{Fortran}$
+\end_inset
+
+ is both fast and capable of handling assignment problems of unlimited size.
 \end_layout
 
 \end_body

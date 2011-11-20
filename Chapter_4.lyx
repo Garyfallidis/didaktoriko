@@ -49,8 +49,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "Eleftherios Garyfallidis,,," 
 \author "" 
+\author "Eleftherios Garyfallidis,,," 
 \author "" 
 \end_header
 
@@ -907,7 +907,7 @@ Materials and methods
 \series bold
 [THIS NEEDS SPELLING OUT IN DETAIL.
  Is this the best place? Could the information on datasets go in an Appendix?]
-\change_inserted 0 1319125536
+\change_inserted 1 1319125536
  Yes this can all go to the appendix.
  The Appendix of the thesis has already most of the information
 \change_unchanged
@@ -1746,13 +1746,13 @@ name "Alg:QuickBundles"
 
 \begin_layout Standard
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 \begin_inset Float algorithm
 wide false
 sideways false
@@ -1760,7 +1760,7 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 \begin_inset listings
 lstparams "basicstyle={\small\rmfamily},breaklines=true,mathescape=true,numbers=left,numberstyle={\footnotesize},showstringspaces=false,tabsize=4"
 inline false
@@ -1768,7 +1768,7 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 $
 \backslash
@@ -1779,7 +1779,7 @@ textrm{
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 $c_{0}=
 \backslash
@@ -1794,7 +1794,7 @@ right
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 $C=
 \backslash
@@ -1809,7 +1809,7 @@ right
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 $
 \backslash
@@ -1820,7 +1820,7 @@ textrm{
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 $
 \backslash
@@ -1833,7 +1833,7 @@ textbf{to}$ $|T|-1$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -1842,7 +1842,7 @@ mathbf{t}=T_{i}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -1853,7 +1853,7 @@ textrm{
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -1864,7 +1864,7 @@ mathrm{zeros}(|C|)$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -1873,7 +1873,7 @@ textsc{store flipping if needed}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -1884,7 +1884,7 @@ mathrm{zeros}(|C|)$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -1895,7 +1895,7 @@ textrm{
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -1908,7 +1908,7 @@ textbf{to}$ $|C|-1$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$
 \backslash
@@ -1919,7 +1919,7 @@ mathbf{h}/C_{k}.N$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$d$=$d_{d}(
 \backslash
@@ -1930,7 +1930,7 @@ mathbf{v})$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$f$=$d_{f}(
 \backslash
@@ -1941,7 +1941,7 @@ mathbf{v})$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$
 \backslash
@@ -1950,7 +1950,7 @@ textsc{if flip distance is smaller than direct distance}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$
 \backslash
@@ -1959,14 +1959,14 @@ textbf{if}$ $f < d$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 			$d = f$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 			$
 \backslash
@@ -1975,7 +1975,7 @@ mathrm{flip}_{k}=1$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$
 \backslash
@@ -1984,7 +1984,7 @@ mathrm{alld}_{k}=d$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -1993,7 +1993,7 @@ textsc{find minimum distance and index}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$m=
 \backslash
@@ -2004,7 +2004,7 @@ mathrm{alld})$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$l=
 \backslash
@@ -2015,7 +2015,7 @@ mathrm{alld})$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2024,7 +2024,7 @@ textsc{If smaller than any class threshold then}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2033,7 +2033,7 @@ textsc{add track to that class}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2042,7 +2042,7 @@ textbf{if}$ $m < thr$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$
 \backslash
@@ -2053,7 +2053,7 @@ mathrm{flip}_{l}=1$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 			$C_{l}.
 \backslash
@@ -2064,7 +2064,7 @@ textsc{reverse direction}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$
 \backslash
@@ -2073,7 +2073,7 @@ textbf{else}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 			$C_{l}.
 \backslash
@@ -2084,21 +2084,21 @@ textsc{same direction}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$C_{l}.N+=1$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$C_{l}.I$.append(i)
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2107,7 +2107,7 @@ textsc{Otherwise create a new class}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2116,21 +2116,21 @@ textbf{else}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$|C|+=1$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$C_{|C|-1}.I_{0}=l$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$C_{|C|-1}.
 \backslash
@@ -2141,14 +2141,14 @@ mathbf{t}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$C_{|C|-1}.N=1$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	
 \end_layout
@@ -2160,12 +2160,12 @@ mathbf{t}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 \begin_inset Caption
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 \series bold
 \begin_inset CommandInset label
@@ -3377,7 +3377,7 @@ Because a track is a sequence of points without a preferred direction, it
 \end_layout
 
 \begin_layout Standard
-For this purpose we figured out the following solution.
+For this purpose we devised the following technique.
  Chose a fixed point or pole 
 \begin_inset Formula $P$
 \end_inset
@@ -3394,7 +3394,7 @@ For this purpose we figured out the following solution.
 \begin_inset Formula $(0,0,0)$
 \end_inset
 
- as the pole point; in MNI space we can use to point 
+ as the pole point; in MNI space we can use the point 
 \begin_inset Formula $(100,100,100)$
 \end_inset
 
@@ -3403,50 +3403,743 @@ For this purpose we figured out the following solution.
  most tracks in the sense that similar tracks will have the same direction.
  However there will still be a small percentage for which the bi-directionality
  problem persists.
- We can correct for this by using exemplars rather than virtual tracks as
- virtuals can misrepresent a bundle if the bundle consists of tracks with
- ambiguous directionality.
+ We can correct for these by using exemplars rather than virtual tracks
+ as virtual tracks can misrepresent a bundle if the bundle consists of tracks
+ with ambiguous directionality.
  
 \end_layout
 
 \begin_layout Subsection
-Comparisons between and across subjects
+Comparisons within and between subjects
 \end_layout
 
 \begin_layout Subsubsection
-Stability and orderings
+Measures to compare classifications
+\end_layout
+
+\begin_layout Standard
+Considerable attention has been paid to measuring the performance of one
+ or more classifiers in the context of supervised learning.
+ We now outline some of these metrics before applying them to the comparisons
+ we are interested in.
+ Let 
+\begin_inset Formula $\mathcal{A}=\{A_{1},A_{2},\ldots,A_{m}\}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}=\{B_{1},B_{2},\ldots,B_{n}\}$
+\end_inset
+
+ be two classifications of 
+\begin_inset Formula $N$
+\end_inset
+
+ items.
+ Let the number of items in 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $B_{j}$
+\end_inset
+
+ be 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{j}$
+\end_inset
+
+, with 
+\begin_inset Formula $t_{ij}$
+\end_inset
+
+ items in the intersection 
+\begin_inset Formula $A_{i}\cap B_{j}$
+\end_inset
+
+.
+ There are a number of ways of measuring the similarity or dissimilarity
+ of 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+.
+ The first two, Gini Impurity and Random Classification Errors, are based
+ on ways we might estimate the 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+-labels if we just have the 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+-labelling.
+\end_layout
+
+\begin_layout Paragraph*
+Gini impurity
+\end_layout
+
+\begin_layout Standard
+Suppose we have a probability distribution 
+\begin_inset Formula $P=(p_{1},p_{2},\ldots,p_{k})$
+\end_inset
+
+ on 
+\begin_inset Formula $k$
+\end_inset
+
+ items, and we randomly assign labels 
+\begin_inset Formula $(1,2,\ldots,k)$
+\end_inset
+
+ to items sampled from 
+\begin_inset Formula $P$
+\end_inset
+
+ using the same distribution 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Then the probability of assigning the wrong label is 
+\begin_inset Formula $1-{\displaystyle \sum_{i=1}^{k}}p_{i}^{2}$
+\end_inset
+
+.
+ This is the Gini Impurity of 
+\begin_inset Formula $P$
+\end_inset
+
+ -
+\emph on
+ 
+\emph default
+
+\begin_inset Formula $\mathtt{\gini}(P)$
+\end_inset
+
+ - with 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $0\le\mathrm{\mathtt{\gini}}(P)\le1-\frac{1}{k}$
+\end_inset
+
+.
+ The lower limit occurs when 
+\begin_inset Formula $P$
+\end_inset
+
+ assigns probability 
+\begin_inset Formula $1$
+\end_inset
+
+ to just one label (i.e.
+ a very pure, concentrated distribution); the upper limit occurs when all
+ labels have equal probability 
+\begin_inset Formula $\frac{1}{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $P_{\mathcal{A}|B_{j}}$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ is the observed conditional probability distribution 
+\begin_inset Formula $(p_{i|j}=\frac{t_{ij}}{b_{j}},\, i=1,\ldots,m)$
+\end_inset
+
+ of 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ given 
+\begin_inset Formula $B_{j},$
+\end_inset
+
+ then we define the Gini Impurity of 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ as 
+\begin_inset Formula $\gini(\mathcal{A}|\mathcal{B})={\displaystyle \sum_{j=1}^{n}\frac{b_{j}}{N}\thinspace\mathrm{\mathtt{\gini}}(P_{\mathcal{A}|B_{j}})}$
+\end_inset
+
+.
+ In terms of the matrix 
+\begin_inset Formula $T=(t_{ij})$
+\end_inset
+
+ this is the 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+-weighted average of the impurities of the rows of 
+\begin_inset Formula $T.$
+\end_inset
+
+ We similarly define 
+\begin_inset Formula $\gini(\mathcal{B}|\mathcal{A})$
+\end_inset
+
+ and it is equal to the 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+-weighted average of the impurities of the columns of 
+\begin_inset Formula $T.$
+\end_inset
+
+ It is convenient to arrange our comparison metrics so that they are similarity
+ measures, with high values indicating high dissimilarity.
+ So we define and report the complementary 
+\begin_inset Formula $\mathtt{{gini\_purity}}$
+\end_inset
+
+as 
+\begin_inset Formula $1-\gini$
+\end_inset
+
+.
+ We also restrict ourselves to reporting the symmetrised value 
+\begin_inset Formula $(\gini(\mathcal{A}|\mathcal{B})+\gini(\mathcal{B}|\mathcal{A}))/2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Random classification errors
+\end_layout
+
+\begin_layout Standard
+In this case given 
+\begin_inset Formula $P$
+\end_inset
+
+ we assign to each item the label with maximum probability 
+\begin_inset Formula $i_{\mathrm{max}}=\argmax_{i}p_{i}$
+\end_inset
+
+.
+ The Random Classification Error in this case is 
+\begin_inset Formula $1-p_{\mathrm{max}}=1-\max_{i}p_{i}$
+\end_inset
+
+.
+ When we do this conditional on the 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+-label and average over those labels, we get the Random Classification Error
+ of 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ conditional on 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathrm{\rce}(\mathcal{A}|\mathcal{B})={\displaystyle \sum_{j=1}^{n}\frac{b_{j}}{N}\thinspace(1-p_{B_{j}}^{*})}$
+\end_inset
+
+.
+ We define 
+\begin_inset Formula $\rce(\mathcal{B}|\mathcal{A})$
+\end_inset
+
+ similarly, and the complementary 
+\begin_inset Formula $\mathtt{{random\_classification\_accuracy}}.$
+\end_inset
+
+ A further simplification is to use the symmetrised value 
+\begin_inset Formula $(\rce(\mathcal{A}|\mathcal{B})+\rce(\mathcal{B}|\mathcal{A}))/2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Correctness and completeness (splitting and lumping pairs of items)
+\end_layout
+
+\begin_layout Standard
+For the next two metrics the focus moves to the labels assigned by 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ to pairs of items.
+ Differences in the partitions
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ are reflected in two ways.
+ Items assigned the same label by 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ are said to be split by 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ if their 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+-labels are not equal; alternatively items assigned different 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+-labels are said to be lumped 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+by 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ if they are assigned the same 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+-label.
+ Note that what is lumped (split) by 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ will equally be split (lumped) by 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The total number of pairs from 
+\begin_inset Formula $N$
+\end_inset
+
+ items is 
+\begin_inset Formula $\mathtt{pairs(\mathcal{A})=}\binom{N}{2}=\frac{N(N-1)}{2}$
+\end_inset
+
+.
+ The number of pairs assigned the same 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+-labels is 
+\begin_inset Formula ${\displaystyle \mathtt{together}(\mathcal{A})=\sum_{i=1}^{m}\binom{a_{i}}{2}}$
+\end_inset
+
+.
+ The number of pairs assigned different labels is 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\mathtt{apart}(\mathcal{A})=\mathtt{pairs}(\mathcal{A})-\mathtt{together}(\mathcal{A})$
+\end_inset
+
+.
+ This can also be written as 
+\begin_inset Formula ${\displaystyle \sum_{1\le i\ne i'\le m}a_{i}a_{i'}}$
+\end_inset
+
+which in turn can be expressed in terms of the cumulative sum of 
+\begin_inset Formula $(a_{i})$
+\end_inset
+
+ which is an efficient way of programming these calculation of sums of all
+ products with unequal subscripts.
+ The number of 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+-pairs split by 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ is 
+\begin_inset Formula \[
+\mathtt{split}(\mathcal{A}|\mathcal{B}){\displaystyle =\sum_{i=1}^{m}}\bigl({\displaystyle \sum_{1\le j\ne j'\le n}n_{ij}n_{ij'}}\bigr)=\mathtt{lumped}(\mathcal{B}|\mathcal{A}).\]
+
+\end_inset
+
+ Similarly 
+\begin_inset Formula \[
+\mathtt{lumped}(\mathcal{A}|\mathcal{B}){\displaystyle =\sum_{j=1}^{n}}\bigl({\displaystyle \sum_{1\le i\ne i'\le m}n_{ij}n_{i'j}}\bigr)=\mathtt{split}(\mathcal{B}|\mathcal{A}).\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 
-\series bold
-[ALL THIS NEEDS EXPANDING]
-\end_layout
-
-\begin_layout Itemize
-completeness
-\end_layout
-
-\begin_layout Itemize
+\emph on
+Completeness
+\emph default
+ and 
+\emph on
 correctness
-\end_layout
+\emph default
+ are define in terms of these quantities: 
+\begin_inset Formula \[
+\mathtt{completeness}(\mathcal{A}|\mathcal{B})=1-\mathtt{split}(\mathcal{A}|\mathcal{B})/\mathtt{together}(\mathcal{A})\]
 
-\begin_layout Itemize
-random classification error
-\end_layout
+\end_inset
 
-\begin_layout Itemize
-kappa?
+ and 
+\begin_inset Formula \[
+\mathtt{correctness}(\mathcal{A}|\mathcal{B})=1-\mathtt{lumped}(\mathcal{A}|\mathcal{B})/\mathtt{apart}(\mathcal{A}).\]
+
+\end_inset
+
+ A combined measure of 
+\emph on
+discordance
+\emph default
+ between 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ is defined as 
+\begin_inset Formula \[
+\mathtt{\mathtt{discord}(\mathcal{A},\mathcal{B})=(lumped}(\mathcal{A}|\mathcal{B})+\mathtt{split}(\mathcal{A}|\mathcal{B})/\mathtt{pairs}(\mathcal{A}).\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-plot one subject with 5 random orderings (10 comparisons) and mean and std
- for each of these methods and then the same for all other subjects and
- then plot
+For the clusterings we encounter in tractography typically the number of
+ apart pairs in 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ is very high, and only a small percentage (e.g.
+ 0.5%) of these pairs will be lumped by 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+.
+ This is because [claim on the basis of little analysis] the average cluster
+ size is small by comparison with the number of clusters.
+ [Needs numerical evaluation.] As a consequence, the 
+\bar under
+correctness
+\bar default
+ measure is not a particularly useful metric.
+ By contrast the number of together pairs is modest, and the 
+\bar under
+completeness
+\bar default
+ measure is more sensitive.
+ Because apart pairs seem to dominate together pairs, the 
+\bar under
+discord
+\bar default
+ measure has the same limited sensitivity as correctness.
+\end_layout
+
+\begin_layout Paragraph
+Maximum Agreement (
+\begin_inset Formula $\kappa_{\max}$
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Standard
-the mean of means and std of means (barchart)
+Our fifth metric is Cohen's 
+\begin_inset Formula $\kappa$
+\end_inset
+
+, which is a well-known measure of agreement between raters on the assignment
+ of a set of items to a shared classification scheme.
+ It adjusts the agreements (items on which the raters agree) for the number
+ of agreements that might have ocurred by chance:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula \[
+\kappa=\mathtt{\frac{observed\: proportion\: of\: agreements-\mathtt{expected\: proportion\: of\: chance\: agreements}}{\mathtt{expected\: proportion}\: of\: non-chance\: agreements}}.\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This can be simply represented in terms of the overlap matrix 
+\begin_inset Formula $T=(t_{ij})$
+\end_inset
+
+ by the formula:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\kappa(T)=\frac{{\displaystyle \sum_{i=1}^{M}}t_{ii}/N-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{i}/N^{2}}{1-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{i}/N^{2}},\]
+
+\end_inset
+
+where 
+\begin_inset Formula $r_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{j}$
+\end_inset
+
+ represent the row and column totals of 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ We have extended 
+\begin_inset Formula $T$
+\end_inset
+
+ to a square matrix of size 
+\begin_inset Formula $M=\max(m,n)$
+\end_inset
+
+ by adding if necessary rows or columns of zeros.
+ When we adapt this measure to the case of comparing two clusterings we
+ need further to take account of the lack of prior correspondence between
+ the two sets of labels.
+ The 
+\begin_inset Formula $\kappa_{\max}$
+\end_inset
+
+ statistic is the result of maximising 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ over all possible correspondences:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\kappa_{\max}=\mathrm{max}_{\pi}\kappa(T_{\pi})=\frac{{\displaystyle \sum_{i=1}^{M}}t_{i\pi(i)}/N-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{\pi(i)}/N^{2}}{1-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{\pi(i)}/N^{2}},\]
+
+\end_inset
+
+where 
+\begin_inset Formula $T_{\pi}$
+\end_inset
+
+ is the matrix 
+\begin_inset Formula $T$
+\end_inset
+
+ with columns reordered by a permutation 
+\begin_inset Formula $\pi.$
+\end_inset
+
+ The principal trouble with the 
+\begin_inset Formula $\kappa_{\max}$
+\end_inset
+
+ statistic is that its computation is 
+\begin_inset Formula $O(N!)$
+\end_inset
+
+ if all permutations are tried.
+ One way out of the problem caused by the size of the search set might be
+ to use a randomised search strategy for instance based on a simulated annealing
+ approach.
+ An alternative route is to redefine the objective.
+ One obvious choice in this setting is the 
+\begin_inset Formula $\mathtt{number\; of\; agreeements}={\displaystyle \sum_{i=1}^{M}}t_{i\pi(i)}$
+\end_inset
+
+ corresponding to the permutation 
+\begin_inset Formula $\pi$
+\end_inset
+
+, which is the leading term in the numerator of 
+\begin_inset Formula $\kappa_{\max}$
+\end_inset
+
+.
+ Seeking to maximise the 
+\begin_inset Formula $\mathtt{number\; of\; agreeements}$
+\end_inset
+
+ amongst all permutations 
+\begin_inset Formula $\pi$
+\end_inset
+
+ is a combinatorial optimization problem (weighted assignment problem on
+ a bipartite graph) that can be reformulated as a linear programming problem
+ whose efficient solution by the `Hungarian Method' is well known.
+\end_layout
+
+\begin_layout Paragraph
+`Hungarian' matching
+\end_layout
+
+\begin_layout Standard
+We observe that it is the term 
+\begin_inset Formula ${\displaystyle \mu_{\max}=\sum_{i=1}^{M}}t_{i\pi(i)}$
+\end_inset
+
+ that has key role in the behaviour of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\kappa_{\max}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\kappa_{\max}$
+\end_inset
+
+Can we find a mapping 
+\begin_inset Formula $\pi$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+ that maximises 
+\begin_inset Formula $\mu_{max}$
+\end_inset
+
+? This turns out to be a classical assignment problem in bipartite graph
+ theory for which the so-called Hungarian Method 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kuhn1955"
+
+\end_inset
+
+ is an efficient solution.
+ We have tried various published coded implementations of the version by
+ Lawler 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lawler2001"
+
+\end_inset
+
+ of the Hungarian Method and have found that the one published by Carpaneto
+ et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Carpaneto1988"
+
+\end_inset
+
+ and implemented by them 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CarpanetoAPC"
+
+\end_inset
+
+ in 
+\begin_inset Formula $\textsc{Fortran}$
+\end_inset
+
+ is both fast and capable of handling assignment problems of unlimited size.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3712,7 +4405,7 @@ t-test t-statistic -8.0359458956507464, p-value 3.5820657551255408e-10.
 \end_inset
 
 
-\change_inserted 0 1319203524
+\change_inserted 1 1319203524
 
 \end_layout
 
@@ -4046,7 +4739,7 @@ Example of detecting a possibly erroneous 3d bundle (on the left) by projecting
 QB can also simplify detection of tracks which are very dissimilar to others
  and therefore they are very distant from all other clusters.
  Usually when we use a QB threshold of about 
-\change_inserted 0 1319698782
+\change_inserted 1 1319698782
 
 \begin_inset Formula $10$
 \end_inset
@@ -4169,7 +4862,7 @@ Alignment
 .
  Tractographies were created using EuDX with QA produced by Generalized
  Q-Sampling with diffusion sampling length of 
-\change_inserted 0 1319699084
+\change_inserted 1 1319699084
 
 \begin_inset Formula $1.2$
 \end_inset
@@ -4177,7 +4870,7 @@ Alignment
 
 \change_unchanged
  and datasets from 
-\change_inserted 0 1319699080
+\change_inserted 1 1319699080
 
 \begin_inset Formula $101$
 \end_inset
@@ -4243,13 +4936,13 @@ key "Smith2006NeuroImage"
  displacements will be applied only on volumetric data and not with point
  data as those used in tractographies.
  Finally, after some considerable effort we found a combination of 
-\change_inserted 1 1319032651
+\change_inserted 2 1319032651
 
 \begin_inset Formula $\texttt{flirt}$
 \end_inset
 
 
-\change_deleted 1 1319032671
+\change_deleted 2 1319032671
 
 \begin_inset ERT
 status open
@@ -4274,13 +4967,13 @@ texttt{flirt}
 \end_inset
 
  and 
-\change_inserted 1 1319032687
+\change_inserted 2 1319032687
 
 \begin_inset Formula $\texttt{fnirtfileutils -withaff}$
 \end_inset
 
 
-\change_deleted 1 1319032700
+\change_deleted 2 1319032700
 
 \begin_inset ERT
 status open
@@ -5793,7 +6486,7 @@ key "fletcher1987practical"
 \end_inset
 
  to minimize 
-\change_inserted 0 1319745190
+\change_inserted 1 1319745190
 
 \begin_inset Formula $SMD$
 \end_inset
@@ -5806,7 +6499,7 @@ key "fletcher1987practical"
 \end_inset
 
  will be transformed and 
-\change_inserted 0 1319745183
+\change_inserted 1 1319745183
 
 \begin_inset Formula $SMD$
 \end_inset
@@ -5889,7 +6582,7 @@ Experiments
 .
  The first large scale experiment took place using the same tractography
  of a single individual copied and transformed 
-\change_inserted 0 1319745405
+\change_inserted 1 1319745405
 
 \begin_inset Formula $1000$
 \end_inset
@@ -6144,7 +6837,7 @@ Strategy2
 \series default
 .
  Read the tractography of a single subject,
-\change_deleted 0 1319745849
+\change_deleted 1 1319745849
  
 \change_unchanged
  use a tractographic atlas as the one created in section 
@@ -6160,7 +6853,7 @@ reference "sub:Atlases-made-easy"
 \end_inset
 
 ,
-\change_deleted 0 1319745849
+\change_deleted 1 1319745849
  
 \change_unchanged
  cluster the closest tracks found from the previous step and for each one
