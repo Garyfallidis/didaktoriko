@@ -3620,6 +3620,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename last_figures/low_angles_with_labels.png
+	lyxscale 30
 	scale 60
 
 \end_inset
@@ -5696,10 +5697,6 @@ Our results indicate that the MD and FA maps generated from a grid sampling
  use of multiple b-values, which could explain the better performance of
  the 102 grid scheme.
  
-\end_layout
-
-\begin_layout Subsection
-Tractography examples
 \end_layout
 
 \begin_layout Standard
