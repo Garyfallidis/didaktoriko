@@ -50,8 +50,8 @@
 \tracking_changes false
 \output_changes false
 \author "" 
-\author "Eleftherios Garyfallidis,,," 
 \author "" 
+\author "Eleftherios Garyfallidis,,," 
 \end_header
 
 \begin_body
@@ -907,7 +907,7 @@ Materials and methods
 \series bold
 [THIS NEEDS SPELLING OUT IN DETAIL.
  Is this the best place? Could the information on datasets go in an Appendix?]
-\change_inserted 1 1319125536
+\change_inserted 2 1319125536
  Yes this can all go to the appendix.
  The Appendix of the thesis has already most of the information
 \change_unchanged
@@ -1746,13 +1746,13 @@ name "Alg:QuickBundles"
 
 \begin_layout Standard
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 \begin_inset Float algorithm
 wide false
 sideways false
@@ -1760,7 +1760,7 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 \begin_inset listings
 lstparams "basicstyle={\small\rmfamily},breaklines=true,mathescape=true,numbers=left,numberstyle={\footnotesize},showstringspaces=false,tabsize=4"
 inline false
@@ -1768,7 +1768,7 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 $
 \backslash
@@ -1779,7 +1779,7 @@ textrm{
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 $c_{0}=
 \backslash
@@ -1794,7 +1794,7 @@ right
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 $C=
 \backslash
@@ -1809,7 +1809,7 @@ right
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 $
 \backslash
@@ -1820,7 +1820,7 @@ textrm{
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 $
 \backslash
@@ -1833,7 +1833,7 @@ textbf{to}$ $|T|-1$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 	$
 \backslash
@@ -1842,7 +1842,7 @@ mathbf{t}=T_{i}$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 	$
 \backslash
@@ -1853,7 +1853,7 @@ textrm{
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 	$
 \backslash
@@ -1864,7 +1864,7 @@ mathrm{zeros}(|C|)$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 	$
 \backslash
@@ -1873,7 +1873,7 @@ textsc{store flipping if needed}$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 	$
 \backslash
@@ -1884,7 +1884,7 @@ mathrm{zeros}(|C|)$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 	$
 \backslash
@@ -1895,7 +1895,7 @@ textrm{
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 	$
 \backslash
@@ -1908,7 +1908,7 @@ textbf{to}$ $|C|-1$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 		$
 \backslash
@@ -1919,7 +1919,7 @@ mathbf{h}/C_{k}.N$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 		$d$=$d_{d}(
 \backslash
@@ -1930,7 +1930,7 @@ mathbf{v})$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 		$f$=$d_{f}(
 \backslash
@@ -1941,7 +1941,7 @@ mathbf{v})$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 		$
 \backslash
@@ -1950,7 +1950,7 @@ textsc{if flip distance is smaller than direct distance}$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 		$
 \backslash
@@ -1959,14 +1959,14 @@ textbf{if}$ $f < d$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 			$d = f$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 			$
 \backslash
@@ -1975,7 +1975,7 @@ mathrm{flip}_{k}=1$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 		$
 \backslash
@@ -1984,7 +1984,7 @@ mathrm{alld}_{k}=d$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 	$
 \backslash
@@ -1993,7 +1993,7 @@ textsc{find minimum distance and index}$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 	$m=
 \backslash
@@ -2004,7 +2004,7 @@ mathrm{alld})$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 	$l=
 \backslash
@@ -2015,7 +2015,7 @@ mathrm{alld})$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 	$
 \backslash
@@ -2024,7 +2024,7 @@ textsc{If smaller than any class threshold then}$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 	$
 \backslash
@@ -2033,7 +2033,7 @@ textsc{add track to that class}$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 	$
 \backslash
@@ -2042,7 +2042,7 @@ textbf{if}$ $m < thr$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 		$
 \backslash
@@ -2053,7 +2053,7 @@ mathrm{flip}_{l}=1$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 			$C_{l}.
 \backslash
@@ -2064,7 +2064,7 @@ textsc{reverse direction}$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 		$
 \backslash
@@ -2073,7 +2073,7 @@ textbf{else}$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 			$C_{l}.
 \backslash
@@ -2084,21 +2084,21 @@ textsc{same direction}$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 		$C_{l}.N+=1$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 		$C_{l}.I$.append(i)
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 	$
 \backslash
@@ -2107,7 +2107,7 @@ textsc{Otherwise create a new class}$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 	$
 \backslash
@@ -2116,21 +2116,21 @@ textbf{else}$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 		$|C|+=1$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 		$C_{|C|-1}.I_{0}=l$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 		$C_{|C|-1}.
 \backslash
@@ -2141,14 +2141,14 @@ mathbf{t}$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 		$C_{|C|-1}.N=1$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 	
 \end_layout
@@ -2160,12 +2160,12 @@ mathbf{t}$
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 \begin_inset Caption
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1319710123
+\change_inserted 2 1319710123
 
 \series bold
 \begin_inset CommandInset label
@@ -2282,7 +2282,7 @@ reference "Fig:LSC_simple"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -4405,7 +4405,7 @@ t-test t-statistic -8.0359458956507464, p-value 3.5820657551255408e-10.
 \end_inset
 
 
-\change_inserted 1 1319203524
+\change_inserted 2 1319203524
 
 \end_layout
 
@@ -4420,6 +4420,8 @@ status open
 \align center
 \begin_inset Graphics
 	filename last_figures/TC_comparisons_diff_subjects.png
+	lyxscale 60
+	scale 60
 
 \end_inset
 
@@ -4739,7 +4741,7 @@ Example of detecting a possibly erroneous 3d bundle (on the left) by projecting
 QB can also simplify detection of tracks which are very dissimilar to others
  and therefore they are very distant from all other clusters.
  Usually when we use a QB threshold of about 
-\change_inserted 1 1319698782
+\change_inserted 2 1319698782
 
 \begin_inset Formula $10$
 \end_inset
@@ -4862,7 +4864,7 @@ Alignment
 .
  Tractographies were created using EuDX with QA produced by Generalized
  Q-Sampling with diffusion sampling length of 
-\change_inserted 1 1319699084
+\change_inserted 2 1319699084
 
 \begin_inset Formula $1.2$
 \end_inset
@@ -4870,7 +4872,7 @@ Alignment
 
 \change_unchanged
  and datasets from 
-\change_inserted 1 1319699080
+\change_inserted 2 1319699080
 
 \begin_inset Formula $101$
 \end_inset
@@ -4936,13 +4938,13 @@ key "Smith2006NeuroImage"
  displacements will be applied only on volumetric data and not with point
  data as those used in tractographies.
  Finally, after some considerable effort we found a combination of 
-\change_inserted 2 1319032651
+\change_inserted 1 1319032651
 
 \begin_inset Formula $\texttt{flirt}$
 \end_inset
 
 
-\change_deleted 2 1319032671
+\change_deleted 1 1319032671
 
 \begin_inset ERT
 status open
@@ -4967,13 +4969,13 @@ texttt{flirt}
 \end_inset
 
  and 
-\change_inserted 2 1319032687
+\change_inserted 1 1319032687
 
 \begin_inset Formula $\texttt{fnirtfileutils -withaff}$
 \end_inset
 
 
-\change_deleted 2 1319032700
+\change_deleted 1 1319032700
 
 \begin_inset ERT
 status open
@@ -6486,7 +6488,7 @@ key "fletcher1987practical"
 \end_inset
 
  to minimize 
-\change_inserted 1 1319745190
+\change_inserted 2 1319745190
 
 \begin_inset Formula $SMD$
 \end_inset
@@ -6499,7 +6501,7 @@ key "fletcher1987practical"
 \end_inset
 
  will be transformed and 
-\change_inserted 1 1319745183
+\change_inserted 2 1319745183
 
 \begin_inset Formula $SMD$
 \end_inset
@@ -6582,7 +6584,7 @@ Experiments
 .
  The first large scale experiment took place using the same tractography
  of a single individual copied and transformed 
-\change_inserted 1 1319745405
+\change_inserted 2 1319745405
 
 \begin_inset Formula $1000$
 \end_inset
@@ -6837,7 +6839,7 @@ Strategy2
 \series default
 .
  Read the tractography of a single subject,
-\change_deleted 1 1319745849
+\change_deleted 2 1319745849
  
 \change_unchanged
  use a tractographic atlas as the one created in section 
@@ -6853,7 +6855,7 @@ reference "sub:Atlases-made-easy"
 \end_inset
 
 ,
-\change_deleted 1 1319745849
+\change_deleted 2 1319745849
  
 \change_unchanged
  cluster the closest tracks found from the previous step and for each one
