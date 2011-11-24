@@ -75,7 +75,7 @@ key "Tuch2002"
 
 \end_inset
 
- such as Diffusion Spectrum Imaging 
+ such as Diffusion Spectrum Imaging (DSI) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "callaghan1988nmr"
@@ -114,7 +114,7 @@ key "Tuch2004"
 
 \end_inset
 
-, or in a Cartesian grid like in Generalized Q-Sampling 
+, or in a Cartesian grid like in Generalized Q-sampling Imaging (GQI) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Yeh2010"
@@ -144,8 +144,13 @@ q
 -space.
  This non-parametric nature of the algorithms described here allows for
  the indentification of multiple fibre crossings.
- In addition a nover method from the same family is presented named Diffusion
- Nabla Imaging.
+ In addition a new method is presented named Diffusion Nabla Imaging (DNI)
+ and a family of methods is defined called the Equatorial Inversion Transform
+ (EIT).
+ The EIT is a new way to represent and reconstruct the diffusion signal.
+ Our results show that it can perform better or as good as the current state-of-
+the art methods i.e.
+ DSI and GQI.
 \end_layout
 
 \begin_layout Subsection
@@ -173,8 +178,11 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Showing the ODFs from two randomly oriented simulated crossings of 3 fibres
- at 
+Showing the ODFs from two randomly oriented simulated crossings of 
+\begin_inset Formula $3$
+\end_inset
+
+ fibres at 
 \begin_inset Formula $50^{\circ}$
 \end_inset
 
@@ -183,7 +191,7 @@ Showing the ODFs from two randomly oriented simulated crossings of 3 fibres
 \end_inset
 
  angles (between each fiber) using different grid based reconstruction methods.
- The parameter used here DSI: radial sampling 
+ The parameters used here DSI: radial sampling 
 \begin_inset Formula $2.1-6$
 \end_inset
 
@@ -475,7 +483,7 @@ The modulus of the signal coincides with the output of the standard MRI
 
 .
  We can visualize the propagator for every voxel as a 3D density volume
- (SEE Figure).
+ (SEE Figure Introduction).
 \end_layout
 
 \begin_layout Standard
@@ -532,21 +540,45 @@ with
 \end_inset
 
  values.
- Often to obtain 
+\end_layout
+
+\begin_layout Standard
+\align left
+Often to obtain data for the complete grid of 
 \begin_inset Formula $515$
 \end_inset
 
- volumes is very time consuming and fewer number of unique q-vectors are
- employed only at a single hemisphere usually between 102 to 257 points
  
+\begin_inset Formula $\mathbf{q}$
+\end_inset
+
+-vectors (which also means that we need to collect 
+\begin_inset Formula $515$
+\end_inset
+
+ diffusion weighted volumes) is very time consuming and fewer number of
+ unique 
+\series bold
+q
+\series default
+-vectors are employed only at a single hemisphere usually between 
+\begin_inset Formula $102$
+\end_inset
+
+ to 
+\begin_inset Formula $257$
+\end_inset
+
+ points 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Kuo"
 
 \end_inset
 
- then because the signal is symmetric these are mapped on the other hemisphere
- to create the full q-space.
+.
+ This is valid because the signal is symmetric therefore the vectors can
+ be mapped on the other hemisphere to create the full q-space.
  
 \end_layout
 
@@ -580,19 +612,18 @@ This defines the orientation distribution function (ODF) for DSI which measures
 \begin_inset Formula $\mathbf{\hat{u}}$
 \end_inset
 
-where 
+ where 
 \begin_inset Formula $\mathbf{r=}r\hat{\mathbf{u}}$
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Standard
 
 \lang british
 Notice at this point that in order to find the ODF we have to create first
- the diffusion propagator after 
+ the diffusion propagator by 
 \lang english
 applying
 \lang british
@@ -631,7 +662,7 @@ spin density function
 \begin_inset Formula $P_{\Delta}$
 \end_inset
 
-with the spin density 
+ with the spin density 
 \begin_inset Formula $\rho$
 \end_inset
 
@@ -679,7 +710,7 @@ S(\mathbf{q}) & = & \int Q(\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})d\math
 \noun default
 \color inherit
 \lang english
-We can apply the inverse Fourier transform in eq.
+We can apply the Fourier transform again in eq.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:W2Q"
@@ -848,11 +879,11 @@ denotes the Hadamard product,
 \begin_inset Formula $\hat{\mathbf{u}}$
 \end_inset
 
- ,
+, 
 \begin_inset Formula $\mathbf{s}$
 \end_inset
 
- is a vector with all the signal values,
+ is a vector with all the signal values, 
 \begin_inset Formula $6D=0.01506$
 \end_inset
 
@@ -880,7 +911,7 @@ where
 \noun default
 \color inherit
 \lang english
-,
+, 
 \begin_inset Formula $G$
 \end_inset
 
@@ -888,7 +919,7 @@ where
 \begin_inset Formula $Nx3$
 \end_inset
 
- matrix with the gradient vectors,
+ matrix with the gradient vectors, 
 \begin_inset Formula $b$
 \end_inset
 
@@ -1152,9 +1183,9 @@ key "aganj2010reconstruction"
 
 \end_inset
 
- and it proposed here that it can directly calculated in a cubic grid using
- the standard 3D discrete Laplacian filter which is given by the 3D kernel
- defined by the following three planes 
+ and we propose here that it can be directly calculated in a cubic grid
+ using the standard 3D discrete Laplacian filter which is given by the 3D
+ kernel defined by the following three planes 
 \begin_inset Formula $\left(\begin{array}{ccc}
 0 & 0 & 0\\
 0 & 1 & 0\\
@@ -1223,7 +1254,7 @@ reference "Flo:single_fibre_spherical_grid"
 
 \end_inset
 
-.
+).
 \end_layout
 
 \begin_layout Standard
@@ -1302,7 +1333,8 @@ This is a very important geometric property of the signal that we can exploit
 
 \begin_layout Standard
 Apart from the visual confirmation further supporting evidence that equatorial
- integration is crucial for derivation of directionality can be see in eq.
+ integration is crucial for derivation of directionality can be seen in
+ eq.
  
 \family roman
 \series medium
@@ -1321,7 +1353,7 @@ reference "eq:ODF_DNI"
 
  where an equatorial integral which creates a connection between the real
  ODF and the signal.
- The Funk-Radon Transform used by 
+ The Funk-Radon Transform (FRT) used by 
 \family default
 \series default
 \shape default
@@ -1339,14 +1371,14 @@ key "Tuch2004"
 
  is another example where equatorial intergration is employed using the
  reconstruction sphere.
- DNI and FRT are just a subset of the EIT.
+ We will see next that DNI and FRT are just a subset of the EIT.
 \end_layout
 
 \begin_layout Standard
 With EIT the most important goal is to try to identify the correct directionalit
-y of the signal in the most accurate way.
- However it is possible to calculate the real ODF as defined by Wedeen et
- al.
+y of the signal in the most accurate way by generating a spherical distribution.
+ However it is possible to calculate as well the real ODF as defined by
+ Wedeen et al.
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1377,7 +1409,7 @@ reference "eq:ODF_EIT"
 
 .
  This construction is a generalization of the previous ODFs and it can support
- successfully many different function families 
+ successfully many different function families for 
 \begin_inset Formula $F$
 \end_inset
 
@@ -1387,7 +1419,7 @@ reference "eq:ODF_EIT"
 
  which can all more or less accurately identify the directional distribution
  of the signal.
- 
+ More precisely the EIT is defined as
 \end_layout
 
 \begin_layout Standard
@@ -1409,7 +1441,7 @@ where
 \begin_inset Formula $F$
 \end_inset
 
- could be for example
+ could be for example any of the following functions
 \end_layout
 
 \begin_layout Standard
@@ -1431,7 +1463,7 @@ and
 \begin_inset Formula $O$
 \end_inset
 
- could be for example
+ could be for example any of the following functions
 \end_layout
 
 \begin_layout Standard
@@ -1822,7 +1854,7 @@ reference "Flo:EIT_table"
 \begin_inset Formula $\psi_{DNI}$
 \end_inset
 
- which is theoretically identical to the DSI real ODF(
+ which is theoretically identical to the DSI's real ODF(
 \begin_inset Formula $\psi_{DSI}$
 \end_inset
 
@@ -1847,6 +1879,8 @@ reference "Flo:EIT_table"
 
  which can potentially increase the amount of directional information beyond
  than the standard ODFs.
+ Before starting investigating the realms of EIT we should first give a
+ short overview of other methods commonly found in the literature.
 \end_layout
 
 \begin_layout Subsection
@@ -1863,10 +1897,10 @@ key "pickalov2006tra"
 
  proposed a new method for reconstructing the diffusion propagator by applying
  an iterative inverse Radon transform on measurements along many radial
- lines computing 1D tomographic projections to reconstruct the 3D EAP.
+ lines; computing 1D tomographic projections to reconstruct the 3D EAP.
  This technique measures DW images along a few radial lines of q-space but
  still requires hundreds of samples to reliably recover the EAP.
- Currently, to reconstruct the EAP, the stateof-the-art model-free techniques
+ Currently, to reconstruct the EAP, the state-of-the-art model-free techniques
  apart from diffusion spectrum imaging are hybrid diffusion imaging (HYDI)
  
 \begin_inset CommandInset citation
@@ -1883,9 +1917,9 @@ key "descoteaux2010multiple"
 \end_inset
 
 .
- HYDI acquires the signal values on 5 concentric spherical q-space shells
- and then interpolates to a cubic grid and applies the standard Fourier
- transfrom in the same way as DSI.
+ HYDI acquires the signal values on 5 concentric spherical q-space shells,
+ then interpolates to a cubic grid and applies the standard Fourier transfrom
+ in the same way as DSI.
  In mq-DPI the EAP is calculated by solving Laplace's equation for the diffusion
  signal using a real and symmetric modiﬁed spherical harmonic basis.
  The EAP can be found analytically by the inversion of a linear system using
@@ -1897,7 +1931,7 @@ key "canalesrodriguez2009mdq"
 
 \end_inset
 
- provides different methods to calculate the ODF analytically using multiple
+ provides different method to calculate the ODF analytically using multiple
  spherical q-space shells and similarly Aganj et al.
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1906,7 +1940,7 @@ key "Aganj2010"
 \end_inset
 
 , proposed an analytical solution for the multi-shell case by encorporating
- a mono-exponential or bi-exponential model (CSA ODF).
+ a mono-exponential or bi-exponential model (CSA-ODF).
  Another distribution on the sphere was proposed by Özarslan et al.
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1914,49 +1948,8 @@ key "ozarslan2006resolution"
 
 \end_inset
 
- by the name of diffusion orientation transform (DOT)
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Formula $E(\mathbf{q})=\int_{\mathbb{R}^{3}}P(\mathbf{r})exp(i\mathbf{q}\cdot\mathbf{r})d\mathbf{r}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula $P(\mathbf{r})=P(-\mathbf{r})$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula $E(\mathbf{q})=\int_{\mathbb{R}^{3}}P(\mathbf{r})cos(\mathbf{q}\cdot\mathbf{r})d\mathbf{r}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula $R=[\int_{\mathbb{R}^{3}}P(\mathbf{r})r^{2}d\mathbf{r}]^{\frac{1}{2}}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula $I[P]=\int_{\Omega}P(\mathbf{r})\ln P(\mathbf{r})d\mathbf{r}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-.
- This method calculates a different statistic
+ named diffusion orientation transform (DOT).
+ This method calculates a different statistic 
 \begin_inset Formula $P(r_{0}\mathbf{\hat{u}})$
 \end_inset
 
@@ -1989,10 +1982,10 @@ key "JansonsPAS2003"
 
  proposed a different function on the sphere than the ODFs described above,
  to be used on data sets acquired on a single spherical q-space shell.
- They call this spherical function persistant angular structure (PAS).
+ They called this spherical function persistant angular structure (PAS).
  This method has very good angular resolution because it uses the principle
  of maximum entropy however it is rather slow as it uses nonlinear fitting
- to fit many parameters.
+ in order to identify many parameters.
  PAS is a statistic on the sphere defined as 
 \begin_inset Formula $PAS(\hat{\mathbf{u}})=\exp(\lambda_{0}+\sum_{j=1}^{N}\lambda_{j}\cos(\mathbf{q}_{j}\cdot k\hat{\mathbf{u}}))$
 \end_inset
@@ -2048,7 +2041,7 @@ key "Tuch2004"
 
  is a normalization constant.
  It was later provided for QBall imaging a fast and analytical solution
- using SH and Laplace-Beltrami regularization 
+ using spherical harmonics (SH) and Laplace-Beltrami regularization 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Descoteaux2007"
@@ -2082,7 +2075,7 @@ key "descoteaux2007deterministic"
 \end_inset
 
 .
- Other deconvolution approaches were proposed 
+ Other deconvolution approaches were proposed in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "sakaie2007objective"
@@ -2144,7 +2137,7 @@ key "barmpoutis2009regularized"
 
 .
  In addition there are also model based methods which try to calculate non-gauss
-ian Tensor for example the Kurtosis Tensor 
+ian Tensors for example the Kurtosis Tensor 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "jensen2005diffusional"
@@ -2195,7 +2188,7 @@ key "alexander2010orientationally"
 
 .
  Q-space Imaging(QSI) can be used to identify distributions of axon-diameter
- 
+ too
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ong2010quantifying"
@@ -2206,6 +2199,10 @@ key "ong2010quantifying"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ozarslan2009simple"
@@ -2215,9 +2212,14 @@ key "ozarslan2009simple"
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 The idea that only the orientation information from the diffusion signal
@@ -3058,7 +3060,7 @@ textbf{continue}
 
 
 \backslash
-caption{Peak Finding with a Symmetric Ordered Sphere)}
+caption{Peak Finding with a Symmetric Ordered Sphere}
 \end_layout
 
 \end_inset
@@ -3591,9 +3593,9 @@ ODF comparisons
 
 \begin_layout Standard
 Validation of reconstruction and tractography algorithms is not straightforward
- due to lack of relevant gold standards.
- Simulated voxels and digital phantoms is the current best way to overcome
- this difficulty.
+ due to the lack of relevant gold standards.
+ Simulated voxels and digital phantoms is a useful way to overcome this
+ difficulty and test new methods.
  
 \end_layout
 
@@ -3649,15 +3651,15 @@ GQI2 lambda=3.
 
 \begin_layout Standard
 \align left
-For single voxel simulations we used 
+For single voxel simulations we used the model proposed in Behrens et al.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Behrens2007NeuroImage"
 
 \end_inset
 
-; the multicompartment model known as Sticks&Ball which simulates the diffusion
- signal
+; the multicompartment model also known as Sticks and Ball which simulates
+ the diffusion signal as
 \end_layout
 
 \begin_layout Standard
@@ -4183,7 +4185,7 @@ reference "Flo:2_20"
 \begin_inset Formula $200$
 \end_inset
 
- random orientations from the same angle.
+ random orientations for the same angle.
 \end_layout
 
 \begin_layout Standard
@@ -4196,8 +4198,8 @@ status open
 \align center
 \begin_inset Graphics
 	filename last_figures/2_100.png
-	lyxscale 50
-	scale 30
+	lyxscale 30
+	scale 50
 
 \end_inset
 
@@ -4215,7 +4217,7 @@ name "Flo:2_100"
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Mean angular simularity of 2-firb
+Average angular simularity of 2-fibre crossings with SNR 100
 \end_layout
 
 \end_inset
@@ -4265,8 +4267,8 @@ status open
 \align center
 \begin_inset Graphics
 	filename last_figures/2_20.png
-	lyxscale 50
-	scale 30
+	lyxscale 30
+	scale 50
 
 \end_inset
 
@@ -4358,8 +4360,8 @@ status open
 \align center
 \begin_inset Graphics
 	filename last_figures/3_100.png
-	lyxscale 50
-	scale 30
+	lyxscale 30
+	scale 50
 
 \end_inset
 
@@ -4427,8 +4429,8 @@ status open
 \align center
 \begin_inset Graphics
 	filename last_figures/3_20.png
-	lyxscale 50
-	scale 30
+	lyxscale 30
+	scale 50
 
 \end_inset
 
@@ -4516,7 +4518,7 @@ reference "Flo:FastvsStandardEITL"
 
 \end_inset
 
- can show that there is complete agreement between the two methods.
+ can show that there is close agreement between the two methods.
  
 \end_layout
 
@@ -4537,8 +4539,8 @@ name "Flo:FastvsStandardEITL"
 
 \begin_inset Graphics
 	filename last_figures/EITL_sEITL.png
-	lyxscale 50
-	scale 30
+	lyxscale 30
+	scale 50
 
 \end_inset
 
@@ -4719,12 +4721,13 @@ The way these digital phantoms are created offer the capability to simulate
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename last_figures/digital_phantom.png
+	lyxscale 40
 	scale 60
 
 \end_inset
@@ -5699,6 +5702,10 @@ Our results indicate that the MD and FA maps generated from a grid sampling
  
 \end_layout
 
+\begin_layout Subsection
+Tractography examples
+\end_layout
+
 \begin_layout Standard
 
 \end_layout
@@ -6142,7 +6149,7 @@ where
 \begin_inset Formula $L$
 \end_inset
 
- and a unit vertor 
+ and a unit vector 
 \begin_inset Formula $\hat{u}$
 \end_inset
 
