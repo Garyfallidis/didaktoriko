@@ -4865,23 +4865,146 @@ Volume renderings of the unattenuated signals of two digital phantoms.
 \end_layout
 
 \begin_layout Subsubsection
-Results Software phantoms
+Results with digital phantoms
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/software_phantom_comparisons_rician_05.png
+	lyxscale 20
+	scale 15
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Results with a digital phantom created by MultiTensor model were every compartme
+nt had the following eigenvalues 0.0014,0.0001, 0.0001.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+asdfasdf
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename last_figures/software_phantom_comparisons_rician_05_fat.png
+	lyxscale 20
+	scale 15
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Results with a digital phantom created by MultiTensor model were every compartme
+nt had the following eigenvalues 0.0017,0.0003, 0.0003.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
 \begin_layout Subsubsection
-Results Real data sets
-\end_layout
-
-\begin_layout Standard
-102 directions CBU
+Results with real data sets
 \end_layout
 
 \begin_layout Standard
 258 directions EPFL
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/real_data_257_all_grid_methods.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+102 directions CBU
 \end_layout
 
 \begin_layout Subsection
