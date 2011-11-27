@@ -41,8 +41,8 @@ tabs-within-sections
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "Eleftherios Garyfallidis,,," 
 \author "Eleftherios Garyfallidis,,,," 
+\author "Eleftherios Garyfallidis,,," 
 \author "Ian Nimmo-Smith,,," 
 \author "" 
 \end_header
@@ -423,15 +423,7 @@ Marta
 \end_layout
 
 \begin_layout Standard
-John
-\end_layout
-
-\begin_layout Standard
-Tim
-\end_layout
-
-\begin_layout Standard
-John
+John + Virginia
 \end_layout
 
 \begin_layout Standard
@@ -972,13 +964,13 @@ key "Tuch2005"
 
  however these are not available or recommended for human studies because
  they are highly invasive.
-\change_inserted 1 1313958220
+\change_inserted 0 1313958220
 
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 1 1313958201
+\change_inserted 0 1313958201
 
 \lang british
 \begin_inset Note Note
@@ -986,7 +978,7 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1313959328
+\change_inserted 0 1313959328
 Diffusion was introduced in the mid-1980s (Le Bihan and Breton 1985
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -3656,14 +3648,14 @@ key "MCC+99"
 \color inherit
  An important problem with FACT is that it fails to track axons deviating
  from major pathways where it only tracks one of the major branches.
-\change_inserted 1 1315343654
+\change_inserted 0 1315343654
 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1315344626
+\change_inserted 0 1315344626
 TALK ABOUT THE F-E PICTURE
 \change_unchanged
  - SAY AS WELL THAT FACT PROPAGATES IN NON-FIXED STEPS AND EULER INTERGRATION
@@ -3853,7 +3845,7 @@ order Runge-Kutta scheme.
 
 \begin_layout Standard
 
-\change_inserted 1 1315344200
+\change_inserted 0 1315344200
 
 \lang british
 \begin_inset Float figure
@@ -3865,7 +3857,7 @@ status open
 \noindent
 \align center
 
-\change_inserted 1 1315344320
+\change_inserted 0 1315344320
 \begin_inset Graphics
 	filename last_figures/FACT_EUDX.png
 	scale 70
@@ -3880,7 +3872,7 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1315344200
+\change_inserted 0 1315344200
 
 \lang british
 \begin_inset Caption
@@ -3893,14 +3885,14 @@ FACT (left) uses propagates with different steps indicated by the entering
  Other deterministic methods use static steps.
  In that case interpolation is necessary.
  For example in EuDX (right) trilinear interpolation is used.
-\change_inserted 1 1315344875
+\change_inserted 0 1315344875
 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1315344711
+\change_inserted 0 1315344711
 
 \lang british
  (Picture modified by Stamatopoulos thesis)
@@ -3916,7 +3908,7 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1315345823
+\change_inserted 0 1315345823
 
 \lang british
 With Euler or R-K intergration interpolation is needed.
@@ -3976,7 +3968,7 @@ key "WWS+08"
  In that way we could visualise crossing distributions and depict crossing
  fibres.
 
-\change_deleted 1 1315344982
+\change_deleted 0 1315344982
  
 \change_unchanged
 
@@ -3989,7 +3981,7 @@ key "WWS+08"
 \noun default
 \color inherit
  The authors
-\change_deleted 1 1315344982
+\change_deleted 0 1315344982
  
 \change_unchanged
  suggests that diffusion MRI with sufficient signal to noise ratio (SNR)
@@ -4006,7 +3998,7 @@ reference "par:Euler-Delta-Crossings"
  shares some similarities with Basser's method however it uses Euler intergratio
 n rather than R-K and can deal with crossing fibres as those generated from
  the maxima of different
-\change_deleted 1 1315345136
+\change_deleted 0 1315345136
  
 \change_unchanged
  orientation distributions (see Fig.
@@ -4035,14 +4027,14 @@ Perhaps you should talk me through this paragraph?
 \end_inset
 
 
-\change_inserted 1 1315345155
+\change_inserted 0 1315345155
 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1315345166
+\change_inserted 0 1315345166
 
 \lang british
 Conturo might need referencing.
@@ -4086,7 +4078,7 @@ R-K2 is less vulnerable to noise because it looks a few steps ahead but
 \end_inset
 
 
-\change_inserted 1 1315346323
+\change_inserted 0 1315346323
 
 \end_layout
 
@@ -4098,7 +4090,7 @@ Probabilistic tractography is meant to deal with this problem of noise and
  This is made possible by assuming that uncertainty exists concerning the
  orientation of the fibre at each point of the track.
  
-\change_inserted 1 1315346343
+\change_inserted 0 1315346343
 
 \end_layout
 
@@ -4206,7 +4198,7 @@ reference "fig:deterministic_probabilistic"
  (i,ii).
  Generalising afterwards in 3D is straightforward.
  
-\change_inserted 1 1315346562
+\change_inserted 0 1315346562
 
 \end_layout
 
@@ -4261,7 +4253,7 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1315346407
+\change_inserted 0 1315346407
 
 \lang british
 \begin_inset CommandInset label
@@ -4438,7 +4430,7 @@ key "PPC+05"
 \end_inset
 
  and used in many software packages as well 
-\change_deleted 1 1315346733
+\change_deleted 0 1315346733
 as PICO
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -4447,14 +4439,14 @@ key "PHW03"
 \end_inset
 
  in Camino 
-\change_inserted 1 1315346733
+\change_inserted 0 1315346733
 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1315346748
+\change_inserted 0 1315346748
 
 \lang british
 as PICO
@@ -4474,7 +4466,7 @@ key "PHW03"
 
 \change_unchanged
 , 
-\change_inserted 1 1315345950
+\change_inserted 0 1315345950
 FSL
 \change_unchanged
  FDT 
@@ -4486,13 +4478,13 @@ key "Behrens2003MRM,behrens2005rca,Behrens2003NatureNeuroscience"
 
  in FSL, and others.
  However there are some problems.
-\change_inserted 1 1315346625
+\change_inserted 0 1315346625
 
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 1 1315345996
+\change_inserted 0 1315345996
 
 \lang british
 \begin_inset Note Note
@@ -4500,7 +4492,7 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1315346034
+\change_inserted 0 1315346034
 THE INFORMATION ABOUT PROBABILITIES HERE PERHAPS IS TOO SPECIFIC AND NEEDS
  TO BE TRANSFERED IN CHAPTER 3
 \change_unchanged
@@ -4967,13 +4959,13 @@ key "KanaanPsych2006,moriBook,maddah_phdthesis2008,deriche1990dcm,DavisTMI02,ODo
  Therefore, a normalization by length both for probabilistic and deterministic
  tractography are highly recommended.
  
-\change_inserted 1 1315346758
+\change_inserted 0 1315346758
 
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 1 1315346766
+\change_inserted 0 1315346766
 
 \lang british
 \begin_inset Note Note
@@ -4981,7 +4973,7 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1315346780
+\change_inserted 0 1315346780
 CONNECT WITH MORE REVIEWS IN THE EUDX CHAPTER
 \change_unchanged
 
@@ -14204,10 +14196,10 @@ For two MNI registered brains, we generated two deterministic tractographies
  Manipulating this number of segments is computationally demanding.
  Therefore, we implemented a track approximation method based on the minimum
  description length principle as described by Lee 
-\change_deleted 0 1314544480
+\change_deleted 1 1314544480
 et.
  al
-\change_inserted 0 1314544480
+\change_inserted 1 1314544480
 et al.
 \change_unchanged
 .

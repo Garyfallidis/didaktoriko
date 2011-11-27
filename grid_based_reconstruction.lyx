@@ -1792,8 +1792,8 @@ name "Flo:EIT_table"
 \begin_inset Caption
 
 \begin_layout Plain Layout
-The Equatorial inversion transform (EIT) is a superset of many older or
- new reconstructions algorithms.
+The Equatorial inversion transform (EIT) can be used to explain many older
+ reconstructions algorithms.
  
 \end_layout
 
@@ -2870,8 +2870,9 @@ reference "Flo:FastvsStandardEITL"
 
 \end_inset
 
- From now on whenever we see EIT written we will assume that Fast EIT is
- used.
+ we can see that the fast EIT has very similar results with the standard
+ EIT therefore from now on whenever we see EIT written in this document
+ we will assume that the fast version is used.
  
 \end_layout
 
@@ -3350,7 +3351,7 @@ a
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3412,12 +3413,12 @@ smoothing
 
  to reduce the effect of noise in the real data sets.
  DSI is using hanning filter and then avoiding sampling from low values
- 
+ in 
 \series bold
 r
 \series default
 -space.
- In GQI smoothing is controlled from the a scalar parameter the diffusion
+ In GQI, smoothing is controlled from a scalar parameter; the diffusion
  sampling length and in spherical harmonic inversion methods 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -3440,31 +3441,13 @@ key "aganj2010reconstruction"
 \begin_layout Standard
 All these approaches smooth and calculate the ODFs simultaneously.
  We propose something different.
- That the ODF could be calculated initially and then smoothed using the
- following operator in matrix form
+ That the ODF can be calculated initially and then smoothed using for example
+ following operator shown below in matrix form
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula \[
 W=\exp(\frac{U\cdot U^{T}}{s})\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\begin_inset Formula \begin{equation}
-\bm{\psi}'=\bm{\psi}\cdot\frac{W}{\sum_{j}W_{j}}\end{equation}
 
 \end_inset
 
@@ -3485,11 +3468,24 @@ where
 \begin_inset Formula $N$
 \end_inset
 
- points of the ODF sphere, 
+ points of the ODF reconstruction sphere and 
 \begin_inset Formula $s$
 \end_inset
 
- is a smoothing parameter acting like the variance,
+ is a smoothing parameter acting like the variance.
+ At the next step we can smooth any ODF(
+\begin_inset Formula $\bm{\psi}$
+\end_inset
+
+) creating a new ODF(
+\begin_inset Formula $\bm{\psi}'$
+\end_inset
+
+) in the following way
+\end_layout
+
+\begin_layout Standard
+
 \family roman
 \series medium
 \shape up
@@ -3498,7 +3494,26 @@ where
 \bar no
 \noun off
 \color none
- 
+\begin_inset Formula \begin{equation}
+\bm{\psi}'=\bm{\psi}\cdot\frac{W}{\sum_{j}W_{j}}\label{eq:spherical_gaussian_angular_smoothing}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+where 
 \begin_inset Formula $j$
 \end_inset
 
@@ -3549,25 +3564,43 @@ where
  The advantage of this method is that it is more comprehensive and direct.
  Also it uses information from all directions simultaneously.
  Similar operators can be constructed that weight more lower or higher peaks.
- The current operator weights more peaks that are closer in angular distance.
+ The operator shown here weighs more peaks that are closer in angular distance.
+ In fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:Smoothing_Example"
+
+\end_inset
+
+ we see the effect of this equation on a simulated triple-fibre crossing
+ EITL distribution function which we have distorted with gaussian noise
+ with SNR 
+\begin_inset Formula $20$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Show a very steep ODF that can be smoothed a lot.
-\end_layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:Smoothing_Example"
 
-\begin_layout Plain Layout
-\begin_inset Caption
+\end_inset
 
-\begin_layout Plain Layout
-Spherical Angular Smoothing
-\end_layout
+
+\begin_inset Graphics
+	filename last_figures/triple_crossing_laplacian_snr20.png
+	lyxscale 50
+	scale 20
 
 \end_inset
 
@@ -3575,6 +3608,29 @@ Spherical Angular Smoothing
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+An example of spherical angular gaussian smoothing applied with different
+ smoothing factors on the distribution function of a triple-fibre crossing
+ on the left.
+ The simulation was used using (Sticks&Ball) model with diffusivity 
+\begin_inset Formula $0.0015$
+\end_inset
+
+, S0=
+\begin_inset Formula $100$
+\end_inset
+
+, and gaussian noise with SNR 
+\begin_inset Formula $20$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -3584,7 +3640,32 @@ Spherical Angular Smoothing
 \end_layout
 
 \begin_layout Standard
+We can easily see from fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:Smoothing_Example"
 
+\end_inset
+
+ that when we increase the smoothing factor 
+\begin_inset Formula $s$
+\end_inset
+
+ small noisy peaks; as seen in the center of the unsmoothed spherical function
+ can be easily removed.
+ However, with too much smoothing even the longer peaks can lose their definitio
+n.
+ This spherical operator can help to set the trade-off between noise and
+ signal and it can also simplify the peak finding process i.e.
+ finding the underlying primary fibre directions because this problem is
+ much easier on smooth surfaces.
+\end_layout
+
+\begin_layout Standard
+Finally, we believe that by decoupling the smoothing from the reconstruction
+ phase we have an important advantage and that is that we can control more
+ strongly the effect of the noise to our data.
 \end_layout
 
 \begin_layout Subsection
@@ -4551,7 +4632,7 @@ name "Flo:FastvsStandardEITL"
 This diagram shows that when we compute EITL with the fast or standard method
  the results are nearly equivalent.
  We show here that the mean angular similarity for the case of 3-fibres
- crossings is very similar when using sEITL or EITL.
+ crossings is very similar when using standard DNI or or fast DNI (EITL).
  
 \end_layout
 
@@ -4784,7 +4865,15 @@ Volume renderings of the unattenuated signals of two digital phantoms.
 \end_layout
 
 \begin_layout Subsubsection
-Real data sets
+Results Software phantoms
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Subsubsection
+Results Real data sets
 \end_layout
 
 \begin_layout Standard
@@ -5272,7 +5361,7 @@ key "Tuch2004"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -5700,10 +5789,6 @@ Our results indicate that the MD and FA maps generated from a grid sampling
  use of multiple b-values, which could explain the better performance of
  the 102 grid scheme.
  
-\end_layout
-
-\begin_layout Subsection
-Tractography examples
 \end_layout
 
 \begin_layout Standard
