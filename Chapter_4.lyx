@@ -7085,6 +7085,69 @@ dipy.org
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Further notes for discussion
+\end_layout
+
+\begin_layout Plain Layout
+-No distance matrix
+\end_layout
+
+\begin_layout Plain Layout
+-empeiricaly average linear time on the #tracks
+\end_layout
+
+\begin_layout Plain Layout
+-used for regist.
+ /visual./landmarks/simplification
+\end_layout
+
+\begin_layout Plain Layout
+-clinical relevance
+\end_layout
+
+\begin_layout Plain Layout
+-simple concept
+\end_layout
+
+\begin_layout Plain Layout
+-fast -> real time
+\end_layout
+
+\begin_layout Plain Layout
+- we haven't worked with hierarchies
+\end_layout
+
+\begin_layout Plain Layout
+-bundles of interest (BOIs) seem more useful than ROIs
+\end_layout
+
+\begin_layout Standard
+Further notes for complexity
+\end_layout
+
+\begin_layout Plain Layout
+O(N) best case (one cluster only)
+\end_layout
+
+\begin_layout Plain Layout
+O(MN) average case but with M usually much smaller than N that can empeirically
+ go similar to O(N)
+\end_layout
+
+\begin_layout Plain Layout
+O(N^2) worst case scenario (every track is a cluster - not used in practice)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \lang british
 \begin_inset CommandInset bibtex

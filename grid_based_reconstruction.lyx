@@ -4975,7 +4975,7 @@ status open
 \begin_inset Graphics
 	filename last_figures/real_data_257_all_grid_methods.png
 	lyxscale 20
-	scale 50
+	scale 60
 
 \end_inset
 
@@ -5007,6 +5007,45 @@ status open
 102 directions CBU
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/real_101_eitl_0.05.png
+	lyxscale 20
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Anisotropy metrics
 \end_layout
@@ -5031,13 +5070,14 @@ Quantitative anisotropy (QA0 is defined by the sODF value at the resolved
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename QA.png
-	scale 80
+	lyxscale 50
+	scale 50
 
 \end_inset
 

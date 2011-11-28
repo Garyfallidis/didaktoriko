@@ -14,7 +14,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.0 r9654"
-   sodipodi:docname="QA.png">
+   sodipodi:docname="QA.svg"
+   inkscape:export-filename="/home/eg309/Documents/didaktoriko/QA.png"
+   inkscape:export-xdpi="315.89999"
+   inkscape:export-ydpi="315.89999">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -32,8 +35,8 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1366"
-     inkscape:window-height="696"
+     inkscape:window-width="1920"
+     inkscape:window-height="1003"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1" />
@@ -56,6 +59,17 @@
      id="layer1"
      inkscape:groupmode="layer"
      inkscape:label="Layer 1">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect3017"
+       width="275.77164"
+       height="267.69043"
+       x="1.0101526"
+       y="0.54303527"
+       transform="translate(204.76597,264.04638)"
+       inkscape:export-filename="/home/eg309/Documents/didaktoriko/QA.png"
+       inkscape:export-xdpi="315.89999"
+       inkscape:export-ydpi="315.89999" />
     <path
        sodipodi:nodetypes="ccccccccccccccccccccc"
        inkscape:connector-curvature="0"
