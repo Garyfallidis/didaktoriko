@@ -4657,8 +4657,8 @@ Digital Phantoms
 \begin_layout Standard
 A digital phantom generation tool was developed which can simulate the diffusion
 -weighted signal for one or more fibres represented by different discrete
- 3D orbits.
- This is work is an extension of the phantom developed by
+ 3D orbital functions.
+ This work is an extension of the phantom developed by
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Correia2009"
@@ -4670,7 +4670,7 @@ key "Correia2009"
 \end_layout
 
 \begin_layout Standard
-The idea here is that we can create any orbital function 
+The idea here is that we first create any orbital function 
 \begin_inset Formula $f(t):\mathbb{R}\rightarrow\mathbb{R}^{3}$
 \end_inset
 
@@ -4679,7 +4679,9 @@ The idea here is that we can create any orbital function
 \end_inset
 
 .
- We expect that many segments of the discrete 
+ Then we can scale it and centre it so that it fits in an image volume of
+ a size that we desire.
+ We expect that many segments of the discrete function 
 \begin_inset Formula $f$
 \end_inset
 
@@ -4714,7 +4716,7 @@ The idea here is that we can create any orbital function
 \begin_inset Formula $\hat{\mathbf{g}}$
 \end_inset
 
-, is given from
+, is given by the following Single Tensor formula
 \end_layout
 
 \begin_layout Standard
@@ -4742,7 +4744,7 @@ where
 \begin_inset Formula $S_{0}$
 \end_inset
 
-is the unattenuated signal of the fibre, and the diffusion tensor is given
+ is the unattenuated signal of the fibre, and the diffusion tensor is given
  by
 \end_layout
 
@@ -4780,12 +4782,20 @@ S_{vox}=\sum_{i=1}^{K}\Delta S_{i}\label{eq:digital_phantom_signal}\end{equation
 
 \begin_layout Standard
 \align left
-In addition, we can generate simulations of more than one fibres and add
- them all together to create complex configurations.
+In addition, we can generate simulations of more than one fibres by generating
+ a single volume for every orbit and then add them all together to create
+ complex configurations in the final volume.
  This is acceptable because the diffusion signal is additive i.e.
  the signal of a crossing of two fibres is equal to the sum of the the signals
  of the individual fibres.
- Finally, we can increase the thickness of the fibres using a typical radial
+ In that way we can simulate MultiTensor signals as that described in eq.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:multitensor"
+
+\end_inset
+
+ .Finally, we can increase the thickness of the fibres using a typical radial
  kernel and/or add different levels of noise e.g.
  Rician noise.
  
@@ -4959,7 +4969,7 @@ wide false
 sideways false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename last_figures/software_phantom_comparisons_rician_05_fat.png
