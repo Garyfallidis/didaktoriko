@@ -3681,7 +3681,7 @@ Validation of reconstruction and tractography algorithms is not straightforward
 \end_layout
 
 \begin_layout Subsubsection
-Multi-fiber Simulations
+Multi-fibre Simulations
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Multi-fiber-Simulations"
@@ -4657,7 +4657,7 @@ Digital Phantoms
 \begin_layout Standard
 A digital phantom generation tool was developed which can simulate the diffusion
 -weighted signal for one or more fibres represented by different discrete
- orbits.
+ 3D orbits.
  This is work is an extension of the phantom developed by
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -4670,7 +4670,7 @@ key "Correia2009"
 \end_layout
 
 \begin_layout Standard
-The idea here is that we can create any orbitual function 
+The idea here is that we can create any orbital function 
 \begin_inset Formula $f(t):\mathbb{R}\rightarrow\mathbb{R}^{3}$
 \end_inset
 
@@ -4785,17 +4785,18 @@ In addition, we can generate simulations of more than one fibres and add
  This is acceptable because the diffusion signal is additive i.e.
  the signal of a crossing of two fibres is equal to the sum of the the signals
  of the individual fibres.
- Finally, we can increase the thickness of the fibers using a typical radial
- kernel and/or add different levels of noise (Rician).
+ Finally, we can increase the thickness of the fibres using a typical radial
+ kernel and/or add different levels of noise e.g.
+ Rician noise.
  
 \end_layout
 
 \begin_layout Standard
-The way these digital phantoms are created offer the capability to simulate
+The way these digital phantoms are created offers the opportunity to simulate
  partial volume effects.
  If partial volume effects are not desired then we need to normalize with
  the number of fibre elements for each voxel (This function is implemented
- in dipy.sims.phantom.orbitual_phantom).
+ in dipy.sims.phantom.orbital_phantom).
 \end_layout
 
 \begin_layout Standard
@@ -4866,6 +4867,42 @@ Volume renderings of the unattenuated signals of two digital phantoms.
 
 \begin_layout Subsubsection
 Results with digital phantoms
+\end_layout
+
+\begin_layout Standard
+With the purpose of comparing and visualizing the differences between the
+ reconstruction methods described in this document we created a digital
+ phantom of two crossing bundles.
+ The bundles are crossing at an angle of 
+\begin_inset Formula $90^{\circ}$
+\end_inset
+
+.
+ The digital phantom was generated using the method described in the previous
+ section.
+ We first represented the first bundle as a discrete straight orbit starting
+ from 
+\begin_inset Formula $(-1,-1,0)$
+\end_inset
+
+ and ending at 
+\begin_inset Formula $(1,1,0)$
+\end_inset
+
+ with 
+\begin_inset Formula $1000$
+\end_inset
+
+ time steps.
+ Then we scaled, centred and radially expanded this orbit so that it fits
+ a volume of size 
+\begin_inset Formula $64\times64\times64$
+\end_inset
+
+.
+ This volume correspond to the diffusion volume without any weighting.
+ We then apply the weighting for all the following volumes.
+ We used
 \end_layout
 
 \begin_layout Standard
@@ -5015,10 +5052,11 @@ status open
 
 \begin_layout Plain Layout
 \align center
+vi 
 \begin_inset Graphics
 	filename last_figures/real_101_eitl_0.05.png
-	lyxscale 20
-	scale 20
+	lyxscale 30
+	scale 30
 
 \end_inset
 
