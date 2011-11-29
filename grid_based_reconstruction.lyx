@@ -4788,16 +4788,18 @@ In addition, we can generate simulations of more than one fibres by generating
  This is acceptable because the diffusion signal is additive i.e.
  the signal of a crossing of two fibres is equal to the sum of the the signals
  of the individual fibres.
- In that way we can simulate MultiTensor signals as that described in eq.
+ In that way we can simulate phantoms with MultiTensor based diffusion signals
+ as that described in eq.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:multitensor"
 
 \end_inset
 
- .Finally, we can increase the thickness of the fibres using a typical radial
- kernel and/or add different levels of noise e.g.
- Rician noise.
+ .
+ Finally, we can increase the thickness of the fibres using a typical radial
+ kernel and add different levels of noise e.g.
+ Rician or Gaussian noise.
  
 \end_layout
 
@@ -4807,6 +4809,16 @@ The way these digital phantoms are created offers the opportunity to simulate
  If partial volume effects are not desired then we need to normalize with
  the number of fibre elements for each voxel (This function is implemented
  in dipy.sims.phantom.orbital_phantom).
+ In fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:cool_phantoms"
+
+\end_inset
+
+ we can see the volume renderings of two different phantoms created with
+ the method described here.
 \end_layout
 
 \begin_layout Standard
@@ -4817,6 +4829,13 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:cool_phantoms"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename last_figures/digital_phantom.png
 	lyxscale 40
