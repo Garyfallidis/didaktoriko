@@ -4907,11 +4907,11 @@ With the purpose of comparing and visualizing the differences between the
  The digital phantom was generated using the method described in the previous
  section.
  We first represented the first bundle as a discrete straight orbit starting
- from 
+ from point 
 \begin_inset Formula $(-1,-1,0)$
 \end_inset
 
- and ending at 
+ and ending at point 
 \begin_inset Formula $(1,1,0)$
 \end_inset
 
