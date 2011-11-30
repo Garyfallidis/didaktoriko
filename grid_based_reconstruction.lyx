@@ -4929,20 +4929,40 @@ With the purpose of comparing and visualizing the differences between the
  This volume corresponds to the diffusion volume without any weighting.
  We then applied the weightings for all the following volumes corresponding
  to non-zero b-values.
- We replicated the same procedure for the other bundle which was starting
- this time from 
+ We replicated the same procedure for the other bundle which initially started
+ as an orbit from position 
 \begin_inset Formula $(-1,1,0)$
 \end_inset
 
- and ending at 
+ and ended at position 
 \begin_inset Formula $(1,-1,0)$
 \end_inset
 
 .
- Finally we added the two volumes together to create an 'x' shape and added
- Rician noise.
- The bvecs and b-values used where the standard 515 used by DSI.
- In fig.
+ We added the two volumes together to create an 'x' shape (see fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-fat-tensor"
+
+\end_inset
+
+).
+ We used a keyhole cartesian sampling grid
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tuch2002ThesisMIT"
+
+\end_inset
+
+ with 515 q-vectors.
+ Finally, we added Rician noise with SNR=5.
 \end_layout
 
 \begin_layout Standard
@@ -5017,11 +5037,112 @@ status open
 \end_layout
 
 \begin_layout Standard
+In the first experiment shown in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor"
+
+\end_inset
+
+ we used a more anisotropic prolate tensor for the simulation with eigenvalues
+ 
+\begin_inset Formula $\lambda_{\parallel}=1.4\cdot10^{-3}$
+\end_inset
+
+ 
+\lang british
+
+\begin_inset Formula $m^{2}/sec$
+\end_inset
+
+
+\lang english
+ and 
+\begin_inset Formula $\lambda_{\perp}=.1\cdot10^{-3}m^{2}/sec$
+\end_inset
+
+.
+ In the second experiment shown in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-fat-tensor"
+
+\end_inset
+
+ we used a much less anisotropic prolate tensor with
+\begin_inset Formula $\lambda_{\parallel}=1.7\cdot10^{-3}$
+\end_inset
+
+ 
+\lang british
+
+\begin_inset Formula $m^{2}/sec$
+\end_inset
+
+
+\lang english
+ and 
+\begin_inset Formula $\lambda_{\perp}=.3\cdot10^{-3}m^{2}/sec$
+\end_inset
+
+.
+ It is well known that noise affects more less anisotropic areas.
+ We can see this effect by comparing the overlaped FAs of these two figures
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-fat-tensor"
+
+\end_inset
+
+).
+ However we can also see that all six methods (DSI,GQI,GQI2,EITL,EITL2,EITS)
+ can resolve correctly the fiber directions by looking at their spherical
+ distribution functions colormaped with a 'jet' colormap.
+\end_layout
+
+\begin_layout Standard
+GQI similar with EITS and 
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
 \begin_layout Standard
-asdfasdf
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Previous figure higher resolution
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5137,6 +5258,33 @@ reference "Flo:x-shape-fat-tensor"
  However we can see that 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Previous picture zoomed in the center
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Results with real data sets
 \end_layout
@@ -5196,7 +5344,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-vi 
 \begin_inset Graphics
 	filename last_figures/real_101_eitl_0.05.png
 	lyxscale 30
@@ -5745,7 +5892,7 @@ asdflasf
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -5882,7 +6029,7 @@ GQI was shown to have comparable accuracy to other well established q-space
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -5897,7 +6044,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Fig:CSR_t-test"
+name "Flo:CSR_t-test"
 
 \end_inset
 
@@ -6047,7 +6194,7 @@ Combining the left and right versions of each ROI, we have 9 ROIs of different
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -6062,7 +6209,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Fig:t-test_QA0"
+name "Flo:t-test_QA0"
 
 \end_inset
 
@@ -6094,7 +6241,7 @@ The 102 grid sampling scheme produces significantly higher mean FA and QA0
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "Fig:CSR_t-test"
+reference "Flo:CSR_t-test"
 
 \end_inset
 
@@ -6104,7 +6251,7 @@ reference "Fig:CSR_t-test"
  the different volunteers (fig.
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "Fig:t-test_QA0"
+reference "Flo:t-test_QA0"
 
 \end_inset
 
