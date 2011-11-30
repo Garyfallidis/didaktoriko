@@ -3669,7 +3669,7 @@ Finally, we believe that by decoupling the smoothing from the reconstruction
 \end_layout
 
 \begin_layout Subsection
-ODF comparisons
+Comparisons
 \end_layout
 
 \begin_layout Standard
@@ -3821,8 +3821,8 @@ where
 \end_layout
 
 \begin_layout Standard
-A comparison method is needed in order to evaluate the new/old reconstruction
- methods discussed in this document.
+A comparison method/metric is needed in order to evaluate the new/old reconstruc
+tion methods discussed in this document.
  The standard procedure is to calculate the similarity between the measured
  and simulated 
 \begin_inset Quotes eld
@@ -4906,8 +4906,8 @@ With the purpose of comparing and visualizing the differences between the
 .
  The digital phantom was generated using the method described in the previous
  section.
- We first represented the first bundle as a discrete straight orbit starting
- from point 
+ Here we describe the basic steps: (a) We first represented the first bundle
+ as a discrete straight orbit starting from point 
 \begin_inset Formula $(-1,-1,0)$
 \end_inset
 
@@ -4920,17 +4920,17 @@ With the purpose of comparing and visualizing the differences between the
 \end_inset
 
  time steps.
- Then we scaled, centred and radially expanded this orbit so that it fits
+ (b) We scaled, centred and radially expanded this orbit so that it fits
  a volume of size 
 \begin_inset Formula $64\times64\times64$
 \end_inset
 
 .
  This volume corresponds to the diffusion volume without any weighting.
- We then applied the weightings for all the following volumes corresponding
+ (c)We then applied the weightings for all the following volumes corresponding
  to non-zero b-values.
- We replicated the same procedure for the other bundle which initially started
- as an orbit from position 
+ (d) We replicated the same procedure for the other bundle which initially
+ started as an orbit from position 
 \begin_inset Formula $(-1,1,0)$
 \end_inset
 
@@ -4939,7 +4939,7 @@ With the purpose of comparing and visualizing the differences between the
 \end_inset
 
 .
- We added the two volumes together to create an 'x' shape (see fig.
+ (e) We added the two volumes together to create an 'x' shape (see fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:x-shape-thin-tensor"
@@ -4954,15 +4954,34 @@ reference "Flo:x-shape-fat-tensor"
 \end_inset
 
 ).
- We used a keyhole cartesian sampling grid
+ (f) we added Rician noise with SNR=
+\begin_inset Formula $5$
+\end_inset
+
+.
+ As in this document we concentrate on Cartesian Lattice Q-space acquisitions
+ we generated b-vectors and b-values by using a keyhole cartesian sampling
+ grid 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Tuch2002ThesisMIT"
 
 \end_inset
 
- with 515 q-vectors.
- Finally, we added Rician noise with SNR=5.
+ with 
+\begin_inset Formula $515$
+\end_inset
+
+ q-vectors.
+ The maximum b-value was 
+\begin_inset Formula $11538$
+\end_inset
+
+ and the minimum 
+\begin_inset Formula $0$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -4983,7 +5002,7 @@ name "Flo:x-shape-thin-tensor"
 \begin_inset Graphics
 	filename last_figures/software_phantom_comparisons_rician_05.png
 	lyxscale 20
-	scale 15
+	scale 14
 
 \end_inset
 
@@ -5023,7 +5042,11 @@ status open
 \end_inset
 
 .
- Rician noise was added with SNR = 5?
+ Rician noise was added with SNR = 
+\begin_inset Formula $5$
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -5042,6 +5065,13 @@ In the first experiment shown in fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:x-shape-thin-tensor"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor-zoomed"
 
 \end_inset
 
@@ -5068,6 +5098,13 @@ reference "Flo:x-shape-thin-tensor"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:x-shape-fat-tensor"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-fat-tensor-zoomed"
 
 \end_inset
 
@@ -5111,7 +5148,13 @@ reference "Flo:x-shape-fat-tensor"
 \end_layout
 
 \begin_layout Standard
-GQI similar with EITS and 
+Furthermore we see that GQI is most similar with EITS, GQI2 is very similar
+ with EITL and DSI is mostly similar with EITL.
+ That DSI ODFs are very similar with EITL ODFs is expected as the two methods
+ create theoretically the same real ODFs.
+ Remarkably, EITL can create these ODFs without using the Fourier Transform
+ neither using any filter or thresholds in r-space which are necessary in
+ DSI.
 \end_layout
 
 \begin_layout Standard
@@ -5125,10 +5168,38 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:x-shape-thin-tensor-zoomed"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename last_figures/software_phantom_comparisons_rician_05_zoomed.png
+	lyxscale 50
+	scale 150
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Previous figure higher resolution
+Same as previous fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor"
+
+\end_inset
+
+ showing the spherical distributions in the centers of the phantoms at higher
+ resolution.
 \end_layout
 
 \end_inset
@@ -5163,7 +5234,7 @@ name "Flo:x-shape-fat-tensor"
 \begin_inset Graphics
 	filename last_figures/software_phantom_comparisons_rician_05_fat.png
 	lyxscale 20
-	scale 15
+	scale 14
 
 \end_inset
 
@@ -5253,9 +5324,24 @@ reference "Flo:x-shape-fat-tensor"
 
 \end_inset
 
- show that all these different grid-based reconstruction methods can reconstruct
- correctly the underlying fibre directions even when noise is present.
- However we can see that 
+ shows that all these different grid-based reconstruction methods can reconstruc
+t correctly the underlying fibre directions even when noise is present.
+ However we can see that when tensors are less anisotropic the noise has
+ a stronger effect in the resulting spherical distributions.
+ We can also see that GQI & ETS are less sharp than DSI & EITL and these
+ are less sharp than GQI2 & EITL2.
+ Also DSI,GQI2,EITL,EITL2 have much lower minima than GQI and EITS.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We can see in EuDX chapter that this can be used for tractography.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5265,10 +5351,38 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:x-shape-fat-tensor-zoomed"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename last_figures/software_phantom_comparisons_rician_05_fat_zoomed.png
+	lyxscale 50
+	scale 150
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Previous picture zoomed in the center
+Same as previous fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-fat-tensor"
+
+\end_inset
+
+ showing the spherical distributions in the centers of the phantoms at higher
+ resolution.
 \end_layout
 
 \end_inset
