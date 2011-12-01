@@ -3399,6 +3399,13 @@ A,B: Imagine that point a.
 
 \begin_layout Subsection
 Spherical Angular Smoothing
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Spherical-Angular-Smoothing"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4556,7 +4563,7 @@ These concentrative plots give strong evidence that both DNI (EITL) and
 \begin_layout Standard
 Furthermore, we can also see that GQI2 can do better than DSI, GQI and that
  EITS gives results that are very similar to GQI.
- The parameters used for this simulations was DSI: radial sampling 
+ The parameters used for these simulations were DSI: radial sampling 
 \begin_inset Formula $2.1-6$
 \end_inset
 
@@ -4656,7 +4663,7 @@ Digital Phantoms
 
 \begin_layout Standard
 A digital phantom generation tool was developed which can simulate the diffusion
--weighted signal for one or more fibres represented by different discrete
+ weighted signal for one or more fibres represented by different discrete
  3D orbital functions.
  This work is an extension of the phantom developed by
 \begin_inset CommandInset citation
@@ -4862,7 +4869,7 @@ Volume renderings of the unattenuated signals of two digital phantoms.
 \begin_inset Formula $S_{0}=100$
 \end_inset
 
- and 
+ and prolate tensors with eigenvalues 
 \begin_inset Formula $\lambda_{\parallel}=1.4\cdot10^{-3}$
 \end_inset
 
@@ -4915,7 +4922,7 @@ With the purpose of comparing and visualizing the differences between the
 \begin_inset Formula $(1,1,0)$
 \end_inset
 
- with 
+ with using 
 \begin_inset Formula $1000$
 \end_inset
 
@@ -4954,7 +4961,7 @@ reference "Flo:x-shape-fat-tensor"
 \end_inset
 
 ).
- (f) we added Rician noise with SNR=
+ (f) We added Rician noise with SNR=
 \begin_inset Formula $5$
 \end_inset
 
@@ -4977,11 +4984,13 @@ key "Tuch2002ThesisMIT"
 \begin_inset Formula $11538$
 \end_inset
 
- and the minimum 
+ and the minimum was 
 \begin_inset Formula $0$
 \end_inset
 
 .
+ Two sets of simulation experiments were performed each using a different
+ type of Tensor.
 \end_layout
 
 \begin_layout Standard
@@ -5013,19 +5022,8 @@ name "Flo:x-shape-thin-tensor"
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Results with a digital phantom created by assuming MultiTensors applied
- to a digital phantom.
- Every single tensor compartment had the following eigenvalues
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
- 0.0014,0.0001, 0.0001
-\end_layout
-
-\end_inset
-
- 
+Results with an 'x' shape digital phantom.
+ Every single tensor compartment had the following eigenvalues 
 \begin_inset Formula $\lambda_{\parallel}=1.4\cdot10^{-3}$
 \end_inset
 
@@ -5047,6 +5045,17 @@ status open
 \end_inset
 
 .
+ In this figure we can easily perceive that GQI is very similar to EITS,
+ GQI2 is very similar to EITL and DSI is very similar to EITL.
+ In fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor-zoomed"
+
+\end_inset
+
+ the regions at the centers of the phantoms are depicted in higher resolution.
 \end_layout
 
 \end_inset
@@ -5134,7 +5143,7 @@ reference "Flo:x-shape-thin-tensor"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:x-shape-fat-tensor"
@@ -5142,14 +5151,21 @@ reference "Flo:x-shape-fat-tensor"
 \end_inset
 
 ).
- However we can also see that all six methods (DSI,GQI,GQI2,EITL,EITL2,EITS)
- can resolve correctly the fiber directions by looking at their spherical
- distribution functions colormaped with a 'jet' colormap.
+ However we can also see that all six methods (DSI, GQI, GQI2, EITL, EITL2,
+ EITS) can resolve correctly the fiber directions by looking at their spherical
+ distribution functions colormaped with a standard 'jet' colormap.
+ For visualization purpuses all ODFs are shown in relative size as they
+ have been scaled so that their maximum values correspond to 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
-Furthermore we see that GQI is most similar with EITS, GQI2 is very similar
- with EITL and DSI is mostly similar with EITL.
+Furthermore, we can easily see that GQI is most similar with EITS, GQI2
+ is very similar with EITL and DSI is mostly similar with EITL.
  That DSI ODFs are very similar with EITL ODFs is expected as the two methods
  create theoretically the same real ODFs.
  Remarkably, EITL can create these ODFs without using the Fourier Transform
@@ -5251,7 +5267,7 @@ Showing the spherical distribution functions (DSI,GQI,GQI2,EITL,EITL2,EITS)
  On the crossing area we see a dual tensor effect in every voxel.
  Every single tensor compartment had the following eigenvalues 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
  0.0014,0.0001, 0.0001
@@ -5276,22 +5292,15 @@ status open
 \end_inset
 
 .
- Rician noise was added with SNR=5.
+ Rician noise was added with SNR=
+\begin_inset Formula $5$
+\end_inset
+
+.
  We also visualize simultaneously the FA for this slice.
  We can see that in the crossing area (gray background) the FA values drop
  considerably however the ODFs represent precisely the crossing.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Results with a digital phantom created by MultiTensor model were every compartme
-nt had the following eigenvalues 0.0017,0.0003, 0.0003.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -5330,7 +5339,7 @@ t correctly the underlying fibre directions even when noise is present.
  a stronger effect in the resulting spherical distributions.
  We can also see that GQI & ETS are less sharp than DSI & EITL and these
  are less sharp than GQI2 & EITL2.
- Also DSI,GQI2,EITL,EITL2 have much lower minima than GQI and EITS.
+ Also DSI, GQI2, EITL, EITL2 have much lower minima than GQI and EITS.
  
 \begin_inset Note Note
 status open
@@ -5373,7 +5382,7 @@ name "Flo:x-shape-fat-tensor-zoomed"
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Same as previous fig.
+A zoomed version of previous fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5399,12 +5408,148 @@ reference "Flo:x-shape-fat-tensor"
 
 \end_layout
 
+\begin_layout Standard
+In the EIT-based reconstruction results shown in figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor-zoomed"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-fat-tensor-zoomed"
+
+\end_inset
+
+ we don't use any amount of smoothing as used in DSI (through hanning filter),
+ GQI, GQI2 (through sampling lenght) and it is extraordinary that we obtain
+ so well defined distributions.
+ If we want to apply some weighting/smoothing/denoising in EIT-based methods
+ that is simply possible through the spherical angular smoothing approach
+ described in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Spherical-Angular-Smoothing"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The parameters used for these simulations were for DSI: radial sampling
+ 
+\begin_inset Formula $2.1-6$
+\end_inset
+
+, hanning filter width: 
+\begin_inset Formula $36$
+\end_inset
+
+ , GQI: 
+\begin_inset Formula $\text{\lambda=1.2}$
+\end_inset
+
+, GQI2: 
+\begin_inset Formula $\lambda=3$
+\end_inset
+
+, and EITS, EITL, EITL2 were all calculated with the standard options (
+\begin_inset Formula $z=\pm5$
+\end_inset
+
+) and no further post-processing or smoothing was used.
+ All methods were using the same reconstruction sphere with 
+\begin_inset Formula $642$
+\end_inset
+
+ vertices and 
+\begin_inset Formula $1280$
+\end_inset
+
+ faces.
+\end_layout
+
 \begin_layout Subsubsection
 Results with real data sets
 \end_layout
 
 \begin_layout Standard
-258 directions EPFL
+Evidently because we compare reconstruction methods on Cartesian grid-based
+ acquisitions we should do the comparisons with data sets which are rich
+ on directions and commonly used for DSI processing.
+ For this purpose we used a data set which was available online 
+at 
+\lang english
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+cmtk.org
+\end_layout
+
+\end_inset
+
+ from the Diffusion Group at Ecole Polytechnique Fédérale de Lausanne (EPFL),
+ Switzerland.
+ So, this data set was brought forth by a 3T scanner (TIM Trio, Siemens)
+ with a 32 channels head coil.
+ The field of view was 
+\begin_inset Formula $210x210mm^{2}$
+\end_inset
+
+, matrix size 
+\begin_inset Formula $96x96$
+\end_inset
+
+, and slice thickness 
+\begin_inset Formula $3mm$
+\end_inset
+
+.
+ 
+\begin_inset Formula $44$
+\end_inset
+
+ slices were acquired and the voxel resolution was 
+\begin_inset Formula $2.2x2.2x3.0mm{}^{3}$
+\end_inset
+
+.
+ A 
+\begin_inset Formula $258$
+\end_inset
+
+-point half grid acquisition scheme with a maximum b-value of 
+\begin_inset Formula $8011\, s/mm^{2}$
+\end_inset
+
+ also known as DSI515
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wedeen2008"
+
+\end_inset
+
+ was used.
+ The total acquisition time was 
+\begin_inset Formula $34\, min$
+\end_inset
+
+ with TR=
+\begin_inset Formula $8200ms$
+\end_inset
+
+ and TE=
+\begin_inset Formula $165ms$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -5415,10 +5560,261 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:real_257"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename last_figures/real_data_257_all_grid_methods.png
 	lyxscale 20
 	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Showing the same sub-slice of a human brain reconstructed with 6 different
+ Cartesian grid q-space based methods.
+ We see here that the ODFs are visualized on top of the FA slice.
+ A clearer presentation of a region near the left upper corner is given
+ in fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_257_zoomed"
+
+\end_inset
+
+ for all the 
+\begin_inset Formula $6$
+\end_inset
+
+ methods.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The parameters used for these simulations were for DSI: radial sampling
+ 
+\begin_inset Formula $2.1-6$
+\end_inset
+
+, hanning filter width: 
+\begin_inset Formula $36$
+\end_inset
+
+ , GQI: 
+\begin_inset Formula $\text{\lambda=1.2}$
+\end_inset
+
+, GQI2: 
+\begin_inset Formula $\lambda=3$
+\end_inset
+
+, and for EITS, EITL, EITL2 were all calculated with the standard options
+ (
+\begin_inset Formula $z=\pm5$
+\end_inset
+
+) and spherical angular smoothing (
+\begin_inset Formula $s=0.05)$
+\end_inset
+
+.
+ All methods were using the same reconstruction sphere with 
+\begin_inset Formula $642$
+\end_inset
+
+ vertices and 
+\begin_inset Formula $1280$
+\end_inset
+
+ faces.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:real_257_zoomed"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename last_figures/real_data_257_all_grid_methods_zoomed.png
+	lyxscale 50
+	scale 150
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The region shown at the upper-left corner in the panels of fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_257"
+
+\end_inset
+
+ is shown here at higher resolution.
+ The data sets here are from a real human.
+ In contrast with the results shown in simulations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor-zoomed"
+
+\end_inset
+
+ we applied spherical angular smoothing with 
+\begin_inset Formula $s=0.05$
+\end_inset
+
+ for EITL, EITL2 and EITS in order to remove small noisy spikes in the distribut
+ions.
+ In addition, similarly with the results of fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor-zoomed"
+
+\end_inset
+
+ EITS is very similar with GQI but this time the difference between DSI,
+ GQI2 and EITL, EITL2 is smaller because of the application of angular weighting.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We also tested our results with another human brain data set generated at
+ a scanner 3T scanner (TIM Trio, Siemens) in Medical Research Council Cognition
+ and Brain Sciences Unit, Cambridge, UK.
+ We used Siemens advanced diffusion work-in-progress sequence, and STEAM
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "merboldt1992diffusion,MAB04"
+
+\end_inset
+
+ as the diffusion preparation method.
+ The field of view was 
+\begin_inset Formula $240x240mm^{2}$
+\end_inset
+
+, matrix size 
+\begin_inset Formula $96x96$
+\end_inset
+
+, and slice thickness 
+\begin_inset Formula $2.5mm$
+\end_inset
+
+ (no gap).
+ 55 slices were acquired to achieve full brain coverage, and the voxel resolutio
+n was 
+\begin_inset Formula $2.5x2.5x2.5mm{}^{3}$
+\end_inset
+
+.
+ In this experiment much less gradient vectors were used.
+ A 102-point half grid acquisition with a maximum b-value of 
+\begin_inset Formula $4000\, s/mm^{2}$
+\end_inset
+
+ was used.
+ The total acquisition time was only
+\begin_inset Formula $14\, min\,21s$
+\end_inset
+
+ with TR=
+\begin_inset Formula $8200ms$
+\end_inset
+
+ and TE=
+\begin_inset Formula $69ms$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU"
+
+\end_inset
+
+ slice is shown where different parts white matter are shown in the background
+ using FA.
+ We can ssee structures like the CC and CST and Centrum Semiovale areas.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:real_101_CBU"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename last_figures/real_101_eitl_0.05.png
+	lyxscale 30
+	scale 30
 
 \end_inset
 
@@ -5447,7 +5843,57 @@ status open
 \end_layout
 
 \begin_layout Standard
-102 directions CBU
+higher res
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:real_101_CBU_left_up"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename last_figures/real_101_eitl_0.05_left_up_purple.png
+	lyxscale 50
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+as above zoomed
 \end_layout
 
 \begin_layout Standard
@@ -5459,9 +5905,9 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename last_figures/real_101_eitl_0.05.png
-	lyxscale 30
-	scale 30
+	filename last_figures/real_101_eitl_0.05_left_up_zoomed.png
+	lyxscale 50
+	scale 150
 
 \end_inset
 
