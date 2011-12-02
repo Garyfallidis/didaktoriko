@@ -3,6 +3,10 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\end_preamble
 \use_default_options true
 \language english
 \inputencoding auto
@@ -209,6 +213,16 @@ Showing the ODFs from two randomly oriented simulated crossings of
 
 .
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:beautiful-triple-crossing"
 
 \end_inset
 
@@ -1261,7 +1275,7 @@ reference "Flo:single_fibre_spherical_grid"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1275,13 +1289,6 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:single_fibre_spherical_grid"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -1316,6 +1323,12 @@ Change u with f
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:single_fibre_spherical_grid"
+
+\end_inset
+
 
 \end_layout
 
@@ -1782,13 +1795,6 @@ similar to the Funk Radon Transform
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:EIT_table"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -1803,6 +1809,12 @@ The Equatorial inversion transform (EIT) can be used to explain many older
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Tab:EIT_table"
+
+\end_inset
+
 
 \end_layout
 
@@ -1829,7 +1841,7 @@ Describe table
 In table 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "Flo:EIT_table"
+reference "Tab:EIT_table"
 
 \end_inset
 
@@ -2281,18 +2293,21 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:sEITvsEIT"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
 (A)Standard EIT vs (B)Fast EIT algorithm
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:sEITvsEIT"
 
 \end_inset
 
@@ -2854,7 +2869,7 @@ Output:
 \end_layout
 
 \begin_layout Standard
-In section
+In section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Multi-fiber-Simulations"
@@ -3355,13 +3370,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:sphere_642"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/peak_finding_sphere.png
 	scale 60
@@ -3386,6 +3394,17 @@ A,B: Imagine that point a.
  C: the sphere used for ODF reconstructions consisting of 642 vertices and
  1280 faces produced by subdivisions of the icosahedron.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:sphere_642"
 
 \end_inset
 
@@ -3597,13 +3616,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:Smoothing_Example"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/triple_crossing_laplacian_snr20.png
 	lyxscale 50
@@ -3635,6 +3647,17 @@ An example of spherical angular gaussian smoothing applied with different
 
 .
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:Smoothing_Example"
 
 \end_inset
 
@@ -3676,7 +3699,7 @@ Finally, we believe that by decoupling the smoothing from the reconstruction
 \end_layout
 
 \begin_layout Subsection
-Comparisons
+Comparisons and Results
 \end_layout
 
 \begin_layout Standard
@@ -3726,6 +3749,17 @@ status open
 \begin_layout Plain Layout
 GQI2 lambda=3.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:multi-fibre-sims"
 
 \end_inset
 
@@ -3895,7 +3929,7 @@ reference "eq:sticks_ball_eq"
  In table 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "Flo:AS_behaviour"
+reference "Tab:AS_behaviour"
 
 \end_inset
 
@@ -4126,13 +4160,6 @@ AS
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:AS_behaviour"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -4145,6 +4172,12 @@ Examples of angular similarity (AS) behaviour with simple unit vector sets.
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Tab:AS_behaviour"
+
+\end_inset
+
 
 \end_layout
 
@@ -4252,14 +4285,15 @@ from
 \begin_inset Formula $7400$
 \end_inset
 
- simulated ODFs and the results are shown in figs 
+ simulated ODFs and the results are shown in fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:2_100"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:2_20"
@@ -4295,13 +4329,6 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:2_100"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -4314,6 +4341,12 @@ Average angular simularity of 2-fibre crossings with SNR 100
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:2_100"
+
+\end_inset
+
 
 \end_layout
 
@@ -4364,19 +4397,22 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:2_20"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
 Average angular simularity of 2-fibre crossings with SNR 20.
  
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:2_20"
 
 \end_inset
 
@@ -4457,13 +4493,6 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:3_100"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -4476,6 +4505,12 @@ Average angular similarity of 3-fibre crossings with SNR 100
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:3_100"
+
+\end_inset
+
 
 \end_layout
 
@@ -4526,18 +4561,21 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:3_20"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
 Average angular similarity of 3-fibre crossings with SNR 100
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:3_20"
 
 \end_inset
 
@@ -4618,13 +4656,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:FastvsStandardEITL"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/EITL_sEITL.png
 	lyxscale 30
@@ -4642,6 +4673,17 @@ This diagram shows that when we compute EITL with the fast or standard method
  crossings is very similar when using standard DNI or or fast DNI (EITL).
  
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:FastvsStandardEITL"
 
 \end_inset
 
@@ -4837,13 +4879,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:cool_phantoms"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/digital_phantom.png
 	lyxscale 40
@@ -4887,6 +4922,17 @@ Volume renderings of the unattenuated signals of two digital phantoms.
 
  were used.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:cool_phantoms"
 
 \end_inset
 
@@ -5001,13 +5047,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:x-shape-thin-tensor"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/software_phantom_comparisons_rician_05.png
 	lyxscale 20
@@ -5057,6 +5096,17 @@ reference "Flo:x-shape-thin-tensor-zoomed"
 
  the regions at the centers of the phantoms are depicted in higher resolution.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:x-shape-thin-tensor"
 
 \end_inset
 
@@ -5185,13 +5235,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:x-shape-thin-tensor-zoomed"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/software_phantom_comparisons_rician_05_zoomed.png
 	lyxscale 50
@@ -5224,12 +5267,23 @@ reference "Flo:x-shape-thin-tensor"
 \end_layout
 
 \begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:x-shape-thin-tensor-zoomed"
+
+\end_inset
+
 
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+asdfasfasfasf
 \end_layout
 
 \begin_layout Standard
@@ -5240,13 +5294,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:x-shape-fat-tensor"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/software_phantom_comparisons_rician_05_fat.png
 	lyxscale 20
@@ -5309,6 +5356,13 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:x-shape-fat-tensor"
+
+\end_inset
+
 
 \end_layout
 
@@ -5326,7 +5380,7 @@ reference "Flo:x-shape-thin-tensor"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:x-shape-fat-tensor"
@@ -5361,13 +5415,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:x-shape-fat-tensor-zoomed"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/software_phantom_comparisons_rician_05_fat_zoomed.png
 	lyxscale 50
@@ -5400,6 +5447,13 @@ reference "Flo:x-shape-fat-tensor"
 \end_layout
 
 \begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:x-shape-fat-tensor-zoomed"
+
+\end_inset
+
 
 \end_layout
 
@@ -5481,10 +5535,7 @@ Results with real data sets
 Evidently because we compare reconstruction methods on Cartesian grid-based
  acquisitions we should do the comparisons with data sets which are rich
  on directions and commonly used for DSI processing.
- For this purpose we used a data set which was available online 
-at 
-\lang english
-
+ For this purpose we used a data set which was available online at 
 \begin_inset ERT
 status open
 
@@ -5560,13 +5611,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:real_257"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/real_data_257_all_grid_methods.png
 	lyxscale 20
@@ -5605,6 +5649,13 @@ reference "Flo:real_257_zoomed"
 \end_layout
 
 \begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:real_257"
+
+\end_inset
+
 
 \end_layout
 
@@ -5660,13 +5711,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:real_257_zoomed"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/real_data_257_all_grid_methods_zoomed.png
 	lyxscale 50
@@ -5720,6 +5764,13 @@ reference "Flo:x-shape-thin-tensor-zoomed"
 \end_layout
 
 \begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:real_257_zoomed"
+
+\end_inset
+
 
 \end_layout
 
@@ -5730,7 +5781,7 @@ reference "Flo:x-shape-thin-tensor-zoomed"
 
 \begin_layout Standard
 We also tested our results with another human brain data set generated at
- a scanner 3T scanner (TIM Trio, Siemens) in Medical Research Council Cognition
+ a 3T scanner (TIM Trio, Siemens) in Medical Research Council Cognition
  and Brain Sciences Unit, Cambridge, UK.
  We used Siemens advanced diffusion work-in-progress sequence, and STEAM
  
@@ -5761,12 +5812,16 @@ n was
 
 .
  In this experiment much less gradient vectors were used.
- A 102-point half grid acquisition with a maximum b-value of 
+ A 
+\begin_inset Formula $102$
+\end_inset
+
+-point half grid acquisition with a maximum b-value of 
 \begin_inset Formula $4000\, s/mm^{2}$
 \end_inset
 
  was used.
- The total acquisition time was only
+ The total acquisition time was only 
 \begin_inset Formula $14\, min\,21s$
 \end_inset
 
@@ -5782,21 +5837,6 @@ n was
 \end_layout
 
 \begin_layout Standard
-In fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Flo:real_101_CBU"
-
-\end_inset
-
- slice is shown where different parts white matter are shown in the background
- using FA.
- We can ssee structures like the CC and CST and Centrum Semiovale areas.
- 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -5804,13 +5844,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:real_101_CBU"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/real_101_eitl_0.05.png
 	lyxscale 30
@@ -5825,7 +5858,30 @@ name "Flo:real_101_CBU"
 \begin_inset Caption
 
 \begin_layout Plain Layout
+EITL ODFs rendered on top of FA of a human brain data set.
+ A small 102-point half grid acquisition with a maximum b-value of 
+\begin_inset Formula $4000\, s/mm^{2}$
+\end_inset
 
+ was used.
+ Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU_left_up"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU_left_up_zoomed"
+
+\end_inset
+
+ are zoomed versions of the same figure.
+ We can see clearly single fibres on the CC and CST areas but also crossing
+ fibres at the Centrum Semiovale and at the areas where big bundles cross.
+ Also the non-white matter areas are evidently more isotropic.
 \end_layout
 
 \end_inset
@@ -5834,16 +5890,19 @@ name "Flo:real_101_CBU"
 \end_layout
 
 \begin_layout Plain Layout
-
-\end_layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:real_101_CBU"
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-higher res
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5854,13 +5913,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:real_101_CBU_left_up"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/real_101_eitl_0.05_left_up_purple.png
 	lyxscale 50
@@ -5875,6 +5927,23 @@ name "Flo:real_101_CBU_left_up"
 \begin_inset Caption
 
 \begin_layout Plain Layout
+The upper part of fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU"
+
+\end_inset
+
+ is shown here at higher resolution.
+ The purple shaded part is given in higher resolution in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU_left_up_zoomed"
+
+\end_inset
+
 
 \end_layout
 
@@ -5884,16 +5953,19 @@ name "Flo:real_101_CBU_left_up"
 \end_layout
 
 \begin_layout Plain Layout
-
-\end_layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:real_101_CBU_left_up"
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-as above zoomed
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5918,7 +5990,29 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+EITL ODFs of 1-fibre, 2-fibre and 3-fibre crossings from a real human data
+ set of 
+\begin_inset Formula $101$
+\end_inset
 
+ applied weighted diffusion volume and 
+\begin_inset Formula $1$
+\end_inset
+
+ without weithing 
+\begin_inset Formula $(b0)$
+\end_inset
+
+ .
+ This picture is a zoomed version of the purple shaded area shown in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU_left_up"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -5927,12 +6021,124 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:real_101_CBU_left_up_zoomed"
+
+\end_inset
+
 
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+In fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU"
+
+\end_inset
+
+ a slice is shown where different parts of white matter are visible with
+ the FA background image.
+ We can clearly see structures like the CC and CST and Centrum Semiovale
+ areas.
+ On top of the FA the ODFs of EITL are shown.
+ The parameters used for EITL were: a standard zonal width 
+\begin_inset Formula $z=\pm5$
+\end_inset
+
+ and spherical angular smoothing 
+\begin_inset Formula $s=0.05$
+\end_inset
+
+ with the same reconstruction sphere (
+\begin_inset Formula $642$
+\end_inset
+
+ vertices, 
+\begin_inset Formula $1280$
+\end_inset
+
+ faces) as before.
+\end_layout
+
+\begin_layout Standard
+For illustration purposes the upper part of fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU"
+
+\end_inset
+
+ is depicted again in fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU_left_up"
+
+\end_inset
+
+, and the region with purple shading from fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU_left_up"
+
+\end_inset
+
+ is given at an even higher resolution in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU_left_up_zoomed"
+
+\end_inset
+
+.
+ We used Mayavi 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ramachandran2011mayavi"
+
+\end_inset
+
+ a Python visualization library based on VTK to make the visualizations
+ shown in the figures of this section.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Remarks 
+\series default
+Although much less directions were used we obtain a similarly accurate depiction
+ of the underlying white matter structure.
+ We can see in all the figures with real data sets single fibres as those
+ usually found at the center of CC, and 2 or 3-fibre crossings in the intersecti
+on areas of CC with the CST and other bundles.
+ We can see for example in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU_left_up_zoomed"
+
+\end_inset
+
+ that the effect of spherical angular smoothing can help alleviate the noise
+ effects and concentrate depicting the major directions which are of highest
+ concern.
+ 
+\end_layout
+
+\begin_layout Standard
+ANYTHING ELSE?
 \end_layout
 
 \begin_layout Subsection
@@ -5981,6 +6187,16 @@ The sphere represents the isotropic component of the sODF (star) which will
  be removed.
  The remainders are the QA components
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:QA_sketch"
 
 \end_inset
 
@@ -6253,14 +6469,40 @@ texttt{dipy}
 
 \end_inset
 
- (diffusion imaging in python http://nipy.org/dipy).
+ (diffusion imaging in python 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+dipy.org
+\end_layout
+
+\end_inset
+
+).
  
 \end_layout
 
 \begin_layout Standard
-The sODF was calculated for a tesselated spherical icosahedron with 362
- vertices.
- Two values (1.2 and 3.5) were used for 
+The sODF was calculated for a tesselated spherical icosahedron with 
+\begin_inset Formula $362$
+\end_inset
+
+ vertices and 
+\begin_inset Formula $720$
+\end_inset
+
+ faces.
+ Two values (
+\begin_inset Formula $1.2$
+\end_inset
+
+ and 
+\begin_inset Formula $3.5$
+\end_inset
+
+) were used for 
 \begin_inset Formula $L_{\Delta}$
 \end_inset
 
@@ -6602,18 +6844,21 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:CSR_t-test"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
 Sample results of the paired t-tests comparing CSR(FA) and CSR(QA0)
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:CSR_t-test"
 
 \end_inset
 
@@ -6767,19 +7012,22 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:t-test_QA0"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
 Results of the paired t-test comparing the CVs across subjects for MD, FA
  and QA0.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:t-test_QA0"
 
 \end_inset
 

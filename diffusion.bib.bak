@@ -1242,7 +1242,7 @@
 @Misc{CarpanetoAPC,
   Author         = {Carpaneto, Giorgio; Martello, Silvano; Toth, Paolo},
   Title          = {Linear Assignment Problem Freeware},
-  HowPublished   = {verb+http://www.assignmentproblems.com/APC\_APS.htm+},
+  HowPublished   = {\verb+http://www.assignmentproblems.com/APC\_APS.htm+},
   year           = "downloaded June 2011"
 }
 
