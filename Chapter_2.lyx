@@ -56,15 +56,14 @@ Overview
 
 \begin_layout Standard
 Between one-third to two-thirds of imaging voxels in the human brain's white
- matter are thought to contain multiple fiber bundle crossings
+ matter are thought to contain multiple fibre bundle crossings
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Behrens2007NeuroImage"
 
 \end_inset
 
-, in which case the Diffusion Tensor model proposed by Basser et.
- al
+, in which case the Diffusion Tensor model proposed by Basser et al.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Basser1994"
@@ -86,7 +85,7 @@ key "callaghan1988nmr"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "wedeen2005mapping"
@@ -100,7 +99,7 @@ key "ozarslan2003generalized"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "barmpoutis2009regularized"
@@ -182,11 +181,11 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Showing the ODFs from two randomly oriented simulated crossings of 
+Showing the ODFs from two randomly oriented simulated 
 \begin_inset Formula $3$
 \end_inset
 
- fibres at 
+-fibre crossings at 
 \begin_inset Formula $50^{\circ}$
 \end_inset
 
@@ -194,8 +193,8 @@ Showing the ODFs from two randomly oriented simulated crossings of
 \begin_inset Formula $90^{\circ}$
 \end_inset
 
- angles (between each fiber) using different grid based reconstruction methods.
- The parameters used here DSI: radial sampling 
+ angles between each other using different grid based reconstruction methods.
+ The parameters used here are DSI: radial sampling 
 \begin_inset Formula $2.1-6$
 \end_inset
 
@@ -211,7 +210,7 @@ Showing the ODFs from two randomly oriented simulated crossings of
 \begin_inset Formula $\lambda=3$
 \end_inset
 
-.
+, DNI: standard.
 \end_layout
 
 \end_inset
@@ -235,7 +234,7 @@ name "Flo:beautiful-triple-crossing"
 \end_layout
 
 \begin_layout Standard
-The starting point is the classical formulation shown in eq.
+We start from the classical formulation shown in eq.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:kq"
@@ -258,7 +257,7 @@ key "Callaghan1991OUP"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "callaghan1988nmr"
@@ -266,11 +265,8 @@ key "callaghan1988nmr"
 \end_inset
 
  using the narrow pulse gradient spin echo (PGSE) sequence of Tanner and
- Stejskal
-\end_layout
-
-\begin_layout Standard
-\align center
+ Stejskal.
+ 
 \begin_inset Formula \begin{eqnarray}
 RF(\mathbf{k},\mathbf{q}) & = & \int\rho(\mathbf{v})\exp(i2\pi\mathbf{k}\cdot\mathbf{v})\int P_{\Delta}(\mathbf{v},\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}d\mathbf{v}\label{eq:kq}\end{eqnarray}
 
@@ -336,10 +332,6 @@ k
 \end_inset
 
  of each voxel 
-\end_layout
-
-\begin_layout Standard
-\align center
 \begin_inset Formula \begin{eqnarray}
 S(\mathbf{v},\mathbf{q}) & = & \int\rho(\mathbf{v})P_{\Delta}(\mathbf{v},\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}\label{eq:W}\end{eqnarray}
 
@@ -392,11 +384,7 @@ For the rest of the chapter we can drop
 \end_inset
 
 .
- Therefore 
-\end_layout
-
-\begin_layout Standard
-\align center
+ Therefore we can write
 \begin_inset Formula \begin{eqnarray}
 S(\mathbf{q}) & = & S_{0}\int P(\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}\label{eq:S}\end{eqnarray}
 
@@ -423,10 +411,6 @@ key "Wedeen"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\align center
 \begin_inset Formula \begin{eqnarray}
 P(\mathbf{r}) & = & S_{0}^{-1}\int S(\mathbf{q})\exp(-i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}\label{eq:P}\end{eqnarray}
 
@@ -436,7 +420,8 @@ P(\mathbf{r}) & = & S_{0}^{-1}\int S(\mathbf{q})\exp(-i2\pi\mathbf{q}\cdot\mathb
 \end_layout
 
 \begin_layout Standard
-It was shown by Wedeen et al.
+or diffusion propagator.
+ It was shown by Wedeen et al.
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -465,10 +450,6 @@ reference "eq:P"
 \end_inset
 
  
-\end_layout
-
-\begin_layout Standard
-\align center
 \begin_inset Formula \begin{eqnarray}
 P(\mathbf{r}) & = & S_{0}^{-1}\int|S(\mathbf{q})|\exp(-i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}\label{eq:P_modulus}\end{eqnarray}
 
@@ -528,7 +509,8 @@ q
 q
 \series default
 -space the points of a cubic lattice within the sphere of five lattice units
- in radius
+ in radius.
+ Therefore,
 \begin_inset Formula \begin{eqnarray}
 \mathbf{q} & = & \alpha\mathbf{q}_{x}+\beta\mathbf{q}_{y}+\gamma\mathbf{q}_{z}\label{eq:q_lattice}\end{eqnarray}
 
@@ -540,10 +522,10 @@ q
 \begin_layout Standard
 \align left
 with 
-\begin_inset Formula $\alpha,\beta,\gamma$
+\begin_inset Formula $\alpha,\beta,\gamma\in\mathbb{Z}^{+}$
 \end_inset
 
- integers and 
+ and 
 \begin_inset Formula $(\alpha^{2}+\beta^{2}+\gamma^{2})^{1/2}\leq5$
 \end_inset
 
@@ -621,7 +603,7 @@ Since we are mainly interested in the angular structure of the underlying
 \align left
 
 \lang british
-This defines the orientation distribution function (ODF) for DSI which measures
+This defines the orientation density function (ODF) for DSI which measures
  the quantity of diffusion in the direction of the unit vector 
 \begin_inset Formula $\mathbf{\hat{u}}$
 \end_inset
@@ -695,11 +677,6 @@ reference "eq:S"
 \end_inset
 
  we obtain
-\end_layout
-
-\begin_layout Standard
-\align left
-
 \family roman
 \series medium
 \shape up
@@ -709,6 +686,7 @@ reference "eq:S"
 \noun off
 \color none
 \lang british
+
 \begin_inset Formula \begin{eqnarray}
 S(\mathbf{q}) & = & \int Q(\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}\label{eq:W2Q}\end{eqnarray}
 
@@ -732,9 +710,6 @@ reference "eq:W2Q"
 \end_inset
 
  and obtain
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula \begin{eqnarray}
 Q(\mathbf{r}) & = & \int S(\mathbf{q})exp(-i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{q}\label{eq:Q2S_complex}\end{eqnarray}
 
@@ -780,7 +755,7 @@ reference "sub:The-cosine-transform"
 
 \end_inset
 
- ) to calculate 
+ ) to calculate
 \end_layout
 
 \begin_layout Standard
@@ -806,7 +781,7 @@ spin
 \begin_inset Formula $\psi_{GQI}$
 \end_inset
 
- from an unweighted truncated radial projection 
+ from an unweighted truncated radial projection
 \end_layout
 
 \begin_layout Standard
@@ -836,9 +811,6 @@ where
  This ODF was used as the basis of the analysis of the GQI method.
  It provides a simple direct analytical solution of he ODF which can be
  written in a simple matrix form
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula \begin{eqnarray*}
 \bm{\psi}_{GQI}= & \mathbf{s}\cdot\mathtt{sinc}((6D\cdot G\circ\mathbf{b}\circ\mathbb{1})\cdot G)\lambda/\pi\end{eqnarray*}
 
@@ -934,7 +906,7 @@ where
 \end_inset
 
  matrix with the gradient vectors, 
-\begin_inset Formula $b$
+\begin_inset Formula $\mathbf{b}$
 \end_inset
 
  is the 
@@ -972,9 +944,6 @@ spin
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula \begin{eqnarray}
 \psi_{GQI2}(\mathbf{\hat{u}}) & = & \intop_{0}^{\lambda}Q(r\mathbf{\hat{u}})r^{2}dr\label{eq:SDF2}\\
  & = & \lambda^{3}\int S(\mathbf{q})H(2\pi r\mathbf{q}\cdot\mathbf{\hat{u}})d\mathbf{q}\end{eqnarray}
@@ -1013,10 +982,7 @@ Also explain why frank likes the spin density.
 
 \begin_layout Standard
 \align left
-This again can be implemented with a simple matrix transform 
-\end_layout
-
-\begin_layout Standard
+This equation can be similarly implemented with a simple matrix transform
 \begin_inset Formula \begin{eqnarray*}
 \bm{\psi}_{GQI2} & = & \mathbf{s}\cdot\mathtt{H}((6D\cdot G\circ\mathbf{b}\circ\mathbb{1})\cdot G)\lambda^{3}/\pi\end{eqnarray*}
 
@@ -1037,8 +1003,8 @@ The addition of the spin density plays a very important role on normalizing
  data sets.
  GQI similarly with DSI expects the q-vectors to sit on a cubic lattice
  within a sphere.
- However, because of the direct analytical formulation the GQI ODFs the
- creation of the volumetric grid with the signal values is not necessary.
+ However, because of the direct analytical formulation of the GQI ODFs;
+ the creation of the volumetric grid with the signal values is not necessary.
  This makes this GQI advantageous on memory and cpu efficiency.
  Furthermore, no Hanning filter is necessary.
 \end_layout
@@ -1099,11 +1065,11 @@ For a symmetric function
 \begin_inset Formula $\hat{\mathbf{u}}^{\perp}$
 \end_inset
 
-is the plane perpendicular to 
+ is the plane perpendicular to 
 \begin_inset Formula $\hat{\mathbf{u}}$
 \end_inset
 
- (for proof see 
+ (for proof see section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Radial-projection-of-symmetric"
@@ -1114,7 +1080,8 @@ reference "sub:Radial-projection-of-symmetric"
 \end_layout
 
 \begin_layout Standard
-From equation 
+From eq.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:ODF_DSI"
@@ -1125,7 +1092,7 @@ reference "eq:ODF_DSI"
 \begin_inset Formula $P(r\hat{\mathbf{u}})r^{2}$
 \end_inset
 
- we can
+ , therefore we can write
 \end_layout
 
 \begin_layout Standard
@@ -1166,7 +1133,7 @@ where
 \begin_inset Formula $\nabla^{2}$
 \end_inset
 
-is the Laplacian operator and 
+ is the Laplacian operator and 
 \begin_inset Formula $E(q)=S(q)/S_{0}$
 \end_inset
 
@@ -1257,7 +1224,8 @@ Equatorial Inversion Transform
 I propose an important theoretical construction called the Equatorial Inversion
  Transform (EIT) which creates a general formulation for the interpretation
  of the directionality of the diffusion signal.
- If we visualize the diffusion signal for a single fiber for all gradient
+ This idea is founded on two general properties of the diffusion signal:
+ a) If we visualize the diffusion signal for a single fiber for all gradient
  directions we see that a shape is generated which is smallest towards the
  direction of the fiber and biggest on the plane perpendicular to that direction
  (see fig.
@@ -1269,6 +1237,23 @@ reference "Flo:single_fibre_spherical_grid"
 \end_inset
 
 ).
+ b) The diffusion signal is additive i.e.
+ 
+\begin_inset Formula $S(\hat{\mathbf{f}}_{1})+S(\hat{\mathbf{f}}_{2})=S(\hat{\mathbf{f}}_{1}+\hat{\mathbf{f}}_{2})$
+\end_inset
+
+ , where 
+\begin_inset Formula $\hat{\mathbf{f}}_{1}$
+\end_inset
+
+,
+\begin_inset Formula $\hat{\mathbf{f}}_{2}$
+\end_inset
+
+ are the unit directions of the fibres.
+ In simple terms the signal of 2-fibre crossing can be decomposed linearly
+ to the signals of the two fibres that create the crossing.
+ The same holds for any number of fibres in a crossing.
 \end_layout
 
 \begin_layout Standard
@@ -1303,18 +1288,14 @@ Change u with f
 
  The diffusion signal has the beautiful property to be minimum along the
  direction of a fibre with unit direction 
-\begin_inset Formula $\hat{\bm{f}}$
+\begin_inset Formula $\mathbf{\hat{\bm{f}}}$
 \end_inset
 
  and maximum along the equator defined by the plane perpendicular to that
  fibre direction.
  This property is the basic inspiration behind the EIT.
  In this picture the 3D surface plot of a simulated signal for a spherical
- grid acquision with b-value 2000 is shown using a yellow-red colourmap
-\begin_inset Formula $\mathbf{f}$
-\end_inset
-
-.
+ grid acquision with b-value 2000 is shown using a yellow-red colourmap.
 \end_layout
 
 \end_inset
@@ -1338,9 +1319,9 @@ name "Flo:single_fibre_spherical_grid"
 \end_layout
 
 \begin_layout Standard
-This is a very important geometric property of the signal that we can exploit
- by calculating equatorial integrals in order to identify the directionality
- of the signal.
+These are two very important geometric properties of the signal that we
+ can try to exploit at the maximum by calculating equatorial integrals in
+ order to identify the directionality of the signal.
  
 \end_layout
 
@@ -1389,7 +1370,7 @@ key "Tuch2004"
 
 \begin_layout Standard
 With EIT the most important goal is to try to identify the correct directionalit
-y of the signal in the most accurate way by generating a spherical distribution.
+y of the signal in the most accurate way by generating a spherical density.
  However it is possible to calculate as well the real ODF as defined by
  Wedeen et al.
  
@@ -1580,7 +1561,11 @@ Comment
 \begin_inset Text
 
 \begin_layout Plain Layout
-DNI or EITL
+DNI
+\begin_inset Formula $\equiv$
+\end_inset
+
+EITL
 \end_layout
 
 \end_inset
@@ -1798,7 +1783,7 @@ similar to the Funk Radon Transform
 \begin_inset Caption
 
 \begin_layout Plain Layout
-The Equatorial inversion transform (EIT) can be used to explain many older
+The Equatorial inversion transform (EIT) can be used to explain many other
  reconstructions algorithms.
  
 \end_layout
@@ -1824,20 +1809,6 @@ name "Tab:EIT_table"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Describe table 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align left
 In table 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1893,6 +1864,7 @@ reference "Tab:EIT_table"
  than the standard ODFs.
  Before starting investigating the realms of EIT we should first give a
  short overview of other methods commonly found in the literature.
+ These are grid-based, mostly non-grid based and usually parametric.
 \end_layout
 
 \begin_layout Subsection
@@ -1943,7 +1915,7 @@ key "canalesrodriguez2009mdq"
 
 \end_inset
 
- provides different method to calculate the ODF analytically using multiple
+ provides a different method to calculate the ODF analytically using multiple
  spherical q-space shells and similarly Aganj et al.
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2027,8 +1999,9 @@ key "JansonsPAS2003"
 \end_layout
 
 \begin_layout Standard
-The first reference on using spherical harmonic expansions with diffusivity
- profiles was by Alexander et al.
+The first reference of using spherical harmonic expansions with diffusivity
+ profiles, which are now very fevourable in the litearature, was by Alexander
+ et al.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "alexander2002detection"
@@ -2094,7 +2067,7 @@ key "sakaie2007objective"
 
 \end_inset
 
- and
+ and 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "yeh2011estimation"
@@ -2169,7 +2142,7 @@ key "lu2006three"
 \begin_layout Standard
 Finally, new model-based methods are immerging which are trying to calculate
  statistics like the axonal thickness distribution from dMRI data sets.
- These are usually based on modelling free and restricted components CHARMED
+ These are usually based on modelling free and restricted components; CHARMED
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2198,7 +2171,7 @@ key "alexander2010orientationally"
 
 \end_inset
 
-.
+ are some well known methods of this type.
  Q-space Imaging(QSI) can be used to identify distributions of axon-diameter
  too
 \begin_inset CommandInset citation
@@ -2296,7 +2269,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-(A)Standard EIT vs (B)Fast EIT algorithm
+(A)Standard EIT vs (B)Fast EIT algorithm.
+ Fast EIT is an order of magnitude faster than standard EIT.
+ The key idea here is that reduce computations by storing the sum of the
+ radial integrals for every vertex in the reconstruction sphere and then
+ we can also precompute the indices of the vertices that are near the equator
+ of every vertex (inside an equatorial zone).
 \end_layout
 
 \end_inset
@@ -2359,7 +2337,7 @@ reference "Flo:sEITvsEIT"
 
  vertices 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 and the signal is centered inside a cubic grid of size 
@@ -2400,7 +2378,7 @@ and the signal is centered inside a cubic grid of size
 In this document whenever we use the prefix s in front of a method that
  will mean that this was calculated with the standard EIT algorithm.
  For example if standard EIT is used for DNI we will write sDNI or sEITL.
- 
+ Of course sDNI and sEITL are equivalent.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2408,8 +2386,7 @@ Fast EIT
 \end_layout
 
 \begin_layout Standard
-A much faster algorithm than the standard EIT described in the previous
- paragraph is described here.
+A much faster algorithm than the standard EIT is described here.
  The main idea is that we can store the sum of the radial integrals for
  every vertex in the reconstruction sphere and then we can also precompute
  the indices of the vertices that are near the equator of every vertex (inside
@@ -2427,21 +2404,130 @@ d with much less operations.
  The full algorithm is given in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "Flo:FAST EIT"
+reference "Alg:Fast_EIT"
 
 \end_inset
 
 .
- The width of the equatorial zone is a constant set to 
+ The in input is the vertices 
+\begin_inset Formula $\hat{\bm{u}}_{i}$
+\end_inset
+
+ of the reconstruction sphere and the normalized signal 
+\begin_inset Formula $E.$
+\end_inset
+
+ Then for every point of the reconstruction sphere 
+\begin_inset Formula $\hat{\bm{u}}_{i}$
+\end_inset
+
+ we save the indices of the vertices 
+\begin_inset Formula $j$
+\end_inset
+
+ of 
+\begin_inset Formula $\hat{\bm{u}}_{j}$
+\end_inset
+
+ ,which are inside an equatorial zone, in list 
+\begin_inset Formula $J_{i}$
+\end_inset
+
+.
+ The width of the equatorial zone 
+\begin_inset Formula $z$
+\end_inset
+
+ is a constant set empeirically to 
 \begin_inset Formula $5^{\circ}$
 \end_inset
 
- empeirically.
+ .
  If a very highly dense reconstruction sphere is used with more than 
 \begin_inset Formula $642$
 \end_inset
 
  vertices which is the one we used then the zone can be smaller.
+ That can potentially increase the angular resolution of the method.
+\end_layout
+
+\begin_layout Standard
+At the next stage we calculate sums along every radius on the direction
+ of 
+\begin_inset Formula $\hat{\bm{u}}_{i}$
+\end_inset
+
+ in the following way 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+mathbb{B}(
+\backslash
+hat{
+\backslash
+bm{u}}_{i})=
+\backslash
+sum_{k=0}^{n}F(E(q_{k}
+\backslash
+hat{
+\backslash
+bm{u}}_{i}))O(q_{k}
+\backslash
+hat{
+\backslash
+bm{u}}_{i})$
+\end_layout
+
+\end_inset
+
+ and optain the final EIT ODF as the average of the sums in the equator
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+psi_{EIT}(
+\backslash
+hat{
+\backslash
+bm{u}}_{i})=
+\backslash
+frac{1}{N_i}
+\backslash
+sum_{j
+\backslash
+in J_i}
+\backslash
+mathbb{B}(
+\backslash
+hat{
+\backslash
+bm{u}}_{j})$
+\end_layout
+
+\end_inset
+
+ where 
+\begin_inset Formula $F$
+\end_inset
+
+ is evaluated with trilinear for example interpolation on the lattice and
+ 
+\begin_inset Formula $N_{i}$
+\end_inset
+
+ is the number of indices in 
+\begin_inset Formula $J_{i}.$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2451,13 +2537,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Alg:Fast_EIT"
-
-\end_inset
-
-
 \begin_inset ERT
 status open
 
@@ -2479,7 +2558,7 @@ hat{
 \backslash
 bm{u}}_{m}
 \backslash
-}$
+}$, E
 \backslash
 
 \backslash
@@ -2671,192 +2750,10 @@ caption{Fast Equatorial Inversion Transform}
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset listings
-lstparams "basicstyle={\footnotesize},breaklines=true,mathescape=true,tabsize=4"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-#Pre-computing part
-\end_layout
-
-\begin_layout Plain Layout
-
-create an increasing sequence of nonnegative real numbers 
-\end_layout
-
-\begin_layout Plain Layout
-
-$q_k=q_0...q_n$ 
-\end_layout
-
-\begin_layout Plain Layout
-
-set the width $z$ of the equatorial zone   
-\end_layout
-
-\begin_layout Plain Layout
-
-For every point $
-\backslash
-hat{
-\backslash
-bm{u}}_{i}$ 
-\end_layout
-
-\begin_layout Plain Layout
-
-	Store the indices $j$ in $J_i$ that satisfy $|
-\backslash
-arccos(
-\backslash
-hat{
-\backslash
-bm{u}}_{i}
-\backslash
-cdot
-\backslash
-hat{
-\backslash
-bm{u}}_{j})|
-\backslash
-leq z$
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\end_layout
-
-\begin_layout Plain Layout
-
-#Main operation
-\end_layout
-
-\begin_layout Plain Layout
-
-For every point $
-\backslash
-hat{
-\backslash
-bm{u}}_{i}$ 	
-\end_layout
-
-\begin_layout Plain Layout
-
-	(a)$
-\backslash
-mathbb{B}(
-\backslash
-hat{
-\backslash
-bm{u}}_{i})=
-\backslash
-sum_{k=0}^{n}F(E(q_{k}
-\backslash
-hat{
-\backslash
-bm{u}}_{i}))O(q_{k}
-\backslash
-hat{
-\backslash
-bm{u}}_{i})$ 
-\end_layout
-
-\begin_layout Plain Layout
-
-		where $F(E(q_{k}
-\backslash
-hat{
-\backslash
-bm{u}}_{i}))$ is interpolated on the lattice.
- 		
-\end_layout
-
-\begin_layout Plain Layout
-
-	(b)$
-\backslash
-bm
-\backslash
-psi_{EIT}(
-\backslash
-hat{
-\backslash
-bm{u}}_{i})=
-\backslash
-frac{1}{N_i}
-\backslash
-sum_{j
-\backslash
-in J_i}
-\backslash
-mathbb{B}(
-\backslash
-hat{
-\backslash
-bm{u}}_{j})$, where $N_i$ is the number of indices in $J_i$.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Flo:FAST EIT"
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Fast Equatorial Inversion Transform
-\begin_inset Newline newline
-\end_inset
-
-Input: reconstruction sphere 
-\begin_inset Formula $U=\{\hat{\bm{u}}_{1}\ldots\hat{\bm{u}}_{m}\}$
-\end_inset
-
-,
-\begin_inset Newline newline
-\end_inset
-
-normalized signal in the lattice 
-\begin_inset Formula $E$
-\end_inset
-
- 
-\begin_inset Newline newline
-\end_inset
-
-Output: 
-\begin_inset Formula $\bm{\psi}_{EIT}$
-\end_inset
-
- 
-\end_layout
+name "Alg:Fast_EIT"
 
 \end_inset
 
@@ -2898,10 +2795,8 @@ Peak Finding
 \begin_layout Standard
 After we have generated the ODFs we need to find the peaks (local maxima)
  from which we can easily approximate the direction of the fibres.
- Usually, people avoid publishing their peak finding algorithms as being
- trivial.
- However, peak finding can be non-trivial if there are many local maxima
- in the ODFs or the ODFs are noisy.
+ Peak finding can be non-trivial if there are many local maxima in the ODFs
+ or the ODFs are noisy.
  Here we present an algorithm (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3084,183 +2979,10 @@ caption{Peak Finding with a Symmetric Ordered Sphere}
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset listings
-lstparams "basicstyle={\footnotesize},breaklines=true,mathescape=true,tabsize=4"
-inline false
-status collapsed
-
-\begin_layout Plain Layout
-
-peaks=copy($
-\backslash
-bm{
-\backslash
-psi}$)
-\end_layout
-
-\begin_layout Plain Layout
-
-for all faces
-\end_layout
-
-\begin_layout Plain Layout
-
-	#every face contains 3 indices
-\end_layout
-
-\begin_layout Plain Layout
-
-	$f_0,f_1,f_2$ = face
-\end_layout
-
-\begin_layout Plain Layout
-
-	#here we copy the ODF values for those indices
-\end_layout
-
-\begin_layout Plain Layout
-
-	$d_0,d_1,d_2$ = $
-\backslash
-bm{
-\backslash
-psi}$[$f_0$],$
-\backslash
-bm{
-\backslash
-psi}$[$f_1$],$
-\backslash
-bm{
-\backslash
-psi}$[$f_2$]
-\end_layout
-
-\begin_layout Plain Layout
-
-	#cancel out lower peaks of a face
-\end_layout
-
-\begin_layout Plain Layout
-
-	if $d_0$ > $d_1$ and $d_2$
-\end_layout
-
-\begin_layout Plain Layout
-
-		peaks[$f_1$]=peaks[$f_2$]=0
-\end_layout
-
-\begin_layout Plain Layout
-
-		continue
-\end_layout
-
-\begin_layout Plain Layout
-
-	if $d_1$ > $d_0$ and $d_2$
-\end_layout
-
-\begin_layout Plain Layout
-
-		peaks[$f_0$]=peaks[$f_2$]=0
-\end_layout
-
-\begin_layout Plain Layout
-
-		continue
-\end_layout
-
-\begin_layout Plain Layout
-
-	if $d_2$ > $d_0$ and $d_1$
-\end_layout
-
-\begin_layout Plain Layout
-
-		peaks[$f_0$]=peaks[$f_1$]=0
-\end_layout
-
-\begin_layout Plain Layout
-
-		continue
-\end_layout
-
-\begin_layout Plain Layout
-
-#both sphere and ODF are symmetric
-\end_layout
-
-\begin_layout Plain Layout
-
-peaks = peaks[0:size(peaks)/2]
-\end_layout
-
-\begin_layout Plain Layout
-
-indices = where(peaks>0)
-\end_layout
-
-\begin_layout Plain Layout
-
-#return descending peaks and indices
-\end_layout
-
-\begin_layout Plain Layout
-
-return sort(peaks),sort(indices)
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Flo:PeakFindingAlg"
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Peak Finding 
-\begin_inset Newline newline
-\end_inset
-
-Using a symmetric evenly distributed sphere
-\begin_inset Newline newline
-\end_inset
-
-Input: ODF (
-\begin_inset Formula $\bm{\psi}$
-\end_inset
-
-) , faces
-\begin_inset Newline newline
-\end_inset
-
-Output: peaks and indices of the peaks in descending order
-\end_layout
+name "Alg:PeakFinding"
 
 \end_inset
 
@@ -3283,15 +3005,23 @@ key "Yeh2010"
 \end_inset
 
  for GQI reconstructions.
- Every face contains the 3 indices which indicate at the 3 different points
- that create the triangle(face) of the sphere.
+ Every face contains the 
+\begin_inset Formula $3$
+\end_inset
+
+ indices which indicate at the 
+\begin_inset Formula $3$
+\end_inset
+
+ different points that create the triangle(face) of the sphere.
  The idea here is that we can travel from face to face and nullify all points
  on a face which are lower that the higher value of the face.
  At the end only local maxima will survive the procedure.
- The algorithm is presented in detail in Algorithm 
+ The algorithm is presented in detail in alg.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "Flo:PeakFindingAlg"
+reference "Alg:PeakFinding"
 
 \end_inset
 
@@ -3338,7 +3068,8 @@ status collapsed
 \end_inset
 
 ) of the peaks found from the ODF.
- In addition the proposed algorithm reduces a bit further the angular resolution.
+ In addition the proposed PeakFinding algorithm can reduces slightly more
+ the angular resolution.
  For example in Fig.
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3359,7 +3090,23 @@ b
 a
 \series default
  but none of the unlabelled points could be a second peak.
+ Nevertheless we found alg.
  
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Alg:PeakFinding"
+
+\end_inset
+
+ to be extremelly useful and fast.
+ The same algorithm was used also in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
+
+\end_inset
+
+ but it was not documented as such.
 \end_layout
 
 \begin_layout Standard
@@ -3385,8 +3132,14 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-A,B: Imagine that point a.
- is a local maximum for all its neighbouring faces then only at b.
+A,B: Imagine that point 
+\series bold
+a
+\series default
+ is a local maximum for all its neighbouring faces then only at 
+\series bold
+b
+\series default
  are other possible local maxima.
  This simple illustration shows that the triangulation of the sphere is
  important for the determination of closed peaks and that peaks which belong
@@ -3468,10 +3221,7 @@ key "aganj2010reconstruction"
 All these approaches smooth and calculate the ODFs simultaneously.
  We propose something different.
  That the ODF can be calculated initially and then smoothed using for example
- following operator shown below in matrix form
-\end_layout
-
-\begin_layout Standard
+ the following operator shown below in matrix form
 \begin_inset Formula \[
 W=\exp(\frac{U\cdot U^{T}}{s})\]
 
@@ -3508,10 +3258,6 @@ where
 \end_inset
 
 ) in the following way
-\end_layout
-
-\begin_layout Standard
-
 \family roman
 \series medium
 \shape up
@@ -3520,6 +3266,7 @@ where
 \bar no
 \noun off
 \color none
+
 \begin_inset Formula \begin{equation}
 \bm{\psi}'=\bm{\psi}\cdot\frac{W}{\sum_{j}W_{j}}\label{eq:spherical_gaussian_angular_smoothing}\end{equation}
 
@@ -3599,13 +3346,12 @@ reference "Flo:Smoothing_Example"
 
 \end_inset
 
- we see the effect of this equation on a simulated triple-fibre crossing
- EITL distribution function which we have distorted with gaussian noise
- with SNR 
+ we see the effect of this equation on a simulated triple-fibre crossing;
+ distorted with gaussian noise with SNR 
 \begin_inset Formula $20$
 \end_inset
 
-.
+ and reconstructed as a EITL density function which we have .
 \end_layout
 
 \begin_layout Standard
@@ -3633,7 +3379,8 @@ status open
 An example of spherical angular gaussian smoothing applied with different
  smoothing factors on the distribution function of a triple-fibre crossing
  on the left.
- The simulation was used using (Sticks&Ball) model with diffusivity 
+ The simulation was used using (Sticks&Ball) model with diffusivity value
+ 
 \begin_inset Formula $0.0015$
 \end_inset
 
@@ -3688,14 +3435,25 @@ reference "Flo:Smoothing_Example"
 n.
  This spherical operator can help to set the trade-off between noise and
  signal and it can also simplify the peak finding process i.e.
- finding the underlying primary fibre directions because this problem is
- much easier on smooth surfaces.
+ finding the underlying primary fibre directions as this problem is much
+ easier on smooth surfaces.
 \end_layout
 
 \begin_layout Standard
 Finally, we believe that by decoupling the smoothing from the reconstruction
- phase we have an important advantage and that is that we can control more
- strongly the effect of the noise to our data.
+ phase we have an important advantage and that is that we can reduce more
+ strongly and independently the effect of the noise to our data.
+ Many spherical operators added as a plugins which is uncontroled from the
+ reconstruction phase and can work with any function on the sphere.
+ For example Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:spherical_gaussian_angular_smoothing"
+
+\end_inset
+
+ can be used with any function on the sphere.
 \end_layout
 
 \begin_layout Subsection
@@ -3707,7 +3465,8 @@ Validation of reconstruction and tractography algorithms is not straightforward
  due to the lack of relevant gold standards.
  Simulated voxels and digital phantoms is a useful way to overcome this
  difficulty and test new methods.
- 
+ After the simulation results we also show results with real human data
+ sets.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3747,7 +3506,36 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-GQI2 lambda=3.
+Visualizing ODFs created from different reconstruction methods sDNI (sEITL),
+ EITL, EITL2, DSI, GQI, GQI2.
+ These are based on simulations of 2-fibre crossings from 
+\begin_inset Formula $0^{\circ}$
+\end_inset
+
+to 
+\begin_inset Formula $90^{\circ}$
+\end_inset
+
+at steps of 
+\begin_inset Formula $5^{\circ}$
+\end_inset
+
+ using eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sticks_ball_eq"
+
+\end_inset
+
+.
+ We can see that standard DNI (sDNI), EITL and EITL2 can resolve the correct
+ angular fibre directions at lower angles than the other methods.
+ For example see column at angle of 
+\begin_inset Formula $25^{\circ}$
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -3782,9 +3570,6 @@ key "Behrens2007NeuroImage"
 
 ; the multicompartment model also known as Sticks and Ball which simulates
  the diffusion signal as
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula \begin{equation}
 S_{i}=S_{0}((1-\sum_{j=1}^{N}f_{j})\exp(-b_{i}d)+\sum_{j=1}^{N}f_{j}\exp(-b_{i}d\cos(\theta_{ij})^{2}))\label{eq:sticks_ball_eq}\end{equation}
 
@@ -3824,11 +3609,7 @@ key "liu2004characterizing"
 
 \end_inset
 
- approach was also simulated using the formula 
-\end_layout
-
-\begin_layout Standard
-
+ approach was also created for digital phantoms using the formula
 \family roman
 \series medium
 \shape up
@@ -3838,18 +3619,21 @@ key "liu2004characterizing"
 \noun off
 \color none
 \lang british
+
 \begin_inset Formula \begin{equation}
 S_{i}=S_{0}\sum_{j=1}^{N}\exp(-b\mathbf{\hat{g}}^{T}D_{j}\mathbf{\hat{g}})\label{eq:multitensor}\end{equation}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\align left
-
-\lang british
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
 where 
 \begin_inset Formula $D_{j}$
 \end_inset
@@ -4192,16 +3976,16 @@ If our
 \begin_inset Quotes eld
 \end_inset
 
-gold
+golden
 \begin_inset Quotes erd
 \end_inset
 
- known set consists of 
-\begin_inset Formula $[(1,0,0),(0,1,0)]$
+ (known) set consists of 
+\begin_inset Formula $g=[(1,0,0),(0,1,0)]$
 \end_inset
 
  and the measured set consists of 
-\begin_inset Formula $[(0,0,1)]$
+\begin_inset Formula $m=[(0,0,1)]$
 \end_inset
 
  then AS=
@@ -4210,7 +3994,7 @@ gold
 
 .
  If the measured set was 
-\begin_inset Formula $[(0,\nicefrac{\sqrt{2}}{2},\nicefrac{\sqrt{2}}{2})]$
+\begin_inset Formula $m=[(0,\nicefrac{\sqrt{2}}{2},\nicefrac{\sqrt{2}}{2})]$
 \end_inset
 
  then AS
@@ -4228,7 +4012,40 @@ gold
 \end_inset
 
 .
- 
+ This is because according to the AS definition we have AS(
+\begin_inset Formula $g$
+\end_inset
+
+,
+\begin_inset Formula $m$
+\end_inset
+
+)=
+\begin_inset Formula $\max([|g[0]\cdot m[0]|,|g[1],m[0]|])$
+\end_inset
+
+=
+\begin_inset Formula $\nicefrac{\sqrt{2}}{2}$
+\end_inset
+
+.
+ Now if 
+\begin_inset Formula $g=[(1,0,0),(0,1,0)]$
+\end_inset
+
+ and 
+\begin_inset Formula $m=g$
+\end_inset
+
+ then AS(
+\begin_inset Formula $g,m$
+\end_inset
+
+)=max
+\begin_inset Formula $[|g[0]\cdot m[0]|+|g[1]\cdot m[1]|,|g[0]\cdot m[1]|+|g[1]\cdot m[0]|]=2$
+\end_inset
+
+ because the permutations of the fibres need to be under consideration.
 \end_layout
 
 \begin_layout Standard
@@ -6116,14 +5933,42 @@ key "ramachandran2011mayavi"
 \begin_layout Standard
 
 \series bold
-Remarks 
+Remarks.
+ 
 \series default
-Although much less directions were used we obtain a similarly accurate depiction
- of the underlying white matter structure.
- We can see in all the figures with real data sets single fibres as those
+Although much less directions were used in this acquision scheme we obtain
+ a similarly accurate depiction of the underlying white matter structure
+ in comparison with that of 
+\begin_inset Formula $258$
+\end_inset
+
+ directions.
+ This gives great hope that we can use grid-based reconstruction methods
+ with half-grid sequences with ~100 gradient directions.
+ This was also showed from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kuo"
+
+\end_inset
+
+ who used only 
+\begin_inset Formula $203$
+\end_inset
+
+ directions with DSI reconstruction.
+ 
+\end_layout
+
+\begin_layout Standard
+We can see in all the figures with real data sets single fibres as those
  usually found at the center of CC, and 2 or 3-fibre crossings in the intersecti
 on areas of CC with the CST and other bundles.
- We can see for example in fig.
+ 
+\end_layout
+
+\begin_layout Standard
+We can see for example in fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6132,13 +5977,13 @@ reference "Flo:real_101_CBU_left_up_zoomed"
 \end_inset
 
  that the effect of spherical angular smoothing can help alleviate the noise
- effects and concentrate depicting the major directions which are of highest
- concern.
+ effects and concentrate on depicting the major directions which are of
+ highest concern.
  
 \end_layout
 
 \begin_layout Standard
-ANYTHING ELSE?
+ANYTHING ELSE? These should also be expanded in the discussion section.
 \end_layout
 
 \begin_layout Subsection
@@ -7097,6 +6942,83 @@ Our results indicate that the MD and FA maps generated from a grid sampling
 
 \begin_layout Subsection
 Conclusion
+\end_layout
+
+\begin_layout Standard
+EIT is
+\end_layout
+
+\begin_layout Itemize
+Simple 
+\end_layout
+
+\begin_layout Itemize
+Fast
+\end_layout
+
+\begin_layout Itemize
+Comprehensive
+\end_layout
+
+\begin_layout Itemize
+Generalizable - Opens new doors for investigation
+\end_layout
+
+\begin_layout Itemize
+Can create Real ODFs or other spherical density functions 
+\end_layout
+
+\begin_layout Itemize
+Has the best performance with simulations
+\end_layout
+
+\begin_layout Standard
+GQI
+\end_layout
+
+\begin_layout Itemize
+Can be used for QA
+\end_layout
+
+\begin_layout Itemize
+QA has some very interesting properties works like a differential anisotropy
+\end_layout
+
+\begin_layout Itemize
+EITS probably can be used for QA as they look very similar
+\end_layout
+
+\begin_layout Itemize
+Fast to compute - analytical solution
+\end_layout
+
+\begin_layout Standard
+GQI2
+\end_layout
+
+\begin_layout Itemize
+Until today not investigated
+\end_layout
+
+\begin_layout Itemize
+Seems robust and sharp
+\end_layout
+
+\begin_layout Itemize
+Fast and analytical solution exists
+\end_layout
+
+\begin_layout Standard
+DSI
+\end_layout
+
+\begin_layout Itemize
+Useful if the diffusion propagator is needed
+\end_layout
+
+\begin_layout Standard
+There are similarities between all these methods DSI similar with EITL,
+ GQI with EITS, GQI2 with EITL2.
 \end_layout
 
 \begin_layout Subsection
