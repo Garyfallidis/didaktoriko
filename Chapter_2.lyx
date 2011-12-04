@@ -5996,11 +5996,6 @@ key "ramachandran2011mayavi"
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-Remarks.
- 
-\series default
 Although much less directions were used in this acquision scheme we obtain
  a similarly accurate depiction of the underlying white matter structure
  in comparison with that of 
@@ -6009,7 +6004,11 @@ Although much less directions were used in this acquision scheme we obtain
 
  directions.
  This gives great hope that we can use grid-based reconstruction methods
- with half-grid sequences with ~100 gradient directions.
+ with half-grid sequences with 
+\begin_inset Formula $~100$
+\end_inset
+
+ gradient directions.
  This was also showed by 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -6030,8 +6029,16 @@ who used similar number of directions.
 
 \begin_layout Standard
 We can see in all the figures with real data sets single fibres as those
- usually found at the center of CC, and 2 or 3-fibre crossings in the intersecti
-on areas of CC with the CST and other bundles.
+ usually found at the center of CC, and 
+\begin_inset Formula $2$
+\end_inset
+
+ or 
+\begin_inset Formula $3$
+\end_inset
+
+-fibre crossings in the intersection areas of CC with the CST and other
+ bundles.
  
 \end_layout
 
@@ -6057,17 +6064,30 @@ Anisotropy metrics
 \begin_layout Standard
 Until this moment we discussed about density functions on the sphere as
  a way to represent compex fibre directionality in the voxel.
- These density function have many values and it can be cumbersome to use
- them directly for subject comparisons.
- For this purpose most people use a simple scalar metrics e.g.
- Tensor-based FA, MD or ODF-based like the Generalized FA (GFA).
+ These density functions are represented as multidimensional vectors containing
+ 
+\begin_inset Formula $200$
+\end_inset
+
+ or more dimensions in each voxel and it can be cumbersome to use them directly
+ for subject comparisons or visualization purposes.
+ For this purpose most people use simple scalar summarizing metrics e.g.
+ Tensor-based FA, MD or ODF-based like the Generalized FA (GFA) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tuch2002"
+
+\end_inset
+
+.
  In this section we will show that a similar scalar function like FA can
  be constructed non-parametrically.
- We call this NPA.
- We also start experimenting with metrics that have more than one scalar
- values.
- We will investigate and explain here the realms of Quantitative Anisotropy
- which was first used in the publication by Yeh et al.
+ We call this NPA which stands for non-parametric anisotropy.
+ We will also start experimenting with metrics that have more than one scalar
+ values and can represent more accurately the directionality in each voxel
+ that is lost with FA, GFA and MD.
+ We will investigate and explain here the realms and robustness of Quantitative
+ Anisotropy which was first introduced by Yeh et al.
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -6108,9 +6128,9 @@ key "Yeh2010,Tuch2002ThesisMIT"
 
 .
  We show how model-free, alternatives can yield non-parametric anisotropy
- and directionality measures (NPA).
- These are constructed from the spin orientation distribution function (sODF).
- We apply exact analytical results which show the form of the sODF when
+ (NPA).
+ These are constructed from the GQI ODF.
+ We apply exact analytical results which show the form of the GQI-ODF when
  the single tensor model is correct, and further indicate how the tensor's
  parameters may be estimated from this model-free approach.
  We compare the performance of these parametric and non-parametric measures
@@ -6148,7 +6168,11 @@ Simulations were computed for a
 .
  Variable fibre orientation was realised by spatially rotating the simulated
  fibres at discrete orientations.
- 100 orientations were used, which spanned uniformly the space of 
+ 
+\begin_inset Formula $100$
+\end_inset
+
+ orientations were used, which spanned uniformly the space of 
 \begin_inset Formula $(\theta,\phi)$
 \end_inset
 
@@ -6158,7 +6182,11 @@ Simulations were computed for a
 
 \begin_layout Standard
 In addition to the SDT a two compartment model with an isotropic component
- was added with volume fraction 0.5 and diffusivity 
+ was added with volume fraction 
+\begin_inset Formula $0.5$
+\end_inset
+
+ and diffusivity 
 \begin_inset Formula $0.7x10^{-3}$
 \end_inset
 
@@ -6176,7 +6204,19 @@ In addition to the SDT a two compartment model with an isotropic component
  This results in noisy values with a Rician distribution, which can be scaled
  in order to set the signal to noise ratio to any desired level.
  In this study the SNRs were 
-\begin_inset Formula $20,40,60,80,$
+\begin_inset Formula $20$
+\end_inset
+
+,
+\begin_inset Formula $40$
+\end_inset
+
+,
+\begin_inset Formula $60$
+\end_inset
+
+,
+\begin_inset Formula $80$
 \end_inset
 
  and 
@@ -6184,7 +6224,7 @@ In addition to the SDT a two compartment model with an isotropic component
 \end_inset
 
 .
- The sODF and SDT were fitted using 
+ The GQI ODF and SDT were fitted using 
 \begin_inset ERT
 status collapsed
 
@@ -6197,7 +6237,7 @@ texttt{dipy}
 
 \end_inset
 
- (diffusion imaging in python 
+ (
 \begin_inset ERT
 status open
 
@@ -6213,7 +6253,7 @@ dipy.org
 \end_layout
 
 \begin_layout Standard
-The sODF was calculated for a tesselated spherical icosahedron with 
+The GQI ODF was calculated for a tesselated spherical icosahedron with 
 \begin_inset Formula $362$
 \end_inset
 
@@ -6231,11 +6271,11 @@ The sODF was calculated for a tesselated spherical icosahedron with
 \end_inset
 
 ) were used for 
-\begin_inset Formula $L_{\Delta}$
+\begin_inset Formula $\lambda$
 \end_inset
 
 , the diffusion sampling length.
- Non-parametric FA, NPA, was calculated from the sODF by 
+ Non-parametric FA, NPA, was calculated from the ODF by 
 \end_layout
 
 \begin_layout Enumerate
@@ -6320,16 +6360,19 @@ key "Correia2009"
 \begin_layout Subparagraph
 
 \series medium
-The rationale for the squared sODF values is based on Tuch's formula eq.
+The rationale for the squared ODF values is based on Tuch's formula eq.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:tuchs_gaussian_odf"
 
 \end_inset
 
- for ODF in the SDT case which implies that the ODF in the 3 principal axis
- directions of the tensor is proportional to the square root of the correspondin
-g eigenvalue of the tensor.
+ for ODF in the SDT case which implies that the ODF in the 
+\begin_inset Formula $3$
+\end_inset
+
+ principal axes directions of the tensor is proportional to the square root
+ of the corresponding eigenvalue of the tensor.
  We have further derived an exact formula 
 \begin_inset Formula $max_{j}\propto\sqrt{\lambda_{j}}[\Phi(cL_{\Delta}/\sqrt{\lambda_{j}})-.5]$
 \end_inset
@@ -6343,15 +6386,18 @@ g eigenvalue of the tensor.
 \end_inset
 
  is the cumulative distribution function of the standard gaussian distribution.
- 
+ NEEDS PROOF?
 \end_layout
 
 \begin_layout Subparagraph
 
 \series medium
-The average NPA and FA are presented below for 200 simulations for each
- noise level, and single fibres with or without an isotropic component and
- with different diffusion sampling length.
+The average NPA and FA are presented below for 
+\begin_inset Formula $200$
+\end_inset
+
+ simulations for each noise level, and single fibres with or without an
+ isotropic component and with different diffusion sampling length.
  We can see that NPA gives very similar results with FA and as expected
  it is modulated by the degree of smoothing controlled by the value of the
  diffusion sampling length.
@@ -6365,7 +6411,7 @@ We plan to extend this approach with voxels containing multiple peaks where
  FA would be unable to give an informative result and also extend it to
  other types of ODFs.
  In summary, we have shown that an informative new scalar anisotropy function
- (NPA) can be calculated without fitting just from the spin ODF which promises
+ (NPA) can be calculated without fitting just from the GQI ODF which promises
  to be a model-free proxy for FA.
  NPA differs from GFA 
 \begin_inset CommandInset citation
@@ -6374,8 +6420,12 @@ key "Tuch2004"
 
 \end_inset
 
- in that it uses just 3 values of the sODF with a geometric relationship
- instead of the entire ODF.
+ in that it uses just 
+\begin_inset Formula $3$
+\end_inset
+
+ values of the GQI ODF with a geometric relationship instead of the entire
+ ODF.
  
 \end_layout
 
@@ -6409,6 +6459,16 @@ Comparison of NPA with FA for single fiber with and without an isotropic
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:NPA_1"
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -6435,8 +6495,26 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-As above but with higher diffusion sampling length.
+As in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:NPA_1"
+
+\end_inset
+
+ but with higher diffusion sampling length - less smoothing.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:NPA_2"
 
 \end_inset
 
@@ -6450,7 +6528,7 @@ As above but with higher diffusion sampling length.
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Simulations were computed for a 102-point grid sampling scheme, with a maximum
@@ -6523,15 +6601,78 @@ Quantitative Anisotropy
 \end_layout
 
 \begin_layout Standard
-Quantitative anisotropy (QA0 is defined by the sODF value at the resolved
- fiber orientation 
-\begin_inset Formula $\hat{\mathbf{u}}$
+Quantitative anisotropy (QA) was first used by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
+
 \end_inset
 
- (local maximum) minus the isotropic component (global minimum) for the
- voxel.
- QA can be also very easily normalized by the maximum sODF value of all
- voxels which is usually at the CSF where there is a great amount of water.
+ as a way to represent the peaks of the ODF with as few values as possible.
+ This works in the following way: a) we create the ODF, b) we find the peaks
+ using alg.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Alg:PeakFinding"
+
+\end_inset
+
+, c) then 
+\begin_inset Formula $QA_{i}$
+\end_inset
+
+ is equal to the peak 
+\begin_inset Formula $i$
+\end_inset
+
+ minus the minimum value for the entire ODF.
+ This is illustrated in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:QA_sketch"
+
+\end_inset
+
+ where we can see a star-shaped ODF with three peaks (symmetric) (
+\begin_inset Formula $PK$
+\end_inset
+
+).
+ This ODF can be represented just with 
+\begin_inset Formula $3$
+\end_inset
+
+ QA values where for example the highest value will be 
+\begin_inset Formula $QA_{0}=\max(\bm{\psi}_{GQI})-\min(\bm{\psi}_{GQI})$
+\end_inset
+
+ where 
+\begin_inset Formula $\max(\bm{\psi}_{GQI})$
+\end_inset
+
+ is the value of the first peak 
+\begin_inset Formula $PK_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $QA_{1}=PK_{1}-\min(\bm{\psi}_{GQI})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and 
+\begin_inset Formula $QA_{2}=PK_{2}-\min(\bm{\psi}_{GQI})$
+\end_inset
+
+ with 
+\begin_inset Formula $PK_{0}\geq PK_{1}\geq PK_{2}$
+\end_inset
+
+ .
 \end_layout
 
 \begin_layout Standard
@@ -6556,9 +6697,20 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-The sphere represents the isotropic component of the sODF (star) which will
- be removed.
- The remainders are the QA components
+This figure shows how QA is calculated from an ODF.
+ The sphere represents the 
+\begin_inset Quotes eld
+\end_inset
+
+isotropic
+\begin_inset Quotes erd
+\end_inset
+
+ component (minimum value) of a GQI ODF (star) which will be removed from
+ the calculation of QA.
+ QA acts like a differential component with higher values in anisotropic
+ areas and lower in isotropic.
+ Its big advantage over FA is that it can represent crossings.
 \end_layout
 
 \end_inset
@@ -6678,15 +6830,67 @@ if k=0 then cdf = NaN but
 \end_layout
 
 \begin_layout Standard
+\align left
+QA acts like a differential operator which is higher on anistropic ODFs
+ and lower on more isotropic.
+ Actually for a purelly isotropic ODF 
+\begin_inset Formula $QA=\bm{0}$
+\end_inset
+
+.
+ QA can be also easily normalized by the maximum ODF value of all voxels
+ which is usually at the CSF where there is a great amount of water.
+ If this normalization is in effect then we can very easily remove the backgroun
+d noise i.e.
+ non-white matter areas, sculp, skin, muscles etc.
+ just because these will have very low QA values.
+ We can see this interesting property of QA in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:QA_directions"
+
+\end_inset
+
+.
+ Of course the most important property of QA is that it can resolve crossings
+ and assign a weight for every peak.
+ We will make great use of these weightings in Chapter 3.
+ for the creation of tractographies.
+ Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:QA_directions"
+
+\end_inset
+
+ was created using DSI Studio 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+dsi-studio.labsolver.org
+\end_layout
+
+\end_inset
+
+ and the sequence parametrization is the same with the one provided in the
+ experiments of the next section.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename figures/dsi_studio_result.png
+	lyxscale 40
 	scale 40
 
 \end_inset
@@ -6698,8 +6902,23 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Multiple crossings using the peak directions from the sODF.
+Multiple crossings of a real human data set using Quantitative Anisotropy.
+ The first component of QA (
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+) is also shown in the background.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:QA_directions"
 
 \end_inset
 
@@ -6722,9 +6941,12 @@ Robustness of QA
 \begin_layout Standard
 GQI was shown to have comparable accuracy to other well established q-space
  methods when it comes to resolving crossing fibres.
- In addition, this is achievable with as little as 102 points on a grid
- sampling scheme, bringing the total acquisition time down to a clinically
- acceptable level.
+ In addition, this is achievable with as little as 
+\begin_inset Formula $102$
+\end_inset
+
+ points on a grid sampling scheme, bringing the total acquisition time down
+ to a clinically acceptable level.
  Another advantage of GQI is that it is also applicable to a shell sampling
  scheme.
  Despite their successes in tractography applications, q-space techniques
@@ -6738,14 +6960,18 @@ GQI was shown to have comparable accuracy to other well established q-space
 \begin_inset Formula $>2000s/mm^{2}$
 \end_inset
 
-) in the accuracy of the resulting DTI-based parameters has not been well
- characterized.
+) in the accuracy of the resulting DTI-based (Single Diffusion Tensor SDT)
+ parameters has not been well characterized.
  The authors of GQI have also proposed a new scalar metric called quantitative
- anisotropy (QA), but its properties have not been compared to FA’s.
- In this study we will compare the estimated values of MD, FA and QA0 (first
- component of QA) obtained with grid and shell sampling schemes, in terms
- of their precision and ability to differentiate between different brain
- fibre populations.
+ anisotropy (QA) which was described in the previous sections, but its propertie
+s have not been compared to FA’s.
+ In this study we will compare the estimated values of MD, FA and 
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+ (first component of QA) obtained with grid and shell sampling schemes,
+ in terms of their precision and ability to differentiate between different
+ brain fibre populations.
 \end_layout
 
 \begin_layout Standard
@@ -6758,6 +6984,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename figures/MartaISMRM2.png
+	lyxscale 50
 
 \end_inset
 
@@ -6768,7 +6995,11 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Sample results of the paired t-tests comparing CSR(FA) and CSR(QA0)
+Sample results of the paired t-tests comparing CSR(FA) and CSR(
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+)
 \end_layout
 
 \end_inset
@@ -6792,9 +7023,16 @@ name "Flo:CSR_t-test"
 \end_layout
 
 \begin_layout Standard
-Twelve healthy volunteers aged between 18 and 40 were scanned on a 3T scanner
- (TIM Trio, Siemens), using Siemens advanced diffusion work-in-progress
- sequence, and STEAM 
+Twelve healthy volunteers aged between 
+\begin_inset Formula $18$
+\end_inset
+
+ and 
+\begin_inset Formula $40$
+\end_inset
+
+ were scanned on a 3T scanner (TIM Trio, Siemens), using Siemens advanced
+ diffusion work-in-progress sequence, and STEAM 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "merboldt1992diffusion,MAB04"
@@ -6803,11 +7041,11 @@ key "merboldt1992diffusion,MAB04"
 
  as the diffusion preparation method.
  The field of view was 
-\begin_inset Formula $240x240mm^{2}$
+\begin_inset Formula $240\times240mm^{2}$
 \end_inset
 
 , matrix size 
-\begin_inset Formula $96x96$
+\begin_inset Formula $96\times96$
 \end_inset
 
 , and slice thickness 
@@ -6815,9 +7053,13 @@ key "merboldt1992diffusion,MAB04"
 \end_inset
 
  (no gap).
- 55 slices were acquired to achieve full brain coverage, and the voxel resolutio
-n was 
-\begin_inset Formula $2.5x2.5x2.5mm{}^{3}$
+ 
+\begin_inset Formula $55$
+\end_inset
+
+ slices were acquired to achieve full brain coverage, and the voxel resolution
+ was 
+\begin_inset Formula $2.5\times2.5\times2.5mm{}^{3}$
 \end_inset
 
 .
@@ -6826,8 +7068,11 @@ n was
 \begin_inset Formula $4000\, s/mm^{2}$
 \end_inset
 
-, and a single shell acquisition using 118 non-collinear gradient directions
- and a b-value of 
+, and a single shell acquisition using 
+\begin_inset Formula $118$
+\end_inset
+
+ non-collinear gradient directions and a b-value of 
 \begin_inset Formula $1000\, s/mm^{2}$
 \end_inset
 
@@ -6837,10 +7082,38 @@ n was
 \end_inset
 
 ), voxel resolution, and bandwidth.
- FA, MD and QA0 maps were then generated for each acquisition scheme and
- for the 12 volunteers using dipy (diffusion imaging in python [ref XXX]).
- All the FA datasets were non-linearly registered into MNI space using fsl
- tools, and the same transformation parameters were applied to MD and QA0
+ FA, MD and 
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+ maps were then generated for each acquisition scheme and for the 
+\begin_inset Formula $12$
+\end_inset
+
+ volunteers using dipy 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "garyfallidis2011dipy"
+
+\end_inset
+
+(
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+dipy.org
+\end_layout
+
+\end_inset
+
+).
+ All the FA datasets were non-linearly registered into MNI space using FSL
+ tools, and the same transformation parameters were applied to MD and 
+\begin_inset Formula $QA_{0}$
+\end_inset
+
  maps 
 \begin_inset Note Note
 status collapsed
@@ -6857,7 +7130,11 @@ status collapsed
  parasagittal white matter (left and right), pons, internal capsule (left
  and right), and genu, body and splenium of the corpus callosum.
  Small cubic ROIs were also constructed by finding the centroid of each
- anatomical ROI and using it as the centre for a 3x3x3 ROI.
+ anatomical ROI and using it as the centre for a 
+\begin_inset Formula $3\times3\times3$
+\end_inset
+
+ ROI.
  For each ROI we calculated the mean value for each metric, and the spatial
  coefficient of variation (CV) within the ROI (see eq.
  
@@ -6892,8 +7169,14 @@ reference "eq:CSR_FA"
 \end_inset
 
 ) is a good measure of a metric’s ability to differentiate between different
- brain fibre populations [Cite CCorreia et al.
- Abstract 3556 ISMRM 2009].
+ brain fibre populations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "correia_garyfallidis2011"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -6907,12 +7190,22 @@ CSR(FA) & = & \frac{mean(FA)_{ROI_{1}}-mean(FA)_{ROI_{2}}}{\sqrt{var(FA)_{ROI_{1
 \end_layout
 
 \begin_layout Standard
-Combining the left and right versions of each ROI, we have 9 ROIs of different
- brain populations, which can be used to define 36 pairs of ROIs, and the
- CSR of all metrics was calculated for each of these pairs.
+Combining the left and right versions of each ROI, we have 
+\begin_inset Formula $9$
+\end_inset
+
+ ROIs of different brain populations, which can be used to define 
+\begin_inset Formula $36$
+\end_inset
+
+ pairs of ROIs, and the CSR of all metrics was calculated for each of these
+ pairs.
  Paired t-tests were then conducted to compare the performance of each metric
- with the two acquisition schemes, and also to compare FA and QA0 directly
- for each acquisition scheme.
+ with the two acquisition schemes, and also to compare FA and 
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+ directly for each acquisition scheme.
  
 \end_layout
 
@@ -6961,12 +7254,26 @@ name "Flo:t-test_QA0"
 \end_layout
 
 \begin_layout Standard
-The 102 grid sampling scheme produces significantly higher mean FA and QA0
- values than the ones obtained with the 118 shell scheme, while the opposite
- was observed for MD.
+The 
+\begin_inset Formula $102$
+\end_inset
+
+ grid sampling scheme produces significantly higher mean FA and 
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+ values than the ones obtained with the 
+\begin_inset Formula $118$
+\end_inset
+
+ shell scheme, while the opposite was observed for MD.
  The CSR results for FA and QA0 were not significantly different between
- the two acquisition schemes, but the 102 grid scheme produces significantly
- higher CSRs for MD for 26/36 ROI pairs (fig.
+ the two acquisition schemes, but the 
+\begin_inset Formula $102$
+\end_inset
+
+ grid scheme produces significantly higher CSRs for MD for 26/36 ROI pairs
+ (fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6985,11 +7292,37 @@ reference "Flo:t-test_QA0"
 \end_inset
 
 ).
- For FA and MD the 102 scheme showed lower CV within ROIs, especially for
- white matter, but no difference was found for QA0.
- When comparing FA and QA0 directly, our results show that FA produces higher
- CSRs than QA0 for 23/36 ROI pairs for the 102 grid sampling, and for 19/36
- ROI pairs for the 118 scheme.
+ For FA and MD the 
+\begin_inset Formula $102$
+\end_inset
+
+ scheme showed lower CV within ROIs, especially for white matter, but no
+ difference was found for 
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+.
+ When comparing FA and 
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+ directly, our results show that FA produces higher CSRs than QA0 for 
+\begin_inset Formula $23/36$
+\end_inset
+
+ ROI pairs for the 
+\begin_inset Formula $102$
+\end_inset
+
+ grid sampling, and for 
+\begin_inset Formula $19/36$
+\end_inset
+
+ ROI pairs for the 
+\begin_inset Formula $118$
+\end_inset
+
+ scheme.
  FA also shows lower variation across subjects for both acquisition schemes.
  Finally, FA lower CVs within white matter ROIs, while QA0 shows less variabilit
 y for grey matter.
@@ -7003,17 +7336,29 @@ Our results indicate that the MD and FA maps generated from a grid sampling
  scheme designed for GQI are still suitable for analysis, since they do
  not show poorer performance when compared to a single shell and low b-value
  acquisition.
- In fact, the overall results suggest that the 102 grid sampling produces
- slightly more robust results than the 118 shell acquisition.
- A previous study [Cite Correia et al.
- MRI 27: 163-75] has shown that metrics such as MD and FA benefit from the
- use of multiple b-values, which could explain the better performance of
- the 102 grid scheme.
+ In fact, the overall results suggest that the 
+\begin_inset Formula $102$
+\end_inset
+
+ grid sampling produces slightly more robust results than the 
+\begin_inset Formula $118$
+\end_inset
+
+ shell acquisition.
+ A previous study 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "correia2009looking"
+
+\end_inset
+
+ has shown that metrics such as MD and FA benefit from the use of multiple
+ b-values, which could explain the better performance of the 
+\begin_inset Formula $102$
+\end_inset
+
+ grid scheme.
  
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Subsection
