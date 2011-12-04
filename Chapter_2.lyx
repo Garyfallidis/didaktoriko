@@ -3417,7 +3417,7 @@ name "Flo:Smoothing_Example"
 \end_layout
 
 \begin_layout Standard
-We can easily see from fig.
+We can easily see in fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3971,7 +3971,7 @@ name "Tab:AS_behaviour"
 \end_layout
 
 \begin_layout Standard
-\align left
+\align block
 If our 
 \begin_inset Quotes eld
 \end_inset
@@ -4021,7 +4021,7 @@ golden
 \end_inset
 
 )=
-\begin_inset Formula $\max([|g[0]\cdot m[0]|,|g[1],m[0]|])$
+\begin_inset Formula $\max(|g[0]\cdot m[0]|,|g[1],m[0]|)$
 \end_inset
 
 =
@@ -4029,7 +4029,7 @@ golden
 \end_inset
 
 .
- Now if 
+ If 
 \begin_inset Formula $g=[(1,0,0),(0,1,0)]$
 \end_inset
 
@@ -4042,10 +4042,14 @@ golden
 \end_inset
 
 )=max
-\begin_inset Formula $[|g[0]\cdot m[0]|+|g[1]\cdot m[1]|,|g[0]\cdot m[1]|+|g[1]\cdot m[0]|]=2$
+\begin_inset Formula $(|g[0]\cdot m[0]|+|g[1]\cdot m[1]|,|g[0]\cdot m[1]|+|g[1]\cdot m[0]|)=2$
 \end_inset
 
- because the permutations of the fibres need to be under consideration.
+.
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
@@ -4174,25 +4178,39 @@ name "Flo:2_100"
 
 \begin_layout Standard
 \align left
-We can easily see from 
+We can easily observe in fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:2_100"
 
 \end_inset
 
- and that EITL2 can resolve more accurately fibre crossings at low angles
- but does not do as well with higher angles 
-\begin_inset Formula $>30^{\circ}$
+ that EITL2 can resolve more accurately fibre crossings at low angles and
+ continue performing decently well even at higher angles 
+\begin_inset Formula $>50^{\circ}$
+\end_inset
+
+ .
+ Then EITL is doing better than DSI, GQI, GQI2 and EITS at low angles and
+ very well at high angles as well.
+ GQI2 performs better than DSI, GQI, and ETS.
+ It is also impressive that EITS can have such a good performance although
+ it is such a simple operation.
+ In summary we say from the that EITL2>EITL>GQI2>DSI>GQI>EITS where > means
+ better average angular similarity.
+ The same pattern takes place even when we increase the noise level see
+ for example fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:2_20"
+
 \end_inset
 
 .
- Then EITL is doing better than DSI, GQI, GQI2 and EITS at low angles and
- very well at high angles as well.
- Then DSI,GQI and GQI2 perform very similar with GQI2 having a bit better
- performance at low angles.
- It is also impressive that EITS can have such a good performance although
- it is such a simple operation.
+ We will see next that the same pattern will take place even with 3-fibre
+ crossings and high levels of noise.
 \end_layout
 
 \begin_layout Standard
@@ -4243,9 +4261,16 @@ name "Flo:2_20"
 
 \begin_layout Standard
 \align left
-We wanted also to measure the accuracy in 3-fibre crossings.
- Therefore, we created an experiment where the 3-fibres would always have
- the same angular distance from each other.
+We also measured the accuracy in 
+\begin_inset Formula $3$
+\end_inset
+
+-fibre crossings.
+ Therefore, we created an experiment where the 
+\begin_inset Formula $3$
+\end_inset
+
+-fibres would always have the same angular distance between each other.
  That distance would increase from 
 \family roman
 \series medium
@@ -4278,7 +4303,11 @@ with steps of
 \begin_inset Formula $2.3^{\circ}$
 \end_inset
 
- on average and all 3 fibres would be reoriented 
+ on average and all 
+\begin_inset Formula $3$
+\end_inset
+
+ fibres would be reoriented 
 \begin_inset Formula $200$
 \end_inset
 
@@ -4354,9 +4383,9 @@ reference "Flo:3_20"
 \end_inset
 
  were very similar with those of the 2-fibre crossings; EITL2 scores higher
- on low angles but not doing as well with high angles and EITL doing better
- with low angles than the rest of the methods and also having high accuracy
- on larger angles.
+ at low angles with a bit reduced performance at high angles and EITL doing
+ better with low angles than the rest of the methods and also having high
+ accuracy on larger angles.
 \end_layout
 
 \begin_layout Standard
@@ -4434,8 +4463,9 @@ Furthermore, we can also see that GQI2 can do better than DSI, GQI and that
 \begin_inset Formula $\lambda=3$
 \end_inset
 
-, and EITS,EITL,EITL2 were all calculated with the standard options (
-\begin_inset Formula $z=\pm5$
+, and EITS,EITL,EITL2 were all calculated with the standard options zonal
+ width (
+\begin_inset Formula $z=5^{\circ}$
 \end_inset
 
 ) and no further post-processing or smoothing was used.
@@ -4453,7 +4483,11 @@ Furthermore, we can also see that GQI2 can do better than DSI, GQI and that
 \begin_layout Standard
 Finally, we should stress that we have never seen any considerable differences
  between spherical functions created using the standard or fast EIT.
- For example a simple test for the 3-fibre case as seen in fig.
+ For example a simple test for the 
+\begin_inset Formula $3$
+\end_inset
+
+-fibre case as seen in fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4461,8 +4495,10 @@ reference "Flo:FastvsStandardEITL"
 
 \end_inset
 
- can show that there is close agreement between the two methods.
- 
+ can show that there is close agreement between the two methods i.e.
+ their results are nearly equivalent.
+ Therefore we can conclude that the fast EIT is great approximation of the
+ standard EIT.
 \end_layout
 
 \begin_layout Standard
@@ -4524,7 +4560,8 @@ Digital Phantoms
 A digital phantom generation tool was developed which can simulate the diffusion
  weighted signal for one or more fibres represented by different discrete
  3D orbital functions.
- This work is an extension of the phantom developed by
+ This work is an extension of the phantom developed by Correia et al.
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Correia2009"
@@ -4546,7 +4583,7 @@ The idea here is that we first create any orbital function
 
 .
  Then we can scale it and centre it so that it fits in an image volume of
- a size that we desire.
+ size that we desire.
  We expect that many segments of the discrete function 
 \begin_inset Formula $f$
 \end_inset
@@ -4647,7 +4684,6 @@ S_{vox}=\sum_{i=1}^{K}\Delta S_{i}\label{eq:digital_phantom_signal}\end{equation
 \end_layout
 
 \begin_layout Standard
-\align left
 In addition, we can generate simulations of more than one fibres by generating
  a single volume for every orbit and then add them all together to create
  complex configurations in the final volume.
@@ -4671,8 +4707,8 @@ reference "eq:multitensor"
 \end_layout
 
 \begin_layout Standard
-The way these digital phantoms are created offers the opportunity to simulate
- partial volume effects.
+The method we use to create these digital phantoms offers the opportunity
+ to simulate partial volume effects.
  If partial volume effects are not desired then we need to normalize with
  the number of fibre elements for each voxel (This function is implemented
  in dipy.sims.phantom.orbital_phantom).
@@ -5031,7 +5067,7 @@ reference "Flo:x-shape-fat-tensor"
 \end_layout
 
 \begin_layout Standard
-Furthermore, we can easily see that GQI is most similar with EITS, GQI2
+Furthermore, we can easily see that GQI is mostly similar with EITS, GQI2
  is very similar with EITL and DSI is mostly similar with EITL.
  That DSI ODFs are very similar with EITL ODFs is expected as the two methods
  create theoretically the same real ODFs.
@@ -5100,7 +5136,7 @@ name "Flo:x-shape-thin-tensor-zoomed"
 \end_layout
 
 \begin_layout Standard
-asdfasfasfasf
+
 \end_layout
 
 \begin_layout Standard
@@ -5125,8 +5161,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Showing the spherical distribution functions (DSI,GQI,GQI2,EITL,EITL2,EITS)
- of a digital phantom generated by two bundles where each bundle contains
+Showing the spherical distribution functions (DSI, GQI, GQI2, EITL, EITL2,
+ EITS) of a digital phantom generated by two bundles where each bundle contains
  single tensors along the direction of the phantom.
  On the crossing area we see a dual tensor effect in every voxel.
  Every single tensor compartment had the following eigenvalues 
@@ -5280,21 +5316,22 @@ name "Flo:x-shape-fat-tensor-zoomed"
 \end_layout
 
 \begin_layout Standard
-In the EIT-based reconstruction results shown in figures 
+In the EIT-based reconstruction results shown in fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:x-shape-thin-tensor-zoomed"
 
 \end_inset
 
-, 
+ and 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:x-shape-fat-tensor-zoomed"
 
 \end_inset
 
- we don't use any amount of smoothing as used in DSI (through hanning filter),
+ we do not use any amount of smoothing as used in DSI (through hanning filter),
  GQI, GQI2 (through sampling lenght) and it is extraordinary that we obtain
  so well defined distributions.
  If we want to apply some weighting/smoothing/denoising in EIT-based methods
@@ -5349,9 +5386,9 @@ Results with real data sets
 \end_layout
 
 \begin_layout Standard
-Evidently because we compare reconstruction methods on Cartesian grid-based
- acquisitions we should do the comparisons with data sets which are rich
- on directions and commonly used for DSI processing.
+Apparently we want to compare reconstruction methods on Cartesian grid-based
+ acquisitions first with data sets which are rich on directions and commonly
+ used for DSI processing.
  For this purpose we used a data set which was available online at 
 \begin_inset ERT
 status open
@@ -5429,7 +5466,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename last_figures/real_data_257_all_grid_methods.png
+	filename last_figures/real_data_257_all_grid_methods_purple.png
 	lyxscale 20
 	scale 60
 
@@ -5442,11 +5479,11 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Showing the same sub-slice of a human brain reconstructed with 6 different
- Cartesian grid q-space based methods.
+Showing the same slice of a human brain reconstructed with 6 different Cartesian
+ grid q-space based methods.
  We see here that the ODFs are visualized on top of the FA slice.
- A clearer presentation of a region near the left upper corner is given
- in fig.
+ A clearer presentation of a region near the left upper corner (with purple
+ shading) is given in fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:real_257_zoomed"
@@ -5500,8 +5537,8 @@ The parameters used for these simulations were for DSI: radial sampling
 \end_inset
 
 , and for EITS, EITL, EITL2 were all calculated with the standard options
- (
-\begin_inset Formula $z=\pm5$
+ for zonal width (
+\begin_inset Formula $z=5^{o}$
 \end_inset
 
 ) and spherical angular smoothing (
@@ -5518,6 +5555,29 @@ The parameters used for these simulations were for DSI: radial sampling
 \end_inset
 
  faces.
+ The results of this experiment are shown on top of an FA slice of a healthy
+ human in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_257"
+
+\end_inset
+
+ and in higher resolution in fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_257_zoomed"
+
+\end_inset
+
+.
+ It is easily observed that EITL, EITL2 and EITS can be used for reconstructing
+ these data sets as their results are clearly as good as the results given
+ by DSI, GQI and GQI2.
+ We can also easily see that EITL and EITL2 are relatively sharp which can
+ be of an advantage for the purpose of recovering correctly the underlying
+ real fibre directions.
 \end_layout
 
 \begin_layout Standard
@@ -5542,7 +5602,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-The region shown at the upper-left corner in the panels of fig.
+The region shown at the upper-left corner (puple shading area) in the panels
+ of fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:real_257"
@@ -5622,8 +5683,12 @@ key "merboldt1992diffusion,MAB04"
 \end_inset
 
  (no gap).
- 55 slices were acquired to achieve full brain coverage, and the voxel resolutio
-n was 
+ 
+\begin_inset Formula $55$
+\end_inset
+
+ slices were acquired to achieve full brain coverage, and the voxel resolution
+ was 
 \begin_inset Formula $2.5x2.5x2.5mm{}^{3}$
 \end_inset
 
@@ -5868,7 +5933,7 @@ reference "Flo:real_101_CBU"
  areas.
  On top of the FA the ODFs of EITL are shown.
  The parameters used for EITL were: a standard zonal width 
-\begin_inset Formula $z=\pm5$
+\begin_inset Formula $z=5^{\circ}$
 \end_inset
 
  and spherical angular smoothing 
@@ -5945,18 +6010,21 @@ Although much less directions were used in this acquision scheme we obtain
  directions.
  This gives great hope that we can use grid-based reconstruction methods
  with half-grid sequences with ~100 gradient directions.
- This was also showed from 
+ This was also showed by 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Kuo"
 
 \end_inset
 
- who used only 
-\begin_inset Formula $203$
+ and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
+
 \end_inset
 
- directions with DSI reconstruction.
+who used similar number of directions.
  
 \end_layout
 
@@ -5977,222 +6045,37 @@ reference "Flo:real_101_CBU_left_up_zoomed"
 \end_inset
 
  that the effect of spherical angular smoothing can help alleviate the noise
- effects and concentrate on depicting the major directions which are of
- highest concern.
+ effects and focus our concetration on depicting the major directions which
+ are also of highest concern.
  
-\end_layout
-
-\begin_layout Standard
-ANYTHING ELSE? These should also be expanded in the discussion section.
 \end_layout
 
 \begin_layout Subsection
 Anisotropy metrics
 \end_layout
 
-\begin_layout Subsubsection
-Quantitative Anisotropy
-\end_layout
-
 \begin_layout Standard
-Quantitative anisotropy (QA0 is defined by the sODF value at the resolved
- fiber orientation 
-\begin_inset Formula $\hat{\mathbf{u}}$
-\end_inset
-
- (local maximum) minus the isotropic component (global minimum) for the
- voxel.
- QA can be also very easily normalized by the maximum sODF value of all
- voxels which is usually at the CSF where there is a great amount of water.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename QA.png
-	lyxscale 50
-	scale 50
+Until this moment we discussed about density functions on the sphere as
+ a way to represent compex fibre directionality in the voxel.
+ These density function have many values and it can be cumbersome to use
+ them directly for subject comparisons.
+ For this purpose most people use a simple scalar metrics e.g.
+ Tensor-based FA, MD or ODF-based like the Generalized FA (GFA).
+ In this section we will show that a similar scalar function like FA can
+ be constructed non-parametrically.
+ We call this NPA.
+ We also start experimenting with metrics that have more than one scalar
+ values.
+ We will investigate and explain here the realms of Quantitative Anisotropy
+ which was first used in the publication by Yeh et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-The sphere represents the isotropic component of the sODF (star) which will
- be removed.
- The remainders are the QA components
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:QA_sketch"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Crossing Anisotropy
-\end_layout
-
-\begin_layout Subsubsection
-Generalized FA
-\end_layout
-
-\begin_layout Subparagraph
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Subparagraph
-From the sODF to FA
-\end_layout
-
-\begin_layout Plain Layout
-As 
-\begin_inset Formula $FA(\lambda_{1},\lambda_{2},\lambda_{3})$
-\end_inset
-
- is a function of the eigen-values of the diffusion tensor model we could
- try to approximate directly FA from the sODF by finding 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-
-\begin_inset Formula $\lambda_{1},\lambda_{2},\lambda_{3}$
-\end_inset
-
- through the global maximum, equatorial maximum and inferior maximum of
- the sODF.
-\end_layout
-
-\begin_layout Plain Layout
-
-\lang british
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename Ldelta1_Ldelta_10.png
-	scale 60
-	rotateOrigin center
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\lang british
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-import scipy.stats.distributions as ssd 
-\begin_inset Newline newline
-\end_inset
-
-used ssd.norm.cdf
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-if k=0 then cdf = NaN but 
-\begin_inset Formula $\lim_{k\rightarrow0}\backsimeq0.398$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename figures/dsi_studio_result.png
-	scale 40
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Multiple crossings using the peak directions from the sODF.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -6532,10 +6415,6 @@ Comparison of NPA with FA for single fiber with and without an isotropic
 \end_layout
 
 \begin_layout Standard
-asdflasf
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -6636,6 +6515,203 @@ Two fibre cases: The first fibre was aligned with the gradient frame of
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Subsubsection
+Quantitative Anisotropy
+\end_layout
+
+\begin_layout Standard
+Quantitative anisotropy (QA0 is defined by the sODF value at the resolved
+ fiber orientation 
+\begin_inset Formula $\hat{\mathbf{u}}$
+\end_inset
+
+ (local maximum) minus the isotropic component (global minimum) for the
+ voxel.
+ QA can be also very easily normalized by the maximum sODF value of all
+ voxels which is usually at the CSF where there is a great amount of water.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename QA.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The sphere represents the isotropic component of the sODF (star) which will
+ be removed.
+ The remainders are the QA components
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:QA_sketch"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Subparagraph
+From the sODF to FA
+\end_layout
+
+\begin_layout Plain Layout
+As 
+\begin_inset Formula $FA(\lambda_{1},\lambda_{2},\lambda_{3})$
+\end_inset
+
+ is a function of the eigen-values of the diffusion tensor model we could
+ try to approximate directly FA from the sODF by finding 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\lambda_{1},\lambda_{2},\lambda_{3}$
+\end_inset
+
+ through the global maximum, equatorial maximum and inferior maximum of
+ the sODF.
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang british
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Ldelta1_Ldelta_10.png
+	scale 60
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang british
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+import scipy.stats.distributions as ssd 
+\begin_inset Newline newline
+\end_inset
+
+used ssd.norm.cdf
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+if k=0 then cdf = NaN but 
+\begin_inset Formula $\lim_{k\rightarrow0}\backsimeq0.398$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/dsi_studio_result.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Multiple crossings using the peak directions from the sODF.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
