@@ -4235,7 +4235,11 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Average angular simularity of 2-fibre crossings with SNR 20.
+Average angular simularity of 
+\begin_inset Formula $2$
+\end_inset
+
+-fibre crossings with SNR 20.
  
 \end_layout
 
@@ -4342,7 +4346,15 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Average angular similarity of 3-fibre crossings with SNR 100
+Average angular similarity of 
+\begin_inset Formula $3$
+\end_inset
+
+-fibre crossings with SNR 
+\begin_inset Formula $100$
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -4410,7 +4422,15 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Average angular similarity of 3-fibre crossings with SNR 100
+Average angular similarity of 
+\begin_inset Formula $3$
+\end_inset
+
+-fibre crossings with SNR 
+\begin_inset Formula $100$
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -4463,12 +4483,24 @@ Furthermore, we can also see that GQI2 can do better than DSI, GQI and that
 \begin_inset Formula $\lambda=3$
 \end_inset
 
-, and EITS,EITL,EITL2 were all calculated with the standard options zonal
+, and EITS, EITL, EITL2 were all calculated with the standard options zonal
  width (
 \begin_inset Formula $z=5^{\circ}$
 \end_inset
 
-) and no further post-processing or smoothing was used.
+), grid size 
+\begin_inset Formula $17\times17\times17$
+\end_inset
+
+, radial sampling 
+\begin_inset Formula $0-5$
+\end_inset
+
+ with 
+\begin_inset Formula $0.1$
+\end_inset
+
+ steps and no further post-processing or smoothing was used.
  All methods were using the same reconstruction sphere with 
 \begin_inset Formula $642$
 \end_inset
@@ -7362,12 +7394,116 @@ key "correia2009looking"
 \end_layout
 
 \begin_layout Subsection
-Conclusion
+Discussion and Conclusion
 \end_layout
 
 \begin_layout Standard
-EIT is
+Non-parametric methods have the advantage of representing the signal with
+ minimum number of assumptions and without needing any fitting.
+ For many years there has been a trend in science to prefer model-based
+ methods rather than model free (non-parametric) perhaps because model-based
+ can be easier to descibe, easier to invent and easier to calculate bayesian
+ statistics with.
+ However, there are some crucial issues with fitting: (a) Usually the interestin
+g models have many parameters and that makes fitting very slow.
+ (b) Commonly non-linear fitting is needed and accurate fitting is not trivial.
+ (c) Often the model does not represent precisely the complexity of the
+ real problem.
+ (d) The more complex the model, the more difficult to fit 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rice2006mathematical"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lee1997bayesian"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "montgomery2001introduction"
+
+\end_inset
+
+.
+ 
 \end_layout
+
+\begin_layout Standard
+Non-parametric methods avoid fitting and that makes them very favourable.
+ The concentration of this document was on inventing new non-parametric
+ methods (EIT) or comparing and extending existing ones (GQI2).
+ We showed that a simple, fast and comprehensive transform exists that we
+ call the Equatorial Inversion Transform (EIT).
+ With this transform we showed that we can represent accurately the directional
+ information of the diffusion signal.
+ Furthermore we showed that they are many different functions (
+\begin_inset Formula $F$
+\end_inset
+
+ and 
+\begin_inset Formula $O$
+\end_inset
+
+ see eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ODF_EIT"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:eit_operator"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:eit_radial_weighting"
+
+\end_inset
+
+) that can be used in order to create spherical density functions and use
+ these to find the primary fibre directions.
+ With a correct choose of 
+\begin_inset Formula $F$
+\end_inset
+
+ and 
+\begin_inset Formula $O$
+\end_inset
+
+ we can create theoretically the same ODF as the real ODF (DSI ODF).
+ This can be done using EITL which is a type of EIT.
+ Nonetheless, other density functions can be created that can identify the
+ leading fibre directions without being real ODFs but they are still different
+ types of spherical densities.
+ EITL2 and EITS where examples of this last case.
+ 
+\end_layout
+
+\begin_layout Standard
+Apparently, the EIT concept opens new doors for the investigation of dMRI
+ where many new functionals can be invented in the future that stress more
+ or less different properties of the signal.
+ Notwithstanding, today we have already illustrated and measured that EIT
+ has the best performance with simulations against the other stater-of-the-art
+ methods like DSI and GQI and that empeirically, EIT gives as good results
+ with real data sets.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
 
 \begin_layout Itemize
 Simple 
@@ -7389,57 +7525,105 @@ Generalizable - Opens new doors for investigation
 Can create Real ODFs or other spherical density functions 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Plain Layout
 Has the best performance with simulations
 \end_layout
 
 \begin_layout Standard
-GQI
+AAAA
 \end_layout
 
-\begin_layout Itemize
-Can be used for QA
+\begin_layout Plain Layout
+SAY SOMETHING ABOUT FAST EIT
 \end_layout
 
-\begin_layout Itemize
-QA has some very interesting properties works like a differential anisotropy
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Itemize
-EITS probably can be used for QA as they look very similar
-\end_layout
+\end_inset
 
-\begin_layout Itemize
-Fast to compute - analytical solution
+
 \end_layout
 
 \begin_layout Standard
-GQI2
-\end_layout
+The EIT finds directly the ODF without creating the diffusion propagator.
+ If for some purpose the diffusion propagator is still required then DSI
+ or DPI 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "descoteaux2010multiple"
 
-\begin_layout Itemize
-Until today not investigated
-\end_layout
+\end_inset
 
-\begin_layout Itemize
-Seems robust and sharp
-\end_layout
-
-\begin_layout Itemize
-Fast and analytical solution exists
-\end_layout
-
-\begin_layout Standard
-DSI
-\end_layout
-
-\begin_layout Itemize
-Useful if the diffusion propagator is needed
+are favourable.
+ It could be interesting in the future to try and recover the propagator
+ using ideas from the EIT.
+ However, nearly always the propagator is not needed for the analysis.
+ Furthermore, comparing 4D densities like the propagator is a non-trivial
+ problem, also storing the propagator for every voxel is very inefficient.
 \end_layout
 
 \begin_layout Standard
-There are similarities between all these methods DSI similar with EITL,
- GQI with EITS, GQI2 with EITL2.
+We discussed that GQI can be used for creating Quantitative Anisotropy (QA).
+ We observed that QA acts like a differential operator but also has some
+ similarities with FA as it is maximum on anisotropic and 0 on isotropic
+ voxels.
+ QA assumes that a fat isotropic part can always be removed from the ODF
+ and that makes it more favourable for spherical functions like those of
+ GQI and EITS.
+ This is in contrast to sharper densities like those of DSI and GQI2 where
+ QA is not that much useful because the minimum value of these densities
+ will be usually near 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+GQI needs a manually set parameter; the diffusion sampling lenght and in
+ contrast the EIT is fully automatic i.e.
+ we always just used the few default parameters for all experiments.
+ The diffusion sampling length can be slightly different from experiment
+ to experiment.
+ The asset of GQI and GQI2 (which was presented together with GQI but not
+ investigated until today) is that they are fast to compute and have simple
+ analytical solutions.
+ GQI2 seems robust and smooth and it has good performance both with simulations
+ and real data.
+ 
+\end_layout
+
+\begin_layout Standard
+It is important to stress that there are similarities between all these
+ methods; DSI similar with EITL, GQI with EITS, GQI2 with EITL2.
+ In addition we showed that we can denoise the signal using a Gaussian Spherical
+ Angular method which operates on spherical densities and has a single parameter
+ which is similar with the variance.
+\end_layout
+
+\begin_layout Standard
+Finally, we showed that the first component of QA (highest QA value) can
+ be used for subject comparisons in a similar way with FA.
+ We also showed that NPA could replace FA if we want to calculate anisotropy
+ in a completely geometric way.
+\end_layout
+
+\begin_layout Standard
+The source code for all these methods can be found in dipy (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+dipy.org
+\end_layout
+
+\end_inset
+
+ in module dipy.reconst).
 \end_layout
 
 \begin_layout Subsection

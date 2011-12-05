@@ -3696,6 +3696,13 @@
   year           = 2008
 }
 
+@Book{rice2006mathematical,
+  Author         = {Rice, J.A.},
+  Title          = {Mathematical statistics and data analysis},
+  Publisher      = {Thomson Learning},
+  year           = 2006
+}
+
 @Article{zhang2003visualizing,
   Author         = {Zhang, S. and others},
   Title          = {{Visualizing diffusion tensor MR images using
@@ -4707,6 +4714,19 @@
   file           = {attachment\:wakana_fiber_tract-based_atlas_2004.pdf:attachment\:wakana_fiber_tract-based_atlas_2004.pdf:PDF},
   publisher      = {RSNA},
   year           = 2004
+}
+
+@Article{correia2009looking,
+  Author         = {Correia, M.M. and Carpenter, T.A. and Williams, G.B.},
+  Title          = {Looking for the optimal DTI acquisition scheme given a
+                   maximum scan time: are more< i> b</i>-values a waste of
+                   time?},
+  Journal        = {Magnetic resonance imaging},
+  Volume         = {27},
+  Number         = {2},
+  Pages          = {163--175},
+  publisher      = {Elsevier},
+  year           = 2009
 }
 
 @Article{Joy,
@@ -6690,6 +6710,13 @@
                    Desktop/Downloaded/Oliphant - 2010 - Guide to
                    NumPy.pdf:pdf},
   year           = 2010
+}
+
+@Book{lee1997bayesian,
+  Author         = {Lee, P.M.},
+  Title          = {Bayesian statistics},
+  Publisher      = {Arnold London, UK:},
+  year           = 1997
 }
 
 @conference{gerig2004analysis,
