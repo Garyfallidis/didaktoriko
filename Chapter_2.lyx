@@ -7503,7 +7503,7 @@ Apparently, the EIT concept opens new doors for the investigation of dMRI
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Itemize
 Simple 
@@ -7527,6 +7527,18 @@ Can create Real ODFs or other spherical density functions
 
 \begin_layout Plain Layout
 Has the best performance with simulations
+\end_layout
+
+\begin_layout Standard
+AAAA
+\end_layout
+
+\begin_layout Plain Layout
+SAY SOMETHING ABOUT FAST EIT
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -7594,13 +7606,13 @@ It is important to stress that there are similarities between all these
 
 \begin_layout Standard
 Finally, we showed that the first component of QA (highest QA value) can
- be used for subject comparisons in a similar way with a FA.
+ be used for subject comparisons in a similar way with FA.
  We also showed that NPA could replace FA if we want to calculate anisotropy
  in a completely geometric way.
 \end_layout
 
 \begin_layout Standard
-The source code for all these methods can be found in dipy ( 
+The source code for all these methods can be found in dipy (
 \begin_inset ERT
 status open
 
