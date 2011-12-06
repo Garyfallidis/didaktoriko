@@ -146,7 +146,7 @@ q
 \series default
 -space.
  This non-parametric nature of the algorithms described here allows for
- the indentification of multiple fibre crossings.
+ the identification of multiple fibre crossings.
  In addition a new method is presented named Diffusion Nabla Imaging (DNI)
  and a family of methods is defined called the Equatorial Inversion Transform
  (EIT).
@@ -249,7 +249,7 @@ k
 \series bold
 q
 \series default
--space imaging (Calaghan 8.3.1 p.
+-space imaging (Callaghan 8.3.1 p.
  438)
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1005,7 +1005,7 @@ The addition of the spin density plays a very important role on normalizing
  within a sphere.
  However, because of the direct analytical formulation of the GQI ODFs;
  the creation of the volumetric grid with the signal values is not necessary.
- This makes this GQI advantageous on memory and cpu efficiency.
+ This makes this GQI advantageous on memory and CPU efficiency.
  Furthermore, no Hanning filter is necessary.
 \end_layout
 
@@ -1295,7 +1295,7 @@ Change u with f
  fibre direction.
  This property is the basic inspiration behind the EIT.
  In this picture the 3D surface plot of a simulated signal for a spherical
- grid acquision with b-value 2000 is shown using a yellow-red colourmap.
+ grid acquisition with b-value 2000 is shown using a yellow-red colourmap.
 \end_layout
 
 \end_inset
@@ -1363,8 +1363,8 @@ key "Tuch2004"
 
 \end_inset
 
- is another example where equatorial intergration is employed using the
- reconstruction sphere.
+ is another example where equatorial integration is employed using the reconstru
+ction sphere.
  We will see next that DNI and FRT are just a subset of the EIT.
 \end_layout
 
@@ -1648,7 +1648,7 @@ EITL2
 \begin_inset Text
 
 \begin_layout Plain Layout
-hig resolution at low angles
+high resolution at low angles
 \end_layout
 
 \end_inset
@@ -1837,7 +1837,7 @@ reference "Tab:EIT_table"
 \begin_inset Formula $\psi_{DNI}$
 \end_inset
 
- which is theoretically identical to the DSI's real ODF(
+ which is theoretically identical to the DSI real ODF(
 \begin_inset Formula $\psi_{DSI}$
 \end_inset
 
@@ -1902,7 +1902,7 @@ key "descoteaux2010multiple"
 
 .
  HYDI acquires the signal values on 5 concentric spherical q-space shells,
- then interpolates to a cubic grid and applies the standard Fourier transfrom
+ then interpolates to a cubic grid and applies the standard Fourier transform
  in the same way as DSI.
  In mq-DPI the EAP is calculated by solving Laplace's equation for the diffusion
  signal using a real and symmetric modiﬁed spherical harmonic basis.
@@ -1923,7 +1923,7 @@ key "Aganj2010"
 
 \end_inset
 
-, proposed an analytical solution for the multi-shell case by encorporating
+, proposed an analytical solution for the multi-shell case by incorporating
  a mono-exponential or bi-exponential model (CSA-ODF).
  Another distribution on the sphere was proposed by Özarslan et al.
 \begin_inset CommandInset citation
@@ -1943,8 +1943,8 @@ key "ozarslan2006resolution"
 \end_inset
 
  using spherical harmonics.
- Not surpisingly there is a relationship connecting CSA with DOT which is
- 
+ Not surprisingly there is a relationship connecting CSA with DOT which
+ is 
 \lang british
 
 \begin_inset Formula \begin{equation}
@@ -1966,7 +1966,7 @@ key "JansonsPAS2003"
 
  proposed a different function on the sphere than the ODFs described above,
  to be used on data sets acquired on a single spherical q-space shell.
- They called this spherical function persistant angular structure (PAS).
+ They called this spherical function persistent angular structure (PAS).
  This method has very good angular resolution because it uses the principle
  of maximum entropy however it is rather slow as it uses nonlinear fitting
  in order to identify many parameters.
@@ -2000,7 +2000,7 @@ key "JansonsPAS2003"
 
 \begin_layout Standard
 The first reference of using spherical harmonic expansions with diffusivity
- profiles, which are now very fevourable in the litearature, was by Alexander
+ profiles, which are now very favorable in the literature, was by Alexander
  et al.
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2121,8 +2121,8 @@ key "barmpoutis2009regularized"
 \end_inset
 
 .
- In addition there are also model based methods which try to calculate non-gauss
-ian Tensors for example the Kurtosis Tensor 
+ In addition there are also model based methods which try to calculate non-Gauss
+ian properties for example the Kurtosis Tensor 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "jensen2005diffusional"
@@ -2140,9 +2140,9 @@ key "lu2006three"
 \end_layout
 
 \begin_layout Standard
-Finally, new model-based methods are immerging which are trying to calculate
+Finally, new model-based methods are emerging which are trying to calculate
  statistics like the axonal thickness distribution from dMRI data sets.
- These are usually based on modelling free and restricted components; CHARMED
+ These are usually based on modeling free and restricted components; CHARMED
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2164,7 +2164,7 @@ key "assaf2008axcaliber"
 
 \end_inset
 
- and the orientational invariant ActiveAx
+ and the orientation invariant ActiveAx
 \begin_inset CommandInset citation
 LatexCommand cite
 key "alexander2010orientationally"
@@ -2220,7 +2220,7 @@ key "Yeh2010"
  who extends the current derivations for diffusion signal reconstruction
  and provides both scalar and vector metrics that facilitate the understanding
  of the underlying signal and its use for fast and accurate tractography.
- The key issue is the reentrance of the spin density as an important part
+ The key issue is the re-entrance of the spin density as an important part
  of the diffusion voxel reconstruction.
  The spin density together with the diffusion propagator give rise to the
  spin propagator.
@@ -2438,7 +2438,7 @@ reference "Alg:Fast_EIT"
 \begin_inset Formula $z$
 \end_inset
 
- is a constant set empeirically to 
+ is a constant set empirically to 
 \begin_inset Formula $5^{\circ}$
 \end_inset
 
@@ -2484,7 +2484,7 @@ bm{u}}_{i})$
 
 \end_inset
 
- and optain the final EIT ODF as the average of the sums in the equator
+ and obtain the final EIT ODF as the average of the sums in the equator
  
 \begin_inset ERT
 status open
@@ -3068,7 +3068,7 @@ status collapsed
 \end_inset
 
 ) of the peaks found from the ODF.
- In addition the proposed PeakFinding algorithm can reduces slightly more
+ In addition the proposed Peak Finding algorithm can reduces slightly more
  the angular resolution.
  For example in Fig.
 \begin_inset CommandInset ref
@@ -3089,7 +3089,7 @@ b
 \series bold
 a
 \series default
- but none of the unlabelled points could be a second peak.
+ but none of the unlabeled points could be a second peak.
  Nevertheless we found alg.
  
 \begin_inset CommandInset ref
@@ -3098,7 +3098,7 @@ reference "Alg:PeakFinding"
 
 \end_inset
 
- to be extremelly useful and fast.
+ to be extremely useful and fast.
  The same algorithm was used also in 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -3136,7 +3136,7 @@ A,B: Imagine that point
 \series bold
 a
 \series default
- is a local maximum for all its neighbouring faces then only at 
+ is a local maximum for all its neighboring faces then only at 
 \series bold
 b
 \series default
@@ -3347,7 +3347,7 @@ reference "Flo:Smoothing_Example"
 \end_inset
 
  we see the effect of this equation on a simulated triple-fibre crossing;
- distorted with gaussian noise with SNR 
+ distorted with Gaussian noise with SNR 
 \begin_inset Formula $20$
 \end_inset
 
@@ -3376,7 +3376,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-An example of spherical angular gaussian smoothing applied with different
+An example of spherical angular Gaussian smoothing applied with different
  smoothing factors on the distribution function of a triple-fibre crossing
  on the left.
  The simulation was used using (Sticks&Ball) model with diffusivity value
@@ -3388,7 +3388,7 @@ An example of spherical angular gaussian smoothing applied with different
 \begin_inset Formula $100$
 \end_inset
 
-, and gaussian noise with SNR 
+, and Gaussian noise with SNR 
 \begin_inset Formula $20$
 \end_inset
 
@@ -3443,8 +3443,8 @@ n.
 Finally, we believe that by decoupling the smoothing from the reconstruction
  phase we have an important advantage and that is that we can reduce more
  strongly and independently the effect of the noise to our data.
- Many spherical operators added as a plugins which is uncontroled from the
- reconstruction phase and can work with any function on the sphere.
+ Many spherical operators added as a plugins which is uncontrolled from
+ the reconstruction phase and can work with any function on the sphere.
  For example Eq.
  
 \begin_inset CommandInset ref
@@ -3568,7 +3568,7 @@ key "Behrens2007NeuroImage"
 
 \end_inset
 
-; the multicompartment model also known as Sticks and Ball which simulates
+; the multi-compartment model also known as Sticks and Ball which simulates
  the diffusion signal as
 \begin_inset Formula \begin{equation}
 S_{i}=S_{0}((1-\sum_{j=1}^{N}f_{j})\exp(-b_{i}d)+\sum_{j=1}^{N}f_{j}\exp(-b_{i}d\cos(\theta_{ij})^{2}))\label{eq:sticks_ball_eq}\end{equation}
@@ -3602,7 +3602,7 @@ where
 \end_inset
 
  is the diffusivity value for the entire model.
- A MultiTensor 
+ A Multi Tensor 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "liu2004characterizing"
@@ -4122,7 +4122,7 @@ reference "Flo:2_20"
 \end_inset
 
  with different signal to noise ratio.
- For these simulations noise was normaly distributed.
+ For these simulations noise was normally distributed.
  What we see in the figures is the average angular similarity where the
  average is calculated from the 
 \begin_inset Formula $200$
@@ -4153,7 +4153,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Average angular simularity of 2-fibre crossings with SNR 100
+Average angular similarity of 2-fibre crossings with SNR 100
 \end_layout
 
 \end_inset
@@ -4235,7 +4235,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Average angular simularity of 
+Average angular similarity of 
 \begin_inset Formula $2$
 \end_inset
 
@@ -4722,8 +4722,8 @@ In addition, we can generate simulations of more than one fibres by generating
  This is acceptable because the diffusion signal is additive i.e.
  the signal of a crossing of two fibres is equal to the sum of the the signals
  of the individual fibres.
- In that way we can simulate phantoms with MultiTensor based diffusion signals
- as that described in eq.
+ In that way we can simulate phantoms with Multi Tensor based diffusion
+ signals as that described in eq.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:multitensor"
@@ -4898,7 +4898,7 @@ reference "Flo:x-shape-fat-tensor"
 
 .
  As in this document we concentrate on Cartesian Lattice Q-space acquisitions
- we generated b-vectors and b-values by using a keyhole cartesian sampling
+ we generated b-vectors and b-values by using a keyhole Cartesian sampling
  grid 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -5070,7 +5070,7 @@ reference "Flo:x-shape-fat-tensor-zoomed"
 
 .
  It is well known that noise affects more less anisotropic areas.
- We can see this effect by comparing the overlaped FAs of these two figures
+ We can see this effect by comparing the overlapped FAs of these two figures
  (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5088,8 +5088,8 @@ reference "Flo:x-shape-fat-tensor"
 ).
  However we can also see that all six methods (DSI, GQI, GQI2, EITL, EITL2,
  EITS) can resolve correctly the fiber directions by looking at their spherical
- distribution functions colormaped with a standard 'jet' colormap.
- For visualization purpuses all ODFs are shown in relative size as they
+ distribution functions colourmaped with a standard 'jet' colourmap.
+ For visualization purposes all ODFs are shown in relative size as they
  have been scaled so that their maximum values correspond to 
 \begin_inset Formula $1$
 \end_inset
@@ -5364,7 +5364,7 @@ reference "Flo:x-shape-fat-tensor-zoomed"
 \end_inset
 
  we do not use any amount of smoothing as used in DSI (through hanning filter),
- GQI, GQI2 (through sampling lenght) and it is extraordinary that we obtain
+ GQI, GQI2 (through sampling length) and it is extraordinary that we obtain
  so well defined distributions.
  If we want to apply some weighting/smoothing/denoising in EIT-based methods
  that is simply possible through the spherical angular smoothing approach
@@ -5634,7 +5634,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-The region shown at the upper-left corner (puple shading area) in the panels
+The region shown at the upper-left corner (purple shading area) in the panels
  of fig.
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5913,7 +5913,7 @@ EITL ODFs of 1-fibre, 2-fibre and 3-fibre crossings from a real human data
 \begin_inset Formula $1$
 \end_inset
 
- without weithing 
+ without weighting 
 \begin_inset Formula $(b0)$
 \end_inset
 
@@ -6028,7 +6028,7 @@ key "ramachandran2011mayavi"
 \end_layout
 
 \begin_layout Standard
-Although much less directions were used in this acquision scheme we obtain
+Although much less directions were used in this acquisition scheme we obtain
  a similarly accurate depiction of the underlying white matter structure
  in comparison with that of 
 \begin_inset Formula $258$
@@ -6084,7 +6084,7 @@ reference "Flo:real_101_CBU_left_up_zoomed"
 \end_inset
 
  that the effect of spherical angular smoothing can help alleviate the noise
- effects and focus our concetration on depicting the major directions which
+ effects and focus our concentration on depicting the major directions which
  are also of highest concern.
  
 \end_layout
@@ -6095,7 +6095,7 @@ Anisotropy metrics
 
 \begin_layout Standard
 Until this moment we discussed about density functions on the sphere as
- a way to represent compex fibre directionality in the voxel.
+ a way to represent complex fibre directionality in the voxel.
  These density functions are represented as multidimensional vectors containing
  
 \begin_inset Formula $200$
@@ -6285,7 +6285,8 @@ dipy.org
 \end_layout
 
 \begin_layout Standard
-The GQI ODF was calculated for a tesselated spherical icosahedron with 
+The GQI ODF was calculated for a tessellated spherical icosahedron with
+ 
 \begin_inset Formula $362$
 \end_inset
 
@@ -6315,7 +6316,7 @@ locating the vertex
 \begin_inset Formula $V_{1}$
 \end_inset
 
- with maximum sODF value 
+ with maximum GQI ODF value 
 \begin_inset Formula $max_{1}$
 \end_inset
 
@@ -6331,8 +6332,8 @@ with
 \begin_inset Formula $V_{2}$
 \end_inset
 
- on the corresponding equatorial band of width ±5 degrees with maximum sODF
- value 
+ on the corresponding equatorial band of width ±5 degrees with maximum GQI
+ ODF value 
 \begin_inset Formula $max_{2}$
 \end_inset
 
@@ -6344,11 +6345,15 @@ locating a vertex
 \begin_inset Formula $V_{3}$
 \end_inset
 
- in the equatorial band at approximately 90 degrees away from 
+ in the equatorial band at approximately 
+\begin_inset Formula $90$
+\end_inset
+
+ degrees away from 
 \begin_inset Formula $V_{2}$
 \end_inset
 
-, denoting the sODF value of 
+, denoting the GQI ODF value of 
 \begin_inset Formula $max_{3}$
 \end_inset
 
@@ -6417,7 +6422,7 @@ reference "eq:tuchs_gaussian_odf"
 \begin_inset Formula $\Phi$
 \end_inset
 
- is the cumulative distribution function of the standard gaussian distribution.
+ is the cumulative distribution function of the standard Gaussian distribution.
  NEEDS PROOF?
 \end_layout
 
@@ -6770,7 +6775,7 @@ name "Flo:QA_sketch"
 status collapsed
 
 \begin_layout Subparagraph
-From the sODF to FA
+From the GQI ODF to FA
 \end_layout
 
 \begin_layout Plain Layout
@@ -6779,7 +6784,7 @@ As
 \end_inset
 
  is a function of the eigen-values of the diffusion tensor model we could
- try to approximate directly FA from the sODF by finding 
+ try to approximate directly FA from the GQI ODF by finding 
 \family roman
 \series medium
 \shape up
@@ -6793,7 +6798,7 @@ As
 \end_inset
 
  through the global maximum, equatorial maximum and inferior maximum of
- the sODF.
+ the GQI ODF.
 \end_layout
 
 \begin_layout Plain Layout
@@ -6863,9 +6868,9 @@ if k=0 then cdf = NaN but
 
 \begin_layout Standard
 \align left
-QA acts like a differential operator which is higher on anistropic ODFs
+QA acts like a differential operator which is higher on anisotropic ODFs
  and lower on more isotropic.
- Actually for a purelly isotropic ODF 
+ Actually for a purely isotropic ODF 
 \begin_inset Formula $QA=\bm{0}$
 \end_inset
 
@@ -6874,7 +6879,7 @@ QA acts like a differential operator which is higher on anistropic ODFs
  which is usually at the CSF where there is a great amount of water.
  If this normalization is in effect then we can very easily remove the backgroun
 d noise i.e.
- non-white matter areas, sculp, skin, muscles etc.
+ non-white matter areas, scalp, skin, muscles etc.
  just because these will have very low QA values.
  We can see this interesting property of QA in fig.
  
@@ -7402,7 +7407,7 @@ Non-parametric methods have the advantage of representing the signal with
  minimum number of assumptions and without needing any fitting.
  For many years there has been a trend in science to prefer model-based
  methods rather than model free (non-parametric) perhaps because model-based
- can be easier to descibe, easier to invent and easier to calculate bayesian
+ can be easier to describe, easier to invent and easier to calculate Bayesian
  statistics with.
  However, there are some crucial issues with fitting: (a) Usually the interestin
 g models have many parameters and that makes fitting very slow.
@@ -7497,13 +7502,13 @@ Apparently, the EIT concept opens new doors for the investigation of dMRI
  or less different properties of the signal.
  Notwithstanding, today we have already illustrated and measured that EIT
  has the best performance with simulations against the other stater-of-the-art
- methods like DSI and GQI and that empeirically, EIT gives as good results
+ methods like DSI and GQI and that empirically, EIT gives as good results
  with real data sets.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Itemize
 Simple 
@@ -7535,10 +7540,6 @@ AAAA
 
 \begin_layout Plain Layout
 SAY SOMETHING ABOUT FAST EIT
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -7583,7 +7584,7 @@ We discussed that GQI can be used for creating Quantitative Anisotropy (QA).
 \end_layout
 
 \begin_layout Standard
-GQI needs a manually set parameter; the diffusion sampling lenght and in
+GQI needs a manually set parameter; the diffusion sampling length and in
  contrast the EIT is fully automatic i.e.
  we always just used the few default parameters for all experiments.
  The diffusion sampling length can be slightly different from experiment
@@ -8137,8 +8138,8 @@ reference "eq:TensorQ2"
 
 \end_inset
 
- illustrates the remarkable result that we can calculate analyticaly the
- spin odf for gaussian diffusion using the cumulative distribution function
+ illustrates the remarkable result that we can calculate analytically the
+ spin ODF for Gaussian diffusion using the cumulative distribution function
  
 \begin_inset Formula $CDF$
 \end_inset
@@ -8293,7 +8294,7 @@ Consequently,
 \begin_inset Formula $\frac{Z}{\sqrt{\pi\tau}}=2MHG$
 \end_inset
 
- where MHG is the multivariate hypergeometric function with 
+ where MHG is the multivariate hyper-geometric function with 
 \begin_inset Formula $\mu=-\frac{1}{2}$
 \end_inset
 
