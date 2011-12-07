@@ -12,7 +12,7 @@
 \use_default_options true
 \language english
 \inputencoding auto
-\font_roman default
+\font_roman palatino
 \font_sans default
 \font_typewriter default
 \font_default_family default
@@ -22,8 +22,8 @@
 \font_tt_scale 100
 
 \graphics default
-\paperfontsize default
-\spacing single
+\paperfontsize 12
+\spacing onehalf
 \use_hyperref false
 \papersize a4paper
 \use_geometry true
@@ -32,13 +32,10 @@
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
-\leftmargin 3cm
-\topmargin 3cm
-\rightmargin 3cm
-\bottommargin 3cm
-\headheight 3cm
-\headsep 3cm
-\footskip 3cm
+\leftmargin 20page%
+\topmargin 15page%
+\rightmargin 15page%
+\bottommargin 15page%
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation skip
@@ -3522,7 +3519,7 @@ Suppose we have a probability distribution
  
 \emph default
 
-\begin_inset Formula $\mathtt{\gini}(P)$
+\begin_inset Formula $\gini(P)$
 \end_inset
 
  - with 
@@ -3535,7 +3532,7 @@ Suppose we have a probability distribution
 \noun off
 \color none
 
-\begin_inset Formula $0\le\mathrm{\mathtt{\gini}}(P)\le1-\frac{1}{k}$
+\begin_inset Formula $0\le\mathrm{\gini}(P)\le1-\frac{1}{k}$
 \end_inset
 
 .
@@ -3591,7 +3588,7 @@ If
 \end_inset
 
  as 
-\begin_inset Formula $\gini(\mathcal{A}|\mathcal{B})={\displaystyle \sum_{j=1}^{n}\frac{b_{j}}{N}\thinspace\mathrm{\mathtt{\gini}}(P_{\mathcal{A}|B_{j}})}$
+\begin_inset Formula $\gini(\mathcal{A}|\mathcal{B})={\displaystyle \sum_{j=1}^{n}\frac{b_{j}}{N}\thinspace\mathrm{\gini}(P_{\mathcal{A}|B_{j}})}$
 \end_inset
 
 .

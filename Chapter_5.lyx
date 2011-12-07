@@ -3,8 +3,12 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\end_preamble
 \use_default_options true
-\language british
+\language english
 \inputencoding auto
 \font_roman palatino
 \font_sans default
@@ -19,7 +23,7 @@
 \paperfontsize 12
 \spacing onehalf
 \use_hyperref false
-\papersize default
+\papersize a4paper
 \use_geometry true
 \use_amsmath 1
 \use_esint 1
@@ -46,11 +50,23 @@
 
 \begin_body
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Chapter_1.lyx"
+\begin_layout Section
+Future Work
+\end_layout
 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -58,94 +74,14 @@ filename "Chapter_1.lyx"
 
 \begin_layout Standard
 
-\lang english
-\begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Chapter_2.lyx"
+\lang british
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "diffusion"
+options "plain"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Chapter_3.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset CommandInset include
-LatexCommand include
-filename "Chapter_4.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset CommandInset include
-LatexCommand include
-filename "Chapter_5.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 

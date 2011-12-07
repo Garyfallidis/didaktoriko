@@ -20,16 +20,20 @@
 \font_tt_scale 100
 
 \graphics default
-\paperfontsize default
-\spacing single
+\paperfontsize 12
+\spacing onehalf
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_amsmath 1
 \use_esint 1
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
+\leftmargin 20page%
+\topmargin 15page%
+\rightmargin 15page%
+\bottommargin 15page%
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -7534,7 +7538,7 @@ Can create Real ODFs or other spherical density functions
 Has the best performance with simulations
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 AAAA
 \end_layout
 

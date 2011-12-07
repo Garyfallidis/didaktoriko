@@ -1,0 +1,2091 @@
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\end_preamble
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 20page%
+\topmargin 15page%
+\rightmargin 15page%
+\bottommargin 15page%
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Euler Delta Crossings Propagation
+\end_layout
+
+\begin_layout Subsection
+The problem
+\end_layout
+
+\begin_layout Standard
+Tractography methods provide a tool to resolve major neuronal fibre bundles
+ non-invasively and in-vivo 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Catani2002NeuroImage"
+
+\end_inset
+
+.
+ From the development of the first tractography algorithms 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MCC+99,CLC+99"
+
+\end_inset
+
+ published nearly 12 years ago many methods have been published which depend
+ strictly on the underlying voxel model or acquisition paradigm making it
+ very difficult for other researchers to apply their methods and evaluate
+ their datasets.
+ 
+\end_layout
+
+\begin_layout Standard
+In this work we designed a purely deterministic method which is fast, accurate
+ and comprehensive.
+ But most importantly it can have as input model-based or model-free reconstruct
+ion algorithms of any known algorithm or complexity.
+ We call this algorithm EuDX.
+ Eu stands for Euler Euler integration, D stands for Delta which is a function
+ that combines together all the different stopping criteria and X stands
+ for crossings.
+ EuDX can deal with any number of crossings as long as your data support
+ them.
+ The purpose of this algorithm is to be faithful to the reconstruction results
+ rather than try to correct or enhance them by introducing regional or global
+ considerations which is the topic of other methods reviewed below.
+ Therefore EuDX serves mainly as a robust method for quickly inspecting
+ different reconstruction results using streamlines.
+ EuDX is noise-friendly i.e.
+ if a voxel is too noisy then EuDX will stop tracking on that voxel.
+ This property is often useful when validating underlying orientation models.
+ Branching is also supported by using trilinear interpolation.
+ This method is an extension of the method used by Yeh et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
+
+\end_inset
+
+ and Conturo et al.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CLC+99"
+
+\end_inset
+
+ with the addition of supporting multiple anisotropic functions and multiple
+ crossings.
+\end_layout
+
+\begin_layout Subsection
+Overview
+\end_layout
+
+\begin_layout Standard
+In sections 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Tractography"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Known-problems"
+
+\end_inset
+
+ we discussed some of the ideas and the problems behind the most popular
+ propagation methods; deterministic and probabilistic.
+ The focus in this section will be to give a more general overview and introduce
+ many more methods.
+\end_layout
+
+\begin_layout Standard
+Most tractography techniques can be grouped in three categories, as pointed
+ out in Sotiropoulos thesis 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sotiropoulos2010processing"
+
+\end_inset
+
+; local, global and simulated.
+ Local approaches propagate a curve from a starting (seed) point using locally
+ greedy criteria, i.e.
+ tracking sequentially through orientation estimates in adjacent voxels.
+ Global approaches identify the best path between two points of interest,
+ according to some optimization criterion, rather than identifying paths
+ arising from a single point.
+ Simulated approaches comprise of algorithms that simulate the diffusion
+ process or solve the diffusion equation to reconstruct white matter tracks.
+\end_layout
+
+\begin_layout Subsubsection
+Local
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Deterministic 
+\series default
+tractography was the first to appear.
+ Streamlines are created as trajectories orthograde and retrograde along
+ an initial direction at a specific point (seed) in the 3D volume.
+ In FACT
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MCC+99"
+
+\end_inset
+
+ streamlines are propagated in anequal steps governed by the entry point
+ of the streamline in the voxel, Euler integration with equal steps was
+ used in Conturo et al 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CLC+99"
+
+\end_inset
+
+ and similarly Runge-Kutta integration was used in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BPP+00"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Deterministic approaches usually stop when a low anisotropy region is encountere
+d (e.g.
+ FA drops below 
+\begin_inset Formula $0.2$
+\end_inset
+
+) to avoid propagation within CSF or GM regions or a large angle changes
+ occur (e.g.
+ larger than 
+\begin_inset Formula $45^{\circ}$
+\end_inset
+
+) between successive steps to avoid unrealistically sharp turns.
+ 
+\end_layout
+
+\begin_layout Standard
+Streamline methods can be also utilized when multiple orientations are estimated
+ in a voxel.
+ These can be obtained as the principal eigenvectors of multiple tensors
+ fitted to the data 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tuch2002ThesisMIT"
+
+\end_inset
+
+, as the local peaks of the diffusion ODF estimated using DSI 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wedeen2005mapping"
+
+\end_inset
+
+ or QBI 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tuch2004"
+
+\end_inset
+
+ and fibre ODFs 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tournier2004direct"
+
+\end_inset
+
+.
+ An approach to deal with these cases, chooses, upon entering a voxel, the
+ orientation that produces the smallest curvature with the incoming path
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WWS+08"
+
+\end_inset
+
+.
+ Another approach follows all orientations that do not exceed a curvature
+ threshold, by initiating a new streamline per orientation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chao2008multiple"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Descoteaux2009"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Streamline tractography utilizes only the fibre orientation estimates.
+ Tensor deflection tractography (TEND) is a FACT variant that uses the whole
+ DTI tensor rather than just its principal eigenvector to determine the
+ direction of curve propagation 
+\lang british
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LWT+03"
+
+\end_inset
+
+
+\lang english
+.
+ 
+\end_layout
+
+\begin_layout Standard
+All the methods presented until now are deterministic and provide binary
+ connectivity information.
+ A voxel B can be either connected or not connected to the seed S, depending
+ on whether a streamline from S passes through B.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Streamline tractography utilizes only the fibre orientation estimates.
+ In general, more information is available upon post-processing ofDWimages.
+ For example, with DTI a diffusion tensor is computed.
+ For perfectly spherical tensors the deflection angle is zero, while for
+ oblate tensors, the deflection is towards the ellip- soid plane.
+ Tensor deflection tractography is less sensitive to noise than streamline,
+ as shown in simulations for straight tracts (Lazar et al., 2003).
+ It can also propagate through regions of perpendicular fibre crossings,
+ where the principal eigenvector of the underlying oblate tensor is meaningless.
+ However, tensor deflection underestimates curvature for curved tracts.
+ Furthermore, TEND results should be interpreted carefully, as an incoming
+ direction that coincides with any of the tensor eigenvectors will not be
+ deflected by that tensor; even if it is perpendicular to the principal
+ eigenvector of a highly prolate tensor (Lazar et al., 2003).
+ All the methods presented in this section are deterministic and provide
+ binary connectivity information.
+ A voxel B can be either connected or not connected to the seed S, depending
+ on whether a streamline from S passes through B.
+ To tackle this issue, a group of probabilistic tractography approaches
+ have been developed and these are presented in the following section.
+\end_layout
+
+\end_inset
+
+
+\lang british
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang british
+Other deterministic approaches can be found here A recent deterministic
+ algorithm called Tensorlines
+\begin_inset CommandInset citation
+LatexCommand cite
+key "weinstein1999tad"
+
+\end_inset
+
+ shares the problems of the other deterministic algorithms by failing in
+ relatively sharp turns and Meyer's Loop.
+ Furthermore, because these methods need a continuous field this necessitates
+ the use of interpolation e.g.
+ nearest, bicubic or trilinear.
+ The amount and type of interpolation is another factor that can change
+ dramatically the results of tractography and it is very rarely reported.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Probabilistic
+\series default
+ tractography was introduced by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Parker2003"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Behrens2003MRM"
+
+\end_inset
+
+ and calculates a spatial distribution of tracks arising from a single seed
+ rather than a single track.
+ In each propagation step of each streamline, a random perturbation of the
+ underlying fibre orientation estimate is followed.
+ Per- turbations are generated using functions that characterize the uncertainty
+ in the fibre orientation within each voxel.
+ A probabilistic index of connectivity (PICo) is defined between a seed
+ and an arbitrary point as 
+\begin_inset Formula $M/N$
+\end_inset
+
+ where 
+\begin_inset Formula $M$
+\end_inset
+
+ is the number of tracks that traverse the seed and the point and 
+\begin_inset Formula $N$
+\end_inset
+
+ is the all the tracks that start from the seed.
+ 
+\end_layout
+
+\begin_layout Standard
+Probabilistic approaches mainly differ in the way the orientation uncertainty
+ is assessed.
+ Most commonly a Bayesian framework will be used to calculate the posterior
+ probability of the model orientation parameters 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Behrens2003MRM"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Behrens2007NeuroImage"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hosey2005inference"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "friman2006bayesian"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zhang2009probabilistic"
+
+\end_inset
+
+.
+ In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Behrens2003MRM"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Behrens2007NeuroImage"
+
+\end_inset
+
+ Monte Carlo-Markov chain (MCMC) is used to sample the orientation posterior
+ distribution.
+ In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "friman2006bayesian"
+
+\end_inset
+
+ the posterior is computed numerically after using Dirac priors.
+ In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zhang2009probabilistic"
+
+\end_inset
+
+ particle filtering is use for the same cause.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Bootstrap
+\series default
+ tractography is an alternative method to characterize uncertainty in fibre
+ orientation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pajevic2003parametric"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lazar2005bootstrap"
+
+\end_inset
+
+.
+ This is an non-parametric approach where a diffusion acquisition is repeated
+ many times for the same subject and some images from this set are drawn
+ in random with replacement.
+ This is a single bootstrap sample.
+ Drawing many samples will give a distribution for the fiber orientation.
+ The advantage of bootstrap tractography is that no ad-hoc assumptions are
+ made on the noise and is sensitive to all sources of variability that affect
+ the acquired dataset.
+ The disadvantage is that many repeated acquisitions are required (at least
+ 5 for DTI according to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "o2006just"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+Model-based residual bootstrap offers an alternative, since it requires
+ only a single data acquisition (Chung 2006;Berman et al., 2008; Haroon et
+ al., 2009; Jones, 2008).
+ A single bootstrap sample can then be generated by permuting freely the
+ residuals (or just the sings of the residuals - wild boostrap Jones 2008;
+ Whitcher 2008 ) between all model predicted values.
+\end_layout
+
+\begin_layout Itemize
+Jones 2005
+\end_layout
+
+\begin_layout Itemize
+Iterative resampling with replacement - Efron (1979)
+\end_layout
+
+\begin_layout Itemize
+Hasan et al.
+ (2004)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Other probabilistic
+\emph on
+ 
+\series default
+\emph default
+estimate the orientation uncertainty as an empeiricaly defined function.
+ For example in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Parker2003"
+
+\end_inset
+
+ this is determined using the degree of FA.
+ The higher the FA the higher the confidence on the principal eigenvector
+ of the tensor.
+ In (Parker and Alexander 2003) Monte-Carlo simulations are used to predict
+ the orientation uncertainty for multiple tensors.Normal distribution is
+ assumed for every tensor.
+ Cook et al.
+ 2004 used a Watson distributsion and Seunarine 2007 used a Bingham distribution
+ both for PAS or ODFs.
+ In Parker and Alexander 2005 - PAS was used.
+ In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "descoteaux2009deterministic"
+
+\end_inset
+
+ fODF was used.
+\end_layout
+
+\begin_layout Itemize
+Bjornemo, Brun, Kikinis, Westin 2002 - Regularized stochastic white matter
+ tractography 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bjornemoMICCAI02"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Global
+\end_layout
+
+\begin_layout Standard
+A limitation of probabilistic tractography is that the probabilistic index
+ of connectivity decreases with distance from the seed point (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Tractography"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Known-problems"
+
+\end_inset
+
+).
+ Another limitation is that it is still sensitive to local noise.
+ Global approaches try to overcome these limitations by being distance-indipende
+nt and by increasing resistance against noise.
+ This is achieved by finding an optimal path between two voxels, according
+ to a global property (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DiffMRIBook"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jbabdi2007bayesian"
+
+\end_inset
+
+ developed a 
+\series bold
+global Bayesian
+\series default
+ model to derive the posterior probability of connections.The path trajectories
+ represented by splines are compatible with the local fibre orientations
+ in regions with low uncertainty estimates.
+ In regions with high uncertainty, the global connectivity information constrain
+s the local parameter estimation and affects the path sampling.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Front evolution 
+\series default
+techniques often employ fast marching.
+ The front expands from the seed neighbours to the next neighbouring nodes
+ with speeds determined by the local fibre orientations.
+ As the front propagates, a time of front arrival can be associated with
+ each visited voxel.
+ Once all image voxels have been traversed by the front, paths of connection
+ can be obtained going backwards in the map of front arrival times.
+ Starting from an arbitrary voxel, a gradient descent algorithm can find
+ the fastest route back to the seed.
+ A connectivity index can be associated with each path, representing either
+ the weakest link along the path or the agreement between the path tangents
+ and the underlying vector orientation field.
+ For more see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "parker2002estimating"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tournier2003diffusion"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "campbell2005flow"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fletcher2007volumetric"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gigandet2009global"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Graph-based 
+\series default
+tractography utilises weighted networks (graphs) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "IturriaMedina2007NeuroImage"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zalesky2008dt"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lifshits2009combinatorial"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fillard2009a"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sotiropoulos2010brain"
+
+\end_inset
+
+.
+ Each image voxel becomes a node in the graph where the edges of the graph
+ connect pairs of neighbouring voxels or ROIs.
+ The edges are assigned weights, that can be representative of any type
+ of structural information.
+ Anatomical paths are then defined as chains with successive elements being
+ neighbouring voxels.
+ The weights of the edges are used to determine the path strength.
+ The strongest path between any image voxel and a seed can then be identified
+ using algorithms that search efficiently the image graph.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Energy Minimization
+\series default
+ methods try to optimize 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kreher2008gibbs"
+
+\end_inset
+
+ all tracks from the whole brain volume simultaneously.
+ Each tract is represented as a chain of cylinders, whose position and orientati
+on can change.
+ The method tries to find the set of cylinders that best approximate the
+ underlying white matter bundles.
+ This is achieved by minimizing an energy function, mimicking the polymerization
+ process through which chains of monomers are created in an energetically-favour
+able way.
+ Usually Gibbs sampling is employed.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kreher2008ISMRM"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "reisert2010global"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lazar2002white"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fillard2009"
+
+\end_inset
+
+.
+ Despite the very promising results
+\begin_inset CommandInset citation
+LatexCommand cite
+key "reisert2010global"
+
+\end_inset
+
+, the very high computation time is an important disadvantage of this framework.
+\end_layout
+
+\begin_layout Standard
+Collins 2010
+\end_layout
+
+\begin_layout Standard
+Min Energy Solution - 2 regions
+\end_layout
+
+\begin_layout Itemize
+Fletcher 2007
+\end_layout
+
+\begin_layout Itemize
+Cheng 2006
+\end_layout
+
+\begin_layout Standard
+Microanatomy Tracking
+\end_layout
+
+\begin_layout Standard
+MicroTrack
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sherbondy2010microtrack"
+
+\end_inset
+
+an algorithm that combines global tractography and direct microstructure
+ estimation using diffusion-weighted imaging data.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Simulated
+\end_layout
+
+\begin_layout Standard
+These methods simulate the diffusion of water molecules within the brain
+ tissue or directly solve Fick’s second law of diffusion 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "batchelor2001study"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kang2005white"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hageman2009diffusion"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hagmann2003dti"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "batchelor2001study"
+
+\end_inset
+
+, the diffusion equation is solved using a finite element approach.
+ Successive diffusion simulations over the entire brain, starting froma
+ seed, are performed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kang2005white"
+
+\end_inset
+
+.
+ Tractography by simulating fluid flow through a 
+\begin_inset Quotes eld
+\end_inset
+
+pressure
+\begin_inset Quotes erd
+\end_inset
+
+ tensor field is performed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hageman2009diffusion"
+
+\end_inset
+
+.
+ The Navier-Stokes equation is solved using a finite element approach.
+ However, solving a partial differential equation increases execution time.
+ Furthermore, it is not always easy with these approaches to obtain a connectivi
+ty map across the whole brain volumeand there is usually a large number
+ of parameters to set.
+ 
+\end_layout
+
+\begin_layout Standard
+For further understanding of the current map of all the different tractography
+ algorithms see the reviews from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fillard2011quantitative"
+
+\end_inset
+
+ ,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sotiropoulos2010processing"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Jbabdi2007"
+
+\end_inset
+
+.
+ In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fillard2011quantitative"
+
+\end_inset
+
+ 10 tractographies were simulated using a novel hardware phantom.
+ Generally, comparing all these different methods which all have different
+ parameters and are based on different underlying models is a difficult
+ process and a ground truth from anatomical studies or hardware phantoms
+ is absolutely necessary.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ADD some links from last HBM
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+http://www.docstoc.com/docs/58019487/Diffusion-Tensor-MRI-at-3-Tesla
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Algorithm
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Input
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+anisotropic volume metric
+\end_layout
+
+\begin_layout Itemize
+unit directions 
+\end_layout
+
+\begin_layout Itemize
+resampling sphere
+\end_layout
+
+\begin_layout Itemize
+seeds
+\end_layout
+
+\begin_layout Itemize
+anisotropy low threshold
+\end_layout
+
+\begin_layout Itemize
+step size 
+\end_layout
+
+\begin_layout Itemize
+angular threshold
+\end_layout
+
+\begin_layout Itemize
+total_weighting threshold
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "basicstyle={\footnotesize},breaklines=true,numbers=left,numberstyle={\footnotesize},tabsize=4"
+inline false
+status collapsed
+
+\begin_layout Plain Layout
+
+For all seeds
+\end_layout
+
+\begin_layout Plain Layout
+
+	For all peaks
+\end_layout
+
+\begin_layout Plain Layout
+
+		track = EuDX_Both_Directions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+EuDX Main
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "basicstyle={\footnotesize},breaklines=true,numbers=left,numberstyle={\footnotesize},tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Delta, i_direction = Initial_Direction
+\end_layout
+
+\begin_layout Plain Layout
+
+direction=i_direction
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+While Delta is True
+\end_layout
+
+\begin_layout Plain Layout
+
+	Delta, new_direction = Propagation_Direction(direction)
+\end_layout
+
+\begin_layout Plain Layout
+
+	IF Delta is False
+\end_layout
+
+\begin_layout Plain Layout
+
+		Break
+\end_layout
+
+\begin_layout Plain Layout
+
+	point += step_size*new_direction
+\end_layout
+
+\begin_layout Plain Layout
+
+	track.append(point)
+\end_layout
+
+\begin_layout Plain Layout
+
+	direction=new_direction
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Delta=True
+\end_layout
+
+\begin_layout Plain Layout
+
+direction=-direction
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+While Delta is True
+\end_layout
+
+\begin_layout Plain Layout
+
+	Delta,new_direction = Propagation_Direction(direction)
+\end_layout
+
+\begin_layout Plain Layout
+
+	IF Delta is False
+\end_layout
+
+\begin_layout Plain Layout
+
+		Break
+\end_layout
+
+\begin_layout Plain Layout
+
+	point += step_size*new_direction
+\end_layout
+
+\begin_layout Plain Layout
+
+	track.insert(0,point)
+\end_layout
+
+\begin_layout Plain Layout
+
+	direction = new_direction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Both Directions 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "basicstyle={\footnotesize},breaklines=true,numbers=left,tabsize=4"
+inline false
+status collapsed
+
+\begin_layout Plain Layout
+
+point=grid_point[seed]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+IF aniso[point]<aniso_thr	
+\end_layout
+
+\begin_layout Plain Layout
+
+	return False
+\end_layout
+
+\begin_layout Plain Layout
+
+Else
+\end_layout
+
+\begin_layout Plain Layout
+
+	return True, direction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Initial Direction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "basicstyle={\footnotesize},breaklines=true,numbers=left,numberstyle={\footnotesize},tabsize=4"
+inline false
+status collapsed
+
+\begin_layout Plain Layout
+
+weigths=Trilinear_Interpolation
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+IF out of boundaries
+\end_layout
+
+\begin_layout Plain Layout
+
+	return False
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+total_weight=0
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+For the 8 corners of the neighbourhood
+\end_layout
+
+\begin_layout Plain Layout
+
+	Delta, direction = Nearest_Direction
+\end_layout
+
+\begin_layout Plain Layout
+
+	IF Delta is False
+\end_layout
+
+\begin_layout Plain Layout
+
+		Continue
+\end_layout
+
+\begin_layout Plain Layout
+
+	total_weight += W[corner]
+\end_layout
+
+\begin_layout Plain Layout
+
+	new_direction += W[corner]*direction
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+IF total_weight < .total_weith_threshold
+\end_layout
+
+\begin_layout Plain Layout
+
+	return False
+\end_layout
+
+\begin_layout Plain Layout
+
+Else
+\end_layout
+
+\begin_layout Plain Layout
+
+	return True, normalized(new_direction)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Propagation Direction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "basicstyle={\footnotesize},breaklines=true,numbers=left,numberstyle={\footnotesize},tabsize=4"
+inline false
+status collapsed
+
+\begin_layout Plain Layout
+
+IF maximum peak < aniso_thr
+\end_layout
+
+\begin_layout Plain Layout
+
+	return False
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+For all peaks (directions)
+\end_layout
+
+\begin_layout Plain Layout
+
+	If peak < aniso_thr
+\end_layout
+
+\begin_layout Plain Layout
+
+		Break
+\end_layout
+
+\begin_layout Plain Layout
+
+	angle = angle(peak direction,current direction)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+IF maximum_angle > angl_thr
+\end_layout
+
+\begin_layout Plain Layout
+
+	return False
+\end_layout
+
+\begin_layout Plain Layout
+
+Else
+\end_layout
+
+\begin_layout Plain Layout
+
+	return True, direction(closest peak on angular terms)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Nearest Direction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Resampling Sphere and Anisotropy Metric
+\end_layout
+
+\begin_layout Standard
+Explain what kind of volumes can be added as an input to the algorithm
+\end_layout
+
+\begin_layout Subsection
+
+\series bold
+Old Description
+\end_layout
+
+\begin_layout Standard
+We extend classical streamline methods 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MCC+99,CLC+99,BPP+00"
+
+\end_inset
+
+ and latest as in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Descoteaux2009,Yeh2010"
+
+\end_inset
+
+ to create a more general streamline tractography method which can be used
+ with very different types of diffusion anistropic fields.
+ 
+\end_layout
+
+\begin_layout Standard
+We solve for 
+\begin_inset Formula $\mathbf{p}_{t}=\mathbf{p}_{0}+\int_{0}^{t}\mathbf{v}(p(\mathbf{s}))d\mathbf{s}$
+\end_inset
+
+ and we perform the integration numerically using Euler 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\mathbf{p}_{n+1}=\mathbf{p}_{n}+\mathbf{v}(p_{n})\Delta s\label{eq: euler}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\Delta s$
+\end_inset
+
+ is the propagation step size which should be smaller than the smallest
+ voxel size, 
+\begin_inset Formula $\mathbf{v}$
+\end_inset
+
+ is the propagation direction and 
+\begin_inset Formula $\mathbf{p}_{0}$
+\end_inset
+
+ is the initial seed point.
+ Alternatively than Euler, R-K of 2nd and 4th order can be used.
+ In addition to the seed points we do not to use a scalar function like
+ FA or NPA for our stopping criteria but it could be a vector function as
+ well like QA or even the full diffusivity profile.
+ The only constraint is to be 
+\begin_inset Formula $\geqslant0$
+\end_inset
+
+ everywhere in the grid.
+ We call this function 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ and we could imagine it as an accumulation of vector fields applied on
+ the image grid.
+ Therefore, when we write 
+\begin_inset Formula $\mathcal{A}(\mathbf{u}_{i})=\alpha_{i}$
+\end_inset
+
+ this reads for the peak unit direction of 
+\begin_inset Formula $\mathbf{u}_{i}$
+\end_inset
+
+ the peak value was 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+.
+ For the simple case of FA, 
+\begin_inset Formula $\mathbf{u}$
+\end_inset
+
+is equal with the eigenvector corresponding to the highest eigenvalue, 
+\begin_inset Formula $\mathcal{A}(\mathbf{e})=fa$
+\end_inset
+
+.
+ For the QA case which can allow even for 5 peaks or more we use 
+\begin_inset Formula $\mathcal{A}(\mathbf{u}_{i})=qa_{i}$
+\end_inset
+
+ where 
+\begin_inset Formula $i\in[0,4]$
+\end_inset
+
+ denotes the current peak.
+ (Dandelion case to be added here).
+\end_layout
+
+\begin_layout Standard
+The EuDX algorithm can be described in the following way:
+\end_layout
+
+\begin_layout Standard
+(1) 
+\begin_inset Formula $A(\mathbf{u})$
+\end_inset
+
+ is estimated at every point of the volume.
+ This resembles a composite vector field where every point contains the
+ peak directions superimposed to the anisotropy values.
+ In order to reduce space 
+\begin_inset Formula $\mathbf{u}$
+\end_inset
+
+ can be replaced by an index to the closest sampling point on an evenly
+ distributed sphere.
+ We create an empty list of tracks 
+\begin_inset Formula $T=[]$
+\end_inset
+
+ and then we generate random or uniform seed points 
+\begin_inset Formula $\mathbf{p}_{0j}$
+\end_inset
+
+ for every track 
+\begin_inset Formula $t_{j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+(2) The following step is to pick a seed point 
+\begin_inset Formula $\mathbf{p}_{0}$
+\end_inset
+
+ and start propagating.
+ We need to remember that the propagation direction can go forward and backwards
+ or better towards one direction and its opposite direction.
+ For the moment we only propagate towards one direction set by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\mathbf{v}(\mathbf{p}_{0})=argmax_{u_{i}}\mathcal{A}(\mathbf{u})\label{eq:argmax_anisotropy}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ can be much more than a scalar function we need to remember that when we
+ finish with this track followed by direction 
+\begin_inset Formula $\mathbf{v}$
+\end_inset
+
+ we will need to propagate towards the direction of 
+\begin_inset Formula $argsecondmax$
+\end_inset
+
+, 
+\begin_inset Formula $argthirdmax,...,argmin$
+\end_inset
+
+ as the current 
+\begin_inset Formula $\mathbf{p}_{0}$
+\end_inset
+
+ voxel might contain one or more crossings.
+\end_layout
+
+\begin_layout Standard
+(3) We check for initial propagation direction which checks for the condition:
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\mathcal{A}(p_{n})<\mathcal{A}_{thr}$
+\end_inset
+
+ then STOP.
+\end_layout
+
+\begin_layout Standard
+Else 
+\begin_inset Formula $t_{j}$
+\end_inset
+
+.append(
+\begin_inset Formula $\mathbf{p}_{0}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+This can be very useful in general to cancel out any seed points which are
+ in the background or in very low anisotropy areas where tracking is not
+ recommended.
+ The threshold is different for every different metric QA, FA, GFA etc.
+ If step (3) returns TRUE then we add the seed point to the empty track.
+\end_layout
+
+\begin_layout Standard
+(4) In order to generate smooth tractography it is recommended to use some
+ kind of interpolation.
+ Here we have been using trilinear interpolation which works in the following
+ way.
+ The seed devides the neibourhing area in 8 parts in 3D (4 in 2D) and the
+ total contribution of the neighbouring points is added according to the
+ weights 
+\begin_inset Formula $w$
+\end_inset
+
+ of the antipodal side.
+ The weights express subvolumes in 3D (or subareas in 2D) (see figure).
+\end_layout
+
+\begin_layout Standard
+(5) One good strategy now is to find the nearest direction from the seed's
+ initial direction 
+\begin_inset Formula $\mathbf{v}(\mathbf{p_{n}})$
+\end_inset
+
+ to every 
+\begin_inset Formula $\mathbf{u}_{i}$
+\end_inset
+
+ of every one of the 8 corners of the neighbourhood of the seed.
+ 
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\dfrac{\mathbf{u}(\mathbf{x}_{i})\cdot\mathbf{v}(\mathbf{p}_{n})}{||\mathbf{u}(\mathbf{x}_{i})||||\mathbf{v}(\mathbf{p}_{n})||}\leqq\theta_{thr}$
+\end_inset
+
+ we count the corresponding weight otherwise we continue to the next weight.
+ We check as well the condition 
+\begin_inset Formula $\mathcal{A}(u)\leqq\mathcal{A}_{thr}$
+\end_inset
+
+.
+ All the adjacent weights will contribute to the new direction given by
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\mathbf{v}^{'}(\mathbf{p}_{n})=\sum_{m}w_{m}\mathbf{v}(\mathbf{p}_{n})\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\mathbf{v}(\mathbf{p}_{n})=\dfrac{\mathbf{v}^{'}(\mathbf{p}_{n})}{||\mathbf{v}^{'}(\mathbf{p}_{n})||}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+(6) The next point is calculated using 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+\mathbf{p}_{n+1} & = & \mathbf{p}_{n}+v(\mathbf{p}_{n})\Delta s\label{eq:fdx_next_point}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+At this point we store the new point in the track 
+\begin_inset Formula $t_{j}.append(\mathbf{p}_{n+1})$
+\end_inset
+
+ and continue tracking until one of the stopping criteria is met.
+ Finally, we have to repeat the procedure for the opposite direction of
+ the initial 
+\begin_inset Formula $\mathbf{v}(\mathbf{p}_{o})$
+\end_inset
+
+ and for the smaller maxima as in (2).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename FDX_propagation.svg
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+EuDX tracking example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Evaluation with Fibre Cup phantom and Marta's phantoms
+\end_layout
+
+\begin_layout Subsection
+Evaluation with real subjects
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "diffusion"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
