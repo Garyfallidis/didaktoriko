@@ -55,7 +55,7 @@ Euler Delta Crossings Propagation
 \end_layout
 
 \begin_layout Subsection
-The problem
+Overview
 \end_layout
 
 \begin_layout Standard
@@ -75,10 +75,13 @@ key "MCC+99,CLC+99"
 
 \end_inset
 
- published nearly 12 years ago many methods have been published which depend
- strictly on the underlying voxel model or acquisition paradigm making it
- very difficult for other researchers to apply their methods and evaluate
- their datasets.
+ published nearly 
+\begin_inset Formula $12$
+\end_inset
+
+ years ago many methods have been invented which depend strictly on the
+ underlying voxel model or acquisition paradigm making it very difficult
+ for other researchers to apply their methods and evaluate their data sets.
  
 \end_layout
 
@@ -88,21 +91,30 @@ In this work we designed a purely deterministic method which is fast, accurate
  But most importantly it can have as input model-based or model-free reconstruct
 ion algorithms of any known algorithm or complexity.
  We call this algorithm EuDX.
- Eu stands for Euler Euler integration, D stands for Delta which is a function
+ Eu stands for Euler integration, D stands for Delta which is a function
  that combines together all the different stopping criteria and X stands
  for crossings.
- EuDX can deal with any number of crossings as long as your data support
+ EuDX can deal with any number of crossings as long as your data supports
  them.
  The purpose of this algorithm is to be faithful to the reconstruction results
  rather than try to correct or enhance them by introducing regional or global
  considerations which is the topic of other methods reviewed below.
- Therefore EuDX serves mainly as a robust method for quickly inspecting
+ Therefore, EuDX serves mainly as a robust method for quickly inspecting
  different reconstruction results using streamlines.
  EuDX is noise-friendly i.e.
  if a voxel is too noisy then EuDX will stop tracking on that voxel.
- This property is often useful when validating underlying orientation models.
- Branching is also supported by using trilinear interpolation.
- This method is an extension of the method used by Yeh et al.
+ This property is often useful when validating underlying reconstruction
+ models.
+ Branching is also supported by a combination of trilinear interpolation
+ and propagating along multiple peaks per voxel.
+ This method is an extension of the method used by Conturo et al.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CLC+99"
+
+\end_inset
+
+ and Yeh et al.
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -110,19 +122,7 @@ key "Yeh2010"
 
 \end_inset
 
- and Conturo et al.
-\begin_inset CommandInset citation
-LatexCommand cite
-key "CLC+99"
-
-\end_inset
-
- with the addition of supporting multiple anisotropic functions and multiple
- crossings.
-\end_layout
-
-\begin_layout Subsection
-Overview
+ with the additional support for multiple fibre-crossings.
 \end_layout
 
 \begin_layout Standard
@@ -194,7 +194,7 @@ key "CLC+99"
 
 \end_inset
 
- and similarly Runge-Kutta integration was used in 
+ and similarly Runge-Kutta integration was used in Basser et al.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "BPP+00"
@@ -225,7 +225,7 @@ d (e.g.
 \begin_layout Standard
 Streamline methods can be also utilized when multiple orientations are estimated
  in a voxel.
- These can be obtained as the principal eigenvectors of multiple tensors
+ These can be obtained as the principal eigenvectors of multiple Tensors
  fitted to the data 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -287,7 +287,7 @@ key "Descoteaux2009"
 \begin_layout Standard
 Streamline tractography utilizes only the fibre orientation estimates.
  Tensor deflection tractography (TEND) is a FACT variant that uses the whole
- DTI tensor rather than just its principal eigenvector to determine the
+ DTI Tensor rather than just its principal eigenvector to determine the
  direction of curve propagation 
 \lang british
 
@@ -304,8 +304,8 @@ key "LWT+03"
 \end_layout
 
 \begin_layout Standard
-All the methods presented until now are deterministic and provide binary
- connectivity information.
+All the methods presented up to this point provide binary connectivity informati
+on.
  A voxel B can be either connected or not connected to the seed S, depending
  on whether a streamline from S passes through B.
  
@@ -324,12 +324,12 @@ Streamline tractography utilizes only the fibre orientation estimates.
  Tensor deflection tractography is less sensitive to noise than streamline,
  as shown in simulations for straight tracts (Lazar et al., 2003).
  It can also propagate through regions of perpendicular fibre crossings,
- where the principal eigenvector of the underlying oblate tensor is meaningless.
- However, tensor deflection underestimates curvature for curved tracts.
+ where the principal eigenvector of the underlying oblate Tensor is meaningless.
+ However, Tensor deflection underestimates curvature for curved tracts.
  Furthermore, TEND results should be interpreted carefully, as an incoming
- direction that coincides with any of the tensor eigenvectors will not be
- deflected by that tensor; even if it is perpendicular to the principal
- eigenvector of a highly prolate tensor (Lazar et al., 2003).
+ direction that coincides with any of the Tensor eigenvectors will not be
+ deflected by that Tensor; even if it is perpendicular to the principal
+ eigenvector of a highly prolate Tensor (Lazar et al., 2003).
  All the methods presented in this section are deterministic and provide
  binary connectivity information.
  A voxel B can be either connected or not connected to the seed S, depending
@@ -394,23 +394,22 @@ key "Behrens2003MRM"
  rather than a single track.
  In each propagation step of each streamline, a random perturbation of the
  underlying fibre orientation estimate is followed.
- Per- turbations are generated using functions that characterize the uncertainty
+ Perturbations are generated using functions that characterize the uncertainty
  in the fibre orientation within each voxel.
  A probabilistic index of connectivity (PICo) is defined between a seed
  and an arbitrary point as 
 \begin_inset Formula $M/N$
 \end_inset
 
- where 
-\begin_inset Formula $M$
-\end_inset
-
- is the number of tracks that traverse the seed and the point and 
+ ; where 
 \begin_inset Formula $N$
 \end_inset
 
- is the all the tracks that start from the seed.
- 
+ is the number of all the tracks that start from the seed and 
+\begin_inset Formula $M$
+\end_inset
+
+ is the number of tracks that traverse the seed and the arbitrary point.
 \end_layout
 
 \begin_layout Standard
@@ -484,7 +483,7 @@ key "zhang2009probabilistic"
 
 \end_inset
 
- particle filtering is use for the same cause.
+ particle filtering is used for the same cause.
 \end_layout
 
 \begin_layout Standard
@@ -514,8 +513,8 @@ key "lazar2005bootstrap"
  This is a single bootstrap sample.
  Drawing many samples will give a distribution for the fiber orientation.
  The advantage of bootstrap tractography is that no ad-hoc assumptions are
- made on the noise and is sensitive to all sources of variability that affect
- the acquired dataset.
+ made on the noise and it is sensitive to all sources of variability that
+ affect the acquired dataset.
  The disadvantage is that many repeated acquisitions are required (at least
  5 for DTI according to 
 \begin_inset CommandInset citation
@@ -535,6 +534,10 @@ Model-based residual bootstrap offers an alternative, since it requires
  A single bootstrap sample can then be generated by permuting freely the
  residuals (or just the sings of the residuals - wild boostrap Jones 2008;
  Whitcher 2008 ) between all model predicted values.
+\end_layout
+
+\begin_layout Standard
+CONNECT THE CITATIONS!!!
 \end_layout
 
 \begin_layout Itemize
@@ -568,10 +571,10 @@ key "Parker2003"
 
  this is determined using the degree of FA.
  The higher the FA the higher the confidence on the principal eigenvector
- of the tensor.
+ of the Tensor.
  In (Parker and Alexander 2003) Monte-Carlo simulations are used to predict
- the orientation uncertainty for multiple tensors.Normal distribution is
- assumed for every tensor.
+ the orientation uncertainty for multiple Tensors.
+ Normal distribution is assumed for every Tensor.
  Cook et al.
  2004 used a Watson distributsion and Seunarine 2007 used a Bingham distribution
  both for PAS or ODFs.
@@ -620,8 +623,8 @@ reference "sub:Known-problems"
 
 ).
  Another limitation is that it is still sensitive to local noise.
- Global approaches try to overcome these limitations by being distance-indipende
-nt and by increasing resistance against noise.
+ Global approaches try to overcome these limitations by becoming distance-indipe
+ndent and by increasing resistance against noise.
  This is achieved by finding an optimal path between two voxels, according
  to a global property (see 
 \begin_inset CommandInset citation
@@ -644,9 +647,9 @@ key "jbabdi2007bayesian"
 \series bold
 global Bayesian
 \series default
- model to derive the posterior probability of connections.The path trajectories
- represented by splines are compatible with the local fibre orientations
- in regions with low uncertainty estimates.
+ model to derive the posterior probability of connections.
+ The path trajectories represented by splines are compatible with the local
+ fibre orientations in regions with low uncertainty estimates.
  In regions with high uncertainty, the global connectivity information constrain
 s the local parameter estimation and affects the path sampling.
 \end_layout
@@ -914,7 +917,7 @@ pressure
 \begin_inset Quotes erd
 \end_inset
 
- tensor field is performed in 
+ Tensor field is performed in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hageman2009diffusion"
@@ -1039,13 +1042,135 @@ total_weighting threshold
 \begin_inset Float algorithm
 wide false
 sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Input} $A$, $I$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Output} $T$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Foreach} seed
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} 
+\backslash
+textbf{Foreach} peak
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{4em} track = EUDX
+\backslash
+_Both 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{4em} 
+\backslash
+textbf{Append}($T$,track) 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+caption{EuDX Main}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Alg:EuDX_Main"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
 \begin_inset listings
 lstparams "basicstyle={\footnotesize},breaklines=true,numbers=left,numberstyle={\footnotesize},tabsize=4"
 inline false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1073,6 +1198,128 @@ For all seeds
 \begin_layout Plain Layout
 EuDX Main
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Input} $A$, $I$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Output} $T$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Foreach} seed
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} 
+\backslash
+textbf{Foreach} peak
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{4em} track = EUDX
+\backslash
+_Both 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{4em} 
+\backslash
+textbf{Append}($T$,track) 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+caption{EuDX Main}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Alg:EuDX_Both"
 
 \end_inset
 
@@ -1230,7 +1477,7 @@ status collapsed
 \begin_inset listings
 lstparams "basicstyle={\footnotesize},breaklines=true,numbers=left,tabsize=4"
 inline false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1693,10 +1940,6 @@ status open
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
