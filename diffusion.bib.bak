@@ -1899,6 +1899,17 @@
   year           = 2007
 }
 
+@InProceedings{parker2003probabilistic,
+  Author         = {Parker, G. and Alexander, D.},
+  Title          = {Probabilistic Monte Carlo based mapping of cerebral
+                   connections utilising whole-brain crossing fibre
+                   information},
+  BookTitle      = {Information Processing in Medical Imaging},
+  Pages          = {684--695},
+  Organization   = {Springer},
+  year           = 2003
+}
+
 @Article{Delivery,
   Author         = {Delivery, Price and Cost, Total and Brimpari, Minodora},
   Title          = {{PC World UK Computer Superstore - Buy cheap c ... PC
@@ -2872,6 +2883,19 @@
   year           = 2007
 }
 
+@Article{berman2008probabilistic,
+  Author         = {Berman, J.I. and Chung, S.W. and Mukherjee, P. and
+                   Hess, C.P. and Han, E.T. and Henry, R.G.},
+  Title          = {Probabilistic streamline q-ball tractography using the
+                   residual bootstrap},
+  Journal        = {Neuroimage},
+  Volume         = {39},
+  Number         = {1},
+  Pages          = {215--222},
+  publisher      = {Elsevier},
+  year           = 2008
+}
+
 @Article{kang2005white,
   Author         = {Kang, N. and Zhang, J. and Carlson, E.S. and Gembris,
                    D.},
@@ -3048,6 +3072,18 @@
   pmid           = {10378728},
   url            = {http://www.ncbi.nlm.nih.gov/pubmed/10378728},
   year           = 1999
+}
+
+@Article{jones2008tractography,
+  Author         = {Jones, D.K.},
+  Title          = {Tractography gone wild: probabilistic fibre tracking
+                   using the wild bootstrap with diffusion tensor MRI},
+  Journal        = {Medical Imaging, IEEE Transactions on},
+  Volume         = {27},
+  Number         = {9},
+  Pages          = {1268--1274},
+  publisher      = {IEEE},
+  year           = 2008
 }
 
 @Article{Kubicki2006,
@@ -3839,6 +3875,17 @@
                    Brain Mapping}
 }
 
+@InProceedings{cook2004modelling,
+  Author         = {Cook, P.A. and Alexander, D.C. and Parker, G.J.M.},
+  Title          = {Modelling noise-induced fibre-orientation error in
+                   diffusion-tensor MRI},
+  BookTitle      = {Biomedical Imaging: Nano to Macro, 2004. IEEE
+                   International Symposium on},
+  Pages          = {332--335},
+  Organization   = {IEEE},
+  year           = 2004
+}
+
 @Article{LWT+03,
   Author         = {Lazar, M. and Weinstein, D. M. and Tsuruda, J. S. and
                    Hasan, K. M. and Arfanakis, K. and Meyerand, M. E. and
@@ -4371,6 +4418,18 @@
   issn           = {1053-8119},
   publisher      = {Elsevier},
   year           = 2010
+}
+
+@Article{chung2006comparison,
+  Author         = {Chung, S.W. and Lu, Y. and Henry, R.G.},
+  Title          = {Comparison of bootstrap approaches for estimation of
+                   uncertainties of DTI parameters},
+  Journal        = {Neuroimage},
+  Volume         = {33},
+  Number         = {2},
+  Pages          = {531--541},
+  publisher      = {Elsevier},
+  year           = 2006
 }
 
 @Article{Basser1994BiophysicalJ,
@@ -6902,6 +6961,15 @@
   year           = 2007
 }
 
+@Book{montgomery2001introduction,
+  Author         = {Montgomery, D.C. and Peck, E.A. and Vining, G.G. and
+                   Vining, J.},
+  Title          = {Introduction to linear regression analysis},
+  Publisher      = {Wiley New York},
+  Volume         = {3},
+  year           = 2001
+}
+
 @Article{Yeh2010,
   Author         = {Yeh, F and Wedeen, V and Tseng, W},
   Title          = {{Generalized Q-Sampling Imaging.}},
@@ -6967,6 +7035,19 @@
   file           = {:home/eg309/.local/share/data/Mendeley Ltd./Mendeley
                    Desktop/Downloaded/Marinucci et al. - 2008 - Spherical
                    Needlets for CMB Data Analysis.pdf:pdf},
+  year           = 2008
+}
+
+@Article{whitcher2008using,
+  Author         = {Whitcher, B. and Tuch, D.S. and Wisco, J.J. and
+                   Sorensen, A.G. and Wang, L.},
+  Title          = {Using the wild bootstrap to quantify uncertainty in
+                   diffusion tensor imaging},
+  Journal        = {Human brain mapping},
+  Volume         = {29},
+  Number         = {3},
+  Pages          = {346--362},
+  publisher      = {Wiley Online Library},
   year           = 2008
 }
 
@@ -8107,6 +8188,20 @@
   year           = 2005
 }
 
+@Article{haroon2009using,
+  Author         = {Haroon, H.A. and Morris, D.M. and Embleton, K.V. and
+                   Alexander, D.C. and Parker, G.},
+  Title          = {Using the Model-Based Residual Bootstrap to Quantify
+                   Uncertainty in Fiber Orientations From $ Q $-Ball
+                   Analysis},
+  Journal        = {Medical Imaging, IEEE Transactions on},
+  Volume         = {28},
+  Number         = {4},
+  Pages          = {535--550},
+  publisher      = {IEEE},
+  year           = 2009
+}
+
 @Article{ramachandran2011mayavi,
   Author         = {Ramachandran, P. and Varoquaux, G.},
   Title          = {Mayavi: 3D visualization of scientific data},
@@ -8867,6 +8962,20 @@
   pmid           = {12509835},
   url            = {http://www.ncbi.nlm.nih.gov/pubmed/12509835},
   year           = 2003
+}
+
+@Article{parker2005probabilistic,
+  Author         = {Parker, G.J.M. and Alexander, D.C.},
+  Title          = {Probabilistic anatomical connectivity derived from the
+                   microscopic persistent angular structure of cerebral
+                   tissue},
+  Journal        = {Philosophical Transactions of the Royal Society B:
+                   Biological Sciences},
+  Volume         = {360},
+  Number         = {1457},
+  Pages          = {893},
+  publisher      = {The Royal Society},
+  year           = 2005
 }
 
 @Misc{Mendeley2009,
@@ -10906,6 +11015,17 @@
   file           = {attachment\:vernooij_arcuate_fasciculus_2007.pdf:attachment\:vernooij_arcuate_fasciculus_2007.pdf:PDF},
   publisher      = {Elsevier},
   year           = 2007
+}
+
+@Article{efron1979bootstrap,
+  Author         = {Efron, B.},
+  Title          = {Bootstrap methods: another look at the jackknife},
+  Journal        = {The annals of Statistics},
+  Volume         = {7},
+  Number         = {1},
+  Pages          = {1--26},
+  publisher      = {Institute of Mathematical Statistics},
+  year           = 1979
 }
 
 @Book{MAB04,
