@@ -1183,7 +1183,7 @@ key "MCC+99,CLC+99,BPP+00"
 
 \end_inset
 
- and more recent as those described in 
+ and with more recent as those described in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Descoteaux2009,Yeh2010"
@@ -1197,12 +1197,12 @@ key "Descoteaux2009,Yeh2010"
  This algorithm that we call EuDX is applied usually in native space image
  coordinates and it assumes that the voxel dimensions are equal in all three
  dimensions (isotropic voxel size).
- In order to create streamlines (tracks) we need to provide initially one
- or more seed points 
+ If  In order to create streamlines (tracks) we need to provide initially
+ one or more seed points 
 \begin_inset Formula $S$
 \end_inset
 
- .
+.
  These can be choosed randomly or we could specify them explicitly.
  However, these seed points need to be constrained by the volume's dimensions.
  Every seed point 
@@ -2562,6 +2562,7 @@ Evaluation with real subjects
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Float table
 wide false
 sideways false
