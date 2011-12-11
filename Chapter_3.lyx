@@ -785,28 +785,28 @@ key "IturriaMedina2007NeuroImage"
 
 \end_inset
 
-
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "zalesky2008dt"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "lifshits2009combinatorial"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Fillard2009a"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "sotiropoulos2010brain"
@@ -860,14 +860,14 @@ key "reisert2010global"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "lazar2002white"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Fillard2009"
@@ -875,7 +875,7 @@ key "Fillard2009"
 \end_inset
 
 .
- Despite the very promising results
+ Despite the very promising results 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "reisert2010global"
@@ -1036,16 +1036,6 @@ key "fillard2011quantitative"
  different parameters and are based on different underlying models is a
  difficult process and a ground truth from anatomical studies, digital or
  hardware phantoms is absolutely necessary.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ADD some links from last HBM
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1065,17 +1055,34 @@ http://www.docstoc.com/docs/58019487/Diffusion-Tensor-MRI-at-3-Tesla
 Algorithm
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Decide if you need Then for the algorithms.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
 \begin_layout Itemize
 
 \series bold
 Input
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 anisotropic volume metric
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 unit directions 
 \end_layout
@@ -1105,11 +1112,452 @@ total_weighting threshold
 \end_layout
 
 \end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename EuDX_propagation.png
+	lyxscale 30
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+In this figure we see that in every point (black dot) there is none or more
+ vectors.
+ These vectors represent peaks where their length is equal to the anisotropy
+ value and the direction is equal to direction of the peak e.g.
+ from an ODF.
+ EuDX can track multiple peaks starting from a single seed point (star)
+ if their anisotropy values is higher than a threshold.
+ In order to reduce memory usage we discretized the directions using a sphere
+ of 
+\begin_inset Formula $642$
+\end_inset
+
+ vertices.
+ Then we only need to save a 4D volume with anisotropy values 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ and an 4D volume 
+\begin_inset Formula $I$
+\end_inset
+
+ with the indices of the directions on the sphere.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We created an algorithm that has many similarities with the classical determinis
+tic methods 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MCC+99,CLC+99,BPP+00"
+
+\end_inset
+
+ and more recent as those described in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Descoteaux2009,Yeh2010"
+
+\end_inset
+
+.
+ Our concentration was to create a more general streamline tractography
+ propagation framework which can be used with very different families of
+ anistropic functions and work well with fibre crossings.
+ This algorithm that we call EuDX is applied usually in native space image
+ coordinates and it assumes that the voxel dimensions are equal in all three
+ dimensions (isotropic voxel size).
+ In order to create streamlines (tracks) we need to provide initially one
+ or more seed points 
+\begin_inset Formula $S$
+\end_inset
+
+ .
+ These can be choosed randomly or we could specify them explicitly.
+ However, these seed points need to be constrained by the volume's dimensions.
+ Every seed point 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ becomes the starting point for the track propagation.
+\end_layout
+
+\begin_layout Standard
+For the integration we solve for 
+\begin_inset Formula $\mathbf{p}_{t}=\mathbf{p}_{0}+\int_{0}^{t}\mathbf{v}(p(\mathbf{s}))d\mathbf{s}$
+\end_inset
+
+ and we perform the integration numerically using Euler's method 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\mathbf{p}_{n+1}=\mathbf{p}_{n}+\mathbf{v}(\mathbf{p}_{n})\Delta s\label{eq: euler}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\Delta s$
+\end_inset
+
+ is the propagation step size which should be smaller than the smallest
+ voxel size, 
+\begin_inset Formula $\mathbf{v}$
+\end_inset
+
+ is the propagation direction and 
+\begin_inset Formula $\mathbf{p}_{0}$
+\end_inset
+
+ is the initial seed point.
+ Alternatively than Euler, Runge-Kutta of 2nd and 4th order can be used.
+ However, in this document we used only Euler's method.
+ For EuDX stopping criteria we can use a standard scalar function like FA
+ but it we can also use vector functions like Quantitative Anisotropy (QA)
+ or even the full Orientation Density Function (ODF).
+ The only constraint for these function is to be greater or equal to zero
+ everywhere in the volume.
+ In most cases all these function try to measure in some way the anisotropy
+ of diffusion in every single voxel so we decided to use letter 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ for the purpose of representing all these fields applied on the image grid.
+ Therefore, when we write 
+\begin_inset Formula $\mathcal{A}(\mathbf{u}_{i})=\alpha_{i}$
+\end_inset
+
+ this reads for the peak unit direction of 
+\begin_inset Formula $\mathbf{u}_{i}$
+\end_inset
+
+ the peak value was 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+.
+ For the simple case of FA, 
+\begin_inset Formula $\mathbf{u}$
+\end_inset
+
+ is equal with the eigenvector corresponding to the highest eigenvalue,
+ 
+\begin_inset Formula $\mathcal{A}(\mathbf{e})=FA$
+\end_inset
+
+.
+ For QA which can allow even for up to 5 peaks or more we use 
+\begin_inset Formula $\mathcal{A}(\mathbf{u}_{i})=QA_{i}$
+\end_inset
+
+ where 
+\begin_inset Formula $i\in[0,4]$
+\end_inset
+
+ denotes the current peak.
+ The peak can be characterised by two things the anisotropy value 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ and the unit direction of the peak 
+\begin_inset Formula $\mathbf{u}_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The EuDX algorithm can be described further in the following way:
+\end_layout
+
+\begin_layout Standard
+(1) 
+\begin_inset Formula $\mathcal{A}(\mathbf{u}_{i})$
+\end_inset
+
+ is estimated at every point of the volume.
+ This resembles a composite vector field where every point contains the
+ peak directions superimposed to the anisotropy values.
+ In order to reduce space 
+\begin_inset Formula $\mathbf{u}$
+\end_inset
+
+ can be replaced by an index to the closest sampling point of an evenly
+ distributed sphere.
+ We create an empty list of tracks 
+\begin_inset Formula $T=\emptyset$
+\end_inset
+
+ and then we generate random or prespecified seed points 
+\begin_inset Formula $\mathbf{p}_{0j}$
+\end_inset
+
+ for every track 
+\begin_inset Formula $t_{j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+(2) The following step is to pick a seed point 
+\begin_inset Formula $\mathbf{p}_{0}$
+\end_inset
+
+ and start propagating.
+ We need to remember that the propagation direction can go forward and backward
+ or better said; towards one direction (orthograde) and its opposite direction
+ (retrograde).
+ For the moment we only propagate towards one direction set by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\mathbf{v}(\mathbf{p}_{0})=argmax_{u_{i}}\mathcal{A}(\mathbf{u})\label{eq:argmax_anisotropy}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+but we need to propagate also towards 
+\begin_inset Formula $-\mathbf{v}(\mathbf{p}_{0})$
+\end_inset
+
+.
+ Furthermore as 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ can have multiple values in each voxel (representing different peaks) we
+ need to remember that when we finish with this track followed by direction
+ 
+\begin_inset Formula $\mathbf{v}$
+\end_inset
+
+ we will need to propagate towards the direction of second maximum, third
+ maximum etc.
+ This is necessary if and only if 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ gives information for multiple peaks (like QA).
+\end_layout
+
+\begin_layout Standard
+(3) Apart from the direction we need to check when to stop tracking.
+ EuDX takes as input low threshold 
+\begin_inset Formula $\mathcal{A}_{thr}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\mathcal{A}(\mathbf{p}_{n})<\mathcal{A}_{thr}$
+\end_inset
+
+ then EuDX stops propagating.
+ Otherwise it appends the point to the current track 
+\begin_inset Formula $t_{j}$
+\end_inset
+
+.
+ This can be useful for cancelling out any seed points which are in the
+ background or in very low anisotropy areas where tracking is not recommended.
+ The threshold is different for every different metric QA, FA, GFA etc.
+ 
+\end_layout
+
+\begin_layout Standard
+(4) In order to generate smooth tractography it is recommended to use some
+ kind of interpolation.
+ Here we have been using trilinear interpolation which works in the following
+ way.
+ The seed devides the neibourhing area in 
+\begin_inset Formula $8$
+\end_inset
+
+ regions in 3D (it would be 
+\begin_inset Formula $4$
+\end_inset
+
+ in 2D) and the total contribution of the neighbouring points is added according
+ to the weights 
+\begin_inset Formula $w$
+\end_inset
+
+ of the antipodal side.
+ The weights express subvolumes in 3D (or subareas in 2D).
+ The trilinear interpolation will gives as the weights 
+\begin_inset Formula $w$
+\end_inset
+
+ which will force the contribution of every neighbouring voxel.
+\end_layout
+
+\begin_layout Standard
+(5) We find the nearest direction from the seed's initial direction 
+\begin_inset Formula $\mathbf{v}(\mathbf{p_{n}})$
+\end_inset
+
+ to every 
+\begin_inset Formula $\mathbf{u}_{i}$
+\end_inset
+
+ of every one of the 
+\begin_inset Formula $8$
+\end_inset
+
+ corners of the neighbourhood of the seed.
+ 
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\textnormal{arccos}(\mathbf{x}_{i},\mathbf{p}_{n})\leqq\theta_{thr}$
+\end_inset
+
+ we count the corresponding weight otherwise we continue to the next weight.
+ We check simultanious;u for the condition 
+\begin_inset Formula $\mathcal{A}(\mathbf{u})<\mathcal{A}_{thr}$
+\end_inset
+
+.
+ All the adjacent weights will contribute to the new direction according
+ to the following formula
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\mathbf{v}^{'}(\mathbf{p}_{n})=\sum_{m}w_{m}\mathbf{v}(\mathbf{p}_{n})\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\mathbf{v}(\mathbf{p}_{n})=\dfrac{\mathbf{v}^{'}(\mathbf{p}_{n})}{||\mathbf{v}^{'}(\mathbf{p}_{n})||}$
+\end_inset
+
+ is normalized.
+\end_layout
+
+\begin_layout Standard
+(6) The next point is calculated with eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: euler"
+
+\end_inset
+
+.
+ We insert the new point in the track and continue tracking until one of
+ the stopping criteria is met.
+ Finally, we have to repeat the procedure for the opposite direction of
+ the initial 
+\begin_inset Formula $\mathbf{v}(\mathbf{p}_{o})$
+\end_inset
+
+ and for the smaller peaks as in (2).
+\end_layout
+
+\begin_layout Standard
+There are some other necessary thresholds to keep in mind.
+ Total weight 
+\begin_inset Formula $TW$
+\end_inset
+
+ check that their is enough overall neighbourhood weighting to continue
+ tracking (default 
+\begin_inset Formula $0.5$
+\end_inset
+
+).
+ This is very useful near edges ...EXPLAIN MORE!!!!.
+ Also it is possible for a track to get trapped in a loop and start looping
+ for ever.
+ We can check for that using a threshold for number of loops 
+\begin_inset Formula $MLP$
+\end_inset
+
+ (maximum loops).
+ Finally, sometimes it is useful to remove the short or very long tracks.
+ This is controlled by a length threshold which we denote with 
+\begin_inset Formula $L$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+SAY MORE ABOUT THE IMPORTANCE OF DELTA (INTUITION IS THAT YOU HAVE MULTIPLE
+ STOPPING CRITERIA LIKE DELTA FUNCTION HAS MULTIPLE OUTCOMES?
+\end_layout
+
+\begin_layout Standard
+The EuDX is called for every seed.
+ In alg.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Alg:EuDX_Main"
+
+\end_inset
+
+ we see how it can be called in order to create an entire tractography.
+ The core part is given alg.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Alg:EuDX_Both"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float algorithm
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -1119,7 +1567,37 @@ status open
 
 
 \backslash
-textbf{Input} $A$, $I$
+textbf{Input} $
+\backslash
+mathcal{A}$, $I$, $S$, $U$, 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2.5em}  $
+\backslash
+mathcal{A}_{thr}$, $
+\backslash
+Delta S$, $
+\backslash
+theta_{thr}$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2.5em} $L$, $TW$, $MLP$ 
 \backslash
 
 \backslash
@@ -1148,9 +1626,22 @@ textbf{Output} $T$
 
 \begin_layout Plain Layout
 
+$T=
+\backslash
+emptyset$
+\backslash
 
 \backslash
-textbf{Foreach} seed
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Foreach} seed 
+\backslash
+textbf{In} $S$
 \backslash
 
 \backslash
@@ -1163,7 +1654,11 @@ textbf{Foreach} seed
 \backslash
 hspace*{2em} 
 \backslash
-textbf{Foreach} peak
+textbf{Foreach} peak 
+\backslash
+textbf{In} ($
+\backslash
+mathcal{A}$, $I$) 
 \backslash
 
 \backslash
@@ -1174,9 +1669,7 @@ textbf{Foreach} peak
 
 
 \backslash
-hspace*{4em} track = EUDX
-\backslash
-_Both 
+hspace*{4em} t = EUDX(seed,peak) 
 \backslash
 
 \backslash
@@ -1189,7 +1682,7 @@ _Both
 \backslash
 hspace*{4em} 
 \backslash
-textbf{Append}($T$,track) 
+textbf{Append}($T$,t) 
 \backslash
 
 \backslash
@@ -1200,7 +1693,7 @@ textbf{Append}($T$,track)
 
 
 \backslash
-caption{EuDX Main}
+caption{EuDX ALL}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1234,55 +1727,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset listings
-lstparams "basicstyle={\footnotesize},breaklines=true,numbers=left,numberstyle={\footnotesize},tabsize=4"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-For all seeds
-\end_layout
-
-\begin_layout Plain Layout
-
-	For all peaks
-\end_layout
-
-\begin_layout Plain Layout
-
-		track = EuDX_Both_Directions
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-EuDX Main
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -1290,7 +1734,7 @@ status open
 
 
 \backslash
-textbf{Input} $A$, $I$
+textbf{Input} seed, peak 
 \backslash
 
 \backslash
@@ -1301,7 +1745,27 @@ textbf{Input} $A$, $I$
 
 
 \backslash
-textbf{Output} $T$
+hspace*{2.5em} thresholds
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Output} track  
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Delta, 
+\backslash
+textbf{v} = Initial
+\backslash
+_Direction(seed) 
 \backslash
 
 \backslash
@@ -1312,6 +1776,19 @@ textbf{Output} $T$
 
 
 \backslash
+#propagate orthograde 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+direction=
+\backslash
+textbf{v} 
+\backslash
 
 \backslash
 
@@ -1321,7 +1798,24 @@ textbf{Output} $T$
 
 
 \backslash
-textbf{Foreach} seed
+textbf{While} Delta 
+\backslash
+textbf{is} True
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} Delta, n
+\backslash
+_direction = New
+\backslash
+_Direction(direction)
 \backslash
 
 \backslash
@@ -1334,20 +1828,9 @@ textbf{Foreach} seed
 \backslash
 hspace*{2em} 
 \backslash
-textbf{Foreach} peak
+textbf{If} Delta 
 \backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{4em} track = EUDX
-\backslash
-_Both 
+textbf{is} False
 \backslash
 
 \backslash
@@ -1360,7 +1843,7 @@ _Both
 \backslash
 hspace*{4em} 
 \backslash
-textbf{Append}($T$,track) 
+textbf{Break} 
 \backslash
 
 \backslash
@@ -1371,7 +1854,96 @@ textbf{Append}($T$,track)
 
 
 \backslash
-caption{EuDX Main}
+hspace*{2em} 
+\backslash
+textbf{p} = 
+\backslash
+textbf{p} + $
+\backslash
+Delta S$$
+\backslash
+times$n
+\backslash
+_direction 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} 
+\backslash
+textbf{Append}(track,point)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} direction = n
+\backslash
+_direction 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Delta = True 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+#propagate retrograde 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+direction = - 
+\backslash
+textbf{v} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+#Same as before 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+caption{EuDX}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1399,117 +1971,112 @@ name "Alg:EuDX_Both"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Initial_Direction find the closest direction to follow if all A_thr are
+ low then it returns False (Delta)
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Float algorithm
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset listings
-lstparams "basicstyle={\footnotesize},breaklines=true,numbers=left,numberstyle={\footnotesize},tabsize=4"
-inline false
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-Delta, i_direction = Initial_Direction
-\end_layout
 
-\begin_layout Plain Layout
+\backslash
+textbf{Input} seed, peak, $A$ 
+\backslash
 
-direction=i_direction
-\end_layout
-
-\begin_layout Plain Layout
+\backslash
 
 \end_layout
 
 \begin_layout Plain Layout
 
-While Delta is True
-\end_layout
 
-\begin_layout Plain Layout
+\backslash
+textbf{Output} True/False, direction  
+\backslash
 
-	Delta, new_direction = Propagation_Direction(direction)
-\end_layout
-
-\begin_layout Plain Layout
-
-	IF Delta is False
-\end_layout
-
-\begin_layout Plain Layout
-
-		Break
-\end_layout
-
-\begin_layout Plain Layout
-
-	point += step_size*new_direction
-\end_layout
-
-\begin_layout Plain Layout
-
-	track.append(point)
-\end_layout
-
-\begin_layout Plain Layout
-
-	direction=new_direction
-\end_layout
-
-\begin_layout Plain Layout
+\backslash
 
 \end_layout
 
 \begin_layout Plain Layout
 
-Delta=True
-\end_layout
+point=Nearest
+\backslash
+_Interpolation(seed)
+\backslash
 
-\begin_layout Plain Layout
-
-direction=-direction
-\end_layout
-
-\begin_layout Plain Layout
+\backslash
 
 \end_layout
 
 \begin_layout Plain Layout
 
-While Delta is True
+
+\backslash
+textbf{If} $A$[point]< aniso
+\backslash
+_thr 
+\backslash
+
+\backslash
+
 \end_layout
 
 \begin_layout Plain Layout
 
-	Delta,new_direction = Propagation_Direction(direction)
+
+\backslash
+hspace*{2em} return False 
+\backslash
+
+\backslash
+
 \end_layout
 
 \begin_layout Plain Layout
 
-	IF Delta is False
+
+\backslash
+textbf{Else}
+\backslash
+
+\backslash
+
 \end_layout
 
 \begin_layout Plain Layout
 
-		Break
+
+\backslash
+hspace*{2em} return True, direction
+\backslash
+
+\backslash
+
 \end_layout
 
 \begin_layout Plain Layout
 
-	point += step_size*new_direction
+
+\backslash
+caption{EuDX Initial Direction}
 \end_layout
 
 \begin_layout Plain Layout
 
-	track.insert(0,point)
-\end_layout
-
-\begin_layout Plain Layout
-
-	direction = new_direction
 \end_layout
 
 \end_inset
@@ -1518,11 +2085,9 @@ While Delta is True
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Both Directions 
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Alg:EuDX Initial Direction"
 
 \end_inset
 
@@ -1534,45 +2099,248 @@ Both Directions
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+Calculates the weights for trilinear interpolation and finds nearest direction
+ / check total_weight threshold (max total weight is 1- that a peak has
+ enough weight so we are close at a peak and that all other peaks of the
+ neighbourhood contribute.
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Float algorithm
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
-\begin_inset listings
-lstparams "basicstyle={\footnotesize},breaklines=true,numbers=left,tabsize=4"
-inline false
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-point=grid_point[seed]
+
+\backslash
+textbf{Input} 
+\backslash
+
+\backslash
+
 \end_layout
 
 \begin_layout Plain Layout
 
+
+\backslash
+textbf{Output} 
+\backslash
+
+\backslash
+
 \end_layout
 
 \begin_layout Plain Layout
 
-IF aniso[point]<aniso_thr	
+weights=Trilinear
+\backslash
+_Interpolation(seed)
+\backslash
+
+\backslash
+
 \end_layout
 
 \begin_layout Plain Layout
 
-	return False
+
+\backslash
+textbf{If} out of volue  
+\backslash
+
+\backslash
+
 \end_layout
 
 \begin_layout Plain Layout
 
-Else
+
+\backslash
+hspace*{2em} return False 
+\backslash
+
+\backslash
+
 \end_layout
 
 \begin_layout Plain Layout
 
-	return True, direction
+total
+\backslash
+_weight=0 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Else}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} return True, direction
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{For} 8 corners
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} Delta, direction = Nearest
+\backslash
+_Direction
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} 
+\backslash
+textbf{If} Delta 
+\backslash
+textbf{is} False
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{4em} 
+\backslash
+textbf{Continue}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} total
+\backslash
+_weight += W[corner]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} new
+\backslash
+_direction += W[corner]$
+\backslash
+times$direction
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{If} total
+\backslash
+_weight < total
+\backslash
+_weight
+\backslash
+_thr
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{4em} return False
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Else}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{4em} return True, normalized(new
+\backslash
+_direction)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+caption{EuDX New Direction}
 \end_layout
 
 \end_inset
@@ -1581,121 +2349,54 @@ Else
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset CommandInset label
+LatexCommand label
+name "Alg:EuDX New Direction"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
-Initial Direction
+Just compares and finds the current direction with the peak direction and
+ gives back the neirest or False.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Float algorithm
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
-\begin_inset listings
-lstparams "basicstyle={\footnotesize},breaklines=true,numbers=left,numberstyle={\footnotesize},tabsize=4"
-inline false
-status collapsed
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
-weigths=Trilinear_Interpolation
-\end_layout
 
-\begin_layout Plain Layout
+\backslash
+textbf{Input} seed, peak, $A$ 
+\backslash
 
-\end_layout
-
-\begin_layout Plain Layout
-
-IF out of boundaries
-\end_layout
-
-\begin_layout Plain Layout
-
-	return False
-\end_layout
-
-\begin_layout Plain Layout
+\backslash
 
 \end_layout
 
 \begin_layout Plain Layout
 
-total_weight=0
-\end_layout
 
-\begin_layout Plain Layout
+\backslash
+textbf{Output} True/False, direction  
+\backslash
 
-\end_layout
-
-\begin_layout Plain Layout
-
-For the 8 corners of the neighbourhood
-\end_layout
-
-\begin_layout Plain Layout
-
-	Delta, direction = Nearest_Direction
-\end_layout
-
-\begin_layout Plain Layout
-
-	IF Delta is False
-\end_layout
-
-\begin_layout Plain Layout
-
-		Continue
-\end_layout
-
-\begin_layout Plain Layout
-
-	total_weight += W[corner]
-\end_layout
-
-\begin_layout Plain Layout
-
-	new_direction += W[corner]*direction
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-IF total_weight < .total_weith_threshold
-\end_layout
-
-\begin_layout Plain Layout
-
-	return False
-\end_layout
-
-\begin_layout Plain Layout
-
-Else
-\end_layout
-
-\begin_layout Plain Layout
-
-	return True, normalized(new_direction)
-\end_layout
-
-\begin_layout Plain Layout
+\backslash
 
 \end_layout
 
@@ -1705,98 +2406,122 @@ Else
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\end_inset
+\backslash
+textbf{If} maximum
+\backslash
+_peak < aniso
+\backslash
+_thr 
+\backslash
 
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Propagation Direction
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset listings
-lstparams "basicstyle={\footnotesize},breaklines=true,numbers=left,numberstyle={\footnotesize},tabsize=4"
-inline false
-status collapsed
-
-\begin_layout Plain Layout
-
-IF maximum peak < aniso_thr
-\end_layout
-
-\begin_layout Plain Layout
-
-	return False
-\end_layout
-
-\begin_layout Plain Layout
+\backslash
 
 \end_layout
 
 \begin_layout Plain Layout
 
-For all peaks (directions)
-\end_layout
 
-\begin_layout Plain Layout
+\backslash
+hspace*{2em} return False 
+\backslash
 
-	If peak < aniso_thr
-\end_layout
-
-\begin_layout Plain Layout
-
-		Break
-\end_layout
-
-\begin_layout Plain Layout
-
-	angle = angle(peak direction,current direction)
-\end_layout
-
-\begin_layout Plain Layout
+\backslash
 
 \end_layout
 
 \begin_layout Plain Layout
 
-IF maximum_angle > angl_thr
+
+\backslash
+textbf{For} all peaks 
+\backslash
+
+\backslash
+
 \end_layout
 
 \begin_layout Plain Layout
 
-	return False
+
+\backslash
+hspace*{2em} 
+\backslash
+textbf{If} peak < $A$
+\backslash
+_thr 
+\backslash
+
+\backslash
+
 \end_layout
 
 \begin_layout Plain Layout
 
-Else
+
+\backslash
+hspace*{4em} 
+\backslash
+textbf{Break}
+\backslash
+
+\backslash
+
 \end_layout
 
 \begin_layout Plain Layout
 
-	return True, direction(closest peak on angular terms)
+
+\backslash
+hspace*{2em} angle = angle(peak direction, current direction)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{If} maximum
+\backslash
+_angle > angle
+\backslash
+_thr 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} return False
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Else} return True, direction (closest peak - angular)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+caption{EuDX Nearest Direction}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1809,11 +2534,9 @@ Else
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Nearest Direction
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Alg:EuDX Nearest Direction"
 
 \end_inset
 
@@ -1823,13 +2546,26 @@ Nearest Direction
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Evaluation with software phantoms
+\end_layout
+
+\begin_layout Subsection
+Evaluation with real subjects
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -2016,358 +2752,11 @@ status open
 \end_layout
 
 \begin_layout Subsection
-Resampling Sphere and Anisotropy Metric
+Conclusion
 \end_layout
 
 \begin_layout Standard
-Explain what kind of volumes can be added as an input to the algorithm
-\end_layout
-
-\begin_layout Subsection
-
-\series bold
-Old Description
-\end_layout
-
-\begin_layout Standard
-We extend classical streamline methods 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "MCC+99,CLC+99,BPP+00"
-
-\end_inset
-
- and latest as in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Descoteaux2009,Yeh2010"
-
-\end_inset
-
- to create a more general streamline tractography method which can be used
- with very different types of diffusion anistropic fields.
- 
-\end_layout
-
-\begin_layout Standard
-We solve for 
-\begin_inset Formula $\mathbf{p}_{t}=\mathbf{p}_{0}+\int_{0}^{t}\mathbf{v}(p(\mathbf{s}))d\mathbf{s}$
-\end_inset
-
- and we perform the integration numerically using Euler 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula \begin{equation}
-\mathbf{p}_{n+1}=\mathbf{p}_{n}+\mathbf{v}(p_{n})\Delta s\label{eq: euler}\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-where 
-\begin_inset Formula $\Delta s$
-\end_inset
-
- is the propagation step size which should be smaller than the smallest
- voxel size, 
-\begin_inset Formula $\mathbf{v}$
-\end_inset
-
- is the propagation direction and 
-\begin_inset Formula $\mathbf{p}_{0}$
-\end_inset
-
- is the initial seed point.
- Alternatively than Euler, R-K of 2nd and 4th order can be used.
- In addition to the seed points we do not to use a scalar function like
- FA or NPA for our stopping criteria but it could be a vector function as
- well like QA or even the full diffusivity profile.
- The only constraint is to be 
-\begin_inset Formula $\geqslant0$
-\end_inset
-
- everywhere in the grid.
- We call this function 
-\begin_inset Formula $\mathcal{A}$
-\end_inset
-
- and we could imagine it as an accumulation of vector fields applied on
- the image grid.
- Therefore, when we write 
-\begin_inset Formula $\mathcal{A}(\mathbf{u}_{i})=\alpha_{i}$
-\end_inset
-
- this reads for the peak unit direction of 
-\begin_inset Formula $\mathbf{u}_{i}$
-\end_inset
-
- the peak value was 
-\begin_inset Formula $\alpha_{i}$
-\end_inset
-
-.
- For the simple case of FA, 
-\begin_inset Formula $\mathbf{u}$
-\end_inset
-
-is equal with the eigenvector corresponding to the highest eigenvalue, 
-\begin_inset Formula $\mathcal{A}(\mathbf{e})=fa$
-\end_inset
-
-.
- For the QA case which can allow even for 5 peaks or more we use 
-\begin_inset Formula $\mathcal{A}(\mathbf{u}_{i})=qa_{i}$
-\end_inset
-
- where 
-\begin_inset Formula $i\in[0,4]$
-\end_inset
-
- denotes the current peak.
- (Dandelion case to be added here).
-\end_layout
-
-\begin_layout Standard
-The EuDX algorithm can be described in the following way:
-\end_layout
-
-\begin_layout Standard
-(1) 
-\begin_inset Formula $A(\mathbf{u})$
-\end_inset
-
- is estimated at every point of the volume.
- This resembles a composite vector field where every point contains the
- peak directions superimposed to the anisotropy values.
- In order to reduce space 
-\begin_inset Formula $\mathbf{u}$
-\end_inset
-
- can be replaced by an index to the closest sampling point on an evenly
- distributed sphere.
- We create an empty list of tracks 
-\begin_inset Formula $T=[]$
-\end_inset
-
- and then we generate random or uniform seed points 
-\begin_inset Formula $\mathbf{p}_{0j}$
-\end_inset
-
- for every track 
-\begin_inset Formula $t_{j}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-(2) The following step is to pick a seed point 
-\begin_inset Formula $\mathbf{p}_{0}$
-\end_inset
-
- and start propagating.
- We need to remember that the propagation direction can go forward and backwards
- or better towards one direction and its opposite direction.
- For the moment we only propagate towards one direction set by
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula \begin{equation}
-\mathbf{v}(\mathbf{p}_{0})=argmax_{u_{i}}\mathcal{A}(\mathbf{u})\label{eq:argmax_anisotropy}\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-As 
-\begin_inset Formula $\mathcal{A}$
-\end_inset
-
- can be much more than a scalar function we need to remember that when we
- finish with this track followed by direction 
-\begin_inset Formula $\mathbf{v}$
-\end_inset
-
- we will need to propagate towards the direction of 
-\begin_inset Formula $argsecondmax$
-\end_inset
-
-, 
-\begin_inset Formula $argthirdmax,...,argmin$
-\end_inset
-
- as the current 
-\begin_inset Formula $\mathbf{p}_{0}$
-\end_inset
-
- voxel might contain one or more crossings.
-\end_layout
-
-\begin_layout Standard
-(3) We check for initial propagation direction which checks for the condition:
-\end_layout
-
-\begin_layout Standard
-If 
-\begin_inset Formula $\mathcal{A}(p_{n})<\mathcal{A}_{thr}$
-\end_inset
-
- then STOP.
-\end_layout
-
-\begin_layout Standard
-Else 
-\begin_inset Formula $t_{j}$
-\end_inset
-
-.append(
-\begin_inset Formula $\mathbf{p}_{0}$
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Standard
-This can be very useful in general to cancel out any seed points which are
- in the background or in very low anisotropy areas where tracking is not
- recommended.
- The threshold is different for every different metric QA, FA, GFA etc.
- If step (3) returns TRUE then we add the seed point to the empty track.
-\end_layout
-
-\begin_layout Standard
-(4) In order to generate smooth tractography it is recommended to use some
- kind of interpolation.
- Here we have been using trilinear interpolation which works in the following
- way.
- The seed devides the neibourhing area in 8 parts in 3D (4 in 2D) and the
- total contribution of the neighbouring points is added according to the
- weights 
-\begin_inset Formula $w$
-\end_inset
-
- of the antipodal side.
- The weights express subvolumes in 3D (or subareas in 2D) (see figure).
-\end_layout
-
-\begin_layout Standard
-(5) One good strategy now is to find the nearest direction from the seed's
- initial direction 
-\begin_inset Formula $\mathbf{v}(\mathbf{p_{n}})$
-\end_inset
-
- to every 
-\begin_inset Formula $\mathbf{u}_{i}$
-\end_inset
-
- of every one of the 8 corners of the neighbourhood of the seed.
- 
-\end_layout
-
-\begin_layout Standard
-If 
-\begin_inset Formula $\dfrac{\mathbf{u}(\mathbf{x}_{i})\cdot\mathbf{v}(\mathbf{p}_{n})}{||\mathbf{u}(\mathbf{x}_{i})||||\mathbf{v}(\mathbf{p}_{n})||}\leqq\theta_{thr}$
-\end_inset
-
- we count the corresponding weight otherwise we continue to the next weight.
- We check as well the condition 
-\begin_inset Formula $\mathcal{A}(u)\leqq\mathcal{A}_{thr}$
-\end_inset
-
-.
- All the adjacent weights will contribute to the new direction given by
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula \begin{equation}
-\mathbf{v}^{'}(\mathbf{p}_{n})=\sum_{m}w_{m}\mathbf{v}(\mathbf{p}_{n})\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-where 
-\begin_inset Formula $\mathbf{v}(\mathbf{p}_{n})=\dfrac{\mathbf{v}^{'}(\mathbf{p}_{n})}{||\mathbf{v}^{'}(\mathbf{p}_{n})||}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-(6) The next point is calculated using 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
-\mathbf{p}_{n+1} & = & \mathbf{p}_{n}+v(\mathbf{p}_{n})\Delta s\label{eq:fdx_next_point}\end{eqnarray}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-At this point we store the new point in the track 
-\begin_inset Formula $t_{j}.append(\mathbf{p}_{n+1})$
-\end_inset
-
- and continue tracking until one of the stopping criteria is met.
- Finally, we have to repeat the procedure for the opposite direction of
- the initial 
-\begin_inset Formula $\mathbf{v}(\mathbf{p}_{o})$
-\end_inset
-
- and for the smaller maxima as in (2).
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename FDX_propagation.svg
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-EuDX tracking example
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Evaluation with Fibre Cup phantom and Marta's phantoms
-\end_layout
-
-\begin_layout Subsection
-Evaluation with real subjects
+The source code for EuDX can be found in dipy.tracking.
 \end_layout
 
 \begin_layout Standard

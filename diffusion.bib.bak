@@ -8773,6 +8773,18 @@
   year           = 2008
 }
 
+@InProceedings{seunarine2007exploiting,
+  Author         = {Seunarine, K.K. and Cook, PA and Hall, MG and
+                   Embleton, KV and Parker, GJM and Alexander, D.C.},
+  Title          = {Exploiting peak anisotropy for tracking through
+                   complex structures},
+  BookTitle      = {Computer Vision, 2007. ICCV 2007. IEEE 11th
+                   International Conference on},
+  Pages          = {1--8},
+  Organization   = {IEEE},
+  year           = 2007
+}
+
 @Article{catani2002virtual,
   Author         = {Catani, M. and Howard, R.J. and Pajevic, S. and Jones,
                    D.K.},
