@@ -4482,6 +4482,35 @@ MATTHEW: Are the gini, rce, splitting lumping and kappa measures used in
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+In [6]: np.mean(Means,axis=0) Out[6]: array([ 70.83308972, 79.2047041 , 99.80024186,
+ 65.62591993, 99.89981872, 74.09380112, 74.02238107])
+\end_layout
+
+\begin_layout Plain Layout
+In [7]: np.std(Means,axis=0) Out[7]: array([ 0.50948106, 0.3719552 , 0.03883036,
+ 1.11342703, 0.01952869, 0.390647 , 0.3869803 ])
+\end_layout
+
+\begin_layout Plain Layout
+In [8]: np.mean(Stds,axis=0) Out[8]: array([ 0.77531618, 0.70602677, 0.01170363,
+ 1.98312644, 0.00587059, 0.94589706, 0.94784636]) 
+\end_layout
+
+\begin_layout Standard
+!!!! CREATE A TABLE OUT OF THESE.
+ (label the table under the table caption).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Tightness comparisons
 \begin_inset CommandInset label
