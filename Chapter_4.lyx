@@ -99,6 +99,33 @@ s, find landmarks, create atlases and compare and register tractographies.
  Moreover our method is multipurpose and it can be used as an input to other
  algorithms with higher order complexity which can now become more efficient.
  We show results from a few hundred to many millions of tracks.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MATTHEW: General comment - would it be fair to call this also GordianKnotBundles
+ ? (Maybe GNB for Gordian_kNot_Bundles and GaryfallidisNimmo-SmithBrett
+ :)).
+ I mean that the method is a sort of cut-the-crap clustering.
+ There is no reason to think this method will do a better job of clustering
+ a set of close bundles than the other methods - correct? But it will do
+ it faster.
+ If it were me I would emphasize this more - like doing PCA before doing
+ ICA or something, it is a crude but very fast first pass simplification
+ of the data that can be used as input to a large variety of other methods,
+ including, I suppose, itself, in order to find a global clustering (the
+ most likely clustering for an infinite number of starting conditions).
+\end_layout
+
+\begin_layout Plain Layout
+Maybe an emphasis on the advantage of being able to do clustering in real
+ time for interactive applications and for display.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -123,21 +150,21 @@ key "Ding2003"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "MaddahIPMI2007"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "zhang2005dti"
 
 \end_inset
 
- with most common the Hausdorff distance found in 
+ with the most common being the Hausdorff distance found in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "corouge2004towards"
@@ -145,7 +172,7 @@ key "corouge2004towards"
 \end_inset
 
  and many other papers.
- We are using mainly a very simple distance proposed in 
+ We mainly use a very simple symmetric distance proposed in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Visser2010"
@@ -159,8 +186,8 @@ key "EGMB10"
 
 \end_inset
 
- which we call minimum average direct-flip (MDF) distance 
-\begin_inset Formula $d_{mdf}(s_{A},s_{B})$
+ which we call Minimum average Direct-Flip (MDF) distance 
+\begin_inset Formula $d_{\textrm{mdf}}(s_{A},s_{B})$
 \end_inset
 
  between track 
@@ -181,10 +208,24 @@ reference "eq:direct_flip_distance"
 ).
  This distance can be applied only when both tracks have the same number
  of points.
- Therefore, an initial downsampling of tracks where all segments have the
- same length on a track and all tracks have the same number of segments
- is necessary.
+ Therefore we assume that an initial downsampling of tracks where all segments
+ have the same length on a track and all tracks have the same number of
+ segments has been implemented.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MATTHEW: Is there somewhere else a discussion of what kind of characteristics
+ the different distance methods might have? For example being sensitive
+ to length, or allowing the tracks fairly short portions where they are
+ close and thereafter allowing divergence as in track fanning etc? A discussion
+ here of the problem of short vs long tracks?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -198,9 +239,9 @@ reference "eq:direct_flip_distance"
 \noun off
 \color none
 \begin_inset Formula \begin{eqnarray}
-d_{mdf} & = & \min(d_{d},d_{f})\label{eq:direct_flip_distance}\\
-d_{d}(s_{A},s_{B}) & = & \frac{1}{K}\sum_{i=1}^{K}||x_{i}^{A}-x_{i}^{B}||_{2}\nonumber \\
-d_{f}(s_{A},s_{B}) & = & \frac{1}{K}\sum_{i=1}^{K}||x_{i}^{A}-x_{K-i}^{B}||_{2}\nonumber \end{eqnarray}
+d_{\textrm{mdf}} & = & \min(d_{\textrm{d}},d_{\textrm{f}}),\,\textrm{where}\label{eq:direct_flip_distance}\\
+d_{\textrm{d}}(s_{A},s_{B}) & = & \frac{1}{K}\sum_{i=1}^{K}||x_{i}^{A}-x_{i}^{B}||_{2}\,\textrm{and}\nonumber \\
+d_{\textrm{f}}(s_{A},s_{B}) & = & \frac{1}{K}\sum_{i=1}^{K}||x_{i}^{A}-x_{K-i}^{B}||_{2}\nonumber \end{eqnarray}
 
 \end_inset
 
@@ -213,10 +254,10 @@ where
 \end_inset
 
  is the number of points 
-\begin_inset Formula $x$
+\begin_inset Formula $x_{i}$
 \end_inset
 
- on both tracks 
+ on the two tracks 
 \begin_inset Formula $A$
 \end_inset
 
@@ -228,31 +269,31 @@ where
 \end_layout
 
 \begin_layout Standard
-In some cases it is still valid to use a type of Hausdorff distance which
- for simplicity denote (MAM) distance - shortcut for {minimum, maximum or
- mean} average minimum distance (MAM).
- We mostly use the mean version of that family of distances, see (
+In some cases it is still valid to use a family of Hausdorff distance which
+ for simplicity we denote as MAM distances - short for Minimum, Maximum
+ or Mean Average Minimum distance (MAM).
+ We mostly use the mean version of this family, see (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:mean_average_distance"
 
 \end_inset
 
-) but the others are useful too as they could stress different properties
- of the datasets.
+) but the others are potentially useful as they can weight different properties
+ of the tracks.
  These distances are slower to compute but they can work with different
  number of segments on tracks that is useful for some applications.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula \begin{eqnarray}
-d_{avg}(s_{A},s_{B}) & = & \frac{1}{K_{A}}\sum_{i=1}^{K_{A}}d(x_{i}^{A},s_{B})\nonumber \\
-d_{min}(s_{A},s_{B}) & = & \min_{j=1,...,K_{B}}d(x_{i}^{A},s_{B})\label{eq:mininum_distance}\\
-d_{max}(s_{A},s_{B}) & = & \max_{j=1,...,K_{B}}d(x_{i}^{A},s_{B})\label{eq:maximum distance}\\
-d(x_{i}^{A},s_{B}) & = & \min_{j=1,...,K_{B}}||x_{i}^{A}-x_{j}^{B}||_{2}\nonumber \\
-m_{in} & = & \min(d_{avg}(s_{A},s_{B}),d_{avg}(s_{B},s_{A}))\label{eq:min_average_distance}\\
-m_{ax} & = & \max(d_{avg}(s_{A},s_{B}),d_{avg}(s_{B},s_{A}))\nonumber \\
-m_{ean} & = & (d_{avg}(s_{A},s_{B})+d_{avg}(s_{B},s_{A}))/2\label{eq:mean_average_distance}\end{eqnarray}
+d_{\textrm{avg}}(s_{A},s_{B}) & = & \frac{1}{K_{A}}\sum_{i=1}^{K_{A}}d(x_{i}^{A},s_{B}),\nonumber \\
+d_{\textrm{min}}(s_{A},s_{B}) & = & \min_{j=1,...,K_{B}}d(x_{i}^{A},s_{B}),\,\textrm{and}\label{eq:mininum_distance}\\
+d_{\textrm{max}}(s_{A},s_{B}) & = & \max_{j=1,...,K_{B}}d(x_{i}^{A},s_{B})\,\textrm{where}\label{eq:maximum distance}\\
+d(x,s_{B}) & = & \min_{j=1,...,K_{B}}||x-x_{j}^{B}||_{2}.\nonumber \\
+\textrm{Min\, AM} & = & \min(d_{\textrm{avg}}(s_{A},s_{B}),d_{\textrm{avg}}(s_{B},s_{A}))\label{eq:min_average_distance}\\
+\textrm{Max\, AM} & = & \max(d_{\textrm{avg}}(s_{A},s_{B}),d_{\textrm{avg}}(s_{B},s_{A}))\nonumber \\
+\textrm{Mean\, AM} & = & (d_{\textrm{avg}}(s_{A},s_{B})+d_{\textrm{avg}}(s_{B},s_{A}))/2\label{eq:mean_average_distance}\end{eqnarray}
 
 \end_inset
 
@@ -269,15 +310,15 @@ m_{ean} & = & (d_{avg}(s_{A},s_{B})+d_{avg}(s_{B},s_{A}))/2\label{eq:mean_averag
 \bar no
 \noun off
 \color none
-where here 
+where the number of points 
 \begin_inset Formula $K_{A}$
 \end_inset
 
- can be different that 
+ and 
 \begin_inset Formula $K_{B}$
 \end_inset
 
-.
+ on the two tracks are not necessarily the same.
  Finally, other distances than the average minimum based on the minimum
  
 \begin_inset CommandInset ref
@@ -329,24 +370,20 @@ name "Flo:Distances_used"
 \begin_layout Plain Layout
 Distances used in this work.
  The main distance used is minimum average direct flip (MDF) distance 
-\begin_inset Formula $d_{df}=\min(d_{d},d_{f})$
+\begin_inset Formula $d_{\textrm{df}}=\min(d_{\textrm{d}},d_{\textrm{f}})$
 \end_inset
 
  which is a symmetric distance can deal with the track direction problem
  and works on tracks which have the same number of points.
  Another distance is the mean average distance which is again symmetric
  but does not need for the tracks to have the same number of points 
-\begin_inset Formula $m_{ean}=(d_{avg}(s_{A},s_{B})+d_{avg}(s_{B},s_{A}))/2$
+\begin_inset Formula $\textrm{Mean\, AM}=(d_{avg}(s_{A},s_{B})+d_{avg}(s_{B},s_{A}))/2$
 \end_inset
 
 .
  In this figure the components of both distances are shown; with solid lines
- we draw the tracks and then with dash lines we connect the points of the
- two tracks which provide a useful distance 
-\begin_inset Formula $d$
-\end_inset
-
- on the overall metrics.
+ we draw the tracks, and then with dashed lines we connect the pairs of
+ points of the two tracks whose distances contribute to the overall metric.
 \end_layout
 
 \end_inset
@@ -367,8 +404,8 @@ reference "eq:direct_flip_distance"
 
 \end_inset
 
-), its main advantages is that it is fast to compute, it takes account of
- track direction issues, and that it is easy to understand what it will
+), its main advantages are that it is fast to compute, that it takes account
+ of track direction issues, and that it is easy to understand what it will
  do from the simplest case of parallel equi-length tracks to the most complicate
 d with very divergent tracks.
  Another advantage is that it will separate short tracks from long tracks
@@ -379,6 +416,20 @@ d with very divergent tracks.
  together.
  We will see in the next section that track addition is a key property of
  our clustering algorithm.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MATTHEW: Discussion here of the advantages and disadvantages of different
+ numbers of points allowed in tracks? For example, short tracks having the
+ same number of points as long tracks means that more of the curvature etc
+ data from the long tracks will be lost relative to the short tracks - I
+ suppose.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -395,6 +446,19 @@ During the last
  All these methods suffer from low efficiency, however they do provide many
  useful ideas.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MATTHEW: I got a bit lost in this section.
+ Is there a way of summarizing the papers under different themes such as
+ distance metric used, cluster number finding, clustering method or something
+ like that?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -928,11 +992,11 @@ key "merboldt1992diffusion,MAB04"
 
  as the diffusion preparation method.
  The field of view was 
-\begin_inset Formula $240x240mm^{2}$
+\begin_inset Formula $240\times240mm^{2}$
 \end_inset
 
 , matrix size 
-\begin_inset Formula $96x96$
+\begin_inset Formula $96\times96$
 \end_inset
 
 , and slice thickness 
@@ -942,25 +1006,29 @@ key "merboldt1992diffusion,MAB04"
  (no gap).
  55 slices were acquired to achieve full brain coverage, and the voxel resolutio
 n was 
-\begin_inset Formula $2.5x2.5x2.5mm{}^{3}$
+\begin_inset Formula $2.5\times2.5\times2.5\textrm{mm}{}^{3}$
 \end_inset
 
 .
- A 102-point half grid acquisition with a maximum b-value of 
+ A 102-point half grid acquisition with a maximum 
+\begin_inset Formula $b$
+\end_inset
+
+-value of 
 \begin_inset Formula $4000\, s/mm^{2}$
 \end_inset
 
  was used.
  The total acquisition time was
-\begin_inset Formula $14\, min\,21s$
+\begin_inset Formula $14'21''$
 \end_inset
 
  with TR=
-\begin_inset Formula $8200ms$
+\begin_inset Formula $8200\textrm{ms}$
 \end_inset
 
  and TE=
-\begin_inset Formula $69ms$
+\begin_inset Formula $69\textrm{ms}$
 \end_inset
 
 .
@@ -1059,9 +1127,22 @@ The QB Algorithm
 \end_layout
 
 \begin_layout Standard
-QuickBundles (QB) is a remarkably fast algorithm which can simplify tractography
- representation in an accessible structure in a time that is linear in the
- number of tracks 
+QuickBundles (QB) is a notably
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MATTHEW: Might want to omit sales-pitchey words here.
+ The risk will be that your reviewer will find themselves trying to find
+ fault, rather than enjoying this new addition to the list of tools they
+ can use.
+ ELFE: I agree.
+\end_layout
+
+\end_inset
+
+ fast algorithm which can simplify tractography representation in an accessible
+ structure in a time that is linear in the number of tracks 
 \begin_inset Formula $N$
 \end_inset
 
@@ -1071,8 +1152,8 @@ QuickBundles (QB) is a remarkably fast algorithm which can simplify tractography
 \end_inset
 
  distance based clustering algorithm that we created in order to simplify
- huge trajectory datasets as those produced by current tractography generation
- algorithms.
+ huge trajectory datasets such as those produced by current tractography
+ generation algorithms.
  In general, there are very few linear time clustering algorithms.
  Just two are well known: CLARANS 
 \begin_inset CommandInset citation
@@ -1089,7 +1170,7 @@ key "zhang1997birch"
 \end_inset
 
 .
- QB is different from either of these methods; we will motivate it by describing
+ QB is different from both of these methods; we will motivate it by describing
  some aspects of BIRCH as a starting point for the presentation of QB.
 \end_layout
 
@@ -1101,7 +1182,7 @@ BIRCH has two key components: first is relatively simple and involves the
  the database while balancing what is kept in memory and what is on disc
  for very large databases.
  BIRCH uses clustering features which are available for each item in the
- dataset; these are specific vectors of numerical values.
+ dataset; these are specific vectors of a fixed dimension of numerical values.
  Each cluster in turn has a clustering feature which is an aggregate of
  the clustering features of the items that belong to it (e.g.
  the sum or mean of the individual clustering feature vectors).
@@ -1120,11 +1201,38 @@ It is the linear nature of BIRCH combined with the fixed dimensionality
  do add some major overheads to BIRCH's performance.
  QB capitalises on these positive features but does not try to create any
  kind of hierarchical structure for the clusters.
- In QB each item is either added to an existing cluster on the basis of
- a distance between the cluster feature of the item and the cluster features
+ While items in BIRCH are fixed dimension vectors with no additional structure,
+ in QB each item (track) is a fixed-length ordered sequence of points in
+ 
+\begin_inset Formula $\mathbb{R}^{3}$
+\end_inset
+
+, and uses metrics and amalgamations which take account of and preserve
+ this structure.
+ Moreover each item is either added to an existing cluster on the basis
+ of a distance between the cluster feature of the item and the cluster features
  of the current set of clusters.
  Clusters are held in a list which is extended according to need.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MATTHEW: More here on the comparison of BIRCH to QB? Can BIRCH be considered
+ a superset of QB? What can BIRCH do that QB cannot? How about the other
+ way round? ELEF and IAN: The items that BIRCH uses are simply vectors of
+ a fixed dimension; the distances used are euclidean in this space; those
+ from the tractographies on which QB operates have additional structure
+ that is exploited and propagated to the virtual tracks: the items are ordered
+ sequences of points in 3 dimensional space.
+ Single pass; non-hierarchical; checks for flipping.
+ Proximity to virtual track is criterion for allocating new item to a cluster.
+ IAN: I have added something above on these lines.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1145,7 +1253,8 @@ QB creates an online list of cluster nodes.
 \begin_inset Formula $p\times3$
 \end_inset
 
- matrix which the most important feature of the cluster and 
+ matrix, the viritual track, which the most important feature of the cluster,
+ and 
 \begin_inset Formula $n$
 \end_inset
 
@@ -1177,7 +1286,7 @@ where
 \begin_inset Formula $\Sigma$
 \end_inset
 
- represents here matrix addition along the second axis and 
+ here represents matrix addition, and 
 \begin_inset Formula $n$
 \end_inset
 
@@ -1186,8 +1295,8 @@ where
 \begin_inset Formula $p$
 \end_inset
 
- therefore an equidistant downsampling of tracks is necessary before QB
- starts.
+, therefore a downsampling of tracks, typically equidistant, is necessary
+ before QB starts.
  A short summary of the algorithm goes as follows.
  
 \end_layout
@@ -1202,11 +1311,11 @@ and place it in the first cluster
 \end_inset
 
 .
- Then for all remaining tracks i) goto next track 
+ Then for all remaining tracks (i) goto next track 
 \begin_inset Formula $s_{i}$
 \end_inset
 
- ii) calculate MDF distance between this track and virtual tracks of all
+; (ii) calculate MDF distance between this track and virtual tracks of all
  existing clusters 
 \begin_inset Formula $c_{k}$
 \end_inset
@@ -1215,8 +1324,9 @@ and place it in the first cluster
 \begin_inset Formula $\mathbf{v}=\mathbf{h}/n$
 \end_inset
 
- iii) if the minimum MDF distance is smaller than a distance threshold 
-\begin_inset Formula $thr$
+; (iii) if the minimum MDF distance is smaller than a distance threshold
+ 
+\begin_inset Formula $\mathrm{\mathit{thr}}$
 \end_inset
 
  add the track to the cluster 
@@ -2247,15 +2357,15 @@ reference "Fig:LSC_simple"
 \end_inset
 
 .
- One the of the reasons why QB is a linear time algorithm is because on
- the structure of the cluster node; we only save the sum of current tracks
- in the cluster.
+ One of the reasons why QB is a linear time algorithm derives from the structure
+ of the cluster node: we only save the sum of current tracks in the cluster
+ and this is achived cumulatively.
  By contrast if we were using k-means at every iteration we would have to
  recalculate the average and that is computationally much more intensive.
- Another nice property of QB is that it goes through the tracks only once
- and that a track belongs to only one cluster.
+ Another nice property of QB is that it makes a pass through the tracks
+ only once and that a track belongs to only one cluster.
  Further still, we can extend the cluster node to contain more information
- for example we could redefine 
+ , for example we could redefine 
 \begin_inset Formula $c=\{I,\mathbf{h},n,\mathbf{v}\}$
 \end_inset
 
@@ -2267,6 +2377,25 @@ reference "Fig:LSC_simple"
  to obtain second order information and that way we could calculate the
  variance of the cluster where 
 \begin_inset Formula $\mathbf{h}^{(2)}\leftarrow\{\sum x_{i}^{2},\sum y_{i}^{2},\sum z_{i}^{2},\sum x_{i}y_{i},\sum y_{i}z_{i},\sum x_{i}z_{i}\}$
+\end_inset
+
+ where 
+\begin_inset Formula $x_{i},y_{i},z_{i}$
+\end_inset
+
+ are the coordinates of the 
+\begin_inset Formula $i$
+\end_inset
+
+th point of 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+IAN: exactly what are we summing over? - it's ambiguous as it stands.
+ 
+\end_layout
+
 \end_inset
 
 .
@@ -2361,9 +2490,10 @@ One of the disadvantages of most clustering algorithms is that they give
  different results with different initial conditions; for example this is
  recognised with k-means, expectation-maximization and k-centers where it
  is common practice to try a number of different random initial configurations.
- The same holds for QB so if there is not a single distance which can separate
- all clusters then with different permutations of the same tractography
- we will see similar number of clusters but different underlying clusters.
+ The same holds for QB so if there is not distinct clusters such that the
+ distance between any pair of clusters is supra-threshold, then with different
+ permutations of the same tractography we will typically see similar number
+ of clusters but different underlying clusters.
  
 \end_layout
 
@@ -2375,7 +2505,18 @@ QB's powerful simplifications
 One of the major benefits of applying QB to tractographies is that it can
  provide meaningful simplifications and find structures that were previously
  unseen or difficult to found because of the high density of the tractography.
- For example we used QB to cluster the corticospinal tract (CST) selected
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MATTHEW: Is this not true for any automated clusting technique? Emphasize
+ need for speed in interactive applications?
+\end_layout
+
+\end_inset
+
+For example we used QB to cluster the corticospinal tract (CST) selected
  by an expert.
  This tract was part of the datasets provided by the Pittsburgh Brain Competitio
 n (PBC2009-ICDM).
@@ -2434,7 +2575,20 @@ This is a part of the CST bundle consisting of
  tracks merged by an expert (PBC2009 data) shown with red color.
  Visually it looks like all tracks have similar shape and possibly merge
  towards the bottom and then spread when going upper.
- However, this is only an illusion.
+ However, this is only an over-simplification caused by the opaque density
+ when all the tracks are visualised ('not seeing the wood for the trees').
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MATTHEW Too strong? Maybe 'is a simplification of the underlying data'.
+ ELEF: Agreed
+\end_layout
+
+\end_inset
+
+.
  QB can help us see the real structure of the bundle and identify its elements.
  Here on the right side we see a simplification (virtual tracks) of the
  red CST by running QB with distance threshold of 
@@ -3056,7 +3210,7 @@ The complexity of QB is on average linear time
 \begin_inset Formula $O(N^{2})$
 \end_inset
 
- when every cluster constains only one track.
+ when every cluster contains only one track.
  We compared QB with QB run on 
 \begin_inset Formula $12$
 \end_inset
@@ -3110,8 +3264,8 @@ name "Flo:Speed1"
 \begin_inset Caption
 
 \begin_layout Plain Layout
-QB is a super-efficient algorithm that its performance is influenced from
- a few parameters.
+QB is a very efficient algorithm whose performance is controlled by just
+ three parameters.
  The first is the number of tracks, a second is the distance threshold in
  millimeters - shown with different colours and another is the amount of
  initial downsampling of the initial trajectories.
@@ -3303,24 +3457,25 @@ minMDF
 
 \begin_layout Standard
 Another exemplar could be defined as the most similar track among all tracks
- in the bundle which we denote with 
+ in the bundle, which we denote by 
 \begin_inset Formula $e_{2}=\mathrm{arg}\min_{x\in C}\sum_{y\in C}||y-x||_{2}$
 \end_inset
 
- or if we want to work with tracks of different size we could use the 
-\begin_inset Formula $e_{3}=arg$
+, or if we want to work with tracks of different size we could use the 
+\begin_inset Formula $e_{3}=\textrm{arg min MAM}_{x,y\in C}(y,x)$
 \end_inset
 
-minMAM
-\begin_inset Formula $_{x,y\in C}$
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MATTHEW: sentence fragment? IAN: sorted out
+\end_layout
+
 \end_inset
 
-(
-\begin_inset Formula $y,x$
-\end_inset
-
-).
- if we want to work with.
  Identification of exemplar tracks of type 
 \begin_inset Formula $e_{2}$
 \end_inset
@@ -3365,15 +3520,24 @@ Because a track is a sequence of points without a preferred direction, it
  Of course the tracks do not really carry directional information.
  By direction we mean the encoding of the sequence of points which define
  the track.
+ Thus a track may be ordered 
+\begin_inset Formula $p_{1},p_{2}\ldots p_{N-1},p_{N}$
+\end_inset
+
+, or 
+\begin_inset Formula $p_{N},p_{N-1}\ldots p_{2},p_{1}$
+\end_inset
+
+.
  
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Thus a track may be ordered p_a, p_b ..
+MATTHEW: Thus a track may be ordered p_a, p_b ..
  p_y, p_z, or p_z, p_y ..
  p_b, p_a.
- 
+ IAN: noted 
 \end_layout
 
 \end_inset
@@ -3384,6 +3548,18 @@ We call this the bi-directionality problem.
  However, if we want to merge clusters together we need to have a way to
  further reduce this difficult problem.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MATTHEW: I don't understand why this problem is not solved by just using
+ the MDF distance between bundle virtuals or examplars.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3534,7 +3710,19 @@ Suppose we have a probability distribution
 \end_inset
 
 .
- This is the Gini Impurity of 
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MATTHEW: I got confused here.
+ I guess this is because the probability of mislabeling is sum_i(p_i * (1-p_i))
+ but then I didn't understand the role of the 'items sampled from P' above.
+\end_layout
+
+\end_inset
+
+This is the Gini Impurity of 
 \begin_inset Formula $P$
 \end_inset
 
@@ -3654,8 +3842,8 @@ status open
 \bar no
 \noun off
 \color none
-Am I confused or isn't this the A-weighted average of the impurities of
- the columns of T? 
+MATTHEW: Am I confused or isn't this the A-weighted average of the impurities
+ of the columns of T? 
 \end_layout
 
 \end_inset
@@ -3711,7 +3899,7 @@ In this case given
 \end_inset
 
 , 
-\begin_inset Formula $\mathrm{\rce}(\mathcal{A}|\mathcal{B})={\displaystyle \sum_{j=1}^{n}\frac{b_{j}}{N}\thinspace(1-p_{B_{j}}^{*})}$
+\begin_inset Formula $\mathrm{\rce}(\mathcal{A}|\mathcal{B})={\displaystyle \sum_{j=1}^{n}\frac{b_{j}}{N}\thinspace(1-p_{B_{j}})}$
 \end_inset
 
 .
@@ -3720,7 +3908,8 @@ In this case given
 status open
 
 \begin_layout Plain Layout
-What is p*? - sorry to be ignorant.
+MATTHEW: What is p*? - sorry to be ignorant.
+ IAN: Typo asterisk!
 \end_layout
 
 \end_inset
@@ -3994,10 +4183,8 @@ Our fifth metric is Cohen's
 \end_layout
 
 \begin_layout LyX-Code
-\begin_inset Formula 
-\[
-\kappa=\mathtt{\frac{observed\: proportion\: of\: agreements-\mathtt{expected\: proportion\: of\: chance\: agreements}}{\mathtt{expected\: proportion}\: of\: non-chance\: agreements}}.
-\]
+\begin_inset Formula \[
+\kappa=\mathtt{\frac{observed\: proportion\: of\: agreements-\mathtt{expected\: proportion\: of\: chance\: agreements}}{\mathtt{expected\: proportion}\: of\: non-chance\: agreements}}.\]
 
 \end_inset
 
@@ -4009,8 +4196,8 @@ Our fifth metric is Cohen's
 status open
 
 \begin_layout Plain Layout
-Sorry - I realize I am not thinking this through, but I wasn't clear what
- an 'expected' proportion of 'non-chance' agreements would be.
+MATTHEW: Sorry - I realize I am not thinking this through, but I wasn't
+ clear what an 'expected' proportion of 'non-chance' agreements would be.
  From the formula I am tempted to describe the denominator as 'expected
  proportion of chance disagreements'.
 \end_layout
@@ -4205,16 +4392,12 @@ key "CarpanetoAPC"
 \end_inset
 
  is both fast and capable of handling assignment problems of unlimited size.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Are the gini, rce, splitting lumping and kappa measures used in this chapter?
+MATTHEW: Are the gini, rce, splitting lumping and kappa measures used in
+ this chapter?
 \end_layout
 
 \end_inset
@@ -4268,7 +4451,7 @@ key "moberts2005evaluation"
 \end_inset
 
  in 
-\begin_inset Formula $E_{B}=\{e_{0}^{'},...,e_{|V_{B}|}^{'}\}$
+\begin_inset Formula $E_{B}=\{e_{0}^{'},...,e_{|E_{B}|}^{'}\}$
 \end_inset
 
  
@@ -4276,7 +4459,7 @@ key "moberts2005evaluation"
 status open
 
 \begin_layout Plain Layout
-s/V_B/E_B/
+MATHHEW: s/V_B/E_B/ IAN: Done
 \end_layout
 
 \end_inset
@@ -4462,8 +4645,9 @@ We run an experiment were we compared TC between pairs of 10 subjects with
 status open
 
 \begin_layout Plain Layout
-Not sure how the t value difference between TC10 and TC100 shows the ability
- of QB to find agreements between brains - can you say more? 
+MATTHEW: Not sure how the t value difference between TC10 and TC100 shows
+ the ability of QB to find agreements between brains - can you say more?
+ 
 \end_layout
 
 \end_inset
@@ -4476,7 +4660,7 @@ Not sure how the t value difference between TC10 and TC100 shows the ability
 status open
 
 \begin_layout Plain Layout
-!!!!CREATE A DIAGRAM WHERE YOU SHOW COMPARISONS FROM DIFFERENT ORDERINGS
+ELEF: !!!!CREATE A DIAGRAM WHERE YOU SHOW COMPARISONS FROM DIFFERENT ORDERINGS
  AND DIFFERENT SUBJECTS
 \end_layout
 
@@ -4601,7 +4785,7 @@ QB is already a super-efficient algorithm however we wanted to make it even
 status open
 
 \begin_layout Plain Layout
-Can be done in parallel
+MATTHEW: Can be done in parallel
 \end_layout
 
 \end_inset
@@ -4618,7 +4802,7 @@ Then we put all tracks together and break them into subsets.
 status open
 
 \begin_layout Plain Layout
-This will give you a different answer to the serial version surely?
+MATTHEW: This will give you a different answer to the serial version surely?
 \end_layout
 
 \end_inset
@@ -4973,7 +5157,7 @@ name "Flo:erroneous_tracks"
 status open
 
 \begin_layout Plain Layout
-Really? Nothing for short tracks for example?
+MATTHEW: Really? Nothing for short tracks for example?
 \end_layout
 
 \end_inset
@@ -4984,8 +5168,8 @@ By calculating the number of winding tracks in your datasets over the total
 status open
 
 \begin_layout Plain Layout
-These are all winding tracks? The windingness is difficult to see - maybe
- some isolated examples?
+MATTHEW: These are all winding tracks? The windingness is difficult to see
+ - maybe some isolated examples?
 \end_layout
 
 \end_inset
@@ -5263,8 +5447,8 @@ name "Flo:atlas_big_bundles"
 status open
 
 \begin_layout Plain Layout
-Not sure what largest bundles % is? Is the gradient at 100% then the number
- of tracks taken by the smallest bundles?
+MATTHEW: Not sure what largest bundles % is? Is the gradient at 100% then
+ the number of tracks taken by the smallest bundles?
 \end_layout
 
 \end_inset
@@ -5327,7 +5511,7 @@ reference "Flo:CloseToSelected"
 status open
 
 \begin_layout Plain Layout
-selections of what?
+MATTHEW: selections of what?
 \end_layout
 
 \end_inset
@@ -5410,9 +5594,9 @@ We found that QB is of great value as an adjunct to many less efficient
 status open
 
 \begin_layout Plain Layout
-I wonder if you can use QB as input to QB? I mean to try and find the 'global
- minimum' clustering - the 'mean' clustering from all possible clusterings
- with QB - independent therefore of starting point.
+MATTHEW: I wonder if you can use QB as input to QB? I mean to try and find
+ the 'global minimum' clustering - the 'mean' clustering from all possible
+ clusterings with QB - independent therefore of starting point.
  This might be somehow an optimum solution, and would fit naturally with
  parallel solutions so the serial version would be the same as the parallel
  version.
@@ -5440,13 +5624,13 @@ Most clustering algorithms need to calculate all pairwise distances between
 status open
 
 \begin_layout Plain Layout
-I remember Fernando talking about large scale diffusion clustering methods
- being partially based on the ability to ignore long distances when clustering.
+MATTHEW: I remember Fernando talking about large scale diffusion clustering
+ methods being partially based on the ability to ignore long distances when
+ clustering.
  I guess QB here gives you a reliable measure of a long distance so that
  you can zero out this entry in your connection matrix.
-
-Tractographic data sets are not sparse, so standard sparse methods 
- (which FP was referring to) are not applicable.
+ ELEF: Tractographic data sets are not sparse, so standard sparse methods
+  (which FP was referring to) are not applicable.
 \end_layout
 
 \end_inset
@@ -5548,7 +5732,7 @@ reference "Flo:LSC+HC+AP"
 status open
 
 \begin_layout Plain Layout
-How reliable is this do you think?
+MATTHEW: How reliable is this do you think?
 \end_layout
 
 \end_inset
@@ -5653,15 +5837,12 @@ name "Flo:LSC+HC+AP"
 \begin_inset Caption
 
 \begin_layout Plain Layout
-\begin_inset Formula $2$
-\end_inset
-
-examples were 
+Two examples where 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Two examples where
+MATTHEW: Two examples where IAN: Corrected
 \end_layout
 
 \end_inset
@@ -5787,7 +5968,7 @@ name "sub:Affinity-Propagation"
 status open
 
 \begin_layout Plain Layout
-You have already used and referred to AP above.
+MATTHEW: You have already used and referred to AP above.
  Put this section earlier?
 \end_layout
 
@@ -6666,6 +6847,17 @@ mm are removed from the datasets.
 \end_inset
 
  tracks).
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MATTHEW: Why these numbers? Won't larger brains have different tracks removed
+ compared to smaller brains?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -6876,7 +7068,7 @@ mm.
  Consequently SMD is chosen as a better cost function for tractography registrat
 ion.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 I seem to remember that registrations perform a bit differently when registering
@@ -6929,11 +7121,11 @@ reference "sub:Tightness-comparisons-1"
 status open
 
 \begin_layout Plain Layout
-Isn't the metric used the registration related to the metric used to assess
- the registration? Maybe you could some measure of alignment of the structural
- image instead? I mean, transform the structural image with the same parameters.
-
-There isn't time!! But we have partial checks.
+MATTHEW: Isn't the metric used the registration related to the metric used
+ to assess the registration? Maybe you could some measure of alignment of
+ the structural image instead? I mean, transform the structural image with
+ the same parameters.
+ ELEF: There isn't time!! But we have partial checks.
 \end_layout
 
 \end_inset
@@ -7013,7 +7205,8 @@ In many parts of this document we didn't consider short tracks.
 status open
 
 \begin_layout Plain Layout
-what is an adaptive distance threshold? Can this be in the earlier discussion?
+MATTHEW: what is an adaptive distance threshold? Can this be in the earlier
+ discussion?
 \end_layout
 
 \end_inset
@@ -7116,10 +7309,13 @@ Strategy1
 status open
 
 \begin_layout Plain Layout
-I could imagine a short track crossing a large track at right angles and
- still being matched with the larger track.
+MATTHEW: I could imagine a short track crossing a large track at right angles
+ and still being matched with the larger track.
 
-If there is a track like that we want to know about it!
+\emph on
+ 
+\emph default
+ELEF: If there is a track like that we want to know about it!
 \end_layout
 
 \end_inset
@@ -7200,11 +7396,11 @@ Discussion and conclusion
 \end_layout
 
 \begin_layout Standard
-In this document we presented a novel and extremely powerful
- algorithm; QuickBundles (QB).
- This algorithms provides simplifications to the ancient problem of white
- matter anatomy which recently attracted much scientific attention but it
- can be used as well for any trajectory clustering problem especially when
+In this document we presented a novel and extremely powerful algorithm --
+ QuickBundles (QB).
+ This algorithm provides simplifications to the ancient problem of white
+ matter anatomy which has recently attracted much scientific attention;
+ it can also be used for any trajectory clustering problem especially when
  large data sets are involved.
  QB can be used with all types of diffusion MRI tractographies which generate
  streamlines probabilistic or deterministic and it is independent of the
@@ -7225,7 +7421,7 @@ In common with mainstream clustering algorithms such as k-means, k-centers
 status open
 
 \begin_layout Plain Layout
-Need evidence for this assertion?
+MATTHEW: Need evidence for this assertion?
 \end_layout
 
 \end_inset
@@ -7358,7 +7554,7 @@ A virtual (centroid) track is the average of all tracks in the cluster.
 status open
 
 \begin_layout Plain Layout
-Could this explanation go earlier in the chapter?
+MATTHEW: Could this explanation go earlier in the chapter?
 \end_layout
 
 \end_inset
@@ -7404,7 +7600,7 @@ dipy.org
 status open
 
 \begin_layout Plain Layout
-Further notes for discussion
+ELEF: Further notes for discussion
 \end_layout
 
 \begin_layout Plain Layout
