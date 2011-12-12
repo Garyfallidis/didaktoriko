@@ -71,10 +71,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="194.76454"
-     inkscape:cy="86.541091"
+     inkscape:cx="149.75317"
+     inkscape:cy="131.91349"
      inkscape:document-units="px"
-     inkscape:current-layer="g5876"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1003"
@@ -113,6 +113,24 @@
        inkscape:export-filename="/home/eg309/Documents/didaktoriko/EuDX_propagation.png"
        inkscape:export-xdpi="315.89999"
        inkscape:export-ydpi="315.89999" />
+    <g
+       transform="matrix(0.35831196,0.32508939,-0.32729093,0.35590175,353.15963,129.02106)"
+       id="g5195">
+      <g
+         transform="translate(105.56094,84.347738)"
+         id="g5197">
+        <path
+           inkscape:connector-curvature="0"
+           id="path5199"
+           d="m 307.59145,201.30866 c -0.50508,24.64621 -0.50508,24.64621 -0.50508,24.64621"
+           style="fill:#ff0000;fill-opacity:1;stroke:#f90000;stroke-width:4.30299997;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path5201"
+           d="m 303.06478,202.48398 c 0.11552,-0.29115 1.17834,-3.0766 2.36183,-6.18988 1.1835,-3.11328 2.24143,-5.65919 2.35099,-5.65756 0.2126,0.003 4.59649,12.22956 4.44927,12.40875 -0.048,0.0584 -0.56062,-0.13854 -1.13914,-0.4377 -1.71233,-0.88549 -4.15298,-0.97817 -6.32826,-0.24033 -1.67463,0.56804 -1.87935,0.58214 -1.69469,0.11672 l 0,0 z"
+           style="fill:#ff0000;fill-opacity:1;stroke:#f90000;stroke-width:1.08304322;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      </g>
+    </g>
     <g
        id="g5658"
        transform="translate(-299.51022,67.175145)">

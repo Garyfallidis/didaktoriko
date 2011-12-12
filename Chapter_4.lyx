@@ -127,7 +127,7 @@ Maybe an emphasis on the advantage of being able to do clustering in real
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 IAN: I have rewritten and reordered the second half of the paragraph above.
 \end_layout
 
@@ -3741,6 +3741,46 @@ vice versa
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename last_figures/cluster_sizes.png
+	lyxscale 30
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Paragraph*
 Gini impurity
 \end_layout
@@ -3943,7 +3983,7 @@ In this case given
 \end_inset
 
  we assign to each item the label with maximum probability 
-\begin_inset Formula $i_{\mathrm{max}}=\textrm{\textrm{arg\, max}}_{i}\, p_{i}$
+\begin_inset Formula $i_{\mathrm{max}}=\textrm{\textrm{arg\,\ max}}_{i}\, p_{i}$
 \end_inset
 
 .

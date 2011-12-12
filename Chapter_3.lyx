@@ -87,13 +87,13 @@ key "MCC+99,CLC+99"
 
 \begin_layout Standard
 In this work we designed a purely deterministic method which is fast, accurate
- and comprehensive.
+ and all-inclusive.
  But most importantly it can have as input model-based or model-free reconstruct
-ion algorithms of any known algorithm or complexity.
+ion algorithms of most known algorithms.
  We call this algorithm EuDX.
- Eu stands for Euler integration, D stands for Delta which is a function
- that combines together all the different stopping criteria and X stands
- for crossings.
+ Eu stands for Euler integration, D stands for Delta function which is just
+ a function that check for many different stopping criteria and X stands
+ for fibre crossings.
  EuDX can deal with any number of crossings as long as your data supports
  them.
  The purpose of this algorithm is to be faithful to the reconstruction results
@@ -123,6 +123,19 @@ key "Yeh2010"
 \end_inset
 
  with the additional support for multiple fibre-crossings.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Small techical details in tractography propagation algorithm can create
+ very different results.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1139,30 +1152,50 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-In this figure we see that in every point (black dot) there is none or more
- vectors.
+A sketch output from EuDX.
+ In this figure we see that in every voxel centre (black dot) there is one
+ or more vectors.
  These vectors represent peaks where their length is equal to the anisotropy
  value and the direction is equal to direction of the peak e.g.
- from an ODF.
+ calculated in a given ODF.
  EuDX can track multiple peaks starting from a single seed point (star)
- if their anisotropy values is higher than a threshold.
- In order to reduce memory usage we discretized the directions using a sphere
- of 
-\begin_inset Formula $642$
-\end_inset
-
- vertices.
- Then we only need to save a 4D volume with anisotropy values 
+ if their anisotropy values are higher than a threshold.
+ In order to reduce memory usage we discretize the directions using the
+ vertices of a unit sphere.
+ Then we only need to input to EuDX a 4D volume with anisotropy values 
 \begin_inset Formula $\mathcal{A}$
 \end_inset
 
  and an 4D volume 
-\begin_inset Formula $I$
+\begin_inset Formula $\mathcal{I}$
 \end_inset
 
- with the indices of the directions on the sphere.
- 
+ with the indices of the directionse.
+ The first three dimensions in 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ are for the voxel position and the last dimension is for the peak values
+ (anisotropy).
+ Respectively, first three dimensions in 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ are for the voxel position and the last dimension contains the indices
+ of the directions(vertices) on a discrete sphere.
+ In that way we track from the same seed towards different directions and
+ support tracking in crossing areas.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:EuDX_sketch"
 
 \end_inset
 
@@ -1197,8 +1230,8 @@ key "Descoteaux2009,Yeh2010"
  This algorithm that we call EuDX is applied usually in native space image
  coordinates and it assumes that the voxel dimensions are equal in all three
  dimensions (isotropic voxel size).
- If  In order to create streamlines (tracks) we need to provide initially
- one or more seed points 
+ In order to create streamlines (tracks) we need to provide initially one
+ or more seed points 
 \begin_inset Formula $S$
 \end_inset
 
@@ -1206,7 +1239,7 @@ key "Descoteaux2009,Yeh2010"
  These can be choosed randomly or we could specify them explicitly.
  However, these seed points need to be constrained by the volume's dimensions.
  Every seed point 
-\begin_inset Formula $s_{i}$
+\begin_inset Formula $\mathbf{p}_{0}$
 \end_inset
 
  becomes the starting point for the track propagation.
@@ -1234,24 +1267,28 @@ where
 \begin_inset Formula $\Delta s$
 \end_inset
 
- is the propagation step size which should be smaller than the smallest
+ is the propagation step size which should be at least smaller than the
  voxel size, 
 \begin_inset Formula $\mathbf{v}$
 \end_inset
 
- is the propagation direction and 
-\begin_inset Formula $\mathbf{p}_{0}$
+ is the propagation direction.
+ Alternatively, Runge-Kutta of 
+\begin_inset Formula $2$
 \end_inset
 
- is the initial seed point.
- Alternatively than Euler, Runge-Kutta of 2nd and 4th order can be used.
+nd and 
+\begin_inset Formula $4$
+\end_inset
+
+th order can be used.
  However, in this document we used only Euler's method.
  For EuDX stopping criteria we can use a standard scalar function like FA
- but it we can also use vector functions like Quantitative Anisotropy (QA)
+ but we can also use vector functions like Quantitative Anisotropy (QA)
  or even the full Orientation Density Function (ODF).
- The only constraint for these function is to be greater or equal to zero
+ The only constraint for these functions is to be greater or equal to zero
  everywhere in the volume.
- In most cases all these function try to measure in some way the anisotropy
+ In most cases all these functions try to measure in some way the anisotropy
  of diffusion in every single voxel so we decided to use letter 
 \begin_inset Formula $\mathcal{A}$
 \end_inset
@@ -1280,7 +1317,11 @@ where
 \end_inset
 
 .
- For QA which can allow even for up to 5 peaks or more we use 
+ For QA which can allow even for up to 
+\begin_inset Formula $5$
+\end_inset
+
+ peaks or more we use 
 \begin_inset Formula $\mathcal{A}(\mathbf{u}_{i})=QA_{i}$
 \end_inset
 
@@ -1295,6 +1336,16 @@ where
 
  and the unit direction of the peak 
 \begin_inset Formula $\mathbf{u}_{i}$
+\end_inset
+
+.
+ A visual example of the combination of multiple peaks togehter with EuDX
+ can be seen in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:EuDX_sketch"
+
 \end_inset
 
 .
@@ -1334,7 +1385,7 @@ The EuDX algorithm can be described further in the following way:
 \end_layout
 
 \begin_layout Standard
-(2) The following step is to pick a seed point 
+(2) We pick a seed point 
 \begin_inset Formula $\mathbf{p}_{0}$
 \end_inset
 
@@ -1343,9 +1394,6 @@ The EuDX algorithm can be described further in the following way:
  or better said; towards one direction (orthograde) and its opposite direction
  (retrograde).
  For the moment we only propagate towards one direction set by
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula \begin{equation}
 \mathbf{v}(\mathbf{p}_{0})=argmax_{u_{i}}\mathcal{A}(\mathbf{u})\label{eq:argmax_anisotropy}\end{equation}
 
@@ -1355,12 +1403,12 @@ The EuDX algorithm can be described further in the following way:
 \end_layout
 
 \begin_layout Standard
-but we need to propagate also towards 
+but we need to propagate also towards the opposite direction 
 \begin_inset Formula $-\mathbf{v}(\mathbf{p}_{0})$
 \end_inset
 
 .
- Furthermore as 
+ Furthermore, as 
 \begin_inset Formula $\mathcal{A}$
 \end_inset
 
@@ -1376,12 +1424,12 @@ but we need to propagate also towards
 \begin_inset Formula $\mathcal{A}$
 \end_inset
 
- gives information for multiple peaks (like QA).
+ gives information for multiple peaks (like in QA).
 \end_layout
 
 \begin_layout Standard
 (3) Apart from the direction we need to check when to stop tracking.
- EuDX takes as input low threshold 
+ EuDX takes as input a low threshold for anisotropy 
 \begin_inset Formula $\mathcal{A}_{thr}$
 \end_inset
 
@@ -1398,7 +1446,12 @@ but we need to propagate also towards
 .
  This can be useful for cancelling out any seed points which are in the
  background or in very low anisotropy areas where tracking is not recommended.
- The threshold is different for every different metric QA, FA, GFA etc.
+ One important point here is that 
+\begin_inset Formula $\mathcal{A}_{thr}$
+\end_inset
+
+ depends on the reconstruction method and it will have a different value
+ for every different metric QA, FA, GFA etc.
  
 \end_layout
 
@@ -2566,9 +2619,10 @@ Evaluation with real subjects
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
 <features>
