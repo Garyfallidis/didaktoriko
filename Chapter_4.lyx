@@ -1138,7 +1138,7 @@ MATTHEW: Might want to omit sales-pitchey words here.
 
 \end_inset
 
- fast algorithm which can simplify tractography representation in an accessible
+fast algorithm which can simplify tractography representation in an accessible
  structure in a time that is linear in the number of tracks 
 \begin_inset Formula $N$
 \end_inset
@@ -3336,7 +3336,8 @@ QB is a very efficient algorithm whose performance is controlled by just
  or preselecting any parts.
  This results run of a single thread Intel(R) Xeon(R) CPU E5420 at 2.50GHz
  on a simple PC.
- 
+ (NB This and the following figure use the same vertical scale to assist
+ direct comparison.)
 \end_layout
 
 \end_inset
@@ -3605,8 +3606,9 @@ status open
 
 \begin_layout Plain Layout
 MATTHEW: I don't understand why this problem is not solved by just using
- the MDF distance between bundle virtuals or examplars.
- 
+ the MDF distance between bundle virtuals or exemplars.
+ ELEF: This order information is not stored at the time a track enters a
+ cluster as it can potentially change as the virtual track is updated.
 \end_layout
 
 \end_inset
@@ -3637,7 +3639,7 @@ For this purpose we devised the following technique.
 \end_inset
 
 .
- It is our empirical experience that this 0method will redirect correctly
+ It is our empirical experience that this method will redirect correctly
  most tracks in the sense that similar tracks will have the same direction.
  However there will still be a small percentage for which the bi-directionality
  problem persists.
@@ -3650,7 +3652,9 @@ status open
 
 \begin_layout Plain Layout
 MATTHEW: Why the difference between virtuals and exemplars in the bi-directional
-ity problem?
+ity problem? ELEF: Because of the way the virtual track is built up in it
+ can be influenced by outliers and thus can be quite unrepresentative in
+ terms of the shape of real tracks in the bundle 
 \end_layout
 
 \end_inset
@@ -4470,6 +4474,7 @@ status open
 \begin_layout Plain Layout
 MATTHEW: Are the gini, rce, splitting lumping and kappa measures used in
  this chapter? IAN: No, and we need to add a fuller summary conclusion here.
+ Table of metrics here.
 \end_layout
 
 \end_inset
@@ -4730,7 +4735,7 @@ status open
 \begin_layout Plain Layout
 MATTHEW: Not sure how the t value difference between TC10 and TC100 shows
  the ability of QB to find agreements between brains - can you say more?
- 
+ IAN: I will sort this out.
 \end_layout
 
 \end_inset
@@ -4740,7 +4745,7 @@ MATTHEW: Not sure how the t value difference between TC10 and TC100 shows
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 ELEF: !!!!CREATE A DIAGRAM WHERE YOU SHOW COMPARISONS FROM DIFFERENT ORDERINGS
@@ -5234,13 +5239,15 @@ name "Flo:erroneous_tracks"
  To cluster the initial tractography not shown here we used QB with threshold
  10mm.
  This is the first known automatic detection system of outliers and erroneous
- tracks for tractography data.
+ tracks for tractography data based on more advanced shape charateristics
+ that go beyond simple length.
  
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-MATTHEW: Really? Nothing for short tracks for example?
+MATTHEW: Really? Nothing for short tracks for example? ELEF: qualifying
+ phrase added
 \end_layout
 
 \end_inset
@@ -5252,7 +5259,8 @@ status open
 
 \begin_layout Plain Layout
 MATTHEW: These are all winding tracks? The windingness is difficult to see
- - maybe some isolated examples?
+ - maybe some isolated examples? ELEF+IAN: Don't really agree it is too
+ difficult! Too bad - no time
 \end_layout
 
 \end_inset
@@ -5527,11 +5535,13 @@ name "Flo:atlas_big_bundles"
  the biggest bundles becoming landmark bundles and the small bundles removed
  as outliers.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 MATTHEW: Not sure what largest bundles % is? Is the gradient at 100% then
  the number of tracks taken by the smallest bundles?
+\lang british
+ IAN: Will check it out.
 \end_layout
 
 \end_inset
@@ -5589,12 +5599,13 @@ reference "Flo:CloseToSelected"
  (CGC-R), 1 from left corticospinal tract (CST-L), 1 from right corticospinal
  tract (CST-R), 1 from left uncinate (UNC-L) and 1 from right uncinate (UNC-R).
  These 19 tracks are coloured randomly.
- Then on the second row we bring for the first 6 selections 
+ Then on the second row we bring for the first 6 selected representative
+ tracks 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-MATTHEW: selections of what?
+MATTHEW: selections of what? I+E: changed
 \end_layout
 
 \end_inset
@@ -5683,7 +5694,7 @@ MATTHEW: I wonder if you can use QB as input to QB? I mean to try and find
  This might be somehow an optimum solution, and would fit naturally with
  parallel solutions so the serial version would be the same as the parallel
  version.
- 
+ ELEF: Life is too short and it's theoretically difficult.
 \end_layout
 
 \end_inset
@@ -5815,13 +5826,14 @@ reference "Flo:LSC+HC+AP"
 status open
 
 \begin_layout Plain Layout
-MATTHEW: How reliable is this do you think?
+MATTHEW: How reliable is this do you think? ELEF: No further comment at
+ present - though it based on a group of 10 subjects.
 \end_layout
 
 \end_inset
 
-Furthermore, we can use different cutting thresholds on the underlying dendrogra
-m to amalgamate together different structures e.g.
+ Furthermore, we can use different cutting thresholds on the underlying
+ dendrogram to amalgamate together different structures e.g.
  see the cingulum bundles in the same panel.
 \end_layout
 
@@ -6052,7 +6064,8 @@ status open
 
 \begin_layout Plain Layout
 MATTHEW: You have already used and referred to AP above.
- Put this section earlier?
+ Put this section earlier? ELEF: There is a forward reference above which
+ seems adequate.
 \end_layout
 
 \end_inset
@@ -7151,11 +7164,11 @@ mm.
  Consequently SMD is chosen as a better cost function for tractography registrat
 ion.
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
-I seem to remember that registrations perform a bit differently when registering
- to transformed versions of themselves.
+MATTHEW: I seem to remember that registrations perform a bit differently
+ when registering to transformed versions of themselves.
  I haven't got internet, but look for the AIR website (Roger Woods) and
  a comment about registrations to rotated versions of self.
 \end_layout
@@ -7204,10 +7217,10 @@ reference "sub:Tightness-comparisons-1"
 status open
 
 \begin_layout Plain Layout
-MATTHEW: Isn't the metric used the registration related to the metric used
- to assess the registration? Maybe you could some measure of alignment of
- the structural image instead? I mean, transform the structural image with
- the same parameters.
+MATTHEW: Isn't the metric used in the registration related to the metric
+ used to assess the registration? Maybe you could some measure of alignment
+ of the structural image instead? I mean, transform the structural image
+ with the same parameters.
  ELEF: There isn't time!! But we have partial checks.
 \end_layout
 
@@ -7283,13 +7296,13 @@ In many parts of this document we didn't consider short tracks.
  be used as useful landmarks when comparing or registering different subjects
  because it is more likely for them to exist in most subjects, (b) removing
  short tracks facilitates the usage of distance based clustering (no need
- for adaptive distance threshold) 
+ for manually setting the distance threshold) 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 MATTHEW: what is an adaptive distance threshold? Can this be in the earlier
- discussion?
+ discussion? ELEF: Will think about this!!
 \end_layout
 
 \end_inset
@@ -7303,9 +7316,27 @@ and interaction with the tractography, (c) someone would first want to see
 \end_inset
 
  (MDF) for example the minimum version of MAM referred to as 
-\begin_inset Formula $m_{in}$
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\textrm{MAM}_{\textrm{min}}$
 \end_inset
 
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
  in eq.
  
 \begin_inset CommandInset ref
@@ -7504,7 +7535,8 @@ In common with mainstream clustering algorithms such as k-means, k-centers
 status open
 
 \begin_layout Plain Layout
-MATTHEW: Need evidence for this assertion?
+MATTHEW: Need evidence for this assertion? IAN+ELEF: This is now included
+ in a table in the section on Comparisons 
 \end_layout
 
 \end_inset
@@ -7591,7 +7623,7 @@ hidden
  Therefore QB opens up the road to create a rapid tools for exploring massive
  tractographies.
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Rotation, translation and scale invariant (check).
