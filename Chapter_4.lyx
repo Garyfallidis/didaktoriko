@@ -228,7 +228,7 @@ MATTHEW: Is there somewhere else a discussion of what kind of characteristics
  the different distance methods might have? For example being sensitive
  to length, or allowing the tracks fairly short portions where they are
  close and thereafter allowing divergence as in track fanning etc? A discussion
- here of the problem of short vs long tracks?
+ here of the problem of short vs long tracks? ELEF: I will work on it.
 \end_layout
 
 \end_inset
@@ -434,6 +434,7 @@ MATTHEW: Discussion here of the advantages and disadvantages of different
  same number of points as long tracks means that more of the curvature etc
  data from the long tracks will be lost relative to the short tracks - I
  suppose.
+ ELEF: I will work on it shortly.
 \end_layout
 
 \end_inset
@@ -1075,7 +1076,7 @@ status open
 
 \begin_layout Plain Layout
 
-http://pbc.lrdc.pitt.edu
+pbc.lrdc.pitt.edu
 \end_layout
 
 \end_inset
@@ -4501,7 +4502,7 @@ In [8]: np.mean(Stds,axis=0) Out[8]: array([ 0.77531618, 0.70602677, 0.01170363,
  1.98312644, 0.00587059, 0.94589706, 0.94784636]) 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 !!!! CREATE A TABLE OUT OF THESE.
  (label the table under the table caption).
 \end_layout
