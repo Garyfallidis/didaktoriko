@@ -1352,11 +1352,8 @@ reference "Flo:EuDX_sketch"
 \end_layout
 
 \begin_layout Standard
-The EuDX algorithm can be described further in the following way:
-\end_layout
-
-\begin_layout Standard
-(1) 
+The EuDX algorithm can be described further in the following way.
+ 
 \begin_inset Formula $\mathcal{A}(\mathbf{u}_{i})$
 \end_inset
 
@@ -1385,7 +1382,7 @@ The EuDX algorithm can be described further in the following way:
 \end_layout
 
 \begin_layout Standard
-(2) We pick a seed point 
+We pick a seed point 
 \begin_inset Formula $\mathbf{p}_{0}$
 \end_inset
 
@@ -1424,12 +1421,13 @@ but we need to propagate also towards the opposite direction
 \begin_inset Formula $\mathcal{A}$
 \end_inset
 
- gives information for multiple peaks (like in QA).
+ gives information for multiple peaks (e.g.
+ QA).
 \end_layout
 
 \begin_layout Standard
-(3) Apart from the direction we need to check when to stop tracking.
- EuDX takes as input a low threshold for anisotropy 
+Apart from the direction we need to check when to stop tracking.
+ EuDX takes as input a threshold for anisotropy 
 \begin_inset Formula $\mathcal{A}_{thr}$
 \end_inset
 
@@ -1456,11 +1454,12 @@ but we need to propagate also towards the opposite direction
 \end_layout
 
 \begin_layout Standard
-(4) In order to generate smooth tractography it is recommended to use some
+In order to generate a smooth tractography it is recommended to use some
  kind of interpolation.
  Here we have been using trilinear interpolation which works in the following
  way.
- The seed devides the neibourhing area in 
+ The seed devides the neibourhing area (constrained by the centers of the
+ neighbouring voxels) in 
 \begin_inset Formula $8$
 \end_inset
 
@@ -1475,15 +1474,16 @@ but we need to propagate also towards the opposite direction
 
  of the antipodal side.
  The weights express subvolumes in 3D (or subareas in 2D).
- The trilinear interpolation will gives as the weights 
+ The trilinear interpolation give us the weights 
 \begin_inset Formula $w$
 \end_inset
 
- which will force the contribution of every neighbouring voxel.
+ that assign the contribution of the peaks of the neighbouring voxels to
+ the seed's next direction.
 \end_layout
 
 \begin_layout Standard
-(5) We find the nearest direction from the seed's initial direction 
+We find the nearest direction from the seed's initial direction 
 \begin_inset Formula $\mathbf{v}(\mathbf{p_{n}})$
 \end_inset
 
@@ -1505,7 +1505,7 @@ If
 \end_inset
 
  we count the corresponding weight otherwise we continue to the next weight.
- We check simultanious;u for the condition 
+ We check simultaneously for the condition 
 \begin_inset Formula $\mathcal{A}(\mathbf{u})<\mathcal{A}_{thr}$
 \end_inset
 
@@ -1529,10 +1529,7 @@ where
 \end_inset
 
  is normalized.
-\end_layout
-
-\begin_layout Standard
-(6) The next point is calculated with eq.
+ The next point is calculated with eq.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1552,26 +1549,38 @@ reference "eq: euler"
 \end_layout
 
 \begin_layout Standard
-There are some other necessary thresholds to keep in mind.
- Total weight 
+Many other thresholds apart from the anisotropic threshold 
+\begin_inset Formula $\mathcal{A}_{thr}$
+\end_inset
+
+ and angular threshold 
+\begin_inset Formula $\mathcal{\theta}_{thr}$
+\end_inset
+
+ are also incorporated in EuDX.
+ a)The total weight 
 \begin_inset Formula $TW$
 \end_inset
 
- check that their is enough overall neighbourhood weighting to continue
- tracking (default 
+ check that there is enough overall neighbourhood weighting to continue
+ tracking (has default value 
 \begin_inset Formula $0.5$
 \end_inset
 
 ).
- This is very useful near edges ...EXPLAIN MORE!!!!.
- Also it is possible for a track to get trapped in a loop and start looping
+ This is very useful in edges or corners where you want tracking to stop.
+ b) It is possible for a track to get trapped in a loop and start looping
  for ever.
  We can check for that using a threshold for number of loops 
 \begin_inset Formula $MLP$
 \end_inset
 
- (maximum loops).
- Finally, sometimes it is useful to remove the short or very long tracks.
+ (maximum loops - default 
+\begin_inset Formula $1000$
+\end_inset
+
+).
+ c)Sometimes it is useful to remove the short or very long tracks.
  This is controlled by a length threshold which we denote with 
 \begin_inset Formula $L$
 \end_inset
@@ -1580,12 +1589,7 @@ There are some other necessary thresholds to keep in mind.
 \end_layout
 
 \begin_layout Standard
-SAY MORE ABOUT THE IMPORTANCE OF DELTA (INTUITION IS THAT YOU HAVE MULTIPLE
- STOPPING CRITERIA LIKE DELTA FUNCTION HAS MULTIPLE OUTCOMES?
-\end_layout
-
-\begin_layout Standard
-The EuDX is called for every seed.
+The core part of EuDX is the same for every seed.
  In alg.
  
 \begin_inset CommandInset ref
@@ -1594,7 +1598,7 @@ reference "Alg:EuDX_Main"
 
 \end_inset
 
- we see how it can be called in order to create an entire tractography.
+ we see how EuDX it can be called in order to create an entire tractography.
  The core part is given alg.
  
 \begin_inset CommandInset ref
@@ -1722,7 +1726,9 @@ mathcal{A}$, $I$)
 
 
 \backslash
-hspace*{4em} t = EUDX(seed,peak) 
+hspace*{4em} t = EUDX
+\backslash
+_Core(seed,peak) 
 \backslash
 
 \backslash
@@ -1746,7 +1752,7 @@ textbf{Append}($T$,t)
 
 
 \backslash
-caption{EuDX ALL}
+caption{EuDX Tractography}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1798,7 +1804,11 @@ textbf{Input} seed, peak
 
 
 \backslash
-hspace*{2.5em} thresholds
+hspace*{2.5em} thresholds 
+\backslash
+
+\backslash
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -1996,7 +2006,7 @@ textbf{v}
 
 
 \backslash
-caption{EuDX}
+caption{EuDX Core}
 \end_layout
 
 \begin_layout Plain Layout
@@ -2021,6 +2031,11 @@ name "Alg:EuDX_Both"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Initial_Direction find the closest direction to follow if all A_thr are
+ low then it returns False (Delta)
 \end_layout
 
 \begin_layout Standard
