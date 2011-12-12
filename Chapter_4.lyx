@@ -86,19 +86,23 @@ ns but also puts a barrier on understanding and interpreting the quality
  We show in this chapter that a stable overall linear time clustering algorithm
  exists and that we can generate meaningful clusters in seconds with minimum
  memory consumption.
- We can use this algorithm to simplify tractographies, identify hidden structure
-s, find landmarks, create atlases and compare and register tractographies.
- In our approach we don't need to calculate all pairwise distances as most
- of the other existing methods do and furthermore we can update our clustering
- online or in parallel.
- We can show that we can generate meaningful clusters 
-\begin_inset Formula $\sim1000$
+ In our approach we don't need to calculate all pairwise distances unlike
+ most of the other existing methods.
+ Furthermore we can update our clustering online or in parallel.
+ We can show that we can generate meaningful clusters ~
+\begin_inset Formula $1000$
 \end_inset
 
  times faster than any other available methods even without parallelism.
- Moreover our method is multipurpose and it can be used as an input to other
- algorithms with higher order complexity which can now become more efficient.
  We show results from a few hundred to many millions of tracks.
+ Moreover our method is multi-purpose; its results can either stand on their
+ own to explore the neuroanatomy directly, or the clustering technique can
+ be used as a precursor tool which massively reduces the dimensionality
+ of the data, which can then be used an input to other algorithms of higher
+ order complexity, resulting in their greater efficiency.
+ Beyond use this algorithm to simplify tractographies, we show how it can
+ help identify hidden structures, find landmarks, create atlases, and compare
+ and register tractographies.
 \begin_inset Note Note
 status open
 
@@ -121,6 +125,10 @@ MATTHEW: General comment - would it be fair to call this also GordianKnotBundles
 Maybe an emphasis on the advantage of being able to do clustering in real
  time for interactive applications and for display.
  
+\end_layout
+
+\begin_layout Standard
+IAN: I have rewritten and reordered the second half of the paragraph above.
 \end_layout
 
 \end_inset
@@ -208,9 +216,9 @@ reference "eq:direct_flip_distance"
 ).
  This distance can be applied only when both tracks have the same number
  of points.
- Therefore we assume that an initial downsampling of tracks where all segments
- have the same length on a track and all tracks have the same number of
- segments has been implemented.
+ Therefore we assume that an initial downsampling of tracks has been implemented
+, where all segments on a track have the same length, and all tracks have
+ the same number of segments.
  
 \begin_inset Note Note
 status open
@@ -270,9 +278,9 @@ where
 
 \begin_layout Standard
 In some cases it is still valid to use a family of Hausdorff distance which
- for simplicity we denote as MAM distances - short for Minimum, Maximum
- or Mean Average Minimum distance (MAM).
- We mostly use the mean version of this family, see (
+ for simplicity we denote as MAM distances - short for Minimum, or Maximum,
+ or Mean, Average Minimum distance (MAM).
+ We mostly use the Mean version of this family, see (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:mean_average_distance"
@@ -291,9 +299,9 @@ d_{\textrm{avg}}(s_{A},s_{B}) & = & \frac{1}{K_{A}}\sum_{i=1}^{K_{A}}d(x_{i}^{A}
 d_{\textrm{min}}(s_{A},s_{B}) & = & \min_{j=1,...,K_{B}}d(x_{i}^{A},s_{B}),\,\textrm{and}\label{eq:mininum_distance}\\
 d_{\textrm{max}}(s_{A},s_{B}) & = & \max_{j=1,...,K_{B}}d(x_{i}^{A},s_{B})\,\textrm{where}\label{eq:maximum distance}\\
 d(x,s_{B}) & = & \min_{j=1,...,K_{B}}||x-x_{j}^{B}||_{2}.\nonumber \\
-\textrm{Min\, AM} & = & \min(d_{\textrm{avg}}(s_{A},s_{B}),d_{\textrm{avg}}(s_{B},s_{A}))\label{eq:min_average_distance}\\
-\textrm{Max\, AM} & = & \max(d_{\textrm{avg}}(s_{A},s_{B}),d_{\textrm{avg}}(s_{B},s_{A}))\nonumber \\
-\textrm{Mean\, AM} & = & (d_{\textrm{avg}}(s_{A},s_{B})+d_{\textrm{avg}}(s_{B},s_{A}))/2\label{eq:mean_average_distance}\end{eqnarray}
+\textrm{MAM}_{\textrm{min}} & = & \min(d_{\textrm{avg}}(s_{A},s_{B}),d_{\textrm{avg}}(s_{B},s_{A}))\label{eq:min_average_distance}\\
+\textrm{MAM}_{\textrm{max}} & = & \max(d_{\textrm{avg}}(s_{A},s_{B}),d_{\textrm{avg}}(s_{B},s_{A}))\nonumber \\
+\textrm{MAM}_{\textrm{avg}} & = & (d_{\textrm{avg}}(s_{A},s_{B})+d_{\textrm{avg}}(s_{B},s_{A}))/2\label{eq:mean_average_distance}\end{eqnarray}
 
 \end_inset
 
@@ -320,14 +328,14 @@ where the number of points
 
  on the two tracks are not necessarily the same.
  Finally, other distances than the average minimum based on the minimum
- 
+ (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:mininum_distance"
 
 \end_inset
 
- maximum distance see (
+) or maximum distance see (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:maximum distance"
@@ -377,7 +385,7 @@ Distances used in this work.
  and works on tracks which have the same number of points.
  Another distance is the mean average distance which is again symmetric
  but does not need for the tracks to have the same number of points 
-\begin_inset Formula $\textrm{Mean\, AM}=(d_{avg}(s_{A},s_{B})+d_{avg}(s_{B},s_{A}))/2$
+\begin_inset Formula $\textrm{MAM}_{\textrm{avg}}=(d_{avg}(s_{A},s_{B})+d_{avg}(s_{B},s_{A}))/2$
 \end_inset
 
 .
@@ -405,9 +413,10 @@ reference "eq:direct_flip_distance"
 \end_inset
 
 ), its main advantages are that it is fast to compute, that it takes account
- of track direction issues, and that it is easy to understand what it will
- do from the simplest case of parallel equi-length tracks to the most complicate
-d with very divergent tracks.
+ of track direction issues through consideration of both direct and flipped
+ tracks, and that it is easy to understand how it will behave, from the
+ simplest case of parallel equi-length tracks to the most complicated with
+ very divergent tracks.
  Another advantage is that it will separate short tracks from long tracks
  and as we will see this will be a good way to find broken or erroneous
  tracks.
@@ -453,7 +462,7 @@ status open
 MATTHEW: I got a bit lost in this section.
  Is there a way of summarizing the papers under different themes such as
  distance metric used, cluster number finding, clustering method or something
- like that?
+ like that? IAN: I am planning to review the structure of this section.
 \end_layout
 
 \end_inset
@@ -966,18 +975,6 @@ Materials and methods
 \begin_layout Standard
 
 \series bold
-[THIS NEEDS SPELLING OUT IN DETAIL.
- Is this the best place? Could the information on datasets go in an Appendix?]
-\change_inserted 2 1319125536
- Yes this can all go to the appendix.
- The Appendix of the thesis has already most of the information
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
 Real subjects.
  
 \series default
@@ -1071,7 +1068,7 @@ For the reconstruction of the real data sets we used Generalized Q-samping
 PBC real subjects
 \series default
 .
- We used as well a few labeled data sets from the freely available tractography
+ We also used a few labeled datasets from the freely available tractography
  database used in the Pittsburgh Brain Competion Fall 2009 ICDM 
 \begin_inset ERT
 status open
@@ -1092,22 +1089,22 @@ http://pbc.lrdc.pitt.edu
 Simulated trajectories.
 
 \series default
- Generated 
+ We generated 
 \begin_inset Formula $3$
 \end_inset
 
- different bundles of orbits of 
+ different bundles of parametric paths samples at 
 \begin_inset Formula $200$
 \end_inset
 
- time points.
- The orbits were made from different combinations of sinusoidal and helicoidal
+ points.
+ The tracks were made from different combinations of sinusoidal and helicoidal
  functions.
  In total this data set contained 
 \begin_inset Formula $450$
 \end_inset
 
- orbits see fig.
+ tracks see fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2504,14 +2501,17 @@ QB's powerful simplifications
 \begin_layout Standard
 One of the major benefits of applying QB to tractographies is that it can
  provide meaningful simplifications and find structures that were previously
- unseen or difficult to found because of the high density of the tractography.
+ invisible or difficult to locate because of the high density of the tractograph
+y.
  
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 MATTHEW: Is this not true for any automated clusting technique? Emphasize
- need for speed in interactive applications?
+ need for speed in interactive applications? ELFE + IAN We have rephrased
+ above.
+ See also response in next note.
 \end_layout
 
 \end_inset
@@ -2583,7 +2583,7 @@ status open
 
 \begin_layout Plain Layout
 MATTHEW Too strong? Maybe 'is a simplification of the underlying data'.
- ELEF: Agreed
+ ELEF: Agreed - wording changed
 \end_layout
 
 \end_inset
@@ -2641,7 +2641,7 @@ reference "Flo:simulated_orbits"
 
 \end_inset
 
-; on the left we see simulated orbits made from simple sinusoidal and helicoidal
+; on the left we see simulated paths made from simple sinusoidal and helicoidal
  functions and colourcoded to distinguish the three different structures.
  With a lower threshold the three different structures keep remain separated
  but when we use a higher threshold the red and blue bundles are represented
@@ -3597,8 +3597,8 @@ For this purpose we devised the following technique.
 status open
 
 \begin_layout Plain Layout
-Why the difference between virtuals and examplars in the bi-directionality
- problem?
+MATTHEW: Why the difference between virtuals and exemplars in the bi-directional
+ity problem?
 \end_layout
 
 \end_inset
@@ -3688,19 +3688,19 @@ Suppose we have a probability distribution
 \begin_inset Formula $P=(p_{1},p_{2},\ldots,p_{k})$
 \end_inset
 
+ for the true labels 
+\begin_inset Formula $(1,2,\ldots,k)$
+\end_inset
+
  on 
 \begin_inset Formula $k$
 \end_inset
 
- items, and we randomly assign labels 
+ items, and we randomly assign a new label from 
 \begin_inset Formula $(1,2,\ldots,k)$
 \end_inset
 
- to items sampled from 
-\begin_inset Formula $P$
-\end_inset
-
- using the same distribution 
+ to each items using the same distribution 
 \begin_inset Formula $P$
 \end_inset
 
@@ -3718,6 +3718,8 @@ status open
 MATTHEW: I got confused here.
  I guess this is because the probability of mislabeling is sum_i(p_i * (1-p_i))
  but then I didn't understand the role of the 'items sampled from P' above.
+ IAN: Reworded above.
+ 
 \end_layout
 
 \end_inset
@@ -3821,7 +3823,7 @@ If
 \end_inset
 
  and it is equal to the 
-\begin_inset Formula $\mathcal{B}$
+\begin_inset Formula $\mathcal{A}$
 \end_inset
 
 -weighted average of the impurities of the columns of 
@@ -3843,7 +3845,8 @@ status open
 \noun off
 \color none
 MATTHEW: Am I confused or isn't this the A-weighted average of the impurities
- of the columns of T? 
+ of the columns of T? IAN: Yes.
+ 
 \end_layout
 
 \end_inset
@@ -3909,7 +3912,7 @@ status open
 
 \begin_layout Plain Layout
 MATTHEW: What is p*? - sorry to be ignorant.
- IAN: Typo asterisk!
+ IAN: Typo asterisk corrected!
 \end_layout
 
 \end_inset
@@ -4200,6 +4203,9 @@ MATTHEW: Sorry - I realize I am not thinking this through, but I wasn't
  clear what an 'expected' proportion of 'non-chance' agreements would be.
  From the formula I am tempted to describe the denominator as 'expected
  proportion of chance disagreements'.
+ IAN: They are the same thing! Perhaps your description could be more helpful.
+ Will ponder.
+ 
 \end_layout
 
 \end_inset
@@ -4397,7 +4403,7 @@ status open
 
 \begin_layout Plain Layout
 MATTHEW: Are the gini, rce, splitting lumping and kappa measures used in
- this chapter?
+ this chapter? IAN: No, and we need to add a fuller summary conclusion here.
 \end_layout
 
 \end_inset
@@ -4497,7 +4503,7 @@ where
 \end_inset
 
 .
- From the the columns of 
+ From the the rows of 
 \begin_inset Formula $D_{AB}$
 \end_inset
 
@@ -4518,14 +4524,15 @@ where
 status open
 
 \begin_layout Plain Layout
-D_{ab} has first index indexing clusters of A? Rows therefore are distances
- from given cluster in A to all clusters in B.
- 
+MATTHEW: D_{ab} has first index indexing clusters of A? Rows therefore are
+ distances from given cluster in A to all clusters in B.
+ IAN: Yes, you are right.
+ Now corrected.
 \end_layout
 
 \end_inset
 
-and by checking the rows of 
+and by checking the columns of 
 \begin_inset Formula $D_{AB}$
 \end_inset
 
@@ -4600,7 +4607,17 @@ where
 
 \begin_layout Standard
 We run an experiment were we compared TC between pairs of 10 subjects with
- their tractographies warped in MNI space (SEE SECTION).
+ their tractographies warped in MNI space
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ELEF: (SEE SECTION) - Needs a cross reference 
+\end_layout
+
+\end_inset
+
+.
  This generated 
 \begin_inset Formula $\binom{10}{2}=45$
 \end_inset
