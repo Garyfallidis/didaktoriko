@@ -1516,7 +1516,7 @@ If
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-\mathbf{v}^{'}(\mathbf{p}_{n})=\sum_{m}w_{m}\mathbf{v}(\mathbf{p}_{n})\end{equation}
+\mathbf{v}^{'}(\mathbf{p}_{n})=\sum_{m}w_{m}\mathbf{v}(\mathbf{p}_{n})\label{eq:trilinear_weights}\end{equation}
 
 \end_inset
 
@@ -1554,11 +1554,11 @@ Many other thresholds apart from the anisotropic threshold
 \end_inset
 
  and angular threshold 
-\begin_inset Formula $\mathcal{\theta}_{thr}$
+\begin_inset Formula $\theta_{thr}$
 \end_inset
 
  are also incorporated in EuDX.
- a)The total weight 
+ a) The total weight 
 \begin_inset Formula $TW$
 \end_inset
 
@@ -1571,40 +1571,19 @@ Many other thresholds apart from the anisotropic threshold
  This is very useful in edges or corners where you want tracking to stop.
  b) It is possible for a track to get trapped in a loop and start looping
  for ever.
- We can check for that using a threshold for number of loops 
-\begin_inset Formula $MLP$
+ We can check for that using a threshold for maximum number of points for
+ a track 
+\begin_inset Formula $MNP$
 \end_inset
 
- (maximum loops - default 
+ (default 
 \begin_inset Formula $1000$
 \end_inset
 
 ).
- c)Sometimes it is useful to remove the short or very long tracks.
- This is controlled by a length threshold which we denote with 
-\begin_inset Formula $L$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-The core part of EuDX is the same for every seed.
- In alg.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Alg:EuDX_Main"
-
-\end_inset
-
- we see how EuDX it can be called in order to create an entire tractography.
- The core part is given alg.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Alg:EuDX_Both"
-
+ c) Also we need to check that we are always inside the 3D volumetric space.
+ The dimensions of the volume are hold in vector 
+\begin_inset Formula $V$
 \end_inset
 
 .
@@ -1626,7 +1605,11 @@ status open
 \backslash
 textbf{Input} $
 \backslash
-mathcal{A}$, $I$, $S$, $U$, 
+mathcal{A}$, $
+\backslash
+mathcal{I}$, $S$, $U$, $
+\backslash
+Delta s$, $VS$ 
 \backslash
 
 \backslash
@@ -1637,24 +1620,11 @@ mathcal{A}$, $I$, $S$, $U$,
 
 
 \backslash
-hspace*{2.5em}  $
+hspace*{2.5em} $
 \backslash
-mathcal{A}_{thr}$, $
+mathcal{A}_{thr}$,$
 \backslash
-Delta S$, $
-\backslash
-theta_{thr}$
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{2.5em} $L$, $TW$, $MLP$ 
+theta_{thr}$, $TW$, $MNP$ (thresholds) 
 \backslash
 
 \backslash
@@ -1715,7 +1685,9 @@ textbf{Foreach} peak
 \backslash
 textbf{In} ($
 \backslash
-mathcal{A}$, $I$) 
+mathcal{A}$, $
+\backslash
+mathcal{I}$) 
 \backslash
 
 \backslash
@@ -1780,6 +1752,149 @@ name "Alg:EuDX_Main"
 \end_layout
 
 \begin_layout Standard
+In alg.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Alg:EuDX_Main"
+
+\end_inset
+
+ we see how EuDX can be called in order to create an entire tractography.
+ The core algorithm which is the same for every seed is given in alg.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Alg:EuDX_Core"
+
+\end_inset
+
+.
+ In alg.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Alg:EuDX_Main"
+
+\end_inset
+
+ the inputs are: 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ the 4D volume holding the strength of anisotropy in relation to the indexed
+ directions of sphere 
+\begin_inset Formula $U$
+\end_inset
+
+ given in 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $U$
+\end_inset
+
+ is an array of size 
+\begin_inset Formula $N\times3$
+\end_inset
+
+ where 
+\begin_inset Formula $N$
+\end_inset
+
+ are is the number of vertices in the sphere.
+ 
+\begin_inset Formula $S$
+\end_inset
+
+ is an 
+\begin_inset Formula $M\times3$
+\end_inset
+
+ array with the precomputed 
+\begin_inset Formula $M$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+ seed points (seeds).
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+
+\begin_inset Formula $\Delta s$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+ is the propagation step.
+ We also need the different stopping thresholds
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+: 
+\begin_inset Formula $\mathcal{A}_{thr}$
+\end_inset
+
+ defines the lowest possible anisotropy value that allows tracking to continue.
+ 
+\begin_inset Formula $\theta_{thr}$
+\end_inset
+
+ is the maximum allowed angle between the current propagation direction
+ and the next direction.
+ 
+\begin_inset Formula $TW$
+\end_inset
+
+ checks the overall contribution of the neighbourhood for the next propagation
+ direction and 
+\begin_inset Formula $MNP$
+\end_inset
+
+ checks that a track does not pass from the same point more than a number
+ of times.
+ 
+\begin_inset Formula $MNP$
+\end_inset
+
+ checks this condition by counting the number of current points appended
+ in a track as the track grows.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float algorithm
 wide false
 sideways false
@@ -1793,18 +1908,9 @@ status open
 
 
 \backslash
-textbf{Input} seed, peak 
+textbf{Input} seed, peak, $
 \backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{2.5em} thresholds 
+Delta S$, $V$ thresholds 
 \backslash
 
 \backslash
@@ -1824,9 +1930,18 @@ textbf{Output} track
 
 \begin_layout Plain Layout
 
-Delta, 
+
 \backslash
-textbf{v} = Initial
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+delta, i
+\backslash
+_direction = Initial
 \backslash
 _Direction(seed) 
 \backslash
@@ -1848,22 +1963,9 @@ _Direction(seed)
 
 \begin_layout Plain Layout
 
-direction=
+direction=i
 \backslash
-textbf{v} 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-textbf{While} Delta 
-\backslash
-textbf{is} True
+_direction 
 \backslash
 
 \backslash
@@ -1874,7 +1976,20 @@ textbf{is} True
 
 
 \backslash
-hspace*{2em} Delta, n
+textbf{While} delta 
+\backslash
+textbf{Is} True
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} delta, n
 \backslash
 _direction = New
 \backslash
@@ -1891,9 +2006,9 @@ _Direction(direction)
 \backslash
 hspace*{2em} 
 \backslash
-textbf{If} Delta 
+textbf{If} delta 
 \backslash
-textbf{is} False
+textbf{Is} False
 \backslash
 
 \backslash
@@ -1917,13 +2032,9 @@ textbf{Break}
 
 
 \backslash
-hspace*{2em} 
+hspace*{2em} point = point + $
 \backslash
-textbf{p} = 
-\backslash
-textbf{p} + $
-\backslash
-Delta S$$
+Delta s$$
 \backslash
 times$n
 \backslash
@@ -1962,7 +2073,7 @@ _direction
 
 \begin_layout Plain Layout
 
-Delta = True 
+delta = True 
 \backslash
 
 \backslash
@@ -1982,9 +2093,9 @@ Delta = True
 
 \begin_layout Plain Layout
 
-direction = - 
+direction = - i
 \backslash
-textbf{v} 
+_direction 
 \backslash
 
 \backslash
@@ -1995,7 +2106,22 @@ textbf{v}
 
 
 \backslash
-#Same as before 
+textbf{While} delta 
+\backslash
+textbf{Is} True
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} 
+\backslash
+#Same as above 
 \backslash
 
 \backslash
@@ -2021,7 +2147,7 @@ caption{EuDX Core}
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Alg:EuDX_Both"
+name "Alg:EuDX_Core"
 
 \end_inset
 
@@ -2034,13 +2160,64 @@ name "Alg:EuDX_Both"
 \end_layout
 
 \begin_layout Standard
-Initial_Direction find the closest direction to follow if all A_thr are
- low then it returns False (Delta)
+The main corpus of EuDX is given in alg.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Alg:EuDX_Core"
+
+\end_inset
+
+.
+ This is called for every seed and peak.
+ The algorithm starts by calling the function Initial_Direction which finds
+ the closest peak direction to follow from the nearby voxels and if the
+ values of these peaks are lower than 
+\begin_inset Formula $\mathcal{A}_{thr}$
+\end_inset
+
+ then it returns False otherwise it returns True and the vector with the
+ initial direction.
+ The variable delta is used as check point that no stopping criteria are
+ met.
+ As long as delta is True we can continue tracking.
+ The function New_Direction calculates the new direction of the propagation
+ by accumulating the weights created by trilinear interpolation as shown
+ in eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:trilinear_weights"
+
+\end_inset
+
+ and finds the nearest direction for the eight neighbouring voxels.
+ It also checks for the total weight threshold 
+\begin_inset Formula $TW$
+\end_inset
+
+ and if we are inside the volume's boundaries given by 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ After this is done we update the points as shown in eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: euler"
+
+\end_inset
+
+ and repeat the same procedure until one of the stopping criteria is met
+ (by checking variable delta).
+ Finally, we repeat the same for the retrograde direction in order to create
+ the entire track.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Initial_Direction find the closest direction to follow if all A_thr are
