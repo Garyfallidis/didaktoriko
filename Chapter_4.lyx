@@ -229,6 +229,8 @@ MATTHEW: Is there somewhere else a discussion of what kind of characteristics
  to length, or allowing the tracks fairly short portions where they are
  close and thereafter allowing divergence as in track fanning etc? A discussion
  here of the problem of short vs long tracks? ELEF: I will work on it.
+ Okay done I think.
+ 
 \end_layout
 
 \end_inset
@@ -291,6 +293,7 @@ reference "eq:mean_average_distance"
  of the tracks.
  These distances are slower to compute but they can work with different
  number of segments on tracks that is useful for some applications.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -327,6 +330,40 @@ where the number of points
 \end_inset
 
  on the two tracks are not necessarily the same.
+ For the same threshold value 
+\begin_inset Formula $\textrm{MAM}_{\textrm{min}}$
+\end_inset
+
+, 
+\lang british
+
+\begin_inset Formula $\textrm{MAM}_{\textrm{max}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\textrm{MAM}_{\textrm{avg}}$
+\end_inset
+
+ will give different results.
+ For example,
+\lang english
+
+\begin_inset Formula $\textrm{MAM}_{\textrm{min}}$
+\end_inset
+
+will bring together more short tracks with long tracks than 
+\begin_inset Formula $\textrm{MAM}_{\textrm{max}}$
+\end_inset
+
+ and 
+\lang british
+
+\begin_inset Formula $\textrm{MAM}_{\textrm{avg}}$
+\end_inset
+
+
+\lang english
+ will have an inbetween effect.
  Finally, other distances than the average minimum based on the minimum
  (
 \begin_inset CommandInset ref
@@ -405,7 +442,7 @@ Distances used in this work.
 \end_layout
 
 \begin_layout Standard
-Coming back to the MDF distance (
+Coming back to the MDF distance (see eq.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:direct_flip_distance"
@@ -420,11 +457,33 @@ reference "eq:direct_flip_distance"
  Another advantage is that it will separate short tracks from long tracks
  and as we will see this will be a good way to find broken or erroneous
  tracks.
- Finally, an advantage of having tracks with the same number of points is
- that we can easily do statistical operations on them; for example add them
- together.
+ An advantage of having tracks with the same number of points is that we
+ can easily do statistical operations on them; for example add them together.
  We will see in the next section that track addition is a key property of
  our clustering algorithm.
+ Some care should be taken into consideration with the number of points
+ allowed in a track (track downsampling).
+ We always keep the endpoints intact and then downsample in equidistant
+ segments.
+ For example, short tracks having the same number of points as long tracks
+ means that more of the curvature from the long tracks will be lost relative
+ to the short tracks i.e.
+ the short tracks will have higher resolution.
+ We found empeirically that this is not an important issue and that for
+ clustering purposes even downsampling to only 
+\begin_inset Formula $3$
+\end_inset
+
+ points in total could be useful 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Garyfallidis2009b"
+
+\end_inset
+
+.
+ Depending on the application less or more points can be used.
+ 
 \begin_inset Note Note
 status open
 
