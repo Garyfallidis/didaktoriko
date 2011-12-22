@@ -85,7 +85,7 @@ ns but also puts a barrier on understanding and interpreting the quality
  We show in this chapter that a stable overall linear time clustering algorithm
  exists and that we can generate meaningful clusters in seconds with minimum
  memory consumption.
- In our approach we don't need to calculate all pairwise distances unlike
+ In our approach we do not need to calculate all pairwise distances unlike
  most of the other existing methods.
  Furthermore we can update our clustering online or in parallel.
  We show that we can generate meaningful clusters ~
@@ -936,7 +936,7 @@ Durrleman et al.
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Durrleman2009"
+key "durrleman2009statistical"
 
 \end_inset
 
@@ -3701,8 +3701,8 @@ status open
 \begin_layout Plain Layout
 MATTHEW: I don't understand why this problem is not solved by just using
  the MDF distance between bundle virtuals or exemplars.
- ELEF: This order information is not stored at the time a track enters a
- cluster as it can potentially change as the virtual track is updated.
+ ELEF: This ordering information is not stored at the time a track enters
+ a cluster as it can potentially change as the virtual track is updated.
 \end_layout
 
 \end_inset
@@ -7785,11 +7785,17 @@ Here are some simple strategies for clustering short fibres.
 Strategy1
 \series default
 .
- Cluster the long tracks using QB with distance threshold at 10mm and then
- cluster the short tracks (<100mm) to a lower threshold and assign them
- to their closest long track bundle from the first clustering using the
- 
-\begin_inset Formula $m_{in}$
+ Cluster the long tracks using QB with distance threshold at 
+\begin_inset Formula $10$
+\end_inset
+
+mm and then cluster the short tracks (<
+\begin_inset Formula $100$
+\end_inset
+
+mm) to a lower threshold and assign them to their closest long track bundle
+ from the first clustering using the 
+\begin_inset Formula $MAM_{min}$
 \end_inset
 
  distance.
