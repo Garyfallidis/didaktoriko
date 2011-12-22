@@ -128,6 +128,7 @@ Maybe an emphasis on the advantage of being able to do clustering in real
 
 \begin_layout Plain Layout
 IAN: I have rewritten and reordered the second half of the paragraph above.
+ ELEF: I have removed all that massiveness ;-)
 \end_layout
 
 \end_inset
@@ -178,18 +179,18 @@ key "corouge2004towards"
 
 \end_inset
 
- and many other papers.
+ and many other studies.
  We mainly use a very simple symmetric distance proposed in 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Visser2010"
+key "EGMB10"
 
 \end_inset
 
- and by us 
+ and 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "EGMB10"
+key "Visser2010"
 
 \end_inset
 
@@ -218,7 +219,7 @@ reference "eq:direct_flip_distance"
  Therefore we assume that an initial downsampling of tracks has been implemented
 , where all segments on a track have the same length, and all tracks have
  the same number of segments.
- 
+ Under that assumption MDF is defined as: 
 \begin_inset Note Note
 status open
 
@@ -278,9 +279,19 @@ where
 \end_layout
 
 \begin_layout Standard
-In some cases it is still valid to use a family of Hausdorff distance which
- for simplicity we denote as MAM distances - short for Minimum, or Maximum,
- or Mean, Average Minimum distance (MAM).
+In some cases it is still valid to use a family of Hausdorff distances which
+ for simplicity we denote as MAM distances 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ short for Minimum, or Maximum, or Mean, Average Minimum distance (MAM).
  We mostly use the Mean version of this family, see (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -292,10 +303,7 @@ reference "eq:mean_average_distance"
  of the tracks.
  These distances are slower to compute but they can work with different
  number of segments on tracks that is useful for some applications.
- 
-\end_layout
-
-\begin_layout Standard
+ The equations below show the formulation of these distances:
 \begin_inset Formula \begin{eqnarray}
 d_{\textrm{avg}}(s_{A},s_{B}) & = & \frac{1}{K_{A}}\sum_{i=1}^{K_{A}}d(x_{i}^{A},s_{B}),\nonumber \\
 d_{\textrm{min}}(s_{A},s_{B}) & = & \min_{j=1,...,K_{B}}d(x_{i}^{A},s_{B}),\,\textrm{and}\label{eq:mininum_distance}\\
@@ -448,7 +456,7 @@ reference "eq:direct_flip_distance"
 
 \end_inset
 
-), its main advantages are that it is fast to compute, that it takes account
+), its main advantages are that it is fast to compute, it takes account
  of track direction issues through consideration of both direct and flipped
  tracks, and that it is easy to understand how it will behave, from the
  simplest case of parallel equi-length tracks to the most complicated with
@@ -457,7 +465,8 @@ reference "eq:direct_flip_distance"
  and as we will see this will be a good way to find broken or erroneous
  tracks.
  An advantage of having tracks with the same number of points is that we
- can easily do statistical operations on them; for example add them together.
+ can easily do pairwise calculations on them; for example add two or more
+ tracks together to create a new average track .
  We will see in the next section that track addition is a key property of
  our clustering algorithm.
  Some care should be taken into consideration with the number of points
@@ -511,7 +520,7 @@ During the last
 
  years there have been numerous efforts from many researchers to address
  the unsupervised and supervised learning problems of brain tractography.
- All these methods suffer from low efficiency, however they do provide many
+ All these methods suffer from low efficiency, however they provide many
  useful ideas.
  
 \begin_inset Note Note
@@ -1034,12 +1043,15 @@ Materials and methods
 \begin_layout Standard
 
 \series bold
-Real subjects.
+Human subjects.
  
 \series default
-We collected data from 10 healthy subjects at the MRC-CBU 3T scanner (TIM
- Trio, Siemens), using Siemens advanced diffusion work-in-progress sequence,
- and STEAM 
+We collected data from 
+\begin_inset Formula $10$
+\end_inset
+
+ healthy subjects at the MRC-CBU 3T scanner (TIM Trio, Siemens), using Siemens
+ advanced diffusion work-in-progress sequence, and STEAM 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "merboldt1992diffusion,MAB04"
@@ -1066,7 +1078,14 @@ n was
 \end_inset
 
 .
- A 102-point half grid acquisition with a maximum 
+ A 102-point half grid acquisition
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
+
+\end_inset
+
+ with a maximum 
 \begin_inset Formula $b$
 \end_inset
 
@@ -1088,8 +1107,7 @@ n was
 \end_inset
 
 .
- ATTENTION Ethics Number etc.
- - Marta knows? 
+ The experiment was approved by the local ethical commitee CPREC.
 \end_layout
 
 \begin_layout Standard
@@ -1125,7 +1143,7 @@ For the reconstruction of the real data sets we used Generalized Q-samping
 \begin_layout Standard
 
 \series bold
-PBC real subjects
+PBC human subjects
 \series default
 .
  We also used a few labeled datasets from the freely available tractography
@@ -1267,7 +1285,7 @@ It is the linear nature of BIRCH combined with the fixed dimensionality
 , and uses metrics and amalgamations which take account of and preserve
  this structure.
  Moreover each item is either added to an existing cluster on the basis
- of a distance between the cluster feature of the item and the cluster features
+ of a distance between the cluster feature of the item and the features
  of the current set of clusters.
  Clusters are held in a list which is extended according to need.
  
@@ -1461,7 +1479,7 @@ textbf{Output} clustering $C=
 \backslash
 {c_{0},...,c_{k},...,c_{|C|-1}
 \backslash
-}$ where class $c=
+}$ where cluster $c=
 \backslash
 {I,
 \backslash
@@ -1510,9 +1528,20 @@ left
 \backslash
 right
 \backslash
-}$, $|C|=1$ 
+}$ 
 \backslash
-# the first track becomes the first class
+# the first track becomes the first cluster
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$|C|=1$ 
+\backslash
+# the total number of clusters is 1 
 \backslash
 
 \backslash
@@ -1597,7 +1626,7 @@ textbf{From}$ $0$ $
 \backslash
 textbf{To}$ $|C|-1$ 
 \backslash
-# all classes
+# all clusters
 \backslash
 
 \backslash
@@ -1733,7 +1762,7 @@ $
 \backslash
 textbf{If}$ $m <$ threshold 
 \backslash
-# append in current class 
+# append in current cluster 
 \backslash
 
 \backslash
@@ -1777,8 +1806,6 @@ mathbf{h}+=t'$
 hspace*{2em} $
 \backslash
 textbf{Else}$ 
-\backslash
-# create new class 
 \backslash
 
 \backslash
@@ -1824,7 +1851,9 @@ hspace*{2em} $C_{l}.I$.append($i$)
 
 $
 \backslash
-textbf{Else}$
+textbf{Else}$ 
+\backslash
+# create new cluster
 \backslash
 
 \backslash
@@ -1837,7 +1866,7 @@ textbf{Else}$
 \backslash
 hspace*{2em} $|C|+=1$ 
 \backslash
-# number of classes increases
+# total number of clusters increases
 \backslash
 
 \backslash
@@ -2395,18 +2424,18 @@ Output
 \end_layout
 
 \begin_layout Standard
-Flipping can be of an issue when using the MDF distance and adding tracks
- together, because tracks do not have a preferred direction.
+Flipping can be an issue when using the MDF distance and adding tracks together,
+ because tracks do not have a preferred direction.
  A step in QB takes account of the possibility of needing to perform a flip
  of a track before adding it to a representative track.
- The complete QB algorithm is described in detail in 
+ The complete QB algorithm is described in detail in alg.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Alg:QuickBundles"
 
 \end_inset
 
- and a simple step by step visual example is given in 
+ and a simple step by step visual example is given in fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Fig:LSC_simple"
@@ -2414,30 +2443,30 @@ reference "Fig:LSC_simple"
 \end_inset
 
 .
- One of the reasons why QB is a linear time algorithm derives from the structure
- of the cluster node: we only save the sum of current tracks in the cluster
- and this is achived cumulatively.
+ One of the reasons why QB has on average linear time complexity derives
+ from the structure of the cluster node: we only save the sum of current
+ tracks in the cluster and this is achieved cumulatively.
  By contrast if we were using k-means at every iteration we would have to
- re-assign tracks to clusters and then recalculate averages and that is
- computationally much more intensive.
- Another nice property of QB is that it makes a pass through the tracks
- only once and that a track only ever belongs to one cluster.
- Further still, we can extend the cluster node to contain more information
- , for example we could redefine 
-\begin_inset Formula $c=\{I,\mathbf{h},n,\mathbf{v}\}$
-\end_inset
+ re-assign tracks to clusters and recalculate averages which is computationally
+ much more intensive.
+ Other reasons are that QB passes through the tracks only once and that
+ a track is assigned to one cluster only.
+ 
+\end_layout
 
- where the virtual track is saved as well but we could also add more interesting
- information for example we could redefine 
+\begin_layout Standard
+QB is can be extended for specific applications to contain more information
+ about the clusters.
+ For example we could redefine 
 \begin_inset Formula $c=\{I,\mathbf{h},n,\mathbf{h}^{(2)}\}$
 \end_inset
 
- to obtain second order information and that way we could calculate the
+ to obtain second order information and in that way we could calculate the
  variance of the cluster where 
 \begin_inset Formula $\mathbf{h}^{(2)}\leftarrow\{\sum_{i,j}x_{ij}^{2},\sum_{i,j}y_{ij}^{2},\sum_{i,j}z_{ij}^{2},\sum_{i,j}x_{ij}y_{ij},\sum_{i,j}y_{ij}z_{ij},\sum_{i,j}x_{ij}z_{ij}\}$
 \end_inset
 
- where 
+ and 
 \begin_inset Formula $x_{ij},y_{ij},z_{ij}$
 \end_inset
 
@@ -2449,20 +2478,7 @@ th point of the
 \begin_inset Formula $i$
 \end_inset
 
-th track in the cluster
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-IAN: exactly what are we summing over? - it's ambiguous as it stands.
- I've changed it so that it is over both the points in the tracks and over
- the tracks in the cluster.
- 
-\end_layout
-
-\end_inset
-
-.
+th track in the cluster.
  Although this alternative would be very useful, as even more refined cluster
  distances could be used which take into account the additional information,
  this is not addressed in this document.
@@ -2570,7 +2586,7 @@ reference "sub:Comparisons"
 \end_layout
 
 \begin_layout Subsubsection
-QB's powerful simplifications
+Powerful simplifications
 \end_layout
 
 \begin_layout Standard
@@ -2591,10 +2607,9 @@ MATTHEW: Is this not true for any automated clusting technique? Emphasize
 
 \end_inset
 
-For example we used QB to cluster the corticospinal tract (CST) selected
- by an expert.
- This tract was part of the datasets provided by the Pittsburgh Brain Competitio
-n (PBC2009-ICDM).
+For example we used QB to cluster the corticospinal tract (CST).
+ This bundle was part of the datasets provided by the Pittsburgh Brain Competiti
+on (PBC2009-ICDM) and it was selected by an expert.
  The result is clearly shown in fig.
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2608,7 +2623,7 @@ reference "Flo:cst_pbc"
 \end_inset
 
 mm.
- We notice that only a few virtual tracks travel the full distance from
+ We observe that only a few virtual tracks travel the full distance from
  bottom to top and that they are many tracks that are broken (i.e.
  shorter than what was initially expected) or highly divergent.
 \end_layout
@@ -2648,7 +2663,7 @@ This is a part of the CST bundle consisting of
 \end_inset
 
  tracks merged by an expert (PBC2009 data) shown with red color.
- Visually it looks as though all tracks have a similar shape ,and possibly
+ Visually it looks as though all tracks have a similar shape, and possibly
  merge towards the bottom, and spreading towards the top.
  However, this is a misreading caused by the opaque density when all the
  tracks are visualised ('not seeing the wood for the trees').
@@ -2708,7 +2723,7 @@ MATTHEW Too strong? Maybe 'is a simplification of the underlying data'.
 \begin_layout Standard
 Another interesting feature of QB is that it can be used to merge or split
  different structures by changing the distance threshold.
- This becomes clear in fig.
+ This is shown in fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2717,7 +2732,8 @@ reference "Flo:simulated_orbits"
 \end_inset
 
 ; on the left we see simulated paths made from simple sinusoidal and helicoidal
- functions and colour coded to distinguish the three different structures.
+ functions packed together.
+ The colour coding is used to distinguish the three different structures.
  With a lower threshold the three different structures keep remain separated
  but when we use a higher threshold the red and blue bundles are represented
  by only one cluster; represented by a purple virtual.
@@ -2752,10 +2768,29 @@ name "Flo:simulated_orbits"
 \begin_inset Caption
 
 \begin_layout Plain Layout
-On the left we see 3 bundles of simulated trajectories; red, blue and green
- consisting of 150 tracks each.
- All 450 tracks are clustered together using QB and the virtual tracks are
- shown when threshold 1 was used shown in the middle and 8 on the right.
+On the left we see 
+\begin_inset Formula $3$
+\end_inset
+
+ bundles of simulated trajectories; red, blue and green consisting of 
+\begin_inset Formula $150$
+\end_inset
+
+ tracks each.
+ All 
+\begin_inset Formula $450$
+\end_inset
+
+ tracks are clustered together using QB and the virtual tracks are shown
+ when threshold 
+\begin_inset Formula $1$
+\end_inset
+
+ was used shown in the middle and 
+\begin_inset Formula $8$
+\end_inset
+
+ on the right.
  We can see that when the threshold is low enough the underlying structure
  is a good representation of the underlying geometry.
  However when the distance threshold is higher closer bundles could merge
@@ -2963,7 +2998,7 @@ Complexity and timings
 \end_layout
 
 \begin_layout Standard
-To apply QB to a tractography we need to specify three key parameters: 
+To apply QB to a data set we need to specify three key parameters: 
 \begin_inset Formula $p$
 \end_inset
 
@@ -3395,7 +3430,7 @@ QB is a very efficient algorithm whose performance is controlled by just
  We used a full tractography to generate these figures without removing
  or preselecting any parts.
  This results run of a single thread Intel(R) Xeon(R) CPU E5420 at 2.50GHz
- on a simple PC.
+ on a standard PC.
  (NB This and the following figure use the same vertical scale to assist
  direct comparison.)
 \end_layout
@@ -3476,8 +3511,8 @@ reference "Flo:Speed1"
 \end_inset
 
 .
- Notice how the linearity only reduces slightly when we use a very low threshold
- of 
+ We can observe here how the linearity only reduces slightly even when we
+ use a very low threshold as that of 
 \begin_inset Formula $10$
 \end_inset
 
@@ -3628,8 +3663,8 @@ name "sub:The-bi-directionality-problem"
 \begin_layout Standard
 Because a track is a sequence of points without a preferred direction, it
  has two possible orientations when comparing it with another track.
- Most tractography generation methods will create tracks with arbitrary
- directions; meaning that close and similar tracks can have opposite directions.
+ Most tractography methods will create tracks with arbitrary directions;
+ meaning that close and similar tracks can have opposite directions.
  Of course the tracks do not really carry directional information.
  By direction we mean the encoding of the sequence of points which define
  the track.
@@ -3656,10 +3691,9 @@ MATTHEW: Thus a track may be ordered p_a, p_b ..
 \end_inset
 
 We call this the bi-directionality problem.
- Using the MDF distance we have already found a way in QB to reduce this
- problem locally in the clusters.
+ Using the MDF distance we found a way with QB to eliminate this problem.
  However, if we want to merge clusters together we need to have a way to
- further reduce this difficult problem.
+ minimize this problem.
  
 \begin_inset Note Note
 status open
@@ -3706,13 +3740,19 @@ For this purpose we devised the following technique.
  We can correct for these by using exemplars rather than virtual tracks
  as virtual tracks can misrepresent a bundle if the bundle consists of tracks
  with ambiguous directionality.
+ The exemplars are more preferable than the virtual tracks because of the
+ way the latter can be influenced more by outliers and thus can be less
+ representative in terms of the shape of real tracks in a bundle.
+ The exemplars are similar to the concept of the median and the virtuals
+ more similar to the concept of the mean.
+ The mean is usually influenced more by outliers than the median.
  
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 MATTHEW: Why the difference between virtuals and exemplars in the bi-directional
-ity problem? ELEF: Because of the way the virtual track is built up in it
+ity problem? ELEF: Because of the way the virtual track is built up; it
  can be influenced by outliers and thus can be quite unrepresentative in
  terms of the shape of real tracks in the bundle 
 \end_layout
@@ -3851,7 +3891,11 @@ Gini impurity
 
 \begin_layout Standard
 Suppose we have a probability distribution 
-\begin_inset Formula $P=(p_{1},p_{2},\ldots,p_{k})$
+\begin_inset Formula $P$
+\end_inset
+
+=
+\begin_inset Formula $(p_{1},p_{2},\ldots,p_{k})$
 \end_inset
 
  such that the probability that any item has label 
@@ -4416,7 +4460,7 @@ where
 
  by adding if necessary rows or columns of zeros.
  When we adapt this measure to the case of comparing two clusterings we
- need further to take account of the lack of prior correspondence between
+ further need to take into account the lack of prior correspondence between
  the two sets of labels.
  The 
 \begin_inset Formula $\kappa_{\max}$
@@ -4467,7 +4511,17 @@ where
 \end_layout
 
 \begin_layout Standard
-An alternative route is to redefine the objective.
+An alternative route is to redefine the objective
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Marta:Which objective?
+\end_layout
+
+\end_inset
+
+.
  One obvious choice in this setting is the maximized number of agreements
  
 \begin_inset Formula $\mu_{\max}={\displaystyle \sum_{i=1}^{M}}t_{i\pi(i)}$
@@ -4596,15 +4650,13 @@ key "moberts2005evaluation"
 \end_inset
 
 .
- We think that being able to compare results of clusterings is crucial for
- creating stable brain imaging procedures.
- We would like to have a way to compare different clusterings of the same
- subject or different subjects.
+ Being able to compare results of clusterings is crucial for creating stable
+ brain imaging procedures, and therefore it is necessary to develop a way
+ to compare different clusterings of the same subject or different subjects.
  Although we recognise that this is a difficult problem, we propose the
  following solution with a metric which we call tight comparison (TC).
  Tight comparison works as follows.
- Let's assume that we have gathered the exemplar tracks from clustering
- 
+ Lets assume that we have gathered the exemplar tracks from clustering 
 \begin_inset Formula $A$
 \end_inset
 
@@ -4766,7 +4818,7 @@ where
 \end_layout
 
 \begin_layout Standard
-We run an experiment were we compared TC between pairs of 10 subjects with
+We ran an experiment were we compared TC between pairs of 10 subjects with
  their tractographies warped in MNI space
 \begin_inset Note Note
 status open
@@ -4783,8 +4835,12 @@ ELEF: (SEE SECTION) - Needs a cross reference
 \end_inset
 
  TC values.
- We did this experiment twice once with keeping only the bundles with more
- than 10 tracks and once with keeping the bundles with more than 
+ We did this experiment twice; first by keeping only the bundles with more
+ than 
+\begin_inset Formula $10$
+\end_inset
+
+ tracks and secondly by keeping the bundles with more than 
 \begin_inset Formula $100$
 \end_inset
 
@@ -4802,7 +4858,7 @@ ELEF: (SEE SECTION) - Needs a cross reference
 \begin_inset Formula $0.53$
 \end_inset
 
- and standard divination 
+ and standard deviation 
 \begin_inset Formula $0.049$
 \end_inset
 
@@ -4818,6 +4874,19 @@ ELEF: (SEE SECTION) - Needs a cross reference
 .
  This was a strong evidence that QB can be used in order to find agreements
  between different brains.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Marta: Perhaps non-parametric tests would be more appropriate ?
+\end_layout
+
+\end_inset
+
+
 \begin_inset Note Note
 status open
 
@@ -4949,11 +5018,11 @@ Algorithm
 \end_layout
 
 \begin_layout Standard
-QB is already a super-efficient algorithm however we wanted to make it even
- more efficient so that for example it is trivial to cluster hundreds of
- subjects together and use many CPUs or computers simultaneously.
- With the speed of QB that would mean that you would actually be able to
- create an atlas of hundreds of subjects in a few hours.
+QB is a very fast algorithm; however we wanted to make it even more efficient
+ so that for example it is trivial to cluster hundreds of subjects together
+ and use many CPUs or computers simultaneously.
+ This could be used to create an atlas of hundreds of subjects in a few
+ hours.
  Therefore, we have extended QB to a parallel version which we call pQB.
  This algorithm works as follows.
  First we redirect and downsample all tracks.
@@ -4962,12 +5031,12 @@ QB is already a super-efficient algorithm however we wanted to make it even
 status open
 
 \begin_layout Plain Layout
-MATTHEW: Can be done in parallel
+MATTHEW: Can be done in parallel ELEF: Indeed.
 \end_layout
 
 \end_inset
 
-Then we put all tracks together and break them into subsets.
+ Then we put all tracks together and break them into subsets.
  For every subset we assign a new thread and set QB to run on that thread.
  Therefore, we have now many QBs running on different CPUs.
  Then we collect all individual clusterings and start merging them together.
@@ -4980,6 +5049,7 @@ status open
 
 \begin_layout Plain Layout
 MATTHEW: This will give you a different answer to the serial version surely?
+ ELEF: Yes, as different will be the result with different initial orderings.
 \end_layout
 
 \end_inset
@@ -5110,14 +5180,14 @@ It is well known that there are different artifacts seen in tractographies
  and many other reasons.
  However there is no known automatic method to try and detect these tracks
  and therefore remove them from the data sets.
- The idea here is that QB speeds up the search for erroneous tracks.
+ The idea here is to use QB to speed up the search for erroneous tracks.
  We will concentrate here on tracks that loop one or many times; something
  that it is considered impossible to happen in nature.
 \end_layout
 
 \begin_layout Standard
 One of the tracks which are most likely erroneous are tracks which wind
- more than one times, like a spiral.
+ more than one time, like a spiral.
  We can detect those with the following algorithm.
  Lets assume that we have a track 
 \begin_inset Formula $s$
@@ -5410,7 +5480,7 @@ Alignment
  gradient directions with maximum b-value 4000 and 1 with b-value ~0 gathered
  from 10 healthy subjects at the MRC-CBU Siemens Trio using the 32 channels
  coil, STEAM sequence and voxel size 
-\begin_inset Formula $2.5\times2.5\times2.5$
+\begin_inset Formula $2.5\times2.5\times2.5mm^{3}$
 \end_inset
 
 ; see section 
@@ -5429,9 +5499,9 @@ reference "sub:Acquisition-sequences-in-use"
 \end_layout
 
 \begin_layout Standard
-Because the registration problem is generally considered a difficult problem
- with a non-unique solution we wanted to make sure that we are using a known,
- well established and robust method therefore we chose to use 
+Because the registration of tractographies is generally considered a difficult
+ problem with a non-unique solution we wanted to make sure that we are using
+ a known, well established and robust method therefore we chose to use 
 \begin_inset Formula $\texttt{fnirt}$
 \end_inset
 
@@ -5455,11 +5525,11 @@ key "Smith2006NeuroImage"
 '.
  These FA volumes were again in native space therefore we needed to warp
  them in MNI space.
- For this purpose a standard template 
+ For this purpose a standard template (
 \begin_inset Formula $\texttt{FMRIB58\_FA\_1mm}$
 \end_inset
 
- from the FSL toolbox was used as the reference volume.
+) from the FSL toolbox was used as the reference volume.
  However, we wanted primarily to have the displacements which would do a
  point wise mapping from native space to MNI space and we found this to
  be technically very difficult with the FSL tools as they assume that these
@@ -5530,6 +5600,16 @@ texttt{fnirtfileutils -withaff}
  of this type of data sets because eddy correction is unstable with volumes
  at high b-values because there is no much signal for guiding a correct
  registration with the other volumes at lower b-values.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ELEF: Perhaps I give to much technical information here? Any ideas?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5584,7 +5664,8 @@ reference "sub:Parallel-version"
  issue is what you remove from the atlas as outliers.
  QB here provides a possible solution for this problem.
  If we plot the number of tracks for each cluster sorted in ascending order
- we can see an interesting pattern: 
+ we can see an interesting pattern.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -5613,12 +5694,25 @@ name "Flo:atlas_big_bundles"
 \begin_inset Caption
 
 \begin_layout Plain Layout
-14520 clusters when created by joining the QB clusterings of 10 subjects
- in MNI space.
+\begin_inset Formula $14520$
+\end_inset
+
+ clusters when created by joining the QB clusterings of 
+\begin_inset Formula $10$
+\end_inset
+
+ subjects in MNI space.
  We found that most of the clusters had a few tracks and only a few clusters
  had many.
- In the diagram above we can see 20% of the largest clusters had more than
- 90% of the total amount of tracks.
+ In the diagram above we can see 
+\begin_inset Formula $20\%$
+\end_inset
+
+ of the largest clusters had more than 
+\begin_inset Formula $90\%$
+\end_inset
+
+ of the total amount of tracks.
  This was a very positive result showing that there is a lot of agreement
  between different subjects which would be useful for a solid atlas with
  the biggest bundles becoming landmark bundles and the small bundles removed
