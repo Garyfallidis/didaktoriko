@@ -5633,8 +5633,8 @@ After creating the displacements for every subject; these were applied to
 Tractographic Atlas.
 
 \series default
- For all subjects, (a) load warped tractography (b) re-direct a static point
- 
+ For all subjects, (a) load warped tractography (b) re-direct towards a
+ static point 
 \begin_inset Formula $(100,100,100)$
 \end_inset
 
@@ -5645,14 +5645,20 @@ reference "sub:The-bi-directionality-problem"
 
 \end_inset
 
-, (c) downsample the tracks to have only 12 points, (d) calculate and store
- QB clustering with a 
+, (c) downsample the tracks to have only 
+\begin_inset Formula $12$
+\end_inset
+
+ points, (d) calculate and store QB clustering with a 
 \begin_inset Formula $10$
 \end_inset
 
 mm threshold.
- Then merge all clusterings again with 10 mm threshold as explained in section
- 
+ Then merge all clusterings again with 
+\begin_inset Formula $10$
+\end_inset
+
+mm threshold as explained in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Parallel-version"
@@ -5664,8 +5670,27 @@ reference "sub:Parallel-version"
  issue is what you remove from the atlas as outliers.
  QB here provides a possible solution for this problem.
  If we plot the number of tracks for each cluster sorted in ascending order
- we can see an interesting pattern.
- 
+ we can see an interesting pattern see fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:atlas_big_bundles"
+
+\end_inset
+
+.
+ In this diagram we observe that 
+\begin_inset Formula $20\%$
+\end_inset
+
+ of the largest clusters had more than 
+\begin_inset Formula $90\%$
+\end_inset
+
+ of the total amount of tracks.
+ This shows that there is much agreement between the biggest bundles of
+ different subjects.
+ We will use this property to create a solid atlas with the biggest bundles
+ as landmark bundles and the small bundles are removed as outliers.
 \end_layout
 
 \begin_layout Standard
@@ -5713,12 +5738,11 @@ name "Flo:atlas_big_bundles"
 \end_inset
 
  of the total amount of tracks.
- This was a very positive result showing that there is a lot of agreement
- between different subjects which would be useful for a solid atlas with
- the biggest bundles becoming landmark bundles and the small bundles removed
- as outliers.
+ This was a very positive result showing that there is much agreement between
+ different subjects which would be useful for a solid atlas with the biggest
+ bundles becoming landmark bundles and the small bundles removed as outliers.
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 MATTHEW: Not sure what largest bundles % is? Is the gradient at 100% then
@@ -5766,24 +5790,103 @@ reference "Flo:CloseToSelected"
 
 .
  In the first row we see a tractographic atlas joined by merging the QB
- clusterings of 10 healthy subjects as described in the previous section.
+ clusterings of 
+\begin_inset Formula $10$
+\end_inset
+
+ healthy subjects as described in the previous section.
  Then from these clusters represented by their virtual tracks we keep only
- 196 biggest clusters i.e.
+ 
+\begin_inset Formula $196$
+\end_inset
+
+ biggest clusters i.e.
  those which contain the highest number of tracks, so that we are sure that
  there is enough agreement from the different tractographies and from these
- we just pick by way of an example 19 virtual tracks which correspond to
- well known bundle structures in the literature: 1 from genu of corpus callosum
- (GCC), 3 from the body of corpus callosum (BCC), 1 from the splenium (SCC),
- 1 from the pons cerebellar peduncle (CP), 1 from left arcuate fasciculus
- (ARC-L), 1 from right arcuate fasciculus (ARC-R), 1 from left inferior
- occipitofrontal fasciculus (IFO-L) and 1 from right inferior occipitofrontal
- fasciculus (IFO-R), 1 from right fornix (FX-R), 1 from left fornix (FX-L),
- 1 optic radiation (OR), 1 left cingulum (CGC-L), 1 from right cingulum
- (CGC-R), 1 from left corticospinal tract (CST-L), 1 from right corticospinal
- tract (CST-R), 1 from left uncinate (UNC-L) and 1 from right uncinate (UNC-R).
- These 19 tracks are coloured randomly.
- Then on the second row we bring for the first 6 selected representative
- tracks 
+ we just pick by way of an example 
+\begin_inset Formula $19$
+\end_inset
+
+ virtual tracks which correspond to well known bundle structures in the
+ literature: 
+\begin_inset Formula $1$
+\end_inset
+
+ from genu of corpus callosum (GCC), 
+\begin_inset Formula $3$
+\end_inset
+
+ from the body of corpus callosum (BCC), 
+\begin_inset Formula $1$
+\end_inset
+
+ from the splenium (SCC), 
+\begin_inset Formula $1$
+\end_inset
+
+ from the pons cerebellar peduncle (CP), 
+\begin_inset Formula $1$
+\end_inset
+
+ from left arcuate fasciculus (ARC-L), 
+\begin_inset Formula $1$
+\end_inset
+
+ from right arcuate fasciculus (ARC-R), 
+\begin_inset Formula $1$
+\end_inset
+
+ from left inferior occipitofrontal fasciculus (IFO-L) and 
+\begin_inset Formula $1$
+\end_inset
+
+ from right inferior occipitofrontal fasciculus (IFO-R), 
+\begin_inset Formula $1$
+\end_inset
+
+ from right fornix (FX-R), 
+\begin_inset Formula $1$
+\end_inset
+
+ from left fornix (FX-L), 
+\begin_inset Formula $1$
+\end_inset
+
+ optic radiation (OR), 
+\begin_inset Formula $1$
+\end_inset
+
+ left cingulum (CGC-L), 
+\begin_inset Formula $1$
+\end_inset
+
+ from right cingulum (CGC-R), 
+\begin_inset Formula $1$
+\end_inset
+
+ from left corticospinal tract (CST-L), 
+\begin_inset Formula $1$
+\end_inset
+
+ from right corticospinal tract (CST-R), 
+\begin_inset Formula $1$
+\end_inset
+
+ from left uncinate (UNC-L) and 
+\begin_inset Formula $1$
+\end_inset
+
+ from right uncinate (UNC-R).
+ These 
+\begin_inset Formula $19$
+\end_inset
+
+ tracks are coloured randomly.
+ Then on the second row we bring for the first 
+\begin_inset Formula $6$
+\end_inset
+
+ selected representative tracks 
 \begin_inset Note Note
 status open
 
@@ -5793,11 +5896,33 @@ MATTHEW: selections of what? I+E: changed
 
 \end_inset
 
- the tracks closer than 20mm from 3 arbitrarily selected subjects.
- Similarly, on the third row the tracks closer than 15mm to the next 7 picked
- tracks.
- Finally on the last row we bring the tracks from the same 3 subjects which
- are closer than 18mm.
+ the tracks closer than 
+\begin_inset Formula $20$
+\end_inset
+
+mm from 
+\begin_inset Formula $3$
+\end_inset
+
+ arbitrarily selected subjects.
+ Similarly, on the third row the tracks closer than 
+\begin_inset Formula $15$
+\end_inset
+
+mm to the next 
+\begin_inset Formula $7$
+\end_inset
+
+ picked tracks.
+ Finally on the last row we bring the tracks from the same 
+\begin_inset Formula $3$
+\end_inset
+
+ subjects which are closer than 
+\begin_inset Formula $18$
+\end_inset
+
+mm.
  The colours used for the selected tracks are automatically assigned from
  the colours of tracks picked from the atlas.
  We can see that there is a significant reliability and continuity in the
@@ -5838,12 +5963,22 @@ name "Flo:CloseToSelected"
 
 \begin_layout Plain Layout
 A novel way to do comparisons between subjects.
- Correspondence between different subjects (last 3 rows) and a few landmarks
- picked from the tractographic atlas generated by merging QB clusterings
- of 10 subjects (top row).
- That we can see this amount of agreement and continuity on the last 3 rows
- from such a few skeletal tracks is a great hope for implementing new robust
- ways of statistical comparisons using tractographic data sets.
+ Correspondence between different subjects (last 
+\begin_inset Formula $3$
+\end_inset
+
+ rows) and a few landmarks picked from the tractographic atlas generated
+ by merging QB clusterings of 
+\begin_inset Formula $10$
+\end_inset
+
+ subjects (top row).
+ That we can see this amount of agreement and continuity on the last 
+\begin_inset Formula $3$
+\end_inset
+
+ rows from such a few skeletal tracks is a great hope for implementing new
+ robust ways of statistical comparisons using tractographic data sets.
 \end_layout
 
 \end_inset
@@ -5887,8 +6022,15 @@ MATTHEW: I wonder if you can use QB as input to QB? I mean to try and find
 
 \begin_layout Standard
 Most clustering algorithms need to calculate all pairwise distances between
- tracks; that means that for a medium sized tractography of 250,000 tracks
- we would need 232 GBytes of RAM with single floating point precision.
+ tracks; that means that for a medium sized tractography of 
+\begin_inset Formula $250,000$
+\end_inset
+
+ tracks we would need 
+\begin_inset Formula $232$
+\end_inset
+
+ GBytes of RAM with single floating point precision.
  Something which is not and will not be available soon in personal computers.
  In those cases some people might hope that sparse matrices could provide
  a nice approximation; however dense tractographies produce very dense distance
@@ -5907,7 +6049,7 @@ MATTHEW: I remember Fernando talking about large scale diffusion clustering
  I guess QB here gives you a reliable measure of a long distance so that
  you can zero out this entry in your connection matrix.
  ELEF: Tractographic data sets are not sparse, so standard sparse methods
-  (which FP was referring to) are not applicable.
+  (which FP was referring to are not applicable.
 \end_layout
 
 \end_inset
@@ -6010,7 +6152,7 @@ status open
 
 \begin_layout Plain Layout
 MATTHEW: How reliable is this do you think? ELEF: No further comment at
- present - though it based on a group of 10 subjects.
+ present - though it is based on a group of 10 subjects.
 \end_layout
 
 \end_inset
@@ -6037,7 +6179,7 @@ key "dueck2009affinity"
 
 \end_inset
 
-, which earlier was correctly identified by us (see Fig.
+, which earlier was identified by us (see Fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:LSC+HC+AP"
@@ -6219,12 +6361,10 @@ Medical practitioners and neuroanatomists often argue that when they use
 \end_layout
 
 \begin_layout Standard
-In order to create this system we implemented a collision detection system
- in Python and OpenGL similar to those used in commercial game engines.
- This project has attracted great interest from other researchers and it
- has now become a new independent scientific software project accessed at
- 
-\begin_inset Formula $\texttt{http://www.fos.me}$
+In order to create this system we implemented a 3D visualization/interaction
+ system for tractographies based on QB in Python and OpenGL.
+ This project is available online at 
+\begin_inset Formula $\texttt{fos.me}$
 \end_inset
 
 .
@@ -6247,13 +6387,17 @@ status open
 
 \begin_layout Plain Layout
 MATTHEW: You have already used and referred to AP above.
- Put this section earlier? ELEF: There is a forward reference above which
- seems adequate.
+ Put this section earlier? ELEF+IAN: There is a forward reference above
+ which seems adequate.
 \end_layout
 
 \end_inset
 
 Affinity propagation (AP) is a very recent 
+\begin_inset Formula $O(N^{2})$
+\end_inset
+
+ clustering method invented by 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "frey2007clustering"
@@ -6267,11 +6411,7 @@ key "dueck2009affinity"
 
 \end_inset
 
- 
-\begin_inset Formula $O(N^{2})$
-\end_inset
-
- clustering method which is based in loopy belief propagation 
+ which is inspired in loopy belief propagation 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "pearl1988probabilistic"
@@ -6280,6 +6420,8 @@ key "pearl1988probabilistic"
 
  and other recent innovations in graphical models and more specifically
  is an instance of the max-sum algorithm in factor graphs.
+ For completeness we give a short description of the AP algorithm in this
+ section.
  AP is an exemplar based clustering method where the center of a cluster
  is a real data point (exemplar) as in k-medoids, and k-centres rather than
  an average virtual point as in k-means.
@@ -6940,8 +7082,8 @@ Direct Tractography Registration
 \end_layout
 
 \begin_layout Standard
-Direct tractography registration is a recent studied problem with a small
- amount of publications and to our knowledge with no publicly available
+Direct tractography registration is a recently described problem with a
+ small amount of publications and to our knowledge with no publicly available
  solutions.
  By direct registration we mean that no other information apart from the
  tractographies themselves is guiding the registration.
@@ -6978,7 +7120,7 @@ key "leemans2006multiscale"
 
 \end_inset
 
-uses the invariance of curvature and torsion under rigid registration along
+ uses the invariance of curvature and torsion under rigid registration along
  with Procrustes analysis to co-register together different tractographies.
  Mayer et al.
 \begin_inset space ~
@@ -7080,8 +7222,8 @@ key "Arsigny2009"
 \end_layout
 
 \begin_layout Standard
-Our algorithm is extremely efficient and simple to use, completely automatic
- and provides an evidently robust rigid direct tractography registration
+We show that the algorithm is efficient and simple to use, completely automatic
+ and provides an evidently robust direct rigid tractography registration
  algorithm available in seconds.
  This algorithm could be of great use when comparing healthy versus severely
  diseased brains e.g.
@@ -7096,7 +7238,11 @@ Our algorithm is extremely efficient and simple to use, completely automatic
 Algorithm
 \series default
 .
- Here we describe a simple algorithm where 2 tractographies 
+ Here we describe a simple algorithm where 
+\begin_inset Formula $2$
+\end_inset
+
+ tractographies 
 \begin_inset Formula $T_{A}$
 \end_inset
 
@@ -7238,7 +7384,18 @@ reference "Flo:direct_registration"
 \end_inset
 
 A we see the result of this algorithm applied to two tractographies - represente
-d with their exemplar tracks - depicted with orange and purple.
+d with their exemplar tracks 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ depicted with orange and purple.
  We can see in the upper panel that the orange tractography is misaligned
  with respect to the purple one, and in the lower panel we see their improved
  alignment after applying our algorithm.
@@ -7285,9 +7442,9 @@ reference "Flo:direct_registration"
 \end_inset
 
  B and C.
- From, there it was clear that although for translations only the SD was
- entirely convex, with rotations the SD had stronger local minima which
- is not a good property for registration.
+ From, these two diagrams we can see that although for translations only
+ the SD was entirely convex, with rotations the SD had stronger local minima
+ which is not a good property for registration.
  Furthermore, the SMD had steeper gradients towards the global minimum which
  is a positive indicator for faster convergence.
  
@@ -7342,8 +7499,16 @@ mm.
 
 .
  This was confirmed with both cost functions used SD and SMD getting close
- to zero 99.8% of the time however SMD was always closer to perfect alignment
- than SD, having precision of more 7 decimals.
+ to zero 
+\begin_inset Formula $99.8\%$
+\end_inset
+
+ of the time however SMD was always closer to perfect alignment than SD,
+ having precision of more 
+\begin_inset Formula $7$
+\end_inset
+
+ decimals.
  Consequently SMD is chosen as a better cost function for tractography registrat
 ion.
 \begin_inset Note Note
@@ -7354,6 +7519,8 @@ MATTHEW: I seem to remember that registrations perform a bit differently
  when registering to transformed versions of themselves.
  I haven't got internet, but look for the AIR website (Roger Woods) and
  a comment about registrations to rotated versions of self.
+ ELEF: This is just Rigid registration we tried here.
+ Do you think that this is trully an issue?
 \end_layout
 
 \end_inset
@@ -7362,8 +7529,11 @@ MATTHEW: I seem to remember that registrations perform a bit differently
 \end_layout
 
 \begin_layout Standard
-We uses QA tractographies from 10 subjects and we registered all full combinatio
-ns of pairs 
+We used GQI-based tractographies from 
+\begin_inset Formula $10$
+\end_inset
+
+ subjects and we registered all full combinations of pairs 
 \begin_inset Formula $\binom{10}{2}=45$
 \end_inset
 
@@ -7404,7 +7574,10 @@ MATTHEW: Isn't the metric used in the registration related to the metric
  used to assess the registration? Maybe you could some measure of alignment
  of the structural image instead? I mean, transform the structural image
  with the same parameters.
- ELEF: There isn't time!! But we have partial checks.
+ ELEF: There isn't time!! This is just the first result of using QB for
+ registration.
+ To develop a full registration algorithm a new chapter is needed.
+ 
 \end_layout
 
 \end_inset
@@ -7474,7 +7647,7 @@ Strategies with Small fibres
 \end_layout
 
 \begin_layout Standard
-In many parts of this document we didn't consider short tracks.
+In many parts of this document we did not consider short tracks.
  That is perfectly valid because (a) the longer tracks are more likely to
  be used as useful landmarks when comparing or registering different subjects
  because it is more likely for them to exist in most subjects, (b) removing
@@ -7485,13 +7658,13 @@ status open
 
 \begin_layout Plain Layout
 MATTHEW: what is an adaptive distance threshold? Can this be in the earlier
- discussion? ELEF: Will think about this!!
+ discussion? ELEF: Changed!
 \end_layout
 
 \end_inset
 
-and interaction with the tractography, (c) someone would first want to see
- the overall skeleton of the tractography and later go to the details.
+ and interaction with the tractography, (c) someone would first want to
+ see the overall skeleton of the tractography and later go to the details.
  Nonetheless, after having clustered the longer tracks there are many ways
  to assign the smaller bundles to their closest longer bundles.
  For this purpose we recommend to use a different distance from 
@@ -7565,9 +7738,27 @@ name "Flo:arcuate_close"
 A simple and vigorous strategy for handling short and long tracks together
  by picking a track of interest from one of our atlases.
  Colourmap encodes track length.
- A: one picked selected atlas track, B: 245 subject tracks closer than 15mm
- (MDF distance), C: B tracks clustered in 23 skeletons, D: 3421 tracks closer
- than 6mm (MAM distance) from the skeletons of B are shown.
+ A: one picked selected atlas track, B: 
+\begin_inset Formula $245$
+\end_inset
+
+ subject tracks closer than 
+\begin_inset Formula $15$
+\end_inset
+
+mm (MDF distance), C: B tracks clustered in 
+\begin_inset Formula $23$
+\end_inset
+
+ skeletons, D: 
+\begin_inset Formula $3421$
+\end_inset
+
+ tracks closer than 
+\begin_inset Formula $6$
+\end_inset
+
+mm (MAM distance) from the skeletons of B are shown.
  We can see that a great number of small tracks have been brought together
  along with the tracks in B but also shorter.
 \end_layout
@@ -7693,15 +7884,26 @@ Discussion and conclusion
 \end_layout
 
 \begin_layout Standard
-In this document we presented a novel and extremely powerful algorithm --
+In this document we presented a novel and powerful algorithm 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
  QuickBundles (QB).
- This algorithm provides simplifications to the ancient problem of white
- matter anatomy which has recently attracted much scientific attention;
- it can also be used for any trajectory clustering problem especially when
- large data sets are involved.
+ This algorithm provides simplifications to the old problem of white matter
+ anatomy packing which has recently attracted much scientific attention;
+ it can also be used for any trajectory clustering problem and it is recommended
+ when large data sets are involved.
  QB can be used with all types of diffusion MRI tractographies which generate
- streamlines probabilistic or deterministic and it is independent of the
- reconstruction model.
+ streamlines (e.g.
+ probabilistic or deterministic) and it is independent of the reconstruction
+ model.
 \end_layout
 
 \begin_layout Standard
