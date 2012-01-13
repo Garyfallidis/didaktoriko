@@ -46,6 +46,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \author "Eleftherios Garyfallidis,,," 
 \author "" 
 \end_header
@@ -1939,13 +1940,13 @@ name "Alg:QuickBundles"
 
 \begin_layout Standard
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 \begin_inset Float algorithm
 wide false
 sideways false
@@ -1953,7 +1954,7 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 \begin_inset listings
 lstparams "basicstyle={\small\rmfamily},breaklines=true,mathescape=true,numbers=left,numberstyle={\footnotesize},showstringspaces=false,tabsize=4"
 inline false
@@ -1961,7 +1962,7 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 $
 \backslash
@@ -1972,7 +1973,7 @@ textrm{
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 $c_{0}=
 \backslash
@@ -1987,7 +1988,7 @@ right
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 $C=
 \backslash
@@ -2002,7 +2003,7 @@ right
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 $
 \backslash
@@ -2013,7 +2014,7 @@ textrm{
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 $
 \backslash
@@ -2026,7 +2027,7 @@ textbf{to}$ $|T|-1$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2035,7 +2036,7 @@ mathbf{t}=T_{i}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2046,7 +2047,7 @@ textrm{
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2057,7 +2058,7 @@ mathrm{zeros}(|C|)$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2066,7 +2067,7 @@ textsc{store flipping if needed}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2077,7 +2078,7 @@ mathrm{zeros}(|C|)$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2088,7 +2089,7 @@ textrm{
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2101,7 +2102,7 @@ textbf{to}$ $|C|-1$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$
 \backslash
@@ -2112,7 +2113,7 @@ mathbf{h}/C_{k}.N$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$d$=$d_{d}(
 \backslash
@@ -2123,7 +2124,7 @@ mathbf{v})$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$f$=$d_{f}(
 \backslash
@@ -2134,7 +2135,7 @@ mathbf{v})$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$
 \backslash
@@ -2143,7 +2144,7 @@ textsc{if flip distance is smaller than direct distance}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$
 \backslash
@@ -2152,14 +2153,14 @@ textbf{if}$ $f < d$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 			$d = f$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 			$
 \backslash
@@ -2168,7 +2169,7 @@ mathrm{flip}_{k}=1$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$
 \backslash
@@ -2177,7 +2178,7 @@ mathrm{alld}_{k}=d$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2186,7 +2187,7 @@ textsc{find minimum distance and index}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$m=
 \backslash
@@ -2197,7 +2198,7 @@ mathrm{alld})$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$l=
 \backslash
@@ -2208,7 +2209,7 @@ mathrm{alld})$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2217,7 +2218,7 @@ textsc{If smaller than any class threshold then}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2226,7 +2227,7 @@ textsc{add track to that class}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2235,7 +2236,7 @@ textbf{if}$ $m < thr$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$
 \backslash
@@ -2246,7 +2247,7 @@ mathrm{flip}_{l}=1$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 			$C_{l}.
 \backslash
@@ -2257,7 +2258,7 @@ textsc{reverse direction}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$
 \backslash
@@ -2266,7 +2267,7 @@ textbf{else}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 			$C_{l}.
 \backslash
@@ -2277,21 +2278,21 @@ textsc{same direction}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$C_{l}.N+=1$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$C_{l}.I$.append(i)
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2300,7 +2301,7 @@ textsc{Otherwise create a new class}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	$
 \backslash
@@ -2309,21 +2310,21 @@ textbf{else}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$|C|+=1$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$C_{|C|-1}.I_{0}=l$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$C_{|C|-1}.
 \backslash
@@ -2334,14 +2335,14 @@ mathbf{t}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 		$C_{|C|-1}.N=1$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 	
 \end_layout
@@ -2353,12 +2354,12 @@ mathbf{t}$
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 \begin_inset Caption
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1319710123
+\change_inserted 1 1319710123
 
 \series bold
 \begin_inset CommandInset label
@@ -3539,16 +3540,23 @@ The virtual tracks created by QB have very nice properties as they represent
  that they belong to.
  However, now that we have segmented our tractography into small bundles
  we can calculate many more potentially important features for the cluster.
- For instance the cluster variance which now can be computed for every cluster
- 
-\begin_inset Formula $c_{i}$
+ For instance the cluster spread can be computed for any cluster 
+\begin_inset Formula $c$
 \end_inset
 
- as 
-\begin_inset Formula $Var(c_{i})_{j}=Var(x_{j}-v{}_{j}))$
+ as a vector of length 
+\begin_inset Formula $p$
 \end_inset
 
- where 
+ whose 
+\begin_inset Formula $j$
+\end_inset
+
+th component is 
+\begin_inset Formula $\sum_{x\in c}|x_{j}-v_{j}|^{2}/N.$
+\end_inset
+
+ Here 
 \begin_inset Formula $x_{j}$
 \end_inset
 
@@ -3556,12 +3564,20 @@ The virtual tracks created by QB have very nice properties as they represent
 \begin_inset Formula $j$
 \end_inset
 
--th point in a track in that cluster and 
+-th point in the track 
+\begin_inset Formula $x$
+\end_inset
+
+ in cluster 
+\begin_inset Formula $c$
+\end_inset
+
+, 
 \begin_inset Formula $v_{j}$
 \end_inset
 
  is the corresponding point of the virtual track.
- Many other similar or higher order statistics can be easily computed in
+ Many other similar or higher order statistics can be readily computed in
  an analogous fashion.
  One of the most useful features is the calculation of exemplars.
 \end_layout
@@ -3576,22 +3592,22 @@ Exemplars
  a corresponding feature for the bundle which actually belongs to the tractograp
 hy.
  In other words to find an exemplar or centroid track.
- Remember that the virtual tracks do not exist as real tracks as they are
- just the outcome of large amalgamations.
+ Remember that the virtual tracks do necessarily coincide with real tracks
+ as they are just the outcome of large amalgamations.
  There are many strategies for how to select good exemplars for the bundles.
  A very fast procedure that we use in this work is to find which real track
  from the cluster is closest (by MDF distance) to the virtual track.
  Let's call this exemplar track 
-\begin_inset Formula $e_{0}$
+\begin_inset Formula $e_{1}$
 \end_inset
 
  such that 
-\begin_inset Formula $e_{0}=\text{arg min}_{x\in C}\,\text{MDF}(v,x)$
+\begin_inset Formula $e_{1}=\text{arg min}_{x\in C}\,\text{MDF}(v,x)$
 \end_inset
 
 .
  The computational complexity of finding 
-\begin_inset Formula $e_{0}$
+\begin_inset Formula $e_{1}$
 \end_inset
 
  is still linear in cluster size, and that will be very useful if we have
@@ -3606,12 +3622,12 @@ hy.
 \begin_layout Standard
 A different exemplar can be defined as the most similar track among all
  tracks in the bundle, which we denote by 
-\begin_inset Formula $e_{2}=\mathrm{arg}\min_{x\in C}\sum_{y\in C}||y-x||_{2}$
+\begin_inset Formula $e_{2}=\mathrm{arg}\min_{x\in C}\,\sum_{y\in C}\mathrm{MDF(}y,x)$
 \end_inset
 
 , or if we want to work with tracks of different size we could instead use
  
-\begin_inset Formula $e_{3}=\textrm{arg min}_{x,y\in C}\,\text{MAM}(y,x)$
+\begin_inset Formula $e_{3}=\textrm{arg min}_{x,y\in C}\,\sum_{y\in C}\mathrm{MAM(}y,x)$
 \end_inset
 
 .
@@ -3876,10 +3892,6 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -4061,8 +4073,7 @@ status open
 \noun off
 \color none
 MATTHEW: Am I confused or isn't this the A-weighted average of the impurities
- of the columns of T? IAN: Yes.
- 
+ of the columns of T? IAN: Yes, the latter! 
 \end_layout
 
 \end_inset
@@ -4096,7 +4107,7 @@ In this case given
 
 .
  The Random Classification Error in this case is 
-\begin_inset Formula $1-p_{\mathrm{max}}=1-\max_{i}p_{i}$
+\begin_inset Formula $1-p_{i_{\mathrm{max}}}=1-\max_{i}p_{i}$
 \end_inset
 
 .
@@ -4511,19 +4522,18 @@ where
 \end_layout
 
 \begin_layout Standard
-An alternative route is to redefine the objective
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Marta:Which objective?
+Marta:Which objective? IAN: Thanks.
+ I deleted this phrase
 \end_layout
 
 \end_inset
 
-.
- One obvious choice in this setting is the maximized number of agreements
- 
+.An alternative is to look if there is a simpler quantity that might be optimised.
+ One obvious choice is the maximized number of agreements 
 \begin_inset Formula $\mu_{\max}={\displaystyle \sum_{i=1}^{M}}t_{i\pi(i)}$
 \end_inset
 
@@ -4588,7 +4598,12 @@ status open
 \begin_layout Plain Layout
 MATTHEW: Are the gini, rce, splitting lumping and kappa measures used in
  this chapter? IAN: No, and we need to add a fuller summary conclusion here.
- Table of metrics here.
+ Table of metrics here, and summary (we don't use these metrics in the subsequen
+t sections).
+ These methods are too time consuming to use in the larger scale.
+ So we will turn our attention to measures of robustness and similarity
+ based on virtual or exemplar or other representative tracks.
+ Moreover they do not give a method for comparing different tractographies
 \end_layout
 
 \end_inset
@@ -4715,16 +4730,16 @@ where
 \end_inset
 
 .
- From the the rows of 
+ The mimima of the rows of 
 \begin_inset Formula $D_{AB}$
 \end_inset
 
- we can find correspondence pairs from 
-\begin_inset Formula $A$
+ provide the distance to the nearest track in 
+\begin_inset Formula ${\cal B}$
 \end_inset
 
- to 
-\begin_inset Formula $B$
+ of each track in 
+\begin_inset Formula $A$
 \end_inset
 
  (
@@ -4744,15 +4759,15 @@ MATTHEW: D_{ab} has first index indexing clusters of A? Rows therefore are
 
 \end_inset
 
-and by checking the columns of 
+and similarly the minima of the columns of 
 \begin_inset Formula $D_{AB}$
 \end_inset
 
- we can find the corresponding pairs from 
+ the distance to the nearest track in 
 \begin_inset Formula $A$
 \end_inset
 
- to 
+ of each track in 
 \begin_inset Formula $B$
 \end_inset
 
@@ -4761,13 +4776,13 @@ and by checking the columns of
 \end_inset
 
 ).
- From these pairs we only keep those which have distances smaller than a
- small tight threshold 
+ From these correspondences we only keep those distances that are smaller
+ than a tight (small) threshold 
 \begin_inset Formula $t_{thr}$
 \end_inset
 
 .
- Then we define TC to be
+ Then we define TC (Tightness Comparison) to be
 \end_layout
 
 \begin_layout Standard
@@ -4803,16 +4818,16 @@ where
 \begin_inset Formula $TC=0$
 \end_inset
 
- that means that no exemplar from the one set was closer than 
+ that means that every exemplar from the one set was further than 
 \begin_inset Formula $t_{thr}$
 \end_inset
 
- to any exemplar in the other set.
+ to all exemplars in the other set.
  When 
 \begin_inset Formula $TC=1$
 \end_inset
 
- then all exemplars from one set had a close neighbour to the other set.
+ then all exemplars from one set had a close neighbour in the other set.
  This metric is extremely useful especially when comparing tractographies
  from different subjects.
 \end_layout
@@ -4824,7 +4839,7 @@ We ran an experiment were we compared TC between pairs of 10 subjects with
 status open
 
 \begin_layout Plain Layout
-ELEF: (SEE SECTION) - Needs a cross reference 
+ELEF: (SEE SECTION) IAN: Needs a cross reference? 
 \end_layout
 
 \end_inset
@@ -4948,7 +4963,7 @@ t-test t-statistic -8.0359458956507464, p-value 3.5820657551255408e-10.
 \end_inset
 
 
-\change_inserted 0 1319203524
+\change_inserted 1 1319203524
 
 \end_layout
 
@@ -4990,10 +5005,6 @@ This bar chart would make Edward Tufte very upset !
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -5315,7 +5326,7 @@ Example of detecting a possibly erroneous 3d bundle (on the left) by projecting
 QB can also simplify detection of tracks which are very dissimilar to others
  and therefore they are very distant from all other clusters.
  Usually when we use a QB threshold of about 
-\change_inserted 0 1319698782
+\change_inserted 1 1319698782
 
 \begin_inset Formula $10$
 \end_inset
@@ -5462,7 +5473,7 @@ Alignment
 .
  Tractographies were created using EuDX with QA produced by Generalized
  Q-Sampling with diffusion sampling length of 
-\change_inserted 0 1319699084
+\change_inserted 1 1319699084
 
 \begin_inset Formula $1.2$
 \end_inset
@@ -5470,7 +5481,7 @@ Alignment
 
 \change_unchanged
  and data sets from 
-\change_inserted 0 1319699080
+\change_inserted 1 1319699080
 
 \begin_inset Formula $101$
 \end_inset
@@ -5536,13 +5547,13 @@ key "Smith2006NeuroImage"
  displacements will be applied only on volumetric data and not with point
  data as those used in tractographies.
  Finally, after some considerable effort we found a combination of 
-\change_inserted 1 1319032651
+\change_inserted 2 1319032651
 
 \begin_inset Formula $\texttt{flirt}$
 \end_inset
 
 
-\change_deleted 1 1319032671
+\change_deleted 2 1319032671
 
 \begin_inset ERT
 status open
@@ -5567,13 +5578,13 @@ texttt{flirt}
 \end_inset
 
  and 
-\change_inserted 1 1319032687
+\change_inserted 2 1319032687
 
 \begin_inset Formula $\texttt{fnirtfileutils -withaff}$
 \end_inset
 
 
-\change_deleted 1 1319032700
+\change_deleted 2 1319032700
 
 \begin_inset ERT
 status open
@@ -7082,11 +7093,11 @@ Direct Tractography Registration
 \end_layout
 
 \begin_layout Standard
-Direct tractography registration is a recently described problem with a
- small amount of publications and to our knowledge with no publicly available
- solutions.
+Direct tractography registration is a recently described problem with only
+ a small number of publications, and so far as we know there are no publicly
+ available solutions.
  By direct registration we mean that no other information apart from the
- tractographies themselves is guiding the registration.
+ tractographies themselves is used to guide the registration.
  This is in contrast to the previous sections where we used FA registration
  mappings applied to tractographies (see section 
 \begin_inset CommandInset ref
@@ -7108,7 +7119,11 @@ key "goh2006algebraic"
 \end_inset
 
 .
- The current known methodologies on this subject are as follows.
+ 
+\end_layout
+
+\begin_layout Standard
+The currently described methodologies on this subject are as follows.
  Leemans et al.
 \begin_inset space ~
 \end_inset
@@ -7222,9 +7237,9 @@ key "Arsigny2009"
 \end_layout
 
 \begin_layout Standard
-We show that the algorithm is efficient and simple to use, completely automatic
- and provides an evidently robust direct rigid tractography registration
- algorithm available in seconds.
+We now describe our algorithm and show that it is efficient and simple to
+ use, completely automatic and provides an evidently robust direct rigid
+ tractography registration algorithm available in seconds.
  This algorithm could be of great use when comparing healthy versus severely
  diseased brains e.g.
  stroke or vegetative state patients when non-rigid registration is not
@@ -7250,7 +7265,7 @@ Algorithm
 \begin_inset Formula $T_{B}$
 \end_inset
 
- are aligned together in native space.
+ are brought into alignment in native space.
 \end_layout
 
 \begin_layout Enumerate
@@ -7272,12 +7287,15 @@ mm are removed from the data sets.
 \end_inset
 
  tracks).
+ (While all the subjects are adults, this filtering may have different effects
+ depending on brain size.
+ We have not investigated this question at present.)
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 MATTHEW: Why these numbers? Won't larger brains have different tracks removed
- compared to smaller brains?
+ compared to smaller brains? IAN: that's how it is for now!
 \end_layout
 
 \end_inset
@@ -7309,7 +7327,7 @@ Collect all exemplar tracks from clusters containing more than
 \end_inset
 
  tracks.
- Lets assume we have these now in 
+ Let us assume we have these now in 
 \begin_inset Formula $E_{A}$
 \end_inset
 
@@ -7336,7 +7354,7 @@ Calculate all pairwise distances
 \begin_layout Enumerate
 Create a cost function (optimizer) which we will try to minimize the symmetric
  minimum distance 
-\begin_inset Formula $SMD=\sum_{i}\min_{j}D(i,j)+\sum_{j}\min_{i}D(i,j)$
+\begin_inset Formula $\mathrm{SMD}=\sum_{i}\min_{j}D(i,j)+\sum_{j}\min_{i}D(i,j)$
 \end_inset
 
  .
@@ -7351,28 +7369,28 @@ key "fletcher1987practical"
 \end_inset
 
  to minimize 
-\change_inserted 0 1319745190
-
-\begin_inset Formula $SMD$
+\begin_inset Formula $\mathrm{SMD}$
 \end_inset
 
+ over rigid rotations of 
+\begin_inset Formula $E_{\mathcal{B}}$
+\end_inset
 
-\change_unchanged
  starting with zeroed initial conditions.
- In each iteration of the optimization 
+ At each iteration of the optimization, 
 \begin_inset Formula $E_{B}$
 \end_inset
 
- will be transformed and 
-\change_inserted 0 1319745183
+ will be transformed by a rigid rotation and 
+\change_inserted 1 1319745183
 
-\begin_inset Formula $SMD$
+\begin_inset Formula $\mathrm{SMD}$
 \end_inset
 
 
 \change_unchanged
  will be recalculated.
- To ensure smooth rotations we use Rodriguez formula.
+ To ensure smooth rotations we use the Rodriguez rotation formula.
 \end_layout
 
 \begin_layout Standard
@@ -7383,8 +7401,8 @@ reference "Flo:direct_registration"
 
 \end_inset
 
-A we see the result of this algorithm applied to two tractographies - represente
-d with their exemplar tracks 
+ A, we see the result of this algorithm applied to two tractographies -
+ represented with their exemplar tracks 
 \begin_inset ERT
 status open
 
@@ -7427,7 +7445,7 @@ key "roche1998correlation"
  generated by QB which bring together local and global components.
  Initially, it was not clear if we should use SMD or just the sum of all
  distances 
-\begin_inset Formula $SD=\sum_{i,j}D(i,j)$
+\begin_inset Formula $\mathrm{SD}=\sum_{i,j}D(i,j)$
 \end_inset
 
 .
@@ -7458,7 +7476,7 @@ Experiments
 .
  The first large scale experiment took place using the same tractography
  of a single individual copied and transformed 
-\change_inserted 0 1319745405
+\change_inserted 1 1319745405
 
 \begin_inset Formula $1000$
 \end_inset
@@ -7519,8 +7537,8 @@ MATTHEW: I seem to remember that registrations perform a bit differently
  when registering to transformed versions of themselves.
  I haven't got internet, but look for the AIR website (Roger Woods) and
  a comment about registrations to rotated versions of self.
- ELEF: This is just Rigid registration we tried here.
- Do you think that this is trully an issue?
+ ELEF: This is just *rigid* registration we tried here.
+ Do you think that this is truly an issue?
 \end_layout
 
 \end_inset
@@ -7533,7 +7551,7 @@ We used GQI-based tractographies from
 \begin_inset Formula $10$
 \end_inset
 
- subjects and we registered all full combinations of pairs 
+ subjects and we registered all combinations of pairs 
 \begin_inset Formula $\binom{10}{2}=45$
 \end_inset
 
@@ -7614,16 +7632,16 @@ name "Flo:direct_registration"
 \begin_inset Caption
 
 \begin_layout Plain Layout
-In panel A we see two tractographies from different subjects before (up)
- and after rigid registration (down) using our method.
+In panel A we see two tractographies from different subjects before (top)
+ and after rigid registration (bottom) using our method.
  In panel B we see the metric 
 \begin_inset Formula $SMD$
 \end_inset
 
- that we chose to optimize of two copies of the same tractography with the
- second copy under translation (up) and rotation (down) This metric found
- to be smooth with a single global minimum and only slightly non-convex
- with small local minima.
+ that we chose to optimize for two copies of the same tractography with
+ the second copy translated (above) and rotated (below).
+ This metric appears to be smooth with a single global minimum and is only
+ slightly non-convex with small local minima.
  In panel C another possible candidate metric 
 \begin_inset Formula $SD$
 \end_inset
@@ -7782,7 +7800,7 @@ Here are some simple strategies for clustering short fibres.
 \begin_layout Standard
 
 \series bold
-Strategy1
+Strategy 1
 \series default
 .
  Cluster the long tracks using QB with distance threshold at 
@@ -7820,11 +7838,11 @@ ELEF: If there is a track like that we want to know about it!
 \begin_layout Standard
 
 \series bold
-Strategy2
+Strategy 2
 \series default
 .
  Read the tractography of a single subject,
-\change_deleted 0 1319745849
+\change_deleted 1 1319745849
  
 \change_unchanged
  use a tractographic atlas as the one created in section 
@@ -7840,7 +7858,7 @@ reference "sub:Atlases-made-easy"
 \end_inset
 
 ,
-\change_deleted 0 1319745849
+\change_deleted 1 1319745849
  
 \change_unchanged
  cluster the closest tracks found from the previous step and for each one
