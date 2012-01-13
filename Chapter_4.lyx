@@ -2756,7 +2756,8 @@ name "Flo:simulated_orbits"
 
 \begin_inset Graphics
 	filename last_figures/helix_phantom.png
-	scale 80
+	lyxscale 60
+	scale 60
 	rotateOrigin center
 
 \end_inset
