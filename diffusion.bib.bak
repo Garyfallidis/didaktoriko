@@ -2240,59 +2240,6 @@
   year           = 2009
 }
 
-@Article{Durrleman2009a,
-  Author         = {Durrleman, Stanley and Fillard, Pierre and Pennec,
-                   Xavier and Trouv\'{e}, Alain and Ayache, Nicholas},
-  Title          = {{A statistical model of white matter fiber bundles
-                   based on currents.}},
-  Journal        = {Information processing in medical imaging :
-                   proceedings of the ... conference},
-  Volume         = {21},
-  Pages          = {114--25},
-  abstract       = {The purpose of this paper is to measure the
-                   variability of a population of white matter fiber
-                   bundles without imposing unrealistic geometrical
-                   priors. In this respect, modeling fiber bundles as
-                   currents seems particularly relevant, as it gives a
-                   metric between bundles which relies neither on point
-                   nor on fiber correspondences and which is robust to
-                   fiber interruption. First, this metric is included in a
-                   diffeomorphic registration scheme which consistently
-                   aligns sets of fiber bundles. In particular, we show
-                   that aligning directly fiber bundles may solve the
-                   aperture problem which appears when fiber mappings are
-                   constrained by tensors only. Second, the measure of
-                   variability of a population of fiber bundles is based
-                   on a statistical model which considers every bundle as
-                   a random diffeomorphic deformation of a common template
-                   plus a random non-diffeomorphic perturbation. Thus, the
-                   variability is decomposed into a geometrical part and a
-                   "texture" part. Our results on real data show that both
-                   parts may contain interesting anatomical features.},
-  file           = {:home/eg309/.local/share/data/Mendeley Ltd./Mendeley
-                   Desktop/Downloaded/Durrleman et al. - 2009 - A
-                   statistical model of white matter fiber bundles based
-                   on currents..pdf:pdf},
-  issn           = {1011-2499},
-  keywords       = {Algorithms,Artificial Intelligence,Brain,Brain:
-                   anatomy \& histology,Cluster Analysis,Computer
-                   Simulation,Diffusion Magnetic Resonance
-                   Imaging,Diffusion Magnetic Resonance Imaging:
-                   methods,Humans,Image Enhancement,Image Enhancement:
-                   methods,Image Interpretation, Computer-Assisted,Image
-                   Interpretation, Computer-Assisted: methods,Imaging,
-                   Three-Dimensional,Imaging, Three-Dimensional:
-                   methods,Models, Neurological,Models, Statistical,Nerve
-                   Fibers, Myelinated,Nerve Fibers, Myelinated:
-                   ultrastructure,Pattern Recognition, Automated,Pattern
-                   Recognition, Automated: methods,Reproducibility of
-                   Results,Sensitivity and Specificity},
-  month          = jan,
-  pmid           = {19694257},
-  url            = {http://www.ncbi.nlm.nih.gov/pubmed/19694257},
-  year           = 2009
-}
-
 @Article{chao2008multiple,
   Author         = {Chao, Y.P. and Chen, J.H. and Cho, K.H. and Yeh, C.H.
                    and Chou, K.H. and Lin, C.P.},
