@@ -2799,7 +2799,152 @@ name "Alg:EuDX Nearest Direction"
 \end_layout
 
 \begin_layout Subsection
-Results software phantoms
+Results with digital phantoms
+\end_layout
+
+\begin_layout Standard
+Experiments with seeds everywhere
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/crossing_eudx.png
+	lyxscale 30
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+1151 tracks from 200,000 seeds, from data (64, 64, 64, 102), showing b0
+ slice with nearest interpolation (jet colourmap), SNR 100, the digital
+ phantom is created by two added parts a diagonal orbit and an elliptical
+ orbit with ( with axes
+\begin_inset Formula $\text{\lambda}_{1}=0.6\lambda_{2})$
+\end_inset
+
+.
+ The elliptical orbit does not complete a full ellipsis because in that
+ case the tracks would loop forever.
+ The reconstruction was done using DSI with standard parameters PDF volume
+ size 16, hanning filter width 32, and radial integration range from 2.1
+ to 6 with steps of .2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:crossing_eudx_sims"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Experiments with specific seeds see fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:crossing_eudx_sims"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here 2000
+\end_layout
+
+\begin_layout Standard
+EITL
+\end_layout
+
+\begin_layout Standard
+1 from A to B 58.09%, C 11.31%, D 0.0% 
+\end_layout
+
+\begin_layout Standard
+2 from B to A 65.74%, C 0.0%, D 6.75%
+\end_layout
+
+\begin_layout Standard
+3 from C to A 13.06%, B 0.0%, D 77.74% 
+\end_layout
+
+\begin_layout Standard
+4 from D to A 0.0%, B 0.28%, C 97.46% 
+\end_layout
+
+\begin_layout Standard
+DSI
+\end_layout
+
+\begin_layout Standard
+GQI
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/crossing_eudx_masks.png
+	lyxscale 30
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
