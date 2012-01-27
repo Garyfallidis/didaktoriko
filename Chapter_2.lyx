@@ -4590,6 +4590,13 @@ name "Flo:FastvsStandardEITL"
 
 \begin_layout Subsubsection
 Digital Phantoms
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Digital-Phantoms"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
