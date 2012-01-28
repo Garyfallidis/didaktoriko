@@ -2803,14 +2803,219 @@ Results with digital phantoms
 \end_layout
 
 \begin_layout Standard
-Experiments with seeds everywhere 
+In order to validate the performance of EuDX we created a 3-dimensional
+ digital phantom with the method described in section 2.8.2-XXX 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "canalesrodriguez2009mdq"
+
+\end_inset
+
+ with eigen values
+\begin_inset Formula $\lambda_{\parallel}=1.7\cdot10^{-3}$
+\end_inset
+
+ 
+\lang british
+
+\begin_inset Formula $m^{2}/sec$
+\end_inset
+
+
+\lang english
+ and 
+\begin_inset Formula $\lambda_{\perp}=.1\cdot10^{-3}m^{2}/sec$
+\end_inset
+
+.
+ The digital phantom consists of two parts: a) a diagonal orbit and b) an
+ elliptical orbit with ( with axes ratio
+\begin_inset Formula $\text{\lambda}_{2}=0.6\lambda_{1})$
+\end_inset
+
+.
+ Both parts were added together to create a crossing configuration and no
+ partial volume effects were simulated.
+ The average thickness of both parts was 
+\begin_inset Formula $~5$
+\end_inset
+
+ voxels.
+ The elliptical orbit did not complete a full ellipsis in order to avoid
+ tracks from looping forever.
+ We created two experiments using the same data set of size 
+\begin_inset Formula $64\times64\times64\times102$
+\end_inset
+
+ where the 
+\begin_inset Formula $3$
+\end_inset
+
+ first dimensions were giving the size of the volume and the last dimension
+ is the number of diffusion weighted volumes (
+\begin_inset Formula $101$
+\end_inset
+
+) plus the unweighted b0 volume (see fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:crossing_eudx_sims"
 
 \end_inset
 
+(i) lower right - jet colourmap).
+ We generated b-vectors and b-values by using a keyhole Cartesian sampling
+ grid
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tuch2002ThesisMIT"
 
+\end_inset
+
+(see fig.
+ q-space Introduction 1.5 XXX); therefore, DSI, GQI, EIT or DTI were suitable
+ for the signal reconstruction into orientation distributions or Tensors
+ respectively.
+ For both experiments we used a high SNR of 
+\begin_inset Formula $100$
+\end_inset
+
+ as the main goal was to validate the algorithm on good conditions.
+ We later continue the validation process with human data where SNR is naturally
+ lower.
+\end_layout
+
+\begin_layout Standard
+In the first experiment (see fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:crossing_eudx_sims"
+
+\end_inset
+
+) we generated 
+\begin_inset Formula $200,000$
+\end_inset
+
+ uniformly random seeds in the 3D volume.
+ We used DSI reconstruction with standard parameters: q-space grid size
+ 
+\begin_inset Formula $16$
+\end_inset
+
+, hanning filter width 
+\begin_inset Formula $32$
+\end_inset
+
+, and radial integration range from 
+\begin_inset Formula $2.1$
+\end_inset
+
+ to 
+\begin_inset Formula $6$
+\end_inset
+
+ at steps of 
+\begin_inset Formula $.2$
+\end_inset
+
+.
+ The input of EuDX expects the peaks and the directions of the peaks.
+ For every voxel we used DSI to create the corresponding ODF (sampled on
+ an evenly distributed sphere of 
+\begin_inset Formula $642$
+\end_inset
+
+ vertices and 
+\begin_inset Formula $1280$
+\end_inset
+
+ faces) and from the ODF we using the peak finding function introduced in
+ Ch.
+ 2.6 XXX.
+ We further removed the peaks which had values less that 
+\begin_inset Formula $70\%$
+\end_inset
+
+ of the highest peak and normalized the rest so that the maximum peak equals
+ to 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ We also calculated FA and zeroed the peaks with FA values less than 
+\begin_inset Formula $0.2$
+\end_inset
+
+.
+ In that way we ensured that there will be no tracking in the background
+ area of the phantom.
+\end_layout
+
+\begin_layout Standard
+Finally, we called EuDX with parameters 
+\begin_inset Formula $\mathcal{A}_{thr}=0.2$
+\end_inset
+
+,
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+Delta s=0.5$
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Formula $\theta_{thr}=60^{\circ}$
+\end_inset
+
+ and 
+\begin_inset Formula $TW=0.5$
+\end_inset
+
+ and visualized the tracks.
+ The results are shown in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:crossing_eudx_sims"
+
+\end_inset
+
+.
+ The tracks are colourcoded with their orientation defined as the unit vector
+ connecting the first with the last point of each track.
+ Because we generated random seeds that went everywhere in the phantom some
+ of them had to be in the crossing area.
+ In accordance with what we discussed in the previous section we know that
+ if a seed fall in a crossing region EuDX will propagate towards both directions
+ of the crossing if and only if multiple peaks are supported from the underlying
+ reconstruction method.
+ We can confirm this by looking at fig
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:crossing_eudx_sims"
+
+\end_inset
+
+(i) and in (ii), (iii) in higher resolution; where we can see that the crossing
+ area is well represented and that the propagation was successful.
+ We can also observe that not all tracks travel all the distance from end
+ to end.
+ Otherwise you would except to see the tracks of the entire elliptic part
+ all with one colour and the tracks of the straight orbit all with a second
+ colour.
+ It seems that this had to do with the discrete nature of the phantom especially
+ near the boundaries of the phantom.
+ Therefore, we created a different experiment to evaluate this observation.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2835,19 +3040,9 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-1151 tracks from 200,000 seeds, from data (64, 64, 64, 102), showing b0
- slice with nearest interpolation (jet colourmap), SNR 100, the digital
- phantom is created by two added parts a diagonal orbit and an elliptical
- orbit with ( with axes
-\begin_inset Formula $\text{\lambda}_{1}=0.6\lambda_{2})$
-\end_inset
-
-.
- The elliptical orbit does not complete a full ellipsis because in that
- case the tracks would loop forever.
- The reconstruction was done using DSI with standard parameters PDF volume
- size 16, hanning filter width 32, and radial integration range from 2.1
- to 6 with steps of .2
+Left panel shows the tractrography for a software phantom generated by EuDX
+ with DSI as the reconstruction method.
+ 
 \end_layout
 
 \end_inset
@@ -2867,44 +3062,1662 @@ name "Flo:crossing_eudx_sims"
 
 \end_inset
 
+In the second experiment we generated 
+\begin_inset Formula $2000$
+\end_inset
 
-\end_layout
+ seeds inside specific areas (see fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:eudx_fromABCD"
 
-\begin_layout Standard
-Experiments with specific seeds see fig.
+\end_inset
+
+-left panel).
+ More precisely the end-point areas of the phantom denoted with A,B,C and
+ D.
+ The goal was to count the percentage of tracks which reached any of the
+ other end-point areas.
+ We tried this with 
+\begin_inset Formula $4$
+\end_inset
+
+ different reconstruction methods: Single Tensor, EITL, DSI and GQI.
+ The Single Tensor was fitted using weighted least squares.
+ For EITL we used for radial sampling from 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $5$
+\end_inset
+
+ with steps of 
+\begin_inset Formula $0.4$
+\end_inset
+
+ and gaussian weight of 
+\begin_inset Formula $0.05$
+\end_inset
+
+.
+ GQI had sampling length of 
+\begin_inset Formula $1.2$
+\end_inset
+
+ and DSI had the same parameters as in the previous experiment.
+ The orientations of the peaks for all the methods were found in a reconstructio
+n sphere of 
+\begin_inset Formula $642$
+\end_inset
+
+ vertices.
+ The same peaking function was also used with the ODFs of EITL,GQI and DSI.
+ For these 3 methods the peaking procedure was the same as described in
+ the previous experiment.
+ The single peak of the DTI reconstruction was found by the corresponding
+ eigenvalues and eigenvectors.
+ EuDX expects the orientation input of the peaks as indices on a unit sphere;
+ therefore, for the eigenvector which corresponds to the maximum eigenvalue
+ we found the vertex in the reconstruction sphere (used above) with the
+ minimum angular distance.
  
 \end_layout
 
 \begin_layout Standard
-Here 2000
+The results of this study are summarized in tab.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Tab:EuDX_AtoB"
+
+\end_inset
+
+.
+ A first general observation is that independently from which end-points
+ the tracks start there will be always a percentage of tracks which will
+ stop before reaching the other end-points.
+ We can see clearly this phenomenon by looking at the last column (
+\begin_inset Formula $\emptyset$
+\end_inset
+
+) of each sub-table; where the best case was 3.7% loss (EITL) and and the
+ worst case was 43.5% (DTI).
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+small
+\backslash
+addtolength{
+\backslash
+tabcolsep}{-5pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="6">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DTI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\emptyset$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+76.4%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+23.6%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+59.8%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40.2%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+79.9%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20.1%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+56.5%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+43.5%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{1.5em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="6">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 EITL
 \end_layout
 
-\begin_layout Standard
-1 from A to B 58.09%, C 11.31%, D 0.0% 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
 \end_layout
 
-\begin_layout Standard
-2 from B to A 65.74%, C 0.0%, D 6.75%
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
 \end_layout
 
-\begin_layout Standard
-3 from C to A 13.06%, B 0.0%, D 77.74% 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
 \end_layout
 
-\begin_layout Standard
-4 from D to A 0.0%, B 0.28%, C 97.46% 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D
 \end_layout
 
-\begin_layout Standard
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\emptyset$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+63.4%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8.7%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+27.9%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+65.6%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.6%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+28.8%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14.5%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+76.8%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8.7%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+95.8%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.7%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="6">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 DSI
 \end_layout
 
-\begin_layout Standard
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\emptyset$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+65.3%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9.6%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+25.1%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+72.6%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.5%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+21.9%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+79.9%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.1%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10.6%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+84.8%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.6%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{1.5em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="6">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 GQI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\emptyset$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+57.8%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8.7%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+33.5%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+67.2%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10.7%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+22.1%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+37.5%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+55.5%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+22.3%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+72.3%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.4%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Every sub-table shows the percentage of tracks which started from areas
+ A,B,C or D (rows) and reached the other areas A,B,C,D or 
+\begin_inset Formula $\emptyset$
+\end_inset
+
+ (columns) using EuDX with input from different reconstruction methods DTI,
+ EITL, DSI, GQI.
+ The empty set 
+\begin_inset Formula $\emptyset$
+\end_inset
+
+ symbolizes here the number of tracks which didn't reach any of the A,B,C,D
+ areas.
+ For example by looking only the first row of each sub-table we easily observe
+ that the crossing area was well represented by EITL, DSI and GQI but not
+ from DTI as it was expected because the Single Tensor cannot resolve crossings.
+ We can also observe by comparing all rows that in the more curved branch
+ of the phantom less tracks reached their target that in the diagonal branch.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Tab:EuDX_AtoB"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So, why is there always an amount of tracks which will not reach the other
+ end-points? We think that this happens because most of the area in high-dimensi
+onal volumes (3D volumes) is concentrated close to the boundaries of the
+ volumes; therefore many from the random seeds will fall close to the boundaries.
+ In addition, the boundaries are not smooth (see fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:eudx_fromABCD"
+
+\end_inset
+
+-left panel) and for this reason the tracks which will start close to the
+ boundaries will most likely not travel long distances and because the number
+ of seeds which will fall close to the boundaries is not negligible; the
+ number of tracks which will not travel far is not negligible as well.
+ This is something to have in mind when generating tractographies.
+ A naive solution would be to increase the resolution of the volume by interpola
+tion.
+ This has disadvantages as well; the diffusion data sets are already very
+ large and increasing the resolution would increase theyr already large
+ size.
+ Also interpolation usually introduces smoothing which will reduce the peak
+ resolution in relation to high b-values where the signal is in general
+ low.
+ For this purpose we decided to not do any further preprocessing to the
+ phantom.
+\end_layout
+
+\begin_layout Standard
+Another general observation is that in the curved branch less tracks reached
+ their target than in the straight branch.
+ This is sensible because the discretization is more asymmetric in the curved
+ branch (see fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:eudx_fromABCD"
+
+\end_inset
+
+-left panel) therefore more tracks close to the boundaries will stop propagating
+ because they reach background voxels where anisotropy is much lower.
+ EuDX is designed to stop in low anisotropic regions as defined by the parameter
+ 
+\begin_inset Formula $\mathcal{A}_{thr}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+EXPLAIN Right picture
+\end_layout
+
+\begin_layout Standard
+TALK about the similarity between EITL,DSI and GQI and connect with Ch.2
 \end_layout
 
 \begin_layout Standard
@@ -2914,13 +4727,9 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename last_figures/crossing_eudx_masks.png
+	filename last_figures/eudx_mask_tracks_sims.png
 	lyxscale 30
 	scale 60
 
@@ -2930,7 +4739,22 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+On the left panel we see the b0 volume of the digital phantom and on top
+ we see 
+\begin_inset Formula $4$
+\end_inset
 
+ regional masks A,B,C and D.
+ 
+\begin_inset Formula $2000$
+\end_inset
+
+ seeds were generated inside each mask and then we measured the amount of
+ tracks which reached the other regions.
+ On the right panel we see that when Single Tensor was used for the reconstructi
+on; the tracking started from A reached only C.
+ However when EITL was used the tracks reached both areas B and C as it
+ was expected.
 \end_layout
 
 \end_inset
@@ -2939,6 +4763,12 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:eudx_fromABCD"
+
+\end_inset
+
 
 \end_layout
 
@@ -2949,19 +4779,6 @@ status open
 
 \begin_layout Subsection
 Results with real subjects
-\end_layout
-
-\begin_layout Standard
-Generate results with EITL,DSI,GQI and compare their length distributions.
-\end_layout
-
-\begin_layout Standard
-Explain PK.
-\end_layout
-
-\begin_layout Standard
-Show results for a single subject with different scalar functions e.g.
- FA, QA, PK
 \end_layout
 
 \begin_layout Subsection
