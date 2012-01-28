@@ -3135,15 +3135,15 @@ reference "Tab:EuDX_AtoB"
 \end_inset
 
 .
- A first general observation is that in the curved orbit less tracks reached
- their target that in the straight orbit.
-\end_layout
+ A first general observation is that independently from which end-points
+ the tracks start there will be always a percentage of tracks which will
+ stop before reaching the other end-points.
+ We can see clearly this phenomenon by looking at the last column (
+\begin_inset Formula $\emptyset$
+\end_inset
 
-\begin_layout Standard
-For example by looking only the first row of each sub-table we easily observe
- that the crossing area was well represented by EITL, DSI and GQI but not
- from DTI as it was except because the Single Tensor cannot resolve crossings.
- 
+) of each sub-table; where the best case was 3.7% loss (EITL) and and the
+ worst case was 43.5% (DTI).
 \end_layout
 
 \begin_layout Standard
@@ -4621,12 +4621,12 @@ status open
 
 \begin_layout Plain Layout
 Every sub-table shows the percentage of tracks which started from areas
- A,B,C or D (rows) and reach the other areas A,B,C,D or 
+ A,B,C or D (rows) and reached the other areas A,B,C,D or 
 \begin_inset Formula $\emptyset$
 \end_inset
 
- (columns) using EuDX with input from different reconstruction methods Single
- Tensor, EITL, DSI, DTI.
+ (columns) using EuDX with input from different reconstruction methods DTI,
+ EITL, DSI, GQI.
  The empty set 
 \begin_inset Formula $\emptyset$
 \end_inset
@@ -4635,9 +4635,9 @@ Every sub-table shows the percentage of tracks which started from areas
  areas.
  For example by looking only the first row of each sub-table we easily observe
  that the crossing area was well represented by EITL, DSI and GQI but not
- from DTI as it was except because the Single Tensor cannot resolve crossings.
- We can also observe by comparing all rows that in the more curved orbit
- less tracks reached their target that in the straighter orbit.
+ from DTI as it was expected because the Single Tensor cannot resolve crossings.
+ We can also observe by comparing all rows that in the more curved branch
+ of the phantom less tracks reached their target that in the diagonal branch.
 \end_layout
 
 \end_inset
@@ -4661,9 +4661,11 @@ name "Tab:EuDX_AtoB"
 \end_layout
 
 \begin_layout Standard
-Why? Because most of the area in 3D volumes is close to the boundaries;
- therefore many seeds will fall close to the boundaries.
- The boundaries are not smooth (see fig.
+So, why is there always an amount of tracks which will not reach the other
+ end-points? We think that this happens because most of the area in high-dimensi
+onal volumes (3D volumes) is concentrated close to the boundaries of the
+ volumes; therefore many from the random seeds will fall close to the boundaries.
+ In addition, the boundaries are not smooth (see fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4673,26 +4675,56 @@ reference "Flo:eudx_fromABCD"
 
 -left panel) and for this reason the tracks which will start close to the
  boundaries will most likely not travel long distances and because the number
- of seeds which will fall close to the boundaries is not small; the number
- of tracks which will not travel far is not small as well.
+ of seeds which will fall close to the boundaries is not negligible; the
+ number of tracks which will not travel far is not negligible as well.
  This is something to have in mind when generating tractographies.
  A naive solution would be to increase the resolution of the volume by interpola
 tion.
  This has disadvantages as well; the diffusion data sets are already very
- large and increasing the resolution would increase the alreade large size.
+ large and increasing the resolution would increase theyr already large
+ size.
  Also interpolation usually introduces smoothing which will reduce the peak
  resolution in relation to high b-values where the signal is in general
  low.
  For this purpose we decided to not do any further preprocessing to the
  phantom.
+\end_layout
+
+\begin_layout Standard
+Another general observation is that in the curved branch less tracks reached
+ their target than in the straight branch.
+ This is sensible because the discretization is more asymmetric in the curved
+ branch (see fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:eudx_fromABCD"
+
+\end_inset
+
+-left panel) therefore more tracks close to the boundaries will stop propagating
+ because they reach background voxels where anisotropy is much lower.
+ EuDX is designed to stop in low anisotropic regions as defined by the parameter
+ 
+\begin_inset Formula $\mathcal{A}_{thr}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+EXPLAIN Right picture
+\end_layout
+
+\begin_layout Standard
+TALK about the similarity between EITL,DSI and GQI and connect with Ch.2
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \align center
