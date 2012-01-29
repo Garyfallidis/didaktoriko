@@ -3142,8 +3142,15 @@ reference "Tab:EuDX_AtoB"
 \begin_inset Formula $\emptyset$
 \end_inset
 
-) of each sub-table; where the best case was 3.7% loss (EITL) and and the
- worst case was 43.5% (DTI).
+) of each sub-table; where the best case was 
+\begin_inset Formula $3.7\%$
+\end_inset
+
+ loss (EITL) and and the worst case was 
+\begin_inset Formula $43.5\%$
+\end_inset
+
+ (DTI).
 \end_layout
 
 \begin_layout Standard
@@ -4662,9 +4669,9 @@ name "Tab:EuDX_AtoB"
 
 \begin_layout Standard
 So, why is there always an amount of tracks which will not reach the other
- end-points? We think that this happens because most of the area in high-dimensi
-onal volumes (3D volumes) is concentrated close to the boundaries of the
- volumes; therefore many from the random seeds will fall close to the boundaries.
+ end-points? This happens because most of the area in high-dimensional volumes
+ (3D volumes) is concentrated close to the boundaries of the volumes; therefore
+ many from the random seeds will fall close to the boundaries.
  In addition, the boundaries are not smooth (see fig.
  
 \begin_inset CommandInset ref
@@ -4681,7 +4688,7 @@ reference "Flo:eudx_fromABCD"
  A naive solution would be to increase the resolution of the volume by interpola
 tion.
  This has disadvantages as well; the diffusion data sets are already very
- large and increasing the resolution would increase theyr already large
+ large and increasing the resolution would increase their already large
  size.
  Also interpolation usually introduces smoothing which will reduce the peak
  resolution in relation to high b-values where the signal is in general
@@ -4692,7 +4699,7 @@ tion.
 
 \begin_layout Standard
 Another general observation is that in the curved branch less tracks reached
- their target than in the straight branch.
+ their target than in the diagonal branch.
  This is sensible because the discretization is more asymmetric in the curved
  branch (see fig.
  
@@ -4704,20 +4711,12 @@ reference "Flo:eudx_fromABCD"
 
 -left panel) therefore more tracks close to the boundaries will stop propagating
  because they reach background voxels where anisotropy is much lower.
- EuDX is designed to stop in low anisotropic regions as defined by the parameter
- 
+ This is in agreement with EuDX which is designed to stop in low anisotropic
+ regions as defined by the parameter 
 \begin_inset Formula $\mathcal{A}_{thr}$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-EXPLAIN Right picture
-\end_layout
-
-\begin_layout Standard
-TALK about the similarity between EITL,DSI and GQI and connect with Ch.2
 \end_layout
 
 \begin_layout Standard
@@ -4744,12 +4743,12 @@ On the left panel we see the b0 volume of the digital phantom and on top
 \begin_inset Formula $4$
 \end_inset
 
- regional masks A,B,C and D.
+ ROIs; A,B,C and D.
  
 \begin_inset Formula $2000$
 \end_inset
 
- seeds were generated inside each mask and then we measured the amount of
+ seeds were generated inside each ROI and then we measured the amount of
  tracks which reached the other regions.
  On the right panel we see that when Single Tensor was used for the reconstructi
 on; the tracking started from A reached only C.
@@ -4777,8 +4776,43 @@ name "Flo:eudx_fromABCD"
 
 \end_layout
 
+\begin_layout Standard
+In the right panel of fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:eudx_fromABCD"
+
+\end_inset
+
+ we see that the tracks which started from ROI A, reached only ROI C when
+ we used the peaks from the Single Tensor reconstruction method as input
+ to EuDX.
+ However when we used EITL the tracks which started from A, reached both
+ B and C.
+ The tracks didn't reach ROI D because of the angular threshold 
+\begin_inset Formula $\theta_{thr}=60^{\circ}$
+\end_inset
+
+.
+ This was another positive confirmation about the performance of EuDX which
+ identified that even if the seeds are not in the crossing region because
+ of the trilinear interpolation when the tracks will reach the crossing
+ region they will follow the branch to which there are closer to in angular
+ distance.
+ 
+\end_layout
+
 \begin_layout Subsection
 Results with real subjects
+\end_layout
+
+\begin_layout Standard
+Strategy:
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Subsection
