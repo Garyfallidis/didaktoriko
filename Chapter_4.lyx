@@ -87,9 +87,9 @@ es which are difficult to interpret and visualize.
  This adds a further overhead to the use of tractography for clinical applicatio
 ns but also puts a barrier on understanding and interpreting the quality
  of diffusion datasets.
- We show in this chapter that a stable overall linear time clustering algorithm
- exists and that we can generate meaningful clusters in seconds with minimum
- memory consumption.
+ We show in this document that a stable on average linear time clustering
+ algorithm exists and that we can generate meaningful clusters in seconds
+ with minimum memory consumption.
  In our approach we do not need to calculate all pairwise distances unlike
  most of the other existing methods.
  Furthermore we can update our clustering online or in parallel.
@@ -106,7 +106,7 @@ ns but also puts a barrier on understanding and interpreting the quality
  complexity, resulting in their greater efficiency.
  Beyond the use of this algorithm to simplify tractographies, we show how
  it can help identify hidden structures, find landmarks, create atlases,
- and compare and register tractographies.
+ compare and register tractographies.
 \begin_inset Note Note
 status open
 
@@ -133,7 +133,12 @@ Maybe an emphasis on the advantage of being able to do clustering in real
 
 \begin_layout Plain Layout
 IAN: I have rewritten and reordered the second half of the paragraph above.
- ELEF: I have removed all that massiveness ;-)
+ ELEF: I have removed all that massiveness ;-) I like the name GordianKnotBundle
+s and we can use it in the updated version of Quickbundles.
+ We cannot use it now because the thesis abstract is already submitted and
+ cannot be changed and there is also an HBM abstract which is already submitted
+ and still uses the QB name.
+ 
 \end_layout
 
 \end_inset
@@ -211,7 +216,8 @@ key "Visser2010"
 \begin_inset Formula $s_{b}$
 \end_inset
 
-, see (
+, see eq.
+ (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:direct_flip_distance"
@@ -297,7 +303,8 @@ status open
 \end_inset
 
  short for Minimum, or Maximum, or Mean, Average Minimum distance (MAM).
- We mostly use the Mean version of this family, see (
+ We mostly use the Mean version of this family, see eq.
+ (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:mean_average_distance"
@@ -377,6 +384,7 @@ will bring together more short tracks with long tracks than
 \lang english
  will have an inbetween effect.
  Finally, other distances than the average minimum based on the minimum
+ see eq.
  (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -384,7 +392,8 @@ reference "eq:mininum_distance"
 
 \end_inset
 
-) or maximum distance see (
+) or maximum distance see eq.
+ (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:maximum distance"
@@ -430,8 +439,8 @@ Distances used in this work.
 \begin_inset Formula $d_{\textrm{df}}=\min(d_{\textrm{d}},d_{\textrm{f}})$
 \end_inset
 
- which is a symmetric distance can deal with the track direction problem
- and works on tracks which have the same number of points.
+ which is a symmetric distance that can deal with the track bi-directionality
+ problem and works on tracks which have the same number of points.
  Another distance is the mean average distance which is again symmetric
  but does not need for the tracks to have the same number of points 
 \begin_inset Formula $\textrm{MAM}_{\textrm{avg}}=(d_{avg}(s_{A},s_{B})+d_{avg}(s_{B},s_{A}))/2$
@@ -525,8 +534,8 @@ During the last
 
  years there have been numerous efforts from many researchers to address
  the unsupervised and supervised learning problems of brain tractography.
- All these methods suffer from low efficiency, however they provide many
- useful ideas.
+ As far as we know all these methods suffer from low efficiency, however
+ they provide many useful ideas.
  
 \begin_inset Note Note
 status open
@@ -572,8 +581,8 @@ key "wang2010tractography"
  proposed a nonparametric Bayesian framework using hierarchical Dirichlet
  processes mixture model (HDPM).
  This is one of the very few methods not based on distances.
- A track is modeled here as a discrete distribution over a codebook of discretiz
-ed orientations and voxel regions.
+ A track is modeled in this work as a discrete distribution over a codebook
+ of discretized orientations and voxel regions.
  In this paper the authors explain that calculating pairwise distances is
  very time consuming and therefore they try to avoid that.
  Their approach automatically learns the number of clusters from data with
@@ -629,7 +638,7 @@ key "Guevara2010"
 \end_inset
 
  used a cascade of different algorithms from hierarchical clustering together
- to 3d watershed on fibre extremities.
+ to 3D watershed on fibre extremities.
  They first divide the tractography into left-right hemisphere, inter-hemispheri
 c and cerebellum subset, then create subsets of different track length,
  use hierarchical clustering based on the random voxel parcels, then watershed
@@ -966,8 +975,7 @@ key "durrleman2010registration"
 .
  This methodology does not impose point-to-point or fibre-to-fibre correspondenc
 es, however it is sensitive to the fibre density and orientation of the
- bundles.
- In common with all the methods above it is also computationally expensive.
+ bundles and it is computationally expensive.
 \end_layout
 
 \begin_layout Standard
@@ -1034,11 +1042,39 @@ key "ODonnell_IEEETMI07"
 \end_layout
 
 \begin_layout Standard
+In summary, we see that there two trends in the literature.
+ The first which is much more common is to use track distances and calculate
+ distance matrices.
+ In this case decyphering the distance matrix with Hierarchical Clustering
+ or Spectral Embedding are the most common approaches.
+ The second which is much less common is to not use track distances at all.
+ In this case using Dirichlet Processes or Currents seems to be some viable
+ solutions.
+ However, in current tractography research and for clinical usage we need
+ algorithms that can provide useful clusters and cluster descriptors in
+ minimum time and with low memory capacity.
+ From what we see from these papers none of this papers deals with the problem
+ of efficiency and most of the methods would need from many hours to many
+ days to run.
+ The method we propose in this document can provide a solution to this problem
+ and it is an 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 In summary, most researchers had to use complete inter-track distance matrices
  or/and simplify the datasets by length biased filtering, or selections,
  or with masks, or extensive ROIs, or avoid track distances entirely because
  of CPU and memory constraints.
  We address these capacity problems by taking a different approach.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1216,7 +1252,7 @@ MATTHEW: Might want to omit sales-pitchey words here.
  The risk will be that your reviewer will find themselves trying to find
  fault, rather than enjoying this new addition to the list of tools they
  can use.
- ELFE: I agree.
+ ELEF: I agree.
 \end_layout
 
 \end_inset
@@ -2607,7 +2643,7 @@ status open
 
 \begin_layout Plain Layout
 MATTHEW: Is this not true for any automated clusting technique? Emphasize
- need for speed in interactive applications? ELFE + IAN We have rephrased
+ need for speed in interactive applications? ELEF + IAN We have rephrased
  above.
  See also response in next note.
 \end_layout
@@ -4513,6 +4549,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="7">
 <features>
@@ -5036,12 +5074,15 @@ ELEF: (SEE SECTION) IAN: Needs a cross reference?
 \end_inset
 
 .
- If we think that the small bundles of size <100 are more idiosyncratic
- or possibly more likely to reflect noise in the data, whereas larger bundles
- are more indicative of substantial structures and landmarks in the tractographi
-es, then we are encouraged to see that on average the virtual tracks of
- 50% of larger bundles of each tractography lie within 10mm of those of
- the other tractographies.
+ If we think that the small bundles of size 
+\begin_inset Formula $<100$
+\end_inset
+
+ are more idiosyncratic or possibly more likely to reflect noise in the
+ data, whereas larger bundles are more indicative of substantial structures
+ and landmarks in the tractographies, then we are encouraged to see that
+ on average the virtual tracks of 50% of larger bundles of each tractography
+ lie within 10mm of those of the other tractographies.
  This supports the notion that QB can be used to find agreements between
  different brains by concentrating on the larger (more important) clusters.
  We will see further evidence for this below (section 
@@ -6058,7 +6099,7 @@ MATTHEW: I remember Fernando talking about large scale diffusion clustering
  I guess QB here gives you a reliable measure of a long distance so that
  you can zero out this entry in your connection matrix.
  ELEF: Tractographic data sets are not sparse, so standard sparse methods
-  (which FP was referring to are not applicable.
+  (which FP was referring to are not applicable).
 \end_layout
 
 \end_inset
@@ -7560,7 +7601,7 @@ MATTHEW: Isn't the metric used in the registration related to the metric
  with the same parameters.
  ELEF: There isn't time!! This is just the first result of using QB for
  registration.
- To develop a full registration algorithm a new chapter is needed.
+ To develop a full registration algorithm a new chapter or paper is needed.
  
 \end_layout
 
@@ -8023,7 +8064,7 @@ A virtual (centroid) track is the average of all tracks in the cluster.
 status open
 
 \begin_layout Plain Layout
-MATTHEW: Could this explanation go earlier in the chapter?
+MATTHEW: Could this explanation go earlier in the chapter?!!!!
 \end_layout
 
 \end_inset
