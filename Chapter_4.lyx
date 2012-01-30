@@ -1057,7 +1057,18 @@ In summary, we see that there two trends in the literature.
  of efficiency and most of the methods would need from many hours to many
  days to run.
  The method we propose in this document can provide a solution to this problem
- and it is an 
+ and it is an update of our priliminary work found on 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "EGMB10"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+SAY SOMETHING ABOUT ROIs and supervised learning.
 \end_layout
 
 \begin_layout Standard
