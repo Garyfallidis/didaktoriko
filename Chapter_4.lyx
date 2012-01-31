@@ -768,6 +768,7 @@ key "ElKouby2005"
 \end_inset
 
  used ROI-based connectivity parcellation and k-means.
+ The main disadvantage of train 
 \end_layout
 
 \begin_layout Standard
