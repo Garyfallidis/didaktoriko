@@ -50,9 +50,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
 \author "Eleftherios Garyfallidis,,," 
+\author "" 
 \end_header
 
 \begin_body
@@ -535,7 +534,7 @@ During the last
  years there have been numerous efforts from many researchers to address
  the unsupervised and supervised learning problems of brain tractography.
  As far as we know all these methods suffer from low efficiency, however
- they provide many useful ideas.
+ they provide many useful ideas which we decribe in this section.
  
 \begin_inset Note Note
 status open
@@ -545,6 +544,7 @@ MATTHEW: I got a bit lost in this section.
  Is there a way of summarizing the papers under different themes such as
  distance metric used, cluster number finding, clustering method or something
  like that? IAN: I am planning to review the structure of this section.
+ Elef: unfortunately they don't report number of clusters
 \end_layout
 
 \end_inset
@@ -553,20 +553,23 @@ MATTHEW: I got a bit lost in this section.
 \end_layout
 
 \begin_layout Standard
-Moberts et al.
+Tractography clustering algorithms are rarely evaluated in the literature.
+ The work of Moberts et al.
 \begin_inset space ~
 \end_inset
 
-
+ in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "moberts2005evaluation"
 
 \end_inset
 
- evaluated different hierarchical clustering methods including a less common
- one, shared nearest neighbor (SNN), against a gold standard segmentation
- by physicians.
+ was an exception to this commonality and evaluated different popular hierarchic
+al clustering methods including a less common one, shared nearest neighbor
+ (SNN), against a gold standard segmentation by physicians.
+ The authors concluded that sinlge-link clustering with mean average distance
+ was the method which performed best.
  Wang et al.
 \begin_inset space ~
 \end_inset
@@ -584,9 +587,12 @@ key "wang2010tractography"
  A track is modeled in this work as a discrete distribution over a codebook
  of discretized orientations and voxel regions.
  In this paper the authors explain that calculating pairwise distances is
- very time consuming and therefore they try to avoid that.
+ very time consuming and therefore they avoid using them.
  Their approach automatically learns the number of clusters from data with
- Dirichlet processes priors.
+ Dirichlet processes priors but it is still not efficient enough for real
+ time operation.
+ Another disadvantage is that their method does not incorporate anatomical
+ knowledge.
  Visser et al.
 \begin_inset space ~
 \end_inset
@@ -609,6 +615,16 @@ reference "sub:track-distances"
 \end_inset
 
 ).
+ An interesting result with this method was that they could automatically
+ find the different sub-bundles of the arcuate fasciculus area in accordance
+ with the supervised labeling shown in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "catani2005perisylvian"
+
+\end_inset
+
+.
  The algorithm that we present in this chapter also uses the minimum average
  flip (MDF) function as a measure of distance between tracks.
  Gerig et al.
@@ -642,8 +658,8 @@ key "Guevara2010"
  They first divide the tractography into left-right hemisphere, inter-hemispheri
 c and cerebellum subset, then create subsets of different track length,
  use hierarchical clustering based on the random voxel parcels, then watershed
- over extremities and finally use hierarchical clustering to merge the different
- sub-bundles using the Hausdorff distance (see section 
+ over extremities and finally used hierarchical clustering to merge the
+ different sub-bundles using the Hausdorff distance (see section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:track-distances"
@@ -737,9 +753,9 @@ key "Zvitia2010"
 
 \end_inset
 
- used adaptive mean shift so that they do not need to provide the number
- of clusters, they also used this approach for registration of datasets
- from the same subject.
+ used adaptive mean shift which has to property to decide automatically
+ the number of clusters , they also used this approach for registration
+ of datasets from the same subject.
  El Kouby et al.
 \begin_inset space ~
 \end_inset
@@ -907,12 +923,19 @@ key "jonasson2005fiber"
 
 \end_inset
 
- measured the similarity between two fibres by counting the number of points
- sharing the same voxel together with spectral clustering.
-\end_layout
+ create a large 
+\begin_inset Formula $N\times N$
+\end_inset
 
-\begin_layout Standard
-Jianu et al.
+ co-occurrence matrix, where 
+\begin_inset Formula $N$
+\end_inset
+
+ is the number of the fibers to cluster.
+ The co-occurrence (affinity) matrix contains the number of times two fibers
+ share the same voxel.
+ They then used spectral clustering to create the clustering.
+ Jianu et al.
 \begin_inset space ~
 \end_inset
 
@@ -1048,16 +1071,16 @@ In summary, we see that there two trends in the literature.
  In this case decyphering the distance matrix with Hierarchical Clustering
  or Spectral Embedding are the most common approaches.
  The second which is much less common is to not use track distances at all.
- In this case using Dirichlet Processes or Currents seems to be some viable
+ In this case using Dirichlet Processes or Currents seem to be some viable
  solutions.
  However, in current tractography research and for clinical usage we need
  algorithms that can provide useful clusters and cluster descriptors in
  minimum time and with low memory capacity.
- From what we see from these papers none of this papers deals with the problem
- of efficiency and most of the methods would need from many hours to many
- days to run.
+ From what we see from this literature review none of these papers deals
+ with the problem of efficiency and most of the methods would need from
+ many hours to many days to run.
  The method we propose in this document can provide a solution to this problem
- and it is an update of our priliminary work found on 
+ and it is an extensive update of our priliminary work found in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "EGMB10"
@@ -1991,13 +2014,13 @@ name "Alg:QuickBundles"
 
 \begin_layout Standard
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 \begin_inset Float algorithm
 wide false
 sideways false
@@ -2005,7 +2028,7 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 \begin_inset listings
 lstparams "basicstyle={\small\rmfamily},breaklines=true,mathescape=true,numbers=left,numberstyle={\footnotesize},showstringspaces=false,tabsize=4"
 inline false
@@ -2013,7 +2036,7 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 $
 \backslash
@@ -2024,7 +2047,7 @@ textrm{
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 $c_{0}=
 \backslash
@@ -2039,7 +2062,7 @@ right
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 $C=
 \backslash
@@ -2054,7 +2077,7 @@ right
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 $
 \backslash
@@ -2065,7 +2088,7 @@ textrm{
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 $
 \backslash
@@ -2078,7 +2101,7 @@ textbf{to}$ $|T|-1$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 	$
 \backslash
@@ -2087,7 +2110,7 @@ mathbf{t}=T_{i}$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 	$
 \backslash
@@ -2098,7 +2121,7 @@ textrm{
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 	$
 \backslash
@@ -2109,7 +2132,7 @@ mathrm{zeros}(|C|)$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 	$
 \backslash
@@ -2118,7 +2141,7 @@ textsc{store flipping if needed}$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 	$
 \backslash
@@ -2129,7 +2152,7 @@ mathrm{zeros}(|C|)$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 	$
 \backslash
@@ -2140,7 +2163,7 @@ textrm{
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 	$
 \backslash
@@ -2153,7 +2176,7 @@ textbf{to}$ $|C|-1$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 		$
 \backslash
@@ -2164,7 +2187,7 @@ mathbf{h}/C_{k}.N$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 		$d$=$d_{d}(
 \backslash
@@ -2175,7 +2198,7 @@ mathbf{v})$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 		$f$=$d_{f}(
 \backslash
@@ -2186,7 +2209,7 @@ mathbf{v})$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 		$
 \backslash
@@ -2195,7 +2218,7 @@ textsc{if flip distance is smaller than direct distance}$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 		$
 \backslash
@@ -2204,14 +2227,14 @@ textbf{if}$ $f < d$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 			$d = f$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 			$
 \backslash
@@ -2220,7 +2243,7 @@ mathrm{flip}_{k}=1$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 		$
 \backslash
@@ -2229,7 +2252,7 @@ mathrm{alld}_{k}=d$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 	$
 \backslash
@@ -2238,7 +2261,7 @@ textsc{find minimum distance and index}$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 	$m=
 \backslash
@@ -2249,7 +2272,7 @@ mathrm{alld})$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 	$l=
 \backslash
@@ -2260,7 +2283,7 @@ mathrm{alld})$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 	$
 \backslash
@@ -2269,7 +2292,7 @@ textsc{If smaller than any class threshold then}$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 	$
 \backslash
@@ -2278,7 +2301,7 @@ textsc{add track to that class}$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 	$
 \backslash
@@ -2287,7 +2310,7 @@ textbf{if}$ $m < thr$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 		$
 \backslash
@@ -2298,7 +2321,7 @@ mathrm{flip}_{l}=1$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 			$C_{l}.
 \backslash
@@ -2309,7 +2332,7 @@ textsc{reverse direction}$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 		$
 \backslash
@@ -2318,7 +2341,7 @@ textbf{else}$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 			$C_{l}.
 \backslash
@@ -2329,21 +2352,21 @@ textsc{same direction}$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 		$C_{l}.N+=1$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 		$C_{l}.I$.append(i)
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 	$
 \backslash
@@ -2352,7 +2375,7 @@ textsc{Otherwise create a new class}$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 	$
 \backslash
@@ -2361,21 +2384,21 @@ textbf{else}$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 		$|C|+=1$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 		$C_{|C|-1}.I_{0}=l$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 		$C_{|C|-1}.
 \backslash
@@ -2386,14 +2409,14 @@ mathbf{t}$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 		$C_{|C|-1}.N=1$
 \end_layout
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 	
 \end_layout
@@ -2405,12 +2428,12 @@ mathbf{t}$
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 \begin_inset Caption
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1319710123
+\change_inserted 0 1319710123
 
 \series bold
 \begin_inset CommandInset label
@@ -5398,7 +5421,7 @@ Example of detecting a possibly erroneous 3d bundle (on the left) by projecting
 QB can also simplify detection of tracks which are very dissimilar to others
  and therefore they are very distant from all other clusters.
  Usually when we use a QB threshold of about 
-\change_inserted 2 1319698782
+\change_inserted 0 1319698782
 
 \begin_inset Formula $10$
 \end_inset
@@ -5533,7 +5556,7 @@ Alignment
 .
  Tractographies were created using EuDX with QA produced by Generalized
  Q-Sampling with diffusion sampling length of 
-\change_inserted 2 1319699084
+\change_inserted 0 1319699084
 
 \begin_inset Formula $1.2$
 \end_inset
@@ -5541,7 +5564,7 @@ Alignment
 
 \change_unchanged
  and data sets from 
-\change_inserted 2 1319699080
+\change_inserted 0 1319699080
 
 \begin_inset Formula $101$
 \end_inset
@@ -7400,7 +7423,7 @@ key "fletcher1987practical"
 \end_inset
 
  will be transformed by a rigid rotation and 
-\change_inserted 2 1319745183
+\change_inserted 0 1319745183
 
 \begin_inset Formula $\mathrm{SMD}$
 \end_inset
@@ -7494,7 +7517,7 @@ Experiments
 .
  The first large scale experiment took place using the same tractography
  of a single individual copied and transformed 
-\change_inserted 2 1319745405
+\change_inserted 0 1319745405
 
 \begin_inset Formula $1000$
 \end_inset
@@ -7850,7 +7873,7 @@ Strategy 2
 \series default
 .
  Read the tractography of a single subject,
-\change_deleted 2 1319745849
+\change_deleted 0 1319745849
  
 \change_unchanged
  use a tractographic atlas as the one created in section 
@@ -7866,7 +7889,7 @@ reference "sub:Atlases-made-easy"
 \end_inset
 
 ,
-\change_deleted 2 1319745849
+\change_deleted 0 1319745849
  
 \change_unchanged
  cluster the closest tracks found from the previous step and for each one
@@ -7997,10 +8020,10 @@ We saw that QB is a linear time clustering method based on track distances,
  when every track is a singleton cluster itself.
  Therefore QB is the fastest known tractography clustering method and even
  real-time on tractographies with less than 
-\begin_inset Formula $20$
+\begin_inset Formula $20,000$
 \end_inset
 
-K tracks.
+ tracks.
 \end_layout
 
 \begin_layout Standard
@@ -8185,7 +8208,7 @@ O(N^2) worst case scenario (every track is a cluster - not used in practice)
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "diffusion"
-options "plain"
+options "ieeetr"
 
 \end_inset
 

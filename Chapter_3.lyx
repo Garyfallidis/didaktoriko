@@ -4824,6 +4824,31 @@ The source code for EuDX can be found in dipy.tracking
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Reference abbreviations: 
+\end_layout
+
+\begin_layout Plain Layout
+search for: bibtex style abbreviate
+\end_layout
+
+\begin_layout Plain Layout
+ieeetr (selected)
+\end_layout
+
+\begin_layout Plain Layout
+acm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -4843,7 +4868,7 @@ The source code for EuDX can be found in dipy.tracking
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "diffusion"
-options "plain"
+options "ieeetr"
 
 \end_inset
 

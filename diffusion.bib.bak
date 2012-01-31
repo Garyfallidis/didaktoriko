@@ -1109,6 +1109,20 @@
   year           = 2011
 }
 
+@Article{lawes2008abs,
+  Author         = {Lawes, I. N. C. and Barrick, T.R. and Murugam, V. and
+                   Spierings, N. and Evans, D.R. and Song, M. and Clark,
+                   C. A.},
+  Title          = {{Atlas-based segmentation of white matter tracts of
+                   the human brain using diffusion tensor tractography and
+                   comparison with classical dissection.}},
+  Journal        = {Neuroimage},
+  Volume         = {39},
+  Pages          = {62--79},
+  file           = {attachment\:lawes_dti_atlas-based_segmentation_2008.pdf:attachment\:lawes_dti_atlas-based_segmentation_2008.pdf:PDF},
+  year           = 2008
+}
+
 @Article{Ib2001,
   Author         = {Ib, Luis},
   Title          = {{TUTORIAL on QUATERNIONS Part I}},
@@ -1356,30 +1370,6 @@
                    Desktop/Downloaded/Ziyan et al. - Unknown - -F. Westin.
                    Nonlinear registration of diffusion mr images based on
                    fiber bundles.pdf:pdf}
-}
-
-@Article{Garyfallidis2009b,
-  Author         = {Garyfallidis, Eleftherios and Brett, Matthew and
-                   Nimmo-smith, Ian},
-  Title          = {{Fast Dimensionality Reduction for Brain Tractography}},
-  Journal        = {Computer},
-  Volume         = {15},
-  Number         = {6},
-  Pages          = {2009--2009},
-  file           = {:home/eg309/.local/share/data/Mendeley Ltd./Mendeley
-                   Desktop/Downloaded/Garyfallidis, Brett, Nimmo-smith -
-                   2009 - Fast Dimensionality Reduction for Brain
-                   Tractography.pdf:pdf},
-  year           = 2009
-}
-
-@Article{Garyfallidis,
-  Author         = {Garyfallidis, Eleftherios},
-  Title          = {{Di usion MRI and Tractography Tracks vs Tracts}},
-  Journal        = {Sciences-New York},
-  file           = {:home/eg309/.local/share/data/Mendeley Ltd./Mendeley
-                   Desktop/Downloaded/Garyfallidis - Unknown - Di usion
-                   MRI and Tractography Tracks vs Tracts.pdf:pdf}
 }
 
 @Article{moriBook,
@@ -2354,7 +2344,7 @@
 
 @Article{fletcher1987practical,
   Author         = {Fletcher, R.},
-  Title          = {{Practical methods of optimization. 1987}},
+  Title          = {Practical methods of optimization},
   Journal        = {John and Sons, Chichester},
   year           = 1987
 }
@@ -2823,7 +2813,7 @@
 @Article{frey2007clustering,
   Author         = {Frey, B.J. and Dueck, D.},
   Title          = {{Clustering by passing messages between data points}},
-  Journal        = {science},
+  Journal        = {Science},
   Volume         = {315},
   Number         = {5814},
   Pages          = {972},
@@ -3742,7 +3732,8 @@
   Title          = {Fast {D}imensionality {R}eduction for {B}rain
                    {T}ractography {C}lustering},
   Journal        = {16th Annual Meeting of the Organization for Human
-                   Brain Mapping}
+                   Brain Mapping},
+  year           = 2010
 }
 
 @InProceedings{cook2004modelling,
@@ -4757,17 +4748,19 @@
   year           = 2008
 }
 
-@Article{Batchelor2006,
-  Author         = {Batchelor, P G and Calamante, F and Tournier, J D and
-                   Atkinson, D and Hill, D L and Connelly, A},
-  Title          = {{Quantification of the shape of fiber tracts}},
-  Journal        = {Magn. Reson. Med},
-  Volume         = {55},
-  Pages          = {894--903},
-  file           = {:home/eg309/.local/share/data/Mendeley Ltd./Mendeley
-                   Desktop/Downloaded/Batchelor et al. - 2006 -
-                   Quantification of the shape of fiber tracts.pdf:pdf},
-  year           = 2006
+@Article{wakana2007roq,
+  Author         = {Wakana, S. and Caprihan, A. and Panzenboeck, M. M. and
+                   Fallon, J.H. and Perry, M. and Gollub, R. L. and Hua,
+                   K. and Zhang, J. and Jiang, H. and Dubey, P. and Blitz,
+                   A. and van Zijl, P. and Mori, S.},
+  Title          = {Reproducibility of quantitative tractography methods
+                   applied to cerebral white matter},
+  Journal        = {Neuroimage},
+  Volume         = {36},
+  Pages          = {630-644},
+  file           = {attachment\:wakana_reproducibility_2007.pdf:attachment\:wakana_reproducibility_2007.pdf:PDF},
+  publisher      = {Elsevier},
+  year           = 2007
 }
 
 @Article{Yen2009,
@@ -6581,18 +6574,6 @@
   year           = 1994
 }
 
-@Article{Bihan2001,
-  Author         = {Bihan, MD Denis Le and Mangin, JF and Poupon, C},
-  Title          = {{Diffusion tensor imaging: concepts and applications}},
-  Journal        = {Journal of Magnetic \ldots},
-  file           = {:home/eg309/.local/share/data/Mendeley Ltd./Mendeley
-                   Desktop/Downloaded/Bihan, Mangin, Poupon - 2001 -
-                   Diffusion tensor imaging concepts and
-                   applications.pdf:pdf},
-  url            = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.114.9156\&rep=rep1\&type=pdf},
-  year           = 2001
-}
-
 @Article{Glasser2008,
   Author         = {Glasser, MF and Rilling, JK},
   Title          = {{DTI tractography of the human brain's language
@@ -7389,18 +7370,16 @@
   year           = 2008
 }
 
-@Article{lawes2008abs,
-  Author         = {Lawes, I. N. C. and Barrick, T.R. and Murugam, V. and
-                   Spierings, N. and Evans, D.R. and Song, M. and Clark,
-                   C. A.},
-  Title          = {{Atlas-based segmentation of white matter tracts of
-                   the human brain using diffusion tensor tractography and
-                   comparison with classical dissection.}},
-  Journal        = {Neuroimage},
-  Volume         = {39},
-  Pages          = {62--79},
-  file           = {attachment\:lawes_dti_atlas-based_segmentation_2008.pdf:attachment\:lawes_dti_atlas-based_segmentation_2008.pdf:PDF},
-  year           = 2008
+@Article{Bihan2001,
+  Author         = {Bihan, MD Denis Le and Mangin, JF and Poupon, C},
+  Title          = {{Diffusion tensor imaging: concepts and applications}},
+  Journal        = {Journal of Magnetic \ldots},
+  file           = {:home/eg309/.local/share/data/Mendeley Ltd./Mendeley
+                   Desktop/Downloaded/Bihan, Mangin, Poupon - 2001 -
+                   Diffusion tensor imaging concepts and
+                   applications.pdf:pdf},
+  url            = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.114.9156\&rep=rep1\&type=pdf},
+  year           = 2001
 }
 
 @Article{Sotiras2009,
@@ -7548,20 +7527,6 @@
                    Desktop/Downloaded/Tuch - 2004 - Q-ball imaging.pdf:pdf},
   url            = {http://noodle.med.yale.edu/\~{}mjack/papers/tuch-2004.pdf},
   year           = 2004
-}
-
-@Article{Garyfallidis2009,
-  Author         = {Garyfallidis, Eleftherios},
-  Title          = {{Towards an accurate brain tractography using di usion
-                   weighted imaging 1 Introduction}},
-  Journal        = {Imaging},
-  Number         = {June},
-  Pages          = {1--25},
-  file           = {:home/eg309/.local/share/data/Mendeley Ltd./Mendeley
-                   Desktop/Downloaded/Garyfallidis - 2009 - Towards an
-                   accurate brain tractography using di usion weighted
-                   imaging 1 Introduction.pdf:pdf},
-  year           = 2009
 }
 
 @Article{Tsai2007,
@@ -7843,6 +7808,17 @@
   doi            = {10.1371/journal.pone.0000597},
   file           = {attachment\:Hagmann2007PLoSONE.pdf:attachment\:Hagmann2007PLoSONE.pdf:PDF},
   year           = 2007
+}
+
+@Article{gerhard2011connectome,
+  Author         = {Gerhard, S. and Daducci, A. and Lemkaddem, A. and
+                   Meuli, R. and Thiran, J.P. and Hagmann, P.},
+  Title          = {The connectome viewer toolkit: an open source
+                   framework to manage, analyze, and visualize connectomes},
+  Journal        = {Frontiers in Neuroinformatics},
+  Volume         = {5},
+  publisher      = {Frontiers Media SA},
+  year           = 2011
 }
 
 @conference{lazar2002white,
@@ -8461,19 +8437,17 @@
   year           = 2002
 }
 
-@Article{wakana2007roq,
-  Author         = {Wakana, S. and Caprihan, A. and Panzenboeck, M. M. and
-                   Fallon, J.H. and Perry, M. and Gollub, R. L. and Hua,
-                   K. and Zhang, J. and Jiang, H. and Dubey, P. and Blitz,
-                   A. and van Zijl, P. and Mori, S.},
-  Title          = {Reproducibility of quantitative tractography methods
-                   applied to cerebral white matter},
-  Journal        = {Neuroimage},
-  Volume         = {36},
-  Pages          = {630-644},
-  file           = {attachment\:wakana_reproducibility_2007.pdf:attachment\:wakana_reproducibility_2007.pdf:PDF},
-  publisher      = {Elsevier},
-  year           = 2007
+@Article{Batchelor2006,
+  Author         = {Batchelor, P G and Calamante, F and Tournier, J D and
+                   Atkinson, D and Hill, D L and Connelly, A},
+  Title          = {{Quantification of the shape of fiber tracts}},
+  Journal        = {Magn. Reson. Med},
+  Volume         = {55},
+  Pages          = {894--903},
+  file           = {:home/eg309/.local/share/data/Mendeley Ltd./Mendeley
+                   Desktop/Downloaded/Batchelor et al. - 2006 -
+                   Quantification of the shape of fiber tracts.pdf:pdf},
+  year           = 2006
 }
 
 @Article{Kim2009,
@@ -10450,7 +10424,7 @@
   Author         = {Garyfallidis, E. and Brett, M. and Amirbekian, B. and
                    Nguyen, C. and Yeh, FC and Halchenko, Y. and
                    Nimmo-Smith, I.},
-  Title          = {Dipy--a novel software library for diffusion MR and
+  Title          = {Dipy - a novel software library for diffusion mr and
                    tractography},
   BookTitle      = {17th Annual Meeting of the Organization for Human
                    Brain Mapping},
@@ -11190,20 +11164,6 @@
   Pages          = {216--221},
   publisher      = {RCP},
   year           = 2008
-}
-
-@Article{Garyfallidis2009a,
-  Author         = {Garyfallidis, Eleftherios and Brett, Matthew and
-                   Nimmo-smith, Ian},
-  Title          = {{Fast Dimensionality Reduction for Brain Tractography
-                   Clustering}},
-  Journal        = {Sciences-New York},
-  Pages          = {7--10},
-  file           = {:home/eg309/.local/share/data/Mendeley Ltd./Mendeley
-                   Desktop/Downloaded/Garyfallidis, Brett, Nimmo-smith -
-                   2009 - Fast Dimensionality Reduction for Brain
-                   Tractography Clustering.pdf:pdf},
-  year           = 2009
 }
 
 @Article{Durrleman2009,
