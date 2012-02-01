@@ -491,15 +491,15 @@ reference "eq:direct_flip_distance"
  means that more of the curvature from the long tracks will be lost relative
  to the short tracks i.e.
  the short tracks will have higher resolution.
- We found empeirically that this is not an important issue and that for
- clustering purposes even downsampling to only 
+ We found empirically that this is not an important issue and that for clusterin
+g purposes even downsampling to only 
 \begin_inset Formula $3$
 \end_inset
 
  points in total could be useful 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Garyfallidis2009b"
+key "EGMB10"
 
 \end_inset
 
@@ -3823,18 +3823,11 @@ Another way to estimate a label for each item is to assign it the label
 \end_inset
 
 , 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula \[
 \mathrm{MPM}(\mathcal{A}|\mathcal{B})={\displaystyle \sum_{j=1}^{n}\frac{b_{j}}{N}\thinspace\max_{i}p_{i|\mathcal{B_{j}}}.}\]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 We define 
 \begin_inset Formula $\mathrm{MPM}(\mathcal{B}|\mathcal{A})$
 \end_inset
@@ -3845,9 +3838,6 @@ We define
 
 .
  A further simplification is to use the symmetrized value
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula \[
 \mathrm{MPM(\mathcal{A},}\mathcal{B})=[\mathrm{MPM}(\mathcal{A}|\mathcal{B})+\mathrm{MPM}(\mathcal{B}|\mathcal{A})]/2.\]
 

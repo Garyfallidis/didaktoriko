@@ -6,10 +6,16 @@
 \begin_preamble
 \usepackage{amsmath}
 \newcommand{\argmax}{\operatornamewithlimits{argmax}}
+%\newcommand\argmin{\operatornamewithlimits{arg\,min}}
+%\DeclareMathOperator{\argmin}{arg\,min} 
+ \def\argmin{\mathop{\operator@font arg\,min}} 
+\def\argmax{\mathop{\operator@font arg\,max}} 
+%\DeclareMathOperator{\argmax}{arg\,max}
 \newcommand{\gini}{\mathtt{gini}}
 \newcommand{\rce}{\mathtt{rce}}
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
+\usepackage{amsmath}
 \end_preamble
 \use_default_options true
 \language british
