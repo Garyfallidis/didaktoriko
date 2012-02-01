@@ -51,8 +51,8 @@
 \tracking_changes false
 \output_changes false
 \author "" 
-\author "Eleftherios Garyfallidis,,," 
 \author "" 
+\author "Eleftherios Garyfallidis,,," 
 \end_header
 
 \begin_body
@@ -1234,7 +1234,44 @@ In summary, most researchers had to use complete inter-track distance matrices
 \end_layout
 
 \begin_layout Subsection
-Materials and methods
+Data sets
+\end_layout
+
+\begin_layout Standard
+The data sets.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Simulated trajectories.
+
+\series default
+ We generated 
+\begin_inset Formula $3$
+\end_inset
+
+ different bundles of parametric paths samples at 
+\begin_inset Formula $200$
+\end_inset
+
+ points.
+ The tracks were made from different combinations of sinusoidal and helicoidal
+ functions.
+ In total this data set contained 
+\begin_inset Formula $450$
+\end_inset
+
+ tracks see fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:simulated_orbits"
+
+\end_inset
+
+ .
 \end_layout
 
 \begin_layout Standard
@@ -1291,7 +1328,7 @@ key "Yeh2010"
 \end_inset
 
  was used.
- The total acquisition time was
+ The total acquisition time was 
 \begin_inset Formula $14'21''$
 \end_inset
 
@@ -1358,38 +1395,6 @@ pbc.lrdc.pitt.edu
 .
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-Simulated trajectories.
-
-\series default
- We generated 
-\begin_inset Formula $3$
-\end_inset
-
- different bundles of parametric paths samples at 
-\begin_inset Formula $200$
-\end_inset
-
- points.
- The tracks were made from different combinations of sinusoidal and helicoidal
- functions.
- In total this data set contained 
-\begin_inset Formula $450$
-\end_inset
-
- tracks see fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Flo:simulated_orbits"
-
-\end_inset
-
- .
-\end_layout
-
 \begin_layout Subsection
 QuickBundles (QB) Clustering 
 \end_layout
@@ -1425,7 +1430,14 @@ fast algorithm which can simplify tractography representation in an accessible
 
  distance based clustering algorithm that we created in order to simplify
  huge trajectory datasets such as those produced by current tractography
- generation algorithms.
+ generation algorithms (see section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Complexity"
+
+\end_inset
+
+).
  In general, there are very few linear time clustering algorithms.
  Just two are well known: CLARANS 
 \begin_inset CommandInset citation
@@ -2136,488 +2148,6 @@ name "Alg:QuickBundles"
 
 \begin_layout Standard
 
-\change_inserted 1 1319710123
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-\begin_inset listings
-lstparams "basicstyle={\small\rmfamily},breaklines=true,mathescape=true,numbers=left,numberstyle={\footnotesize},showstringspaces=false,tabsize=4"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-$
-\backslash
-textrm{
-\backslash
-#the first track becomes the first class}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-$c_{0}=
-\backslash
-left
-\backslash
-{0,s_{0},1
-\backslash
-right
-\backslash
-}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-$C=
-\backslash
-left
-\backslash
-{c_{0}
-\backslash
-right
-\backslash
-}$, $|C|=1$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-$
-\backslash
-textrm{
-\backslash
-#for all the following tracks}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-$
-\backslash
-textbf{for}$ $i$ $
-\backslash
-textbf{from}$ $1$ $
-\backslash
-textbf{to}$ $|T|-1$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-	$
-\backslash
-mathbf{t}=T_{i}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-	$
-\backslash
-textrm{
-\backslash
-#store distances with cluster features}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-	$
-\backslash
-mathrm{alld}=
-\backslash
-mathrm{zeros}(|C|)$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-	$
-\backslash
-textsc{store flipping if needed}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-	$
-\backslash
-mathrm{flip}= 
-\backslash
-mathrm{zeros}(|C|)$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-	$
-\backslash
-textrm{
-\backslash
-#for all the clusters}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-	$
-\backslash
-textbf{for}$ $k$ $
-\backslash
-textbf{from}$ $0$ $
-\backslash
-textbf{to}$ $|C|-1$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-		$
-\backslash
-mathbf{v}=C_{k}.
-\backslash
-mathbf{h}/C_{k}.N$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-		$d$=$d_{d}(
-\backslash
-mathbf{t},
-\backslash
-mathbf{v})$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-		$f$=$d_{f}(
-\backslash
-mathbf{t},
-\backslash
-mathbf{v})$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-		$
-\backslash
-textsc{if flip distance is smaller than direct distance}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-		$
-\backslash
-textbf{if}$ $f < d$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-			$d = f$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-			$
-\backslash
-mathrm{flip}_{k}=1$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-		$
-\backslash
-mathrm{alld}_{k}=d$	
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-	$
-\backslash
-textsc{find minimum distance and index}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-	$m=
-\backslash
-min(
-\backslash
-mathrm{alld})$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-	$l=
-\backslash
-mathrm{arg min}(
-\backslash
-mathrm{alld})$	
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-	$
-\backslash
-textsc{If smaller than any class threshold then}$ 
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-	$
-\backslash
-textsc{add track to that class}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-	$
-\backslash
-textbf{if}$ $m < thr$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-		$
-\backslash
-textbf{if}$ $
-\backslash
-mathrm{flip}_{l}=1$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-			$C_{l}.
-\backslash
-mathbf{h}+=t'$ $
-\backslash
-textsc{reverse direction}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-		$
-\backslash
-textbf{else}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-			$C_{l}.
-\backslash
-mathbf{h}+=t$ $
-\backslash
-textsc{same direction}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-		$C_{l}.N+=1$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-		$C_{l}.I$.append(i)
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-	$
-\backslash
-textsc{Otherwise create a new class}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-	$
-\backslash
-textbf{else}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-		$|C|+=1$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-		$C_{|C|-1}.I_{0}=l$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-		$C_{|C|-1}.
-\backslash
-mathbf{h}=
-\backslash
-mathbf{t}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-		$C_{|C|-1}.N=1$
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-	
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-\begin_inset Caption
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1319710123
-
-\series bold
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:LSC-1"
-
-\end_inset
-
-
-\series default
-QuickBundles 
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-Input
-\series default
-: tractography 
-\begin_inset Formula $T=\{s_{0},...,s_{i},...,s_{|T|-1}\}$
-\end_inset
-
-, distance threshold 
-\begin_inset Formula $\texttt{thr}$
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-Output
-\series default
-: clustering 
-\begin_inset Formula $C=\{c_{0},...,c_{k},...,c_{|C|-1}\}$
-\end_inset
-
-, where cluster 
-\begin_inset Formula $c=\{I,\mathbf{h},N\}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -2901,7 +2431,7 @@ MATTHEW Too strong? Maybe 'is a simplification of the underlying data'.
 \begin_inset Formula $\simeq$
 \end_inset
 
- 
+
 \begin_inset Formula $0.14$
 \end_inset
 
@@ -3194,6 +2724,13 @@ reference "Flo:QB_fornix"
 
 \begin_layout Subsubsection
 Complexity and timings
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Complexity"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3977,8 +3514,15 @@ Robustness under reordering
 As mentioned above, QB shares the behaviour of most clustering algorithms
  in that different orderings of the tracks give rise to different clusterings.
  As a first step towards examining the robustness of QB in this respect
- we recorded the numbers of QB clusters in 20 different random orderings
- of the tractographies of 10 subjects.
+ we recorded the numbers of QB clusters in 
+\begin_inset Formula $20$
+\end_inset
+
+ different random orderings of the tractographies of 
+\begin_inset Formula $10$
+\end_inset
+
+ subjects.
 \begin_inset Note Note
 status open
 
@@ -3988,12 +3532,39 @@ Which ones were used? Was any filtering done?
 
 \end_inset
 
- The mean number of clusters was 2645.9 (min 1937.6; max 3857.8; s.d.
- 653.8).
+ The mean number of clusters was 
+\begin_inset Formula $2645.9$
+\end_inset
+
+ (min 
+\begin_inset Formula $1937.6$
+\end_inset
+
+; max 
+\begin_inset Formula $3857.8$
+\end_inset
+
+; s.d.
+ 
+\begin_inset Formula $653.8$
+\end_inset
+
+).
  There is therefore a considerable between-subject variation in this metric.
  By contrast the within-subject variability of the number of clusters across
- random orderings is rather small, with mean standard deviation 12.7 (min
- 7.3; max 17.4).
+ random orderings is rather small, with mean standard deviation 
+\begin_inset Formula $12.7$
+\end_inset
+
+ (min 
+\begin_inset Formula $7.3$
+\end_inset
+
+; max 
+\begin_inset Formula $17.4$
+\end_inset
+
+).
  This suggests an encouraging level of robustness in terms of the numbers
  of clusters that QB creates.
  We now consider ways of measuring and comparing the contents of the clusters
@@ -5543,7 +5114,7 @@ Example of detecting a possibly erroneous 3d bundle (on the left) by projecting
 QB can also simplify detection of tracks which are very dissimilar to others
  and therefore they are very distant from all other clusters.
  Usually when we use a QB threshold of about 
-\change_inserted 1 1319698782
+\change_inserted 2 1319698782
 
 \begin_inset Formula $10$
 \end_inset
@@ -5678,7 +5249,7 @@ Alignment
 .
  Tractographies were created using EuDX with QA produced by Generalized
  Q-Sampling with diffusion sampling length of 
-\change_inserted 1 1319699084
+\change_inserted 2 1319699084
 
 \begin_inset Formula $1.2$
 \end_inset
@@ -5686,7 +5257,7 @@ Alignment
 
 \change_unchanged
  and data sets from 
-\change_inserted 1 1319699080
+\change_inserted 2 1319699080
 
 \begin_inset Formula $101$
 \end_inset
@@ -5752,13 +5323,13 @@ key "Smith2006NeuroImage"
  displacements will be applied only on volumetric data and not with point
  data as those used in tractographies.
  Finally, after some considerable effort we found a combination of 
-\change_inserted 2 1319032651
+\change_inserted 1 1319032651
 
 \begin_inset Formula $\texttt{flirt}$
 \end_inset
 
 
-\change_deleted 2 1319032671
+\change_deleted 1 1319032671
 
 \begin_inset ERT
 status open
@@ -5783,13 +5354,13 @@ texttt{flirt}
 \end_inset
 
  and 
-\change_inserted 2 1319032687
+\change_inserted 1 1319032687
 
 \begin_inset Formula $\texttt{fnirtfileutils -withaff}$
 \end_inset
 
 
-\change_deleted 2 1319032700
+\change_deleted 1 1319032700
 
 \begin_inset ERT
 status open
@@ -7545,7 +7116,7 @@ key "fletcher1987practical"
 \end_inset
 
  will be transformed by a rigid rotation and 
-\change_inserted 1 1319745183
+\change_inserted 2 1319745183
 
 \begin_inset Formula $\mathrm{SMD}$
 \end_inset
@@ -7639,7 +7210,7 @@ Experiments
 .
  The first large scale experiment took place using the same tractography
  of a single individual copied and transformed 
-\change_inserted 1 1319745405
+\change_inserted 2 1319745405
 
 \begin_inset Formula $1000$
 \end_inset
@@ -7995,7 +7566,7 @@ Strategy 2
 \series default
 .
  Read the tractography of a single subject,
-\change_deleted 1 1319745849
+\change_deleted 2 1319745849
  
 \change_unchanged
  use a tractographic atlas as the one created in section 
@@ -8011,7 +7582,7 @@ reference "sub:Atlases-made-easy"
 \end_inset
 
 ,
-\change_deleted 1 1319745849
+\change_deleted 2 1319745849
  
 \change_unchanged
  cluster the closest tracks found from the previous step and for each one
