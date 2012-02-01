@@ -1203,7 +1203,8 @@ status open
  is not yet established.
  Nevertheless, the clustering that we propose concentrates on reducing the
  complexity of the data rather than finding bundles with anatomical relevance.
- We think that this step is more useful at this stage of tractography analysis.
+ We think that this step is more useful at this stage of tractography analysis
+ research.
 \end_layout
 
 \begin_layout Standard
@@ -1381,7 +1382,7 @@ reference "Flo:simulated_orbits"
 \end_layout
 
 \begin_layout Subsection
-Linear-time QuickBundles (QB) Clustering 
+QuickBundles (QB) Clustering 
 \end_layout
 
 \begin_layout Subsubsection
@@ -1409,7 +1410,7 @@ fast algorithm which can simplify tractography representation in an accessible
 \end_inset
 
 .
- QB is a linear time 
+ QB is an average linear time 
 \begin_inset Formula $O(N)$
 \end_inset
 
