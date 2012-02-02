@@ -1686,7 +1686,9 @@ textbf{Input} tracks $T=
 \backslash
 {s_{0},...,s_{i},...,s_{|T|-1}
 \backslash
-}$, threshold
+}$, threshold $
+\backslash
+theta $
 \backslash
 
 \backslash
@@ -1982,7 +1984,9 @@ texttt{alld})$
 
 $
 \backslash
-textbf{If}$ $m <$ threshold 
+textbf{If}$ $m < 
+\backslash
+theta$ 
 \backslash
 # append in current cluster 
 \backslash
@@ -2160,8 +2164,8 @@ name "Alg:QuickBundles"
 \end_layout
 
 \begin_layout Standard
-Flipping can be an issue when using the MDF distance and adding tracks together,
- because tracks do not have a preferred direction.
+Flipping can become an issue when using the MDF distance and adding tracks
+ together, because tracks do not have a preferred direction.
  A step in QB takes account of the possibility of needing to perform a flip
  of a track before adding it to a representative track.
  The complete QB algorithm is described in detail in Alg.
@@ -2261,9 +2265,9 @@ reference "eq:direct_flip_distance"
 
 ) between B and E.
  The algorithm starts and in (ii) we see that track A was selected, so no
- other clusters exist so track A becomes the first cluster (labeled with
- purple color) and the virtual track of that cluster is identical with A
- as seen in (iii) , next in (iv) track B is selected and we calculate the
+ other clusters exist therefore track A becomes the first cluster (labeled
+ with purple color) and the virtual track of that cluster is identical with
+ A as seen in (iii), next in (iv) track B is selected and we calculate the
  MDF distance between B and the virtual track of the other clusters.
  For the moment there is only one cluster to compare so QB calculates MDF
  (B,virtual-purple) and this is obviously bigger than threshold (that being
@@ -2287,7 +2291,7 @@ reference "eq:direct_flip_distance"
  of the other 3 clusters; obviously MDF(F,purple) is the only with smaller
  threshold, and so F is assigned to the purple cluster in (xv).
  Finally, in (xvi) the virtual purple track is updated as (D+A+F)/3.
- As there are no more tracks to select the algorithm stops.
+ As there are no more tracks to select, the algorithm stops.
  We can see all three clusters have been found and all tracks have been
  assigned successfully.
  
@@ -2306,14 +2310,27 @@ reference "eq:direct_flip_distance"
 \begin_layout Standard
 One of the disadvantages of most clustering algorithms is that they give
  different results with different initial conditions; for example this is
- recognised with k-means, expectation-maximization and k-centers where it
- is common practice to try a number of different random initial configurations.
+ recognised with k-means, expectation-maximization
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dempster1977maximum"
+
+\end_inset
+
+ and k-centers
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gonzalez1985clustering"
+
+\end_inset
+
+ where it is common practice to try a number of different random initial
+ configurations.
  The same holds for QB so if there are not distinct clusters such that the
  distance between any pair of clusters is supra-threshold, then with different
  permutations of the same tractography we will typically see similar number
  of clusters but different underlying clusters.
- We will examine the robustness of QB in this respect in sec.
- 
+ We will examine the robustness of QB in this respect in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Comparisons"
@@ -2429,9 +2446,8 @@ MATTHEW Too strong? Maybe 'is a simplification of the underlying data'.
  points.
  We can now clearly see that lots of parts which looked homogeneous are
  actually broken bundles e.g.
- dark green (bottom), light blue (bottom) or bundles with very different
- shape e.g.
- light green virtual track up.
+ dark green (A), light blue (C) or bundles with very different shape e.g.
+ light green virtual track (B).
  To cluster this bundle took 
 \begin_inset Formula $135$
 \end_inset
@@ -2494,7 +2510,7 @@ name "Flo:simulated_orbits"
 \begin_inset Graphics
 	filename last_figures/helix_phantom.png
 	lyxscale 60
-	scale 60
+	scale 70
 	rotateOrigin center
 
 \end_inset
@@ -2530,9 +2546,9 @@ On the left we see
 
  on the right.
  We can see that when the threshold is low enough the underlying structure
- is a good representation of the underlying geometry.
+ is a more detailed representation of the underlying geometry.
  However when the distance threshold is higher closer bundles could merge
- together as seen in the result on the right side where the red and blue
+ together as seen in the result on the right panel where the red and blue
  bundle have merged together in one cluster represented by the purple virtual
  track.
 \end_layout
@@ -2577,13 +2593,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:QB_fornix"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/LSC_simple.png
 	lyxscale 30
@@ -2632,11 +2641,11 @@ mm generates
 \end_inset
 
 mm the whole fornix is determined by one cluster only (bottom right).
- Right - an example of a full tractography 
+ Right - an example of a full tractography (
 \begin_inset Formula $250,000$
 \end_inset
 
- tracks being clustered using QB with a distance threshold of 
+ tracks) being clustered using QB with a distance threshold of 
 \begin_inset Formula $10$
 \end_inset
 
@@ -2647,7 +2656,6 @@ mm.
 
  virtual tracks depicted which produce a useful simplification of the initial
  tractography.
- Small bundles have been removed.
  Every track shown here represents an entire cluster from 
 \begin_inset Formula $10$
 \end_inset
@@ -2663,9 +2671,20 @@ mm.
  the entire cluster/bundle that it represents.
  Visualizing an entire data set of that size is impossible on standard graphic
  cards and most visualization tools e.g.
- Trackvis or DSI Studio can only show you a random sample of the tractography
- at real time.
+ Trackvis or DSI Studio can only show a small random sample of the full
+ tractography at real time.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:QB_fornix"
 
 \end_inset
 
@@ -2759,15 +2778,301 @@ To apply QB to a data set we need to specify three key parameters:
  the size of the subset of the tractography on which the clustering will
  be performed.
  When 
-\begin_inset Formula $d$
+\begin_inset Formula $\theta$
 \end_inset
 
  is higher, fewer more heterogeneous clusters are assembled, and conversely
  when 
-\begin_inset Formula $d$
+\begin_inset Formula $\theta$
 \end_inset
 
  is low, more clusters of greater homogeneity are created.
+\end_layout
+
+\begin_layout Standard
+The complexity of QB is in the best case linear time 
+\begin_inset Formula $O(N)$
+\end_inset
+
+ with the number of tracks 
+\begin_inset Formula $N$
+\end_inset
+
+ and worst case 
+\begin_inset Formula $O(N^{2})$
+\end_inset
+
+ when every cluster contains only one track.
+ The average case is 
+\begin_inset Formula $O(MN)$
+\end_inset
+
+ where 
+\begin_inset Formula $M$
+\end_inset
+
+ is the number of clusters however because 
+\begin_inset Formula $M$
+\end_inset
+
+ is usually much smaller than 
+\begin_inset Formula $N$
+\end_inset
+
+ (
+\begin_inset Formula $M\ll N$
+\end_inset
+
+) we can neglect 
+\begin_inset Formula $M$
+\end_inset
+
+ and denote it only as 
+\begin_inset Formula $O(N)$
+\end_inset
+
+ as it is common in complexity theory.
+ We created the following experiment to investigate this claim and we found
+ empirically that the average case is actually 
+\begin_inset Formula $O(N)$
+\end_inset
+
+ for tractographies (see Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:Speed1"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:Speed2"
+
+\end_inset
+
+).
+ In this experiment we timed the duration of QB clustering of tractographies
+ containing from 
+\begin_inset Formula $100$
+\end_inset
+
+ thousand to 
+\begin_inset Formula $1$
+\end_inset
+
+ million tracks, with different initial number of points per track (
+\begin_inset Formula $3,6,12$
+\end_inset
+
+ and 
+\begin_inset Formula $18$
+\end_inset
+
+) and different QB thresholds (
+\begin_inset Formula $10.0,15.0,20.0,25.00$
+\end_inset
+
+ mm).
+ The results can be seen in the diagram of Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:Speed1"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:Speed2"
+
+\end_inset
+
+.
+ You can notice that even when the the threshold value becomes impressively
+ low (
+\begin_inset Formula $10.0$
+\end_inset
+
+ mm) the linearity is only slightly disturbed.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:Speed1"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename last_figures/speed_3_6.png
+	lyxscale 40
+	scale 80
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+QB is a very efficient algorithm whose performance is controlled by just
+ three parameters.
+ The first is the number of tracks, a second is the distance threshold in
+ millimeters - shown with different colours and another is the amount of
+ initial downsampling of the initial trajectories.
+ A last parameter not shown in these diagrams is the underlying structure
+ of the data which is expressed by the number of final clusters.
+ We used a full tractography to generate these figures without removing
+ or preselecting any parts.
+ This results run of a single thread Intel(R) Xeon(R) CPU E5420 at 2.50GHz
+ on a standard PC.
+ (NB This and the following figure use the same vertical scale to assist
+ direct comparison.)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Furthermore, the memory usage of QB is 
+\begin_inset Formula $O(M)$
+\end_inset
+
+ where 
+\begin_inset Formula $M$
+\end_inset
+
+ is the number of clusters and because this is usually much smaller than
+ 
+\begin_inset Formula $N$
+\end_inset
+
+ we consider memory consumption to be negligible.
+ Because in QB we store only the indices of the tracks even for very large
+ tractographies 
+\begin_inset Formula $20$
+\end_inset
+
+ or more clusterings can be stored simultaneously in the RAM of a simple
+ notebook without any problems.
+ Therefore, another feature of QB is memory efficiency.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:Speed2"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename last_figures/speed_12_18.png
+	lyxscale 50
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Time comparisons of QB using different number of points per track, different
+ distance thresholds and different number of tracks.
+ Same as Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:Speed1"
+
+\end_inset
+
+.
+ We can observe here how the linearity only reduces slightly even when we
+ use a very low threshold as that of 
+\begin_inset Formula $10$
+\end_inset
+
+mm which can generate many thousand clusters.
+ This experiment concludes that QB is suitable for fast clustering.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We compared QB with 
+\begin_inset Formula $12$
+\end_inset
+
+ point tracks and distance threshold at 
+\begin_inset Formula $\theta=10$
+\end_inset
+
+mm versus some timings reported from other state of the art methods found
+ in the literature (Tab.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:timings"
+
+\end_inset
+
+).
+ Unfortunately timings were very rarely reported up till now as most algorithms
+ were very slow on full data sets.
+ Nonetheless the speedup that QB offers is obviously of great importance
+ and holds out the prospect of real-time clustering on data sets of fewer
+ than 
+\begin_inset Formula $20,000$
+\end_inset
+
+ tracks (see Tab.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:timings"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -2775,6 +3080,26 @@ To apply QB to a data set we need to specify three key parameters:
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+small
+\backslash
+addtolength{
+\backslash
+tabcolsep}{-5pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \align center
@@ -3057,7 +3382,7 @@ QB run on
 \begin_inset Formula $\theta=10$
 \end_inset
 
-mm compared with some timings reported from other state-of-the-art methods
+mm compared with some timings reported from other state of the art methods
  found in the literature.
  Unfortunately timings were very rarely reported until today as most algorithms
  were very slow on full data sets.
@@ -3068,7 +3393,7 @@ mm compared with some timings reported from other state-of-the-art methods
 \end_inset
 
  tracks.
- This experiment was executed on a simple PC using only a single CPU core.
+ This experiment was executed on a standard PC using only a single CPU core.
  
 \end_layout
 
@@ -3081,188 +3406,6 @@ mm compared with some timings reported from other state-of-the-art methods
 \begin_inset CommandInset label
 LatexCommand label
 name "Flo:timings"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The complexity of QB is on average linear time 
-\begin_inset Formula $O(N)$
-\end_inset
-
- with the number of tracks 
-\begin_inset Formula $N$
-\end_inset
-
- and worst case 
-\begin_inset Formula $O(N^{2})$
-\end_inset
-
- when every cluster contains only one track.
- We compared QB with QB run on 
-\begin_inset Formula $12$
-\end_inset
-
- point tracks and distance threshold at 
-\begin_inset Formula $\theta=10$
-\end_inset
-
-mm compared with some timings reported from other state of the art methods
- found in the literature (Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Flo:timings"
-
-\end_inset
-
-).
- Unfortunately timings were very rarely reported up till now as most algorithms
- were very slow on full data sets.
- However the speedup that QB offers is obviously of great importance and
- holds out the prospect of real-time clustering on data sets of fewer than
- 
-\begin_inset Formula $20,000$
-\end_inset
-
- tracks.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:Speed1"
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename last_figures/speed_3_6.png
-	lyxscale 40
-	scale 80
-	rotateOrigin center
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-QB is a very efficient algorithm whose performance is controlled by just
- three parameters.
- The first is the number of tracks, a second is the distance threshold in
- millimeters - shown with different colours and another is the amount of
- initial downsampling of the initial trajectories.
- A last parameter not shown in these diagrams is the underlying structure
- of the data which is expressed by the number of final clusters.
- We used a full tractography to generate these figures without removing
- or preselecting any parts.
- This results run of a single thread Intel(R) Xeon(R) CPU E5420 at 2.50GHz
- on a standard PC.
- (NB This and the following figure use the same vertical scale to assist
- direct comparison.)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Furthermore, the memory usage of QB is 
-\begin_inset Formula $O(M)$
-\end_inset
-
- where 
-\begin_inset Formula $M$
-\end_inset
-
- is the number of clusters and because this is usually much smaller than
- 
-\begin_inset Formula $N$
-\end_inset
-
- we consider memory consumption to be negligible.
- Because in QB we store only the indices of the tracks even for very large
- tractographies 
-\begin_inset Formula $20$
-\end_inset
-
- or more clusterings can be stored simultaneously in the RAM of simple notebook
- without any problems.
- Therefore, another feature of QB is memory efficiency.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:Speed2"
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename last_figures/speed_12_18.png
-	lyxscale 50
-	scale 80
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Time comparisons of QB using different number of points per track, different
- distance thresholds and different number of tracks.
- Same as Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Flo:Speed1"
-
-\end_inset
-
-.
- We can observe here how the linearity only reduces slightly even when we
- use a very low threshold as that of 
-\begin_inset Formula $10$
-\end_inset
-
-mm.
-\end_layout
 
 \end_inset
 

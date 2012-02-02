@@ -3374,6 +3374,15 @@
   year           = 2002
 }
 
+@Article{steinhaus1956division,
+  Author         = {Steinhaus, H.},
+  Title          = {Sur la division des corp materiels en parties},
+  Journal        = {Bull. Acad. Polon. Sci},
+  Volume         = {1},
+  Pages          = {801--804},
+  year           = 1956
+}
+
 @Article{Hagmann2006Radiographics,
   Author         = {Hagmann, Patric and Jonasson, Lisa and Maeder,
                    Philippe and Thiran, Jean-Philippe and Wedeen, Van J.
@@ -10709,6 +10718,16 @@
                    Desktop/Downloaded/Vogiatzis - Unknown - Visual
                    Estimation of Shape , Reflectance and
                    Illumination.pdf:pdf}
+}
+
+@Article{dempster1977maximum,
+  Author         = {Dempster, A.P. and Laird, N.M. and Rubin, D.B.},
+  Title          = {Maximum likelihood from incomplete data via the EM
+                   algorithm},
+  Journal        = {Journal of the Royal Statistical Society. Series B
+                   (Methodological)},
+  Pages          = {1--38},
+  year           = 1977
 }
 
 @Article{descoteaux2010multiple,
