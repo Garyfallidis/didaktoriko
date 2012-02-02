@@ -1493,6 +1493,19 @@
                    fiber bundles.pdf:pdf}
 }
 
+@InProceedings{macqueen1967some,
+  Author         = {MacQueen, J.},
+  Title          = {Some methods for classification and analysis of
+                   multivariate observations},
+  BookTitle      = {Proceedings of the fifth Berkeley symposium on
+                   mathematical statistics and probability},
+  Volume         = {1},
+  Number         = {281-297},
+  Pages          = {14},
+  Organization   = {California, USA},
+  year           = 1967
+}
+
 @Article{moriBook,
   Author         = {Mori, S. and Wakana, S. and Nagae-Poetscher, LM and
                    Van Zijl, PCM},
@@ -7534,14 +7547,14 @@
 }
 
 @InProceedings{Tsai2007,
-  Author         = {Tsai, Andy and Westin, Carl-fredrik and Hero, Alfred O
-                   and Willsky, Alan S},
-  Title          = {{Fiber tract clustering on manifolds with dual
-                   rooted-graphs}},
-  BookTitle      = {Computer {V}ision and {P}attern {R}ecognition, {IEEE}},
-  file           = {:home/eg309/.local/share/data/Mendeley Ltd./Mendeley
-                   Desktop/Downloaded/Tsai et al. - 2007 - Fiber tract
-                   clustering on manifolds with dual rooted-graphs.pdf:pdf},
+  Author         = {Tsai, A. and Westin, C.F. and Hero, A.O. and Willsky,
+                   A.S.},
+  Title          = {Fiber tract clustering on manifolds with dual
+                   rooted-graphs},
+  BookTitle      = {Computer Vision and Pattern Recognition, 2007.
+                   CVPR'07. IEEE Conference on},
+  Pages          = {1--6},
+  Organization   = {IEEE},
   year           = 2007
 }
 

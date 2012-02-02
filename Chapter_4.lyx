@@ -216,7 +216,7 @@ key "Visser2010"
 \begin_inset Formula $s_{b}$
 \end_inset
 
-, see eq.
+, see Eq.
  (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -303,7 +303,7 @@ status open
 \end_inset
 
  short for Minimum, or Maximum, or Mean, Average Minimum distance (MAM).
- We mostly use the Mean version of this family, see eq.
+ We mostly use the Mean version of this family, see Eq.
  (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -384,7 +384,7 @@ will bring together more short tracks with long tracks than
 \lang english
  will have an inbetween effect.
  Finally, other distances than the average minimum based on the minimum
- see eq.
+ see Eq.
  (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -392,7 +392,7 @@ reference "eq:mininum_distance"
 
 \end_inset
 
-) or maximum distance see eq.
+) or maximum distance see Eq.
  (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -463,7 +463,7 @@ Distances used in this work.
 \end_layout
 
 \begin_layout Standard
-Coming back to the MDF distance (see eq.
+Coming back to the MDF distance (see Eq.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:direct_flip_distance"
@@ -1238,11 +1238,6 @@ Data sets
 \end_layout
 
 \begin_layout Standard
-The data sets.
- 
-\end_layout
-
-\begin_layout Standard
 
 \series bold
 Simulated trajectories.
@@ -1263,7 +1258,7 @@ Simulated trajectories.
 \begin_inset Formula $450$
 \end_inset
 
- tracks see fig.
+ tracks see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1381,7 +1376,11 @@ PBC human subjects
 \series default
 .
  We also used a few labeled datasets from the freely available tractography
- database used in the Pittsburgh Brain Competion Fall 2009 ICDM 
+ database used in the Pittsburgh Brain Competion Fall 
+\begin_inset Formula $2009$
+\end_inset
+
+ ICDM 
 \begin_inset ERT
 status open
 
@@ -1424,20 +1423,27 @@ fast algorithm which can simplify tractography representation in an accessible
 \end_inset
 
 .
- QB is an average linear time 
+ QB is a linear time 
 \begin_inset Formula $O(N)$
 \end_inset
 
- distance based clustering algorithm that we created in order to simplify
- huge trajectory datasets such as those produced by current tractography
- generation algorithms (see section 
+ (see section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Complexity"
 
 \end_inset
 
-).
+) distance based clustering algorithm that we created in order to clarify
+ huge trajectory data sets such as those produced by current state-of-the-art
+ tractography generation algorithms 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Parker2003,WWS+08"
+
+\end_inset
+
+.
  In general, there are very few linear time clustering algorithms.
  Just two are well known: CLARANS 
 \begin_inset CommandInset citation
@@ -1460,27 +1466,35 @@ key "zhang1997birch"
 
 \begin_layout Standard
 BIRCH has two key components: first is relatively simple and involves the
- use and updating of clustering features; second is the construction of
+ use and updating of clusters' descriptors; second is the construction of
  a tree structure in which the accumulated clusters are held.
  This second component is aimed at maintaining efficient searchability of
  the database while balancing what is kept in memory and what is on disc
  for very large databases.
- BIRCH uses clustering features which are available for each item in the
- dataset; these are specific vectors of a fixed dimension of numerical values.
- Each cluster in turn has a clustering feature which is an aggregate of
- the clustering features of the items that belong to it (e.g.
+ BIRCH uses clustering descriptors which are available for each item in
+ the dataset; these are specific vectors of a fixed dimension of numerical
+ values.
+ Each cluster in turn has a descriptor which is an aggregate of the properties
+ of the items that belong to it (e.g.
  the sum or mean of the individual clustering feature vectors).
  Proceeding by a single sweep through the dataset, items are adjoined to
  clusters on the basis of their proximity to the clusters, subject to a
  maximum cluster size, or they are added as new leaves into the hierarchical
  tree structure in which the evolving clusters are held.
  There then follow updating steps which can involve the merging off previously
- created clusters in a k-means fashion.
+ created clusters in a k-means fashion
+\begin_inset CommandInset citation
+LatexCommand cite
+key "steinhaus1956division,macqueen1967some"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 It is the linear nature of BIRCH combined with the fixed dimensionality
- of its cluster features that makes it quite fast.
+ of its cluster descriptors that makes it quite fast.
  However the further steps involving reorganisation of the accumulated tree
  do add some major overheads to BIRCH's performance.
  QB capitalises on these positive features but does not try to create any
@@ -1494,7 +1508,7 @@ It is the linear nature of BIRCH combined with the fixed dimensionality
 , and uses metrics and amalgamations which take account of and preserve
  this structure.
  Moreover each item is either added to an existing cluster on the basis
- of a distance between the cluster feature of the item and the features
+ of a distance between the cluster descriptor of the item and the descriptors
  of the current set of clusters.
  Clusters are held in a list which is extended according to need.
  
@@ -1537,8 +1551,7 @@ QB creates an online list of cluster nodes.
 \begin_inset Formula $p\times3$
 \end_inset
 
- matrix, the virtual track, which the most important feature of the cluster,
- and 
+ matrix, which the most important descriptor of the cluster, and 
 \begin_inset Formula $n$
 \end_inset
 
@@ -2147,22 +2160,18 @@ name "Alg:QuickBundles"
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 Flipping can be an issue when using the MDF distance and adding tracks together,
  because tracks do not have a preferred direction.
  A step in QB takes account of the possibility of needing to perform a flip
  of a track before adding it to a representative track.
- The complete QB algorithm is described in detail in alg.
+ The complete QB algorithm is described in detail in Alg.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Alg:QuickBundles"
 
 \end_inset
 
- and a simple step by step visual example is given in fig.
+ and a simple step by step visual example is given in Fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Fig:LSC_simple"
@@ -2242,7 +2251,7 @@ name "Fig:LSC_simple"
 
 \begin_layout Plain Layout
 QB step-by-step: Initially in panel (i) 6 unclustered tracks (A-F) are presented
-; imagine that the distance threshold used is the MDF distance (eq.
+; imagine that the distance threshold used is the MDF distance (Eq.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2339,7 +2348,7 @@ MATTHEW: Is this not true for any automated clusting technique? Emphasize
 For example we used QB to cluster the corticospinal tract (CST).
  This bundle was part of the datasets provided by the Pittsburgh Brain Competiti
 on (PBC2009-ICDM) and it was selected by an expert.
- The result is clearly shown in fig.
+ The result is clearly shown in Fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:cst_pbc"
@@ -2451,7 +2460,7 @@ MATTHEW Too strong? Maybe 'is a simplification of the underlying data'.
 \begin_layout Standard
 Another interesting feature of QB is that it can be used to merge or split
  different structures by changing the distance threshold.
- This is shown in fig.
+ This is shown in Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2539,7 +2548,7 @@ On the left we see
 \end_layout
 
 \begin_layout Standard
-Similarly, with the simulations shown in fig.
+Similarly, with the simulations shown in Fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:simulated_orbits"
@@ -2547,7 +2556,7 @@ reference "Flo:simulated_orbits"
 \end_inset
 
  we can see the same effect on real tracks, e.g.
- those of the fornix shown at the left panel of fig.
+ those of the fornix shown at the left panel of Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2677,7 +2686,7 @@ A full tractography containing
 \begin_inset Formula $10$
 \end_inset
 
-mm (fig.
+mm (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2711,7 +2720,7 @@ reference "Flo:QB_fornix"
 
 \begin_layout Standard
 The virtual tracks can be thought as fast access points to explore the entire
- data set (see fig.
+ data set (see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3106,7 +3115,7 @@ The complexity of QB is on average linear time
 \end_inset
 
 mm compared with some timings reported from other state of the art methods
- found in the literature (tab.
+ found in the literature (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3266,7 +3275,7 @@ mm.
 \end_layout
 
 \begin_layout Subsubsection
-Virtual tracks, exemplar tracks and other features.
+Virtual tracks, exemplar tracks and other descriptors.
 \end_layout
 
 \begin_layout Standard
@@ -3274,7 +3283,7 @@ The virtual tracks created by QB have very nice properties as they represent
  an average track which can stand as the most important feature of the cluster
  that they belong to.
  However, now that we have segmented our tractography into small bundles
- we can calculate many more potentially important features for the cluster.
+ we can calculate many more potentially important descriptors for the cluster.
  For instance the Cluster Spread (CS) can be computed for any cluster 
 \begin_inset Formula $c$
 \end_inset
@@ -4520,7 +4529,8 @@ name "Flo:comparison_metrics"
 \end_inset
 
 We calculated the average of each of these comparison metrics for QB clusterings
- of 12 different orderings for each of 10 tractographies (Table 
+ of 12 different orderings for each of 10 tractographies (Tab.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:comparison_metrics"
@@ -6327,7 +6337,7 @@ initially
 \end_layout
 
 \begin_layout Standard
-A simple version of affinity propagation is shown in alg.
+A simple version of affinity propagation is shown in Alg.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:AP"
@@ -6427,7 +6437,7 @@ Of course when we need to calculate distances between many points then the
  AP on sparse matrices but if the data sets are not sparse as it is the
  case with tractographies then we need to reduce the dimensionality of the
  data sets and this is where QB could be very handy.
- The complete algorithm for AP is given in alg.
+ The complete algorithm for AP is given in Alg.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:AP"
@@ -7425,7 +7435,7 @@ y and later go to the details.
 \bar default
 \noun default
 \color inherit
- in eq.
+ in Eq.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7774,7 +7784,7 @@ The main concept of this clustering method is that cluster can be represented
 \begin_layout Standard
 A virtual (centroid) track is the average of all tracks in the cluster.
  We call it virtual because it doesn't really exist in the real data set
- and to distinguish it from exemplar (medoid) tracks which are again features
+ and to distinguish it from exemplar (medoid) tracks which are again descriptors
  of the cluster but are represented by real tracks.
  
 \begin_inset Note Note
@@ -7790,8 +7800,8 @@ MATTHEW: Could this explanation go earlier in the chapter?!!!!
 \end_layout
 
 \begin_layout Standard
-The clustering creates a book of bundles/clusters which have easy to obtain
- descriptors/features.
+The clustering creates a book of bundles/clusters which have easily obtainable
+ descriptors.
  When clusters are held in a tree structure this permits upwards amalgamations
  to form bundles out of clusters, and downwards disaggregation to split
  clusters into finer sub-clusters corresponding to a lower distance threshold.
