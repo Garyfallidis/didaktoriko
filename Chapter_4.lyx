@@ -382,7 +382,7 @@ will bring together more short tracks with long tracks than
 
 
 \lang english
- will have an inbetween effect.
+ will have an in between effect.
  Finally, other distances than the average minimum based on the minimum
  see Eq.
  (
@@ -535,7 +535,7 @@ During the last
  years there have been numerous efforts from many researchers to address
  the unsupervised and supervised learning problems of brain tractography.
  As far as we know all these methods suffer from low efficiency, however
- they provide many useful ideas which we decribe in this section.
+ they provide many useful ideas which we describe in this section.
  
 \begin_inset Note Note
 status collapsed
@@ -755,7 +755,7 @@ key "Zvitia2010"
 \end_inset
 
  used adaptive mean shift which is a clustering algorithm that finds automatical
-ly the number of clusters for example in constrast with k-means that the
+ly the number of clusters for example in contrast with k-means that the
  user needs to prespecify the number of clusters.
  They also used this approach for direct registration of tractographies
  but only from the same subject.
@@ -1069,7 +1069,7 @@ key "ziyan2009consistency"
 \end_inset
 
  introduced a probabilistic registration and clustering algorithm based
- on expectation maximation (EM) which creates a sharper atlas from a set
+ on expectation maximization (EM) which creates a sharper atlas from a set
  of subjects on three bundles: Corpus Callosum, Cingulate and Fornix.
  This work used an initial spectral clustering 
 \begin_inset CommandInset citation
@@ -1123,7 +1123,7 @@ From this short review we observe that there are two main trends in the
  literature.
  The first which is much more common is to use track distances and calculate
  distance matrices.
- In this case decyphering the distance matrix with Hierarchical Clustering
+ In this case deciphering the distance matrix with Hierarchical Clustering
  or Spectral Embedding are two of the most prevailing approaches.
  The second case which is much less common is avoid calculating track distances
  because the computation of the distance matrix is memory intensive.
@@ -1137,7 +1137,7 @@ ers and neuroscientists' analysis less time consuming we need algorithms
  for this issue of efficiency and most of the methods would need from many
  hours to many days to run on a standard sized data set.
  The method we propose in this document can provide a solution to this problem
- and it is an extensive update of our priliminary work found in Garyfallidis
+ and it is an extensive update of our preliminary work found in Garyfallidis
  et al.
 \begin_inset space ~
 \end_inset
@@ -1159,8 +1159,8 @@ In summary, we can see that most authors agree that unsupervised learning
  large, dense, cluttered with noisy tracks which could have no anatomic
  relevance and bundles which are more than often tangled together in many
  areas.
- Furthemore, we can observe that there is a strong disagreement on the number
- of clusters (from
+ Furthermore, we can observe that there is a strong disagreement on the
+ number of clusters (from
 \begin_inset Formula $10$
 \end_inset
 
@@ -1360,7 +1360,7 @@ key "Yeh2010"
 \end_inset
 
 .
- The experiment was approved by the local ethical commitee CPREC.
+ The experiment was approved by the local ethical committee CPREC.
 \end_layout
 
 \begin_layout Standard
@@ -1429,7 +1429,7 @@ reference "Flo:QB_fornix"
 \end_inset
 
 ), from the freely available tractography database used in the Pittsburgh
- Brain Competion Fall 
+ Brain Completion Fall 
 \begin_inset Formula $2009$
 \end_inset
 
@@ -2338,9 +2338,9 @@ reference "eq:direct_flip_distance"
  because the virtual track is not anymore made by only one track but it
  is the average of D and A shown with dashline.
  In (xi) E is the current track and will be assigned at the green cluster
- as shown in (xii) because MDF(E,virtual green) = MDF(E,B) = thr, and in
- (xiii) we see the updated virtual track for the green cluster which is
- equal to (B+E)/2 where + means track addition.
+ as shown in (xii) because MDF(E,virtual green) = MDF(E,B) = threshold,
+ and in (xiii) we see the updated virtual track for the green cluster which
+ is equal to (B+E)/2 where + means track addition.
  In (xiv) the last track is picked and compared with the virtual tracks
  of the other 3 clusters; obviously MDF(F,purple) is the only with smaller
  threshold, and so F is assigned to the purple cluster in (xv).
@@ -4321,7 +4321,7 @@ Our fifth metric is Cohen's
 , which is a well-known measure of agreement between raters on the assignment
  of a set of items to a shared classification scheme.
  It adjusts the agreements (items on which the raters agree) for the number
- of agreements that might have ocurred by chance:
+ of agreements that might have occurred by chance:
 \end_layout
 
 \begin_layout LyX-Code
@@ -5491,7 +5491,7 @@ name "Flo:erroneous_tracks"
 
 mm.
  This is the first known automatic detection system of outliers and erroneous
- tracks for tractography data based on more advanced shape charateristics
+ tracks for tractography data based on more advanced shape characteristics
  that go beyond simple length.
  
 \begin_inset Note Note
@@ -5541,7 +5541,7 @@ We have used QB to construct a robust tractographic atlas in MNI space from
 Alignment
 \series default
 .
- Tractographies were created using EuDX as discribed in section 
+ Tractographies were created using EuDX as described in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:QB-Data-sets"
@@ -6348,7 +6348,7 @@ Two examples where QB output is used to cluster an entire set of
 \end_layout
 
 \begin_layout Standard
-For the hierarching clustering we used the software 
+For hierarchical clustering parts we used the software 
 \begin_inset ERT
 status open
 
@@ -6359,7 +6359,7 @@ hcluster
 
 \end_inset
 
- and for affinity propagation we used the 
+ and for affinity propagation we used the library 
 \begin_inset ERT
 status open
 
@@ -6370,7 +6370,8 @@ scikit-learn
 
 \end_inset
 
- both implemented in 
+.
+ They are both implemented in 
 \begin_inset ERT
 status open
 
@@ -7225,8 +7226,8 @@ key "Zvitia2010"
  ﬁbre-modes.
  Each fibre mode was assigned to a multivariate Gaussian distribution according
  to its population thereby leading to a Gaussian Mixture model (GMM) representat
-ion for the entire set of ﬁbres.
- The registration between two ﬁbre sets was treated as the alignment of
+ion for the entire set of fibres.
+ The registration between two fibre sets was treated as the alignment of
  two GMMs and is performed by maximizing their correlation ratio.
  A further refinement was added using RANSAC
 \begin_inset CommandInset citation
@@ -8146,7 +8147,7 @@ ELEF: Further notes for discussion
 \end_layout
 
 \begin_layout Plain Layout
--empeiricaly average linear time on the #tracks
+-empirically average linear time on the #tracks
 \end_layout
 
 \begin_layout Plain Layout
@@ -8183,7 +8184,7 @@ O(N) best case (one cluster only)
 \end_layout
 
 \begin_layout Plain Layout
-O(MN) average case but with M usually much smaller than N that can empeirically
+O(MN) average case but with M usually much smaller than N that can empirically
  go similar to O(N)
 \end_layout
 
