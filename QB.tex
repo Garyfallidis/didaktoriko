@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 \usepackage{setspace}
 \usepackage{amssymb}
+\usepackage{natbib}
 
 \makeatletter
 
@@ -51,42 +52,251 @@
 
 \begin{abstract}
   Diffusion MR white matter tractography algorithms generate datasets
-  (tractographies) with a very large number (up to millions) of
-  tracks. Its size makes it difficult to interpret, visualize and
-  interact with a tractography. To overcome this drawback, we present a
-  clustering algorithm, QuickBundles (QB), that simplifies the
-  complexity of these large datasets and provides anatomically
-  meaningful clusters in seconds with minimum memory consumption. Each
-  QB cluster can be represented by a single track, w collectively can be
-  visualised as a first sketch of the tractography. Representative
-  tracks from this QB sketch can be selected and the associated tracks
-  re-clustered in turn via QB. This allows one to explore the
-  neuroanatomy directly. Alternatively the QB sketch can be used as a
-  precursor tractography of reduced the dimensionality for input to
-  other algorithms of higher order complexity, resulting in their
-  greater efficiency. Beyond these fundamental uses we show how QB can
-  help identify hidden structures, find landmarks, create atlases, and
-  compare and register tractographies.
+  (tractographies) with a very large number of tracks. Their size makes
+  it difficult to interpret, visualize and interact with
+  tractographies. This is even more of an issue when several
+  tractographies are being considered together. To overcome this
+  drawback, we present a clustering algorithm, QuickBundles (QB), that
+  simplifies the complexity of these large datasets and provides
+  anatomically meaningful clusters in seconds with minimum memory
+  consumption. Each QB cluster can be represented by a single track,
+  which collectively can be visualised as a first sketch of the
+  tractography.  Representative tracks from this QB sketch can be
+  selected and the associated tracks re-clustered in turn via QB. This
+  allows one to explore the neuroanatomy directly. Alternatively the QB
+  sketch can be used as a precursor tractography of reduced the
+  dimensionality for input to other algorithms of higher order
+  complexity, resulting in their greater efficiency. Beyond these
+  fundamental uses we show how QB can help identify hidden structures,
+  find landmarks, create atlases, and compare and register
+  tractographies.
 \end{abstract}
 
 \begin{keyword}
-Diffusion MR Tractography
-Diffusion MRI
-White matter tractography
-Fiber clustering
-White matter atlas
-Direct tractography registration
+Diffusion MR Tractography;
+Diffusion MRI;
+White matter tractography;
+Fiber clustering;
+White matter atlas;
+Direct tractography registration;
 Clustering algorithms
 \end{keyword}
 \end{frontmatter}
 
 \section{Introduction}
 
+Diffusion MR imaging (dMRI) of white matter accumulates diffusion
+weighted images of the whole brain or of a region of interest, with each
+image derived for one of a prescribed set of complementary weighting
+gradient directions. By comparison with one or more $T_{2}$-weighted
+reference images, each diffusion-weighted image attenuates the $T_{2}$
+signal according to the amount of diffusion along the corresponding
+gradient directions \citep{DiffMRIBook}. Collectively the images provide
+voxel-wise information about the presence and parameters of directional
+organisation of tissue.
 
+Following the acquisition of diffusion MR imaging (dMRI) scans,
+processes of reconstruction and integration (track propagation) are
+performed to create a tractography: a dataset composed of sequences of
+points in 3-d space. These sequences are called tracks. Irrespective of
+the types of reconstruction and integration a tractography can contain a
+very large number of tracks (up to $10^6$) depending principally on the
+number of seed points but also how the propagation algorithm handles
+voxels with more than one strong diffusion direction.
+
+The size of the these tractographies makes them difficult to interpret
+and visualize. This is even more te case when we consider combining
+tractographies from more than one brain. A clustering of some kind seems
+to be a solution to simplify the complexity of these datasets and
+provide a useful segmentation; however most of the proposed tractography
+clustering algorithms in the literatue are very slow and often need to
+calculate pairwise distances of size $N\times N$ where $N$ is the number
+of tracks. This number of comparisons puts a heavy load on clustering
+algorithms, making them to inefficient and therefore impractical for
+everyday analysis as it is difficult to compute all these distances or
+even store them in memory. This adds a further overhead to the use of
+tractography for clinical applications but also puts a barrier on
+understanding and interpreting the quality of diffusion datasets. 
+
+We show in this document that a stable, generally linear time clustering
+algorithm exists and that we can generate meaningful clusters in seconds
+with minimum memory consumption. In our approach we do not need to
+calculate all pairwise distances unlike most of the other existing
+methods. Furthermore we can update our clustering online or in
+parallel. We show that we can generate meaningful clusters ~1000 times
+faster than any other available method before even applying possible
+further acceleration through parallel processing, and that it can be
+used to cluster from a few hundred to many millions of tracks.
+
+Moreover our method is multi-purpose; its results can either stand on
+their own to explore the neuroanatomy directly, or the clustering
+technique can be used as a precursor tool which reduces the
+dimensionality of the data, which can then be used as an input to other
+algorithms of higher order complexity, resulting in their greater
+efficiency. Beyond the use of this algorithm to simplify tractographies,
+we show how it can help identify hidden structures, find landmarks,
+create atlases, compare and register tractographies.
 
 \section{Related Work}
 
-Whatever is necessary will be put in the Introduction section.
+During the last 10 years there have been numerous efforts from many
+researchers to address both unsupervised and supervised learning
+problems of brain tractography. As far as we know all these methods
+suffer from low efficiency, however they provide many useful ideas which
+are reviewed in \citet{Garyfallidis_thesis}.
+
+Tractography clustering algorithms are rarely compared in the
+literature. The work of \citet{moberts2005evaluation} was
+an exception to this. They evaluated different popular hierarchical
+clustering methods including a less common one, shared nearest neighbor
+(SNN), against a gold standard segmentation by physicians. The authors
+concluded that single-link clustering with mean average distance was the
+method which performed best. 
+
+\citet{wang2010tractography} proposed
+a nonparametric Bayesian framework using hierarchical Dirichlet
+processes mixture model (HDPM). This is one of the very few methods not
+based on distances. A track is modeled in this work as a discrete
+distribution over a codebook of discretized orientations and voxel
+regions. In this paper the authors explain that calculating pairwise
+distances is very time consuming and therefore they avoid using
+them. Their approach automatically learns the number of clusters from
+data with Dirichlet processes priors but it is still not efficient
+enough for real time operation. Another disadvantage is that their
+method does not incorporate anatomical knowledge.
+
+Hierarchical clustering: \citep{Visser2010, gerig2004analysis, Guevara2010, zhang2005dti} 
+
+\citet{Guevara2010}:partitioning tractography by track length
+
+\citet{Tsai2007}: minimum spanning trees, locally linear embedding and k-means.
+
+\citet{zvitia2008adaptive, Zvitia2010}:  adaptive mean shift,  which
+is a clustering algorithm that finds automatically the number of
+clusters for example in contrast to k-means where the user needs to
+prespecify the number of clusters. 
+
+They also used this approach for direct registration of tractographies
+but only from the same subject. El Kouby et al. \cite{ElKouby2005}
+created a ROI-based connectivity matrix where every i,j point of the
+matrix holds the number of tracks which connect $\textrm{ROI}_{i}$ to
+$\textrm{ROI}_{j}$. $K$-means was used afterwards on the rows of the
+matrix to cluster the tracks. They showed that their technique can be
+used for clustering bundles across subjects.
+
+Brun et al. \cite{brun2004clustering} used the mean and covariance of the
+track as the feature space and normalized cuts based on a graph
+theoretic approach for the segmentation. Ding et al. \cite{Ding2003a} used
+k-nearest neighbours, another agglomerative approach, applied to
+corresponding track segments. Corouge et al. \cite{corouge2004towards} used
+different types of track distances, e.g. Hausdorff distances, and other
+geometric properties such as torsion and curvature, and in \cite{Corouge2004}
+and \cite{Corouge2006} used Generalized Procrustes Analysis and Principal
+Components Analysis (PCA) to analyze the shape of bundles.
+
+O'Donnell et al. \cite{ODonnell_IEEETMI07} generated a tractographic atlas
+using spectral embedding and expert anatomical labeling and then
+automatically segmented using again spectral clustering and expressed
+the tracks from as points in the embedded space to the closest existing
+atlas clusters. The full affinity matrix was too big to compute
+therefore they used the Nystrom approximation: working on a subset and
+avoid generating the complete affinity/distance matrix. Later in
+\cite{o2009tract} they tried group analysis on prespecified bundles.
+
+Maddah et al. \cite{Maddah_MICCA2005} used B-spline representations of fibre
+tracts referenced to an atlas, and then the subject's fibre tracts were
+clustered based on the labeled atlas of the fibre tracts. Later Maddah
+et al. \cite{maddah2006statistical} using a similar track representation
+(quintic B-splines) calculated a model for each bundle as the average
+and standard deviation of that parametric representation. In that way
+created an atlas which is used as a prior for expectation maximization
+(EM) clustering of the corpus callosal tracks into Witelson subdivisions
+[witelson1989hand] using population averages. Later in
+\cite{Maddah_IEEEBI2008} Maddah et al. showed that they could combine spatial
+priors with metrics for the shape of the tracks to guide tractography
+clustering.
+
+Jonasson et al. \cite{jonasson2005fiber} created a large $N\times N$
+co-occurrence matrix, where $N$ is the number of the fibers to
+cluster. The co-occurrence (affinity) matrix contained the number of
+times two fibers share the same voxel. They then used spectral
+clustering. Jianu et al. \cite{jianu2009exploring} presented a new method for
+visualizing and navigating through tractography data combining
+dendrograms from hierarchical clustering along with 3d- and
+2d-embeddings using the approximation that Chalmers \cite{chalmers1996linear}
+gives for the technique of Eades \cite{eades1984heuristic}.
+
+Durrleman et al. \cite{Durrleman2009} introduced electrical current models of
+fibre bundles where a fibre is seen as a set of wires sending
+information in one direction at constant rate. Currents have good
+diffeomorphic properties and can be used for registration of bundles as
+shown in \cite{Durrleman2009} and later in \cite{durrleman2010registration}. This
+methodology does not impose point-to-point or fibre-to-fibre
+correspondences, however it is sensitive to fibre density and
+orientation of the bundles and it is computationally expensive.
+
+Leemans and Jones \cite{leemans17new} used affinity propagation (section
+[sub:Affinity-Propagation]) to cluster the fronto-occipital fibres,
+Cingulum and Arcuate Fasciculus after they have reduced the complexity
+of the data sets using additional frontal and occipital boolean masks on
+the right cerebrum. However, the authors showed results on a very small
+part of the entire tractography were clustering is a much easier
+problem. Later Malcolm et al. \cite{malcolm2009filtered} used affinity
+propagation to cluster a full brain tractography created using filtered
+tractography and suggested that affinity propagation is not suitable for
+group clustering.
+
+Ziyan et al. \cite{ziyan2009consistency} introduced a probabilistic
+registration and clustering algorithm based on expectation maximization
+(EM) which creates a sharper atlas from a set of subjects on three
+bundles: Corpus Callosum, Cingulate and Fornix. This work used an
+initial spectral clustering \cite{ODonnell_IEEETMI07} to label the bundles
+and then updated these labels iteratively while performing bundle-wise
+registration combined using polyaffine integration.
+
+Often it is useful to use some protocols in order to add prior
+information to the automated learning process. Protocols to manually
+label 11 major white matter tracts were described in Wakana et
+al. \cite{Wakana2007NeuroImage} using ROIs to include or exclude tracks
+generated by deterministic tractography and Hua et
+al. \cite{Hua2008NeuroImage} used regions of interest together with
+probabilistic tractography in order to create probability maps of known
+fiber bundles.
+
+From this short review we observe that there are two main trends in the
+literature. The first which is much more common is to use track
+distances and calculate distance matrices. In this case deciphering the
+distance matrix with Hierarchical Clustering or Spectral Embedding are
+two of the most prevailing approaches. The second case which is much
+less common is avoid calculating track distances because the computation
+of the distance matrix is memory intensive. In this case using Dirichlet
+Processes or Currents or Connectivity based parcelation seem to be some
+viable solutions. However, if we want to apply clustering in clinical
+usage or to make practitioners and neuroscientists' analysis less time
+consuming we need algorithms that can provide useful clusters and
+cluster descriptors in minimum time and with low memory usage. None of
+the papers described in this literature review provide a solution for
+this issue of efficiency and most of the methods would need from many
+hours to many days to run on a standard sized data set. The method we
+propose in this document can provide a solution to this problem and it
+is an extensive update of our preliminary work found in Garyfallidis et
+al. \cite{EGMB10}.
+
+In summary, we can see that most authors agree that unsupervised
+learning with tractographies is a difficult problem because the data
+sets are very large, dense, cluttered with noisy tracks which could have
+no anatomic relevance and bundles which are more than often tangled
+together in many areas. Furthermore, we can observe that there is a
+strong disagreement on the number of clusters (from1060). Because of the
+difficulty of the problem an international contest was also organized by
+SchLab in Pittsburgh University (PBC Brain Connectivity Challenge - IEEE
+ICDM) in 2009. However, the competition didn't conclude to any directly
+viable solutions. We think that in order to find big clusters (eg. 1060)
+a lot of anatomical prior knowledge needs to be introduced in a way that
+is not yet established. Nevertheless, the clustering that we propose
+concentrates on reducing the complexity of the data rather than finding
+bundles with anatomical relevance. We think that this step is more
+useful at this stage of tractography analysis research.
 
 \section{Methods}
 
