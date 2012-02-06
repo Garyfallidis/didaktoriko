@@ -5,8 +5,10 @@
 \textclass elsarticle
 \begin_preamble
 % specify here the journal
-\journal{Example: Nuclear Physics B}
+%\journal{Example: Nuclear Physics B}
+\journal{NeuroImage}
 \end_preamble
+\options review
 \use_default_options false
 \begin_modules
 theorems-std
@@ -22,7 +24,7 @@ theorems-std
 \font_sf_scale 100
 \font_tt_scale 100
 
-\graphics default
+\graphics dvitops
 \paperfontsize default
 \spacing single
 \use_hyperref false
