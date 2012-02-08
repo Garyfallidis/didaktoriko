@@ -5977,7 +5977,7 @@
 }
 
 @Book{DiffMRIBook,
-  Author         = {{Johansen-Berg, Heidi}},
+  Author         = {Johansen-Berg, Heidi and Behrens, Timothy E. J.},
   Editor         = {Heidi Johansen-Berg, Oxford Centre for Functional MRI
                    of the Brain (FMRIB), Department of Clinical Neurology
                    and Timothy E.J. Behrens, Department of Experimental
