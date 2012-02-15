@@ -4804,14 +4804,16 @@ reference "Flo:eudx_fromABCD"
 \end_layout
 
 \begin_layout Subsection
-Results with real subjects
+Results with humans
 \end_layout
 
 \begin_layout Standard
-Strategy:
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "moriBook"
 
-\begin_layout Standard
+\end_inset
+
 
 \end_layout
 
