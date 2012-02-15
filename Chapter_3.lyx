@@ -4808,13 +4808,140 @@ Results with humans
 \end_layout
 
 \begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset citation
 LatexCommand cite
 key "moriBook"
 
 \end_inset
 
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Frey2008"
 
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rilling2008evolution"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "glasser2008dti"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename eudx_last/subj5_double.png
+	lyxscale 30
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Left Panel: subject 5 X 
+\series bold
+61
+\series default
+, Y 123, Z 101 right arcuate Right Panel: length 120mm,150mm 5000 tracks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+asdfasdf
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename eudx_last/Subj1_cingulum_cst_cc_cross.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+subject 1 Left 
+\series bold
+89
+\series default
+, 97, 91, Middle 
+\series bold
+85
+\series default
+, 111,91, Right 90,
+\series bold
+125
+\series default
+,91
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+asdfasdf
 \end_layout
 
 \begin_layout Subsection
