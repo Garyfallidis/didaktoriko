@@ -85,24 +85,24 @@ Clustering algorithms
 
 \section{Introduction}
 
-Diffusion MR imaging (dMRI) of white matter accumulates diffusion
+Diffusion weighted MR (dMR) imaging of white matter accumulates diffusion
 weighted images of the whole brain or of a region of interest, with each
 image derived for one of a prescribed set of complementary weighting
 gradient directions. By comparison with one or more $T_{2}$-weighted
-reference images, each diffusion-weighted image attenuates the $T_{2}$
-signal according to the amount of diffusion along the corresponding
-gradient directions \citep{DiffMRIBook}. Collectively the images provide
-voxel-wise information about the presence and parameters of directional
-organisation of tissue.
+reference images, each dMR image attenuates the $T_{2}$ signal according
+to the amount of diffusion along the corresponding gradient directions
+\citep{DiffMRIBook}. Collectively the images provide voxel-wise
+information about the presence and orientation of directionally
+organised tissue.
 
-Following the acquisition of diffusion MR imaging (dMRI) scans,
-processes of reconstruction and integration (track propagation) are
-performed to create a tractography: a dataset composed of sequences of
-points in 3-d space. These sequences are called tracks. Irrespective of
-the types of reconstruction and integration a tractography can contain a
-very large number of tracks (up to $10^6$) depending principally on the
-number of seed points but also how the propagation algorithm handles
-voxels with more than one strong diffusion direction.
+Following the acquisition of dMR scans, processes of reconstruction and
+integration (track propagation) are performed to create a tractography:
+a dataset composed of sequences of points in 3-d space. These sequences
+are called tracks. Irrespective of the types of reconstruction and
+integration a tractography can contain a very large number of tracks (up
+to $10^6$) depending principally on the number of seed points used to
+generate the tractography but also on how the propagation algorithm
+handles voxels with more than one strong diffusion direction.
 
 The size of the these tractographies makes them difficult to interpret
 and visualize. This is even more te case when we consider combining
@@ -111,24 +111,25 @@ to be a solution to simplify the complexity of these datasets and
 provide a useful segmentation; however most of the proposed tractography
 clustering algorithms in the literatue are very slow and often need to
 calculate pairwise distances of size $N\times N$ where $N$ is the number
-of tracks. This number of comparisons puts a heavy load on clustering
-algorithms, making them to inefficient and therefore impractical for
-everyday analysis as it is difficult to compute all these distances or
-even store them in memory. This adds a further overhead to the use of
-tractography for clinical applications but also puts a barrier on
-understanding and interpreting the quality of diffusion datasets. 
+of tracks. This $O(N^2)$ number of comparisons puts a heavy load on
+clustering algorithms, making them to inefficient and therefore
+impractical for everyday analysis as it is difficult to compute all
+these distances or even store them in memory. This adds a further
+overhead to the use of tractography for clinical applications but also
+puts a barrier on understanding and interpreting the quality of
+diffusion datasets.
 
 We show in this document that a stable, generally linear time clustering
-algorithm exists and that we can generate meaningful clusters in seconds
-with minimum memory consumption. In our approach we do not need to
-calculate all pairwise distances unlike most of the other existing
-methods. Furthermore we can update our clustering online or in
-parallel. We show that we can generate meaningful clusters ~1000 times
+algorithm exists and that we can generate meaningful clusters of tracks
+in seconds with minimum memory consumption. In our approach we do not
+need to calculate all pairwise distances unlike most of the other
+existing methods. Furthermore we can update our clustering online or in
+parallel. We show that we can generate these clusters $~1000$ times
 faster than any other available method before even applying possible
 further acceleration through parallel processing, and that it can be
 used to cluster from a few hundred to many millions of tracks.
 
-Moreover our method is multi-purpose; its results can either stand on
+Moreover our method is multi-purpose: its results can either stand on
 their own to explore the neuroanatomy directly, or the clustering
 technique can be used as a precursor tool which reduces the
 dimensionality of the data, which can then be used as an input to other
@@ -137,83 +138,56 @@ efficiency. Beyond the use of this algorithm to simplify tractographies,
 we show how it can help identify hidden structures, find landmarks,
 create atlases, compare and register tractographies.
 
-\section{Related Work}
+\section{Clustering Tractographies}
 
-During the last 10 years there have been numerous efforts from many
+During the last 10 years there have been numerous efforts by many
 researchers to address both unsupervised and supervised learning
 problems of brain tractography. As far as we know all these methods
-suffer from low efficiency, however they provide many useful ideas which
-are reviewed in \citet{Garyfallidis_thesis}.
+suffer ultimately from low efficiency, though they do provide many
+useful ideas which are reviewed in \citet{Garyfallidis_thesis}.
+
+\begin{description}
+
+\item[Hierarchical clustering:] \citep{Visser2010, gerig2004analysis,
+    Guevara2010, zhang2005dti, jianu2009exploring}
+
+\item[$k$-means:] \citep{ElKouby2005, Tsai2007}
+
+\item[Adaptive mean shift:] \citep{zvitia2008adaptive, Zvitia2010}
+
+\item[Graph theoretic segmentation:] \citep{brun2004clustering}
+
+\item[$k$-nearest neighbours:] \citep{Ding2003a}
+
+\item[Generalized Procrustes Analysis and Principal Components Analysis (PCA):]
+\citep{Corouge2004, corouge2004towards, Corouge2006}
+
+\item[Spectral embedding:] \citep{ODonnell_IEEETMI07}
+
+\item[EM clustering:] \citep{Maddah_MICCA2005, maddah2006statistical,
+Maddah_IEEEBI2008, ziyan2009consistency} 
+
+\item[Spectral clustering:] \citep{jonasson2005fiber}
+
+\item[Current models:] \citep{Durrleman2009,Durrleman2009, durrleman2010registration}
+
+\item[Affinity propagation:] \citep{leemans17new, malcolm2009filtered}
+
+\end{description}
 
 Tractography clustering algorithms are rarely compared in the
-literature. The work of \citet{moberts2005evaluation} was
-an exception to this. They evaluated different popular hierarchical
+an exception to this: they evaluated different popular hierarchical
 clustering methods including a less common one, shared nearest neighbor
 (SNN), against a gold standard segmentation by physicians. The authors
 concluded that single-link clustering with mean average distance was the
 method which performed best. 
-
-Hierarchical clustering: \citep{Visser2010, gerig2004analysis,
-  Guevara2010, zhang2005dti}
-
-Ancillary techniques: \citet{Guevara2010} (partitioning tractography by
-track length)
-
-\citet{Tsai2007}: minimum spanning trees, locally linear embedding and
-k-means.
-
-\citet{zvitia2008adaptive, Zvitia2010}: adaptive mean shift
-(automatically determines number of clusters, unlike k-means)
-
-\citet{ElKouby2005}: ROI-based connectivity matrix followed by k-means
-
-\citet{brun2004clustering} graph theoretic segmentation
-
-\citet{Ding2003a}:k-nearest neighbours (agglomerative)
-
-\citet{corouge2004towards, Corouge2004, Corouge2006}: Generalized
-Procrustes Analysis and Principal Components Analysis (PCA)
-
-\citet{ODonnell_IEEETMI07} spectral embedding using the Nystrom
-approximation to avoid generating the complete affinity/distance matrix.
-
-\citet{o2009tract} group analysis on prespecified bundles.
-
-\citet{Maddah_MICCA2005, maddah2006statistical, Maddah_IEEEBI2008}:
-B-spline representations of fibre tracts referenced to an atlas used for
-EM clustering of the corpus callosum; spatial priors with metrics for
-the shape of the tracks to guide tractography clustering.
-
-\citet{jonasson2005fiber}: spectral clustering applied to the
-co-occurrence matrix. The co-occurrence (affinity) matrix contained the
-number of times two tracks share the same voxel. 
-
-\citet{jianu2009exploring}: visualization and navigation combining
-dendrograms from hierarchical clustering along with 3d- and
-2d-embeddings using the approximation that Chalmers
-\citet{chalmers1996linear} gives for the technique of Eades
-\citet{eades1984heuristic}.
-
-\citet{Durrleman2009,Durrleman2009, durrleman2010registration}:
-electrical current models, used for registration of bundles as shown in
-\citet{}. Point-to-point or fibre-to-fibre correspondences are not
-required, however it is sensitive to fibre density and orientation of
-the bundles and it is computationally expensive.
-
-\citet{leemans17new, malcolm2009filtered}: affinity propagation applied
-to a small or filtered tractographies, though doubtful about application
-to group tractography..
-
-\citet{ziyan2009consistency}: probabilistic registration and clustering
-algorithm based on expectation maximization (EM) to create an atlas from
-a set of subjects on three bundles iteratively relabeled.
 
 From this short review we observe that there are two main trends in the
 literature. The first which is very frequent use of track distances and
 the calculation of distance matrices. In this case deciphering the
 distance matrix with hierarchical clustering or spectral smbedding are
 two of the most prevailing approaches. The second, less common, trend is
-to emply methods which avoid calculating track distances because the
+to employ methods which avoid calculating track distances because the
 computation of the distance matrix is so memory intensive. In this case
 using Dirichlet processes, currents, or connectivity based parcelation
 seem to be some viable solutions. 
@@ -234,34 +208,154 @@ will look at this in the next section.
 
 In summary, we can see that most authors agree that unsupervised
 learning with tractographies is a difficult problem because the data
-sets are very large, dense, cluttered with noisy tracks which could have
-no anatomic relevance and bundles which are more than often tangled
-together in many areas. Furthermore, we can observe that there is a
-strong disagreement on the number of clusters (from 10 to 60). Because of the
-difficulty of the problem an international contest was also organized by
-SchLab in Pittsburgh University (PBC Brain Connectivity Challenge - IEEE
-ICDM) in 2009. However, the competition didn't conclude to any directly
-viable solutions. We think that in order to find big clusters
-a lot of anatomical prior knowledge needs to be introduced in a way that
-is not yet established. Nevertheless, the clustering that we propose
-concentrates on reducing the complexity of the data rather than finding
-bundles with anatomical relevance. We think that this step is more
-useful at this stage of tractography analysis research.
+sets are very large, dense, cluttered with noisy tracks which might have
+no anatomic relevance and bundles which are frequently tangled together
+in many areas. Furthermore, we can observe that there is a strong
+disagreement on the number of clusters (from 10 to 60).
+
+Because of the difficulty of the problem an international contest was
+also organized by SchLab in Pittsburgh University (PBC Brain
+Connectivity Challenge - IEEE ICDM) in 2009. However, the competition
+did not conclude with any directly viable solutions. We think that in order
+to find big clusters a lot of anatomical prior knowledge needs to be
+introduced in a way that is not yet established. Nevertheless, the
+clustering that we propose concentrates on reducing the complexity of
+the data rather than finding bundles with anatomical relevance. We think
+that this step is more useful at this stage of tractography analysis
+research.
 
 \section{Methods}
 
 \subsection{\label{sub:track-coding}Track Coding}
 
-\citet{brun2004clustering} feature space based on track mean and
-covariance
+Beyond the simple representation of a track as a sequence of points in
+$\mathbb{R}^3$, a number of alternative codings have been employed.
 
-\citet{wang2010tractography}: each track is modeled as a discrete
-distribution over a codebook of discretized orientations and voxel
+\begin{description}
+
+\item[B-spline representations:] \citep{Maddah_MICCA2005,
+    maddah2006statistical, Maddah_IEEEBI2008}
+
+\item[Track shape parameters:] Using a feature space based on track mean
+  and covariance \citep{brun2004clustering}
+
+\item[Phase space representation:] Tracks modeled as discrete
+distributions over a codebook of discretized orientations and voxel \citep{wang2010tractography}
 regions.
+
+\end{description}
+
+\subsection{Alternative dissimilarity metrics}
+
+Co-occurrence matrix: \citep{jonasson2005fiber}
 
 \subsection{\label{sub:track-distances}Track distances and preprocessing}
 
-Whatever is necessary will be put in the Methods section.
+The approach we have taken with track coding has gone in parallel with
+the selection of appropriate metrics for inter-track distances. Since in
+principle we might like to compare any two tracks
+
+For clarity we first give brief details of various metrics for distances
+between tracks as they are integral to an understanding of the track
+clustering literature. Numerous distance metrics between two
+trajectories have been proposed in the literature \citep{Ding2003,
+  MaddahIPMI2007, zhang2005dti}. The most common is the Hausdorff
+distance \citep[and many other studies]{corouge2004towards}. There are
+two primary disadvantages of this metric: (1) it ignores the sequential
+nature of the tracks and treats each track as simply a cloud of points,
+and (2) its computation requires every point on the first track to be
+compared with every point on the second track, and vice versa.
+
+We mainly use a very simple symmetric distance \citep{EGMB10,
+  Visser2010} which we call Minimum average Direct-Flip (MDF) distance
+$d_{\textrm{mdf}}(s_{A},s_{B})$ between track $s_{A}$ and track $s_{b}$,
+see Eq. (\ref{eq:direct_flip_distance}).  This distance can be applied
+only when both tracks have the same number of points. Therefore we
+assume that an initial downsampling of tracks has been implemented,
+where all segments on a track have the same length, and all tracks have
+the same number of segments. Under that assumption MDF is defined as:
+
+\begin{eqnarray}
+d_{\textrm{mdf}} & = & \min(d_{\textrm{d}},d_{\textrm{f}}),\,\textrm{where}\label{eq:direct_flip_distance}\\
+d_{\textrm{d}}(s_{A},s_{B}) & = & \frac{1}{K}\sum_{i=1}^{K}||x_{i}^{A}-x_{i}^{B}||_{2}\,\textrm{and}\nonumber \\
+d_{\textrm{f}}(s_{A},s_{B}) & = & \frac{1}{K}\sum_{i=1}^{K}||x_{i}^{A}-x_{K-i}^{B}||_{2}\nonumber \end{eqnarray}
+
+
+where $K$ is the number of points $x_{i}$ on the two tracks $A$
+and $B$.
+
+In some cases it is still valid to use a family of Hausdorff distances
+which for simplicity we denote as MAM distances -- short for Minimum,
+or Maximum, or Mean, Average Minimum distance (MAM). We mostly use
+the Mean version of this family, see Eq. (\ref{eq:mean_average_distance})
+but the others are potentially useful as they can weight different
+properties of the tracks. These distances are slower to compute but
+they can work with different number of segments on tracks that is
+useful for some applications. The equations below show the formulation
+of these distances:\begin{eqnarray}
+d_{\textrm{avg}}(s_{A},s_{B}) & = & \frac{1}{K_{A}}\sum_{i=1}^{K_{A}}d(x_{i}^{A},s_{B}),\nonumber \\
+d_{\textrm{min}}(s_{A},s_{B}) & = & \min_{j=1,...,K_{B}}d(x_{i}^{A},s_{B}),\,\textrm{and}\label{eq:mininum_distance}\\
+d_{\textrm{max}}(s_{A},s_{B}) & = & \max_{j=1,...,K_{B}}d(x_{i}^{A},s_{B})\,\textrm{where}\label{eq:maximum distance}\\
+d(x,s_{B}) & = & \min_{j=1,...,K_{B}}||x-x_{j}^{B}||_{2}.\nonumber \\
+\textrm{MAM}_{\textrm{min}} & = & \min(d_{\textrm{avg}}(s_{A},s_{B}),d_{\textrm{avg}}(s_{B},s_{A}))\label{eq:min_average_distance}\\
+\textrm{MAM}_{\textrm{max}} & = & \max(d_{\textrm{avg}}(s_{A},s_{B}),d_{\textrm{avg}}(s_{B},s_{A}))\nonumber \\
+\textrm{MAM}_{\textrm{avg}} & = & (d_{\textrm{avg}}(s_{A},s_{B})+d_{\textrm{avg}}(s_{B},s_{A}))/2\label{eq:mean_average_distance}\end{eqnarray}
+
+
+where the number of points $K_{A}$ and $K_{B}$ on the two tracks
+are not necessarily the same. For the same threshold value $\textrm{MAM}_{\textrm{min}}$,
+\foreignlanguage{british}{$\textrm{MAM}_{\textrm{max}}$ and $\textrm{MAM}_{\textrm{avg}}$
+will give different results. For example,}$\textrm{MAM}_{\textrm{min}}$will
+bring together more short tracks with long tracks than $\textrm{MAM}_{\textrm{max}}$
+and \foreignlanguage{british}{$\textrm{MAM}_{\textrm{avg}}$} will
+have an in between effect. Finally, other distances than the average
+minimum based on the minimum see Eq. (\ref{eq:mininum_distance})
+or maximum distance see Eq. (\ref{eq:maximum distance}) can be used.
+However, we have not investigated them in this work in relation to
+clustering algorithms.
+
+%
+\begin{figure}
+\includegraphics[scale=0.6]{distances}
+
+\centering{}\label{Flo:Distances_used}\caption{Distances used in this work. The main distance used is minimum average
+direct flip (MDF) distance $d_{\textrm{df}}=\min(d_{\textrm{d}},d_{\textrm{f}})$
+which is a symmetric distance that can deal with the track bi-directionality
+problem and works on tracks which have the same number of points.
+Another distance is the mean average distance which is again symmetric
+but does not need for the tracks to have the same number of points
+$\textrm{MAM}_{\textrm{avg}}=(d_{avg}(s_{A},s_{B})+d_{avg}(s_{B},s_{A}))/2$.
+In this figure the components of both distances are shown; with solid
+lines we draw the tracks, and then with dashed lines we connect the
+pairs of points of the two tracks whose distances contribute to the
+overall metric.}
+
+\end{figure}
+
+
+Coming back to the MDF distance (see Eq.\ref{eq:direct_flip_distance}),
+its main advantages are that it is fast to compute, it takes account
+of track direction issues through consideration of both direct and
+flipped tracks, and that it is easy to understand how it will behave,
+from the simplest case of parallel equi-length tracks to the most
+complicated with very divergent tracks. Another advantage is that
+it will separate short tracks from long tracks and as we will see
+this will be a good way to find broken or erroneous tracks. An advantage
+of having tracks with the same number of points is that we can easily
+do pairwise calculations on them; for example add two or more tracks
+together to create a new average track . We will see in the next section
+that track addition is a key property of our clustering algorithm.
+Some care should be taken into consideration with the number of points
+allowed in a track (track downsampling). We always keep the endpoints
+intact and then downsample in equidistant segments. For example, short
+tracks having the same number of points as long tracks means that
+more of the curvature from the long tracks will be lost relative to
+the short tracks i.e. the short tracks will have higher resolution.
+We found empirically that this is not an important issue and that
+for clustering purposes even downsampling to only $3$ points in total
+could be useful \cite{EGMB10}. Depending on the application less
+or more points can be used. 
+
 
 \subsection{\label{sub:QB-Data-sets}Data sets}
 
@@ -302,6 +396,9 @@ Fig.\ref{Flo:cst_pbc},\ref{Flo:QB_fornix}), from the freely available
 tractography database used in the Pittsburgh Brain Completion Fall
 $2009$ ICDM pbc.lrdc.pitt.edu.
 
+\subsection{Non-Metric Dissimilarities}
+
+ROI-based connectivity matrix: \citep{ElKouby2005}
 
 \section{QuickBundles (QB) Clustering}
 
