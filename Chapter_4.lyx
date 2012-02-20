@@ -693,8 +693,8 @@ reference "sub:track-distances"
 \end_inset
 
 ).
- An interesting point with this work is that it stressed the need to devide
- the data set at shorter and longer tracks.
+ An interesting point with this work is that it stressed the need to divide
+ the data set between shorter and longer tracks.
  Tsai et al.
 \begin_inset space ~
 \end_inset
@@ -902,7 +902,7 @@ key "maddah2006statistical"
 \end_inset
 
  using a similar track representation (quintic B-splines) calculated a model
- for each bundle as the average and standard deviation of that parametric
+ for esyach bundle as the average and standard deviation of that parametric
  representation.
  In that way created an atlas which is used as a prior for expectation maximizat
 ion (EM) clustering of the corpus callosal tracks into Witelson subdivisions
