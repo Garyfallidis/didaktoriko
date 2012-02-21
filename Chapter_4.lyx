@@ -693,8 +693,8 @@ reference "sub:track-distances"
 \end_inset
 
 ).
- An interesting point with this work is that it stressed the need to devide
- the data set at shorter and longer tracks.
+ An interesting point with this work is that it stressed the need to divide
+ the data set between shorter and longer tracks.
  Tsai et al.
 \begin_inset space ~
 \end_inset
@@ -902,7 +902,7 @@ key "maddah2006statistical"
 \end_inset
 
  using a similar track representation (quintic B-splines) calculated a model
- for each bundle as the average and standard deviation of that parametric
+ for esyach bundle as the average and standard deviation of that parametric
  representation.
  In that way created an atlas which is used as a prior for expectation maximizat
 ion (EM) clustering of the corpus callosal tracks into Witelson subdivisions
@@ -1160,26 +1160,7 @@ In summary, we can see that most authors agree that unsupervised learning
  relevance and bundles which are more than often tangled together in many
  areas.
  Furthermore, we can observe that there is a strong disagreement on the
- number of clusters (from
-\begin_inset Formula $10$
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
---
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $60$
-\end_inset
-
-).
+ number of clusters (from 10 to 60).
  Because of the difficulty of the problem an international contest was also
  organized by SchLab in Pittsburgh University (PBC Brain Connectivity Challenge
  - IEEE ICDM) in 
@@ -1188,28 +1169,8 @@ status open
 
 .
  However, the competition didn't conclude to any directly viable solutions.
- We think that in order to find big clusters (eg.
- 
-\begin_inset Formula $10$
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
---
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $60$
-\end_inset
-
-) a lot of anatomical prior knowledge needs to be introduced in a way that
- is not yet established.
+ We think that in order to find big clusters a lot of anatomical prior knowledge
+ needs to be introduced in a way that is not yet established.
  Nevertheless, the clustering that we propose concentrates on reducing the
  complexity of the data rather than finding bundles with anatomical relevance.
  We think that this step is more useful at this stage of tractography analysis
@@ -3815,7 +3776,15 @@ Measures to compare classifications
 
 \begin_layout Standard
 Considerable attention has been paid to measuring the performance of one
- or more classifiers in the context of supervised learning.
+ or more classifiers in the context of supervised learning, see for instance
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kuncheva2004"
+
+\end_inset
+
+.
  We now outline some of these metrics before applying them to the comparisons
  we are interested in.
  Let 
