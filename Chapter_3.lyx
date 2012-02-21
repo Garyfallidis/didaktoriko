@@ -4808,10 +4808,6 @@ Results with humans
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset citation
 LatexCommand cite
 key "moriBook"
@@ -4864,11 +4860,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Left Panel: subject 5 X 
-\series bold
-61
-\series default
-, Y 123, Z 101 right arcuate Right Panel: length 120mm,150mm 5000 tracks
+Left Panel: subject 5 X =29 right arcuate Right Panel: length 120mm,150mm
+ 5000 tracks
 \end_layout
 
 \end_inset
@@ -4911,19 +4904,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-subject 1 Left 
-\series bold
-89
-\series default
-, 97, 91, Middle 
-\series bold
-85
-\series default
-, 111,91, Right 90,
-\series bold
-125
-\series default
-,91
+subject 1 Left X=1, Middle Y=5, Right Y=-1
 \end_layout
 
 \end_inset
@@ -4942,6 +4923,10 @@ subject 1 Left
 
 \begin_layout Standard
 asdfasdf
+\end_layout
+
+\begin_layout Standard
+Cingulum Bundles 12 subjects 1M seeds
 \end_layout
 
 \begin_layout Subsection
