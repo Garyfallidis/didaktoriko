@@ -4808,6 +4808,10 @@ Results with humans
 \end_layout
 
 \begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset citation
 LatexCommand cite
 key "moriBook"
@@ -4926,7 +4930,46 @@ asdfasdf
 \end_layout
 
 \begin_layout Standard
-Cingulum Bundles 12 subjects 1M seeds
+Cingulum Bundles 12 subjects 1M seeds, GQI a_low 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename eudx_last/12_subjects_cingulum.png
+	lyxscale 20
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+1 million seeds - GQI standard Z=10 MNI coordinates
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
