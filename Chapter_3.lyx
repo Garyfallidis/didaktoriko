@@ -1340,7 +1340,7 @@ th order can be used.
 
 .
  A visual example of the combination of multiple peaks togehter with EuDX
- can be seen in fig.
+ can be seen in Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2856,7 +2856,7 @@ key "canalesrodriguez2009mdq"
 \begin_inset Formula $101$
 \end_inset
 
-) plus the unweighted b0 volume (see fig.
+) plus the unweighted b0 volume (see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2873,7 +2873,7 @@ key "Tuch2002ThesisMIT"
 
 \end_inset
 
-(see fig.
+(see Fig.
  q-space Introduction 1.5 XXX); therefore, DSI, GQI, EIT or DTI were suitable
  for the signal reconstruction into orientation distributions or Tensors
  respectively.
@@ -2887,7 +2887,7 @@ key "Tuch2002ThesisMIT"
 \end_layout
 
 \begin_layout Standard
-In the first experiment (see fig.
+In the first experiment (see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2981,7 +2981,7 @@ Delta s=0.5$
 \end_inset
 
  and visualized the tracks.
- The results are shown in fig.
+ The results are shown in Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3066,7 +3066,7 @@ In the second experiment we generated
 \begin_inset Formula $2000$
 \end_inset
 
- seeds inside specific areas (see fig.
+ seeds inside specific areas (see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4672,7 +4672,7 @@ So, why is there always an amount of tracks which will not reach the other
  end-points? This happens because most of the area in high-dimensional volumes
  (3D volumes) is concentrated close to the boundaries of the volumes; therefore
  many from the random seeds will fall close to the boundaries.
- In addition, the boundaries are not smooth (see fig.
+ In addition, the boundaries are not smooth (see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4701,7 +4701,7 @@ tion.
 Another general observation is that in the curved branch less tracks reached
  their target than in the diagonal branch.
  This is sensible because the discretization is more asymmetric in the curved
- branch (see fig.
+ branch (see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4777,7 +4777,7 @@ name "Flo:eudx_fromABCD"
 \end_layout
 
 \begin_layout Standard
-In the right panel of fig.
+In the right panel of Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4808,7 +4808,58 @@ Results with humans
 \end_layout
 
 \begin_layout Standard
+We wanted to investigate how EuDX performed with healthy subjects.
+ There are mainly two ways to do validate tractographies.
+ The first is to compare against the results of another tractography method
+ and the second is to ask feedback from specialists medical practitionars
+ who have good understanding of the underlying anatomy.
+ In order to do that we generated tractographies like the one shown in the
+ right panel of Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:arcuate_and_whole_brain"
 
+\end_inset
+
+ and asked from expert neuroanatomists Professor Luigi Cataneo and Dr.
+ Nivedita Agarwal from the Center for Brain/Mind Science (CiMeC) in Trento,
+ Italy to validate the quality of the data in relationship to their knowledge
+ from anatomy and manually label bundles of their scientific interest.
+ They manually found and labeled on a specific subject arcuate fasciculus
+ (AC) which is depicted in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:arcuate_and_whole_brain"
+
+\end_inset
+
+ (left panel).
+ They also identified in a different subject the right corticospinal bundle
+ depicted in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:cst_cst_bcc"
+
+\end_inset
+
+ (left panel).
+ In order to perform the manual labeling we developed an interactive visualizati
+on tool(
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+fos.me
+\end_layout
+
+\end_inset
+
+) based on a novel tractography clustering method which is the topic of
+ the next chapter.
 \end_layout
 
 \begin_layout Standard
@@ -4874,6 +4925,12 @@ Left Panel: subject 5 X =29 right arcuate Right Panel: length 120mm,150mm
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:arcuate_and_whole_brain"
+
+\end_inset
+
 
 \end_layout
 
@@ -4883,7 +4940,32 @@ Left Panel: subject 5 X =29 right arcuate Right Panel: length 120mm,150mm
 \end_layout
 
 \begin_layout Standard
-asdfasdf
+We observed with simulation experiments that EuDX was able to propagate
+ correctly in crossing areas (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:crossing_eudx_sims"
+
+\end_inset
+
+) by creating tracks towards both directions of the crossings.
+ We wanted to identify if that was possible also with human data where the
+ noise artefacts are considerable.
+ This was confirmed by looking at the intersection of two well known bundles
+ the BCC and the CST.
+ In Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:cst_cst_bcc"
+
+\end_inset
+
+ (right panel) we can see that a part from the Body of Corpus Callosum (BCC)
+ shown with red is intersecting the Corticospinal (CST) bundle shown with
+ blue without being diverted from the CST.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -4895,9 +4977,9 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename eudx_last/Subj1_cingulum_cst_cc_cross.png
+	filename eudx_last/Subj1_cst_cc_cross.png
 	lyxscale 20
-	scale 50
+	scale 70
 
 \end_inset
 
@@ -4908,7 +4990,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-subject 1 Left X=1, Middle Y=5, Right Y=-1
+subject 1 Middle Y=5, Right Y=-1
 \end_layout
 
 \end_inset
@@ -4917,16 +4999,18 @@ subject 1 Left X=1, Middle Y=5, Right Y=-1
 \end_layout
 
 \begin_layout Plain Layout
-
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:cst_cst_bcc"
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-asdfasdf
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4960,10 +5044,6 @@ status open
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
