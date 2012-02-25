@@ -4,8 +4,7 @@
 \begin_header
 \textclass article
 \begin_preamble
-\numberwithin{figure}{section}
-\numberwithin{table}{section}
+
 \end_preamble
 \use_default_options true
 \language english
@@ -23,7 +22,7 @@
 \paperfontsize 12
 \spacing onehalf
 \use_hyperref false
-\papersize a4paper
+\papersize default
 \use_geometry true
 \use_amsmath 1
 \use_esint 1
@@ -55,15 +54,135 @@ Discussion
 \end_layout
 
 \begin_layout Subsection
-Conclusion
+Overview
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "moriBook"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
-Clinical Aspects
+Clinical Usage
 \end_layout
 
 \begin_layout Subsection
-Software & Visualization
+Future Work
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+aaa
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bbb
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Tab:DummyTable"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -77,7 +196,7 @@ status open
 \begin_inset Graphics
 	filename hbm2012/hbm2012_fig1.png
 	lyxscale 30
-	scale 50
+	scale 30
 
 \end_inset
 
@@ -88,35 +207,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-ERASE FIG1
-\end_layout
-
-\end_inset
-
 
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Future work
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename hbm2012/hbm2012_fig2.png
-	lyxscale 30
-	scale 50
 
 \end_inset
 
@@ -124,35 +216,15 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-ERASE FIG2
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:SelectionViz"
 
 \end_inset
 
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -164,7 +236,7 @@ ERASE FIG2
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "diffusion"
-options "ieeetr"
+options "plain"
 
 \end_inset
 
