@@ -54,19 +54,89 @@
 Discussion
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection
 Conclusion
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection
 Clinical Aspects
 \end_layout
 
-\begin_layout Standard
-Software
+\begin_layout Subsection
+Software & Visualization
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename hbm2012/hbm2012_fig1.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+ERASE FIG1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Future work
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename hbm2012/hbm2012_fig2.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+ERASE FIG2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -94,7 +164,7 @@ Software
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "diffusion"
-options "plain"
+options "ieeetr"
 
 \end_inset
 

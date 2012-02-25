@@ -5792,7 +5792,11 @@ status open
 
 \begin_layout Plain Layout
 EITL ODFs rendered on top of FA of a human brain data set.
- A small 102-point half grid acquisition with a maximum b-value of 
+ A small 
+\begin_inset Formula $102$
+\end_inset
+
+-point half grid acquisition with a maximum b-value of 
 \begin_inset Formula $4000\, s/mm^{2}$
 \end_inset
 

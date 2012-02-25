@@ -1260,10 +1260,19 @@ For the integration we solve for
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
 \end_layout
 
-\begin_layout Standard
-where 
+\end_inset
+
+ where 
 \begin_inset Formula $\Delta s$
 \end_inset
 
@@ -1397,10 +1406,19 @@ We pick a seed point
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
 \end_layout
 
-\begin_layout Standard
-but we need to propagate also towards the opposite direction 
+\end_inset
+
+ but we need to propagate also towards the opposite direction 
 \begin_inset Formula $-\mathbf{v}(\mathbf{p}_{0})$
 \end_inset
 
@@ -1521,10 +1539,19 @@ If
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
 \end_layout
 
-\begin_layout Standard
-where 
+\end_inset
+
+ where 
 \begin_inset Formula $\mathbf{v}(\mathbf{p}_{n})=\dfrac{\mathbf{v}^{'}(\mathbf{p}_{n})}{||\mathbf{v}^{'}(\mathbf{p}_{n})||}$
 \end_inset
 
@@ -4809,13 +4836,12 @@ Results with humans
 
 \begin_layout Standard
 We wanted to investigate how EuDX performed with healthy subjects.
- There are mainly two ways to do validate tractographies.
+ There are mainly two ways to do validate tractographies with real data.
  The first is to compare against the results of another tractography method
  and the second is to ask feedback from specialist medical practitioners
  who have good understanding of the underlying anatomy.
  We investigated first the second approach.
- In order to do that we generated tractographies like the one shown in the
- right panel of Fig.
+ In order to do that we generated tractographies (see Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4823,7 +4849,8 @@ reference "Flo:arcuate_and_whole_brain"
 
 \end_inset
 
- and asked from expert neuroanatomists Professor Luigi Cataneo and Dr.
+ (right panel)) and asked from expert neuroanatomists Professor Luigi Cataneo
+ and Dr.
  Nivedita Agarwal from the Center for Brain/Mind Science (CiMeC) in Trento,
  Italy to validate the quality of the data in relationship to their knowledge
  from anatomy and manually label bundles of their scientific interest in
@@ -4838,7 +4865,7 @@ reference "Flo:arcuate_and_whole_brain"
 \end_inset
 
  (left panel).
- They also identified in a different subject the right corticospinal bundle
+ They also identified in a different subject the right Corticospinal bundle
  depicted in Fig.
  
 \begin_inset CommandInset ref
@@ -4848,8 +4875,12 @@ reference "Flo:cst_cst_bcc"
 \end_inset
 
  (left panel).
- In order to perform the manual labeling we developed an interactive visualizati
-on tool(
+ 
+\end_layout
+
+\begin_layout Standard
+In order to perform the manual labeling we developed an interactive visualizatio
+n application (
 \begin_inset ERT
 status open
 
@@ -4862,24 +4893,18 @@ fos.me
 
 ) based on a novel tractography clustering method which is the topic of
  the next chapter.
- The tool has the capability to create an accessible representation of the
- initial tractography into bundles of interest (BOIs).
+ This application has the capability to create an accessible representation
+ of the initial tractography into bundles of interest (BOIs).
  Bundles means here a collection of tracks with similar spatial and shape
  characteristics.
- After the BOIs are created the expert can select one or more BOIs interactively
- and remove the other parts of the tractography.
+ After the BOIs are created the medical practitioner can select one or more
+ BOIs interactively and hide the other parts of the tractography which are
+ not interesting to hers/his investigations.
  This application will not be the topic of this chapter but it is further
  explained in Chapter 5 (Section? XXXXX).
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset citation
-LatexCommand cite
-key "moriBook"
-
-\end_inset
-
-, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Frey2008"
@@ -4904,6 +4929,112 @@ key "glasser2008dti"
 \end_layout
 
 \begin_layout Standard
+The tractographies shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:arcuate_and_whole_brain"
+
+\end_inset
+
+ and left panel of Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:cst_cst_bcc"
+
+\end_inset
+
+ were calculated with EuDX parameters 
+\begin_inset Formula $\mathcal{A}_{thr}=0.02$
+\end_inset
+
+,
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+Delta s=0.5$
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Formula $\theta_{thr}=60^{\circ}$
+\end_inset
+
+, 
+\begin_inset Formula $TW=0.5$
+\end_inset
+
+ and with input from GQI reconstruction with sampling length 
+\begin_inset Formula $\lambda=1.2$
+\end_inset
+
+.
+ The data sets were generated at a 3T scanner (TIM Trio, Siemens) in Medical
+ Research Council Cognition and Brain Sciences Unit, Cambridge, UK.
+ We used Siemens advanced diffusion work-in-progress sequence, and STEAM
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "merboldt1992diffusion,MAB04"
+
+\end_inset
+
+ as the diffusion preparation method.
+ The field of view was 
+\begin_inset Formula $240x240mm^{2}$
+\end_inset
+
+, matrix size 
+\begin_inset Formula $96x96$
+\end_inset
+
+, and slice thickness 
+\begin_inset Formula $2.5mm$
+\end_inset
+
+ (no gap).
+ 
+\begin_inset Formula $55$
+\end_inset
+
+ slices were acquired to achieve full brain coverage, and the voxel resolution
+ was 
+\begin_inset Formula $2.5x2.5x2.5mm{}^{3}$
+\end_inset
+
+.
+ In this experiment much less gradient vectors were used.
+ A 
+\begin_inset Formula $102$
+\end_inset
+
+-point half grid acquisition with a maximum b-value of 
+\begin_inset Formula $4000\, s/mm^{2}$
+\end_inset
+
+ was used.
+ The total acquisition time was only 
+\begin_inset Formula $14\, min\,21s$
+\end_inset
+
+ with TR=
+\begin_inset Formula $8200ms$
+\end_inset
+
+ and TE=
+\begin_inset Formula $69ms$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -4925,8 +5056,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Left Panel: the right arcuate fasciculus generated by EuDX and segmented
- by two expert neuroanatomists.
+Left Panel: right arcuate fasciculus generated by EuDX and segmented by
+ two expert neuroanatomists.
  The tracks are in MNI coordinates and we visualize simultaneously the T1
  slice (X=
 \begin_inset Formula $29$
@@ -4955,11 +5086,7 @@ mm to
 \end_inset
 
 mm.
- The total number of tracks shown are 
-\begin_inset Formula $5000$
-\end_inset
-
-.
+ 
 \end_layout
 
 \end_inset
@@ -4983,32 +5110,35 @@ name "Flo:arcuate_and_whole_brain"
 \end_layout
 
 \begin_layout Standard
-We observed with simulation experiments that EuDX was able to propagate
- correctly in crossing areas (see Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Flo:crossing_eudx_sims"
-
+The tractographies were generated in diffusion native space and then linearly
+ registered in For that reason FA volumes were generated from the same data
+ sets using Tensor fitting with weighted least squares after skull stripping
+ with FSL BET.
+ These FA volumes were again in diffusion native space therefore we used
+ FSL FLIRT to align them in MNI space.
+ For this purpose a standard template (
+\begin_inset Formula $\texttt{FMRIB58\_FA\_1mm}$
 \end_inset
 
-) by creating tracks towards both directions of the crossings.
- We wanted to identify if that was possible also with human data where the
- noise artefacts are considerable.
- This was confirmed by looking at the intersection of two well known bundles
- the BCC and the CST.
- In Fig.
+) from the FSL toolbox was used as the reference volume.
+ We then applied the affine transformation matrix from the previous step
+ to the initial tractography to align it to MNI space.
  
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Flo:cst_cst_bcc"
+\end_layout
 
+\begin_layout Standard
+In order to help the neuroanatomists to guide themselves with the segmentation
+ of bundles we linearly registered structural MRIs - T1 (MPRAGE) images
+ from the same subjects to the standard template (
+\begin_inset Formula $\texttt{MNI152\_T1\_1mm\_brain}$
 \end_inset
 
- (right panel) we can see that a part from the Body of Corpus Callosum (BCC)
- shown with red is intersecting the Corticospinal (CST) bundle shown with
- blue without being diverted from the CST.
- 
+).
+ Therefore, the tractography and the T1 image were properly aligned in the
+ same space.
+ This was very useful for the neuroanatomists because they could find known
+ bundles from the regions they connect in the cortex which are better visible
+ in the T1 rather than in FA.
 \end_layout
 
 \begin_layout Standard
@@ -5033,7 +5163,21 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-subject 1 Middle Y=5, Right Y=-1
+Left panel: EuDX tracks from the CST segmented by our expert neuroanatomists.
+ The tracks are linearly registered in MNI standard space and visible is
+ also the T1 slice (Y=
+\begin_inset Formula $5$
+\end_inset
+
+) from the same subject.
+ Right panel: Here we see the intersection of the BCC with the right CST.
+ This is a confirmation that EuDX can propagate successfully in crossing
+ areas of human brain data.
+ The T1 slice (Y=
+\begin_inset Formula $-1$
+\end_inset
+
+) from the same subject is shown.
 \end_layout
 
 \end_inset
@@ -5057,7 +5201,35 @@ name "Flo:cst_cst_bcc"
 \end_layout
 
 \begin_layout Standard
-Cingulum Bundles 12 subjects 1M seeds, GQI a_low 
+In the previous section we observed from our simulation experiments that
+ EuDX was able to propagate correctly in crossing areas (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:crossing_eudx_sims"
+
+\end_inset
+
+) by generating tracks towards both directions of the crossings.
+ We wanted to confirm if tracking in crossing areas was also robust with
+ human data where the noise artefacts are less predictable.
+ This was indeed confirmed by looking at the intersection of two well known
+ bundles: the Body of Corpus Callosum (BCC) and the Corticospinal Tract
+ (CST).
+ In Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:cst_cst_bcc"
+
+\end_inset
+
+ (right panel) we can see that a part from the BCC shown with red is intersectin
+g the CST bundle shown with blue without being diverted from the CST.
+ If EuDX was not able to propagate in crossing areas then the tracks from
+ BCC would stop in the intersection area or divert towards the direction
+ of the CST.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -5082,8 +5254,34 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-1 million seeds - GQI standard Z=10 MNI coordinates
+The left and right Cingulum (CG) bundles of 
+\begin_inset Formula $12$
+\end_inset
+
+ healthy subjects are presented here.
+ CGs were selected in MNI space from entire EuDX tractophies of 1 million
+ seeds and GQI with sampling length 
+\begin_inset Formula $\lambda=1.2$
+\end_inset
+
+.
+ We also show the T1 image slice Z=
+\begin_inset Formula $10$
+\end_inset
+
+ for every subject except from last subject whos T1 was not available.
+ For that subject we use the standard MNI template.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:cingulum_12_subjects"
 
 \end_inset
 
@@ -5093,6 +5291,77 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+We wanted also to compare specific bundles across different healthy subjects.
+ We concentrated at an one not so often studied bundle: the Cingulum; across
+ 
+\begin_inset Formula $12$
+\end_inset
+
+ subjects.
+\end_layout
+
+\begin_layout Standard
+The cingulum (CG) is an association fibre tract that runs within the cingulate
+ gyrus along its entire length.
+ It collects axons from the cingulate gyrus that travel immediately dorsal
+ to the corpus callosum and along the ventral face of the hippocampus, forming
+ a large C-shape trajectory.
+ It carries afferent connections from the cingulate gyrus to the entorhinal
+ cortex.
+ Because of its narrow tubular shape, it is often difficult to reveal its
+ entire length by a single data set 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "moriBook"
+
+\end_inset
+
+.
+ However, using EuDX we see that both left and right CG bundles were consistent
+ across all 
+\begin_inset Formula $12$
+\end_inset
+
+ subjects (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:cingulum_12_subjects"
+
+\end_inset
+
+).
+ In this atlas, the cingulum was selected using the visualization tool described
+ before from the entire tractography generated with 1 million seeds.
+ The reconstruction parameters and EuDX parameters were the same as before
+ with the exception of the number of initial seeds.
+ Furthermore the tractographies of all subjects were registered together
+ with the structural imagines in MNI space.
+ The only exeception was with last subject 
+\begin_inset Formula $12$
+\end_inset
+
+ whos T1 image was not available and it was visualized together with the
+ MNI standard template (
+\begin_inset Formula $\texttt{MNI152\_T1\_1mm\_brain}$
+\end_inset
+
+) (see bottom-right corner of Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:cingulum_12_subjects"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+SLF PROBTRACKX VERSUS EUDX
 \end_layout
 
 \begin_layout Subsection
@@ -5100,12 +5369,8 @@ Conclusion
 \end_layout
 
 \begin_layout Standard
-The source code for EuDX can be found in dipy.tracking
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Reference abbreviations: 
@@ -5126,6 +5391,11 @@ acm
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The source code for EuDX can be found in dipy.tracking.eudx which is available
+ at dipy.org
 \end_layout
 
 \begin_layout Standard
