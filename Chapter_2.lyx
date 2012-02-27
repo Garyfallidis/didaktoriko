@@ -7657,10 +7657,21 @@ dipy.org
 \begin_layout Standard
 
 \lang british
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang british
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "diffusion"
 options "plain"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 

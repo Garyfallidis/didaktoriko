@@ -372,9 +372,28 @@ To
 \begin_inset Newline newline
 \end_inset
 
+my parents 
+\begin_inset Newline newline
+\end_inset
+
 
 \emph on
-Stavros & Amalia
+Stavros and Amalia
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang english
+for his creativity and her patience.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang english
+I needed both to excell.
 \end_layout
 
 \begin_layout Standard
@@ -399,14 +418,12 @@ To
 
 
 \emph on
-The Free & Open Source Developers
-\size default
-\emph default
+the giants of OpenSource
+\end_layout
 
-\begin_inset Newline newline
-\end_inset
-
-
+\begin_layout Standard
+\align center
+who pushed the world forward.
 \end_layout
 
 \begin_layout Standard
@@ -827,124 +844,7 @@ Abstract
 \begin_layout Standard
 
 \lang english
-This thesis contains original contributions to many different aspects of
- diffusion weighted MR imaging (dMRI), from the signal reconstruction, via
- propagation of tracks, clustering of tracks, detection of bundles of tracks,
- and creation of atlases of white matter, to visualization tools with high
- interactivity with data, and for several brains simultaneously.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Our most important new achievements are a powerful way of reconstructing
- the diffusion signal and a method for simplifying tractographies using
- a new super-efficient clustering algorithm.
- 
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-In more detail we give novel and robust solutions for all the following
- problems
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-• 
-\series bold
-How to reconstruct and interpret the directional information in the diffusion
- signal
-\series default
-: 
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-We compare and evaluate different Cartesian-grid q-space dMRI acquisition
- schemes, using methods based on the inverse Fourier transform of the diffusion
- signal, with reconstructions by diffusion spectrum imaging or generalized
- q-ball imaging methods.
- These are applied to both software phantom and human data.
- We propose a new reconstruction method called diffusion nabla imaging (DNI)
- which works with the same grid type of acquisition schemes, using an algorithm
- that directly approximates the orientation distribution function using
- the Laplacian of the signal in q-space.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-• 
-\series bold
-How to integrate tracks from voxel to voxel
-\series default
-: 
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Most previously published reconstruction methods are closely linked to their
- own specific track integration method.
- We have formulated a general, free-standing, data-representative, non-inferenti
-al, fast, deterministic tractography algorithm (EuDX) which is based on
- Euler integration and trilinear interpolation, which works with voxel level
- information about fibre orientations including multiple crossings, and
- employs a range of stopping criteria.
- The purpose of this algorithm is to be faithful to the reconstruction results
- rather than try to correct or enhance them by introducing regional or global
- considerations.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-• 
-\series bold
-How to cluster tracks together into meaningful bundles
-\series default
-: 
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-We have developed an entirely new, fully automatic, linear time, clustering
- method (QuickBundles) which reduces massive tractographies into just a
- few bundles.
- These bundles are characterised by representative tracks which are multi-purpos
-e and can be used for interaction with the data or as the basis for applying
- higher-complexity clustering methods which would have been impossible or
- too slow with the full data set.
- QuickBundles is currently the fastest known tractography clustering algorithm.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-• 
-\series bold
-How to directly register tractographies
-\series default
-: 
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-After applying QuickBundles to tractographies from different subjects, we
- show how to use the representative tracks to identify robust landmarks
- within each subject which, with similarity metrics which we have introduced,
- we use to directly register the different tractographies together in a
- highly efficient way.
- We believe the resulting correspondences provide important evidence for
- the anatomical plausibility of the derived bundles.
- We demonstrate how these methods can be used for group analysis, and for
- atlas creation.
+COPY ABSTRACT FROM DOC!
 \end_layout
 
 \begin_layout Standard
@@ -4873,10 +4773,19 @@ te a real tract.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "diffusion"
 options "plain"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 

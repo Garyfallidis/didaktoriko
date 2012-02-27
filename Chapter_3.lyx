@@ -59,7 +59,7 @@ Overview
 \end_layout
 
 \begin_layout Standard
-Tractography methods provide a tool to resolve major neuronal fibre bundles
+Tractography methods provide tools to resolve major neuronal fibre bundles
  non-invasively and in-vivo 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -82,7 +82,23 @@ key "MCC+99,CLC+99"
  years ago many methods have been invented which depend strictly on the
  underlying voxel model or acquisition paradigm making it very difficult
  for other researchers to apply their methods and evaluate their data sets.
- In the Introductory chapter (XXXX) we talked about the xxxxx
+ In sections 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Tractography"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Known-problems"
+
+\end_inset
+
+ we presented an initial introduction to the subject of tractography and
+ a brief discussion of two of the major types of tractography: deterministic
+ and probabilistic.
 \end_layout
 
 \begin_layout Standard
@@ -5336,7 +5352,11 @@ reference "Flo:cingulum_12_subjects"
 
 ).
  In this atlas, the cingulum was selected using the visualization tool described
- before from the entire tractography generated with 1 million seeds.
+ before from the entire tractography generated with 
+\begin_inset Formula $1$
+\end_inset
+
+ million seeds.
  The reconstruction parameters and EuDX parameters were the same as before
  with the exception of the number of initial seeds.
  Furthermore the tractographies of all subjects were registered together
@@ -5362,11 +5382,19 @@ reference "Flo:cingulum_12_subjects"
 \end_layout
 
 \begin_layout Standard
-SLF PROBTRACKX VERSUS EUDX - Try to use with all 3 EITL, DSI and GQI.
+SLF PROBTRACKX VERSUS EUDX - Try to use with all 
+\begin_inset Formula $3$
+\end_inset
+
+ EITL, DSI and GQI.
 \end_layout
 
 \begin_layout Standard
 ADD Timing experiment.
+\end_layout
+
+\begin_layout Standard
+XXXXX
 \end_layout
 
 \begin_layout Subsection
@@ -5467,10 +5495,21 @@ acm
 \begin_layout Standard
 
 \lang british
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang british
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "diffusion"
 options "ieeetr"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 

@@ -32,7 +32,20 @@
 \graphics default
 \paperfontsize 12
 \spacing onehalf
-\use_hyperref false
+\use_hyperref true
+\pdf_title "Towards an accurate brain tractography"
+\pdf_author "Eleftherios Garyfallidis"
+\pdf_subject "dMRI, tractography, brain"
+\pdf_keywords "dMRI, tractography, brain, DTI, DSI"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
 \papersize default
 \use_geometry true
 \use_amsmath 1

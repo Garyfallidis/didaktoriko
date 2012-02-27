@@ -50,9 +50,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
 \author "Eleftherios Garyfallidis,,," 
+\author "" 
 \end_header
 
 \begin_body
@@ -5367,7 +5366,7 @@ Example of detecting a possibly erroneous 3D bundle (on the left) by projecting
 QB can also simplify detection of tracks which are very dissimilar to others
  and therefore they are very distant from all other clusters.
  Usually when we use a QB threshold of about 
-\change_inserted 2 1319698782
+\change_inserted 0 1319698782
 
 \begin_inset Formula $10$
 \end_inset
@@ -7367,7 +7366,7 @@ key "fletcher1987practical"
 \end_inset
 
  will be transformed by a rigid rotation and 
-\change_inserted 2 1319745183
+\change_inserted 0 1319745183
 
 \begin_inset Formula $\mathrm{SMD}$
 \end_inset
@@ -7471,7 +7470,7 @@ Experiments
 .
  The first large scale experiment took place using the same tractography
  of a single individual copied and transformed 
-\change_inserted 2 1319745405
+\change_inserted 0 1319745405
 
 \begin_inset Formula $1000$
 \end_inset
@@ -7832,7 +7831,7 @@ Strategy 2
 \series default
 .
  Read the tractography of a single subject,
-\change_deleted 2 1319745849
+\change_deleted 0 1319745849
  
 \change_unchanged
  use a tractographic atlas as the one created in section 
@@ -7848,7 +7847,7 @@ reference "sub:Atlases-made-easy"
 \end_inset
 
 ,
-\change_deleted 2 1319745849
+\change_deleted 0 1319745849
  
 \change_unchanged
  cluster the closest tracks found from the previous step and for each one
@@ -8169,10 +8168,21 @@ O(N^2) worst case scenario (every track is a cluster - not used in practice)
 \begin_layout Standard
 
 \lang british
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang british
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "diffusion"
 options "ieeetr"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
