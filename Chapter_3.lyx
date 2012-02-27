@@ -82,7 +82,7 @@ key "MCC+99,CLC+99"
  years ago many methods have been invented which depend strictly on the
  underlying voxel model or acquisition paradigm making it very difficult
  for other researchers to apply their methods and evaluate their data sets.
- 
+ In the Introductory chapter (XXXX) we talked about the xxxxx
 \end_layout
 
 \begin_layout Standard
@@ -94,8 +94,8 @@ ion algorithms of most known algorithms.
  Eu stands for Euler integration, D stands for Delta function which is a
  function that checks for many different stopping criteria and X stands
  for fibre crossings.
- EuDX can deal with any number of crossings as long as your data supports
- them.
+ EuDX can deal with any number of crossings as long as the reconstruction
+ algorithm supports them.
  The purpose of this algorithm is to be faithful to the reconstruction results
  rather than try to correct or enhance them by introducing regional or global
  considerations which is the topic of other methods reviewed below.
@@ -177,6 +177,7 @@ key "sotiropoulos2010processing"
  arising from a single point.
  Simulated approaches comprise of algorithms that simulate the diffusion
  process or solve the diffusion equation to reconstruct white matter tracks.
+ A detailed literature review is given below.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5412,8 +5413,8 @@ EuDX is will stop tracking on voxel with low anisotropy and will not take
 \end_layout
 
 \begin_layout Standard
-Furthermore we showed that EuDX can take as input many different functions
- e.g.
+Furthermore we showed that EuDX can take as input many different anisotropic
+ functions e.g.
  FA, QA, PK etc.
  and therefore it has no restrictions for the underlying model neither to
  the number of peaks per voxel.
