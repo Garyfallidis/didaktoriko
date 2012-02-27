@@ -13,6 +13,7 @@
 \usepackage{setspace}
 \usepackage{amssymb}
 \usepackage{natbib}
+\usepackage[title]{appendix}
 
 \makeatletter
 
@@ -170,12 +171,12 @@ useful ideas which are reviewed in \citet{Garyfallidis_thesis}.
 Maddah_IEEEBI2008, ziyan2009consistency} 
 
 \item[Spectral clustering:] \citep{jonasson2005fiber}
-
+ 
 \item[Affinity propagation:] \citep{leemans17new, malcolm2009filtered}
 
 \item[Hierarchical Dirichlet process mixture model] \citep{wang2010tractography}
 
-\item[Current models:] \citep{Durrleman2009,Durrleman2009, durrleman2010registration}
+\item[Current models:] \citep{Durrleman2009, durrleman2010registration}
 
 \end{description}
 
@@ -187,29 +188,29 @@ single-link clustering with mean average distance was the method which
 performed best.
 
 From this overview we see that there are two main trends in the
-literature. The first which is the most frequent uses inter-track
-distances and the calculation of distance matrices. In this case
-deciphering the distance matrix with hierarchical clustering or spectral
-smbedding are two of the most prevailing approaches. The second, less
-common, trend is to employ methods which avoid calculating inter-track
-distances because the computation of the distance matrix is so memory
+literature. The first -- which is the most frequent uses -- inter-track
+distances and the calculation of the associated distance matrix. In this
+case deciphering the inter-track distance matrix with hierarchical
+clustering or spectral embedding are two of the most prevailing
+approaches. The second, less common, trend is to employ methods which
+avoid calculating inter-track distances because it is so memory
 intensive. In this case using hierarchical Dirichlet processes,
-currents, or connectivity based parcelation seem to be some viable
+current modelss, or connectivity-based parcelation seem to be some viable
 solutions.
 
-However, if we want to apply clustering in clinical usage or to make
-practitioners and neuroscientists' analysis less time consuming we need
+However, if we want to apply clustering in clinical settings or to make
+clinicians' and neuroscientists' analysis less time-consuming we need
 algorithms that can provide useful clusters and cluster descriptors in
-minimum time and with low memory usage. None of the papers described in
+minimum time and with low memory usage. None of the papers mentioned in
 this literature review achieve these criteria; indeed most of the
-methods would need from many hours to many days to run on a standard
+methods would need many hours or even many days to run on a standard
 sized data set. The method we propose in this report can provide a
 solution to this problem and it is an extensive update of our
-preliminary work \citet{EGMB10}.
+preliminary work \citep{EGMB10}.
 
-One further matter to note is that a number of different approaches have
-been taken to how to code or represent the tracks in a tractography. We
-will look at this in the next section.
+% One further matter to note is that a number of different approaches have
+% been taken to how to code or represent the tracks in a tractography. We
+% will look at this in the next section.
 
 In summary, we can see that most authors agree that unsupervised
 learning with tractographies is a difficult problem because the data
@@ -221,39 +222,39 @@ disagreement on the number of clusters (from 10 to 60).
 Because of the difficulty of the problem an international contest was
 also organized by SchLab in Pittsburgh University (PBC Brain
 Connectivity Challenge - IEEE ICDM) in 2009. However, the competition
-did not conclude with any directly viable solutions. We think that in order
-to find big clusters a lot of anatomical prior knowledge needs to be
-introduced in a way that is not yet established. Nevertheless, the
+did not conclude with any directly viable solutions. We think that in
+order to find big clusters a lot of anatomical prior knowledge needs to
+be introduced in a way that is not yet established. Instead, the
 clustering that we propose concentrates on reducing the complexity of
-the data rather than finding bundles with anatomical relevance. We think
-that this step is more useful at this stage of tractography analysis
-research.
+the data rather than finding bundles with anatomical relevance at the
+outset. We think that this step is more useful at this stage of
+tractography analysis research.
 
 \section{Methods}
 
-\subsection{\label{sub:track-coding}Track Coding}
+% \subsection{\label{sub:track-coding}Track Coding}
 
-Beyond the simple representation of a track as a sequence of points in
-$\mathbb{R}^3$, a number of alternative codings have been employed.
+% Beyond the simple representation of a track as a sequence of points in
+% $\mathbb{R}^3$, a number of alternative codings have been employed.
 
-\begin{description}
+% \begin{description}
 
-\item[B-spline representations:] \citep{Maddah_MICCA2005,
-    maddah2006statistical, Maddah_IEEEBI2008}
+% \item[B-spline representations:] \citep{Maddah_MICCA2005,
+%     maddah2006statistical, Maddah_IEEEBI2008}
 
-\item[Track shape parameters:] Using a feature space based on track mean
-  and covariance \citep{brun2004clustering}
+% \item[Track shape parameters:] Using a feature space based on track mean
+%   and covariance \citep{brun2004clustering}
 
-\item[Phase space representation:] Tracks modeled as discrete
-distributions over a codebook of quantized orientations and voxel regions \citep{wang2010tractography}
+% \item[Phase space representation:] Tracks modeled as discrete
+% distributions over a codebook of quantized orientations and voxel regions \citep{wang2010tractography}
 
-\end{description}
+% \end{description}
 
-\subsection{Alternative tractography similarity metrics}
+% \subsection{Alternative tractography similarity metrics}
 
-Co-occurrence matrix: \citep{jonasson2005fiber}
+% Co-occurrence matrix: \citep{jonasson2005fiber}
 
-ROI-based connectivity matrix: \citep{ElKouby2005}
+% ROI-based connectivity matrix: \citep{ElKouby2005}
 
 \subsection{\label{sub:track-distances}Track distances and preprocessing}
 
@@ -263,8 +264,8 @@ Numerous inter-track distance metrics have been proposed
 \citep{Ding2003, MaddahIPMI2007, zhang2005dti}. The most common is the
 Hausdorff distance \citep[and many other
 studies]{corouge2004towards}. There are two primary disadvantages of
-this metric: (1) it ignores the sequential nature of the tracks and
-treats each track as simply a cloud of points, and (2) its computation
+this metric: (i) it ignores the sequential nature of the tracks and
+treats each track as simply a cloud of points, and (ii) its computation
 requires every point on the first track to be compared with every point
 on the second track, and vice versa. For these reasons we have opted to
 use a very simple symmetric distance \citep{EGMB10, Visser2010} which we
@@ -279,11 +280,12 @@ the number of segments in the typical raw track. Under this assumption MDF is
 defined as:
 
 \begin{eqnarray}
-d_{\textrm{mdf}} & = & \min(d_{\textrm{d}},d_{\textrm{f}}),\,\textrm{where}\label{eq:direct_flip_distance}\\
-d_{\textrm{d}}(s_{A},s_{B}) & = & \frac{1}{K}\sum_{i=1}^{K}|x_{i}^{A}-x_{i}^{B}|\,\textrm{and}\nonumber \\
-d_{\textrm{f}}(s_{A},s_{B}) & = & \frac{1}{K}\sum_{i=1}^{K}|x_{i}^{A}-x_{K-i}^{B}|\nonumber \end{eqnarray}
+d_{\textrm{mdf}} & = & \min(d_{\textrm{d}},d_{\textrm{f}}),\,\textrm{where}\nonumber\\
+d_{\textrm{d}}(s_{A},s_{B}) & = & \frac{1}{K}\sum_{i=1}^{K}|x_{i}^{A}-x_{i}^{B}|,\,\textrm{and}\label{eq:direct_flip_distance} \\
+d_{\textrm{f}}(s_{A},s_{B}) & = & \frac{1}{K}\sum_{i=1}^{K}|x_{i}^{A}-x_{K-i}^{B}|,\nonumber
+\end{eqnarray}
 
-
+\noindent
 where $K$ is the number of points $x_{i}$ on the two tracks $A$ and $B$
 and $|x-y|$ denotes the euclidean distance between two points $x$ and
 $y$.
@@ -297,54 +299,55 @@ properties of the tracks. These distances are slower to compute but
 they can work with different number of segments on tracks that is
 useful for some applications. The equations below show the formulation
 of these distances:\begin{eqnarray}
-d_{\textrm{avg}}(s_{A},s_{B}) & = & \frac{1}{K_{A}}\sum_{i=1}^{K_{A}}d(x_{i}^{A},s_{B}),\nonumber \\
-d_{\textrm{min}}(s_{A},s_{B}) & = & \min_{j=1,...,K_{B}}d(x_{i}^{A},s_{B}),\,\textrm{and}\label{eq:mininum_distance}\\
-d_{\textrm{max}}(s_{A},s_{B}) & = & \max_{j=1,...,K_{B}}d(x_{i}^{A},s_{B})\,\textrm{where}\label{eq:maximum distance}\\
-d(x,s_{B}) & = & \min_{j=1,...,K_{B}}||x-x_{j}^{B}||_{2}.\nonumber \\
-\textrm{MAM}_{\textrm{min}} & = & \min(d_{\textrm{avg}}(s_{A},s_{B}),d_{\textrm{avg}}(s_{B},s_{A}))\label{eq:min_average_distance}\\
-\textrm{MAM}_{\textrm{max}} & = & \max(d_{\textrm{avg}}(s_{A},s_{B}),d_{\textrm{avg}}(s_{B},s_{A}))\nonumber \\
-\textrm{MAM}_{\textrm{avg}} & = & (d_{\textrm{avg}}(s_{A},s_{B})+d_{\textrm{avg}}(s_{B},s_{A}))/2\label{eq:mean_average_distance}\end{eqnarray}
+d_{\textrm{mean}}(s_{A},s_{B}) & = & \frac{1}{K_{A}}\sum_{i=1}^{K_{A}}d(x_{i}^{A},s_{B}),\nonumber \\
+d_{\textrm{min}}(s_{A},s_{B}) & = & \min_{j=1,...,K_{B}}d(x_{i}^{A},s_{B}),\,\textrm{and}\label{eq:minimum_distance}\\
+d_{\textrm{max}}(s_{A},s_{B}) & = & \max_{j=1,...,K_{B}}d(x_{i}^{A},s_{B}),\,\textrm{where}\label{eq:maximum distance}\\
+d(x,s_{B}) & = & \min_{j=1,...,K_{B}}|x-x_{j}^{B}|.\nonumber \\
+\textrm{MAM}_{\textrm{min}} & = & \min(d_{\textrm{mean}}(s_{A},s_{B}),d_{\textrm{mean}}(s_{B},s_{A}))\label{eq:min_average_distance}\\
+\textrm{MAM}_{\textrm{max}} & = & \max(d_{\textrm{mean}}(s_{A},s_{B}),d_{\textrm{mean}}(s_{B},s_{A}))\nonumber \\
+\textrm{MAM}_{\textrm{mean}} & = & (d_{\textrm{mean}}(s_{A},s_{B})+d_{\textrm{mean}}(s_{B},s_{A}))/2\label{eq:mean_average_distance}\end{eqnarray}
 
 
+\noindent
 where the number of points $K_{A}$ and $K_{B}$ on the two tracks
 are not necessarily the same. For the same threshold value $\textrm{MAM}_{\textrm{min}}$,
-\foreignlanguage{british}{$\textrm{MAM}_{\textrm{max}}$ and $\textrm{MAM}_{\textrm{avg}}$
-will give different results. For example,}$\textrm{MAM}_{\textrm{min}}$will
-bring together more short tracks with long tracks than $\textrm{MAM}_{\textrm{max}}$
-and \foreignlanguage{british}{$\textrm{MAM}_{\textrm{avg}}$} will
-have an in-between effect. Finally, other distances than the average
-minimum based on the minimum see Eq. (\ref{eq:mininum_distance})
+$\textrm{MAM}_{\textrm{max}}$ and $\textrm{MAM}_{\textrm{mean}}$
+will give different results. For example, $\textrm{MAM}_{\textrm{min}}$ will
+bring together more short tracks with long tracks than $\textrm{MAM}_{\textrm{max}}$,
+and 
+$\textrm{MAM}_{\textrm{mean}}$ 
+will have an in-between effect. Finally, other distances than the average
+minimum based on the minimum see Eq. (\ref{eq:minimum_distance})
 or maximum distance see Eq. (\ref{eq:maximum distance}) can be used.
 However, we have not investigated them in this work in relation to
 clustering algorithms.
 
-% %
-% \begin{figure}
-% \includegraphics[scale=0.6]{distances}
+\begin{figure}
 
-% \centering{}\label{Flo:Distances_used}\caption{Distances used in this work. The main distance used is minimum average
-% direct flip (MDF) distance $d_{\textrm{df}}=\min(d_{\textrm{d}},d_{\textrm{f}})$
-% which is a symmetric distance that can deal with the track bi-directionality
-% problem and works on tracks which have the same number of points.
-% Another distance is the mean average distance which is again symmetric
-% but does not need for the tracks to have the same number of points
-% $\textrm{MAM}_{\textrm{avg}}=(d_{avg}(s_{A},s_{B})+d_{avg}(s_{B},s_{A}))/2$.
-% In this figure the components of both distances are shown; with solid
-% lines we draw the tracks, and then with dashed lines we connect the
-% pairs of points of the two tracks whose distances contribute to the
-% overall metric.}
+\includegraphics[scale=0.6]{distances}
 
-% \end{figure}
+\centering{}\label{Flo:Distances_used}\caption{Distances used in this work. The main distance used is minimum average
+direct flip (MDF) distance $d_{\textrm{df}}=\min(d_{\textrm{d}},d_{\textrm{f}})$
+which is a symmetric distance that can deal with the track bi-directionality
+problem and works on tracks which have the same number of points.
+Another distance is the mean average distance which is again symmetric
+but does not need for the tracks to have the same number of points
+$\textrm{MAM}_{\textrm{mean}}=(d_{avg}(s_{A},s_{B})+d_{mean}(s_{B},s_{A}))/2$.
+In this figure the components of both distances are shown; the tracks are drawn with solid
+lines, and then with dashed lines we connect the
+pairs of points of the two tracks whose distances contribute to the
+overall metric.}
 
+\end{figure}
 
 Coming back to the MDF distance (see Eq.\ref{eq:direct_flip_distance}),
 its main advantages are that it is fast to compute, it takes account of
 track direction issues through consideration of both direct and flipped
 tracks, and that it is easy to understand how it will behave, from the
 simplest case of parallel equi-length tracks to the most complicated
-with very divergent tracks. Another advantage is that it will separate
+pwith very divergent tracks. Another advantage is that it will separate
 short tracks from long tracks and as we will see this will be a good way
-to find broken or erroneous tracks. A advantage of having tracks with
+to find broken or erroneous tracks. An advantage of having tracks with
 the same number of points is that we can easily do pairwise calculations
 on them; for example add two or more tracks together to create a new
 average track . We will see in the next section that track addition is a
@@ -362,10 +365,8 @@ used. In the present demonstrations we use $K=12$.
 
 \subsection{\label{sub:QB-Data-sets}Data sets}
 
-This will be compressed into the Methods section.
-
-We experimented with QuickBundles using simulations, $10$ human
-tractographies collected and processed by ourselves and one tractography
+We applied QuickBundles to a variety of data sets: simulations, $10$ human
+tractographies collected and processed by ourselves, and one tractography
 with segmented bundles which was available online.
 
 \textbf{Simulated trajectories.} We generated $3$ different bundles of
@@ -373,31 +374,32 @@ parametric paths samples at $200$ points. The tracks were made from
 different combinations of sinusoidal and helicoidal functions.  In total
 this data set contained $450$ tracks see Fig. \ref{Flo:simulated_orbits}.
 
-\textbf{Human subjects. }We collected data from $10$ healthy subjects at
+\textbf{Human subjects. } We collected data from $10$ healthy subjects at
 the MRC-CBU 3T scanner (TIM Trio, Siemens), using Siemens advanced
 diffusion work-in-progress sequence, and STEAM
-\cite{merboldt1992diffusion,MAB04} as the diffusion preparation
-method. The field of view was $240\times240mm^{2}$, matrix size
-$96\times96$, and slice thickness $2.5mm$ (no gap).  $55$ slices were
+\citep{merboldt1992diffusion,MAB04} as the diffusion preparation
+method. The field of view was $240\times240\,\textrm{mm}^{2}$, matrix size
+$96\times96$, and slice thickness $2.5\,\textrm{mm}$ (no gap).  $55$ slices were
 acquired to achieve full brain coverage, and the voxel resolution was
-$2.5\times2.5\times2.5\textrm{mm}{}^{3}$. A $102$-point half grid
-acquisition\cite{Yeh2010} with a maximum $b$-value of $4000\, s/mm^{2}$
-was used. The total acquisition time was $14'21''$ with
-TR=$8200\textrm{ms}$ and TE=$69\textrm{ms}$. The experiment was approved
+$2.5\times2.5\times2.5\textrm{mm}^{3}$. A $102$-point half grid
+acquisition \citep{Yeh2010} with a maximum $b$-value of $4000\, \textrm{s/mm}^{2}$
+was used. The total acquisition time was $14'\,21''$ with
+TR=$8200\,\textrm{ms}$ and TE=$69\,\textrm{ms}$. The experiment was approved
 by the local ethical committee CPREC.
 
-For the reconstruction of the real data sets we used Generalized
-Q-samping with diffusion sampling length $1.2$ and for the tractography
-propagation we used EuDX (euler integration with trilinear
-interpolation) with $1$ million random seeds, angular threshold
-$60^{\circ}$, total weighting $0.5$, propagation step size $0.5$ and
-anisotropy stopping threshold $0.0239$ (see
-Fig. \ref{Flo:CloseToSelected},\ref{Flo:arcuate_close}).
+For the reconstruction of the 10 human data sets we used Generalized
+Q-samping \citep{Garyfallidis_thesis} with diffusion sampling length
+$1.2$ and for the tractography propagation we used EuDX (Euler
+integration with trilinear interpolation, \citet{Garyfallidis_thesis})
+with $1$ million random seeds, angular threshold $60^{\circ}$, total
+weighting $0.5$, propagation step size $0.5$ and anisotropy stopping
+threshold $0.0239$ (see Fig. \ref{Flo:CloseToSelected},
+\ref{Flo:arcuate_close}).
 
 \textbf{PBC human subjects}. We also used a few labeled data sets (see
-Fig.\ref{Flo:cst_pbc},\ref{Flo:QB_fornix}), from the freely available
-tractography database used in the Pittsburgh Brain Completion Fall
-$2009$ ICDM pbc.lrdc.pitt.edu.
+Fig. \ref{Flo:cst_pbc}, and \ref{Flo:QB_fornix}), from the freely available
+tractography database used in the Pittsburgh Brain Competition Fall
+$2009$, ICDM pbc.lrdc.pitt.edu.
 
 \section{QuickBundles (QB) Clustering}
 
@@ -409,7 +411,7 @@ linear in the number of tracks $N$. QB is a linear time $O(N)$ (see
 section \ref{sub:Complexity}) distance based clustering algorithm that
 we created in order to clarify huge trajectory data sets such as those
 produced by current state-of-the-art tractography generation algorithms
-\cite{Parker2003,WWS+08}. 
+\citep{Parker2003,WWS+08}. 
 
 In QB each item (track) is a fixed-length
 ordered sequence of points in $\mathbb{R}^{3}$, and uses metrics and
@@ -421,103 +423,108 @@ which is extended according to need.
 
 QB creates an online list of cluster nodes. The cluster node is defined
 as $c=\{I,\mathbf{h},n\}$ where $I$ is the list of the integer indices
-of the tracks in that cluster, $\mathbf{h}$ is an $p\times3$ matrix,
+of the tracks in that cluster, $\mathbf{h}$ is a $p\times3$ matrix,
 which the most important descriptor of the cluster, and $n$ is the
-number of tracks on that cluster. $\mathbf{h}$ is a matrix which can be
+number of tracks in the cluster. $\mathbf{h}$ is a matrix which can be
 updated online when a track is added to a cluster and is equal
-to\begin{equation} \mathbf{h}=\sum_{i=1}^{n}s_{i}\end{equation} where
-$s_{i}$ is the $p\times3$ matrix representing track $i$, $\Sigma$ here
-represents matrix addition, and $n$ is the number of tracks in the
-cluster. QB assumes that all tracks have the same number of points $p$,
-therefore a downsampling of tracks, typically equidistant, is necessary
-before QB starts. A short summary of the algorithm goes as follows.
+to 
+\begin{equation}
+  \mathbf{h}=\sum_{i=1}^{n}\mathbf{s}_{i}
+\end{equation} 
+where $\mathbf{s}_{i}$ is the $p\times3$ matrix representing track $i$,
+$\Sigma$ here represents matrix addition, and $n$ is the number of
+tracks in the cluster. QB assumes that all tracks have the same number
+of points $p$, therefore a downsampling of tracks, typically
+equidistant, is necessary before QB starts. A short summary of the
+algorithm goes as follows.
 
 Select the first track $s_{0}$ and place it in the first cluster
-$c_{0}\leftarrow\{0,s_{0},1\}$. Then for all remaining tracks (i)
-goto next track $s_{i}$; (ii) calculate MDF distance between this
-track and virtual tracks of all existing clusters $c_{k}$, where
-a virtual track is defined on the fly as $\mathbf{v}=\mathbf{h}/n$;
-(iii) if the minimum MDF distance is smaller than a distance threshold
-$\mathrm{\mathit{thr}}$ add the track to the cluster $c_{j}=\{I,\mathbf{h},n\}$
-with the minimum distance and update $c_{j}\leftarrow\{I\cup\{i\},\mathbf{h}+s,n+1\}$;
-otherwise create a new cluster $c_{|C|+1}\leftarrow\{0,s_{i},1\}$,
-$|C|\leftarrow|C|+1$ where $|C|$ denotes the current total number
-of clusters. See App. \ref{Sec:QB-Algorithm}
+$c_{0}\leftarrow\{0,s_{0},1\}$. Then for all remaining tracks (i) goto
+next track $s_{i}$; (ii) calculate MDF distance between this track and
+virtual tracks of all existing clusters $c_{k}$, where a virtual track
+is defined on the fly as $\mathbf{v}=\mathbf{h}/n$; (iii) if the minimum
+MDF distance is smaller than a distance threshold
+$\mathrm{\mathit{thr}}$ add the track to the cluster
+$c_{j}=\{I,\mathbf{h},n\}$ with the minimum distance and update
+$c_{j}\leftarrow\{I\cup\{i\},\mathbf{h}+s,n+1\}$; otherwise create a new
+cluster $c_{|C|+1}\leftarrow\{0,s_{i},1\}$, $|C|\leftarrow|C|+1$ where
+$|C|$ denotes the current total number of clusters. See
+App. \ref{Sec:QB-Algorithm}
 
 Flipping can become an issue when using the MDF distance and adding
-tracks together, because tracks do not have a preferred direction.
-A step in QB takes account of the possibility of needing to perform
-a flip of a track before adding it to a representative track. The
-complete QB algorithm is described in detail in Alg.\ref{Alg:QuickBundles}
-and a simple step by step visual example is given in Fig.\ref{Fig:LSC_simple}.
+tracks together, because tracks do not have a preferred direction.  A
+step in QB takes account of the possibility of needing to perform a flip
+of a track before adding it to a representative track. The complete QB
+algorithm is described in detail in Alg.\ref{Alg:QuickBundles} and a
+simple step by step visual example is given in Fig.\ref{Fig:LSC_simple}.
 One of the reasons why QB has on average linear time complexity derives
 from the structure of the cluster node: we only save the sum of current
-tracks in the cluster and this is achieved cumulatively. By contrast
-if we were using k-means at every iteration we would have to re-assign
+tracks in the cluster and this is achieved cumulatively. By contrast if
+we were using k-means at every iteration we would have to re-assign
 tracks to clusters and recalculate averages which is computationally
-much more intensive. Other reasons are that QB passes through the
-tracks only once and that a track is assigned to one cluster only. 
+much more intensive. Other reasons are that QB passes through the tracks
+only once and that a track is assigned to one cluster only.
 
 QB is can be extended for specific applications to contain more information
 about the clusters. For example we could redefine $c=\{I,\mathbf{h},n,\mathbf{h}^{(2)}\}$
 to obtain second order information and in that way we could calculate
-the variance of the cluster where \[
-\mathbf{h}^{(2)}\leftarrow\{\sum_{i,j}x_{ij}^{2},\sum_{i,j}y_{ij}^{2},\sum_{i,j}z_{ij}^{2},\sum_{i,j}x_{ij}y_{ij},\sum_{i,j}y_{ij}z_{ij},\sum_{i,j}x_{ij}z_{ij}\}\]
- and $x_{ij},y_{ij},z_{ij}$ are the coordinates of the $j$th point
+the variance of the cluster where 
+$$\mathbf{h}^{(2)}\leftarrow\{\sum_{i,j}x_{ij}^{2},\sum_{i,j}y_{ij}^{2},\sum_{i,j}z_{ij}^{2},\sum_{i,j}x_{ij}y_{ij},\sum_{i,j}y_{ij}z_{ij},\sum_{i,j}x_{ij}z_{ij}\}$$
+and $x_{ij},y_{ij},z_{ij}$ are the coordinates of the $j$th point
 of the $i$th track in the cluster. Although this alternative would
 be very useful, as even more refined cluster distances could be used
 which take into account the additional information, this is not addressed
 in this document.
 
-%
 \begin{figure}
 \includegraphics[scale=0.27]{last_figures/LSC_algorithm}
 
-\label{Fig:LSC_simple}\caption{QB step-by-step: Initially in panel (i) 6 unclustered tracks (A-F)
-are presented; imagine that the distance threshold used is the MDF
-distance (Eq. [reference needed]) between B and E. The
-algorithm starts and in (ii) we see that track A was selected, so
-no other clusters exist therefore track A becomes the first cluster
-(labeled with purple color) and the virtual track of that cluster
-is identical with A as seen in (iii), next in (iv) track B is selected
-and we calculate the MDF distance between B and the virtual track
-of the other clusters. For the moment there is only one cluster to
-compare so QB calculates MDF (B,virtual-purple) and this is obviously
-bigger than threshold (that being MDF(B,E)) therefore a new cluster
-is assigned for B and B becomes the virtual track of that cluster
-as shown in (v). In (vi) the next track is selected and this is again
-far away from both purple and blue virtuals therefore another cluster
-is created and B is the virtual of the blue cluster as shown in (vii).
-In (viii) track D is current and after we have calculated MDF(D,purple),
-MDF(D,Blue) and MDF(D,green) it is obvious that D belongs to the purple
-cluster as MDF(D,purple) is smaller and lower than threshold as shown
-in (ix). However we can now see in (x) that things change for the
-purple cluster because the virtual track is not anymore made by only
-one track but it is the average of D and A shown with dashline. In
-(xi) E is the current track and will be assigned at the green cluster
-as shown in (xii) because MDF(E,virtual green) = MDF(E,B) = threshold,
-and in (xiii) we see the updated virtual track for the green cluster
-which is equal to (B+E)/2 where + means track addition. In (xiv) the
-last track is picked and compared with the virtual tracks of the other
-3 clusters; obviously MDF(F,purple) is the only with smaller threshold,
-and so F is assigned to the purple cluster in (xv). Finally, in (xvi)
-the virtual purple track is updated as (D+A+F)/3. As there are no
-more tracks to select, the algorithm stops. We can see all three clusters
-have been found and all tracks have been assigned successfully. }
+\label{Fig:LSC_simple}\caption{QB step-by-step: Initially in panel (i) 6
+  unclustered tracks (A-F) are presented; imagine that the distance
+  threshold used is the MDF distance (Eq. [reference needed]) between B
+  and E. The algorithm starts and in (ii) we see that track A was
+  selected, so no other clusters exist therefore track A becomes the
+  first cluster (labeled with purple color) and the virtual track of
+  that cluster is identical with A as seen in (iii), next in (iv) track
+  B is selected and we calculate the MDF distance between B and the
+  virtual track of the other clusters. For the moment there is only one
+  cluster to compare so QB calculates MDF (B,virtual-purple) and this is
+  obviously bigger than threshold (that being MDF(B,E)) therefore a new
+  cluster is assigned for B and B becomes the virtual track of that
+  cluster as shown in (v). In (vi) the next track is selected and this
+  is again far away from both purple and blue virtuals therefore another
+  cluster is created and B is the virtual of the blue cluster as shown
+  in (vii).  In (viii) track D is current and after we have calculated
+  MDF(D,purple), MDF(D,Blue) and MDF(D,green) it is obvious that D
+  belongs to the purple cluster as MDF(D,purple) is smaller and lower
+  than threshold as shown in (ix). However we can now see in (x) that
+  things change for the purple cluster because the virtual track is not
+  anymore made by only one track but it is the average of D and A shown
+  with dashline. In (xi) E is the current track and will be assigned at
+  the green cluster as shown in (xii) because MDF(E,virtual green) =
+  MDF(E,B) = threshold, and in (xiii) we see the updated virtual track
+  for the green cluster which is equal to (B+E)/2 where + means track
+  addition. In (xiv) the last track is picked and compared with the
+  virtual tracks of the other 3 clusters; obviously MDF(F,purple) is the
+  only with smaller threshold, and so F is assigned to the purple
+  cluster in (xv). Finally, in (xvi) the virtual purple track is updated
+  as (D+A+F)/3. As there are no more tracks to select, the algorithm
+  stops. We can see all three clusters have been found and all tracks
+  have been assigned successfully. }
 
 \end{figure}
 
 One of the disadvantages of most clustering algorithms is that they give
 different results with different initial conditions; for example this is
-recognised with k-means,
-expectation-maximization~\citep{dempster1977maximum} and
-k-centers~\citep{gonzalez1985clustering} where it is common practice to
-try a number of different random initial configurations. The same holds
-for QB so if there are not distinct clusters such that the distance
-between any pair of clusters is supra-threshold, then with different
-permutations of the same tractography we will typically see similar
-number of clusters but different underlying clusters. We will examine
-the robustness of QB in this respect in section \ref{sub:Comparisons}.
+recognised with k-means, expectation-maximization
+\citep{dempster1977maximum} and k-centers \citep{gonzalez1985clustering}
+where it is common practice to try a number of different random initial
+configurations. The same holds for QB so if there are not distinct
+clusters such that the distance between any pair of clusters is
+supra-threshold, then with different permutations of the same
+tractography we will typically see similar number of clusters but
+different underlying clusters. We will exaqmine the robustness of QB in
+this respect in section \ref{sub:Comparisons}.
 
 \subsection{Complexity and timings\label{sub:Complexity}}
 
@@ -1247,8 +1254,9 @@ of step (4) using a more recent algorithm: affinity propagation (AP)
 \cite{dueck2009affinity}, which earlier was identified by us (see
 Fig.\ref{Flo:LSC+HC+AP}) and \cite{malcolm2009filtered} for being
 difficult or impossible to be used for group analysis or to cluster
-entire tractographies of many thousands of tracks. A small outline
-of how this algorithm works is given in section \ref{sub:Affinity-Propagation}.
+entire tractographies of many thousands of tracks. 
+% A small outline
+% of how this algorithm works is given in section \ref{sub:Affinity-Propagation}.
 Here we see in the bottom right panel of (see Fig.\ref{Flo:LSC+HC+AP})
 how nicely AP, after the simplification provided by QB, has clustered
 arcuate, longitudinal occipitofrontal fasciculus and other structures
@@ -1709,9 +1717,9 @@ and the code for QuickBundles is freely available at dipy.org.
 \bibliography{diffusion}
 \selectlanguage{english}
 
-\appendix
-\section{The QB Algorithm}
-\label{QB-algorithm}
+\begin{appendices}
+
+\section{The QB Algorithm\label{Sec:QB-Algorithm}}
 
 %\subsection{Algorithm}
 
@@ -1798,5 +1806,7 @@ Moreover each item is either added to an existing cluster on the basis
 of a distance between the cluster descriptor of the item and the
 descriptors of the current set of clusters. Clusters are held in a list
 which is extended according to need.
+
+\end{appendices}
 
 \end{document}
