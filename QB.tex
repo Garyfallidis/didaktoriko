@@ -543,54 +543,63 @@ the number of clusters however because $M$ is usually much smaller
 than $N$ ($M\ll N$) we can neglect $M$ and denote it only as $O(N)$
 as it is common in complexity theory. We created the following experiment
 to investigate this claim and we found empirically that the average
-case is actually $O(N)$ for tractographies (see Fig.\ref{Flo:Speed1},\ref{Flo:Speed2}).
+case is actually $O(N)$ for tractographies (see Fig.\ref{Flo:Speed1}).
 In this experiment we timed the duration of QB clustering of tractographies
 containing from $100$ thousand to $1$ million tracks, with different
 initial number of points per track ($3,6,12$ and $18$) and different
 QB thresholds ($10.0,15.0,20.0,25.00$ mm). The results can be seen
-in the diagram of Fig.\ref{Flo:Speed1} and \ref{Flo:Speed2}. You
-can notice that even when the the threshold value becomes impressively
+in Fig.\ref{Flo:Speed1}. Even when the the threshold value becomes impressively
 low ($10.0$ mm) the linearity is only slightly disturbed.
 
-%
-\begin{figure}
-\begin{centering}
-\label{Flo:Speed1}\includegraphics[scale=0.8]{last_figures/speed_3_6}
-\par\end{centering}
+% \begin{figure}
+% \begin{centering}
+% \label{Flo:Speed1}\includegraphics[scale=0.8]{last_figures/speed_3_6}
+% \par\end{centering}
 
-\caption{QB is a very efficient algorithm whose performance is controlled by
-just three parameters. The first is the number of tracks, a second
-is the distance threshold in millimeters - shown with different colours
-and another is the amount of initial downsampling of the initial trajectories.
-A last parameter not shown in these diagrams is the underlying structure
-of the data which is expressed by the number of final clusters. We
-used a full tractography to generate these figures without removing
-or preselecting any parts. This results run of a single thread Intel(R)
-Xeon(R) CPU E5420 at 2.50GHz on a standard PC. (NB This and the following
-figure use the same vertical scale to assist direct comparison.)}
+% \caption{QB is a very efficient algorithm whose performance is controlled by
+% just three parameters. The first is the number of tracks, a second
+% is the distance threshold in millimeters - shown with different colours
+% and another is the amount of initial downsampling of the initial trajectories.
+% A last parameter not shown in these diagrams is the underlying structure
+% of the data which is expressed by the number of final clusters. We
+% used a full tractography to generate these figures without removing
+% or preselecting any parts. This results run of a single thread Intel(R)
+% Xeon(R) CPU E5420 at 2.50GHz on a standard PC. (NB This and the following
+% figure use the same vertical scale to assist direct comparison.)}
 
-\end{figure}
+% \end{figure}
 
-Furthermore, the memory usage of QB is $O(M)$ where $M$ is the number
-of clusters and because this is usually much smaller than $N$ we
-consider memory consumption to be negligible. Because in QB we store
-only the indices of the tracks even for very large tractographies
-$20$ or more clusterings can be stored simultaneously in the RAM
-of a simple notebook without any problems. Therefore, another feature
-of QB is memory efficiency.
+% Furthermore, the memory usage of QB is $O(M)$ where $M$ is the number
+% of clusters and because this is usually much smaller than $N$ we
+% consider memory consumption to be negligible. Because in QB we store
+% only the indices of the tracks even for very large tractographies
+% $20$ or more clusterings can be stored simultaneously in the RAM
+% of a simple notebook without any problems. Therefore, another feature
+% of QB is memory efficiency.
 
-%
 \begin{figure}
 \noindent \begin{centering}
-\label{Flo:Speed2}\includegraphics[scale=0.8]{last_figures/speed_12_18}
+%\label{Flo:Speed2}\includegraphics[scale=0.8]{last_figures/speed_12_18}
+\label{Flo:Speed1}\includegraphics[scale=0.33]{2x2+leg-box}
 \par\end{centering}
 
-\caption{Time comparisons of QB using different number of points per track,
-different distance thresholds and different number of tracks. Same
-as Fig. \ref{Flo:Speed1}. We can observe here how the linearity only
-reduces slightly even when we use a very low threshold as that of
-$10$mm which can generate many thousand clusters. This experiment
-concludes that QB is suitable for fast clustering.}
+\caption{Time comparisons of QB using different number of points per
+  track, different distance thresholds and different number of
+  tracks. QB is a very efficient algorithm whose performance is
+  controlled by just three parameters. (1) the initial downsampling $K$
+  of the tracks exemplified in four subdiagrams: 3 points (A), 6 points
+  (B) 12 points (C), 18 points (D). (2) the distance threshold $\theta$
+  in millimeters shown in 4 colours: 10 mm (blue), 15 mm (green), 20 mm
+  (red), 25 mm (cyan). The final parameter, not shown explicitly in
+  these diagrams, is the underlying structure of the data which is
+  expressed by the resulting number of clusters.  We used a full
+  tractography to generate these figures without removing or
+  preselecting any parts. This results run of a single thread Intel(R)
+  Xeon(R) CPU E5420 at 2.50GHz on a standard PC. (NB The subdiagrams use
+  different vertical scales.) We see how the linearity of the QB
+  algorithm only reduces slightly even when we use a very low threshold
+  such as $10$ mm which can generate many thousand of clusters. This
+  experiment concludes that QB is suitable for fast clustering.}
 
 \end{figure}
 
@@ -628,7 +637,7 @@ found in the literature. Unfortunately timings were very rarely reported
 until today as most algorithms were very slow on full data sets. Nonetheless,
 we can observe in this table that the speedup that QB offers is substantial,
 holding out the prospect of real-time clustering on data sets containing
-fewer than $\sim20,000$ tracks. This experiment was executed on a
+fewer than $\sim 20,000$ tracks. This experiment was executed on a
 standard PC using only a single CPU core. }
 
 \label{Flo:timings}
