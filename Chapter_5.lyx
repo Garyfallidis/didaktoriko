@@ -4,8 +4,7 @@
 \begin_header
 \textclass article
 \begin_preamble
-\numberwithin{figure}{section}
-\numberwithin{table}{section}
+
 \end_preamble
 \use_default_options true
 \language english
@@ -23,7 +22,7 @@
 \paperfontsize 12
 \spacing onehalf
 \use_hyperref false
-\papersize a4paper
+\papersize default
 \use_geometry true
 \use_amsmath 1
 \use_esint 1
@@ -54,35 +53,279 @@
 Discussion
 \end_layout
 
-\begin_layout Standard
-Conclusion
+\begin_layout Subsection
+Overview
 \end_layout
 
 \begin_layout Standard
-Clinical Aspects
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "moriBook"
 
-\begin_layout Standard
-Software
-\end_layout
-
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
+This thesis contains original contributions to many different aspects of
+ diffusion weighted MR imaging (dMRI), from the signal reconstruction, via
+ propagation of tracks, clustering of tracks, detection of bundles of tracks,
+ and creation of atlases of white matter, to visualization tools with high
+ interactivity with data, and for several brains simultaneously.
+\end_layout
+
+\begin_layout Standard
+Our most important new achievements are a powerful way of reconstructing
+ the diffusion signal and a method for simplifying tractographies using
+ a new super-efficient clustering algorithm.
+ 
+\end_layout
+
+\begin_layout Standard
+In more detail we give novel and robust solutions for all the following
+ problems
+\end_layout
+
+\begin_layout Standard
+• 
+\series bold
+How to reconstruct and interpret the directional information in the diffusion
+ signal
+\series default
+: 
+\end_layout
+
+\begin_layout Standard
+We compare and evaluate different Cartesian-grid q-space dMRI acquisition
+ schemes, using methods based on the inverse Fourier transform of the diffusion
+ signal, with reconstructions by diffusion spectrum imaging or generalized
+ q-ball imaging methods.
+ These are applied to both software phantom and human data.
+ We propose a new reconstruction method called diffusion nabla imaging (DNI)
+ which works with the same grid type of acquisition schemes, using an algorithm
+ that directly approximates the orientation distribution function using
+ the Laplacian of the signal in q-space.
+\end_layout
+
+\begin_layout Standard
+• 
+\series bold
+How to integrate tracks from voxel to voxel
+\series default
+: 
+\end_layout
+
+\begin_layout Standard
+Most previously published reconstruction methods are closely linked to their
+ own specific track integration method.
+ We have formulated a general, free-standing, data-representative, non-inferenti
+al, fast, deterministic tractography algorithm (EuDX) which is based on
+ Euler integration and trilinear interpolation, which works with voxel level
+ information about fibre orientations including multiple crossings, and
+ employs a range of stopping criteria.
+ The purpose of this algorithm is to be faithful to the reconstruction results
+ rather than try to correct or enhance them by introducing regional or global
+ considerations.
+\end_layout
+
+\begin_layout Standard
+• 
+\series bold
+How to cluster tracks together into meaningful bundles
+\series default
+: 
+\end_layout
+
+\begin_layout Standard
+We have developed an entirely new, fully automatic, linear time, clustering
+ method (QuickBundles) which reduces massive tractographies into just a
+ few bundles.
+ These bundles are characterised by representative tracks which are multi-purpos
+e and can be used for interaction with the data or as the basis for applying
+ higher-complexity clustering methods which would have been impossible or
+ too slow with the full data set.
+ QuickBundles is currently the fastest known tractography clustering algorithm.
+\end_layout
+
+\begin_layout Standard
+• 
+\series bold
+How to directly register tractographies
+\series default
+: 
+\end_layout
+
+\begin_layout Standard
+After applying QuickBundles to tractographies from different subjects, we
+ show how to use the representative tracks to identify robust landmarks
+ within each subject which, with similarity metrics which we have introduced,
+ we use to directly register the different tractographies together in a
+ highly efficient way.
+ We believe the resulting correspondences provide important evidence for
+ the anatomical plausibility of the derived bundles.
+ We demonstrate how these methods can be used for group analysis, and for
+ atlas creation.
+\end_layout
+
+\begin_layout Subsection
+Clinical Usage
+\end_layout
+
+\begin_layout Subsection
+Future Work
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+aaa
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bbb
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Tab:DummyTable"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename hbm2012/hbm2012_fig1.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:SelectionViz"
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
