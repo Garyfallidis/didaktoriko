@@ -261,6 +261,7 @@ Supervisors
 \end_layout
 
 \begin_layout Standard
+\align center
 
 \size larger
 \noun on
@@ -300,6 +301,7 @@ Cambridge,UK
 \end_layout
 
 \begin_layout Standard
+\align center
 
 \size large
 \noun on
@@ -519,7 +521,7 @@ Vassilis, Dimitris, Alexandros
 \begin_layout Standard
 
 \lang english
-Tsiaras
+Tsiaras, Argyros, Vassilas
 \end_layout
 
 \begin_layout Standard
@@ -637,6 +639,10 @@ January 2012
 \color black
 \lang english
 List of publications
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -729,6 +735,30 @@ Garyfallidis E
 Dipy - a novel software library for diffusion MR and tractography
 \emph default
 ”, 17th Annual Meeting of the Organization for Human Brain Mapping.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Garyfallidis E
+\series default
+, Gerhard S, Avesani P, Nguyen T, Tsiaras V, Nimmo-Smith I, Olivetti E (2012),
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+A software application for real-time, clustering-based exploration of tractograp
+hies
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+,18th Annual Meeting of the Organization for Human Brain Mapping.
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -739,6 +769,27 @@ Dipy - a novel software library for diffusion MR and tractography
 
 \series bold
 JOURNALS
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Garyfallidis E
+\series default
+, Brett M, Correia M, Williams G.B, Nimmo-Smith I (2012), 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+Effective Real-Time Tractography Clustering with QuickBundles
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+,NeuroImage XXX 
 \end_layout
 
 \begin_layout Standard
@@ -764,9 +815,12 @@ Reduced brain white matter integrity in trichotillomania: a diffusion tensor
 
 \series bold
 OUTREACH
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Standard
+
+\series bold
+\lang english
 Garyfallidis E
 \series default
 , Nimmo-Smith I (2010), 
@@ -795,16 +849,40 @@ Surfing your brain superhighways
 \end_inset
 
 SOFTWARE
-\begin_inset Newline newline
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Diffusion Imaging in Python 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
 \end_inset
 
+ dipy.org 
+\end_layout
 
-\series default
-Diffusion Imaging in Python dipy.org 
-\begin_inset Newline newline
+\begin_layout Standard
+
+\lang english
+Free On Shades 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
 \end_inset
 
-Free On Shades fos.me
+ fos.me
 \begin_inset Newline newline
 \end_inset
 
@@ -844,12 +922,73 @@ Abstract
 \begin_layout Standard
 
 \lang english
-COPY ABSTRACT FROM DOC!
+The objective of this thesis is to improve on the methods for inferring
+ neural tracts from diffusion weighted magnetic resonance imaging (dMRI).
+ Accordingly, I present improvements to the reconstruction, integration,
+ segmentation and registration modalities of dMRI analysis.
 \end_layout
 
 \begin_layout Standard
 
 \lang english
+I compare and evaluate different Cartesian-grid q-space dMRI acquisition
+ schemes, using methods based on the Fourier transform of the diffusion
+ signal, with reconstructions by diffusion spectrum imaging or generalised
+ q-ball imaging methods.
+ I propose a new reconstruction method called diffusion nabla imaging (DNI)
+ which works with all these acquisition schemes, using an algorithm that
+ directly approximates the orientation distribution function using the Laplacian
+ of the signal in q-space.
+ DNI has impressive accuracy on low angle crossings.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Most previously published reconstruction methods are closely linked to their
+ own specific track integration method.
+ I have formulated a general, non-inferential, deterministic tractography
+ algorithm (EuDX) which is based on Euler integration and trilinear interpolatio
+n, which works with voxel level information about fibre orientations including
+ multiple crossings, and employs a range of stopping criteria.
+ The purpose of this algorithm is to be faithful to the reconstruction results
+ rather than try to correct or enhance them by introducing regional or global
+ considerations.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+I have developed an entirely new, fully automatic, linear time, clustering
+ method (QuickBundles) which reduces massive tractographies to just a few
+ bundles.
+ These bundles are characterised by representative tracks which are multi-purpos
+e and can be used for interaction with the data or as the basis for applying
+ higher-complexity clustering methods which would have been impossible or
+ too slow with the full data set.
+ QuickBundles is currently the fastest known tractography clustering algorithm.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+After applying QuickBundles to tractographies from different subjects, I
+ show how to use the representative tracks to identify robust landmarks
+ within each subject which I use to directly register the different tractographi
+es together in a highly efficient way.
+ The resulting correspondences provide important evidence for the anatomical
+ plausibility of the derived bundles.
+ I demonstrate how these methods can be used for group analysis, and for
+ atlas creation.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This thesis contributes to the understanding of the diffusion signal in
+ the context of dMRI acquisitions and builds on this foundation towards
+ a more robust brain tractography which approximates more closely the underlying
+ fibre architecture.
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -863,83 +1002,6 @@ COPY ABSTRACT FROM DOC!
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
-\size huge
-\color black
-\lang english
-Summary
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The objective of this thesis is to improve on the methods for inferring
- neural tracts from diffusion weighted magnetic resonance imaging (dMRI).
- Accordingly, I present improvements to the reconstruction, integration,
- segmentation and registration modalities of dMRI analysis.
- 
-\end_layout
-
-\begin_layout Standard
-I compare and evaluate different Cartesian-grid q-space dMRI acquisition
- schemes, using methods based on the Fourier transform of the diffusion
- signal, with reconstructions by diffusion spectrum imaging or generalised
- q-ball imaging methods.
- I propose a new reconstruction method called diffusion nabla imaging (DNI)
- which works with all these acquisition schemes, using an algorithm that
- directly approximates the orientation distribution function using the Laplacian
- of the signal in q-space.
- DNI has impressive accuracy on low angle crossings.
- 
-\end_layout
-
-\begin_layout Standard
-Most previously published reconstruction methods are closely linked to their
- own specific track integration method.
- I have formulated a general, non-inferential, deterministic tractography
- algorithm (EuDX) which is based on Euler integration and trilinear interpolatio
-n, which works with voxel level information about fibre orientations including
- multiple crossings, and employs a range of stopping criteria.
- The purpose of this algorithm is to be faithful to the reconstruction results
- rather than try to correct or enhance them by introducing regional or global
- considerations.
- 
-\end_layout
-
-\begin_layout Standard
-I have developed an entirely new, fully automatic, linear time, clustering
- method (QuickBundles) which reduces massive tractographies to just a few
- bundles.
- These bundles are characterised by representative tracks which are multi-purpos
-e and can be used for interaction with the data or as the basis for applying
- higher-complexity clustering methods which would have been impossible or
- too slow with the full data set.
- QuickBundles is currently the fastest known tractography clustering algorithm.
- 
-\end_layout
-
-\begin_layout Standard
-After applying QuickBundles to tractographies from different subjects, I
- show how to use the representative tracks to identify robust landmarks
- within each subject which I use to directly register the different tractographi
-es together in a highly efficient way.
- I believe the resulting correspondences provide important evidence for
- the anatomical plausibility of the derived bundles.
- I demonstrate how these methods can be used for group analysis, and for
- atlas creation.
- 
-\end_layout
-
-\begin_layout Standard
-This thesis contributes to the understanding of the diffusion signal in
- the context of dMRI acquisitions and builds on this foundation towards
- a more robust brain tractography which hopefully approximates more closely
- the underlying fibre architecture.
 \end_layout
 
 \begin_layout Standard

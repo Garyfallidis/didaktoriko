@@ -46,6 +46,7 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=black"
 \papersize default
 \use_geometry true
 \use_amsmath 1
