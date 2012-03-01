@@ -75,6 +75,994 @@
 \begin_body
 
 \begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+definecolor{magenta}{RGB}{185, 23, 62}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size largest
+\color magenta
+\lang english
+TOWARDS AN ACCURATE BRAIN
+\color inherit
+ 
+\size large
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size largest
+\color magenta
+\lang english
+TRACTOGRAPHY
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+definecolor{magenta}{RGB}{255, 0, 255}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+\lang english
+\begin_inset Graphics
+	filename figures/Cambridge_University_Crest.png
+	lyxscale 20
+	scale 13
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+\lang english
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\shape smallcaps
+\size larger
+\color black
+\lang english
+ELEFTHERIOS GARYFALLIDIS
+\shape default
+\size large
+\color inherit
+
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+\color black
+\lang english
+Wolfson College
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+\color black
+\lang english
+University of Cambridge
+\begin_inset Newline newline
+\end_inset
+
+UK
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+\lang english
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+\color black
+\lang english
+March 2012
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+\lang english
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang english
+A dissertation submitted to the University of Cambridge for the degree of
+ Doctor of Philosophy 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size huge
+\color black
+\lang english
+Supervisors
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+\noun on
+\lang english
+Dr.
+ Ian Nimmo-Smith
+\size default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\noun default
+Medical Research Council 
+\begin_inset Newline newline
+\end_inset
+
+Cognition and Brain Sciences Unit
+\begin_inset Newline newline
+\end_inset
+
+Cambridge,UK
+\noun on
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+\noun on
+\lang english
+Dr.
+ Guy B.
+ Williams
+\size default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\noun default
+Wolfson Brain Imaging Centre 
+\begin_inset Newline newline
+\end_inset
+
+Department of Clinical Neurosciences
+\begin_inset Newline newline
+\end_inset
+
+University of Cambridge
+\begin_inset Newline newline
+\end_inset
+
+Cambridge, UK
+\begin_inset Newline newline
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size huge
+\color black
+\lang english
+Dedication
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+\lang english
+To 
+\begin_inset Newline newline
+\end_inset
+
+my parents 
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+Stavros and Amalia
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang english
+for his creativity and her patience.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang english
+I needed both to excell.
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+\lang english
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+\lang english
+To 
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+the giants of OpenSource
+\end_layout
+
+\begin_layout Standard
+\align center
+who pushed the world forward.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size huge
+\color black
+\lang english
+Acknowledgements
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Ian
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Matthew
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Guy
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Marta
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+John + Virginia
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Stephan
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Frank
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+++ Daniel, Mina, Periklis, Andreas, Magda, 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Rik, Director of Maths, College tutors new and old, 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Vassilis, Dimitris, Alexandros
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Tsiaras, Argyros, Vassilas
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size huge
+\color black
+\lang english
+Disclaimer
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This dissertation is the result of my own work and contains nothing which
+ is the outcome of work done in collaboration with others, except where
+ stated explicitly.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+No part of this dissertation has previously been submitted for any degree
+ or diploma at any institution.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This dissertation does not exceed 60,000 words in length (including tables,
+ footnotes, bibliography and appendices).
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Throughout this dissertation the plural pronoun ‘we’ is used for stylistic
+ reasons and should be taken to refer to either the singular author, the
+ reader and the author or, when stated explicity, the author and collaborators.
+ The form assumed should be apparent from the context.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align right
+
+\lang english
+Eleftherios Garyfallidis
+\begin_inset Newline newline
+\end_inset
+
+January 2012
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align block
+
+\size huge
+\color black
+\lang english
+Publications
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align block
+
+\series bold
+\lang english
+CONFERENCES
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Garyfallidis E
+\series default
+, Brett M, Nimmo-Smith I (2010), 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Fast Dimensionality Reduction for Brain Tractography Clustering
+\emph default
+”, 16th Annual Meeting of the Organization for Human Brain Mapping.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Garyfallidis E
+\series default
+, Brett M, Tsiaras V, Vogiatzis G, Nimmo-Smith I (2010), “
+\emph on
+Identification of corresponding tracks in diffusion MRI tractographies
+\emph default
+” Proc.
+ Intl.
+ Soc.
+ Mag.
+ Reson.
+ Med.
+ 18
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Correia M.M, Williams G.B, Yeh F-C, Nimmo-Smith I, 
+\series bold
+Garyfallidis E
+\series default
+ (2011), 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Robustness of diffusion scalar metrics when estimated with Generalized Q-Samplin
+g Imaging acquisition schemes
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, Proc.
+ Intl.
+ Soc.
+ Mag.
+ Reson.
+ Med.
+ 19 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Garyfallidis E
+\series default
+, Brett M, Amirbekian B., Nguyen C., Yeh F-C, Olivetti E., Halchenko Y., Nimmo-Smith
+ I (2011), 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Dipy - a novel software library for diffusion MR and tractography
+\emph default
+”, 17th Annual Meeting of the Organization for Human Brain Mapping.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Garyfallidis E
+\series default
+, Gerhard S, Avesani P, Nguyen T, Tsiaras V, Nimmo-Smith I, Olivetti E (2012),
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+A software application for real-time, clustering-based exploration of tractograp
+hies
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+,18th Annual Meeting of the Organization for Human Brain Mapping.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+JOURNALS
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Garyfallidis E
+\series default
+, Brett M, Correia M, Williams G.B, Nimmo-Smith I (2012), 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+Effective Real-Time Tractography Clustering with QuickBundles
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+,NeuroImage XXX , submitted.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Chamberlain SR, Hampshire A, Menzies LA, 
+\series bold
+Garyfallidis E
+\series default
+, Grant JE, Odlaug BL, Craig K, Fineberg N, Sahakian BJ (2010), “
+\emph on
+Reduced brain white matter integrity in trichotillomania: a diffusion tensor
+ imaging study.
+\emph default
+” Arch Gen Psychiatry 67(9):965-71
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+OUTREACH
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Garyfallidis E
+\series default
+, Nimmo-Smith I (2010), 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Surfing your brain superhighways
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Presented at the 350th celebration of the Royal Society, London, UK.
+ In the presence of Her Majesty Queen Elizabeth II and His Royal Highness
+ the Duke of Edinburgh.
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+SOFTWARE
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Diffusion Imaging in Python 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ dipy.org 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Free On Shades 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ fos.me
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size huge
+\color black
+\lang english
+Abstract
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The objective of this thesis is to improve on the methods for inferring
+ neural tracts from diffusion weighted magnetic resonance imaging (dMRI).
+ Accordingly, I present improvements to the reconstruction, integration,
+ segmentation and registration modalities of dMRI analysis.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+I compare and evaluate different Cartesian-grid q-space dMRI acquisition
+ schemes, using methods based on the Fourier transform of the diffusion
+ signal, with reconstructions by diffusion spectrum imaging or generalised
+ q-ball imaging methods.
+ I propose a new reconstruction method called diffusion nabla imaging (DNI)
+ which works with all these acquisition schemes, using an algorithm that
+ directly approximates the orientation distribution function using the Laplacian
+ of the signal in q-space.
+ DNI has impressive accuracy on low angle crossings.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Most previously published reconstruction methods are closely linked to their
+ own specific track integration method.
+ I have formulated a general, non-inferential, deterministic tractography
+ algorithm (EuDX) which is based on Euler integration and trilinear interpolatio
+n, which works with voxel level information about fibre orientations including
+ multiple crossings, and employs a range of stopping criteria.
+ The purpose of this algorithm is to be faithful to the reconstruction results
+ rather than try to correct or enhance them by introducing regional or global
+ considerations.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+I have developed an entirely new, fully automatic, linear time, clustering
+ method (QuickBundles) which reduces massive tractographies to just a few
+ bundles.
+ These bundles are characterised by representative tracks which are multi-purpos
+e and can be used for interaction with the data or as the basis for applying
+ higher-complexity clustering methods which would have been impossible or
+ too slow with the full data set.
+ QuickBundles is currently the fastest known tractography clustering algorithm.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+After applying QuickBundles to tractographies from different subjects, I
+ show how to use the representative tracks to identify robust landmarks
+ within each subject which I use to directly register the different tractographi
+es together in a highly efficient way.
+ The resulting correspondences provide important evidence for the anatomical
+ plausibility of the derived bundles.
+ I demonstrate how these methods can be used for group analysis, and for
+ atlas creation.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This thesis contributes to the understanding of the diffusion signal in
+ the context of dMRI acquisitions and builds on this foundation towards
+ a more robust brain tractography which approximates more closely the underlying
+ fibre architecture.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
 filename "Chapter_1.lyx"
