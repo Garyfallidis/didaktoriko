@@ -52,6 +52,13 @@
 
 \begin_layout Section
 Euler Delta Crossings Propagation
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Euler-Delta-Crossings"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection

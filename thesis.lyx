@@ -275,6 +275,24 @@ A dissertation submitted to the University of Cambridge for the degree of
 
 \begin_layout Standard
 
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \size huge
 \color black
 \lang english
@@ -384,6 +402,24 @@ Cambridge, UK
 
 \begin_layout Standard
 
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \size huge
 \color black
 \lang english
@@ -470,6 +506,24 @@ who pushed the world forward.
 
 \lang english
 \begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
 \end_inset
 
 
@@ -573,6 +627,24 @@ Tsiaras, Argyros, Vassilas
 
 \begin_layout Standard
 
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \size huge
 \color black
 \lang english
@@ -655,6 +727,26 @@ January 2012
 
 \lang english
 \begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align block
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
 \end_inset
 
 
@@ -916,6 +1008,19 @@ status open
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -931,6 +1036,24 @@ status open
 
 \lang english
 \begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
 \end_inset
 
 
@@ -1018,6 +1141,29 @@ This thesis contributes to the understanding of the diffusion signal in
  the context of dMRI acquisitions and builds on this foundation towards
  a more robust brain tractography which approximates more closely the underlying
  fibre architecture.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -1028,6 +1174,22 @@ This thesis contributes to the understanding of the diffusion signal in
 
 \lang english
 \begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{page}{1}
+\end_layout
+
 \end_inset
 
 
@@ -1047,16 +1209,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 
 \lang english
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Newpage newpage
+\begin_inset Newpage cleardoublepage
 \end_inset
 
 
