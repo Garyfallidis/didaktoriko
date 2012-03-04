@@ -82,30 +82,14 @@ key "MCC+99,CLC+99"
 
 \end_inset
 
- published nearly 
+ p nearly 
 \begin_inset Formula $12$
 \end_inset
 
- years ago many methods have been invented which depend strictly on the
- underlying voxel model or acquisition paradigm making it very difficult
- for other researchers to apply their methods and evaluate their data sets.
- In sections 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Tractography"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Known-problems"
-
-\end_inset
-
- we presented an initial introduction to the subject of tractography and
- a brief discussion of two of the major types of tractography: deterministic
- and probabilistic.
+ years ago a great number methods have been published.
+ Most of these algorithms depend strictly on the underlying voxel model
+ or acquisition paradigm making it difficult for other researchers to apply
+ their own reconstruciton methods and evaluate their data sets.
 \end_layout
 
 \begin_layout Standard
@@ -117,7 +101,7 @@ ion algorithms of most known algorithms.
  Eu stands for Euler integration, D stands for Delta function which is a
  function that checks for many different stopping criteria and X stands
  for fibre crossings.
- EuDX can deal with any number of crossings as long as the reconstruction
+ EuDX can deal with any number of crossing fibres as long as the reconstruction
  algorithm supports them.
  The purpose of this algorithm is to be faithful to the reconstruction results
  rather than try to correct or enhance them by introducing regional or global
@@ -213,8 +197,9 @@ Local
 Deterministic 
 \series default
 tractography was the first to appear.
- Streamlines are created as trajectories orthograde and retrograde along
- an initial direction at a specific point (seed) in the 3D volume.
+ Tracks (also known as streamlines) are created as trajectories in the form
+ of polylines; orthograde and retrograde along an initial direction at a
+ specific point (seed) in the 3D volume.
  In FACT
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -222,9 +207,18 @@ key "MCC+99"
 
 \end_inset
 
- streamlines are propagated in anequal steps governed by the entry point
- of the streamline in the voxel, Euler integration with equal steps was
- used in Conturo et al 
+ tracks are propagated in anequal steps governed by the entry point of the
+ streamline in the voxel (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:FACTvsEuDX"
+
+\end_inset
+
+).
+ Euler integration with equal steps was used in Conturo et al.
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "CLC+99"
@@ -239,20 +233,18 @@ key "BPP+00"
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Standard
-Deterministic approaches usually stop when a low anisotropy region is encountere
-d (e.g.
- FA drops below 
+ Deterministic approaches usually stop propagating when a low anisotropy
+ region (usually FA < 
 \begin_inset Formula $0.2$
 \end_inset
 
-) to avoid propagation within CSF or GM regions or a large angle changes
- occur (e.g.
+) is found.
+ This is useful in order to avoid propagation within CSF where anatomical
+ tracts do not exist or within deep gray matter regions where tracking is
+ uncertain.
+ They usually check also for large angle changes (e.g.
  larger than 
-\begin_inset Formula $45^{\circ}$
+\begin_inset Formula $90{}^{\circ}$
 \end_inset
 
 ) between successive steps to avoid unrealistically sharp turns.
@@ -260,31 +252,31 @@ d (e.g.
 \end_layout
 
 \begin_layout Standard
-Streamline methods can be also utilized when multiple orientations are estimated
- in a voxel.
- These can be obtained as the principal eigenvectors of multiple Tensors
- fitted to the data 
+Deterministic methods can be also utilized when multiple orientations are
+ estimated in a single voxel (crossing fibres).
+ These orientations can be obtained for example as the principal eigenvectors
+ of multiple Tensors fitted to the data 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Tuch2002ThesisMIT"
 
 \end_inset
 
-, as the local peaks of the diffusion ODF estimated using DSI 
+, or from the local peaks of the diffusion ODF estimated using DSI 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "wedeen2005mapping"
 
 \end_inset
 
- or QBI 
+ and QBI 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Tuch2004"
 
 \end_inset
 
- and fibre ODFs 
+ or from the orientations from the fibre ODFs 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tournier2004direct"
@@ -292,9 +284,10 @@ key "tournier2004direct"
 \end_inset
 
 .
- An approach to deal with these cases, chooses, upon entering a voxel, the
- orientation that produces the smallest curvature with the incoming path
- 
+ There are different approaches for probagating across voxels with more
+ than one fibre directions.
+ On approach is, upon entering a voxel, to choose the orientation that produces
+ the smallest curvature with the incoming path 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "WWS+08"
@@ -322,12 +315,12 @@ key "Descoteaux2009"
 \end_layout
 
 \begin_layout Standard
-Streamline tractography utilizes only the fibre orientation estimates.
- Tensor deflection tractography (TEND) is a FACT variant that uses the whole
- DTI Tensor rather than just its principal eigenvector to determine the
- direction of curve propagation 
+Another interesting point is that most methods which belong in this category
+ utilize only the fibre orientation estimates.
+ Tensor deflection tractography (TEND) proposed by 
 \lang british
-
+Lazar et al.
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "LWT+03"
@@ -336,14 +329,11 @@ key "LWT+03"
 
 
 \lang english
-.
- 
-\end_layout
-
-\begin_layout Standard
-All the methods presented up to this point provide binary connectivity informati
-on.
- A voxel B can be either connected or not connected to the seed S, depending
+ is a FACT variant that uses the whole DTI Tensor rather than just its principal
+ eigenvector to determine the direction of curve propagation.
+ All the methods presented up to this point provide binary connectivity
+ information i.e.
+ a voxel B can be either connected or not connected to the seed S, depending
  on whether a streamline from S passes through B.
  
 \end_layout

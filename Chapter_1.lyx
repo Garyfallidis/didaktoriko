@@ -2424,7 +2424,15 @@ key "MCC+99"
 
 \end_inset
 
-.
+ (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:FACTvsEuDX"
+
+\end_inset
+
+).
  The FACT algorithm starts through the input of an arbitrary point in the
  volume and then tracks in both directions e.g.
  forward and backwards.
@@ -2462,7 +2470,11 @@ key "MCC+99"
 \noun default
 \color inherit
  The simplest case for defining a neighbourhood of a voxel is to use all
- 26 other adjacent (touching) voxels.
+ 
+\begin_inset Formula $26$
+\end_inset
+
+ other adjacent (touching) voxels.
  Now, let's think of how 
 \begin_inset Formula $R$
 \end_inset
@@ -2735,6 +2747,13 @@ status open
 \begin_layout Plain Layout
 With Euler or R-K intergration interpolation is needed.
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:FACTvsEuDX"
 
 \end_inset
 
