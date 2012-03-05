@@ -403,14 +403,16 @@ key "weinstein1999tad"
 \series bold
 Probabilistic
 \series default
- tractography was introduced by 
+ tractography was introduced by Parker et al.
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Parker2003"
 
 \end_inset
 
-,
+, Behrens et al.
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Behrens2003MRM"
