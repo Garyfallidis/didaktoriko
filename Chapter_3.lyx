@@ -1284,19 +1284,27 @@ key "MCC+99,CLC+99,BPP+00"
  and with more recent as those described in 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Descoteaux2009,Yeh2010"
+key "Descoteaux2009"
+
+\end_inset
+
+ and briefly in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
 
 \end_inset
 
 .
- Our concentration was to create a more general streamline tractography
- propagation framework which can be used with very different families of
- anistropic functions and work well with fibre crossings.
+ Our concentration was to create a more general tractography algorithm which
+ can be used with very different families of anistropic functions and work
+ well with fibre crossings.
  This algorithm that we call EuDX is applied usually in native space image
  coordinates and it assumes that the voxel dimensions are equal in all three
- dimensions (isotropic voxel size).
- In order to create streamlines (tracks) we need to provide initially one
- or more seed points 
+ dimensions i.e.
+ it assumes equal voxel size in all three dimensions.
+ In order to create tracks we need to provide initially one or more seed
+ points 
 \begin_inset Formula $S$
 \end_inset
 
@@ -1308,11 +1316,8 @@ key "Descoteaux2009,Yeh2010"
 \end_inset
 
  becomes the starting point for the track propagation.
-\end_layout
-
-\begin_layout Standard
-For the integration we solve for 
-\begin_inset Formula $\mathbf{p}_{t}=\mathbf{p}_{0}+\int_{0}^{t}\mathbf{v}(p(\mathbf{s}))d\mathbf{s}$
+ For the integration we solve for 
+\begin_inset Formula $\mathbf{p}_{t}=\mathbf{p}_{0}+\int_{0}^{t}\mathbf{v}(\mathbf{p}(\mathbf{s}))d\mathbf{s}$
 \end_inset
 
  and we perform the integration numerically using Euler's method 
@@ -1355,19 +1360,37 @@ nd and
 \begin_inset Formula $4$
 \end_inset
 
-th order can be used.
- However, in this document we used only Euler's method.
- For EuDX stopping criteria we can use a standard scalar function like FA
- but we can also use vector functions like Quantitative Anisotropy (QA)
- or even the full Orientation Density Function (ODF).
+th order could be used.
+ However, in this document we only experimented with Euler's method.
+ 
+\end_layout
+
+\begin_layout Standard
+For EuDX's stopping criteria we can use a standard scalar function like
+ FA but we can also use vector functions like Quantitative Anisotropy (QA)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
+
+\end_inset
+
+ or even the full Orientation Density Function (ODF)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "aganj2010reconstruction"
+
+\end_inset
+
+.
  The only constraint for these functions is to be greater or equal to zero
  everywhere in the volume.
  In most cases all these functions try to measure in some way the anisotropy
- of diffusion in every single voxel so we decided to use letter 
+ of diffusion in every single voxel so we decided to use the letter 
 \begin_inset Formula $\mathcal{A}$
 \end_inset
 
- for the purpose of representing all these fields applied on the image grid.
+ for the purpose of representing all these different functions applied on
+ the image grid.
  Therefore, when we write 
 \begin_inset Formula $\mathcal{A}(\mathbf{u}_{i})=\alpha_{i}$
 \end_inset
@@ -1391,16 +1414,17 @@ th order can be used.
 \end_inset
 
 .
- For QA which can allow even for up to 
-\begin_inset Formula $5$
+ For QA which can allow even for any number of peaks but usually we constraint
+ to 
+\begin_inset Formula $3$
 \end_inset
 
- peaks or more we use 
+, we use 
 \begin_inset Formula $\mathcal{A}(\mathbf{u}_{i})=QA_{i}$
 \end_inset
 
  where 
-\begin_inset Formula $i\in[0,4]$
+\begin_inset Formula $i\in[0,2]$
 \end_inset
 
  denotes the current peak.
@@ -1413,8 +1437,8 @@ th order can be used.
 \end_inset
 
 .
- A visual example of the combination of multiple peaks togehter with EuDX
- can be seen in Fig.
+ The concept of tracking with the combination of multiple peaks is presented
+ in Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1423,6 +1447,16 @@ reference "Flo:EuDX_sketch"
 \end_inset
 
 .
+ In order to reduce storing space, the vector 
+\begin_inset Formula $\mathbf{u}$
+\end_inset
+
+ can be replaced by an index to the closest vertex of an evenly distributed
+ and dense unit sphere.
+ For generality and simplicity we require this indexing process even for
+ the case of the Single Tensor where the direction vector is only one.
+ Alternatively, we can see this process as a strategy which always maps
+ any representation of the voxel on the sphere.
 \end_layout
 
 \begin_layout Standard
@@ -1434,12 +1468,6 @@ The EuDX algorithm can be described further in the following way.
  is estimated at every point of the volume.
  This resembles a composite vector field where every point contains the
  peak directions superimposed to the anisotropy values.
- In order to reduce space 
-\begin_inset Formula $\mathbf{u}$
-\end_inset
-
- can be replaced by an index to the closest sampling point of an evenly
- distributed sphere.
  We create an empty list of tracks 
 \begin_inset Formula $T=\emptyset$
 \end_inset
@@ -1448,15 +1476,17 @@ The EuDX algorithm can be described further in the following way.
 \begin_inset Formula $\mathbf{p}_{0j}$
 \end_inset
 
- for every track 
+.
+ Every point 
+\begin_inset Formula $\mathbf{p}_{0j}$
+\end_inset
+
+ will correspond to a track 
 \begin_inset Formula $t_{j}$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-We pick a seed point 
+ In more detail: We pick a seed point 
 \begin_inset Formula $\mathbf{p}_{0}$
 \end_inset
 
@@ -1483,12 +1513,13 @@ noindent
 
 \end_inset
 
- but we need to propagate also towards the opposite direction 
+ but we need to remember to propagate also towards the opposite direction
+ 
 \begin_inset Formula $-\mathbf{v}(\mathbf{p}_{0})$
 \end_inset
 
 .
- Furthermore, as 
+ As 
 \begin_inset Formula $\mathcal{A}$
 \end_inset
 
@@ -1498,14 +1529,13 @@ noindent
 \begin_inset Formula $\mathbf{v}$
 \end_inset
 
- we will need to propagate towards the direction of second maximum, third
- maximum etc.
+ we will need to propagate towards the direction of second peak, third peak
+ etc.
  This is necessary if and only if 
 \begin_inset Formula $\mathcal{A}$
 \end_inset
 
- gives information for multiple peaks (e.g.
- QA).
+ gives information for multiple peaks as it is common with QA.
 \end_layout
 
 \begin_layout Standard
@@ -1526,7 +1556,9 @@ Apart from the direction we need to check when to stop tracking.
 
 .
  This can be useful for cancelling out any seed points which are in the
- background or in very low anisotropy areas where tracking is not recommended.
+ background or in very low anisotropy areas where tracking is not recommended
+ e.g.
+ in the CSF.
  One important point here is that 
 \begin_inset Formula $\mathcal{A}_{thr}$
 \end_inset
@@ -1538,7 +1570,8 @@ Apart from the direction we need to check when to stop tracking.
 
 \begin_layout Standard
 In order to generate a smooth tractography it is recommended to use some
- kind of interpolation.
+ kind of interpolation; this is in contrast with FACT which doesn't use
+ interpolate neighbouring information.
  Here we have been using trilinear interpolation which works in the following
  way.
  The seed devides the neibourhing area (constrained by the centers of the
@@ -1587,7 +1620,7 @@ If
 \begin_inset Formula $\textnormal{arccos}(\mathbf{x}_{i},\mathbf{p}_{n})\leqq\theta_{thr}$
 \end_inset
 
- we count the corresponding weight otherwise we continue to the next weight.
+ we count the corresponding weight; otherwise we continue to the next weight.
  We check simultaneously for the condition 
 \begin_inset Formula $\mathcal{A}(\mathbf{u})<\mathcal{A}_{thr}$
 \end_inset
@@ -1632,16 +1665,18 @@ reference "eq: euler"
 .
  We insert the new point in the track and continue tracking until one of
  the stopping criteria is met.
- Finally, we have to repeat the procedure for the opposite direction of
- the initial 
+ Then next step will be to repeat the procedure for the opposite direction
+ of the initial 
 \begin_inset Formula $\mathbf{v}(\mathbf{p}_{o})$
 \end_inset
 
- and for the smaller peaks as in (2).
+ and for the smaller peaks as descibed above.
+ Finally, we will have to repeat the procedure for the next seed point until
+ all seed points are visited.
 \end_layout
 
 \begin_layout Standard
-Many other thresholds apart from the anisotropic threshold 
+Other stopping criteria apart from the anisotropic threshold 
 \begin_inset Formula $\mathcal{A}_{thr}$
 \end_inset
 
@@ -1649,32 +1684,36 @@ Many other thresholds apart from the anisotropic threshold
 \begin_inset Formula $\theta_{thr}$
 \end_inset
 
- are also incorporated in EuDX.
- a) The total weight 
+ are incorporated in EuDX.
+ These are: a) The total sum of weights 
 \begin_inset Formula $TW$
 \end_inset
 
- check that there is enough overall neighbourhood weighting to continue
+ checks that there is enough overall neighbouring contribution to continue
  tracking (has default value 
 \begin_inset Formula $0.5$
 \end_inset
 
 ).
- This is very useful in edges or corners where you want tracking to stop.
+ This is very useful in edges or corners where tracking should stop.
  b) It is possible for a track to get trapped in a loop and start looping
  for ever.
- We can check for that using a threshold for maximum number of points for
- a track 
+ We can check for that using a maximum length threshold or a threshold for
+ maximum number of points describing a track 
 \begin_inset Formula $MNP$
 \end_inset
 
- (default 
+ (default maximum value 
 \begin_inset Formula $1000$
 \end_inset
 
-).
- c) Also we need to check that we are always inside the 3D volumetric space.
- The dimensions of the volume are hold in vector 
+ points).
+ c) Finally we need to check that we are always inside the image volume.
+ The 
+\begin_inset Formula $3$
+\end_inset
+
+ dimensions of the volume are hold in 
 \begin_inset Formula $V$
 \end_inset
 
@@ -1844,7 +1883,7 @@ name "Alg:EuDX_Main"
 \end_layout
 
 \begin_layout Standard
-In alg.
+In Alg.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1853,7 +1892,7 @@ reference "Alg:EuDX_Main"
 \end_inset
 
  we see how EuDX can be called in order to create an entire tractography.
- The core algorithm which is the same for every seed is given in alg.
+ The core algorithm which is the same for every seed is given in Alg.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1862,7 +1901,7 @@ reference "Alg:EuDX_Core"
 \end_inset
 
 .
- In alg.
+ In Alg.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2252,7 +2291,7 @@ name "Alg:EuDX_Core"
 \end_layout
 
 \begin_layout Standard
-The main corpus of EuDX is given in alg.
+The main corpus of EuDX is given in Alg.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2896,10 +2935,10 @@ Results with digital phantoms
 
 \begin_layout Standard
 In order to validate the performance of EuDX we created a 3-dimensional
- digital phantom with the method described in section 2.8.2-XXX 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "canalesrodriguez2009mdq"
+ digital phantom with the method described in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Digital-Phantoms"
 
 \end_inset
 
@@ -2917,6 +2956,13 @@ key "canalesrodriguez2009mdq"
 \lang english
  and 
 \begin_inset Formula $\lambda_{\perp}=.1\cdot10^{-3}m^{2}/sec$
+\end_inset
+
+ which are in the range typically found in the human brain 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "canalesrodriguez2009mdq"
+
 \end_inset
 
 .
