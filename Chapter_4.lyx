@@ -50,6 +50,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \author "Eleftherios Garyfallidis,,," 
 \author "" 
 \end_header
@@ -1495,7 +1496,7 @@ BIRCH has two key components: first is relatively simple and involves the
  clusters on the basis of their proximity to the clusters, subject to a
  maximum cluster size, or they are added as new leaves into the hierarchical
  tree structure in which the evolving clusters are held.
- There then follow updating steps which can involve the merging off previously
+ There then follow updating steps which can involve the merging of previously
  created clusters in a k-means fashion
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -5366,7 +5367,7 @@ Example of detecting a possibly erroneous 3D bundle (on the left) by projecting
 QB can also simplify detection of tracks which are very dissimilar to others
  and therefore they are very distant from all other clusters.
  Usually when we use a QB threshold of about 
-\change_inserted 0 1319698782
+\change_inserted 1 1319698782
 
 \begin_inset Formula $10$
 \end_inset
@@ -5568,13 +5569,13 @@ key "Smith2006NeuroImage"
  displacements will be applied only on volumetric data and not with point
  data as those used in tractographies.
  Finally, after some considerable effort we found a combination of 
-\change_inserted 1 1319032651
+\change_inserted 2 1319032651
 
 \begin_inset Formula $\texttt{flirt}$
 \end_inset
 
 
-\change_deleted 1 1319032671
+\change_deleted 2 1319032671
 
 \begin_inset ERT
 status open
@@ -5599,13 +5600,13 @@ texttt{flirt}
 \end_inset
 
  and 
-\change_inserted 1 1319032687
+\change_inserted 2 1319032687
 
 \begin_inset Formula $\texttt{fnirtfileutils -withaff}$
 \end_inset
 
 
-\change_deleted 1 1319032700
+\change_deleted 2 1319032700
 
 \begin_inset ERT
 status open
@@ -7366,7 +7367,7 @@ key "fletcher1987practical"
 \end_inset
 
  will be transformed by a rigid rotation and 
-\change_inserted 0 1319745183
+\change_inserted 1 1319745183
 
 \begin_inset Formula $\mathrm{SMD}$
 \end_inset
@@ -7470,7 +7471,7 @@ Experiments
 .
  The first large scale experiment took place using the same tractography
  of a single individual copied and transformed 
-\change_inserted 0 1319745405
+\change_inserted 1 1319745405
 
 \begin_inset Formula $1000$
 \end_inset
@@ -7831,7 +7832,7 @@ Strategy 2
 \series default
 .
  Read the tractography of a single subject,
-\change_deleted 0 1319745849
+\change_deleted 1 1319745849
  
 \change_unchanged
  use a tractographic atlas as the one created in section 
@@ -7847,7 +7848,7 @@ reference "sub:Atlases-made-easy"
 \end_inset
 
 ,
-\change_deleted 0 1319745849
+\change_deleted 1 1319745849
  
 \change_unchanged
  cluster the closest tracks found from the previous step and for each one
