@@ -44,7 +44,7 @@
 
 \author[CBU]{Marta Correia} 
 \ead{marta.correia@mrc-cbu.cam.ac.uk}
-\address[CBU]{MRC Cognition and Brain Sciences Unit, Cambridge, UK}
+\address[CBU]{MRC Cognition and Brain Sciences Unit, 15 Chaucer Road, Cambridge CB2 7EF, UK}
 
 \author[WBIC]{Guy Williams} 
 \ead{gbw1000@wbic.cam.ac.uk}
@@ -147,23 +147,25 @@ During the last 10 years there have been numerous efforts by many
 researchers to address both unsupervised and supervised learning
 problems of brain tractography. As far as we know all these methods
 suffer ultimately from low efficiency, though they do provide many
-useful ideas which are reviewed in \citet{Garyfallidis_thesis}.  We list
-the names of these techniques and the principal papers that apply them
-to tractography clustering: \textit{Hierarchical clustering}
-\citep{Visser2010, gerig2004analysis, Guevara2010, zhang2005dti,
-  jianu2009exploring}; \textit{$k$-means} \citep{ElKouby2005, Tsai2007};
-\textit{Adaptive mean shift} \citep{zvitia2008adaptive, Zvitia2010};
-\textit{Graph theoretic segmentation} \citep{brun2004clustering}
-\textit{$k$-nearest neighbours} \citep{Ding2003a} \textit{Generalized
-  Procrustes Analysis and Principal Components Analysis (PCA)}
-\citep{Corouge2004, corouge2004towards, Corouge2006}
-\textit{Spectral embedding} \citep{ODonnell_IEEETMI07}
-\textit{EM clustering} \citep{Maddah_MICCA2005, maddah2006statistical,
-Maddah_IEEEBI2008, ziyan2009consistency} 
-\textit{Spectral clustering} \citep{jonasson2005fiber};
-\textit{Affinity propagation} \citep{leemans17new, malcolm2009filtered};
-\textit{Hierarchical Dirichlet process mixture model} \citep{wang2010tractography};
-\textit{Current models} \citep{Durrleman2009, durrleman2010registration}.
+useful ideas which we have recently
+reviewed~\citep{Garyfallidis_thesis}.  We list the names of these
+techniques and the principal papers that apply them to tractography
+clustering: \textit{Hierarchical clustering} \citep{Visser2010,
+  gerig2004analysis, Guevara2010, zhang2005dti, jianu2009exploring};
+\textit{$k$-means} \citep{ElKouby2005, Tsai2007}; \textit{Adaptive mean
+  shift} \citep{zvitia2008adaptive, Zvitia2010}; \textit{Graph theoretic
+  segmentation} \citep{brun2004clustering}; \textit{$k$-nearest
+  neighbours} \citep{Ding2003a}; \textit{Generalized Procrustes Analysis
+  and Principal Components Analysis (PCA)} \citep{Corouge2004,
+  corouge2004towards, Corouge2006}; \textit{Spectral embedding}
+\citep{ODonnell_IEEETMI07}; \textit{EM clustering}
+\citep{Maddah_MICCA2005, maddah2006statistical, Maddah_IEEEBI2008,
+  ziyan2009consistency}; \textit{Spectral clustering}
+\citep{jonasson2005fiber}; \textit{Affinity propagation}
+\citep{leemans17new, malcolm2009filtered}; \textit{Hierarchical
+  Dirichlet process mixture model} \citep{wang2010tractography};
+\textit{Current models} \citep{Durrleman2009,
+  durrleman2010registration}.
 
 % \begin{description}
 
@@ -235,9 +237,9 @@ no anatomic relevance and bundles which are frequently tangled together
 in many areas. Furthermore, we can observe that there is a strong
 disagreement on the number of clusters (\numrange{10}{60}).
 
-Because of the difficulty of the problem an international contest was
-also organized by SchLab in Pittsburgh University (PBC Brain
-Connectivity Challenge - IEEE ICDM) in 2009. However, the competition
+Because of the difficulty of this important problem an international contest was
+organized by SchLab in Pittsburgh University in 2009 (PBC Brain
+Connectivity Challenge - IEEE ICDM). However, the competition
 did not conclude with any directly viable solutions. We think that in
 order to find big clusters a lot of anatomical prior knowledge needs to
 be introduced in a way that is not yet established. Instead, the
@@ -274,10 +276,13 @@ tractography analysis research.
 
 \subsection{\label{sub:track-distances}Track distances and preprocessing}
 
-The approach we have taken with track coding has gone in parallel with
-the selection of appropriate metrics for inter-track distances.
-Numerous inter-track distance metrics have been proposed~\citep{Ding2003, MaddahIPMI2007, zhang2005dti}. The most common is the
-Hausdorff distance~\citep[and many other
+Another observation from foregoing literature review is that a wide
+range of approaches have been taken to how the raw track data in
+tractographies is coded. The approach we have taken with track coding
+has gone in parallel with the selection of appropriate metrics for
+inter-track distances.  Numerous inter-track distance metrics have been
+proposed~\citep{Ding2003, MaddahIPMI2007, zhang2005dti}. The most common
+is the Hausdorff distance~\citep[and many other
 studies]{corouge2004towards}. There are two primary disadvantages of
 this metric: (1) it ignores the sequential nature of the tracks and
 treats each track simply as a cloud of points, and (2) its computation
@@ -285,25 +290,25 @@ requires every point on the first track to be compared with every point
 on the second track, and vice versa. For these reasons we have opted to
 use a very simple symmetric distance \citep{EGMB10, Visser2010} which we
 call Minimum average Direct-Flip (MDF) distance
-$d_{\textrm{mdf}}(s_{A},s_{B})$ between track $s_{A}$ and track $s_{b}$,
+$d_{\textrm{MDF}}(s,s')$ between track $s$ and track $s'$,
 see Eq.~(\ref{eq:direct_flip_distance}). This distance can be applied
 only when both tracks have the same number of points. Therefore we
 assume that an initial downsampling of tracks has been implemented,
 where all segments on a track have approximately the same length, and
 all tracks have the same number of segments, $K$ which is much less than
-the number of segments in the typical raw track. Under this assumption MDF is
-defined as:
+the number of segments in the typical raw track. Under this assumption
+MDF is defined as:
 
 \begin{eqnarray}
-\textrm{MDF} & = & \min(d_{\textrm{d}},d_{\textrm{f}}),\,\textrm{where}\nonumber\\
-d_{\textrm{d}}(s_{A},s_{B}) & = & \frac{1}{K}\sum_{i=1}^{K}|x_{i}^{A}-x_{i}^{B}|,\,\textrm{and}\label{eq:direct_flip_distance} \\
-d_{\textrm{f}}(s_{A},s_{B}) & = & \frac{1}{K}\sum_{i=1}^{K}|x_{i}^{A}-x_{K-i}^{B}|,\nonumber
+\textrm{MDF}(s,s') & = & \min(d_{\textrm{direct}}(s,s'),d_{\textrm{flipped}}(s,s')),\,\textrm{where}\nonumber\\
+d_{\textrm{direct}}(s,s') & = & \frac{1}{K}\sum_{i=1}^{K}|x_{i}-x_{i}'|,\,\textrm{and}\label{eq:direct_flip_distance} \\
+d_{\textrm{flipped}}(s,s') & = & \frac{1}{K}\sum_{i=1}^{K}|x_{i}-x_{K-i}'|,\nonumber
 \end{eqnarray}
 
 \noindent
-where $K$ is the number of points $x_{i}$ on the two tracks $A$ and $B$
-and $|x-y|$ denotes the euclidean distance between two points $x$ and
-$y$.
+where $K$ is the number of points $x_{i}$ and $x_{i}'$ on the two tracks $s$ and $s'$
+and $|x-x'|$ denotes the euclidean distance between two points $x$ and
+$x'$.
 
 In some stages in the analysis of tractographies we find a use for metrics from the family of Hausdorff distances
 which for simplicity we denote as MAM distances -- short for Minimum,
@@ -316,17 +321,17 @@ useful for some applications. The equations below show the formulation
 of these distances:
 
 \begin{eqnarray}
-d_{\textrm{mean}}(s_{A},s_{B}) & = & \frac{1}{K_{A}}\sum_{i=1}^{K_{A}}d(x_{i}^{A},s_{B}),\nonumber \\
-d_{\textrm{min}}(s_{A},s_{B}) & = & \min_{j=1,...,K_{B}}d(x_{i}^{A},s_{B}),\,\textrm{and}\label{eq:minimum_distance}\\
-d_{\textrm{max}}(s_{A},s_{B}) & = & \max_{j=1,...,K_{B}}d(x_{i}^{A},s_{B}),\,\textrm{where}\label{eq:maximum distance}\\
-d(x,s_{B}) & = & \min_{j=1,...,K_{B}}|x-x_{j}^{B}|.\nonumber \\
-\textrm{MAM}_{\textrm{min}} & = & \min(d_{\textrm{mean}}(s_{A},s_{B}),d_{\textrm{mean}}(s_{B},s_{A}))\label{eq:min_average_distance}\\
-\textrm{MAM}_{\textrm{max}} & = & \max(d_{\textrm{mean}}(s_{A},s_{B}),d_{\textrm{mean}}(s_{B},s_{A}))\nonumber \\
-\textrm{MAM}_{\textrm{mean}} & = & (d_{\textrm{mean}}(s_{A},s_{B})+d_{\textrm{mean}}(s_{B},s_{A}))/2\label{eq:mean_average_distance}\end{eqnarray}
+d_{\textrm{mean}}(s,s') & = & \frac{1}{K_{A}}\sum_{i=1}^{K}d(x_{i},s'),\nonumber \\
+d_{\textrm{min}}(s,s') & = & \min_{i=1,...,K}d(x_{i},s'),\,\textrm{and}\label{eq:minimum_distance}\\
+d_{\textrm{max}}(s,s') & = & \max_{i=1,...,K }d(x_{i},s'),\,\textrm{where}\label{eq:maximum distance}\\
+d(x,s') & = & \min_{j=1,...,K'}|x-x_{j}'|.\nonumber \\
+\textrm{MAM}_{\textrm{min}} & = & \min(d_{\textrm{mean}}(s,s'),d_{\textrm{mean}}(s',s))\label{eq:min_average_distance}\\
+\textrm{MAM}_{\textrm{max}} & = & \max(d_{\textrm{mean}}(s,s'),d_{\textrm{mean}}(s',s))\nonumber \\
+\textrm{MAM}_{\textrm{mean}} & = & (d_{\textrm{mean}}(s,s')+d_{\textrm{mean}}(s',s))/2\label{eq:mean_average_distance}\end{eqnarray}
 
 
 \noindent
-where the number of points $K_{A}$ and $K_{B}$ on the two tracks
+where the number of points $K=\#s$ and $K'=\#s'$ on the two tracks
 are not necessarily the same. For the same threshold value $\textrm{MAM}_{\textrm{min}}$,
 $\textrm{MAM}_{\textrm{max}}$ and $\textrm{MAM}_{\textrm{mean}}$
 will give different results. For example, $\textrm{MAM}_{\textrm{min}}$ will
@@ -340,14 +345,14 @@ However, we have not investigated them in this work in relation to
 clustering algorithms.
 
 \begin{figure}
-\includegraphics[scale=0.6]{distances}
-\centering{}\caption{Distances used in this work. The main distance used is minimum average
-direct flip (MDF) distance $\textrm{MDF}=\min(d_{\textrm{d}},d_{\textrm{f}})$
+\includegraphics[scale=0.5]{distances2}
+\centering{}\caption{The principal distance used in this work is minimum average
+direct flip distance $\textrm{MDF}=\min(d_{\textrm{direct}},d_{\textrm{flipped}})$
 which is a symmetric distance that can deal with the track bi-directionality
 problem; it works on tracks which have the same number of points.
 Another distance is the mean average distance which is again symmetric
 but does require the tracks to have the same number of points
-$\textrm{MAM}_{\textrm{mean}}=(d_{mean}(s_{A},s_{B})+d_{mean}(s_{B},s_{A}))/2$.
+$\textrm{MAM}_{\textrm{mean}}=(d_{mean}(s,s')+d_{mean}(s',s))/2$.
 In this figure the components of both distances are shown; the tracks are drawn with solid
 lines, and then with dashed lines we connect the
 pairs of points of the two tracks whose distances contribute to the
@@ -395,7 +400,7 @@ diffusion work-in-progress sequence, and STEAM
 method. The field of view was $240\times240\,\textrm{mm}^{2}$, matrix size
 $96\times96$, and slice thickness $2.5\,\textrm{mm}$ (no gap).  $55$ slices were
 acquired to achieve full brain coverage, and the voxel resolution was
-$2.5\times2.5\times2.5\textrm{mm}^{3}$. A $102$-point half grid
+$2.5\times2.5\times2.5\,\textrm{mm}^{3}$. A $102$-point half grid
 acquisition \citep{Yeh2010} with a maximum $b$-value of $4000\, \textrm{s/mm}^{2}$
 was used. The total acquisition time was $14'\,21''$ with
 TR=$8200\,\textrm{ms}$ and TE=$69\,\textrm{ms}$. The experiment was approved
@@ -522,8 +527,9 @@ be obtained offering a potentially more refined cluster distances which
 take into account the additional information. However we leave this for
 investigation at a later stage.
 
+
 \begin{figure}
-\includegraphics[scale=0.27]{last_figures/LSC_algorithm}
+\includegraphics[scale=0.25]{last_figures/LSC_algorithm}
 \caption{QB step-by-step: Initially in panel (i) 6
   unclustered tracks (A-F) are presented; imagine that the distance
   threshold used is the MDF distance (Eq. [reference needed]) between B
