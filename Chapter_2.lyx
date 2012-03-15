@@ -42,7 +42,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \author "Ian Nimmo-Smith,,," 
 \author "" 
@@ -71,6 +71,14 @@ Between one
 \change_unchanged
 thirds of imaging voxels in the human brain's white matter are thought to
  contain multiple fibre bundle crossings
+\change_inserted 0 1331820052
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Behrens2007NeuroImage"
@@ -191,7 +199,7 @@ like
 and
 \change_unchanged
  in 
-\change_deleted 0 1331649319
+\change_deleted 0 1331819780
 Qball Imaging
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -199,10 +207,8 @@ key "Tuch2004"
 
 \end_inset
 
-
-\change_unchanged
 ,
-\change_inserted 0 1331649510
+\change_inserted 0 1331819788
  Generalized Q-sampling Imaging (GQI) 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -210,7 +216,7 @@ key "Yeh2010"
 
 \end_inset
 
-
+,
 \change_deleted 0 1331649508
  or
 \change_unchanged
@@ -320,7 +326,7 @@ Theory
 
 \change_inserted 0 1331652178
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -339,7 +345,7 @@ Would this Fig.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -370,14 +376,32 @@ Showing the ODFs from two randomly oriented simulated
 
  angles between each other using different grid based reconstruction methods.
  The parameters used here are DSI: radial sampling 
-\begin_inset Formula $2.1-6$
+\change_inserted 0 1331820233
+range 
+\change_unchanged
+
+\begin_inset Formula $[2.1,6$
 \end_inset
 
-, hanning filter width 
+
+\change_inserted 0 1331820250
+]
+\change_unchanged
+, 
+\change_inserted 0 1331820222
+H
+\change_deleted 0 1331820221
+h
+\change_unchanged
+anning filter width 
 \begin_inset Formula $36$
 \end_inset
 
- , GQI: 
+
+\change_deleted 0 1331820264
+ 
+\change_unchanged
+, GQI: 
 \begin_inset Formula $\text{\lambda=1.2}$
 \end_inset
 
@@ -566,6 +590,19 @@ and
  because the time scale is the same for the entire sequence
 \change_unchanged
 .
+
+\change_inserted 0 1331820697
+ (We note in passsing that the shape of 
+\begin_inset Formula $P_{\Delta}$
+\end_inset
+
+ and hence of the ODF may change with different values of 
+\begin_inset Formula $\Delta$
+\end_inset
+
+.
+ We will not pursue this matter further here.)
+\change_unchanged
  
 \change_inserted 0 1331651656
 
@@ -811,22 +848,6 @@ SEE Figure Introduction
 \change_unchanged
 ).
 \change_inserted 0 1331653316
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-ADD FIGURE OF THE PROPAGATOR FOR SINGLE DOUBLE AND TRIPLE CROSSINGS AND
- EXPLAIN MORE 
-\end_layout
-
-\end_inset
-
-
-\change_deleted 0 1331652362
 
 \end_layout
 
@@ -1293,11 +1314,7 @@ s
 \begin_inset Formula $\mathbf{s}$
 \end_inset
 
- is a vector with all the signal values, 
-\begin_inset Formula $6D=0.01506$
-\end_inset
-
-
+ is a vector with all the signal values, D=0.00251
 \change_inserted 0 1331653673
 
 \begin_inset Note Note
@@ -1785,16 +1802,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Change u with f
-\end_layout
-
-\end_inset
-
- The diffusion signal has the beautiful property to be minimum along the
+The diffusion signal has the beautiful property to be minimum along the
  direction of a fibre with unit direction 
 \begin_inset Formula $\mathbf{\hat{\bm{f}}}$
 \end_inset
@@ -2662,7 +2670,7 @@ key "Tournier2007"
 \end_inset
 
  introduced a spherical deconvolution method where first the SH coefficients
- were reconstructed by 
+ were reconstructed by XXXXX
 \change_inserted 0 1331655689
 
 \begin_inset Note Note
@@ -2682,25 +2690,8 @@ something missing here?
 \change_unchanged
 , then single fiber ODFs are used as a deconvolution kernel estimated from
  the real data.
- Then the sharper fODF 
-\change_inserted 0 1331655790
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 0 1331655790
-(fiber orientation distribution function) 
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-was obtained by a simple linear transformation 
+ Then the sharper fODF (fiber orientation distribution function) was obtained
+ by a simple linear transformation 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "descoteaux2007deterministic"
@@ -2845,67 +2836,6 @@ key "ong2010quantifying"
 .
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset CommandInset citation
-LatexCommand cite
-key "ozarslan2009simple"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-The idea that only the orientation information from the diffusion signal
- is adequate for accurate tractography generation is under question.
- We propose a new method based on the work of Yeh et al.
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Yeh2010"
-
-\end_inset
-
- who extends the current derivations for diffusion signal reconstruction
- and provides both scalar and vector metrics that facilitate the understanding
- of the underlying signal and its use for fast and accurate tractography.
- The key issue is the re-entrance of the spin density as an important part
- of the diffusion voxel reconstruction.
- The spin density together with the diffusion propagator give rise to the
- spin propagator.
- From the spin propagator both old metrics like FA and MD can be calculated
- non-parametrically along with new metrics as NPA which give higher insight
- on the underlying signal in a model free fashion.
- We also show important comparisons between FA and QA0 (quantitative anisotropy
- - first component) in different acquisition paradigms.
- QA a new voxel vector metric introduced by 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Yeh2010"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Implementation 
 \end_layout
@@ -2997,21 +2927,11 @@ reference "Flo:sEITvsEIT"
 \begin_inset Formula $642$
 \end_inset
 
- vertices 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-and the signal is centered inside a cubic grid of size 
+ vertices and the signal is centered inside a cubic grid of size 
 \begin_inset Formula $16\times16\times16$
 \end_inset
 
- where 
-\end_layout
-
-\end_inset
-
- and the radial integration (
+ where  and the radial integration (
 \begin_inset Formula $q$
 \end_inset
 
@@ -3784,7 +3704,7 @@ b
 a
 \series default
  but none of the unlabeled points could be a second peak.
- Nevertheless we found alg.
+ Nevertheless we found Alg.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3797,7 +3717,7 @@ reference "Alg:PeakFinding"
 \change_inserted 0 1331657371
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -4434,7 +4354,7 @@ name "Flo:multi-fibre-sims"
 \change_inserted 0 1331679341
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -6455,6 +6375,18 @@ reference "Flo:x-shape-fat-tensor-zoomed"
 \end_inset
 
 .
+ The values of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ are based on 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Canales-Rodriguez2009"
+
+\end_inset
+
+.
 \change_inserted 0 1331800978
 
 \begin_inset Note Note
@@ -6491,7 +6423,7 @@ reference "Flo:x-shape-fat-tensor"
 ).
  However we can also see that all six methods (DSI, GQI, GQI2, EITL, EITL2,
  EITS) can resolve correctly the fiber directions by looking at their spherical
- distribution functions colourmaped with a standard 'jet' colourmap.
+ distribution functions using a standard colour map.
 \change_inserted 0 1331801042
 
 \begin_inset Note Note
@@ -6675,11 +6607,11 @@ status collapsed
 \begin_inset Formula $5$
 \end_inset
 
-.
+.j
 \change_inserted 0 1331762491
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -9630,7 +9562,19 @@ dipy.org
 
 \begin_layout Standard
 
+\change_inserted 0 1331819849
+
 \lang british
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "diffusion"
+options "ieeetr"
+
+\end_inset
+
+
+\change_deleted 0 1331819849
+
 \begin_inset Note Note
 status open
 
@@ -9649,6 +9593,8 @@ options "plain"
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
