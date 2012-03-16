@@ -18,8 +18,9 @@
 
 \makeatletter
 
-\newfloat{algorithm}{tbp}{loa}
+\newfloat{algorithm}{H}{loa}[section]
 \floatname{algorithm}{Algorithm}
+%\newcounter{algorithm}
 \journal{Neuroimage}
 
 \def\argmin{\mathop{\operator@font arg\,min}} 
@@ -99,11 +100,34 @@ seed points used to generate the tractography but also on how the
 propagation algorithm handles voxels with underlying fiber crossings.
 
 The size of these tractographies makes them difficult to interpret and
-visualize. A clustering of some kind seems to be a solution to simplify
-the complexity of these data sets and provide a useful segmentation;
-however most of the proposed tractography clustering algorithms in the
-literature (see~\citet{Garyfallidis_thesis} for a review) are very slow
-and often need to calculate a matrix of inter-track distances of size
+visualize. A clustering of some kind seems to be an obvious route to
+simplify the complexity of these data sets and provide a useful
+segmentation.  As a result, during the last 10 years there have been
+numerous efforts by many researchers to address both unsupervised and
+supervised learning problems of brain tractography. Though these studies
+do provide many useful ideas, all these methods suffer ultimately from
+lack of practical efficiency.
+
+Current clustering tecniques and the principal studies that have applied them to tractographies include:
+\textit{Hierarchical clustering} \citep{Visser2010,
+  gerig2004analysis, Guevara2010, zhang2005dti, jianu2009exploring};
+\textit{$k$-means} \citep{ElKouby2005, Tsai2007}; \textit{Adaptive mean
+  shift} \citep{zvitia2008adaptive, Zvitia2010}; \textit{Graph theoretic
+  segmentation} \citep{brun2004clustering}; \textit{$k$-nearest
+  neighbours} \citep{Ding2003a}; \textit{Generalized Procrustes Analysis
+  and Principal Components Analysis (PCA)} \citep{Corouge2004,
+  corouge2004towards, Corouge2006}; \textit{Spectral embedding}
+\citep{ODonnell_IEEETMI07}; \textit{EM clustering}
+\citep{Maddah_MICCA2005, maddah2006statistical, Maddah_IEEEBI2008,
+  ziyan2009consistency}; \textit{Spectral clustering}
+\citep{jonasson2005fiber}; \textit{Affinity propagation}
+\citep{leemans17new, malcolm2009filtered}; \textit{Hierarchical
+  Dirichlet process mixture model} \citep{wang2010tractography};
+\textit{Current models} \citep{Durrleman2009,
+  durrleman2010registration}.
+
+Most of these proposed tractography clustering algorithms are very slow
+and many need to calculate a matrix of inter-track distances of size
 $\mathcal{O}(N^2)$. This number of computations puts a very heavy load
 on clustering algorithms, making them too inefficient and therefore too
 impractical for everyday analysis as it is difficult to compute all
@@ -149,12 +173,12 @@ account of and preserve this structure.  Moreover each item is either
 added to an existing cluster on the basis of a distance between the
 cluster descriptor of the item and the descriptors of the current set of
 clusters. Clusters are held in a list which is extended according to
-need. Unlike amalgamation clustering algorithms such as $k$-means or
-split\citep{steinhaus1956division, macqueen1967some} and BIRCH
-\citep{zhang1997birch}, there is no reassignment or updating phase --
-once an item is assigned to a cluster it stays there, and clusters are
-not amalgamated. For further discussion of the relationship between QB
-and BIRCH see~\ref{sub:BIRCH}.
+need. Unlike amalgamation clustering algorithms such as
+$k$-means~\citep{steinhaus1956division, macqueen1967some} or
+BIRCH~\citep{zhang1997birch}, there is no reassignment or updating phase
+-- once an item is assigned to a cluster it stays there, and clusters
+are not amalgamated. For further discussion of the relationship between
+QB and BIRCH see section~\ref{sub:BIRCH}.
 
 QB creates an online list of cluster nodes. The cluster node is defined
 as $c=\{I,\mathbf{h},n\}$ where $I$ is the list of the integer indices
@@ -193,7 +217,7 @@ track. For further consideration of this issue
 see~\ref{sub:The-bi-directionality-problem}. The complete QB algorithm
 is described in formal detail in Alg.~\ref{Alg:QuickBundles} and a
 simple step by step visual example is given in
-Fig. \ref{Fig:LSC_simple}.  One of the reasons why QB has on average
+Fig.~\ref{Fig:LSC_simple}.  One of the reasons why QB has on average
 linear time complexity derives from the structure of the cluster node:
 we only save the sum of current tracks in the cluster and this is
 achieved cumulatively; moreover there is no recalculation of clusters,
@@ -1281,6 +1305,8 @@ dipy.org.
 \selectlanguage{english}
 
 \begin{appendices}
+\numberwithin{equation}{section}
+\numberwithin{algorithm}{section}
 
 \section{The QB algorithm\label{Sec:QB-Algorithm}}
 
