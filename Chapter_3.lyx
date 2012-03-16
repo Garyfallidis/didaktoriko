@@ -209,6 +209,16 @@ key "MCC+99"
 
  tracks are propagated in anequal steps governed by the entry point of the
  streamline in the voxel (see Fig.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1439,7 +1449,17 @@ key "aganj2010reconstruction"
 .
  The concept of tracking with the combination of multiple peaks is presented
  in Fig.
- 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:EuDX_sketch"
@@ -1594,8 +1614,11 @@ In order to generate a smooth tractography it is recommended to use some
 \begin_inset Formula $w$
 \end_inset
 
- that assign the contribution of the peaks of the neighbouring voxels to
- the seed's next direction.
+ that assign the contribution of the directions of the peaks of the neighbouring
+ voxels to the seed's next direction.
+ It is important to clarify in this point that trilinear interpolation is
+ used only for interpolating the directions of the propagation and not the
+ values of the peaks.
 \end_layout
 
 \begin_layout Standard
@@ -1740,7 +1763,7 @@ mathcal{A}$, $
 \backslash
 mathcal{I}$, $S$, $U$, $
 \backslash
-Delta s$, $VS$ 
+Delta s$, $V$ 
 \backslash
 
 \backslash
@@ -1755,7 +1778,7 @@ hspace*{2.5em} $
 \backslash
 mathcal{A}_{thr}$,$
 \backslash
-theta_{thr}$, $TW$, $MNP$ (thresholds) 
+theta_{thr}$, $TW$, $MNP$ 
 \backslash
 
 \backslash
@@ -1855,7 +1878,7 @@ textbf{Append}($T$,t)
 
 
 \backslash
-caption{EuDX Tractography}
+caption{EuDX -- All tracks}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1891,8 +1914,14 @@ reference "Alg:EuDX_Main"
 
 \end_inset
 
- we see how EuDX can be called in order to create an entire tractography.
- The core algorithm which is the same for every seed is given in Alg.
+ we see how EuDX creates an entire tractography with tracks grown from seeds
+ 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ The core algorithm which is the same for every seed and every peak is given
+ in Alg.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1909,17 +1938,17 @@ reference "Alg:EuDX_Main"
 
 \end_inset
 
- the inputs are: 
+ the input parameters are: 
 \begin_inset Formula $\mathcal{A}$
 \end_inset
 
- the 4D volume holding the strength of anisotropy in relation to the indexed
- directions of sphere 
-\begin_inset Formula $U$
+ the 4D volume holding the peak values, 
+\begin_inset Formula $\mathcal{I}$
 \end_inset
 
- given in 
-\begin_inset Formula $\mathcal{I}$
+ the 4D volume with the indexed directions of each peak in relation to unit
+ sphere 
+\begin_inset Formula $U$
 \end_inset
 
 .
@@ -1945,10 +1974,6 @@ reference "Alg:EuDX_Main"
 \end_inset
 
  array with the precomputed 
-\begin_inset Formula $M$
-\end_inset
-
-
 \family roman
 \series medium
 \shape up
@@ -1958,7 +1983,7 @@ reference "Alg:EuDX_Main"
 \noun off
 \color none
 \lang british
- seed points (seeds).
+seeds.
  
 \family default
 \series default
@@ -1983,8 +2008,8 @@ reference "Alg:EuDX_Main"
 \noun off
 \color none
 \lang british
- is the propagation step.
- We also need the different stopping thresholds
+ is the propagation step size.
+ We also input different stopping thresholds
 \family default
 \series default
 \shape default
@@ -1998,7 +2023,7 @@ reference "Alg:EuDX_Main"
 \begin_inset Formula $\mathcal{A}_{thr}$
 \end_inset
 
- defines the lowest possible anisotropy value that allows tracking to continue.
+ defines the lowest possible peak value that allows tracking to continue.
  
 \begin_inset Formula $\theta_{thr}$
 \end_inset
@@ -2022,7 +2047,24 @@ reference "Alg:EuDX_Main"
 
  checks this condition by counting the number of current points appended
  in a track as the track grows.
- 
+ Usually, only parameters 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ ,
+\begin_inset Formula $S$
+\end_inset
+
+ and 
+\begin_inset Formula $V$
+\end_inset
+
+ need to be updated with different datasets; the rest of the parameters
+ can have default values which can be used across all experiments.
 \end_layout
 
 \begin_layout Standard
@@ -2041,7 +2083,7 @@ status open
 \backslash
 textbf{Input} seed, peak, $
 \backslash
-Delta S$, $V$ thresholds 
+Delta S$, $V$ 
 \backslash
 
 \backslash
@@ -2062,6 +2104,17 @@ textbf{Output} track
 \begin_layout Plain Layout
 
 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$track=
+\backslash
+emptyset$
 \backslash
 
 \backslash
@@ -2291,7 +2344,7 @@ name "Alg:EuDX_Core"
 \end_layout
 
 \begin_layout Standard
-The main corpus of EuDX is given in Alg.
+The core part of EuDX is given in Alg.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2300,7 +2353,7 @@ reference "Alg:EuDX_Core"
 \end_inset
 
 .
- This is called for every seed and peak.
+ This is called for every seed and every peak.
  The algorithm starts by calling the function Initial_Direction which finds
  the closest peak direction to follow from the nearby voxels and if the
  values of these peaks are lower than 
@@ -2311,7 +2364,15 @@ reference "Alg:EuDX_Core"
  initial direction.
  The variable delta is used as check point that no stopping criteria are
  met.
- As long as delta is True we can continue tracking.
+ As long as delta is True we can continue tracking using Euler integration
+ (see eq.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: euler"
+
+\end_inset
+
+).
  The function New_Direction calculates the new direction of the propagation
  by accumulating the weights created by trilinear interpolation as shown
  in eq.
@@ -2341,9 +2402,21 @@ reference "eq: euler"
 \end_inset
 
  and repeat the same procedure until one of the stopping criteria is met
- (by checking variable delta).
- Finally, we repeat the same for the retrograde direction in order to create
- the entire track.
+ by checking variable delta.
+ We remind here that the name EuDX stems its D letter from that delta boolean
+ function.
+ After tracking towards the orthograde direction has stopped and lambda
+ is now False, we repeat the same procedure as before for the retrograde
+ direction in order to create the complete track (see Alg.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Alg:EuDX_Core"
+
+\end_inset
+
+).
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2931,18 +3004,25 @@ name "Alg:EuDX Nearest Direction"
 
 \begin_layout Subsection
 Results with digital phantoms
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Results-with-digital"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-In order to validate the performance of EuDX we created a 3-dimensional
- digital phantom with the method described in section 
+In order to validate the performance of EuDX we created a 3D digital phantom
+ with the method described in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Digital-Phantoms"
 
 \end_inset
 
- with eigen values
+ using eigen values 
 \begin_inset Formula $\lambda_{\parallel}=1.7\cdot10^{-3}$
 \end_inset
 
@@ -2955,7 +3035,7 @@ reference "sub:Digital-Phantoms"
 
 \lang english
  and 
-\begin_inset Formula $\lambda_{\perp}=.1\cdot10^{-3}m^{2}/sec$
+\begin_inset Formula $\lambda_{\perp}=0.1\cdot10^{-3}m^{2}/sec$
 \end_inset
 
  which are in the range typically found in the human brain 
@@ -2967,20 +3047,20 @@ key "canalesrodriguez2009mdq"
 
 .
  The digital phantom consists of two parts: a) a diagonal orbit and b) an
- elliptical orbit with ( with axes ratio
-\begin_inset Formula $\text{\lambda}_{2}=0.6\lambda_{1})$
+ elliptical orbit with (with axes ratio 
+\begin_inset Formula $\nicefrac{\lambda_{2}}{\lambda_{1}}=0.6)$
 \end_inset
 
 .
  Both parts were added together to create a crossing configuration and no
- partial volume effects were simulated.
+ partial volume effects are assumed negligible.
  The average thickness of both parts was 
-\begin_inset Formula $~5$
+\begin_inset Formula $5$
 \end_inset
 
  voxels.
  The elliptical orbit did not complete a full ellipsis in order to avoid
- tracks from looping forever.
+ creating looping tracks which have no anatomical relevance.
  We created two experiments using the same data set of size 
 \begin_inset Formula $64\times64\times64\times102$
 \end_inset
@@ -2994,15 +3074,29 @@ key "canalesrodriguez2009mdq"
 \begin_inset Formula $101$
 \end_inset
 
-) plus the unweighted b0 volume (see Fig.
- 
+) plus 
+\begin_inset Formula $1$
+\end_inset
+
+ unweighted b0 volume (see Fig.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:crossing_eudx_sims"
 
 \end_inset
 
-(i) lower right - jet colourmap).
+(i) lower right corner).
  We generated b-vectors and b-values by using a keyhole Cartesian sampling
  grid
 \begin_inset CommandInset citation
@@ -3012,9 +3106,25 @@ key "Tuch2002ThesisMIT"
 \end_inset
 
 (see Fig.
- q-space Introduction 1.5 XXX); therefore, DSI, GQI, EIT or DTI were suitable
- for the signal reconstruction into orientation distributions or Tensors
- respectively.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Fig:q-space"
+
+\end_inset
+
+ upper left); therefore, DSI, GQI, EIT or DTI were suitable for the signal
+ reconstruction into ODFs or Tensors respectively.
  For both experiments we used a high SNR of 
 \begin_inset Formula $100$
 \end_inset
@@ -3026,7 +3136,17 @@ key "Tuch2002ThesisMIT"
 
 \begin_layout Standard
 In the first experiment (see Fig.
- 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:crossing_eudx_sims"
@@ -3037,7 +3157,7 @@ reference "Flo:crossing_eudx_sims"
 \begin_inset Formula $200,000$
 \end_inset
 
- uniformly random seeds in the 3D volume.
+ uniformly sampled random seeds in the entire 3D volume.
  We used DSI reconstruction with standard parameters: q-space grid size
  
 \begin_inset Formula $16$
@@ -3056,7 +3176,7 @@ reference "Flo:crossing_eudx_sims"
 \end_inset
 
  at steps of 
-\begin_inset Formula $.2$
+\begin_inset Formula $0.2$
 \end_inset
 
 .
@@ -3070,9 +3190,15 @@ reference "Flo:crossing_eudx_sims"
 \begin_inset Formula $1280$
 \end_inset
 
- faces) and from the ODF we using the peak finding function introduced in
- Ch.
- 2.6 XXX.
+ faces) and from the ODF we used the peak finding function introduced in
+ section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Peak-Finding"
+
+\end_inset
+
+.
  We further removed the peaks which had values less that 
 \begin_inset Formula $70\%$
 \end_inset
@@ -3083,7 +3209,11 @@ reference "Flo:crossing_eudx_sims"
 \end_inset
 
 .
- We also calculated FA and zeroed the peaks with FA values less than 
+ From now on we will call this output function from the ODF; PK.
+ PK is different from QA because we do not remove the isotropic component
+ neither normalize with water maximum ODF value.
+ CHECK!!! We also calculated FA and zeroed the peaks with FA values less
+ than 
 \begin_inset Formula $0.2$
 \end_inset
 
@@ -3098,6 +3228,9 @@ Finally, we called EuDX with parameters
 \end_inset
 
 ,
+ 
+\lang english
+
 \begin_inset ERT
 status open
 
@@ -3120,7 +3253,17 @@ Delta s=0.5$
 
  and visualized the tracks.
  The results are shown in Fig.
- 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:crossing_eudx_sims"
@@ -3133,10 +3276,21 @@ reference "Flo:crossing_eudx_sims"
  Because we generated random seeds that went everywhere in the phantom some
  of them had to be in the crossing area.
  In accordance with what we discussed in the previous section we know that
- if a seed fall in a crossing region EuDX will propagate towards both directions
- of the crossing if and only if multiple peaks are supported from the underlying
- reconstruction method.
- We can confirm this by looking at fig
+ if a seed falls in a crossing region EuDX will propagate towards both direction
+s of the crossing if and only if multiple peaks are supported from the underlyin
+g reconstruction method.
+ We can confirm this by looking at Fig.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:crossing_eudx_sims"
@@ -3151,7 +3305,7 @@ reference "Flo:crossing_eudx_sims"
  all with one colour and the tracks of the straight orbit all with a second
  colour.
  It seems that this had to do with the discrete nature of the phantom especially
- near the boundaries of the phantom.
+ near the bundles boundary areas.
  Therefore, we created a different experiment to evaluate this observation.
  
 \end_layout
@@ -3178,9 +3332,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Left panel shows the tractrography for a software phantom generated by EuDX
- with DSI as the reconstruction method.
- 
+(i) Tractrography generated by EuDX with DSI as the reconstruction method
+ for a software phantom.
+ A slice from the b0 volume of the phantom is also shown at the lower right
+ corner.
+ (ii), (iii) In higher resolution we can see that tracks travelling from
+ the two different bundles crossing unimpeded in the intersection area of
+ the two bundles.
 \end_layout
 
 \end_inset
@@ -3204,17 +3362,27 @@ In the second experiment we generated
 \begin_inset Formula $2000$
 \end_inset
 
- seeds inside specific areas (see Fig.
- 
+ seeds inside specific regions (see left panel of Fig.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:eudx_fromABCD"
 
 \end_inset
 
--left panel).
- More precisely the end-point areas of the phantom denoted with A,B,C and
- D.
+).
+ More precisely the end-point areas of the phantom denoted with A, B, C
+ and D.
  The goal was to count the percentage of tracks which reached any of the
  other end-point areas.
  We tried this with 
@@ -3251,11 +3419,16 @@ n sphere of
 \end_inset
 
  vertices.
- The same peaking function was also used with the ODFs of EITL,GQI and DSI.
- For these 3 methods the peaking procedure was the same as described in
- the previous experiment.
- The single peak of the DTI reconstruction was found by the corresponding
- eigenvalues and eigenvectors.
+ The same peaking function was also used with the ODFs of EITL, GQI and
+ DSI.
+ For these 
+\begin_inset Formula $3$
+\end_inset
+
+ methods the peaking procedure was the same as described in the previous
+ experiment.
+ The single peak of the DTI reconstruction was found by the eigenvector
+ corresponding to the the maximum eigenvalue.
  EuDX expects the orientation input of the peaks as indices on a unit sphere;
  therefore, for the eigenvector which corresponds to the maximum eigenvalue
  we found the vertex in the reconstruction sphere (used above) with the
@@ -3264,8 +3437,18 @@ n sphere of
 \end_layout
 
 \begin_layout Standard
-The results of this study are summarized in tab.
- 
+The results of this study are summarized in Tab.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Tab:EuDX_AtoB"
@@ -3276,19 +3459,26 @@ reference "Tab:EuDX_AtoB"
  A first general observation is that independently from which end-points
  the tracks start there will be always a percentage of tracks which will
  stop before reaching the other end-points.
- We can see clearly this phenomenon by looking at the last column (
+ We can see clearly this phenomenon by looking at the last column of each
+ sub-table.
+ The last column that we symbolize with 
 \begin_inset Formula $\emptyset$
 \end_inset
 
-) of each sub-table; where the best case was 
+ holds the percentage of tracks which did not reach any of the other end-points
+ i.e.
+ tracks which started from seeds in region A never reached regions B, C
+ or D.
+ We can observe in those columns that the best case was 
 \begin_inset Formula $3.7\%$
 \end_inset
 
- loss (EITL) and and the worst case was 
+ loss from reconstructions using EITL and and the worst case was 
 \begin_inset Formula $43.5\%$
 \end_inset
 
- (DTI).
+ using DTI.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -4781,7 +4971,7 @@ Every sub-table shows the percentage of tracks which started from areas
  For example by looking only the first row of each sub-table we easily observe
  that the crossing area was well represented by EITL, DSI and GQI but not
  from DTI as it was expected because the Single Tensor cannot resolve crossings.
- We can also observe by comparing all rows that in the more curved branch
+ We can also observe by comparing all the rows that in the more curved branch
  of the phantom less tracks reached their target that in the diagonal branch.
 \end_layout
 
@@ -4811,7 +5001,17 @@ So, why is there always an amount of tracks which will not reach the other
  (3D volumes) is concentrated close to the boundaries of the volumes; therefore
  many from the random seeds will fall close to the boundaries.
  In addition, the boundaries are not smooth (see Fig.
- 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:eudx_fromABCD"
@@ -4840,7 +5040,17 @@ Another general observation is that in the curved branch less tracks reached
  their target than in the diagonal branch.
  This is sensible because the discretization is more asymmetric in the curved
  branch (see Fig.
- 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:eudx_fromABCD"
@@ -4881,7 +5091,7 @@ On the left panel we see the b0 volume of the digital phantom and on top
 \begin_inset Formula $4$
 \end_inset
 
- ROIs; A,B,C and D.
+ ROIs; A, B, C and D.
  
 \begin_inset Formula $2000$
 \end_inset
@@ -4916,7 +5126,17 @@ name "Flo:eudx_fromABCD"
 
 \begin_layout Standard
 In the right panel of Fig.
- 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:eudx_fromABCD"
@@ -4924,20 +5144,28 @@ reference "Flo:eudx_fromABCD"
 \end_inset
 
  we see that the tracks which started from ROI A, reached only ROI C when
- we used the peaks from the Single Tensor reconstruction method as input
- to EuDX.
+ we used the peaks from the Single Tensor reconstruction as input to EuDX.
  However when we used EITL the tracks which started from A, reached both
  B and C.
- The tracks didn't reach ROI D because of the angular threshold 
-\begin_inset Formula $\theta_{thr}=60^{\circ}$
+ The tracks did not reach ROI D because of the angular threshold 
+\begin_inset Formula $\theta_{thr}$
 \end_inset
 
 .
- This was another positive confirmation about the performance of EuDX which
- identified that even if the seeds are not in the crossing region because
- of the trilinear interpolation when the tracks will reach the crossing
- region they will follow the branch to which there are closer to in angular
- distance.
+ In contrast tracks which traveled from the right part of the bundle did
+ reach ROI C.
+ This happened because the trilinear interpolation close to the intersection
+ area gave more weight to the directions of the neighbouring voxels and
+ the diverting angle was less than 
+\begin_inset Formula $\theta_{thr}$
+\end_inset
+
+.
+ This was another confirmation about the behaviour of EuDX in crossing areas
+ which identified that even if the seeds are not in the intersection region
+ of the two bundles because of the usage of trilinear interpolation in EuDX
+ when the tracks will reach the crossing region they will follow the branch
+ to which there are closer to in terms of spatial and angular distances.
  
 \end_layout
 
@@ -4946,39 +5174,70 @@ Results with humans
 \end_layout
 
 \begin_layout Standard
-We wanted to investigate how EuDX performed with healthy subjects.
- There are mainly two ways to do validate tractographies with real data.
+We wanted to investigate how EuDX performed with real data.
+ There are mainly two ways to validate tractographies with real data.
  The first is to compare against the results of another tractography method
- and the second is to ask feedback from specialist medical practitioners
- who have good understanding of the underlying anatomy.
+ which has already gone through anatomical validation from experts and the
+ second is to ask directly feedback from specialist neuroanatomists who
+ have good understanding of the underlying anatomy.
  We investigated first the second approach.
  In order to do that we generated tractographies (see Fig.
- 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:arcuate_and_whole_brain"
 
 \end_inset
 
- (right panel)) and asked from expert neuroanatomists Professor Luigi Cataneo
+ right panel) and asked from expert neuroanatomists Professor Luigi Cataneo
  and Dr.
  Nivedita Agarwal from the Center for Brain/Mind Science (CiMeC) in Trento,
  Italy to validate the quality of the data in relationship to their knowledge
  from anatomy and manually label bundles of their scientific interest in
  different subjects.
- They manually found and labeled on first subject arcuate fasciculus (AC)
- which is depicted in Fig.
- 
+ They manually found and labeled on first subject Arcuate Fasciculus (AC)
+ which is depicted in the left panel of Fig.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:arcuate_and_whole_brain"
 
 \end_inset
 
- (left panel).
- They also identified in a different subject the right Corticospinal bundle
+.
+ They also identified in a second subject the right Corticospinal bundle
  depicted in Fig.
- 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:cst_cst_bcc"
@@ -4991,7 +5250,7 @@ reference "Flo:cst_cst_bcc"
 
 \begin_layout Standard
 In order to perform the manual labeling we developed an interactive visualizatio
-n application (
+n application (available in 
 \begin_inset ERT
 status open
 
@@ -5008,14 +5267,15 @@ fos.me
  of the initial tractography into bundles of interest (BOIs).
  Bundles means here a collection of tracks with similar spatial and shape
  characteristics.
- After the BOIs are created the medical practitioner can select one or more
- BOIs interactively and hide the other parts of the tractography which are
- not interesting to hers/his investigations.
+ After the BOIs are created the medical practitioners can select one or
+ more BOIs interactively and hide the other parts of the tractography which
+ are not interesting to their investigations.
  This application will not be the topic of this chapter but it is further
- explained in Chapter 5 (Section? XXXXX).
-\end_layout
+ explained in Chapter 5.
+\begin_inset Note Note
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Frey2008"
@@ -5039,16 +5299,42 @@ key "glasser2008dti"
 
 \end_layout
 
+\end_inset
+
+ Our experts used this tool to quickly select bundles of their interest.
+\end_layout
+
 \begin_layout Standard
 The tractographies shown in Fig.
- 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:arcuate_and_whole_brain"
 
 \end_inset
 
- and left panel of Fig.
+ and at the left panel of Fig.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:cst_cst_bcc"
@@ -5059,7 +5345,7 @@ reference "Flo:cst_cst_bcc"
 \begin_inset Formula $\mathcal{A}_{thr}=0.02$
 \end_inset
 
-,
+, 
 \begin_inset ERT
 status open
 
@@ -5119,7 +5405,6 @@ key "merboldt1992diffusion,MAB04"
 \end_inset
 
 .
- In this experiment much less gradient vectors were used.
  A 
 \begin_inset Formula $102$
 \end_inset
@@ -5222,16 +5507,17 @@ name "Flo:arcuate_and_whole_brain"
 
 \begin_layout Standard
 The tractographies were generated in diffusion native space and then linearly
- registered in For that reason FA volumes were generated from the same data
- sets using Tensor fitting with weighted least squares after skull stripping
- with FSL BET.
+ registered in MNI space.
+ For that reason FA volumes were generated from the same data sets using
+ Tensor fitting with weighted least squares after skull stripping with FSL
+ BET.
  These FA volumes were again in diffusion native space therefore we used
  FSL FLIRT to align them in MNI space.
- For this purpose a standard template (
+ For this purpose a standard FA atlas (
 \begin_inset Formula $\texttt{FMRIB58\_FA\_1mm}$
 \end_inset
 
-) from the FSL toolbox was used as the reference volume.
+) from the FSL toolbox was used as the reference image.
  We then applied the affine transformation matrix from the previous step
  to the initial tractography to align it to MNI space.
  
@@ -5239,14 +5525,14 @@ The tractographies were generated in diffusion native space and then linearly
 
 \begin_layout Standard
 In order to help the neuroanatomists to guide themselves with the segmentation
- of bundles we linearly registered structural MRIs - T1 (MPRAGE) images
- from the same subjects to the standard template (
+ of bundles we linearly registered structural MRIs i.e.
+ T1 (MPRAGE) images from the same subjects to the standard template (
 \begin_inset Formula $\texttt{MNI152\_T1\_1mm\_brain}$
 \end_inset
 
 ).
- Therefore, the tractography and the T1 image were properly aligned in the
- same space.
+ Therefore, the tractography and the T1 image were registered in the same
+ space.
  This was very useful for the neuroanatomists because they could find known
  bundles from the regions they connect in the cortex which are better visible
  in the T1 rather than in FA.
@@ -5288,7 +5574,7 @@ Left panel: EuDX tracks from the CST segmented by our expert neuroanatomists.
 \begin_inset Formula $-1$
 \end_inset
 
-) from the same subject is shown.
+) from the same subject is also visible.
 \end_layout
 
 \end_inset
@@ -5312,9 +5598,26 @@ name "Flo:cst_cst_bcc"
 \end_layout
 
 \begin_layout Standard
-In the previous section we observed from our simulation experiments that
- EuDX was able to propagate correctly in crossing areas (see Fig.
- 
+In section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Results-with-digital"
+
+\end_inset
+
+ we discussed with simulation experiments that EuDX was able to propagate
+ correctly in crossing areas (see Fig.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:crossing_eudx_sims"
@@ -5328,7 +5631,17 @@ reference "Flo:crossing_eudx_sims"
  bundles: the Body of Corpus Callosum (BCC) and the Corticospinal Tract
  (CST).
  In Fig.
- 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:cst_cst_bcc"
@@ -5370,12 +5683,8 @@ The left and right Cingulum (CG) bundles of
 \end_inset
 
  healthy subjects are presented here.
- CGs were selected in MNI space from entire EuDX tractophies of 1 million
- seeds and GQI with sampling length 
-\begin_inset Formula $\lambda=1.2$
-\end_inset
-
-.
+ Left and right CGs were selected in MNI space from entire EuDX tractophies
+ of 1 million seeds and GQI as the reconstruction input.
  We also show the T1 image slice Z=
 \begin_inset Formula $10$
 \end_inset
@@ -5405,9 +5714,10 @@ name "Flo:cingulum_12_subjects"
 \end_layout
 
 \begin_layout Standard
-We wanted also to compare specific bundles across different healthy subjects.
- We concentrated at an one not so often studied bundle: the Cingulum; across
- 
+In this following experiment we visually compared specific bundles across
+ different healthy subjects.
+ We concentrated at a pair of bundles not so often studied in literature:
+ the Cingulum; across 
 \begin_inset Formula $12$
 \end_inset
 
@@ -5437,7 +5747,17 @@ key "moriBook"
 \end_inset
 
  subjects (see Fig.
- 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:cingulum_12_subjects"
@@ -5446,13 +5766,13 @@ reference "Flo:cingulum_12_subjects"
 
 ).
  In this atlas, the cingulum was selected using the visualization tool described
- before from the entire tractography generated with 
+ before from the entire tractography.
+ The reconstruction parameters and EuDX parameters were the same as before
+ with the exception of the number of initial seeds which was 
 \begin_inset Formula $1$
 \end_inset
 
- million seeds.
- The reconstruction parameters and EuDX parameters were the same as before
- with the exception of the number of initial seeds.
+ million.
  Furthermore the tractographies of all subjects were registered together
  with the structural imagines in MNI space.
  The only exeception was with last subject 
@@ -5465,7 +5785,17 @@ reference "Flo:cingulum_12_subjects"
 \end_inset
 
 ) (see bottom-right corner of Fig.
- 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:cingulum_12_subjects"
@@ -5481,10 +5811,6 @@ SLF PROBTRACKX VERSUS EUDX - Try to use with all
 \end_inset
 
  EITL, DSI and GQI.
-\end_layout
-
-\begin_layout Standard
-ADD Timing experiment.
 \end_layout
 
 \begin_layout Standard

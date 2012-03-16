@@ -197,11 +197,48 @@ key "taylor1985spatial"
 
 \end_layout
 
+\begin_layout Subsection
+Molecular diffusion
+\end_layout
+
+\begin_layout Standard
+Molecular diffusion is a process that occurs incessantly in biological materials
+, fluids in particular, 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Should we say everywhere rather than fluids?
+\end_layout
+
+\end_inset
+
+ and accounts for a number of interesting phenomena; the dMRI signal measures
+ the history of the random (Brownian) displacements of spin-labelled hydrogen
+ protons (spins) resolved in the direction of a magnetic field gradient.
+ Though the actual probability displacement function of the protons is unaffecte
+d by the presence or variation in the magnetic field, the cumulative phase
+ change in the spins reflects the changes in the position-dependent spin
+ frequency induced by the field gradient.
+ Components of the diffusion motion along the direction of the gradient
+ induce such changes.
+ The signal change due to cumulative dephasing is greatest when this coincides
+ with a direction that allows greater random displacements, e.g.
+ because of the orientation of a microstructure within which the proton
+ is moving.
+ It is this link between the directional dependence of the dMRI signal and
+ the orientations of the supposed underlying brain fibres that provides
+ the unique insights of diffusion tractography.
+ In dMRI it is assumed that the protons will move more along the directions
+ of the axons and less perpendicular to that direction.
+ 
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -242,43 +279,6 @@ name "Flo:three_slices"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Molecular diffusion
-\end_layout
-
-\begin_layout Standard
-Molecular diffusion is a process that occurs incessantly in biological materials
-, fluids in particular, 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Should we say everywhere rather than fluids?
-\end_layout
-
-\end_inset
-
- and accounts for a number of interesting phenomena; the dMRI signal measures
- the history of the random (Brownian) displacements of spin-labelled hydrogen
- protons (spins) resolved in the direction of a magnetic field gradient.
- Though the actual probability displacement function of the protons is unaffecte
-d by the presence or variation in the magnetic field, the cumulative phase
- change in the spins reflects the changes in the position-dependent spin
- frequency induced by the field gradient.
- Components of the diffusion motion along the direction of the gradient
- induce such changes.
- The signal change due to cumulative dephasing is greatest when this coincides
- with a direction that allows greater random displacements, e.g.
- because of the orientation of a microstructure within which the proton
- is moving.
- It is this link between the directional dependence of the dMRI signal and
- the orientations of the supposed underlying brain fibres that provides
- the unique insights of diffusion tractography.
- In dMRI it is assumed that the protons will move more along the directions
- of the axons and less perpendicular to that direction.
- 
 \end_layout
 
 \begin_layout Standard
