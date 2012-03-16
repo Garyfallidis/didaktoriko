@@ -3376,6 +3376,13 @@ reference "Flo:FastvsStandardEITL"
 
 \begin_layout Subsection
 Peak Finding
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Peak-Finding"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
