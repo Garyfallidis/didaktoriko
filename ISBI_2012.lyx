@@ -1,0 +1,897 @@
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\end_preamble
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 20page%
+\topmargin 15page%
+\rightmargin 15page%
+\bottommargin 15page%
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "Ian Nimmo-Smith,,," 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+Cartesian Grid Q-space Reconstruction
+\end_layout
+
+\begin_layout Section*
+Overview
+\end_layout
+
+\begin_layout Standard
+Between one to two thirds of imaging voxels in the human brain's white matter
+ are thought to contain multiple fiber crossings
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Behrens2007NeuroImage"
+
+\end_inset
+
+, in which case the Diffusion Tensor model proposed by Basser et al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Basser1994"
+
+\end_inset
+
+ breaks down.
+ High Angular Resolution Diffusion Imaging (HARDI) methods 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tuch2002"
+
+\end_inset
+
+ such as Diffusion Spectrum Imaging (DSI) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "callaghan1988nmr"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wedeen2005mapping"
+
+\end_inset
+
+ or Higher Order Tensors 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ozarslan2003generalized"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "barmpoutis2009regularized"
+
+\end_inset
+
+ and many more reconstruction methods have been proposed to overcome the
+ limitations of the Diffusion Tensor.
+ Although all methods have some underlying assumptions; we generally separate
+ them in two categories a) model-based and b) model-free.
+ Model-based methods like the Single Tensor or Multi Tensor require a number
+ of parameters to be fitted.
+ By contrast for model-free methods fitting is not necessary and the directional
+ity of the underlying tissue can be approximated by some re-parametrization
+ or re-transformation of the signal.
+ The latter is usually more efficient than fitting models with many parameters
+ which typically call for iterative methods.
+ 
+\end_layout
+
+\begin_layout Standard
+For the purpose of the HARDI reconstruction workshop we used GQI2
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Garyfallidis_thesis"
+
+\end_inset
+
+ a non-parametric method to find the ODFs 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tuch2002"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "aganj2010reconstruction"
+
+\end_inset
+
+.
+ From these ODFs we can find the number of peaks (number of fiber compartments)
+ and if there is only one peak then we fit the Single Tensor in the data
+ otherwise we keep the initial GQI2 ODF.
+\end_layout
+
+\begin_layout Section
+Theory
+\end_layout
+
+\begin_layout Standard
+According to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Callaghan1991OUP"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "callaghan1988nmr"
+
+\end_inset
+
+ using the narrow pulse gradient spin echo (PGSE) sequence of Tanner and
+ Stejskal.
+ The 
+\series bold
+k
+\series default
+-space reconstruction gives us diffusion weighted image data 
+\begin_inset Formula $S$
+\end_inset
+
+ which reveal the average propagator 
+\begin_inset Formula $P_{\Delta}$
+\end_inset
+
+ of each voxel according to the following equation 
+\begin_inset Formula \begin{eqnarray}
+S(\mathbf{v},\mathbf{q}) & = & \int\rho(\mathbf{v})P_{\Delta}(\mathbf{v},\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}.\label{eq:W}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+ where
+\begin_inset Formula $\Delta$
+\end_inset
+
+ is the time between diffusion gradients, 
+\begin_inset Formula $P_{\Delta}$
+\end_inset
+
+ is the average diffusion propagator (transition probability distribution),
+ 
+\series bold
+
+\begin_inset Formula $\mathbf{v}$
+\end_inset
+
+
+\series default
+ is the voxel coordinate, and 
+\begin_inset Formula $\mathbf{r}$
+\end_inset
+
+ is the diffusion displacement.
+ For the rest of the chapter we consider each voxel independently and assume
+ intra-voxel spatial homogeneity so we can drop explicit reference to 
+\begin_inset Formula $\mathbf{v}$
+\end_inset
+
+and 
+\begin_inset Formula $\Delta$
+\end_inset
+
+.
+ We can also replace the spin density 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+
+\begin_inset Formula $\rho(\mathbf{v})$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+ with 
+\begin_inset Formula $S_{0}$
+\end_inset
+
+ i.e.
+ the measured signal without diffusion weighting 
+\begin_inset Formula $\mathbf{q}=\mathbf{0}$
+\end_inset
+
+.
+ Therefore we can write
+\begin_inset Formula \begin{eqnarray}
+S(\mathbf{q}) & = & S_{0}\int P(\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}\label{eq:S}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By applying the 3D Fourier transform in eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:S"
+
+\end_inset
+
+ we can reconstruct the average propagator also known as the diffusion spectrum
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WWS+08"
+
+\end_inset
+
+
+\begin_inset Formula \begin{eqnarray}
+P(\mathbf{r}) & = & S_{0}^{-1}\int S(\mathbf{q})\exp(-i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}\label{eq:P}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+ or diffusion propagator.
+ It was shown by Wedeen et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wedeen"
+
+\end_inset
+
+ that the dMRI signal is positive for any type of spin motion without net
+ flux (i.e.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+spin displacements due to thermal molecular agitation) or other random fluxes
+ such as intravoxel incoherent motion.
+ Under this assumption we can replace the complex signal 
+\begin_inset Formula $S$
+\end_inset
+
+ with its modulus 
+\begin_inset Formula $|S|$
+\end_inset
+
+ in eq.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:P"
+
+\end_inset
+
+)
+\begin_inset Formula \begin{eqnarray}
+P(\mathbf{r}) & = & S_{0}^{-1}\int|S(\mathbf{q})|\exp(-i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}\label{eq:P_modulus}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The modulus of the signal coincides with the output of the standard MRI
+ scanners as dMRI and that simplifies the acquisition procedure.
+ It represents the density of the average relative spin displacement in
+ a voxel.
+ In other words, 
+\begin_inset Formula $P(\mathbf{r})\, d\mathbf{r}$
+\end_inset
+
+ is a measure of the probability that a spin in a chosen voxel , during
+ the experimental mixing time 
+\begin_inset Formula $\Delta$
+\end_inset
+
+, would make a vector displacement 
+\begin_inset Formula $\mathbf{r}$
+\end_inset
+
+.
+ We can visualize the propagator for every voxel as a 3D density volume.
+\end_layout
+
+\begin_layout Standard
+Since we are mainly interested in the angular structure of the underlying
+ tissue, we further simplify the data by taking the weighted radial summation
+ of 
+\begin_inset Formula $P(\mathbf{r})$
+\end_inset
+
+
+\lang british
+
+\begin_inset Formula \begin{equation}
+\psi_{DSI}(\hat{\mathbf{u}})=\int_{0}^{\infty}P(r\hat{\mathbf{u}})r^{2}dr\label{eq:ODF_DSI}\end{equation}
+
+\end_inset
+
+This defines the orientation density function (ODF) for DSI which measures
+ the quantity of diffusion in the direction of the unit vector 
+\begin_inset Formula $\mathbf{\hat{u}}$
+\end_inset
+
+ where 
+\begin_inset Formula $\mathbf{r=}r\hat{\mathbf{u}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+Note at this point that in order to find the ODF we have to create first
+ the diffusion propagator by 
+\lang english
+applying
+\lang british
+ the Fourier transform on the lattice.
+ 
+\lang english
+Yeh et al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
+
+\end_inset
+
+ proposed a direct way to calculate a slightly different ODF using the Cosine
+ transform.
+ In order to represent the average propagator in the scale of spin quantity
+ Yeh et al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
+
+\end_inset
+
+ introduced the 
+\emph on
+spin density function 
+\emph default
+
+\begin_inset Formula $Q$
+\end_inset
+
+ which is estimated by scaling the average propagator 
+\begin_inset Formula $P_{\Delta}$
+\end_inset
+
+ with the spin density 
+\begin_inset Formula $\rho$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $Q(\mathbf{r})=\rho P(\mathbf{r})=S_{0}P(\mathbf{r})$
+\end_inset
+
+.
+ From eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:S"
+
+\end_inset
+
+ we obtain
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+
+\begin_inset Formula \begin{eqnarray}
+S(\mathbf{q}) & = & \int Q(\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}\label{eq:W2Q}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align block
+We can apply the Fourier transform again to eq.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:W2Q"
+
+\end_inset
+
+ and obtain
+\begin_inset Formula \begin{eqnarray}
+Q(\mathbf{r}) & = & \int S(\mathbf{q})exp(-i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{q}\label{eq:Q2S_complex}\end{eqnarray}
+
+\end_inset
+
+because
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+ 
+\begin_inset Formula $Q(\mathbf{r})$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+ is real and 
+\begin_inset Formula $S(\mathbf{q})$
+\end_inset
+
+ is symmetric (even), i.e.
+ 
+\begin_inset Formula $S(\mathbf{q})=S(-\mathbf{q})$
+\end_inset
+
+, we can use directly the Fourier Cosine transform to calculate
+\begin_inset Formula \begin{eqnarray}
+Q(\mathbf{r}) & = & \int S(\mathbf{q})cos(2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{q}\label{eq:cosine_transform}\end{eqnarray}
+
+\end_inset
+
+and obtain the orientation distribution function 
+\begin_inset Formula $\psi_{GQI}$
+\end_inset
+
+ (ODF) from an unweighted truncated radial projection
+\begin_inset Formula \begin{eqnarray}
+\psi_{GQI}(\mathbf{\hat{u}}) & = & \intop_{0}^{\lambda}Q(r\mathbf{\hat{u}})dr\label{eq:SDF}\\
+ & = & \lambda\int S(\mathbf{q})\mathtt{sinc}(2\pi r\mathbf{q}\cdot\mathbf{\hat{u}})d\mathbf{q}\end{eqnarray}
+
+\end_inset
+
+where 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is a constant called the diffusion sampling length.
+ This parameter acts like a smoothing factor.
+ The higher 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ the more detailed the ODF will be but also easier affected by noise.
+ This ODF was used as the basis of the analysis of the GQI method.
+ However, we consentrated to a similar ODF like the one produced using DSI
+ where we need to take into consideration the weighted truncated radial
+ projection.
+ This will give us a different ODF which we symbolize with 
+\begin_inset Formula $\psi_{GQI_{2}}$
+\end_inset
+
+
+\begin_inset Formula \begin{eqnarray}
+\psi_{GQI2}(\mathbf{\hat{u}}) & = & \intop_{0}^{\lambda}Q(r\mathbf{\hat{u}})r^{2}dr\label{eq:SDF2}\\
+ & = & \lambda^{3}\int S(\mathbf{q})H(2\pi r\mathbf{q}\cdot\mathbf{\hat{u}})d\mathbf{q}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+ where 
+\begin_inset Formula $H(x)=\begin{cases}
+\frac{2\cos(x)}{x^{2}} & +\frac{(x^{2}-2)\sin(x)}{x^{3}},x\neq0\\
+ & 1/3\qquad\qquad,x=0\end{cases}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align left
+This equation can be implemented analytically in a simple matrix form
+\begin_inset Formula \begin{eqnarray*}
+\bm{\psi}_{GQI2} & = & \mathbf{s}\cdot\mathtt{H}((6D\cdot G\circ\mathbf{b}\circ\mathbb{1})\cdot G)\lambda^{3}/\pi\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align left
+where 
+\begin_inset Formula $\cdot$
+\end_inset
+
+ denotes standard matrix or vector dot product, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+
+\begin_inset Formula $\circ$
+\end_inset
+
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+denotes the Hadamard product, 
+\begin_inset Formula $\mathbf{y}$
+\end_inset
+
+ is 
+\begin_inset Formula $\psi_{GQI}$
+\end_inset
+
+ as a 
+\begin_inset Formula $M$
+\end_inset
+
+-dimensional vector with components corresponding to the selected directions
+ 
+\begin_inset Formula $\hat{\mathbf{u}}$
+\end_inset
+
+ on the ODF sphere, 
+\begin_inset Formula $\mathbf{s}$
+\end_inset
+
+ is a vector with all the signal values, 
+\begin_inset Formula $D=0.0025$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+ where 
+\begin_inset Formula $D$
+\end_inset
+
+ is a constant known as the the free water diffusion coefficient
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+, 
+\begin_inset Formula $G$
+\end_inset
+
+ is the 
+\begin_inset Formula $N\times3$
+\end_inset
+
+ matrix with the gradient vectors, 
+\begin_inset Formula $\mathbf{b}$
+\end_inset
+
+ is the 
+\begin_inset Formula $N\times1$
+\end_inset
+
+ matrix with the b-values and 
+\begin_inset Formula $\mathbb{1}$
+\end_inset
+
+ is the 
+\begin_inset Formula $N\times3$
+\end_inset
+
+ incidence matrix where all values are equal to 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ This method has not to date been published with real or simulated data
+ sets.
+\end_layout
+
+\begin_layout Standard
+We use 
+\begin_inset Formula $\lambda=3.,3.3,3.5$
+\end_inset
+
+ for the provided phantoms with SNR 
+\begin_inset Formula $10,20,30$
+\end_inset
+
+ respectively.
+ In the case where a single peak is found the Single Tensor model is fitted
+ using Weighted Least Squares and the standard ODF for that is generated.
+ 
+\end_layout
+
+\begin_layout Section*
+Conclusion
+\end_layout
+
+\begin_layout Standard
+Non-parametric methods have the advantage of representing the signal with
+ minimum number of assumptions and without needing any fitting.
+ For many years there has been a trend in science to prefer model-based
+ rather than model free (non-parametric) methods.
+ This is perhaps because model-based can be easier to describe, and more
+ readily allow the use of popular Bayesian approaches.
+ However, there are some crucial issues with fitting: (a) Usually the interestin
+g models have many parameters and that makes fitting very slow.
+ (b) Commonly non-linear fitting is needed and accurate fitting is not trivial.
+ (c) Often the model does not represent precisely the complexity of the
+ real problem.
+ (d) The more complex the model, the more difficult to fit 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rice2006mathematical"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lee1997bayesian"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "montgomery2001introduction"
+
+\end_inset
+
+.
+ The source code for the methods described here can be found in dipy (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+dipy.org
+\end_layout
+
+\end_inset
+
+).
+ An exampe of our method can be seen in Fig.
+ 1.
+ GQI2 is a method theoretically identical with the framework of Equatorial
+ Inversion Transform (EIT) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Garyfallidis_thesis"
+
+\end_inset
+
+ with Laplacian weighting.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename hardi_isbi2012/isbi2012.png
+	lyxscale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Result showing our reconstruction ODFs with the training data set (SNR 30)
+ provided from the organizers of the HARDI Workshop 2012
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1 1331819849
+
+\lang british
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "diffusion"
+options "ieeetr"
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_body
+\end_document
