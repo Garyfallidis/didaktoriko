@@ -111,10 +111,9 @@ GQI2 ODF.
 % measures the quantity of diffusion in the direction of the unit vector
 % $\mathbf{\hat{u}}$ where $\mathbf{r=}r\hat{\mathbf{u}}$.
 
-Following the approach of Wedeen et al.
-\cite{Wedeen} 
-the ODF can be derived by obtaing the diffusion propagator $P(\mathbf{r})$ from the dMRI signal
-by a Fourier transform on the cartesian lattice and then integrating radially. 
+Following the approach of Wedeen et al.~\cite{WWS+08} 
+the ODF can be derived by obtaining the diffusion propagator from the dMRI signal
+by a Fourier transform on the cartesian lattice  $P(\mathbf{r})=\mathcal{F}(S_0^{-1}S(\mathbf{q}))$ and then integrating radially. 
 \begin{equation}
 \psi_{DSI}(\hat{\mathbf{u}})=\int_{0}^{\infty}P(r\hat{\mathbf{u}})r^{2}dr\label{eq:ODF_DSI}
 \end{equation}
@@ -141,14 +140,14 @@ with $\psi_{GQI2}$\begin{eqnarray}
 \begin{flushleft}
 This equation can be implemented analytically in a simple matrix form
 \begin{eqnarray}
-\bm{\psi}_{GQI2} & = & \mathbf{s}\cdot\mathtt{H}((6D\cdot G\circ\mathbf{b}\circ\mathbb{1})\cdot G)\lambda^{3}/\pi\label{eq:GQI2}
+\mathbf{y}({\psi}_{GQI2}) & = & \mathbf{s}\cdot\mathtt{H}((6D.G\circ\mathbf{b}\circ\mathbb{1})\cdot G)\lambda^{3}/\pi\label{eq:GQI2}
 \end{eqnarray}
 
 \par\end{flushleft}
 
 \begin{flushleft}
 where $\cdot$ denotes standard matrix or vector dot product, $\circ$
-denotes the Hadamard product, $\mathbf{y}$ is $\psi_{GQI}$ as a
+denotes the Hadamard product, $\mathbf{y}$ is $\psi_{GQI2}$ as a
 $M$-dimensional vector with components corresponding to the selected
 directions $\hat{\mathbf{u}}$ on the ODF sphere, $\mathbf{s}$ is
 a vector with all the signal values, $D=0.0025$
