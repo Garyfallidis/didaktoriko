@@ -147,8 +147,8 @@ This equation can be implemented analytically in a simple matrix form
 
 \begin{flushleft}
 where $\cdot$ denotes standard matrix or vector dot product, $\circ$
-denotes the Hadamard product, $\mathbf{y}$ is $\psi_{GQI2}$ as a
-$M$-dimensional vector with components corresponding to the selected
+denotes the Hadamard product, $\mathbf{y}$ is $\psi_{GQI}$ as a
+MD vector with components corresponding to the selected
 directions $\hat{\mathbf{u}}$ on the ODF sphere, $\mathbf{s}$ is
 a vector with all the signal values, $D=0.0025$
 where $D$ is the free water diffusion coefficient,
@@ -177,7 +177,7 @@ ODF for that is generated.
 % model does not represent precisely the complexity of the real problem.
 % (d) The more complex the model, the more difficult to fit \cite{rice2006mathematical},
 % \cite{lee1997bayesian}, \cite{montgomery2001introduction}. 
-The source code for the methods described here can be found in dipy
+The source code for the methods described here can be found in DIPY
 (dipy.org).  An example of our method can be seen in Fig.~1.  GQI2 is a
 method theoretically identical with the framework of Equatorial
 Inversion Transform (EIT) \cite{Garyfallidis_thesis} with Laplacian
@@ -186,7 +186,7 @@ weighting. This builds on the formulation in eq.~\ref{eq:GQI2}.
 \noindent~Model-based methods for ODF estimation, like the Single Tensor
 or Multi Tensor, require a number of parameters to be fitted. By
 contrast for model-free methods fitting is not necessary and the
-directionality of the underlying tissue can be approximated by
+directionality of the underlying tissue can be approximated by a
 re-parametrization or re-transformation of the signal. The latter is
 usually more efficient than fitting models with many parameters which
 typically call for iterative methods.
