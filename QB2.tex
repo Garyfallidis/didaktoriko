@@ -17,15 +17,12 @@
 \usepackage{siunitx}
 
 \makeatletter
-
 \newfloat{algorithm}{H}{loa}[section]
 \floatname{algorithm}{Algorithm}
 %\newcounter{algorithm}
 \journal{Neuroimage}
-
 \def\argmin{\mathop{\operator@font arg\,min}} 
 \def\argmax{\mathop{\operator@font arg\,max}} 
-
 \makeatother
 
 \begin{document}
@@ -108,7 +105,7 @@ supervised learning problems of brain tractography. Though these studies
 do provide many useful ideas, all these methods suffer ultimately from
 lack of practical efficiency.
 
-Current clustering tecniques and the principal studies that have applied them to tractographies include:
+Current clustering techniques and the principal studies that have applied them to tractographies include:
 \textit{Hierarchical clustering} \citep{Visser2010,
   gerig2004analysis, Guevara2010, zhang2005dti, jianu2009exploring};
 \textit{$k$-means} \citep{ElKouby2005, Tsai2007}; \textit{Adaptive mean
@@ -192,13 +189,13 @@ updated online when a track is added to a cluster and is equal to
 where $\mathbf{s}_{i}$ is the $K\times3$ matrix representing track $i$,
 $\Sigma$ here represents matrix addition, and $n$ is the number of
 tracks in the cluster. QB assumes that all tracks have the same number
-of points $K$, therefore a downsampling of tracks, typically
+of points $K$, therefore a down-sampling of tracks, typically
 equidistant, is necessary before QB starts. A short summary of the
 algorithm follows and a formal specification is given in
 section~\ref{sub:QB-specification}.
 
 Select the first track $s_{0}$ and place it in the first cluster
-$c_{0}\leftarrow({0},s_{0},1)$. Then for all remaining tracks (i) goto
+$c_{0}\leftarrow({0},s_{0},1)$. Then for all remaining tracks (i) go to
 next track $s_{i}$; (ii) calculate the MDF distance between this track and
 the virtual tracks of all the current clusters $c_{k}$, where a virtual track
 is defined on the fly as $\mathbf{v}=\mathbf{h}/n$; (iii) if the minimum
@@ -232,7 +229,7 @@ section~\ref{sub:BIRCH}.
   MDF distance (Eq.~\ref{eq:direct_flip_distance}) between B and E. The
   algorithm starts and in (ii) we see that track A was selected; as no
   other clusters exist track A becomes the first cluster
-  (labeled with purple color) and the virtual track of that cluster is
+  (labelled with purple color) and the virtual track of that cluster is
   identical with A as seen in (iii); next in (iv) track B is selected
   and we calculate the MDF distance between B and the virtual track of
   the other clusters. For the moment there is only one cluster to
@@ -278,7 +275,7 @@ use a very simple symmetric distance \citep{EGMB10, Visser2010} which we
 call Minimum average Direct-Flip (MDF) distance $MDF(s,s')$ between
 track $s$ and track $s'$, see Eq.~(\ref{eq:direct_flip_distance}). This
 distance can be applied only when both tracks have the same number of
-points. Therefore we assume that an initial downsampling of tracks has
+points. Therefore we assume that an initial downscaling of tracks has
 been implemented, where all segments on a track have approximately the
 same length, and all tracks have the same number of segments, $K$, which
 is much less than the number of segments in the typical raw track. Under
@@ -326,7 +323,7 @@ example add two or more tracks together to create a new average
 track. We saw in the previous section how track addition is a key
 property that we exploit in the QB clustering algorithm.
 
-Care needs to be given to chosing the number of points required in a
+Care needs to be given to choosing the number of points required in a
 track (track downsampling). We always keep the endpoints intact and then
 downsample in equidistant segments. One consequence of short tracks
 having the same number of points as long tracks is that more of the
@@ -504,7 +501,7 @@ random seeds, angular threshold \ang{60}, total weighting $0.5$,
 propagation step size $0.5$ and anisotropy stopping threshold $0.0239$
 (see Fig.~\ref{Flo:CloseToSelected} and Fig.~\ref{Flo:arcuate_close}).
 
-\textbf{PBC human subjects}. We also used a few labeled data sets (see
+\textbf{PBC human subjects}. We also used a few labelled data sets (see
 Fig.~\ref{Flo:cst_pbc} and \ref{Flo:QB_fornix}), from the freely available
 tractography database used in the Pittsburgh Brain Competition Fall
 $2009$, ICDM pbc.lrdc.pitt.edu.
@@ -533,7 +530,7 @@ $\mathcal{O}(N)$ for tractographies (see Fig.\ref{Flo:Speed1}).  In this
 experiment we timed the duration of QB clustering of tractographies
 containing from \num{e5} to \num{e6} tracks, with different initial
 number of points per track ($3,6,12$ and $18$) and different QB
-thresholds ($10.0,15.0,20.0,25.00$~mm). Thes results were obtained using
+thresholds ($10.0,15.0,20.0,25.00$~mm). These results were obtained using
 a single thread Intel(R) Xeon(R) CPU E5420 at 2.50GHz on a standard
 PC. The results can be seen in Fig.\ref{Flo:Speed1}. We see how the
 linearity of the QB algorithm with respect to $N$ only reduces slightly
@@ -550,14 +547,14 @@ impressively low ($10.0$~mm) the linearity is only slightly disturbed.
   track, different distance thresholds and different number of
   tracks. QB is a very efficient algorithm whose performance is
   controlled by just three parameters. (1) the initial downsampling $K$
-  of the tracks exemplified in four subdiagrams: 3 points (A), 6 points
+  of the tracks exemplified in four sub-diagrams: 3 points (A), 6 points
   (B) 12 points (C), 18 points (D). (2) the distance threshold $\theta$
   in millimeters shown in 4 colours: 10~mm (blue), 15~mm (green), 20~mm
   (red), 25~mm (cyan). The final parameter, not shown explicitly in
   these diagrams, is the underlying structure of the data which is
   expressed by the resulting number of clusters.  We used a full
   tractography to generate these figures without removing or
-  preselecting any parts. (NB The subdiagrams use
+  preselecting any parts. (NB The sub-diagrams use
   different vertical scales.) Random subsets of the tractography were
   chosen with size $N$ from \numrange{e5}{e6} (x-axis)\label{Flo:Speed1}}
 \end{figure}
@@ -1143,7 +1140,7 @@ $D$. We would expect that if the registration was correct then the sum
 of all diagonals elements of $D$ would be close to $0$. This was
 confirmed with both cost functions used SD and SMD getting close to zero
 $99.8\%$ of the time however SMD was always closer to perfect alignment
-than SD. Consequently we chosed SMD as a better cost function for direct
+than SD. Consequently we chose SMD as a better cost function for direct
 tractography registration.
 
 We used GQI-based tractographies from $10$ subjects, and registered all
@@ -1198,7 +1195,7 @@ to as $\textrm{MAM}_{\textrm{min}}$ in Eq.~(\ref{eq:minimum_distance}).
 \par\end{centering}
 \caption{A simple and vigorous strategy for handling short and long
   tracks together by picking a track of interest from one of our
-  atlases. Colourmap here encodes track length. A: a single selected
+  atlases. Colour map here encodes track length. A: a single selected
   atlas track, B: for a single subject, $245$ actual tracks closer than
   $15$~mm (MDF distance), C: the tracks from B clustered with $23$
   virtual tracks, D: $3421$ actual tracks closer than $6$~mm

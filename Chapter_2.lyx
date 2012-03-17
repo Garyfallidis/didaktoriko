@@ -44,7 +44,6 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
 \author "Ian Nimmo-Smith,,," 
 \author "" 
 \end_header
@@ -61,18 +60,18 @@ Overview
 
 \begin_layout Standard
 Between one
-\change_deleted 1 1331648613
+\change_deleted 0 1331648613
 -third
 \change_unchanged
  to two
-\change_inserted 1 1331648617
+\change_inserted 0 1331648617
  
-\change_deleted 1 1331648617
+\change_deleted 0 1331648617
 -
 \change_unchanged
 thirds of imaging voxels in the human brain's white matter are thought to
  contain multiple fibre bundle crossings
-\change_inserted 1 1331820052
+\change_inserted 0 1331820052
 
 \begin_inset space ~
 \end_inset
@@ -87,7 +86,7 @@ key "Behrens2007NeuroImage"
 \end_inset
 
 , in which case the Diffusion Tensor model proposed by Basser et al.
-\change_inserted 1 1331811507
+\change_inserted 0 1331811507
 
 \begin_inset space ~
 \end_inset
@@ -103,7 +102,7 @@ key "Basser1994"
 
  breaks down.
  High Angular Resolution Diffusion Imaging (HARDI)
-\change_inserted 1 1331811491
+\change_inserted 0 1331811491
  methods
 \change_unchanged
  
@@ -144,24 +143,24 @@ key "barmpoutis2009regularized"
  and many more reconstruction methods have been proposed to overcome the
  limitations of the Diffusion Tensor.
  These methods can be divided into those wh
-\change_inserted 1 1331649178
+\change_inserted 0 1331649178
 ich
-\change_deleted 1 1331649176
+\change_deleted 0 1331649176
 o
 \change_unchanged
  need specific acquisition parameterization
-\change_inserted 1 1331649291
+\change_inserted 0 1331649291
 s, and those which can be used independently of q-space structure.
 
 \change_unchanged
  
-\change_deleted 1 1331649414
+\change_deleted 0 1331649414
 for example
-\change_inserted 1 1331649433
+\change_inserted 0 1331649433
 For instance, 
-\change_deleted 1 1331649414
+\change_deleted 0 1331649414
  
-\change_inserted 1 1331811517
+\change_inserted 0 1331811517
 for Q-ball Imaging
 \begin_inset space ~
 \end_inset
@@ -174,33 +173,33 @@ key "Tuch2004"
 \end_inset
 
  
-\change_deleted 1 1331649444
+\change_deleted 0 1331649444
 they have to be 
 \change_unchanged
 sampl
-\change_inserted 1 1331649448
+\change_inserted 0 1331649448
 ing
-\change_deleted 1 1331649447
+\change_deleted 0 1331649447
 ed
 \change_unchanged
  
-\change_inserted 1 1331649455
+\change_inserted 0 1331649455
 needs to be on
-\change_deleted 1 1331649450
+\change_deleted 0 1331649450
 in
 \change_unchanged
  one or more spherical grids
-\change_inserted 1 1331649325
+\change_inserted 0 1331649325
 ,
 \change_unchanged
  
-\change_deleted 1 1331543121
+\change_deleted 0 1331543121
 like
-\change_inserted 1 1331649492
+\change_inserted 0 1331649492
 and
 \change_unchanged
  in 
-\change_deleted 1 1331819780
+\change_deleted 0 1331819780
 Qball Imaging
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -209,7 +208,7 @@ key "Tuch2004"
 \end_inset
 
 ,
-\change_inserted 1 1331819788
+\change_inserted 0 1331819788
  Generalized Q-sampling Imaging (GQI) 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -218,21 +217,21 @@ key "Yeh2010"
 \end_inset
 
 ,
-\change_deleted 1 1331649508
+\change_deleted 0 1331649508
  or
 \change_unchanged
  
-\change_inserted 1 1331649530
+\change_inserted 0 1331649530
 requires sampling on
-\change_deleted 1 1331649515
+\change_deleted 0 1331649515
 in
 \change_unchanged
  a Cartesian grid
-\change_inserted 1 1331649540
+\change_inserted 0 1331649540
 ;
 \change_unchanged
  
-\change_deleted 1 1331649553
+\change_deleted 0 1331649553
 like in Generalized Q-sampling Imaging (GQI) 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -241,11 +240,11 @@ key "Yeh2010"
 \end_inset
 
  and those which can be used independently of q-space structure like
-\change_inserted 1 1331649560
+\change_inserted 0 1331649560
 by contrast
 \change_unchanged
  DTI
-\change_inserted 1 1331649606
+\change_inserted 0 1331649606
  can be used independently of q-space structure
 \change_unchanged
 .
@@ -254,33 +253,33 @@ by contrast
  Although all methods have some underlying assumptions we generally separate
  them in model-based and model-free.
  Model-based methods like the Single Tensor or Multi Tensor 
-\change_deleted 1 1331650589
+\change_deleted 0 1331650589
 necessitate the fitting from a few to many
-\change_inserted 1 1331650594
+\change_inserted 0 1331650594
 require a number of
 \change_unchanged
  parameters
-\change_inserted 1 1331650599
+\change_inserted 0 1331650599
  to be fitted
 \change_unchanged
 .
  
-\change_deleted 1 1331650612
+\change_deleted 0 1331650612
 On the opposite side
-\change_inserted 1 1331650614
+\change_inserted 0 1331650614
 By contrast
 \change_unchanged
  
-\change_deleted 1 1331650619
+\change_deleted 0 1331650619
 with
-\change_inserted 1 1331650619
+\change_inserted 0 1331650619
 for
 \change_unchanged
  model-free methods fitting is not necessary and the directionality of the
  underlying tissue can be approximated by some re-parametrization or re-transfor
 mation of the signal.
  The latter is usually more efficient than fitting models with many parameters
-\change_inserted 1 1331650739
+\change_inserted 0 1331650739
  which typically call for iterative methods
 \change_unchanged
 .
@@ -288,13 +287,13 @@ mation of the signal.
 
 \begin_layout Standard
 This 
-\change_inserted 1 1331650790
+\change_inserted 0 1331650790
 chapter
-\change_deleted 1 1331650788
+\change_deleted 0 1331650788
 document
 \change_unchanged
  presents and evaluates
-\change_inserted 1 1331650836
+\change_inserted 0 1331650836
  and compares
 \change_unchanged
  different model-free methods for the reconstruction of orientation distribution
@@ -310,9 +309,9 @@ q
  (EIT).
  The EIT is a new way to represent and reconstruct the diffusion signal.
  Our results show that it can perform better or as 
-\change_deleted 1 1331543232
+\change_deleted 0 1331543232
 good
-\change_inserted 1 1331543233
+\change_inserted 0 1331543233
 well
 \change_unchanged
  as the current state-of-the art methods i.e.
@@ -325,13 +324,13 @@ Theory
 
 \begin_layout Standard
 
-\change_inserted 1 1331652178
+\change_inserted 0 1331652178
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1331652426
+\change_inserted 0 1331652426
 Would this Fig.
  be better placed elsewhere? See Old Note lower down ...
 \change_unchanged
@@ -377,7 +376,7 @@ Showing the ODFs from two randomly oriented simulated
 
  angles between each other using different grid based reconstruction methods.
  The parameters used here are DSI: radial sampling 
-\change_inserted 1 1331820233
+\change_inserted 0 1331820233
 range 
 \change_unchanged
 
@@ -385,13 +384,13 @@ range
 \end_inset
 
 
-\change_inserted 1 1331820250
+\change_inserted 0 1331820250
 ]
 \change_unchanged
 , 
-\change_inserted 1 1331820222
+\change_inserted 0 1331820222
 H
-\change_deleted 1 1331820221
+\change_deleted 0 1331820221
 h
 \change_unchanged
 anning filter width 
@@ -399,7 +398,7 @@ anning filter width
 \end_inset
 
 
-\change_deleted 1 1331820264
+\change_deleted 0 1331820264
  
 \change_unchanged
 , GQI: 
@@ -481,9 +480,9 @@ Here
 \end_inset
 
  
-\change_inserted 1 1331651296
+\change_inserted 0 1331651296
 represents
-\change_deleted 1 1331651293
+\change_deleted 0 1331651293
 is
 \change_unchanged
  the complex RF signal measured at spatial wave number 
@@ -504,9 +503,9 @@ is
 \end_inset
 
  is the 
-\change_deleted 1 1331651348
+\change_deleted 0 1331651348
 diffusion time scale of the sequence
-\change_inserted 1 1331651356
+\change_inserted 0 1331651356
 time between diffusion gradients
 \change_unchanged
 , 
@@ -523,7 +522,7 @@ time between diffusion gradients
 
 \series default
  is the voxel coordinate
-\change_inserted 1 1331651363
+\change_inserted 0 1331651363
 ,
 \change_unchanged
  and 
@@ -558,7 +557,7 @@ S(\mathbf{v},\mathbf{q}) & = & \int\rho(\mathbf{v})P_{\Delta}(\mathbf{v},\mathbf
 
 \begin_layout Standard
 For the rest of the chapter
-\change_deleted 1 1331651498
+\change_deleted 0 1331651498
  we can drop 
 \begin_inset Formula $\mathbf{v}$
 \end_inset
@@ -566,17 +565,17 @@ For the rest of the chapter
  as
 \change_unchanged
  
-\change_inserted 1 1331651486
+\change_inserted 0 1331651486
 we consider each voxel independently and assume intra-voxel spatial homogeneity
-\change_deleted 1 1331651513
+\change_deleted 0 1331651513
 we assume that the formulation is the same for every voxel
-\change_inserted 1 1331651540
+\change_inserted 0 1331651540
  so we can drop explicit reference to 
 \begin_inset Formula $\mathbf{v}$
 \end_inset
 
 
-\change_deleted 1 1331651543
+\change_deleted 0 1331651543
  
 \change_unchanged
 and 
@@ -584,15 +583,15 @@ and
 \end_inset
 
 
-\change_inserted 1 1331651558
+\change_inserted 0 1331651558
 .
 
-\change_deleted 1 1331651557
+\change_deleted 0 1331651557
  because the time scale is the same for the entire sequence
 \change_unchanged
 .
 
-\change_inserted 1 1331820697
+\change_inserted 0 1331820697
  (We note in passsing that the shape of 
 \begin_inset Formula $P_{\Delta}$
 \end_inset
@@ -604,27 +603,7 @@ and
 .
  We will not pursue this matter further here.)
 \change_unchanged
- 
-\change_inserted 1 1331651656
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1331651668
-GW: Be aware what the effect of a different Delta is - it could give different
- orientation profiles if diffusion is not Gaussian.
- Perhaps worth pointing this out?
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-We can also replace the spin density 
+ We can also replace the spin density 
 \family roman
 \series medium
 \shape up
@@ -695,13 +674,13 @@ P(\mathbf{r}) & = & S_{0}^{-1}\int S(\mathbf{q})\exp(-i2\pi\mathbf{q}\cdot\mathb
 
 \begin_layout Standard
 
-\change_inserted 1 1331555449
+\change_inserted 0 1331555449
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1331555391
+\change_inserted 0 1331555391
 
 
 \backslash
@@ -725,14 +704,14 @@ key "Wedeen"
 
  that the dMRI signal is positive for any type of spin motion without net
  flux (i.e.
-\change_inserted 1 1331555778
+\change_inserted 0 1331555778
 
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1331555778
+\change_inserted 0 1331555778
 
 ~
 \change_unchanged
@@ -742,13 +721,13 @@ status open
 \end_inset
 
 
-\change_deleted 1 1331555726
+\change_deleted 0 1331555726
  
 \change_unchanged
 spin displacements due to thermal molecular agitation) or other random fluxes
  such as intravoxel incoherent motion.
  Under this assumption we can replace
-\change_deleted 1 1331651729
+\change_deleted 0 1331651729
  in eq.
  
 \begin_inset CommandInset ref
@@ -768,7 +747,7 @@ reference "eq:P"
 \end_inset
 
 
-\change_inserted 1 1331651746
+\change_inserted 0 1331651746
  in eq.
  (
 \begin_inset CommandInset ref
@@ -791,9 +770,9 @@ P(\mathbf{r}) & = & S_{0}^{-1}\int|S(\mathbf{q})|\exp(-i2\pi\mathbf{q}\cdot\math
 \begin_layout Standard
 The modulus of the signal coincides with the output of the standard MRI
  scanners as 
-\change_deleted 1 1331651891
+\change_deleted 0 1331651891
 DWI
-\change_inserted 1 1331651893
+\change_inserted 0 1331651893
 dMRI
 \change_unchanged
  and that simplifies the acquisition procedure.
@@ -804,19 +783,19 @@ dMRI
 \end_inset
 
  is a measure of the probability 
-\change_deleted 1 1331651979
+\change_deleted 0 1331651979
 for
-\change_inserted 1 1331651980
+\change_inserted 0 1331651980
 that
 \change_unchanged
  a spin in a 
-\change_deleted 1 1331651986
+\change_deleted 0 1331651986
 considered
-\change_inserted 1 1331651987
+\change_inserted 0 1331651987
 chosen
 \change_unchanged
  voxel 
-\change_deleted 1 1331651992
+\change_deleted 0 1331651992
 to make
 \change_unchanged
 , during the experimental mixing time 
@@ -824,7 +803,7 @@ to make
 \end_inset
 
 , 
-\change_inserted 1 1331652043
+\change_inserted 0 1331652043
 would make 
 \change_unchanged
 a vector displacement 
@@ -834,7 +813,7 @@ a vector displacement
 .
  We can visualize the propagator for every voxel as a 3D density volume
  (
-\change_inserted 1 1331653300
+\change_inserted 0 1331653300
 see Fig.
  
 \begin_inset CommandInset ref
@@ -844,25 +823,25 @@ reference "Flo:beautiful-triple-crossing"
 \end_inset
 
 )
-\change_deleted 1 1331653241
+\change_deleted 0 1331653241
 SEE Figure Introduction
 \change_unchanged
 ).
-\change_inserted 1 1331653316
+\change_inserted 0 1331653316
 
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 1 1331652317
+\change_inserted 0 1331652317
 In the classical 
 \change_unchanged
 DSI
-\change_inserted 1 1331652317
+\change_inserted 0 1331652317
  acquisition, 
-\change_deleted 1 1331652248
+\change_deleted 0 1331652248
 A
-\change_inserted 1 1331652248
+\change_inserted 0 1331652248
 a
 \change_unchanged
 t each location, diffusion-weighted images are acquired for 
@@ -870,9 +849,9 @@ t each location, diffusion-weighted images are acquired for
 \end_inset
 
  or 
-\change_deleted 1 1331652262
+\change_deleted 0 1331652262
 less
-\change_inserted 1 1331652263
+\change_inserted 0 1331652263
 fewer
 \change_unchanged
  values of 
@@ -913,7 +892,7 @@ with
 
  values.
 
-\change_inserted 1 1331652873
+\change_inserted 0 1331652873
  
 \change_unchanged
 Often to obtain data for the complete grid of 
@@ -929,13 +908,13 @@ Often to obtain data for the complete grid of
 \end_inset
 
  diffusion weighted volumes)
-\change_deleted 1 1331652557
+\change_deleted 0 1331652557
  is very time consuming
 \change_unchanged
  
-\change_inserted 1 1331652869
+\change_inserted 0 1331652869
 the overall acquisition time would be too long and a smaller
-\change_deleted 1 1331713196
+\change_deleted 0 1331713196
 and fewer
 \change_unchanged
  number of unique 
@@ -943,9 +922,9 @@ and fewer
 q
 \series default
 -vectors are employed 
-\change_deleted 1 1331652606
+\change_deleted 0 1331652606
 only at
-\change_inserted 1 1331652869
+\change_inserted 0 1331652869
 for just
 \change_unchanged
  a single hemisphere usually between 
@@ -965,11 +944,11 @@ key "Kuo"
 
 .
  This is valid because 
-\change_inserted 1 1331652985
+\change_inserted 0 1331652985
 the underlying self-diffusion process is symmetric and so 
 \change_unchanged
 the signal is symmetric
-\change_inserted 1 1331652990
+\change_inserted 0 1331652990
 ,
 \change_unchanged
  therefore the vectors can be mapped on the other hemisphere to create the
@@ -1018,7 +997,7 @@ This defines the orientation density function (ODF) for DSI which measures
 
 \lang british
 Not
-\change_deleted 1 1331653050
+\change_deleted 0 1331653050
 ic
 \change_unchanged
 e at this point that in order to find the ODF we have to create first the
@@ -1030,7 +1009,7 @@ applying
  
 \lang english
 Yeh et al.
-\change_inserted 1 1331811943
+\change_inserted 0 1331811943
 
 \begin_inset space ~
 \end_inset
@@ -1045,7 +1024,7 @@ key "Yeh2010"
 \end_inset
 
  proposed a direct
-\change_deleted 1 1331653062
+\change_deleted 0 1331653062
  analytical
 \change_unchanged
  way to calculate a slightly different ODF using the Cosine transform.
@@ -1055,7 +1034,7 @@ key "Yeh2010"
 \align block
 In order to represent the average propagator in the scale of spin quantity
  Yeh et al.
-\change_inserted 1 1331811951
+\change_inserted 0 1331811951
 
 \begin_inset space ~
 \end_inset
@@ -1126,9 +1105,9 @@ S(\mathbf{q}) & = & \int Q(\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})d\math
 \color inherit
 \lang english
 We can apply the Fourier transform again 
-\change_inserted 1 1331653530
+\change_inserted 0 1331653530
 to
-\change_deleted 1 1331653528
+\change_deleted 0 1331653528
 in
 \change_unchanged
  eq.
@@ -1240,7 +1219,7 @@ where
  the more detailed the SDF will be but also more noisy.
  This ODF was used as the basis of the analysis of the GQI method.
  It provides a simple direct analytical solution of 
-\change_inserted 1 1331654548
+\change_inserted 0 1331654548
 t
 \change_unchanged
 he ODF which can be written in a simple matrix form
@@ -1296,15 +1275,15 @@ denotes the Hadamard product,
 \end_inset
 
 -dimensional vector 
-\change_inserted 1 1331654525
+\change_inserted 0 1331654525
 with components corresponding to the 
-\change_deleted 1 1331654531
+\change_deleted 0 1331654531
 for every 
-\change_inserted 1 1331654570
+\change_inserted 0 1331654570
 selected 
 \change_unchanged
 direction
-\change_inserted 1 1331654534
+\change_inserted 0 1331654534
 s
 \change_unchanged
  
@@ -1312,7 +1291,7 @@ s
 \end_inset
 
 
-\change_inserted 1 1331654561
+\change_inserted 0 1331654561
  on the ODF sphere
 \change_unchanged
 , 
@@ -1320,23 +1299,16 @@ s
 \end_inset
 
  is a vector with all the signal values, D=0.00251
-\change_inserted 1 1331653673
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 1 1331653681
-Reference for this value?
-\change_unchanged
-
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
 
-\change_unchanged
+\begin_inset CommandInset citation
+LatexCommand cite
+key "canalesrodriguez2009mdq"
+
+\end_inset
+
  
 \family roman
 \series medium
@@ -1458,9 +1430,9 @@ This equation can be similarly implemented with a simple matrix transform
 \begin_layout Standard
 \align left
 and 
-\change_deleted 1 1331654625
+\change_deleted 0 1331654625
 until today it hasn't
-\change_inserted 1 1331654628
+\change_inserted 0 1331654628
 has not to date
 \change_unchanged
  been published with real or simulated data sets.
@@ -1508,7 +1480,7 @@ The Fourier transform of
 \end_inset
 
  is the Laplacian operator (for proof see
-\change_inserted 1 1331812204
+\change_inserted 0 1331812204
  section
 \change_unchanged
  
@@ -1555,9 +1527,9 @@ reference "sub:Radial-projection-of-symmetric"
 \begin_layout Standard
 From eq.
 
-\change_inserted 1 1331812611
+\change_inserted 0 1331812611
  
-\change_deleted 1 1331812220
+\change_deleted 0 1331812220
  
 \change_unchanged
 
@@ -1647,17 +1619,17 @@ key "aganj2010reconstruction"
  and we propose here that it can be directly calculated in a cubic grid
  using the standard 3D discrete Laplacian filter which is given by the 3D
  kernel defined by the following 
-\change_inserted 1 1331713841
+\change_inserted 0 1331713841
 
 \begin_inset Formula $3\times3\times3$
 \end_inset
 
  array:
-\change_deleted 1 1331713815
+\change_deleted 0 1331713815
 three planes
 \change_unchanged
  
-\change_deleted 1 1331713872
+\change_deleted 0 1331713872
 
 \begin_inset Formula $\left(\begin{array}{ccc}
 0 & 0 & 0\\
@@ -1681,13 +1653,13 @@ three planes
 
 .
  
-\change_inserted 1 1331713872
+\change_inserted 0 1331713872
 
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 1 1331713951
+\change_inserted 0 1331713951
 \begin_inset Formula \[
 \left[\left(\begin{array}{ccc}
 0 & 0 & 0\\
@@ -1709,16 +1681,16 @@ three planes
 \noindent
 \align block
 This is a f
-\change_inserted 1 1331714112
+\change_inserted 0 1331714112
 ilter
-\change_deleted 1 1331714110
+\change_deleted 0 1331714110
 unction
 \change_unchanged
  commonly used for image processing.
  From now on when we use the Laplacian operator in order to measure the
  directionality of the diffusion signal we will call this reconstruction
  method Diffusion Nabla Imaging as nabla
-\change_inserted 1 1331714067
+\change_inserted 0 1331714067
 -squared
 \change_unchanged
  
@@ -1754,40 +1726,40 @@ Discussion and Conclusion
 Non-parametric methods have the advantage of representing the signal with
  minimum number of assumptions and without needing any fitting.
  For many years there has been a trend in science to prefer model-based
-\change_deleted 1 1331807546
+\change_deleted 0 1331807546
  methods
 \change_unchanged
  rather than model free (non-parametric) 
-\change_inserted 1 1331807602
+\change_inserted 0 1331807602
 methods.
  This is 
 \change_unchanged
 perhaps because model-based can be easier to describe, 
-\change_deleted 1 1331807610
+\change_deleted 0 1331807610
 easier to invent 
 \change_unchanged
 and 
-\change_deleted 1 1331807615
+\change_deleted 0 1331807615
 easier
-\change_inserted 1 1331807623
+\change_inserted 0 1331807623
 more readily allow the
 \change_unchanged
  
-\change_deleted 1 1331807626
+\change_deleted 0 1331807626
 to
-\change_inserted 1 1331807626
+\change_inserted 0 1331807626
 use
 \change_unchanged
  
-\change_deleted 1 1331807630
+\change_deleted 0 1331807630
 calculate
-\change_inserted 1 1331807637
+\change_inserted 0 1331807637
 of popular
 \change_unchanged
  Bayesian 
-\change_deleted 1 1331807643
+\change_deleted 0 1331807643
 statistics with
-\change_inserted 1 1331807645
+\change_inserted 0 1331807645
 approaches
 \change_unchanged
 .
@@ -1823,32 +1795,32 @@ key "montgomery2001introduction"
 
 \begin_layout Standard
 Non-parametric methods avoid fitting
-\change_inserted 1 1331807898
+\change_inserted 0 1331807898
  model parameters
 \change_unchanged
  and that
-\change_deleted 1 1331807921
+\change_deleted 0 1331807921
  makes them very favourable
-\change_inserted 1 1331807936
+\change_inserted 0 1331807936
 gives them a big advantage
 \change_unchanged
 .
  The 
-\change_inserted 1 1331808005
+\change_inserted 0 1331808005
 focus
-\change_deleted 1 1331808003
+\change_deleted 0 1331808003
 concentration
 \change_unchanged
  of this 
-\change_deleted 1 1331807733
+\change_deleted 0 1331807733
 document
-\change_inserted 1 1331807734
+\change_inserted 0 1331807734
 chapter
 \change_unchanged
  was on 
-\change_inserted 1 1331807977
+\change_inserted 0 1331807977
 introducing and developing
-\change_deleted 1 1331807970
+\change_deleted 0 1331807970
 inventing
 \change_unchanged
  new non-parametric methods (EIT) or comparing and extending existing ones
@@ -1908,32 +1880,32 @@ reference "eq:eit_radial_weighting"
 
 \begin_layout Standard
 
-\change_deleted 1 1331808203
+\change_deleted 0 1331808203
 Apparently, t
-\change_inserted 1 1331808203
+\change_inserted 0 1331808203
 T
 \change_unchanged
 he EIT concept opens new doors for the investigation of dMRI where many
  new functionals can be invented in the future that 
-\change_deleted 1 1331808219
+\change_deleted 0 1331808219
 stress
-\change_inserted 1 1331808222
+\change_inserted 0 1331808222
 emphasise
 \change_unchanged
  
-\change_deleted 1 1331808227
+\change_deleted 0 1331808227
 more or less 
 \change_unchanged
 different properties of the signal.
  
-\change_deleted 1 1331808255
+\change_deleted 0 1331808255
 Notwithstanding, today we
-\change_inserted 1 1331808255
+\change_inserted 0 1331808255
 I
 \change_unchanged
  have already illustrated and measured that EIT has the best performance
  with simulations against the other state
-\change_deleted 1 1331808287
+\change_deleted 0 1331808287
 r
 \change_unchanged
 -of-the-art methods like DSI and GQI and that empirically, EIT gives as
@@ -1941,53 +1913,12 @@ r
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Itemize
-Simple 
-\end_layout
-
-\begin_layout Itemize
-Fast
-\end_layout
-
-\begin_layout Itemize
-Comprehensive
-\end_layout
-
-\begin_layout Itemize
-Generalizable - Opens new doors for investigation
-\end_layout
-
-\begin_layout Itemize
-Can create Real ODFs or other spherical density functions 
-\end_layout
-
-\begin_layout Plain Layout
-Has the best performance with simulations
-\end_layout
-
-\begin_layout Plain Layout
-AAAA
-\end_layout
-
-\begin_layout Plain Layout
-SAY SOMETHING ABOUT FAST EIT
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 The EIT finds
-\change_deleted 1 1331808309
+\change_deleted 0 1331808309
  directly
 \change_unchanged
  the ODF
-\change_inserted 1 1331808312
+\change_inserted 0 1331808312
  directly
 \change_unchanged
  without creating the diffusion propagator.
@@ -2013,9 +1944,9 @@ We discussed that GQI can be used for creating Quantitative Anisotropy (QA).
  similarities with FA as it is maximum on anisotropic and 0 on isotropic
  voxels.
  QA assumes that a 
-\change_deleted 1 1331808415
+\change_deleted 0 1331808415
 fat
-\change_inserted 1 1331808418
+\change_inserted 0 1331808418
 substantial
 \change_unchanged
  isotropic part can always be removed from the ODF and that makes it more
@@ -2047,21 +1978,21 @@ GQI needs a manually set parameter; the diffusion sampling length and in
 \begin_layout Standard
 It is important to stress that there are similarities between all these
  methods; DSI similar 
-\change_deleted 1 1331808473
+\change_deleted 0 1331808473
 with
-\change_inserted 1 1331808473
+\change_inserted 0 1331808473
 to
 \change_unchanged
  EITL, GQI 
-\change_deleted 1 1331808477
+\change_deleted 0 1331808477
 with
-\change_inserted 1 1331808477
+\change_inserted 0 1331808477
 to
 \change_unchanged
  EITS, GQI2 
-\change_deleted 1 1331808482
+\change_deleted 0 1331808482
 with
-\change_inserted 1 1331808482
+\change_inserted 0 1331808482
 to
 \change_unchanged
  EITL2.
@@ -2094,7 +2025,7 @@ dipy.org
 
 \begin_layout Standard
 
-\change_inserted 1 1331819849
+\change_inserted 0 1331819849
 
 \lang british
 \begin_inset CommandInset bibtex
@@ -2105,10 +2036,10 @@ options "ieeetr"
 \end_inset
 
 
-\change_deleted 1 1331819849
+\change_deleted 0 1331819849
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
