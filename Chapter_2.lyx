@@ -44,9 +44,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
 \author "Ian Nimmo-Smith,,," 
+\author "" 
 \end_header
 
 \begin_body
@@ -61,18 +60,18 @@ Overview
 
 \begin_layout Standard
 Between one
-\change_deleted 2 1331648613
+\change_deleted 0 1331648613
 -third
 \change_unchanged
  to two
-\change_inserted 2 1331648617
+\change_inserted 0 1331648617
  
-\change_deleted 2 1331648617
+\change_deleted 0 1331648617
 -
 \change_unchanged
 thirds of imaging voxels in the human brain's white matter are thought to
  contain multiple fibre bundle crossings
-\change_inserted 2 1331820052
+\change_inserted 0 1331820052
 
 \begin_inset space ~
 \end_inset
@@ -87,7 +86,7 @@ key "Behrens2007NeuroImage"
 \end_inset
 
 , in which case the Diffusion Tensor model proposed by Basser et al.
-\change_inserted 2 1331811507
+\change_inserted 0 1331811507
 
 \begin_inset space ~
 \end_inset
@@ -103,7 +102,7 @@ key "Basser1994"
 
  breaks down.
  High Angular Resolution Diffusion Imaging (HARDI)
-\change_inserted 2 1331811491
+\change_inserted 0 1331811491
  methods
 \change_unchanged
  
@@ -144,24 +143,24 @@ key "barmpoutis2009regularized"
  and many more reconstruction methods have been proposed to overcome the
  limitations of the Diffusion Tensor.
  These methods can be divided into those wh
-\change_inserted 2 1331649178
+\change_inserted 0 1331649178
 ich
-\change_deleted 2 1331649176
+\change_deleted 0 1331649176
 o
 \change_unchanged
  need specific acquisition parameterization
-\change_inserted 2 1331649291
+\change_inserted 0 1331649291
 s, and those which can be used independently of q-space structure.
 
 \change_unchanged
  
-\change_deleted 2 1331649414
+\change_deleted 0 1331649414
 for example
-\change_inserted 2 1331649433
+\change_inserted 0 1331649433
 For instance, 
-\change_deleted 2 1331649414
+\change_deleted 0 1331649414
  
-\change_inserted 2 1331811517
+\change_inserted 0 1331811517
 for Q-ball Imaging
 \begin_inset space ~
 \end_inset
@@ -174,33 +173,33 @@ key "Tuch2004"
 \end_inset
 
  
-\change_deleted 2 1331649444
+\change_deleted 0 1331649444
 they have to be 
 \change_unchanged
 sampl
-\change_inserted 2 1331649448
+\change_inserted 0 1331649448
 ing
-\change_deleted 2 1331649447
+\change_deleted 0 1331649447
 ed
 \change_unchanged
  
-\change_inserted 2 1331649455
+\change_inserted 0 1331649455
 needs to be on
-\change_deleted 2 1331649450
+\change_deleted 0 1331649450
 in
 \change_unchanged
  one or more spherical grids
-\change_inserted 2 1331649325
+\change_inserted 0 1331649325
 ,
 \change_unchanged
  
-\change_deleted 2 1331543121
+\change_deleted 0 1331543121
 like
-\change_inserted 2 1331649492
+\change_inserted 0 1331649492
 and
 \change_unchanged
  in 
-\change_deleted 2 1331819780
+\change_deleted 0 1331819780
 Qball Imaging
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -209,7 +208,7 @@ key "Tuch2004"
 \end_inset
 
 ,
-\change_inserted 2 1331819788
+\change_inserted 0 1331819788
  Generalized Q-sampling Imaging (GQI) 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -218,21 +217,21 @@ key "Yeh2010"
 \end_inset
 
 ,
-\change_deleted 2 1331649508
+\change_deleted 0 1331649508
  or
 \change_unchanged
  
-\change_inserted 2 1331649530
+\change_inserted 0 1331649530
 requires sampling on
-\change_deleted 2 1331649515
+\change_deleted 0 1331649515
 in
 \change_unchanged
  a Cartesian grid
-\change_inserted 2 1331649540
+\change_inserted 0 1331649540
 ;
 \change_unchanged
  
-\change_deleted 2 1331649553
+\change_deleted 0 1331649553
 like in Generalized Q-sampling Imaging (GQI) 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -241,11 +240,11 @@ key "Yeh2010"
 \end_inset
 
  and those which can be used independently of q-space structure like
-\change_inserted 2 1331649560
+\change_inserted 0 1331649560
 by contrast
 \change_unchanged
  DTI
-\change_inserted 2 1331649606
+\change_inserted 0 1331649606
  can be used independently of q-space structure
 \change_unchanged
 .
@@ -254,33 +253,33 @@ by contrast
  Although all methods have some underlying assumptions we generally separate
  them in model-based and model-free.
  Model-based methods like the Single Tensor or Multi Tensor 
-\change_deleted 2 1331650589
+\change_deleted 0 1331650589
 necessitate the fitting from a few to many
-\change_inserted 2 1331650594
+\change_inserted 0 1331650594
 require a number of
 \change_unchanged
  parameters
-\change_inserted 2 1331650599
+\change_inserted 0 1331650599
  to be fitted
 \change_unchanged
 .
  
-\change_deleted 2 1331650612
+\change_deleted 0 1331650612
 On the opposite side
-\change_inserted 2 1331650614
+\change_inserted 0 1331650614
 By contrast
 \change_unchanged
  
-\change_deleted 2 1331650619
+\change_deleted 0 1331650619
 with
-\change_inserted 2 1331650619
+\change_inserted 0 1331650619
 for
 \change_unchanged
  model-free methods fitting is not necessary and the directionality of the
  underlying tissue can be approximated by some re-parametrization or re-transfor
 mation of the signal.
  The latter is usually more efficient than fitting models with many parameters
-\change_inserted 2 1331650739
+\change_inserted 0 1331650739
  which typically call for iterative methods
 \change_unchanged
 .
@@ -288,13 +287,13 @@ mation of the signal.
 
 \begin_layout Standard
 This 
-\change_inserted 2 1331650790
+\change_inserted 0 1331650790
 chapter
-\change_deleted 2 1331650788
+\change_deleted 0 1331650788
 document
 \change_unchanged
  presents and evaluates
-\change_inserted 2 1331650836
+\change_inserted 0 1331650836
  and compares
 \change_unchanged
  different model-free methods for the reconstruction of orientation distribution
@@ -310,9 +309,9 @@ q
  (EIT).
  The EIT is a new way to represent and reconstruct the diffusion signal.
  Our results show that it can perform better or as 
-\change_deleted 2 1331543232
+\change_deleted 0 1331543232
 good
-\change_inserted 2 1331543233
+\change_inserted 0 1331543233
 well
 \change_unchanged
  as the current state-of-the art methods i.e.
@@ -325,13 +324,13 @@ Theory
 
 \begin_layout Standard
 
-\change_inserted 2 1331652178
+\change_inserted 0 1331652178
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1331652426
+\change_inserted 0 1331652426
 Would this Fig.
  be better placed elsewhere? See Old Note lower down ...
 \change_unchanged
@@ -377,7 +376,7 @@ Showing the ODFs from two randomly oriented simulated
 
  angles between each other using different grid based reconstruction methods.
  The parameters used here are DSI: radial sampling 
-\change_inserted 2 1331820233
+\change_inserted 0 1331820233
 range 
 \change_unchanged
 
@@ -385,13 +384,13 @@ range
 \end_inset
 
 
-\change_inserted 2 1331820250
+\change_inserted 0 1331820250
 ]
 \change_unchanged
 , 
-\change_inserted 2 1331820222
+\change_inserted 0 1331820222
 H
-\change_deleted 2 1331820221
+\change_deleted 0 1331820221
 h
 \change_unchanged
 anning filter width 
@@ -399,7 +398,7 @@ anning filter width
 \end_inset
 
 
-\change_deleted 2 1331820264
+\change_deleted 0 1331820264
  
 \change_unchanged
 , GQI: 
@@ -481,9 +480,9 @@ Here
 \end_inset
 
  
-\change_inserted 2 1331651296
+\change_inserted 0 1331651296
 represents
-\change_deleted 2 1331651293
+\change_deleted 0 1331651293
 is
 \change_unchanged
  the complex RF signal measured at spatial wave number 
@@ -504,9 +503,9 @@ is
 \end_inset
 
  is the 
-\change_deleted 2 1331651348
+\change_deleted 0 1331651348
 diffusion time scale of the sequence
-\change_inserted 2 1331651356
+\change_inserted 0 1331651356
 time between diffusion gradients
 \change_unchanged
 , 
@@ -523,7 +522,7 @@ time between diffusion gradients
 
 \series default
  is the voxel coordinate
-\change_inserted 2 1331651363
+\change_inserted 0 1331651363
 ,
 \change_unchanged
  and 
@@ -558,7 +557,7 @@ S(\mathbf{v},\mathbf{q}) & = & \int\rho(\mathbf{v})P_{\Delta}(\mathbf{v},\mathbf
 
 \begin_layout Standard
 For the rest of the chapter
-\change_deleted 2 1331651498
+\change_deleted 0 1331651498
  we can drop 
 \begin_inset Formula $\mathbf{v}$
 \end_inset
@@ -566,17 +565,17 @@ For the rest of the chapter
  as
 \change_unchanged
  
-\change_inserted 2 1331651486
+\change_inserted 0 1331651486
 we consider each voxel independently and assume intra-voxel spatial homogeneity
-\change_deleted 2 1331651513
+\change_deleted 0 1331651513
 we assume that the formulation is the same for every voxel
-\change_inserted 2 1331651540
+\change_inserted 0 1331651540
  so we can drop explicit reference to 
 \begin_inset Formula $\mathbf{v}$
 \end_inset
 
 
-\change_deleted 2 1331651543
+\change_deleted 0 1331651543
  
 \change_unchanged
 and 
@@ -584,15 +583,15 @@ and
 \end_inset
 
 
-\change_inserted 2 1331651558
+\change_inserted 0 1331651558
 .
 
-\change_deleted 2 1331651557
+\change_deleted 0 1331651557
  because the time scale is the same for the entire sequence
 \change_unchanged
 .
 
-\change_inserted 2 1331820697
+\change_inserted 0 1331820697
  (We note in passsing that the shape of 
 \begin_inset Formula $P_{\Delta}$
 \end_inset
@@ -605,14 +604,14 @@ and
  We will not pursue this matter further here.)
 \change_unchanged
  
-\change_inserted 2 1331651656
+\change_inserted 0 1331651656
 
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1331651668
+\change_inserted 0 1331651668
 GW: Be aware what the effect of a different Delta is - it could give different
  orientation profiles if diffusion is not Gaussian.
  Perhaps worth pointing this out?
@@ -695,13 +694,13 @@ P(\mathbf{r}) & = & S_{0}^{-1}\int S(\mathbf{q})\exp(-i2\pi\mathbf{q}\cdot\mathb
 
 \begin_layout Standard
 
-\change_inserted 2 1331555449
+\change_inserted 0 1331555449
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1331555391
+\change_inserted 0 1331555391
 
 
 \backslash
@@ -725,14 +724,14 @@ key "Wedeen"
 
  that the dMRI signal is positive for any type of spin motion without net
  flux (i.e.
-\change_inserted 2 1331555778
+\change_inserted 0 1331555778
 
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1331555778
+\change_inserted 0 1331555778
 
 ~
 \change_unchanged
@@ -742,13 +741,13 @@ status open
 \end_inset
 
 
-\change_deleted 2 1331555726
+\change_deleted 0 1331555726
  
 \change_unchanged
 spin displacements due to thermal molecular agitation) or other random fluxes
  such as intravoxel incoherent motion.
  Under this assumption we can replace
-\change_deleted 2 1331651729
+\change_deleted 0 1331651729
  in eq.
  
 \begin_inset CommandInset ref
@@ -768,7 +767,7 @@ reference "eq:P"
 \end_inset
 
 
-\change_inserted 2 1331651746
+\change_inserted 0 1331651746
  in eq.
  (
 \begin_inset CommandInset ref
@@ -791,9 +790,9 @@ P(\mathbf{r}) & = & S_{0}^{-1}\int|S(\mathbf{q})|\exp(-i2\pi\mathbf{q}\cdot\math
 \begin_layout Standard
 The modulus of the signal coincides with the output of the standard MRI
  scanners as 
-\change_deleted 2 1331651891
+\change_deleted 0 1331651891
 DWI
-\change_inserted 2 1331651893
+\change_inserted 0 1331651893
 dMRI
 \change_unchanged
  and that simplifies the acquisition procedure.
@@ -804,19 +803,19 @@ dMRI
 \end_inset
 
  is a measure of the probability 
-\change_deleted 2 1331651979
+\change_deleted 0 1331651979
 for
-\change_inserted 2 1331651980
+\change_inserted 0 1331651980
 that
 \change_unchanged
  a spin in a 
-\change_deleted 2 1331651986
+\change_deleted 0 1331651986
 considered
-\change_inserted 2 1331651987
+\change_inserted 0 1331651987
 chosen
 \change_unchanged
  voxel 
-\change_deleted 2 1331651992
+\change_deleted 0 1331651992
 to make
 \change_unchanged
 , during the experimental mixing time 
@@ -824,7 +823,7 @@ to make
 \end_inset
 
 , 
-\change_inserted 2 1331652043
+\change_inserted 0 1331652043
 would make 
 \change_unchanged
 a vector displacement 
@@ -834,7 +833,7 @@ a vector displacement
 .
  We can visualize the propagator for every voxel as a 3D density volume
  (
-\change_inserted 2 1331653300
+\change_inserted 0 1331653300
 see Fig.
  
 \begin_inset CommandInset ref
@@ -844,25 +843,21 @@ reference "Flo:beautiful-triple-crossing"
 \end_inset
 
 )
-\change_deleted 2 1331653241
+\change_deleted 0 1331653241
 SEE Figure Introduction
 \change_unchanged
 ).
-\change_inserted 2 1331653316
+\change_inserted 0 1331653316
 
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 2 1331652317
-In the classical 
-\change_unchanged
-DSI
-\change_inserted 2 1331652317
- acquisition, 
-\change_deleted 2 1331652248
+\change_inserted 0 1331652317
+In the classical Q-ball acquisition, 
+\change_deleted 0 1331652248
 A
-\change_inserted 2 1331652248
+\change_inserted 0 1331652248
 a
 \change_unchanged
 t each location, diffusion-weighted images are acquired for 
@@ -870,9 +865,9 @@ t each location, diffusion-weighted images are acquired for
 \end_inset
 
  or 
-\change_deleted 2 1331652262
+\change_deleted 0 1331652262
 less
-\change_inserted 2 1331652263
+\change_inserted 0 1331652263
 fewer
 \change_unchanged
  values of 
@@ -913,7 +908,7 @@ with
 
  values.
 
-\change_inserted 2 1331652873
+\change_inserted 0 1331652873
  
 \change_unchanged
 Often to obtain data for the complete grid of 
@@ -929,13 +924,13 @@ Often to obtain data for the complete grid of
 \end_inset
 
  diffusion weighted volumes)
-\change_deleted 2 1331652557
+\change_deleted 0 1331652557
  is very time consuming
 \change_unchanged
  
-\change_inserted 2 1331652869
+\change_inserted 0 1331652869
 the overall acquisition time would be too long and a smaller
-\change_deleted 2 1331713196
+\change_deleted 0 1331713196
 and fewer
 \change_unchanged
  number of unique 
@@ -943,9 +938,9 @@ and fewer
 q
 \series default
 -vectors are employed 
-\change_deleted 2 1331652606
+\change_deleted 0 1331652606
 only at
-\change_inserted 2 1331652869
+\change_inserted 0 1331652869
 for just
 \change_unchanged
  a single hemisphere usually between 
@@ -965,11 +960,11 @@ key "Kuo"
 
 .
  This is valid because 
-\change_inserted 2 1331652985
+\change_inserted 0 1331652985
 the underlying self-diffusion process is symmetric and so 
 \change_unchanged
 the signal is symmetric
-\change_inserted 2 1331652990
+\change_inserted 0 1331652990
 ,
 \change_unchanged
  therefore the vectors can be mapped on the other hemisphere to create the
@@ -1018,7 +1013,7 @@ This defines the orientation density function (ODF) for DSI which measures
 
 \lang british
 Not
-\change_deleted 2 1331653050
+\change_deleted 0 1331653050
 ic
 \change_unchanged
 e at this point that in order to find the ODF we have to create first the
@@ -1030,7 +1025,7 @@ applying
  
 \lang english
 Yeh et al.
-\change_inserted 2 1331811943
+\change_inserted 0 1331811943
 
 \begin_inset space ~
 \end_inset
@@ -1045,7 +1040,7 @@ key "Yeh2010"
 \end_inset
 
  proposed a direct
-\change_deleted 2 1331653062
+\change_deleted 0 1331653062
  analytical
 \change_unchanged
  way to calculate a slightly different ODF using the Cosine transform.
@@ -1055,7 +1050,7 @@ key "Yeh2010"
 \align block
 In order to represent the average propagator in the scale of spin quantity
  Yeh et al.
-\change_inserted 2 1331811951
+\change_inserted 0 1331811951
 
 \begin_inset space ~
 \end_inset
@@ -1126,9 +1121,9 @@ S(\mathbf{q}) & = & \int Q(\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})d\math
 \color inherit
 \lang english
 We can apply the Fourier transform again 
-\change_inserted 2 1331653530
+\change_inserted 0 1331653530
 to
-\change_deleted 2 1331653528
+\change_deleted 0 1331653528
 in
 \change_unchanged
  eq.
@@ -1240,12 +1235,12 @@ where
  the more detailed the SDF will be but also more noisy.
  This ODF was used as the basis of the analysis of the GQI method.
  It provides a simple direct analytical solution of 
-\change_inserted 2 1331654548
+\change_inserted 0 1331654548
 t
 \change_unchanged
 he ODF which can be written in a simple matrix form
 \begin_inset Formula \begin{eqnarray*}
-\bm{\psi}_{GQI}= & \mathbf{s}\cdot\mathtt{sinc}((6D\cdot G\circ\mathbf{b}\circ\mathbb{1})\cdot G)\lambda/\pi\end{eqnarray*}
+\bm{\mathbf{y}(\psi}_{GQI})= & \mathbf{s}\cdot\mathtt{sinc}((6D\cdot G\circ\mathbf{b}\circ\mathbb{1})\cdot G)\lambda/\pi\end{eqnarray*}
 
 \end_inset
 
@@ -1296,15 +1291,15 @@ denotes the Hadamard product,
 \end_inset
 
 -dimensional vector 
-\change_inserted 2 1331654525
+\change_inserted 0 1331654525
 with components corresponding to the 
-\change_deleted 2 1331654531
+\change_deleted 0 1331654531
 for every 
-\change_inserted 2 1331654570
+\change_inserted 0 1331654570
 selected 
 \change_unchanged
 direction
-\change_inserted 2 1331654534
+\change_inserted 0 1331654534
 s
 \change_unchanged
  
@@ -1312,7 +1307,7 @@ s
 \end_inset
 
 
-\change_inserted 2 1331654561
+\change_inserted 0 1331654561
  on the ODF sphere
 \change_unchanged
 , 
@@ -1320,14 +1315,14 @@ s
 \end_inset
 
  is a vector with all the signal values, D=0.00251
-\change_inserted 2 1331653673
+\change_inserted 0 1331653673
 
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 2 1331653681
+\change_inserted 0 1331653681
 Reference for this value?
 \change_unchanged
 
@@ -1458,9 +1453,9 @@ This equation can be similarly implemented with a simple matrix transform
 \begin_layout Standard
 \align left
 and 
-\change_deleted 2 1331654625
+\change_deleted 0 1331654625
 until today it hasn't
-\change_inserted 2 1331654628
+\change_inserted 0 1331654628
 has not to date
 \change_unchanged
  been published with real or simulated data sets.
@@ -1508,7 +1503,7 @@ The Fourier transform of
 \end_inset
 
  is the Laplacian operator (for proof see
-\change_inserted 2 1331812204
+\change_inserted 0 1331812204
  section
 \change_unchanged
  
@@ -1555,9 +1550,9 @@ reference "sub:Radial-projection-of-symmetric"
 \begin_layout Standard
 From eq.
 
-\change_inserted 2 1331812611
+\change_inserted 0 1331812611
  
-\change_deleted 2 1331812220
+\change_deleted 0 1331812220
  
 \change_unchanged
 
@@ -1647,17 +1642,17 @@ key "aganj2010reconstruction"
  and we propose here that it can be directly calculated in a cubic grid
  using the standard 3D discrete Laplacian filter which is given by the 3D
  kernel defined by the following 
-\change_inserted 2 1331713841
+\change_inserted 0 1331713841
 
 \begin_inset Formula $3\times3\times3$
 \end_inset
 
  array:
-\change_deleted 2 1331713815
+\change_deleted 0 1331713815
 three planes
 \change_unchanged
  
-\change_deleted 2 1331713872
+\change_deleted 0 1331713872
 
 \begin_inset Formula $\left(\begin{array}{ccc}
 0 & 0 & 0\\
@@ -1681,13 +1676,13 @@ three planes
 
 .
  
-\change_inserted 2 1331713872
+\change_inserted 0 1331713872
 
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 2 1331713951
+\change_inserted 0 1331713951
 \begin_inset Formula \[
 \left[\left(\begin{array}{ccc}
 0 & 0 & 0\\
@@ -1709,16 +1704,16 @@ three planes
 \noindent
 \align block
 This is a f
-\change_inserted 2 1331714112
+\change_inserted 0 1331714112
 ilter
-\change_deleted 2 1331714110
+\change_deleted 0 1331714110
 unction
 \change_unchanged
  commonly used for image processing.
  From now on when we use the Laplacian operator in order to measure the
  directionality of the diffusion signal we will call this reconstruction
  method Diffusion Nabla Imaging as nabla
-\change_inserted 2 1331714067
+\change_inserted 0 1331714067
 -squared
 \change_unchanged
  
@@ -1747,6 +1742,7479 @@ is the symbol for the Laplacian operator.
 \end_layout
 
 \begin_layout Subsection
+Equatorial Inversion Transform
+\end_layout
+
+\begin_layout Standard
+I propose an important theoretical construction called the Equatorial Inversion
+ Transform (EIT) which creates a general formulation for the interpretation
+ of the directionality of the diffusion signal.
+ This idea is founded on two general properties of the diffusion signal:
+ a) If we visualize the diffusion signal for a single fiber for all gradient
+ directions we see that a shape is generated which is smallest towards the
+ direction of the fiber and biggest on the plane perpendicular to that direction
+ (see fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:single_fibre_spherical_grid"
+
+\end_inset
+
+).
+ b) The diffusion signal is additive i.e.
+ 
+\begin_inset Formula $S(\hat{\mathbf{f}}_{1})+S(\hat{\mathbf{f}}_{2})=S(\hat{\mathbf{f}}_{1}+\hat{\mathbf{f}}_{2})$
+\end_inset
+
+ , where 
+\begin_inset Formula $\hat{\mathbf{f}}_{1}$
+\end_inset
+
+,
+\begin_inset Formula $\hat{\mathbf{f}}_{2}$
+\end_inset
+
+ are the unit directions of the fibres.
+ In simple terms the signal of 2-fibre crossing can be decomposed linearly
+ to the signals of the two fibres that create the crossing.
+ The same holds for any number of fibres in a crossing.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/single_fiber_signal_sphere_grid2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The diffusion signal has the beautiful property to be minimum along the
+ direction of a fibre with unit direction 
+\begin_inset Formula $\mathbf{\hat{\bm{f}}}$
+\end_inset
+
+ and maximum along the equator defined by the plane perpendicular to that
+ fibre direction.
+ This property is the basic inspiration behind the EIT.
+ In this picture the 3D surface plot of a simulated signal for a spherical
+ grid acquisition with b-value 2000 is shown using a yellow-red colourmap.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:single_fibre_spherical_grid"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These are two very important geometric properties of the signal that we
+ can try to exploit 
+\change_deleted 0 1331654855
+at the
+\change_inserted 0 1331654856
+to its
+\change_unchanged
+ 
+\change_deleted 0 1331654864
+maximum
+\change_inserted 0 1331654867
+limit
+\change_unchanged
+ by calculating equatorial integrals in order to identify the directionality
+ of the signal.
+ 
+\end_layout
+
+\begin_layout Standard
+Apart from the visual confirmation further supporting evidence that equatorial
+ integration is crucial for derivation of directionality can be seen in
+ eq.
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ODF_DNI"
+
+\end_inset
+
+ where an equatorial integral 
+\change_deleted 0 1331654929
+which 
+\change_unchanged
+creates a connection between the real ODF and the signal.
+ The Funk-Radon Transform (FRT) used by 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tuch2004"
+
+\end_inset
+
+ is another example where equatorial integration is employed using the reconstru
+ction sphere.
+ We will see next that DNI and FRT are just a subset of the EIT.
+\end_layout
+
+\begin_layout Standard
+With EIT the most important goal is to try to identify the 
+\change_deleted 0 1331654986
+correct directionality
+\change_inserted 0 1331654992
+orientational variation in
+\change_deleted 0 1331654997
+ of
+\change_unchanged
+ the signal in the most accurate way by generating a spherical density.
+ However it is possible to calculate as well the 
+\change_deleted 0 1331655033
+real
+\change_inserted 0 1331655047
+classical
+\change_unchanged
+ ODF as defined by Wedeen et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wedeen"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The EIT shown in eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ODF_EIT"
+
+\end_inset
+
+ consists of an integration along the equator and along radial lines.
+ A function 
+\begin_inset Formula $F$
+\end_inset
+
+ of the signal is multiplied by a radial weighting function 
+\begin_inset Formula $O$
+\end_inset
+
+.
+ This construction is a generalization of the previous ODFs and it can support
+ successfully many different function families for 
+\begin_inset Formula $F$
+\end_inset
+
+ and 
+\begin_inset Formula $O$
+\end_inset
+
+ which can all more or less accurately identify the directional distribution
+ of the signal.
+ More precisely the EIT is defined as
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+\begin_inset Formula \begin{equation}
+\psi_{EIT}(\hat{\mathbf{u}})=\int_{\hat{\mathbf{u}}^{\perp}}\int_{0}^{\infty}F(E(q))O(q)dqd\phi\label{eq:ODF_EIT}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\lang british
+where 
+\begin_inset Formula $F$
+\end_inset
+
+ could be for example any of the following functions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+F(E(q))=\begin{cases}
+\,\,\,\,\,\,\,\,\, E(q) & (I)\\
+-\nabla^{2}(E(q)) & (II)\\
+\,\,\,\,\,\nabla^{4}(E(q)) & (III)\\
+\,\,\,\,\,\ldots\end{cases}\label{eq:eit_operator}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align left
+and 
+\begin_inset Formula $O$
+\end_inset
+
+ could be for example any of the following functions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+O(q)=\begin{cases}
+1 & (0)\\
+q & (1)\\
+q^{2} & (2)\\
+\ldots\end{cases}\label{eq:eit_radial_weighting}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $F$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Comment
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $II$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DNI
+\begin_inset Formula $\equiv$
+\end_inset
+
+EITL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features>
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+calculates the real ODF without
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ the complications of the FFT
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $III$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+EITL2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+high resolution at low angles
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $I$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+EITS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features>
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+impressive resolution without
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+any preprocessing of the signal
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $I$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+'QBI'-like
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+similar to the Funk Radon Transform
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The Equatorial inversion transform (EIT) can be used to explain many other
+ reconstructions algorithms.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Tab:EIT_table"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Tab:EIT_table"
+
+\end_inset
+
+ we see that 
+\change_inserted 0 1331655182
+by chosing 
+\change_unchanged
+different functions 
+\change_inserted 0 1331655171
+for
+\change_deleted 0 1331655169
+of
+\change_unchanged
+ 
+\begin_inset Formula $F$
+\end_inset
+
+ or 
+\begin_inset Formula $O$
+\end_inset
+
+ 
+\change_inserted 0 1331655187
+we 
+\change_unchanged
+can generate 
+\change_inserted 0 1331655132
+both old and
+\change_deleted 0 1331655128
+older well known or
+\change_unchanged
+ new distribution functions on the sphere.
+ With 
+\begin_inset Formula $F(E(q))=-\nabla^{2}(E(q))$
+\end_inset
+
+ and 
+\begin_inset Formula $O(q)=q$
+\end_inset
+
+ we can generate 
+\begin_inset Formula $\psi_{DNI}$
+\end_inset
+
+ which is theoretically identical to the DSI real ODF(
+\begin_inset Formula $\psi_{DSI}$
+\end_inset
+
+).
+ If 
+\begin_inset Formula $F(E(q))=E(q)$
+\end_inset
+
+ and 
+\begin_inset Formula $O(q)=1$
+\end_inset
+
+ then this is similar 
+\change_inserted 0 1331655217
+to
+\change_deleted 0 1331655216
+with
+\change_unchanged
+ the Funk Radon Transform (used in Qball imaging) but applied to multiple
+ spherical shells.
+ However, we can also try to use different functions like 
+\begin_inset Formula $F(E(q))=-\nabla^{4}(E(q))$
+\end_inset
+
+ and 
+\begin_inset Formula $O(q)=q$
+\end_inset
+
+ which can potentially increase the amount of directional information beyond
+ tha
+\change_inserted 0 1331655274
+t of
+\change_deleted 0 1331655272
+n
+\change_unchanged
+ the standard ODFs.
+ Before starting investigating the realms of EIT we should first give a
+ short overview of other methods commonly found in the literature.
+
+\change_deleted 0 1331655391
+ These are grid-based, mostly non-grid based and usually parametric.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+Other methods
+\end_layout
+
+\begin_layout Standard
+Pickalov et al.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pickalov2006tra"
+
+\end_inset
+
+ proposed a new method for reconstructing the diffusion propagator by applying
+ an iterative inverse Radon transform on measurements along many radial
+ lines; computing 1D tomographic projections to reconstruct the 3D EAP.
+ This technique measures DW images along a few radial lines of q-space but
+ still requires hundreds of samples to reliably recover the EAP.
+ Currently, to reconstruct the EAP, the state-of-the-art model-free techniques
+ apart from diffusion spectrum imaging are hybrid diffusion imaging (HYDI)
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wu2007hybrid"
+
+\end_inset
+
+ and multiple q-shell diffusion propagator imaging (mq-DPI)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "descoteaux2010multiple"
+
+\end_inset
+
+.
+ HYDI acquires the signal values on 
+\change_inserted 0 1331655431
+five
+\change_deleted 0 1331655430
+5
+\change_unchanged
+ concentric spherical q-space shells, then interpolates 
+\change_inserted 0 1331655437
+on
+\change_unchanged
+to a cubic grid and applies the standard Fourier transform in the same way
+ as DSI.
+ In mq-DPI the EAP is calculated by solving Laplace's equation for the diffusion
+ signal using a real and symmetric modiﬁed spherical harmonic basis.
+ The EAP can be found analytically by the inversion of a linear system using
+ Laplace-Beltrami regularization.
+ In addition exact q-ball imaging (EQBI)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "canalesrodriguez2009mdq"
+
+\end_inset
+
+ provides a different method to calculate the ODF analytically using multiple
+ spherical q-space shells and similarly Aganj et al.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Aganj2010"
+
+\end_inset
+
+, proposed an analytical solution for the multi-shell case by incorporating
+ a mono-exponential or bi-exponential model (CSA-ODF).
+ Another distribution on the sphere was proposed by Özarslan et al.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ozarslan2006resolution"
+
+\end_inset
+
+ named diffusion orientation transform (DOT).
+ This method calculates a different statistic 
+\begin_inset Formula $P(r_{0}\mathbf{\hat{u}})$
+\end_inset
+
+, the probability of finding 
+\change_inserted 0 1331655486
+a
+\change_deleted 0 1331655486
+the
+\change_unchanged
+ particle initially at the origin
+\change_deleted 0 1331655492
+,
+\change_unchanged
+ at the point 
+\begin_inset Formula $r_{0}\mathbf{\hat{u}}$
+\end_inset
+
+
+\change_inserted 0 1331655497
+,
+\change_unchanged
+ using spherical harmonics.
+ Not surprisingly there is a relationship connecting CSA with DOT which
+ is 
+\lang british
+
+\begin_inset Formula \begin{equation}
+\psi_{CSA}(\hat{\mathbf{u}})=\int_{0}^{\infty}DOT(r\hat{\mathbf{u}})r^{2}dr\label{eq:CSAandDOT}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jansons et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "JansonsPAS2003"
+
+\end_inset
+
+ proposed a different function on the sphere than the ODFs described above,
+ to be used on data sets acquired on a single spherical q-space shell.
+ They called this spherical function persistent angular structure (PAS).
+ This method has very good angular resolution because it uses the principle
+ of maximum entropy however it is rather slow as it uses nonlinear fitting
+ in order to identify many parameters.
+ PAS is a statistic on the sphere defined as 
+\begin_inset Formula $PAS(\hat{\mathbf{u}})=\exp(\lambda_{0}+\sum_{j=1}^{N}\lambda_{j}\cos(\mathbf{q}_{j}\cdot k\hat{\mathbf{u}}))$
+\end_inset
+
+ where 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ are the unknown parameters, 
+\begin_inset Formula $k$
+\end_inset
+
+ is constant and 
+\begin_inset Formula $N$
+\end_inset
+
+ is the number of DWIs.
+ The relationship 
+\begin_inset Formula $\int PAS(\hat{\mathbf{u}})\exp(i\mathbf{q}_{j}\cdot k\hat{\mathbf{u}})d\hat{\mathbf{u}}=E(\mathbf{q}_{j})$
+\end_inset
+
+ provides the bridge between PAS and the diffusion signal (
+\begin_inset Formula $E(\mathbf{q})$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+The first reference of using spherical harmonic expansions with diffusivity
+ profiles, which are now 
+\change_deleted 0 1331655602
+very
+\change_inserted 0 1331655602
+quite
+\change_unchanged
+ 
+\change_deleted 0 1331655584
+favorable
+\change_inserted 0 1331655585
+common
+\change_unchanged
+ in the literature, was by Alexander et al.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "alexander2002detection"
+
+\end_inset
+
+.
+ Q
+\change_inserted 0 1331653788
+-
+\change_unchanged
+ball imaging was introduced by Tuch 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tuch2004"
+
+\end_inset
+
+ and a new ODF defined as 
+\begin_inset Formula $\psi(\mathbf{\hat{u}})=\frac{1}{Z}\int_{0}^{\infty}P(r\mathbf{\hat{u}})dr$
+\end_inset
+
+ where 
+\begin_inset Formula $Z$
+\end_inset
+
+ is a normalization constant.
+ It was later provided for Q
+\change_inserted 0 1331655610
+-
+\change_unchanged
+Ball imaging a fast and analytical solution using spherical harmonics (SH)
+ and Laplace-Beltrami regularization 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Descoteaux2007"
+
+\end_inset
+
+.
+ Tournier et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tournier2004direct"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tournier2007"
+
+\end_inset
+
+ introduced a spherical deconvolution method where first the SH coefficients
+ were reconstructed by XXXXX
+\change_inserted 0 1331655689
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1331655697
+something missing here?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+, then single fiber ODFs are used as a deconvolution kernel estimated from
+ the real data.
+ Then the sharper fODF (fiber orientation distribution function) was obtained
+ by a simple linear transformation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "descoteaux2007deterministic"
+
+\end_inset
+
+.
+ Other deconvolution approaches were proposed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sakaie2007objective"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "yeh2011estimation"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+On Tensor related methods we have the classical Single
+\change_inserted 0 1331655845
+ 
+\change_unchanged
+Tensor 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Basser1994"
+
+\end_inset
+
+, Sticks
+\change_inserted 0 1331655853
+ and 
+\change_deleted 0 1331655848
+&
+\change_unchanged
+Ball
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Behrens2007NeuroImage"
+
+\end_inset
+
+, Multi-Tensor
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pasternak2008variational"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "liu2004characterizing"
+
+\end_inset
+
+ and Higher Rank Tensors 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ozarslan2003generalized"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "barmpoutis2009regularized"
+
+\end_inset
+
+.
+ In addition there are also model based methods which try to calculate non-Gauss
+ian properties
+\change_inserted 0 1331655874
+,
+\change_unchanged
+ for example the Kurtosis Tensor 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jensen2005diffusional"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lu2006three"
+
+\end_inset
+
+ which is used in Diffusion Kurtosis Imaging (DKI).
+\end_layout
+
+\begin_layout Standard
+Finally, new model-based methods are emerging which are trying to calculate
+ statistics like the axonal thickness distribution from dMRI data sets.
+ These are usually based on modeling free and restricted components; CHARMED
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "assaf2005composite"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "assaf2004new"
+
+\end_inset
+
+, AxCaliber 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "assaf2008axcaliber"
+
+\end_inset
+
+ and the orientation invariant ActiveAx
+\begin_inset CommandInset citation
+LatexCommand cite
+key "alexander2010orientationally"
+
+\end_inset
+
+ are some well known methods of this type.
+ Q-space Imaging(QSI) can be used to identify distributions of axon-diameter
+ too
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ong2010quantifying"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Implementation 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/fast_DNI.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+(A)Standard EIT vs (B)Fast EIT algorithm.
+ Fast EIT is an order of magnitude faster than standard EIT.
+ The key idea here is that reduce computations by storing the sum of the
+ radial integrals for every vertex in the reconstruction sphere and then
+ we can also precompute the indices of the vertices that are near the equator
+ of every vertex (inside an equatorial zone).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:sEITvsEIT"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Standard EIT
+\end_layout
+
+\begin_layout Standard
+Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ODF_DNI"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ODF_EIT"
+
+\end_inset
+
+ can be implemented in a standard way by evaluating the 3D signal on the
+ grid multiple times for every direction 
+\begin_inset Formula $\hat{\bm{u}}$
+\end_inset
+
+ as shown in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:sEITvsEIT"
+
+\end_inset
+
+(A).
+ This suggests that if for example we use a reconstruction sphere of 
+\begin_inset Formula $642$
+\end_inset
+
+ vertices and the signal is centered inside a cubic grid of size 
+\begin_inset Formula $16\times16\times16$
+\end_inset
+
+ where  and the radial integration (
+\begin_inset Formula $q$
+\end_inset
+
+) takes place in 
+\begin_inset Formula $30$
+\end_inset
+
+ steps and the equatorial (
+\begin_inset Formula $\phi$
+\end_inset
+
+) in 
+\begin_inset Formula $63$
+\end_inset
+
+ steps then we need to interpolate 
+\begin_inset Formula $642\times30\times30\simeq1.2$
+\end_inset
+
+ million times on the cubic grid.
+ For this reason I invented Fast EIT a new method that needs an order of
+ magnitude less evaluations.
+\end_layout
+
+\begin_layout Standard
+In this document whenever we use the prefix s in front of a method that
+ will mean that this was calculated with the standard EIT algorithm.
+ For example if standard EIT is used for DNI we will write sDNI or sEITL.
+ 
+\change_inserted 0 1331658366
+(The 'L' stands for 'Lapacian' or 'Nabla'.) 
+\change_unchanged
+Of course sDNI and sEITL are equivalent.
+\end_layout
+
+\begin_layout Subsubsection
+Fast EIT
+\end_layout
+
+\begin_layout Standard
+A much faster algorithm than the standard EIT is described here.
+ The main idea is that we can store the sum of the radial integrals for
+ every vertex in the reconstruction sphere and then we can also precompute
+ the indices of the vertices that are near the equator of every vertex (inside
+ an equatorial zone) see fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:sEITvsEIT"
+
+\end_inset
+
+(B).
+ After these calculations the spherical distribution function can be approximate
+d with much less operations.
+ The full algorithm is given in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Alg:Fast_EIT"
+
+\end_inset
+
+.
+ The in input is the vertices 
+\begin_inset Formula $\hat{\bm{u}}_{i}$
+\end_inset
+
+ of the reconstruction sphere and the normalized signal 
+\begin_inset Formula $E.$
+\end_inset
+
+ Then for every point of the reconstruction sphere 
+\begin_inset Formula $\hat{\bm{u}}_{i}$
+\end_inset
+
+ we save the indices of the vertices 
+\begin_inset Formula $j$
+\end_inset
+
+ of 
+\begin_inset Formula $\hat{\bm{u}}_{j}$
+\end_inset
+
+ ,which are inside an equatorial zone, in list 
+\begin_inset Formula $J_{i}$
+\end_inset
+
+.
+ The width of the equatorial zone 
+\begin_inset Formula $z$
+\end_inset
+
+ is a constant set empirically to 
+\begin_inset Formula $5^{\circ}$
+\end_inset
+
+ .
+ If a very highly dense reconstruction sphere is used with more than 
+\begin_inset Formula $642$
+\end_inset
+
+ vertices which is the one we used then the zone can be smaller.
+ That can potentially increase the angular resolution of the method.
+\end_layout
+
+\begin_layout Standard
+At the next stage we calculate sums along every radius on the direction
+ of 
+\begin_inset Formula $\hat{\bm{u}}_{i}$
+\end_inset
+
+ in the following way 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+mathbb{B}(
+\backslash
+hat{
+\backslash
+bm{u}}_{i})=
+\backslash
+sum_{k=0}^{n}F(E(q_{k}
+\backslash
+hat{
+\backslash
+bm{u}}_{i}))O(q_{k}
+\backslash
+hat{
+\backslash
+bm{u}}_{i})$
+\end_layout
+
+\end_inset
+
+ and obtain the final EIT ODF as the average of the sums in the equator
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+psi_{EIT}(
+\backslash
+hat{
+\backslash
+bm{u}}_{i})=
+\backslash
+frac{1}{N_i}
+\backslash
+sum_{j
+\backslash
+in J_i}
+\backslash
+mathbb{B}(
+\backslash
+hat{
+\backslash
+bm{u}}_{j})$
+\end_layout
+
+\end_inset
+
+ where 
+\begin_inset Formula $F$
+\end_inset
+
+ is evaluated with trilinear for example interpolation on the lattice and
+ 
+\begin_inset Formula $N_{i}$
+\end_inset
+
+ is the number of indices in 
+\begin_inset Formula $J_{i}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Input} $U=
+\backslash
+{
+\backslash
+hat{
+\backslash
+bm{u}}_{1}
+\backslash
+ldots
+\backslash
+hat{
+\backslash
+bm{u}}_{m}
+\backslash
+}$, E
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Output} $
+\backslash
+bm{
+\backslash
+psi}_{EIT}$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Foreach} $
+\backslash
+hat{
+\backslash
+bm{u}}_{i}$ 
+\backslash
+textbf{Do}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} $J_{i}=
+\backslash
+{j : |
+\backslash
+arccos(
+\backslash
+hat{
+\backslash
+bm{u}}_{i}
+\backslash
+cdot
+\backslash
+hat{
+\backslash
+bm{u}}_{j})|
+\backslash
+leq z 
+\backslash
+}$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Foreach} $
+\backslash
+hat{
+\backslash
+bm{u}}_{i}$ 
+\backslash
+textbf{Do}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} $
+\backslash
+mathbb{B}(
+\backslash
+hat{
+\backslash
+bm{u}}_{i})=
+\backslash
+sum_{k=0}^{n}F(E(q_{k}
+\backslash
+hat{
+\backslash
+bm{u}}_{i}))O(q_{k}
+\backslash
+hat{
+\backslash
+bm{u}}_{i})$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{4em} where $F(E(q_{k}
+\backslash
+hat{
+\backslash
+bm{u}}_{i}))$ is interpolated on the lattice.
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} $
+\backslash
+psi_{EIT}(
+\backslash
+hat{
+\backslash
+bm{u}}_{i})=
+\backslash
+frac{1}{N_i}
+\backslash
+sum_{j
+\backslash
+in J_i}
+\backslash
+mathbb{B}(
+\backslash
+hat{
+\backslash
+bm{u}}_{j})$
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{4em} where $N_i$ is the number of indices in $J_i$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+caption{Fast Equatorial Inversion Transform}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Alg:Fast_EIT"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Multi-fiber-Simulations"
+
+\end_inset
+
+ the standard EITL (sEITL) is compared with fast EITL.
+ In fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:FastvsStandardEITL"
+
+\end_inset
+
+ we can see that the fast EIT has very similar results with the standard
+ EIT therefore from now on whenever we see EIT written in this document
+ we will assume that the fast version is used.
+ 
+\end_layout
+
+\begin_layout Subsection
+Peak Finding
+\end_layout
+
+\begin_layout Standard
+After we have generated the ODFs we need to find the peaks (local maxima)
+ from which we can easily approximate the direction of the fibres.
+ Peak finding can be non-trivial if there are many local maxima in the ODFs
+ or the ODFs are noisy.
+ Here we present an algorithm (
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "Alg:PeakFinding"
+
+\end_inset
+
+) which reduces the amount of small local variations and returns a number
+ of sorted peaks and their indices in the reconstruction sphere.
+ The input of this algorithm is 
+\begin_inset Formula $\bm{\psi}$
+\end_inset
+
+ (ODF) and the faces of a symmetric on the z-axis evenly distributed sphere
+ (see fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:sphere_642"
+
+\end_inset
+
+C).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Input} ODF $
+\backslash
+bm
+\backslash
+psi$, faces $
+\backslash
+Phi$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Output} peaks $P$ and indices $I$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Foreach} face $
+\backslash
+Phi_i$ 
+\backslash
+textbf{Do}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} $f_0,f_1,f_2 = 
+\backslash
+Phi_i$ 
+\backslash
+
+\backslash
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} $d_0,d_1,d_2 =
+\backslash
+bm{
+\backslash
+psi}[f_0],
+\backslash
+bm{
+\backslash
+psi}[f_1],
+\backslash
+bm{
+\backslash
+psi}[f_2]$ 
+\backslash
+
+\backslash
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} 
+\backslash
+textbf{If} $d_0 
+\backslash
+geq d_1$ 
+\backslash
+textbf{and} $d_2$ 
+\backslash
+textbf{Do}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{4em} $P[f_1]=P[f_2]=0$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{4em} 
+\backslash
+textbf{continue} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+caption{Peak Finding with a Symmetric Ordered Sphere}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Alg:PeakFinding"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have 
+\change_deleted 0 1331656962
+a constructed
+\change_inserted 0 1331656962
+used
+\change_unchanged
+ a 
+\change_inserted 0 1331656886
+trianglation of the unit 
+\change_unchanged
+sphere
+\change_inserted 0 1331656995
+ (which we refer to simply as 'sphere')
+\change_unchanged
+ 
+\change_inserted 0 1331657313
+obtained by triangular subdivision of a regular icosahedron.
+ 
+\change_deleted 0 1331657315
+which
+\change_inserted 0 1331657316
+This
+\change_unchanged
+ is symmetric over the z-axis and 
+\series bold
+\bar under
+the faces of the sphere are also ordered along the z-axis
+\series default
+\bar default
+.
+ The same sphere was used in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
+
+\end_inset
+
+ for GQI reconstructions.
+ Every face contains the 
+\begin_inset Formula $3$
+\end_inset
+
+ indices which indicate at the 
+\begin_inset Formula $3$
+\end_inset
+
+ different points that create the triangle(face) of the sphere.
+ The idea here is that we can travel from face to face and nullify all points
+ on a face which are lower that the higher value of the face.
+ At the end only local maxima will survive the procedure.
+ The algorithm is presented in detail in alg.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Alg:PeakFinding"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The sphere we use is of course discrete and therefore it adds some constraints
+ on the angular resolution (worst case
+\begin_inset Formula $\pm4.96^{\circ}$
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula $f+v-e=2$
+\end_inset
+
+, 
+\begin_inset Formula $e=3f/2$
+\end_inset
+
+, assume equilateral triangle with area 
+\begin_inset Formula $A=\frac{4\pi}{1280}=\frac{\sqrt{3}}{4}l^{2}$
+\end_inset
+
+ then 
+\begin_inset Formula $l=0.15$
+\end_inset
+
+ now the circumradius is given by 
+\begin_inset Formula $R=l/\sqrt{3}=.008$
+\end_inset
+
+ in radians and in degrees is 
+\begin_inset Formula $4.96^{\circ}.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+) of the peaks found from the ODF.
+ In addition the proposed Peak Finding algorithm can reduces slightly more
+ the angular resolution.
+ For example in Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:sphere_642"
+
+\end_inset
+
+A+B we show that if point 
+\series bold
+a
+\series default
+ was a local maxima then only points 
+\series bold
+b
+\series default
+ could be alternative local maxima for 
+\series bold
+a
+\series default
+ but none of the unlabeled points could be a second peak.
+ Nevertheless we found Alg.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Alg:PeakFinding"
+
+\end_inset
+
+ to be extremely useful and fast.
+ 
+\change_inserted 0 1331657371
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1331657391
+Can we explain and document this?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+The same algorithm was used also in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
+
+\end_inset
+
+ but it was not documented as such.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/peak_finding_sphere.png
+	lyxscale 30
+	scale 60
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+A,B: Imagine that point 
+\series bold
+a
+\series default
+ is a local maximum for all its neighboring faces then only at 
+\series bold
+b
+\series default
+ are other possible local maxima.
+ This simple illustration shows that the triangulation of the sphere is
+ important for the determination of closed peaks and that peaks which belong
+ to the same triangle cannot be determined.
+ C: the sphere used for ODF reconstructions consisting of 
+\begin_inset Formula $642$
+\end_inset
+
+ vertices and 
+\begin_inset Formula $1280$
+\end_inset
+
+ faces produced by subdivisions of the icosahedron.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:sphere_642"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Spherical Angular Smoothing
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Spherical-Angular-Smoothing"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All current non-parametric dMRI reconstruction algorithms use some type
+ of 
+\begin_inset Quotes eld
+\end_inset
+
+smoothing
+\begin_inset Quotes erd
+\end_inset
+
+ to reduce the effect of noise in the real data sets.
+ DSI 
+\change_deleted 0 1331657425
+is using
+\change_inserted 0 1331657426
+uses a
+\change_unchanged
+ 
+\change_inserted 0 1331812780
+H
+\change_deleted 0 1331812779
+h
+\change_unchanged
+anning filter and then avoid
+\change_deleted 0 1331657436
+ing
+\change_inserted 0 1331657436
+s
+\change_unchanged
+ sampling from low values in 
+\series bold
+r
+\series default
+-space.
+ In GQI, smoothing is controlled from a scalar parameter; the diffusion
+ sampling length and in spherical harmonic inversion methods 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Descoteaux2007MagResMed"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "aganj2010reconstruction"
+
+\end_inset
+
+ the amount of smoothing is controlled by using only a number of the first
+ components of the SH series.
+ 
+\end_layout
+
+\begin_layout Standard
+All these approaches smooth and calculate the ODFs simultaneously.
+ We propose something different
+\change_inserted 0 1331812844
+ namely t
+\change_deleted 0 1331812838
+.
+ T
+\change_unchanged
+hat the ODF can be calculated initially and then smoothed
+\change_inserted 0 1331812860
+.
+
+\change_unchanged
+ 
+\change_deleted 0 1331812864
+using f
+\change_inserted 0 1331812865
+F
+\change_unchanged
+or example
+\change_inserted 0 1331812872
+ using
+\change_unchanged
+ the
+\change_deleted 0 1331812879
+ following
+\change_unchanged
+ operator shown below in matrix form
+\begin_inset Formula \[
+W=\exp(\frac{U\cdot U^{T}}{\sigma})\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align block
+where 
+\begin_inset Formula $U$
+\end_inset
+
+ is the an 
+\begin_inset Formula $N\times3$
+\end_inset
+
+ matrix holding the 
+\begin_inset Formula $N$
+\end_inset
+
+ points of the ODF reconstruction sphere and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is a smoothing parameter acting like the variance.
+ At the next step we can smooth any ODF(
+\begin_inset Formula $\bm{\psi}$
+\end_inset
+
+) creating a new ODF(
+\begin_inset Formula $\bm{\psi}'$
+\end_inset
+
+) in the following way
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula \begin{equation}
+\bm{\psi}'=\bm{\psi}\cdot\frac{W}{\sum_{j}W_{j}}\label{eq:spherical_gaussian_angular_smoothing}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align block
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+where 
+\begin_inset Formula $j$
+\end_inset
+
+ denotes row indexing, 
+\begin_inset Formula $\sum_{j}W_{j}$
+\end_inset
+
+ acts as a normalization for the angular weighting 
+\begin_inset Formula $W$
+\end_inset
+
+, 
+\begin_inset Formula $\bm{\psi}$
+\end_inset
+
+ is the initial ODF and
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\bm{\psi}'$
+\end_inset
+
+ is the smoothed ODF 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+.
+ The advantage of this method is that it is more comprehensive and direct.
+ Also it uses information from all directions simultaneously.
+ Similar operators can be constructed that weight more lower or higher peaks.
+ The operator shown here weighs more peaks that are closer in angular distance.
+ In fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:Smoothing_Example"
+
+\end_inset
+
+ we see the effect of this equation on a simulated triple-fibre crossing;
+ distorted with Gaussian noise with SNR 
+\begin_inset Formula $20$
+\end_inset
+
+ and reconstructed as a EITL density function which we have 
+\change_inserted 0 1331657753
+
+\series bold
+????
+\change_unchanged
+
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/triple_crossing_laplacian_snr20.png
+	lyxscale 50
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+An example of spherical angular Gaussian smoothing applied with different
+ smoothing factors on the distribution function of a triple-fibre crossing
+ on the left.
+ The simulation was used using 
+\change_inserted 0 1331812952
+a 
+\change_deleted 0 1331812932
+(
+\change_unchanged
+Sticks
+\change_inserted 0 1331812938
+ and 
+\change_deleted 0 1331812936
+&
+\change_unchanged
+Ball
+\change_deleted 0 1331812929
+)
+\change_unchanged
+ model with diffusivity value 
+\begin_inset Formula $0.0015$
+\end_inset
+
+, S0=
+\begin_inset Formula $100$
+\end_inset
+
+, and Gaussian noise with SNR 
+\begin_inset Formula $20$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:Smoothing_Example"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can easily see in fig.
+
+\change_deleted 0 1331813237
+ 
+\change_inserted 0 1331813241
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:Smoothing_Example"
+
+\end_inset
+
+ that when we increase the smoothing factor 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ 
+\change_inserted 0 1331658462
+, 
+\change_unchanged
+small noisy peaks
+\change_inserted 0 1331658491
+,
+\change_deleted 0 1331658483
+;
+\change_unchanged
+ as seen in the center of the unsmoothed spherical function
+\change_inserted 0 1331658497
+,
+\change_unchanged
+ can be easily removed.
+ However, with too much smoothing even the longer peaks can lose their definitio
+n.
+ This spherical operator can help to set the trade-off between noise and
+ signal and it can also simplify the peak finding process
+\change_inserted 0 1331658513
+,
+\change_unchanged
+ i.e.
+
+\change_deleted 0 1331658613
+ 
+\change_inserted 0 1331658613
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+finding the underlying primary fibre directions as this problem is much
+ easier on smooth surfaces.
+\end_layout
+
+\begin_layout Standard
+Finally, we believe that by decoupling the smoothing from the reconstruction
+ 
+\change_deleted 0 1331679005
+phase
+\change_inserted 0 1331679007
+step
+\change_unchanged
+ we have an important advantage
+\change_inserted 0 1331678695
+:
+\change_unchanged
+ 
+\change_deleted 0 1331678703
+and that is that 
+\change_unchanged
+we can reduce
+\change_deleted 0 1331678739
+ more strongly and independently
+\change_unchanged
+ the effect of the noise to our data
+\change_inserted 0 1331678743
+ more strongly and independently
+\change_unchanged
+.
+ Many spherical operators 
+\change_inserted 0 1331678807
+can be 
+\change_unchanged
+added as
+\change_deleted 0 1331678811
+ a
+\change_unchanged
+ plugins 
+\change_deleted 0 1331678821
+which is uncontrolled from
+\change_inserted 0 1331678828
+independently of
+\change_unchanged
+ the reconstruction phase
+\change_inserted 0 1331678840
+,
+\change_unchanged
+ and 
+\change_inserted 0 1331678843
+these 
+\change_unchanged
+can work with any function on the sphere.
+ For example Eq.
+\change_inserted 0 1331658656
+
+\begin_inset space ~
+\end_inset
+
+
+\change_deleted 0 1331658651
+ 
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:spherical_gaussian_angular_smoothing"
+
+\end_inset
+
+ can be used with any function on the sphere.
+\end_layout
+
+\begin_layout Subsection
+Comparisons and Results
+\end_layout
+
+\begin_layout Standard
+Validation of reconstruction and tractography algorithms is not straightforward
+ due to the lack of relevant gold standards.
+ Simulated voxels and digital phantoms 
+\change_inserted 0 1331678900
+are
+\change_deleted 0 1331678899
+is
+\change_unchanged
+ a useful way to overcome this difficulty and test new methods.
+ After the simulation results we also show results with real human data
+ sets.
+\end_layout
+
+\begin_layout Subsubsection
+Multi-fibre Simulations
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Multi-fiber-Simulations"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/low_angles_with_labels.png
+	lyxscale 30
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang british
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Visualizing ODFs created from different reconstruction methods sDNI (sEITL),
+ EITL, EITL2, DSI, GQI, GQI2.
+ These are based on simulations of 2-fibre crossings from 
+\begin_inset Formula $0^{\circ}$
+\end_inset
+
+to 
+\begin_inset Formula $90^{\circ}$
+\end_inset
+
+at steps of 
+\begin_inset Formula $5^{\circ}$
+\end_inset
+
+ using eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sticks_ball_eq"
+
+\end_inset
+
+.
+ We can see that standard DNI (sDNI), EITL and EITL2 can resolve the correct
+ angular fibre directions at lower angles than the other methods.
+ For example see column at angle of 
+\begin_inset Formula $25^{\circ}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:multi-fibre-sims"
+
+\end_inset
+
+
+\change_inserted 0 1331679341
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1331679358
+Guy: I couldn't find a reference to this in the text.
+ It needs to be clearer how the data was generated (I assume ball & stick).
+ Did you fit to a ball & stick model too? Would be interesting.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align block
+For single voxel simulations we used the model proposed in Behrens et al.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Behrens2007NeuroImage"
+
+\end_inset
+
+; the multi-compartment model also known as Sticks and Ball which simulates
+ the diffusion signal as
+\begin_inset Formula \begin{equation}
+S_{i}=S_{0}((1-\sum_{j=1}^{N}f_{j})\exp(-b_{i}d)+\sum_{j=1}^{N}f_{j}\exp(-b_{i}d\cos(\theta_{ij})^{2}))\label{eq:sticks_ball_eq}\end{equation}
+
+\end_inset
+
+
+\change_deleted 0 1331682834
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align block
+
+\change_inserted 0 1331682919
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1331682300
+
+
+\backslash
+noindent
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ 
+\change_unchanged
+where 
+\begin_inset Formula $\theta_{ij}$
+\end_inset
+
+ is the angle between gradient direction 
+\begin_inset Formula $\mathbf{\hat{g}}_{i}$
+\end_inset
+
+ and fibre(stick) unit direction 
+\begin_inset Formula $\mathbf{\hat{u}}_{j}$
+\end_inset
+
+.
+ The amount of representation for every fibre is given by 
+\begin_inset Formula $f$
+\end_inset
+
+ and 
+\begin_inset Formula $d$
+\end_inset
+
+ is the diffusivity value for the entire model.
+ A Multi Tensor 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "liu2004characterizing"
+
+\end_inset
+
+ approach was also created for digital phantoms using the formula
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+
+\begin_inset Formula \begin{equation}
+S_{i}=S_{0}\sum_{j=1}^{N}\exp(-b\mathbf{\hat{g}}^{T}D_{j}\mathbf{\hat{g}})\label{eq:multitensor}\end{equation}
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+where 
+\begin_inset Formula $D_{j}$
+\end_inset
+
+ is the diffusion tensor for every fibre 
+\begin_inset Formula $j$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A comparison method/metric is needed in order to evaluate the new/old reconstruc
+tion methods discussed in this 
+\change_deleted 0 1331679144
+document
+\change_inserted 0 1331679146
+chapter
+\change_unchanged
+.
+ The standard procedure is to calculate the similarity between the measured
+ and simulated 
+\change_deleted 0 1331680711
+
+\begin_inset Quotes eld
+\end_inset
+
+golden
+\change_inserted 0 1331680713
+ground
+\change_unchanged
+ truth
+\change_deleted 0 1331679422
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\change_unchanged
+ data sets.
+ We want to calculate the angular precision of the ODFs from simulations
+ derived from eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sticks_ball_eq"
+
+\end_inset
+
+.
+ We define a new similarity metric called angular similarity (AS) which
+ computes the cosine distance of the best match between the set of measured
+ fibre orientations and the known set of simulated fibres.
+ This metric will be used to compare 2-fibre and 3-fibre crossings.
+ AS is 
+\begin_inset Formula $0$
+\end_inset
+
+ when there is no match i.e.
+ angular distance is 
+\change_deleted 0 1331679537
+maximum (
+\begin_inset Formula $90^{\circ}$
+\end_inset
+
+
+\change_unchanged
+), 
+\begin_inset Formula $1$
+\end_inset
+
+ when 
+\change_inserted 0 1331679569
+one
+\change_deleted 0 1331679563
+
+\begin_inset Formula $1$
+\end_inset
+
+
+\change_unchanged
+ fibre is matched (
+\begin_inset Formula $0^{\circ}$
+\end_inset
+
+), 
+\begin_inset Formula $2$
+\end_inset
+
+ when 
+\change_deleted 0 1331679601
+
+\begin_inset Formula $2$
+\end_inset
+
+
+\change_inserted 0 1331679602
+two
+\change_unchanged
+ fibres are matched and 
+\begin_inset Formula $3$
+\end_inset
+
+ when 
+\change_deleted 0 1331679612
+
+\begin_inset Formula $3$
+\end_inset
+
+
+\change_inserted 0 1331679613
+three
+\change_unchanged
+ fibres are matched.
+ In table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Tab:AS_behaviour"
+
+\end_inset
+
+ we show a few examples of AS behaviour with simple unit vector sets.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Known
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Measured
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+AS
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(1,0,0),(0,1,0)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(0,0,1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(1,0,0),(0,1,0)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(0,1,0)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(1,0,0),(0,1,0)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+\begin_inset Formula $(0,\nicefrac{\sqrt{2}}{2},\nicefrac{\sqrt{2}}{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+\begin_inset Formula $\nicefrac{\sqrt{2}}{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(1,0,0),(0,1,0),(0,0,1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(1,0,0),(0,0,1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Examples of angular similarity (AS) behaviour with simple unit vector sets.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Tab:AS_behaviour"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align block
+If our 
+\change_deleted 0 1331680734
+
+\begin_inset Quotes eld
+\end_inset
+
+golden
+\begin_inset Quotes erd
+\end_inset
+
+ (known)
+\change_inserted 0 1331680737
+ground truth
+\change_unchanged
+ set consists of 
+\begin_inset Formula $g=[(1,0,0),(0,1,0)]$
+\end_inset
+
+ and the measured set consists of 
+\begin_inset Formula $m=[(0,0,1)]$
+\end_inset
+
+ then AS=
+\begin_inset Formula $0$
+\end_inset
+
+.
+ If the measured set was 
+\begin_inset Formula $m=[(0,\nicefrac{\sqrt{2}}{2},\nicefrac{\sqrt{2}}{2})]$
+\end_inset
+
+ then AS
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+ is
+\begin_inset Formula $\nicefrac{\sqrt{2}}{2}$
+\end_inset
+
+.
+ This is because according to the AS definition we have
+\change_deleted 0 1331681582
+ AS(
+\begin_inset Formula $g$
+\end_inset
+
+,
+\begin_inset Formula $m$
+\end_inset
+
+)=
+\begin_inset Formula $\max(|g[0]\cdot m[0]|,|g[1],m[0]|)$
+\end_inset
+
+=
+\begin_inset Formula $\nicefrac{\sqrt{2}}{2}$
+\end_inset
+
+.
+\change_inserted 0 1331681624
+
+\end_layout
+
+\begin_layout Standard
+\align block
+
+\change_inserted 0 1331681632
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+\begin_inset Formula $AS(g,m)=\max(|g[0]\cdot m[0]|,|g[1],m[0]|)=\nicefrac{\sqrt{2}}{2}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align block
+
+\change_inserted 0 1331681737
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1331681737
+
+
+\backslash
+noindent
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted 0 1331681632
+ 
+\change_inserted 0 1331681743
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+If 
+\begin_inset Formula $g=[(1,0,0),(0,1,0)]$
+\end_inset
+
+ and 
+\begin_inset Formula $m=g$
+\end_inset
+
+ then 
+\change_deleted 0 1331681582
+AS(
+\begin_inset Formula $g,m$
+\end_inset
+
+)=max
+\begin_inset Formula $(|g[0]\cdot m[0]|+|g[1]\cdot m[1]|,|g[0]\cdot m[1]|+|g[1]\cdot m[0]|)=2$
+\end_inset
+
+.
+\change_inserted 0 1331681577
+
+\end_layout
+
+\begin_layout Standard
+\align block
+
+\change_inserted 0 1331680918
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+\begin_inset Formula $AS(g,m)=\max(|g[0]\cdot m[0]|+|g[1]\cdot m[1]|,|g[0]\cdot m[1]|+|g[1]\cdot m[0]|)=2.$
+\end_inset
+
+
+\change_deleted 0 1331681785
+
+\end_layout
+
+\begin_layout Standard
+\align block
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+We created an experiment where we set two fibres at an increasing angle
+ of 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+
+\begin_inset Formula $2.5^{\circ}$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+from 
+\begin_inset Formula $0^{\circ}$
+\end_inset
+
+ to 
+\begin_inset Formula $90^{\circ}$
+\end_inset
+
+ and then rotate them
+\change_deleted 0 1331813253
+ 
+\change_unchanged
+uniformly around 
+\begin_inset Formula $200$
+\end_inset
+
+ random axes.
+ This operation produces 
+\begin_inset Formula $7400$
+\end_inset
+
+ simulated ODFs and the results are shown in fig.
+
+\change_deleted 0 1331813270
+ 
+\change_inserted 0 1331813270
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:2_100"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:2_20"
+
+\end_inset
+
+ with different signal to noise ratio.
+ For these simulations noise was normally distributed.
+ What we see in the figures is the average angular similarity where the
+ average is calculated from the 
+\begin_inset Formula $200$
+\end_inset
+
+ random orientations for the same angle.
+\end_layout
+
+\begin_layout Standard
+\align block
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/2_100.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Average angular similarity of 2-fibre crossings with SNR 100
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:2_100"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align block
+We can easily observe in fig.
+\change_inserted 0 1331813294
+
+\begin_inset space ~
+\end_inset
+
+
+\change_deleted 0 1331813293
+ 
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:2_100"
+
+\end_inset
+
+ that EITL2 can resolve more accurately fibre crossings at low angles and
+ continue
+\change_inserted 0 1331731203
+s
+\change_unchanged
+ 
+\change_inserted 0 1331731205
+to 
+\change_unchanged
+perform
+\change_deleted 0 1331731210
+ing decently
+\change_unchanged
+ well even at higher angles 
+\begin_inset Formula $>50^{\circ}$
+\end_inset
+
+ .
+ 
+\change_deleted 0 1331731257
+Then 
+\change_unchanged
+EITL 
+\change_deleted 0 1331731261
+is doing
+\change_inserted 0 1331731262
+performs
+\change_unchanged
+ better than DSI, GQI, GQI2 and EITS at low angles and very well at high
+ angles as well.
+ GQI2 performs better than DSI, GQI, and ETS.
+ It is also impressive that EITS can have such a good performance although
+ it is such a simple operation.
+ In summary we 
+\change_inserted 0 1331731320
+see
+\change_deleted 0 1331731318
+say
+\change_unchanged
+ from the 
+\change_inserted 0 1331731325
+graphs 
+\change_unchanged
+that EITL2
+\change_deleted 0 1331714795
+>
+\change_inserted 0 1331714795
+
+\begin_inset Formula $>$
+\end_inset
+
+
+\change_unchanged
+EITL
+\change_deleted 0 1331714798
+>
+\change_inserted 0 1331714798
+
+\begin_inset Formula $>$
+\end_inset
+
+
+\change_unchanged
+GQI2
+\change_deleted 0 1331714804
+>
+\change_inserted 0 1331714804
+
+\begin_inset Formula $>$
+\end_inset
+
+
+\change_unchanged
+DSI
+\change_deleted 0 1331714807
+>
+\change_inserted 0 1331714807
+
+\begin_inset Formula $>$
+\end_inset
+
+
+\change_unchanged
+GQI
+\change_deleted 0 1331714810
+>
+\change_inserted 0 1331714810
+
+\begin_inset Formula $>$
+\end_inset
+
+
+\change_unchanged
+EITS where 
+\change_deleted 0 1331714816
+>
+\change_inserted 0 1331714816
+
+\begin_inset Formula $>$
+\end_inset
+
+
+\change_unchanged
+ means better average angular similarity.
+ The same pattern takes place even when we increase the noise level see
+ for example fig.
+\change_inserted 0 1331813305
+
+\begin_inset space ~
+\end_inset
+
+
+\change_deleted 0 1331813304
+ 
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:2_20"
+
+\end_inset
+
+.
+ We will see next that the same pattern will take place even with 3-fibre
+ crossings and high levels of noise.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/2_20.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Average angular similarity of 
+\begin_inset Formula $2$
+\end_inset
+
+-fibre crossings with SNR 20.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:2_20"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align block
+We also measured the accuracy in 
+\begin_inset Formula $3$
+\end_inset
+
+-fibre crossings.
+ Therefore, we created an experiment where the 
+\begin_inset Formula $3$
+\end_inset
+
+-fibres would always have the same angular distance between each other.
+ That distance would increase from 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+
+\begin_inset Formula $0^{\circ}$
+\end_inset
+
+ to 
+\begin_inset Formula $90^{\circ}$
+\end_inset
+
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+with steps of 
+\begin_inset Formula $2.3^{\circ}$
+\end_inset
+
+ on average and all 
+\begin_inset Formula $3$
+\end_inset
+
+ fibres would be reoriented 
+\begin_inset Formula $200$
+\end_inset
+
+ times.
+ That gave 
+\begin_inset Formula $8000$
+\end_inset
+
+ simulated crossings.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/3_100.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Average angular similarity of 
+\begin_inset Formula $3$
+\end_inset
+
+-fibre crossings with SNR 
+\begin_inset Formula $100$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:3_100"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align block
+The results of the 3-fibre crossings shown in fig.
+\change_inserted 0 1331813312
+
+\begin_inset space ~
+\end_inset
+
+
+\change_deleted 0 1331813312
+ 
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:3_100"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:3_20"
+
+\end_inset
+
+ were very similar with those of the 2-fibre crossings; EITL2 
+\change_deleted 0 1331731411
+scores higher
+\change_inserted 0 1331731420
+performed better
+\change_unchanged
+ at low angles with a bit reduced performance at high angles and EITL 
+\change_deleted 0 1331731430
+doing
+\change_inserted 0 1331731433
+performed
+\change_unchanged
+ better with low angles than the rest of the methods and also having high
+ accuracy on larger angles.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/3_20.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Average angular similarity of 
+\begin_inset Formula $3$
+\end_inset
+
+-fibre crossings with SNR 
+\begin_inset Formula $100$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:3_20"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align block
+These 
+\change_deleted 0 1331731491
+concentrative
+\change_inserted 0 1331731492
+summary
+\change_unchanged
+ plots give strong evidence that both DNI (EITL) and in general EIT can
+ be used to accurately generate spherical distribution functions for the
+ determination of the directional information of the diffusion signal and
+ that these can do better or similar to the current state-of-the-art grid-based
+ reconstruction methods i.e DSI and GQI.
+ Also the addition of noise did
+\change_inserted 0 1331731518
+ 
+\change_unchanged
+n
+\change_inserted 0 1331731519
+o
+\change_deleted 0 1331731519
+'
+\change_unchanged
+t 
+\change_deleted 0 1331731523
+manage to
+\change_unchanged
+ affect the determination of the fibre directions considerably.
+\end_layout
+
+\begin_layout Standard
+Furthermore, we can also see that GQI2 can do better than DSI, GQI and that
+ EITS gives results that are very similar to GQI.
+ The parameters used for these simulations were DSI: radial sampling 
+\begin_inset Formula $2.1-6$
+\end_inset
+
+, hanning filter width: 
+\begin_inset Formula $36$
+\end_inset
+
+
+\change_deleted 0 1331731558
+ 
+\change_unchanged
+, GQI: 
+\begin_inset Formula $\text{\lambda=1.2}$
+\end_inset
+
+, GQI2: 
+\begin_inset Formula $\lambda=3$
+\end_inset
+
+, and EITS, EITL, EITL2 were all calculated with the standard options zonal
+ width (
+\begin_inset Formula $z=5^{\circ}$
+\end_inset
+
+), grid size 
+\begin_inset Formula $17\times17\times17$
+\end_inset
+
+, radial sampling 
+\begin_inset Formula $0-5$
+\end_inset
+
+ with 
+\begin_inset Formula $0.1$
+\end_inset
+
+ steps and no further post-processing or smoothing was used.
+ All methods were using the same reconstruction sphere with 
+\begin_inset Formula $642$
+\end_inset
+
+ vertices and 
+\begin_inset Formula $1280$
+\end_inset
+
+ faces.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 0 1331733688
+In these tests, EIT and fast EIT produced very similar results
+\change_deleted 0 1331733701
+Finally, we should stress that we have never seen any considerable differences
+ between spherical functions created using the standard or fast EIT
+\change_unchanged
+.
+ For example a simple test for the 
+\begin_inset Formula $3$
+\end_inset
+
+-fibre case as seen in fig.
+\change_inserted 0 1331813327
+
+\begin_inset space ~
+\end_inset
+
+
+\change_deleted 0 1331813324
+ 
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:FastvsStandardEITL"
+
+\end_inset
+
+ 
+\change_deleted 0 1331731903
+can 
+\change_unchanged
+show
+\change_inserted 0 1331731906
+s
+\change_unchanged
+ that there is close agreement between the two methods i.e.
+
+\change_deleted 0 1331731917
+ 
+\change_inserted 0 1331731917
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+their results are nearly equivalent.
+ Therefore we can conclude that the fast EIT is 
+\change_inserted 0 1331731874
+an acceptable
+\change_deleted 0 1331731863
+great
+\change_unchanged
+ approximation of the standard EIT.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/EITL_sEITL.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+This diagram shows that when we compute EITL with the fast or standard method
+ the results are nearly equivalent.
+ We show here that the mean angular similarity for the case of 3-fibres
+ crossings is very similar when using standard DNI or or fast DNI (EITL).
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:FastvsStandardEITL"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Digital Phantoms
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Digital-Phantoms"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A digital phantom generation tool was developed which can simulate the diffusion
+ weighted signal for one or more fibres represented by different discrete
+ 3D orbital functions.
+ This work is an extension of the phantom developed by Correia et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Correia2009"
+
+\end_inset
+
+ wh
+\change_inserted 0 1331734126
+ich
+\change_deleted 0 1331734124
+o
+\change_unchanged
+ supported only 
+\change_deleted 0 1331734165
+semi-circular functions
+\change_inserted 0 1331734166
+paths
+\change_unchanged
+ with analytically calculated derivatives.
+\end_layout
+
+\begin_layout Standard
+The idea here is that we first create any orbital function 
+\begin_inset Formula $f(t):\mathbb{R}\rightarrow\mathbb{R}^{3}$
+\end_inset
+
+ and calculate numerically its derivatives at small steps 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+.
+ Then we can scale it and centre it so that it fits in an image volume of
+ size that we desire.
+ We expect that many segments of the discrete function 
+\begin_inset Formula $f$
+\end_inset
+
+ will fall into every voxel in the volume and that more curved parts of
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ will have higher representation in the voxel than less curved parts.
+ For every segment we can find the main direction of the orbit 
+\begin_inset Formula $\mathbf{v}=\frac{f(t+1)-f(t)}{\Delta t}$
+\end_inset
+
+ and calculate the rotation matrix 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+ that rotates 
+\begin_inset Formula $\hat{\mathbf{x}}=(1,0,0)$
+\end_inset
+
+ to 
+\begin_inset Formula $\mathbf{v}$
+\end_inset
+
+.
+ Then the signal for each element of the fibre for a given b-value 
+\begin_inset Formula $b$
+\end_inset
+
+ and a given gradient sampling direction 
+\begin_inset Formula $\hat{\mathbf{g}}$
+\end_inset
+
+, is given by the following Single Tensor formula
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\Delta S=S_{0}\exp(-b\hat{\mathbf{g}}^{T}\mathbf{R}\bm{\Lambda}\mathbf{R}^{T}\hat{\mathbf{g}})\label{eq:step_signal}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align left
+where 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+
+\begin_inset Formula $S_{0}$
+\end_inset
+
+ is the unattenuated signal of the fibre, and the diffusion tensor is given
+ by
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula \begin{equation}
+\bm{\Lambda}=\left(\begin{array}{ccc}
+\lambda_{\parallel} & 0 & 0\\
+0 & \lambda_{\perp} & 0\\
+0 & 0 & \lambda_{\perp}\end{array}\right)\label{eq:step_tensor}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align block
+Therefore the total signal of the voxel for one gradient direction is given
+ by the summations of all the contributions of the 
+\begin_inset Formula $K$
+\end_inset
+
+ elements in the voxel
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+S_{vox}=\sum_{i=1}^{K}\Delta S_{i}\label{eq:digital_phantom_signal}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In addition, we can generate simulations of more than one fibre
+\change_deleted 0 1331733268
+s
+\change_unchanged
+ by generating a single volume for every orbit and then add them all together
+ to create complex configurations in the final volume.
+ This is acceptable
+\change_inserted 0 1331733326
+, under the assumption that the diffusion is Gaussian in all compartments,
+\change_unchanged
+ because the diffusion signal is additive i.e.
+ the signal of a crossing of two fibres is equal to the sum of the the signals
+ of the individual fibres.
+ In th
+\change_deleted 0 1331733336
+at
+\change_inserted 0 1331733336
+is
+\change_unchanged
+ way we can simulate phantoms with Multi Tensor based diffusion signals
+ as that described in eq.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:multitensor"
+
+\end_inset
+
+.
+ We can increase the thickness of the fibres using a typical smoothing kernel
+ or duplicate the fibres radially.
+ At the end we can add different levels of noise e.g.
+ Rician or Gaussian noise with a prespecified SNR.
+ 
+\end_layout
+
+\begin_layout Standard
+The method we use to create these digital phantoms offers the opportunity
+ to simulate partial volume effects.
+ If partial volume effects are not desired then we need to normalize 
+\change_deleted 0 1331733418
+with
+\change_inserted 0 1331733425
+by dividing by
+\change_unchanged
+ the number of fibre elements for each voxel (This function is implemented
+ in dipy.sims.phantom.orbital_phantom).
+ In fig.
+
+\change_deleted 0 1331733432
+ 
+\change_inserted 0 1331733432
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:cool_phantoms"
+
+\end_inset
+
+ we can see the volume renderings of two different phantoms created with
+ the method described here.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/digital_phantom.png
+	lyxscale 40
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Volume renderings of the unattenuated signals of two digital phantoms.
+ On the left 3 fibres intersect on regular angles with Rician noise of SNR=
+\begin_inset Formula $20$
+\end_inset
+
+.
+ On the right a helicoidal fibre is shown clear of noise.
+ For both phantoms 
+\begin_inset Formula $S_{0}=100$
+\end_inset
+
+ and prolate tensors with eigenvalues 
+\begin_inset Formula $\lambda_{\parallel}=1.4\cdot10^{-3}$
+\end_inset
+
+ 
+\lang british
+
+\begin_inset Formula $m^{2}/sec$
+\end_inset
+
+
+\lang english
+ and 
+\begin_inset Formula $\lambda_{\perp}=.35\cdot10^{-3}m^{2}/sec$
+\end_inset
+
+ were used.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:cool_phantoms"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Results with digital phantoms
+\end_layout
+
+\begin_layout Standard
+With the purpose of comparing and visualizing the differences between the
+ reconstruction methods described in this 
+\change_deleted 0 1331733480
+document
+\change_inserted 0 1331733481
+chapter
+\change_unchanged
+ 
+\change_deleted 0 1331733523
+we created 
+\change_unchanged
+a digital phantom of two crossing bundles
+\change_inserted 0 1331733530
+ was created
+\change_unchanged
+.
+ The bundles are crossing at an angle of 
+\begin_inset Formula $90^{\circ}$
+\end_inset
+
+.
+ The digital phantom was generated using the method described in the previous
+ section.
+ Here we describe the basic steps: (a) We first represented the first bundle
+ as a discrete straight 
+\change_deleted 0 1331734351
+orbit
+\change_inserted 0 1331734352
+path
+\change_unchanged
+ starting from point 
+\begin_inset Formula $(-1,-1,0)$
+\end_inset
+
+ and ending at point 
+\begin_inset Formula $(1,1,0)$
+\end_inset
+
+ with using 
+\begin_inset Formula $1000$
+\end_inset
+
+ time steps.
+ (b) We scaled, centred and radially expanded this 
+\change_deleted 0 1331734363
+orbit
+\change_inserted 0 1331734364
+path
+\change_unchanged
+ so that it fits a volume of size 
+\begin_inset Formula $64\times64\times64$
+\end_inset
+
+.
+ This volume corresponds to the diffusion volume without any weighting.
+ (c)
+\change_inserted 0 1331734396
+ 
+\change_unchanged
+We then applied the weightings for all the following volumes corresponding
+ to non-zero b-values.
+ (d) We replicated the same procedure for the other bundle which initially
+ started as an orbit from position 
+\begin_inset Formula $(-1,1,0)$
+\end_inset
+
+ and ended at position 
+\begin_inset Formula $(1,-1,0)$
+\end_inset
+
+.
+ (e) We added the two volumes together to create an 'x' shape (see fig.
+\change_inserted 0 1331733544
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor"
+
+\end_inset
+
+,
+\change_inserted 0 1331733548
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-fat-tensor"
+
+\end_inset
+
+).
+ (f) We added Rician noise with SNR=
+\begin_inset Formula $5$
+\end_inset
+
+.
+ As in this document we concentrate on Cartesian Lattice Q-space acquisitions
+ we generated b-vectors and b-values by using a keyhole Cartesian sampling
+ grid 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tuch2002ThesisMIT"
+
+\end_inset
+
+ with 
+\begin_inset Formula $515$
+\end_inset
+
+ q-vectors.
+ The maximum b-value was 
+\begin_inset Formula $11538$
+\end_inset
+
+ and the minimum was 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Two sets of simulation experiments were performed each using a 
+\change_inserted 0 1331762769
+tensors of 
+\change_unchanged
+different 
+\change_deleted 0 1331762776
+type of Tensor
+\change_inserted 0 1331762778
+shapes
+\change_unchanged
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/software_phantom_comparisons_rician_05.png
+	lyxscale 20
+	scale 14
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Results with an 'x' shape digital phantom.
+ Every single tensor compartment had the following eigenvalues 
+\begin_inset Formula $\lambda_{\parallel}=1.4\times10^{-3}$
+\end_inset
+
+ 
+\lang british
+
+\begin_inset Formula $\textrm{mm}^{2}/\textrm{sec}$
+\end_inset
+
+
+\lang english
+ and 
+\begin_inset Formula $\lambda_{\perp}=0.1\times10^{-3}\textrm{mm}^{2}/\textrm{sec}$
+\end_inset
+
+.
+ Rician noise was added with SNR = 
+\begin_inset Formula $5$
+\end_inset
+
+.
+ In this figure we can easily perceive that GQI is very similar to EITS,
+ GQI2 is very similar to EITL and DSI is very similar to EITL.
+ In fig.
+
+\change_deleted 0 1331732858
+ 
+\change_inserted 0 1331732858
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor-zoomed"
+
+\end_inset
+
+ the regions at the centers of the phantoms are depicted in higher resolution.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:x-shape-thin-tensor"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the first experiment shown in fig.
+
+\change_deleted 0 1331732865
+ 
+\change_inserted 0 1331732865
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor"
+
+\end_inset
+
+,
+\change_inserted 0 1331732877
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor-zoomed"
+
+\end_inset
+
+ we used a more anisotropic prolate tensor for the simulation with eigenvalues
+ 
+\begin_inset Formula $\lambda_{\parallel}=1.4\times10^{-3}$
+\end_inset
+
+ 
+\lang british
+
+\begin_inset Formula $\textrm{mm}^{2}/\textrm{sec}$
+\end_inset
+
+
+\lang english
+ and 
+\begin_inset Formula $\lambda_{\perp}=0.1\times10^{-3}\textrm{mm}^{2}/\textrm{sec}$
+\end_inset
+
+.
+ In the second experiment shown in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-fat-tensor"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-fat-tensor-zoomed"
+
+\end_inset
+
+ we used a much less anisotropic prolate tensor with
+\begin_inset Formula $\lambda_{\parallel}=1.7\times10^{-3}$
+\end_inset
+
+ 
+\lang british
+
+\begin_inset Formula $\textrm{mm}^{2}/\textrm{sec}$
+\end_inset
+
+
+\lang english
+ and 
+\begin_inset Formula $\lambda_{\perp}=0.3\times10^{-3}\textrm{mm}^{2}/\textrm{sec}$
+\end_inset
+
+.
+ The values of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ are based on 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Canales-Rodriguez2009"
+
+\end_inset
+
+.
+\change_inserted 0 1331800978
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1331800992
+What is the reason for these values?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ It is well known that noise affects more less anisotropic areas.
+ We can see this effect by comparing the overlapped FAs of these two figures
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-fat-tensor"
+
+\end_inset
+
+).
+ However we can also see that all six methods (DSI, GQI, GQI2, EITL, EITL2,
+ EITS) can resolve correctly the fiber directions by looking at their spherical
+ distribution functions using a standard colour map.
+\change_inserted 0 1331801042
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1331801054
+Describe this colormap?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ For visualization purposes all ODFs are shown in relative size as they
+ have been scaled so that their maximum values correspond to 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Furthermore, we can easily see that GQI is mostly similar 
+\change_inserted 0 1331801109
+to
+\change_deleted 0 1331801108
+with
+\change_unchanged
+ EITS, GQI2 is very similar 
+\change_deleted 0 1331801145
+with
+\change_inserted 0 1331801145
+to
+\change_unchanged
+ EITL and DSI is mostly similar 
+\change_deleted 0 1331801151
+with
+\change_inserted 0 1331801151
+to
+\change_unchanged
+ EITL.
+ That DSI ODFs are very similar 
+\change_deleted 0 1331801161
+with
+\change_inserted 0 1331801161
+to
+\change_unchanged
+ EITL ODFs is 
+\change_inserted 0 1331801167
+to be 
+\change_unchanged
+expected as the two methods create theoretically the same real ODFs.
+ Remarkably, EITL can create these ODFs without using the Fourier Transform
+ neither using any filter or thresholds in r-space which are necessary in
+ DSI.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/software_phantom_comparisons_rician_05_zoomed.png
+	lyxscale 50
+	scale 150
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Same as previous fig.
+\change_inserted 0 1331813361
+
+\begin_inset space ~
+\end_inset
+
+
+\change_deleted 0 1331813361
+ 
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor"
+
+\end_inset
+
+ showing the spherical distributions in the centers of the phantoms at higher
+ resolution.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:x-shape-thin-tensor-zoomed"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/software_phantom_comparisons_rician_05_fat.png
+	lyxscale 20
+	scale 14
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Showing the spherical distribution functions (DSI, GQI, GQI2, EITL, EITL2,
+ EITS) of a digital phantom generated by two bundles where each bundle contains
+ single tensors along the direction of the phantom.
+ On the crossing area we see a dual tensor effect in every voxel.
+ Every single tensor compartment had the following eigenvalues 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+ 0.0014,0.0001, 0.0001
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\lambda_{\parallel}=1.7\times10^{-3}$
+\end_inset
+
+ 
+\lang british
+
+\begin_inset Formula $\textrm{mm}^{2}/\textrm{sec}$
+\end_inset
+
+
+\lang english
+ and 
+\begin_inset Formula $\lambda_{\perp}=0.3\times10^{-3}\textrm{mm}^{2}/\textrm{sec}$
+\end_inset
+
+.
+ Rician noise was added with SNR=
+\begin_inset Formula $5$
+\end_inset
+
+.j
+\change_inserted 0 1331762491
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1331762514
+Marta suggests this is rather low.
+ Why this value?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ We also visualize simultaneously the FA for this slice.
+ We can see that in the crossing area (gray background) the FA values drop
+ considerably however the ODFs represent precisely the crossing.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:x-shape-fat-tensor"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Fig.
+\change_inserted 0 1331813390
+
+\begin_inset space ~
+\end_inset
+
+
+\change_deleted 0 1331813388
+ 
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-fat-tensor"
+
+\end_inset
+
+ shows that all these different grid-based reconstruction methods can reconstruc
+t correctly the underlying fibre directions even when noise is present.
+ However we can see that when tensors are less anisotropic the noise has
+ a stronger effect in the resulting spherical distributions.
+ We can also see that GQI & ETS are less sharp than DSI & EITL and these
+ are less sharp than GQI2 & EITL2.
+ Also DSI, GQI2, EITL, EITL2 have much lower minima than GQI and EITS.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We can see in EuDX chapter that this can be used for tractography.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/software_phantom_comparisons_rician_05_fat_zoomed.png
+	lyxscale 50
+	scale 150
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+A zoomed version of previous fig.
+\change_inserted 0 1331813406
+
+\begin_inset space ~
+\end_inset
+
+
+\change_deleted 0 1331813405
+ 
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-fat-tensor"
+
+\end_inset
+
+ showing the spherical distributions in the centers of the phantoms at higher
+ resolution.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:x-shape-fat-tensor-zoomed"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align block
+In the EIT-based reconstruction results shown in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor-zoomed"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-fat-tensor-zoomed"
+
+\end_inset
+
+ we do not use any amount of smoothing as used in DSI (through hanning filter),
+ GQI, GQI2 (through sampling length) and it is extraordinary that we obtain
+ so well defined distributions.
+ If we want to apply some weighting
+\change_inserted 0 1331714996
+ 
+\change_unchanged
+/
+\change_inserted 0 1331714996
+ 
+\change_unchanged
+smoothing
+\change_inserted 0 1331714998
+ 
+\change_unchanged
+/
+\change_inserted 0 1331714998
+ 
+\change_unchanged
+denoising in EIT-based methods that is simply possible through the spherical
+ angular smoothing approach described in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Spherical-Angular-Smoothing"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The parameters used for these simulations were for DSI: radial sampling
+ 
+\begin_inset Formula $2.1-6$
+\end_inset
+
+, hanning filter width: 
+\begin_inset Formula $36$
+\end_inset
+
+ , GQI: 
+\begin_inset Formula $\text{\lambda=1.2}$
+\end_inset
+
+, GQI2: 
+\begin_inset Formula $\lambda=3$
+\end_inset
+
+, and EITS, EITL, EITL2 were all calculated with the standard options (
+\begin_inset Formula $z=\pm5$
+\end_inset
+
+) and no further post-processing or smoothing was used.
+ All methods were using the same reconstruction sphere with 
+\begin_inset Formula $642$
+\end_inset
+
+ vertices and 
+\begin_inset Formula $1280$
+\end_inset
+
+ faces.
+\end_layout
+
+\begin_layout Subsubsection
+Results with real data sets
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 0 1331801324
+Apparently w
+\change_inserted 0 1331801324
+W
+\change_unchanged
+e want to compare reconstruction methods on Cartesian grid-based acquisitions
+ first with data sets which are rich on directions and commonly used for
+ DSI processing.
+ For this purpose we used a data set which was available online at 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+cmtk.org
+\end_layout
+
+\end_inset
+
+ from the Diffusion Group at Ecole Polytechnique Fédérale de Lausanne (EPFL),
+ Switzerland.
+ So, this data set was 
+\change_inserted 0 1331801536
+obtained fdrom
+\change_deleted 0 1331801532
+brought forth by
+\change_unchanged
+ a 3T scanner (TIM Trio, Siemens) with a 32 channels head coil.
+ The field of view was 
+\begin_inset Formula $210\times210\,\textrm{mm}^{2}$
+\end_inset
+
+, matrix size 
+\begin_inset Formula $96\times96$
+\end_inset
+
+, and slice thickness 
+\begin_inset Formula $3\textrm{\,\textrm{mm}}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $44$
+\end_inset
+
+ slices were acquired and the voxel resolution was 
+\begin_inset Formula $2.2\times2.2\times3.0\,\textrm{mm}^{3}$
+\end_inset
+
+.
+ A 
+\begin_inset Formula $258$
+\end_inset
+
+-point half grid acquisition scheme with a maximum b-value of 
+\begin_inset Formula $8011\,\textrm{s}/\textrm{mm}^{2}$
+\end_inset
+
+ also known as DSI515
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wedeen2008"
+
+\end_inset
+
+ was used.
+ The total acquisition time was 
+\begin_inset Formula $34\,\textrm{min}$
+\end_inset
+
+ with TR=
+\begin_inset Formula $8200\,\textrm{ms}$
+\end_inset
+
+ and TE=
+\begin_inset Formula $165\,\textrm{ms}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/real_data_257_all_grid_methods_purple.png
+	lyxscale 20
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Showing the same slice of a human brain reconstructed with 6 different Cartesian
+ grid q-space based methods.
+ We see here that the ODFs are visualized on top of the FA slice.
+ A clearer presentation of a region near the left upper corner (with purple
+ shading) is given in fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_257_zoomed"
+
+\end_inset
+
+ for all the 
+\begin_inset Formula $6$
+\end_inset
+
+ methods.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:real_257"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The parameters used for these simulations were for DSI: radial sampling
+ 
+\begin_inset Formula $2.1-6$
+\end_inset
+
+, 
+\change_inserted 0 1331715754
+H
+\change_deleted 0 1331715753
+h
+\change_unchanged
+anning filter width: 
+\begin_inset Formula $36$
+\end_inset
+
+ , GQI: 
+\begin_inset Formula $\text{\lambda=1.2}$
+\end_inset
+
+, GQI2: 
+\begin_inset Formula $\lambda=3$
+\end_inset
+
+, and for EITS, EITL, EITL2 were all calculated with the standard options
+ for zonal width (
+\begin_inset Formula $z=5^{o}$
+\end_inset
+
+) and spherical angular smoothing (
+\begin_inset Formula $s=0.05)$
+\end_inset
+
+.
+ All methods were using the same reconstruction sphere with 
+\begin_inset Formula $642$
+\end_inset
+
+ vertices and 
+\begin_inset Formula $1280$
+\end_inset
+
+ faces.
+ The results of this experiment are shown on top of an FA slice of a healthy
+ human in fig.
+ 
+\change_inserted 0 1331813417
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_257"
+
+\end_inset
+
+ and in higher resolution in fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_257_zoomed"
+
+\end_inset
+
+.
+ It is easily observed that EITL, EITL2 and EITS can be used for reconstructing
+ these data sets as their results are clearly as good
+\change_inserted 0 1331801599
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1331801611
+Can this be made more precise?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ as the results given by DSI, GQI and GQI2.
+ We can also easily see that EITL and EITL2 are relatively sharp which can
+ be of an advantage for the purpose of recovering correctly the underlying
+ real fibre directions.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/real_data_257_all_grid_methods_zoomed.png
+	lyxscale 50
+	scale 150
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The region shown at the upper-left corner (purple shading area) in the panels
+ of fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_257"
+
+\end_inset
+
+ is shown here at higher resolution.
+ The data sets here are from a real human.
+ In contrast with the results shown in simulations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor-zoomed"
+
+\end_inset
+
+ we applied spherical angular smoothing with 
+\begin_inset Formula $s=0.05$
+\end_inset
+
+ for EITL, EITL2 and EITS in order to remove small noisy spikes in the distribut
+ions.
+ In addition, similarly with the results of fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:x-shape-thin-tensor-zoomed"
+
+\end_inset
+
+ EITS is very similar with GQI but this time the difference between DSI,
+ GQI2 and EITL, EITL2 is smaller because of the application of angular weighting.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:real_257_zoomed"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We also tested our results with another human brain data set generated at
+ a 3T scanner (TIM Trio, Siemens) 
+\change_inserted 0 1331801640
+at the
+\change_deleted 0 1331801638
+in
+\change_unchanged
+ Medical Research Council Cognition and Brain Sciences Unit, Cambridge,
+ UK.
+ We used Siemens advanced diffusion work-in-progress sequence, and STEAM
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "merboldt1992diffusion,MAB04"
+
+\end_inset
+
+ as the diffusion preparation method.
+ The field of view was 
+\begin_inset Formula $240\times240\,\textrm{mm}^{2}$
+\end_inset
+
+, matrix size 
+\begin_inset Formula $96\times96$
+\end_inset
+
+, and slice thickness 
+\begin_inset Formula $2.5\,\textrm{mm}$
+\end_inset
+
+ (no gap).
+ 
+\begin_inset Formula $55$
+\end_inset
+
+ slices were acquired to achieve full brain coverage, and the voxel resolution
+ was 
+\begin_inset Formula $2.5\times2.5\times2.5\,\textrm{mm{}^{3}}$
+\end_inset
+
+.
+ In this experiment much less gradient vectors were used.
+ A 
+\begin_inset Formula $102$
+\end_inset
+
+-point half grid acquisition with a maximum b-value of 
+\begin_inset Formula $4000\,\textrm{s}/\textrm{mm^{2}}$
+\end_inset
+
+ was used.
+ The total acquisition time was only 
+\begin_inset Formula $14\,\textrm{min}\,21\,\textrm{s}$
+\end_inset
+
+ with TR=
+\begin_inset Formula $8200\,\textrm{ms}$
+\end_inset
+
+ and TE=
+\begin_inset Formula $69\,\textrm{ms}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/real_101_eitl_0.05.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+EITL ODFs rendered on top of FA of a human brain data set.
+ A small 
+\begin_inset Formula $102$
+\end_inset
+
+-point half grid acquisition with a maximum b-value of 
+\begin_inset Formula $4000\,\textrm{s}/\textrm{mm^{2}}$
+\end_inset
+
+ was used.
+ Figures
+\change_deleted 0 1331717470
+ 
+\change_inserted 0 1331717470
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU_left_up"
+
+\end_inset
+
+,
+\change_deleted 0 1331717475
+ 
+\change_inserted 0 1331717475
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU_left_up_zoomed"
+
+\end_inset
+
+ are zoomed versions of the same figure.
+ We can see clearly single fibres on the CC and CST areas but also crossing
+ fibres at the Centrum Semiovale and at the areas where big bundles cross.
+ Also the non-white matter areas are evidently more isotropic.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:real_101_CBU"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/real_101_eitl_0.05_left_up_purple.png
+	lyxscale 50
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The upper part of fig.
+\change_inserted 0 1331813426
+
+\begin_inset space ~
+\end_inset
+
+
+\change_deleted 0 1331813426
+ 
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU"
+
+\end_inset
+
+ is shown here at higher resolution.
+ The purple shaded part is given in higher resolution in fig.
+\change_inserted 0 1331813435
+
+\begin_inset space ~
+\end_inset
+
+
+\change_deleted 0 1331813434
+ 
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU_left_up_zoomed"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:real_101_CBU_left_up"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/real_101_eitl_0.05_left_up_zoomed.png
+	lyxscale 50
+	scale 150
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+EITL ODFs of 1-fibre, 2-fibre and 3-fibre crossings from a real human data
+ set of 
+\begin_inset Formula $101$
+\end_inset
+
+ applied weighted diffusion volume and 
+\begin_inset Formula $1$
+\end_inset
+
+ without weighting 
+\begin_inset Formula $(b0)$
+\end_inset
+
+ .
+ This picture is a zoomed version of the purple shaded area shown in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU_left_up"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:real_101_CBU_left_up_zoomed"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In fig.
+
+\change_deleted 0 1331717452
+ 
+\change_inserted 0 1331717452
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU"
+
+\end_inset
+
+ a slice is shown where different parts of white matter are visible with
+ the FA background image.
+ We can clearly see structures like the 
+\change_inserted 0 1331801801
+Corpus Callosum (
+\change_unchanged
+CC
+\change_inserted 0 1331801803
+)
+\change_unchanged
+ and 
+\change_inserted 0 1331801815
+Cortical-Spinal Tract (
+\change_unchanged
+CST
+\change_inserted 0 1331801817
+)
+\change_unchanged
+ and Centrum Semiovale areas.
+ 
+\change_deleted 0 1331813644
+On top of the FA t
+\change_inserted 0 1331813645
+T
+\change_unchanged
+he ODFs of EITL are shown
+\change_inserted 0 1331813658
+ superimposed on the FA
+\change_unchanged
+.
+ The parameters used for EITL were: a standard zonal width 
+\begin_inset Formula $z=5^{\circ}$
+\end_inset
+
+ and spherical angular smoothing 
+\begin_inset Formula $s=0.05$
+\end_inset
+
+ with the same reconstruction sphere (
+\begin_inset Formula $642$
+\end_inset
+
+ vertices, 
+\begin_inset Formula $1280$
+\end_inset
+
+ faces) as before.
+\end_layout
+
+\begin_layout Standard
+For illustration purposes the upper part of fig.
+
+\change_deleted 0 1331716059
+ 
+\change_inserted 0 1331716059
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU"
+
+\end_inset
+
+ is depicted again in fig.
+\change_inserted 0 1331716054
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU_left_up"
+
+\end_inset
+
+, and the region with purple shading from fig.
+
+\change_deleted 0 1331716064
+ 
+\change_inserted 0 1331716064
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU_left_up"
+
+\end_inset
+
+ is given at an even higher resolution in fig.
+
+\change_deleted 0 1331716081
+ 
+\change_inserted 0 1331716081
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU_left_up_zoomed"
+
+\end_inset
+
+.
+ We used Mayavi 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ramachandran2011mayavi"
+
+\end_inset
+
+ a Python visualization library based on VTK to make the visualizations
+ shown in the figures of this section.
+\end_layout
+
+\begin_layout Standard
+Although much less directions were used in this acquisition scheme we obtain
+ a similarly accurate depiction of the underlying white matter structure
+ in comparison with that of 
+\begin_inset Formula $258$
+\end_inset
+
+ directions.
+ This gives great hope that we can use grid-based reconstruction methods
+ with half-grid sequences with 
+\begin_inset Formula $~100$
+\end_inset
+
+ gradient directions.
+ This was also showed by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kuo"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
+
+\end_inset
+
+who used similar number of directions.
+ 
+\end_layout
+
+\begin_layout Standard
+We can see in all the figures with real data sets single fibres as those
+ usually found at the center of CC, and 
+\begin_inset Formula $2$
+\end_inset
+
+ or 
+\begin_inset Formula $3$
+\end_inset
+
+-fibre crossings in the intersection areas of CC with the CST and other
+ bundles.
+ 
+\end_layout
+
+\begin_layout Standard
+We can see for example in fig.
+\change_inserted 0 1331813479
+
+\begin_inset space ~
+\end_inset
+
+
+\change_deleted 0 1331813479
+ 
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_101_CBU_left_up_zoomed"
+
+\end_inset
+
+ that the effect of spherical angular smoothing can help alleviate the noise
+ effects and focus our concentration on depicting the major directions which
+ are also of highest concern.
+ 
+\end_layout
+
+\begin_layout Subsection
+Anisotropy metrics
+\end_layout
+
+\begin_layout Standard
+Until this moment we discussed about density functions on the sphere as
+ a way to represent complex fibre directionality in the voxel.
+ These density functions are represented as multidimensional vectors containing
+ 
+\begin_inset Formula $200$
+\end_inset
+
+ or more dimensions in each voxel and it can be cumbersome to use them directly
+ for subject comparisons or visualization purposes.
+ For this purpose most people use simple scalar summarizing metrics e.g.
+ Tensor-based FA, MD or ODF-based 
+\change_inserted 0 1331801896
+such as
+\change_deleted 0 1331801893
+like
+\change_unchanged
+ the Generalized FA (GFA) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tuch2002"
+
+\end_inset
+
+.
+ In this section we will show that a similar scalar function like FA can
+ be constructed non-parametrically.
+ We call this NPA which stands for non-parametric anisotropy.
+ We will also start experimenting with metrics that have more than one scalar
+ value
+\change_deleted 0 1331801924
+s
+\change_unchanged
+ and can represent more accurately the directionality in each voxel that
+ is lost with FA, GFA and MD.
+ We will investigate and explain here the realms and robustness of Quantitative
+ Anisotropy which was first introduced by Yeh et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Non-parametric Anisotropy
+\end_layout
+
+\begin_layout Standard
+Local voxelwise measures such as fractional anisotropy (FA), apparent diffusivit
+y coefficient (ADC), or mean diffusivity (MD) [1,2] have been extensively
+ adopted in clinical and applied research practice based on diffusion weighted
+ MR imaging (dMRI).
+ This underlines the need for valid and reliable measures which can indicate
+ the degree of local organisation of white matter in the brain.
+ The measures listed above are based on the parametric simple diffusion
+ tensor (SDT) model 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Basser1994"
+
+\end_inset
+
+ which works well when there is a single dominant fibre direction but is
+ also known not to give valid information if the local organisation is more
+ complex 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010,Tuch2002ThesisMIT"
+
+\end_inset
+
+.
+ We show how model-free, alternatives can yield non-parametric anisotropy
+ (NPA).
+ These are constructed from the GQI ODF.
+ We apply exact analytical results which show the form of the GQI-ODF when
+ the single tensor model is correct, and further indicate how the tensor's
+ parameters may be estimated from this model-free approach.
+ We compare the performance of these parametric and non-parametric measures
+ for simulated data.
+\end_layout
+
+\begin_layout Standard
+Simulations were computed for a 
+\begin_inset Formula $102$
+\end_inset
+
+-point grid sampling scheme, with a maximum b-value of 
+\begin_inset Formula $4000\,\textrm{s}/\textrm{mm}^{2}$
+\end_inset
+
+.
+ The simulated fibre was aligned with the gradient frame of reference, and
+ the diagonal elements of the diffusion tensor, D, where chosen to match
+ typical values for white matter: 
+\begin_inset Formula $\lambda_{1}=1.4\times10^{-3}$
+\end_inset
+
+ 
+\begin_inset Formula $\textrm{mm}^{2}/\textrm{s}$
+\end_inset
+
+, and 
+\begin_inset Formula $\lambda_{2}=\lambda_{3}=0.35\times10^{-3}$
+\end_inset
+
+ 
+\begin_inset Formula $\textrm{mm}^{2}/\textrm{s}$
+\end_inset
+
+.
+ Variable fibre orientation was realised by spatially rotating the simulated
+ fibres at discrete orientations.
+ 
+\begin_inset Formula $100$
+\end_inset
+
+ orientations were used, which spanned uniformly the space of 
+\begin_inset Formula $(\theta,\phi)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In addition to the SDT a two compartment model with an isotropic component
+ was added with volume fraction 
+\begin_inset Formula $0.5$
+\end_inset
+
+ and diffusivity 
+\begin_inset Formula $0.7\times10^{-3}\,\textrm{mm}^{2}/\textrm{s}$
+\end_inset
+
+.
+ For each acquisition scheme and fibre type, the “ideal” (noise-free) diffusion
+ weighted signals were calculated according to the SDT model, assuming a
+ constant ideal value of the baseline signal 
+\begin_inset Formula $S_{0}=100$
+\end_inset
+
+.
+ Complex Gaussian noise was then superimposed upon the ideal signals to
+ provide the complex noise-contaminated signals and their magnitude was
+ then obtained.
+ This results in noisy values with a Rician distribution, which can be scaled
+ in order to set the signal to noise ratio to any desired level.
+ In this study the SNRs were 
+\begin_inset Formula $20$
+\end_inset
+
+,
+\change_inserted 0 1331802033
+ 
+\change_unchanged
+
+\begin_inset Formula $40$
+\end_inset
+
+,
+\change_inserted 0 1331802035
+ 
+\change_unchanged
+
+\begin_inset Formula $60$
+\end_inset
+
+,
+\change_inserted 0 1331802037
+ 
+\change_unchanged
+
+\begin_inset Formula $80$
+\end_inset
+
+ and 
+\begin_inset Formula $100$
+\end_inset
+
+.
+ The GQI ODF and SDT were fitted using 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{dipy}
+\end_layout
+
+\end_inset
+
+ (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+dipy.org
+\end_layout
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+The GQI ODF was calculated for a tessellated spherical icosahedron with
+ 
+\begin_inset Formula $362$
+\end_inset
+
+ vertices and 
+\begin_inset Formula $720$
+\end_inset
+
+ faces.
+ Two values (
+\begin_inset Formula $1.2$
+\end_inset
+
+ and 
+\begin_inset Formula $3.5$
+\end_inset
+
+) were used for 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, the diffusion sampling length.
+ Non-parametric FA, NPA, was calculated from the ODF by 
+\end_layout
+
+\begin_layout Enumerate
+locating the vertex 
+\begin_inset Formula $V_{1}$
+\end_inset
+
+ with maximum GQI ODF value 
+\change_inserted 0 1331813850
+
+\begin_inset Formula $\mathrm{max}_{1}$
+\end_inset
+
+
+\begin_inset Formula $ $
+\end_inset
+
+
+\change_deleted 0 1331732123
+
+\begin_inset Formula $\textrm{}$
+\end_inset
+
+
+\change_unchanged
+; 
+\end_layout
+
+\begin_layout Enumerate
+with 
+\begin_inset Formula $V_{1}$
+\end_inset
+
+ as pole, locating the vertex 
+\begin_inset Formula $V_{2}$
+\end_inset
+
+ on the corresponding equatorial band of width ±5 degrees with maximum GQI
+ ODF value 
+\begin_inset Formula $\textrm{max}_{2}$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Enumerate
+locating a vertex 
+\begin_inset Formula $V_{3}$
+\end_inset
+
+ in the equatorial band at approximately 
+\begin_inset Formula $90$
+\end_inset
+
+ degrees away from 
+\begin_inset Formula $V_{2}$
+\end_inset
+
+, denoting the GQI ODF value of 
+\begin_inset Formula $\textrm{max}_{3}$
+\end_inset
+
+ at 
+\begin_inset Formula $V_{3}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+With 
+\begin_inset Formula $\textrm{npd}_{1}=\textrm{max}_{1}^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\textrm{npd}_{2}=\textrm{max}_{2}^{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $\textrm{npd}_{3}=\textrm{max}_{3}^{2}$
+\end_inset
+
+, non-parametric anisotropy (NPA) was calculated by applying the classical
+ FA 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Correia2009"
+
+\end_inset
+
+ formula to the 3 values (
+\begin_inset Formula $\textrm{npd}_{1},\textrm{npd}_{2},\textrm{npd}_{3}$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Subparagraph
+
+\series medium
+The rationale for the squared ODF values is based on Tuch's formula 
+\change_inserted 0 1331802557
+(
+\change_unchanged
+eq.
+\change_inserted 0 1331802551
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:tuchs_gaussian_odf"
+
+\end_inset
+
+
+\change_inserted 0 1331802562
+)
+\change_unchanged
+ for
+\change_inserted 0 1331802564
+ the
+\change_unchanged
+ ODF in the SDT case which implies that the ODF in the 
+\begin_inset Formula $3$
+\end_inset
+
+ principal axes directions of the tensor is proportional to the square root
+ of the corresponding eigenvalue of the tensor.
+ We have further derived an exact formula 
+\begin_inset Formula $\mathrm{max_{j}}\propto\sqrt{\lambda_{j}}\,[\Phi(cL_{\Delta}/\sqrt{\lambda_{j}})-.5]$
+\end_inset
+
+ where 
+\begin_inset Formula $c$
+\end_inset
+
+ is a constant that depends on the acquisition parameters, and 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ is the cumulative distribution function of the standard Gaussian distribution.
+ 
+\series default
+NEEDS PROOF?
+\end_layout
+
+\begin_layout Subparagraph
+
+\series medium
+The average NPA and FA are presented below for 
+\begin_inset Formula $200$
+\end_inset
+
+ simulations for each noise level, and single fibres with or without an
+ isotropic component and with different diffusion sampling length.
+ We can see that NPA gives very similar results with FA and as expected
+ it is modulated by the degree of smoothing controlled by the value of the
+ diffusion sampling length.
+ 
+\end_layout
+
+\begin_layout Subparagraph
+
+\series medium
+We plan to extend this approach with voxels containing multiple peaks where
+ FA would be unable to give an informative result and also extend it to
+ other types of ODFs.
+ In summary, we have shown that an informative new scalar anisotropy function
+ (NPA) can be calculated without fitting just from the GQI ODF which promises
+ to be a model-free proxy for FA.
+ NPA differs from GFA 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tuch2004"
+
+\end_inset
+
+ in that it uses just 
+\begin_inset Formula $3$
+\end_inset
+
+ values of the GQI ODF with a geometric relationship instead of the entire
+ ODF.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/NPA_L_Delta1.2.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Comparison of NPA with FA for single fiber with and without an isotropic
+ compartment at a range of signal to noise ratios.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:NPA_1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/NPA_L_Delta3.5.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+As in fig.
+\change_inserted 0 1331813508
+
+\begin_inset space ~
+\end_inset
+
+
+\change_deleted 0 1331813507
+ 
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:NPA_1"
+
+\end_inset
+
+ but with higher diffusion sampling length - less smoothing.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:NPA_2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Simulations were computed for a 102-point grid sampling scheme, with a maximum
+ b-value of 
+\change_deleted 0 1331718365
+4000s/mm2
+\change_inserted 0 1331718365
+
+\begin_inset Formula $4000\,\textrm{s}/\textrm{mm}^{2}$
+\end_inset
+
+
+\change_unchanged
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Single fibre cases: The simulated fibre was first aligned with the gradient
+ frame of reference to give a diagonal tensor.
+ For each acquisition scheme and fibre type, the “ideal” (noise-free) diffusion
+ weighted signals were calculated according to the diffusion tensor model
+ [
+\change_deleted 0 1331718412
+ref
+\change_inserted 0 1331718413
+
+\series bold
+????
+\change_unchanged
+
+\series default
+], assuming a constant ideal value of the baseline signal S0 = 100.
+ Complex Gaussian noise was then superimposed upon the ideal signals to
+ provide the complex noise-contaminated signals and their magnitude was
+ then obtained.
+ This results in noisy values with a Rician distribution, which can be scaled
+ in order to set the signal to noise ratio to any desired level.
+ Variable fibre orientation was realised by spatially rotating the simulated
+ fibres at discrete orientations.
+ 100 orientations were used, which spanned uniformly the space of 
+\change_deleted 0 1331718444
+(theta, phi), 0 ≤ theta ≤ 180
+\change_inserted 0 1331718444
+
+\begin_inset Formula $(\theta,\phi),\,0≤\theta≤180$
+\end_inset
+
+
+\change_unchanged
+ and 
+\change_deleted 0 1331718462
+0 ≤ phi ≤ 360
+\change_inserted 0 1331718462
+
+\begin_inset Formula $0≤\phi≤360$
+\end_inset
+
+
+\change_unchanged
+.
+ To evaluate the robustness of the results of each scheme in the presence
+ of noise, the procedure of noise generation and creation of noisy data
+ was repeated 1000 times.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Two fibre cases: The first fibre was aligned with the gradient frame of
+ reference, and the diagonal elements of the diffusion tensor, D1, where
+ chosen to match typical values for white matter:
+\begin_inset Formula $\lambda_{1}=1.4\times10^{-3}$
+\end_inset
+
+ 
+\begin_inset Formula $\textrm{mm^{2}}/\textrm{s}$
+\end_inset
+
+, and 
+\begin_inset Formula $\lambda_{2}=\lambda_{3}=0.35\times10^{-3}$
+\end_inset
+
+ 
+\begin_inset Formula $\textrm{mm^{2}}/\textrm{s}$
+\end_inset
+
+.
+ These correspond to 
+\begin_inset Formula $FA=2^{-\frac{1}{2}}=0.7071$
+\end_inset
+
+.
+ The diffusion tensor for the second fibre, D2, was obtained by rotating
+ D1 by an angle theta around the y-axis.
+ The noise-free diffusion weighted signals were calculated according to
+ the two-tensor compartment model [
+\change_inserted 0 1331718536
+
+\series bold
+????
+\change_deleted 0 1331718532
+
+\series default
+ref
+\change_unchanged
+].
+ Rician noise was then added to this data, and scaled to different values
+ of signal to noise ratio (SNR).
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Quantitative Anisotropy
+\end_layout
+
+\begin_layout Standard
+Quantitative anisotropy (QA) was first used by
+\change_inserted 0 1331802639
+ Yeh
+\change_unchanged
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yeh2010"
+
+\end_inset
+
+ as a way to represent the peaks of the ODF with as few values as possible.
+ This works in the following way: a) we create the ODF, b) we find the peaks
+ using alg.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Alg:PeakFinding"
+
+\end_inset
+
+, c) then 
+\begin_inset Formula $QA_{i}$
+\end_inset
+
+ is equal to the peak 
+\begin_inset Formula $i$
+\end_inset
+
+ minus the minimum value for the entire ODF.
+ This is illustrated in fig.
+\change_inserted 0 1331813553
+
+\begin_inset space ~
+\end_inset
+
+
+\change_deleted 0 1331813552
+ 
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:QA_sketch"
+
+\end_inset
+
+ where we can see a star-shaped ODF with three peaks (symmetric) (
+\begin_inset Formula $PK$
+\end_inset
+
+).
+ This ODF can be represented just with 
+\begin_inset Formula $3$
+\end_inset
+
+ QA values where for example the highest value will be 
+\begin_inset Formula $QA_{0}=\max(\bm{\psi}_{GQI})-\min(\bm{\psi}_{GQI})$
+\end_inset
+
+ where 
+\begin_inset Formula $\max(\bm{\psi}_{GQI})$
+\end_inset
+
+ is the value of the first peak 
+\begin_inset Formula $PK_{0}$
+\end_inset
+
+, 
+\change_deleted 0 1331802835
+
+\begin_inset Formula $QA_{1}=PK_{1}-\min(\bm{\psi}_{GQI})$
+\end_inset
+
+
+\change_inserted 0 1331802962
+ and 
+\begin_inset Formula $QA_{2}=PK_{2}-\min(\bm{\psi}_{GQI})$
+\end_inset
+
+ with 
+\begin_inset Formula $PK_{0}\geq PK_{1}\geq PK_{2}$
+\end_inset
+
+.
+\change_deleted 0 1331802958
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 0 1331802902
+and 
+\begin_inset Formula $QA_{2}=PK_{2}-\min(\bm{\psi}_{GQI})$
+\end_inset
+
+ with 
+\begin_inset Formula $PK_{0}\geq PK_{1}\geq PK_{2}$
+\end_inset
+
+ .
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename QA.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+This figure shows how QA is calculated from an ODF.
+ The sphere represents the 
+\begin_inset Quotes eld
+\end_inset
+
+isotropic
+\begin_inset Quotes erd
+\end_inset
+
+ component (minimum value) of a GQI ODF (star) which will be removed from
+ the calculation of QA.
+ QA acts like a differential component with higher values in anisotropic
+ areas and lower in isotropic.
+ Its big advantage over FA is that it can represent crossings.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:QA_sketch"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Subparagraph
+From the GQI ODF to FA
+\end_layout
+
+\begin_layout Plain Layout
+As 
+\begin_inset Formula $FA(\lambda_{1},\lambda_{2},\lambda_{3})$
+\end_inset
+
+ is a function of the eigen-values of the diffusion tensor model we could
+ try to approximate directly FA from the GQI ODF by finding 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\lambda_{1},\lambda_{2},\lambda_{3}$
+\end_inset
+
+ through the global maximum, equatorial maximum and inferior maximum of
+ the GQI ODF.
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang british
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Ldelta1_Ldelta_10.png
+	scale 60
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang british
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+import scipy.stats.distributions as ssd 
+\begin_inset Newline newline
+\end_inset
+
+used ssd.norm.cdf
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+if k=0 then cdf = NaN but 
+\begin_inset Formula $\lim_{k\rightarrow0}\backsimeq0.398$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align block
+QA acts like a differential operator which is higher on anisotropic ODFs
+ and lower on more isotropic.
+ Actually for a purely isotropic ODF 
+\begin_inset Formula $QA=\bm{0}$
+\end_inset
+
+.
+ QA can be also easily normalized by the maximum ODF value of all voxels
+ which is usually at the CSF where there is a great amount of water.
+ If this normalization is in effect then we can very easily remove the backgroun
+d noise i.e.
+ non-white matter areas, scalp, skin, muscles etc.
+ just because these will have very low QA values.
+ We can see this interesting property of QA in fig.
+\change_inserted 0 1331813564
+
+\begin_inset space ~
+\end_inset
+
+
+\change_deleted 0 1331813563
+ 
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:QA_directions"
+
+\end_inset
+
+.
+ Of course the most important property of QA is that it can resolve crossings
+ and assign a weight for every peak.
+ We will make great use of these weightings in Chapter 3.
+ for the creation of tractographies.
+ Fig.
+
+\change_deleted 0 1331813574
+ 
+\change_inserted 0 1331813574
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:QA_directions"
+
+\end_inset
+
+ was created using DSI Studio 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+dsi-studio.labsolver.org
+\end_layout
+
+\end_inset
+
+ and the sequence parametrization is the same with the one provided in the
+ experiments of the next section.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/dsi_studio_result.png
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Multiple crossings of a real human data set using Quantitative Anisotropy.
+ The first component of QA (
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+) is also shown in the background.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:QA_directions"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Robustness of QA
+\end_layout
+
+\begin_layout Standard
+GQI was shown to have comparable accuracy to other well established q-space
+ methods when it comes to resolving crossing fibres.
+ In addition, this is achievable with as little as 
+\begin_inset Formula $102$
+\end_inset
+
+ points on a grid sampling scheme, bringing the total acquisition time down
+ to a clinically acceptable level.
+ Another advantage of GQI is that it is also applicable to a shell sampling
+ scheme.
+ Despite their successes in tractography applications, q-space techniques
+ have until now failed to produce scalar metrics that could replace the
+ ones derived from the diffusion tensor model (e.g.
+ mean diffusivity, MD, and fractional anisotropy, FA) in terms of their
+ multi-subject comparability and specificity to pathology.
+ The data acquired with a grid sampling scheme can still be used to estimate
+ a diffusion tensor and respective scalar parameters, but the effects of
+ the high b-values required for q-space imaging (
+\begin_inset Formula $>2000s/mm^{2}$
+\end_inset
+
+) in the accuracy of the resulting 
+\change_inserted 0 1331807156
+DTI
+\change_deleted 0 1331807144
+DTI-based (Single Diffusion Tensor SDT)
+\change_unchanged
+ parameters has not been well characterized.
+ The authors of GQI have also proposed a new scalar metric called quantitative
+ anisotropy (QA) which was described in the previous sections, but its propertie
+s have not been compared to FA’s.
+ In this 
+\change_deleted 0 1331807131
+study
+\change_inserted 0 1331807133
+section
+\change_unchanged
+ we will compare the estimated values of MD, FA and 
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+ (first component of QA) obtained with grid and shell sampling schemes,
+ in terms of their precision and ability to differentiate between different
+ brain fibre populations.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/MartaISMRM2.png
+	lyxscale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Sample results of the paired t-tests comparing CSR(FA) and CSR(
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:CSR_t-test"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Twelve healthy volunteers aged between 
+\begin_inset Formula $18$
+\end_inset
+
+ and 
+\begin_inset Formula $40$
+\end_inset
+
+ were scanned on a 3T scanner (TIM Trio, Siemens), using Siemens advanced
+ diffusion work-in-progress sequence, and STEAM 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "merboldt1992diffusion,MAB04"
+
+\end_inset
+
+ as the diffusion preparation method.
+ The field of view was 
+\begin_inset Formula $240\times240\,\textrm{mm}^{2}$
+\end_inset
+
+, matrix size 
+\begin_inset Formula $96\times96$
+\end_inset
+
+, and slice thickness 
+\begin_inset Formula $2.5\,\textrm{mm}$
+\end_inset
+
+ (no gap).
+ 
+\begin_inset Formula $55$
+\end_inset
+
+ slices were acquired to achieve full brain coverage, and the voxel resolution
+ was 
+\begin_inset Formula $2.5\times2.5\times2.5\,\textrm{mm}^{3}$
+\end_inset
+
+.
+ Two sampling schemes were considered: a 102-point grid acquisition with
+ a maximum b-value of 
+\begin_inset Formula $4000\,\textrm{s}/\textrm{mm}^{2}$
+\end_inset
+
+, and a single shell acquisition using 
+\begin_inset Formula $118$
+\end_inset
+
+ non-collinear gradient directions and a b-value of 
+\begin_inset Formula $1000\,\textrm{s}/\textrm{mm}^{2}$
+\end_inset
+
+.
+ The two acquisition schemes were matched for total acquisition time (
+\begin_inset Formula $14\,\textrm{min}\,37\textrm{s}$
+\end_inset
+
+), voxel resolution, and bandwidth.
+ FA, MD and 
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+ maps were then generated for each acquisition scheme and for the 
+\begin_inset Formula $12$
+\end_inset
+
+ volunteers using dipy 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "garyfallidis2011dipy"
+
+\end_inset
+
+
+\change_inserted 0 1331807067
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+(
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+dipy.org
+\end_layout
+
+\end_inset
+
+).
+ All the FA datasets were non-linearly registered into MNI space using FSL
+ tools, and the same transformation parameters were applied to MD and 
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+ maps 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+(fig.# shows the FA and QA0 maps obtained for one volunteer)
+\end_layout
+
+\end_inset
+
+.
+ Fourteen ROIs of different brain regions were drawn in MNI space: putamen
+ (left and right), caudate (left and right), thalamus (left and right),
+ para
+\change_inserted 0 1331806668
+-
+\change_unchanged
+sagittal white matter (left and right), pons, internal capsule (left and
+ right), and genu, body and splenium of the corpus callosum.
+ Small cubic ROIs were also constructed by finding the centroid of each
+ anatomical ROI and using it as the centre for a 
+\begin_inset Formula $3\times3\times3\,\mathrm{mm}^{3}$
+\end_inset
+
+ ROI.
+ For each ROI we calculated the mean value for each metric, and the spatial
+ coefficient of variation (CV) within the ROI (see eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CV_roi"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+CV_{ROI} & = & \frac{\sigma_{x}}{<x>}=\frac{N_{voxels}\sqrt{\sum_{x_{i}\in ROI}(x_{i}-<x>)^{2}}}{\sqrt{N_{voxels}-1}\sum_{x_{i}\in ROI}x_{i}}\label{eq:CV_roi}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The coefficient of variation of each ROI mean across subjects was also calculate
+d, as a measure of each metric’s comparability between subjects.
+ The contrast-to-scatter ratio (CSR) (calculated for FA in eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CSR_FA"
+
+\end_inset
+
+) is a good measure of a metric’s ability to differentiate between different
+ brain fibre populations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "correia_garyfallidis2011"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+CSR(FA) & = & \frac{mean(FA)_{ROI_{1}}-mean(FA)_{ROI_{2}}}{\sqrt{var(FA)_{ROI_{1}}+var(FA)_{ROI_{2}}}}\label{eq:CSR_FA}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Combining the left and right versions of each ROI, we have 
+\begin_inset Formula $9$
+\end_inset
+
+ ROIs of different brain populations, which can be used to define 
+\begin_inset Formula $36$
+\end_inset
+
+ pairs of ROIs, and the CSR of all metrics was calculated for each of these
+ pairs.
+ Paired t-tests were then conducted to compare the performance of each metric
+ with the two acquisition schemes, and also to compare FA and 
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+ directly for each acquisition scheme.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/MartaISMRM1.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Results of the paired t-test comparing the CVs across subjects for MD, FA
+ and QA0.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:t-test_QA0"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Formula $102$
+\end_inset
+
+ grid sampling scheme produces significantly higher mean FA and 
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+ values than the ones obtained with the 
+\begin_inset Formula $118$
+\end_inset
+
+ shell scheme, while the opposite was observed for MD.
+ The CSR results for FA and QA0 were not significantly different between
+ the two acquisition schemes, but the 
+\begin_inset Formula $102$
+\end_inset
+
+ grid scheme produces significantly higher CSRs for MD for 26/36 ROI pairs
+ (fig.
+
+\change_deleted 0 1331813583
+ 
+\change_inserted 0 1331813583
+
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:CSR_t-test"
+
+\end_inset
+
+).
+ For MD, no significant different was found for the CV across subjects,
+ but for FA and QA0 the 102 scheme produced results more comparable across
+ the different volunteers (fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:t-test_QA0"
+
+\end_inset
+
+).
+ For FA and MD the 
+\begin_inset Formula $102$
+\end_inset
+
+ scheme showed lower CV within ROIs, especially for white matter, but no
+ difference was found for 
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+.
+ When comparing FA and 
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+ directly, our results show that FA produces higher CSRs than QA0 for 
+\begin_inset Formula $23/36$
+\end_inset
+
+ ROI pairs for the 
+\begin_inset Formula $102$
+\end_inset
+
+ grid sampling, and for 
+\begin_inset Formula $19/36$
+\end_inset
+
+ ROI pairs for the 
+\begin_inset Formula $118$
+\end_inset
+
+ scheme.
+ FA also shows lower variation across subjects for both acquisition schemes.
+ Finally, FA lower CVs within white matter ROIs, while QA0 shows less variabilit
+y for grey matter.
+ The results described and shown above were obtained with the cubic ROIs,
+ but do not differ significantly when the same analysis was applied to larger
+ anatomical ROIs.
+\end_layout
+
+\begin_layout Standard
+Our results indicate that the MD and FA maps generated from a grid sampling
+ scheme designed for GQI are still suitable for analysis, since they do
+ not show poorer performance when compared to a single shell and low b-value
+ acquisition.
+ In fact, the overall results suggest that the 
+\begin_inset Formula $102$
+\end_inset
+
+ grid sampling produces slightly more robust results than the 
+\begin_inset Formula $118$
+\end_inset
+
+ shell acquisition.
+ A previous study 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "correia2009looking"
+
+\end_inset
+
+ has shown that metrics such as MD and FA benefit from the use of multiple
+ b-values, which could explain the better performance of the 
+\begin_inset Formula $102$
+\end_inset
+
+ grid scheme.
+ 
+\change_inserted 0 1331807412
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1331807434
+Do we need to cite Marta's ISMRM abstract?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
 Discussion and Conclusion
 \end_layout
 
@@ -1754,40 +9222,40 @@ Discussion and Conclusion
 Non-parametric methods have the advantage of representing the signal with
  minimum number of assumptions and without needing any fitting.
  For many years there has been a trend in science to prefer model-based
-\change_deleted 2 1331807546
+\change_deleted 0 1331807546
  methods
 \change_unchanged
  rather than model free (non-parametric) 
-\change_inserted 2 1331807602
+\change_inserted 0 1331807602
 methods.
  This is 
 \change_unchanged
 perhaps because model-based can be easier to describe, 
-\change_deleted 2 1331807610
+\change_deleted 0 1331807610
 easier to invent 
 \change_unchanged
 and 
-\change_deleted 2 1331807615
+\change_deleted 0 1331807615
 easier
-\change_inserted 2 1331807623
+\change_inserted 0 1331807623
 more readily allow the
 \change_unchanged
  
-\change_deleted 2 1331807626
+\change_deleted 0 1331807626
 to
-\change_inserted 2 1331807626
+\change_inserted 0 1331807626
 use
 \change_unchanged
  
-\change_deleted 2 1331807630
+\change_deleted 0 1331807630
 calculate
-\change_inserted 2 1331807637
+\change_inserted 0 1331807637
 of popular
 \change_unchanged
  Bayesian 
-\change_deleted 2 1331807643
+\change_deleted 0 1331807643
 statistics with
-\change_inserted 2 1331807645
+\change_inserted 0 1331807645
 approaches
 \change_unchanged
 .
@@ -1823,32 +9291,32 @@ key "montgomery2001introduction"
 
 \begin_layout Standard
 Non-parametric methods avoid fitting
-\change_inserted 2 1331807898
+\change_inserted 0 1331807898
  model parameters
 \change_unchanged
  and that
-\change_deleted 2 1331807921
+\change_deleted 0 1331807921
  makes them very favourable
-\change_inserted 2 1331807936
+\change_inserted 0 1331807936
 gives them a big advantage
 \change_unchanged
 .
  The 
-\change_inserted 2 1331808005
+\change_inserted 0 1331808005
 focus
-\change_deleted 2 1331808003
+\change_deleted 0 1331808003
 concentration
 \change_unchanged
  of this 
-\change_deleted 2 1331807733
+\change_deleted 0 1331807733
 document
-\change_inserted 2 1331807734
+\change_inserted 0 1331807734
 chapter
 \change_unchanged
  was on 
-\change_inserted 2 1331807977
+\change_inserted 0 1331807977
 introducing and developing
-\change_deleted 2 1331807970
+\change_deleted 0 1331807970
 inventing
 \change_unchanged
  new non-parametric methods (EIT) or comparing and extending existing ones
@@ -1908,32 +9376,32 @@ reference "eq:eit_radial_weighting"
 
 \begin_layout Standard
 
-\change_deleted 2 1331808203
+\change_deleted 0 1331808203
 Apparently, t
-\change_inserted 2 1331808203
+\change_inserted 0 1331808203
 T
 \change_unchanged
 he EIT concept opens new doors for the investigation of dMRI where many
  new functionals can be invented in the future that 
-\change_deleted 2 1331808219
+\change_deleted 0 1331808219
 stress
-\change_inserted 2 1331808222
+\change_inserted 0 1331808222
 emphasise
 \change_unchanged
  
-\change_deleted 2 1331808227
+\change_deleted 0 1331808227
 more or less 
 \change_unchanged
 different properties of the signal.
  
-\change_deleted 2 1331808255
+\change_deleted 0 1331808255
 Notwithstanding, today we
-\change_inserted 2 1331808255
+\change_inserted 0 1331808255
 I
 \change_unchanged
  have already illustrated and measured that EIT has the best performance
  with simulations against the other state
-\change_deleted 2 1331808287
+\change_deleted 0 1331808287
 r
 \change_unchanged
 -of-the-art methods like DSI and GQI and that empirically, EIT gives as
@@ -1983,11 +9451,11 @@ SAY SOMETHING ABOUT FAST EIT
 
 \begin_layout Standard
 The EIT finds
-\change_deleted 2 1331808309
+\change_deleted 0 1331808309
  directly
 \change_unchanged
  the ODF
-\change_inserted 2 1331808312
+\change_inserted 0 1331808312
  directly
 \change_unchanged
  without creating the diffusion propagator.
@@ -2013,9 +9481,9 @@ We discussed that GQI can be used for creating Quantitative Anisotropy (QA).
  similarities with FA as it is maximum on anisotropic and 0 on isotropic
  voxels.
  QA assumes that a 
-\change_deleted 2 1331808415
+\change_deleted 0 1331808415
 fat
-\change_inserted 2 1331808418
+\change_inserted 0 1331808418
 substantial
 \change_unchanged
  isotropic part can always be removed from the ODF and that makes it more
@@ -2047,21 +9515,21 @@ GQI needs a manually set parameter; the diffusion sampling length and in
 \begin_layout Standard
 It is important to stress that there are similarities between all these
  methods; DSI similar 
-\change_deleted 2 1331808473
+\change_deleted 0 1331808473
 with
-\change_inserted 2 1331808473
+\change_inserted 0 1331808473
 to
 \change_unchanged
  EITL, GQI 
-\change_deleted 2 1331808477
+\change_deleted 0 1331808477
 with
-\change_inserted 2 1331808477
+\change_inserted 0 1331808477
 to
 \change_unchanged
  EITS, GQI2 
-\change_deleted 2 1331808482
+\change_deleted 0 1331808482
 with
-\change_inserted 2 1331808482
+\change_inserted 0 1331808482
 to
 \change_unchanged
  EITL2.
@@ -2094,7 +9562,7 @@ dipy.org
 
 \begin_layout Standard
 
-\change_inserted 2 1331819849
+\change_inserted 0 1331819849
 
 \lang british
 \begin_inset CommandInset bibtex
@@ -2105,7 +9573,7 @@ options "ieeetr"
 \end_inset
 
 
-\change_deleted 2 1331819849
+\change_deleted 0 1331819849
 
 \begin_inset Note Note
 status open
