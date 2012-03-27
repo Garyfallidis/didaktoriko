@@ -3,10 +3,6 @@
 \usepackage{mathpazo}
 \usepackage[T1]{fontenc}
 \usepackage[latin9]{inputenc}
-%\usepackage[a4paper]{geometry}
-%\geometry{verbose,tmargin=0.15\paperwidth,bmargin=0.15\paperwidth,lmargin=0.2\paperwidth,rmargin=0.15\paperwidth}
-%\setlength{\parskip}{\bigskipamount}
-%\setlength{\parindent}{0pt}
 \usepackage{float}
 \usepackage{amsmath}
 \usepackage{graphicx}
@@ -15,13 +11,6 @@
 \usepackage{natbib}
 \usepackage[title]{appendix}
 \usepackage{siunitx}
-
-% For shaded comment boxes
-\usepackage{color}
-\usepackage{framed}
-\usepackage{comment}
-\specialcomment{matthewsays}{\definecolor{shadecolor}{rgb}{1,1,0}\begin{shaded}}{\end{shaded}}
-\specialcomment{iansays}{\definecolor{shadecolor}{rgb}{1,0,1}\begin{shaded}}{\end{shaded}}
 
 \makeatletter
 \newfloat{algorithm}{H}{loa}[section]
@@ -37,8 +26,6 @@
 \begin{frontmatter}
 
 \title{QuickBundles for Effective Real-Time Tractography Clustering}
-%\tnoteref{Collab}}
-%\tnotetext[Collab]{This work is a collaborative effort.}
 
 \author[UC]{Eleftherios Garyfallidis}
 \ead{garyfallidis@gmail.com}
@@ -256,7 +243,7 @@ track is assigned to one cluster only.  There is more detail about this and othe
 section~\ref{sub:BIRCH}.
 
 \begin{figure}
-\includegraphics[scale=0.25]{last_figures/LSC_algorithm}
+\includegraphics[scale=0.25]{Fig_1_QB_algorithm}
 \caption{QB step-by-step: Initially in panel (i) 6 unclustered tracks
   (A-F) are presented; imagine that the distance threshold $\theta$ used here is
   the same as the MDF distance (Eq.~\ref{eq:direct_flip_distance}) between B and
@@ -324,7 +311,7 @@ and $|x-x'|$ denotes the euclidean distance between two points $x$ and
 $x'$.
 
 \begin{figure}
-\includegraphics[scale=0.5]{distances2}
+\includegraphics[scale=0.5]{Fig_2_distances2}
 \centering{}
 \caption{The principal distance used in this work is minimum average direct flip
 distance $\textrm{MDF}=\min(d_{\textrm{direct}},d_{\textrm{flipped}})$ which is
@@ -368,44 +355,6 @@ purposes even downsampling to only $K=3$ points in total can be useful
 be used. In the results presented in this paper we use $K=12$ except
 in~(\ref{sub:Complexity}).
 
-% \subsection{Bi-directionality and track merging\label{sub:The-bi-directionality-problem}}
-
-% As we note above, a track from diffusion tractography is a sequence of points
-% without a preferred direction. A track has two possible orientations when
-% comparing it with another track.  By direction, we mean the ordering of track
-% points. Thus a track may be ordered $p_{1},p_{2}\ldots p_{N-1},p_{N}$, or
-% $p_{N},p_{N-1}\ldots p_{2},p_{1}$. We call this the bi-directionality problem.
-% Most tractography methods will create tracks with arbitrary directions; meaning
-% that close and similar tracks can have opposite directions.  tracks do not
-% really carry directional information.  Using the MDF distance we found a way
-% with QB to eliminate this problem.  However, if we want to merge clusters
-% together we still need to take care to minimize the effects of this issue.
-
-% \begin{matthewsays}
-%   I am not quite sure what to do with this whole section if we conclude that the
-%   MDF distance makes the following trick unnecessary.  Should it be fused with
-%   the previous section?
-% \end{matthewsays}
-% \begin{iansays}
-% We have suppressed the subsection about bi-directionality.
-% \end{iansays}
-
-% For this purpose we devised the following technique. Choose a fixed
-% point or pole $P$ in the 3D space of the tractography, possibly away
-% from the mid-sagittal plane. Then re-direct all tracks so that the first
-% point of every track is whichever of the two ends is closer to $P$. If
-% the tractography points are encoded in voxel coordinates, it suffices to have
-% the origin $(0,0,0)$ as the pole point. If the points are enncoded in
-% millimeters in a space such as MNI, where the origin is in the center of the
-% brain, we can use the point $(100,100,100)$. It is our empirical experience that
-% this method will redirect correctly most tracks in the sense that similar tracks
-% will have the same direction.  However there will still be a small percentage
-% for which the bi-directionality problem persists. We can correct for these by
-% using exemplars~(\ref{sub:exemplars}) rather than virtual tracks as virtual
-% tracks can misrepresent a bundle if the bundle consists of tracks with ambiguous
-% directionality. The exemplars are preferable to the virtual tracks because of
-% the way the latter can be influenced more by outliers and thus can be less
-% representative in terms of the shape of real tracks in a bundle.
 
 \subsection{Exemplar tracks\label{sub:exemplars}}
 
@@ -526,17 +475,6 @@ similarly made from a divergent rays on a sinsusoidally corrugated
 sheet, with the rays undergoing sinusoidal modulated lateral bending
 over a range of amplitudes.
 
-% \begin{matthewsays}
-%   I was not quite sure what you meant here.  Do you mean, you made three
-%   parametric paths, where each path was constructed from a combination of
-%   sinusoidal or helicoidal functions.  To generate the tracks for each bundle,
-%   we took the parametric path and randomized the starting point across (some
-%   range)?  Or something else?
-% \end{matthewsays}
-% \begin{iansays}
-% We have completely rewritten this paragraph.
-% \end{iansays}
-
 \textbf{Human subjects.} We collected data from $10$ healthy subjects at
 the Medical Research Council Cognition and Brain Sciences Unit 3 Tesla scanner
 (TIM Trio, Siemens), using Siemens advanced diffusion work-in-progress sequence,
@@ -598,7 +536,7 @@ impressively low ($10.0$~mm) the linearity is only slightly disturbed.
 
 \begin{figure}
 \noindent \begin{centering}
-\includegraphics[scale=0.33]{2x2+leg-box}
+\includegraphics[scale=0.33]{Fig_3_2x2+leg-box}
 \par\end{centering}
 \caption{Time comparisons of QB using different number of points per
   track, different distance thresholds and different number of
@@ -680,7 +618,6 @@ tracks (see Table~\ref{Flo:timings}).
 \small\addtolength{\tabcolsep}{-5pt}
 
 \begin{centering}
-%\begin{tabular}{|c|c|c|c|c|}
 \begin{tabular}{ccccc}
 \hline 
 \hline
@@ -719,7 +656,7 @@ initially expected) or highly divergent.
 %
 \begin{figure}
 \begin{centering}
-\includegraphics[scale=0.3]{last_figures/cst_simplification}
+\includegraphics[scale=0.3]{Fig_4_cst_simplification}
 \par\end{centering}
 \caption{On the left the CST bundle is shown (red) consisting of $11041$
   tracks which were merged by an expert (PBC2009 data). At first glance
@@ -748,7 +685,7 @@ track.
 
 \begin{figure}
 \begin{centering}
-\includegraphics[scale=0.7]{last_figures/helix_phantom}
+\includegraphics[scale=0.7]{Fig_5_helix_phantom}
 \par\end{centering}
 \caption{On the left we see $3$ bundles of simulated trajectories; red,
   blue and green consisting of $150$ tracks each. All $450$ tracks are
@@ -777,7 +714,7 @@ from $10$ to $5000$ tracks each.
 
 \begin{figure}
 \begin{centering}
-\includegraphics[scale=0.6]{last_figures/LSC_simple}
+\includegraphics[scale=0.6]{Fig_6_QB_simple}
 \par\end{centering}
 \caption{Left panel: Here we see how QB clustered the fornix bundle with the
   data set from the PBC2009 competition. The original fornix is shown in
@@ -807,99 +744,6 @@ full tractography at real time. In addition we have developed fast and
 efficient ways of identifying broken or wandering tracks by using the
 rapid data compression of QB to identify short or erratic virtual
 tracks.
-
-% \subsection{Detection of erroneous tracks\label{sub:erroneous}}
-
-% It is well known that there are different artifacts seen in
-% tractographies caused by subject motion, poor voxel reconstruction,
-% incorrect tracking and many other reasons. However there is no known
-% automatic method to try and detect these tracks and therefore remove
-% them from the data sets. The idea here is to use QB to speed up the
-% search for erroneous tracks. We will concentrate here on tracks that
-% loop one or many times; something that it is considered impossible to
-% happen in nature.
-
-% \begin{matthewsays}
-%   How does the winding track idea relate to QB?  It seems that it could be used
-%   on any track definition?  Maybe you could clarify in the text?
-% \end{matthewsays}
-% \begin{iansays}
-% We have suppressed the section on winding and erroneous tracks.
-% \end{iansays}
-
-% One of the tracks which are most likely erroneous are tracks which wind
-% more than one time, like a spiral. We can detect these amongst the
-% virtual tracks of a QB clustering with the following algorithm. Let's
-% assume that we have a track $s$ and we want to check if it winds: (1) we
-% perform a singular value decomposition on the centered track
-% $(U,\mathbf{d},V)=\mathtt{SVD}(s-\bar{s})$; (2) project $s$ into the 2D
-% plane corresponding to the two highest singular values; and (3)
-% calculate the cumulative winding angle of this curve in the 2D plane
-% around the origin; (4) if the cumulative angle is more that
-% \ang{400} then that would mean that the initial track $s$ is winding
-% and therefore needs to be removed, see Fig. \ref{Flo:winding}.
-
-% \begin{figure}
-% \begin{centering}
-% \includegraphics[scale=0.5]{last_figures/winding}
-% \par\end{centering}
-% \caption{Example of detecting a possibly erroneous 3D bundle. Left
-%   panel: by projecting its exemplar track and counting the cumulative
-%   winding angle $\sum_{0}^{K}\omega_{i}$ on the 2D plane as shown on the
-%   right, where $K$ is the total number of track segments. Usually
-%   bundles with total angle higher than \ang{400} are removed from the
-%   data sets as most likely to be erroneous.\label{Flo:winding}}
-% \end{figure}
-
-% Winding tracks can be dangerous when we merge clusters because they
-% could be close to many different clusters. We found that winding tracks
-% often form bundles with many similar tracks. Also, they are usually long
-% tracks so they will not be removed by any filter which removes short
-% tracks. We could use QB with a low threshold to reduce the number of
-% tracks while avoiding embedding winding tracks into otherwise ordinary
-% clusters and then run the winding algorithm just on the exemplar tracks
-% of the bundles rather than the entire tractography.
-
-% QB can also simplify detection of tracks which are very dissimilar to
-% others and therefore they are very distant from all other clusters.
-% Usually when we use a QB threshold of about $10$~mm these tracks will be
-% part of small bundles containing a few tracks ($<10$) and the distance
-% of the bundle they belong to from all other bundles will be much higher
-% than average. This can give us another detection method for outliers.
-
-% \begin{matthewsays}
-%   Looking at the figure, it seems to me that any clustering could reveal the
-%   structure there - is that fair?  What is it about QB that makes it
-%   particularly good for this problem?
-% \end{matthewsays}
-
-% Finally, QB can be used to remove small or broken tracks in an
-% interactive way, for example see Fig. \ref{Flo:cst_pbc} where the red
-% large bundle has been merged by an expert and then with QB we can
-% extract the sketch of the bundle and see which parts create that
-% structure. Without QB it would be too difficult to work out that this
-% bundle consists of many small or divergent parts. In this figure both
-% very diverging, small or broken tracks can be identified after the
-% simplification provided by QB.
-
-% This is the first known automatic detection system of outliers and
-% erroneous tracks for tractography data based on more advanced shape
-% characteristics that go beyond simple length.
-
-% \begin{figure}
-% \begin{centering}
-% \includegraphics[scale=0.65]{last_figures/erroneous_tracks}
-% \par\end{centering}
-% \caption{$161$ most likely erroneous bundles automatically detected by
-%   our winding method all having total winding angle higher than \ang{500}
-%   and shown with random colours per bundle. On the left panel we
-%   see the bundles on their exact position in the data set from the top
-%   of the head, on the middle panel we see the same tractography from the
-%   side and the third panel we see the part of middle panel on the red
-%   box slightly rotated and much zoomed so that some erroneous tracks can
-%   be easily shown. To cluster the initial tractography (not shown here) we
-%   used QB with threshold $10$~mm.\label{Flo:erroneous_tracks}}
-% \end{figure}
 
 \subsection{Alignments, atlases and landmarks\label{sub:Atlases-made-easy}}
 
@@ -960,19 +804,6 @@ subjects.  We will use this property to create a solid atlas in which we
 keep the biggest bundles (landmarks) and remove small bundles
 (outliers).
 
-% \begin{matthewsays}
-%   Have you thought about how the atlas will deal with genuine differences in
-%   subject anatomy?  For example, one well-known difference is that some subjects
-%   have two cingulate gyri, and some have only one.  In this case you'd expect
-%   two groups of tractographies?  What will this clustering do in that case?
-% \end{matthewsays}
-% \begin{iansays}
-% We are writing something about this:
-
-% Outliers might represent a genuine difference in anatomy, for
-% instance whether the subject has two rather than one cingulate gyrus (REF NEEDED) ...
-% \end{iansays}
-
 This atlas has been constructed without considering whether there are
 inter-subject differences in white matter organisation. Outliers might
 represent genuine differences in anatomy and the corresponding atlas
@@ -1003,55 +834,33 @@ correspond to well known bundle structures in the literature:
 \begin{tabular}{lll}
 \hline 
 \hline
-Abbreviation & Structure & Note \tabularnewline
+Abbreviation & Structure \tabularnewline
 \hline
-GCC & genu of corpus callosum & \tabularnewline
-BCC & body of corpus callosum & 3 virtual tracks\tabularnewline 
-SCC & splenium &\tabularnewline
-\dotfill & \dotfill & \dotfill \tabularnewline 
-CP & pons cerebellar peduncle & \tabularnewline
-ARC-L & left arcuate fasciculus & \tabularnewline
-ARC-R & right arcuate fasciculus & \tabularnewline
-IFO-L & left inferior occipitofrontal fasciculus & \tabularnewline
-IFO-R & right inferior occipitofrontal fasciculus & \tabularnewline
-FX-R & right fornix & \tabularnewline
-FX-L & left fornix  & \tabularnewline
-OR & optic radiation &  \tabularnewline
-CGL-L & left cingulum  & \tabularnewline
-CGL-R & right cingulum  & \tabularnewline
-CST-L & left corticospinal tract  & \tabularnewline
-CST-R & right corticospinal tract & \tabularnewline
-UNC-L & left uncinate & \tabularnewline
-UNC-R & right uncinate & \tabularnewline
+GCC   & genu of corpus callosum \tabularnewline
+BCC   & body of corpus callosum \tabularnewline 
+SCC   & splenium \tabularnewline
+CP    & pons cerebellar peduncle \tabularnewline
+ARC-L & left arcuate fasciculus \tabularnewline
+ARC-R & right arcuate fasciculus \tabularnewline
+IFO-L & left inferior occipitofrontal fasciculus \tabularnewline
+IFO-R & right inferior occipitofrontal fasciculus \tabularnewline
+FX-R  & right fornix \tabularnewline
+FX-L  & left fornix  \tabularnewline
+OR    & optic radiation  \tabularnewline
+CGL-L & left cingulum  \tabularnewline
+CGL-R & right cingulum  \tabularnewline
+CST-L & left corticospinal tract  \tabularnewline
+CST-R & right corticospinal tract \tabularnewline
+UNC-L & left uncinate \tabularnewline
+UNC-R & right uncinate \tabularnewline
 \hline
 \end{tabular}
 \par\end{centering}
 \caption{19 virtual tracks chosen to represent 17 fibre bundles for 
-  the analyses in Fig.~\ref{Flo:CloseToSelected} \label{Flo:structures}}
+  the analyses in Fig.~\ref{Flo:CloseToSelected}. Three tracks were 
+  selected for BCC, all the other structures had one corresponding 
+  track.\label{Flo:structures}}
 \end{table}
-
-% $1$ from genu of corpus callosum (GCC),
-% $3$ from the body of corpus callosum (BCC), 
-% $1$ from the splenium (SCC),
-% $1$ from the pons cerebellar peduncle (CP), 
-% $1$ from left arcuate fasciculus (ARC-L), 
-% $1$ from right arcuate fasciculus (ARC-R), 
-% $1$ from left inferior occipitofrontal fasciculus (IFO-L) and 
-% $1$ from right inferior occipitofrontal fasciculus (IFO-R), 
-% $1$ from right fornix (FX-R), 
-% $1$ from left fornix (FX-L), 
-% $1$ optic radiation (OR), 
-% $1$ left cingulum (CGC-L), 
-% $1$ from right cingulum (CGC-R), 
-% $1$ from left corticospinal tract (CST-L), 
-% $1$ from right corticospinal tract (CST-R),
-% $1$ from left uncinate (UNC-L) and 
-% $1$ from right uncinate (UNC-R). 
-
-% \begin{matthewsays}
-%   Can you make this a table?  Can you split up the corpus callosum body entry so
-%   you don't have to enter the number $1$ in all the other columns?
-% \end{matthewsays}
 
 These $19$ tracks are coloured randomly. Then on the second row we show,
 for the first $6$ of these selected representative tracks, the tracks
@@ -1069,7 +878,7 @@ every subject and then compare the subjects at the level of bundles.
 %
 \begin{figure}
 \begin{centering}
-\includegraphics[scale=0.7]{last_figures/close_distance}
+\includegraphics[scale=0.7]{Fig_7_close_distance}
 \par\end{centering}
 \caption{A novel way to do comparisons between subjects. Correspondence
   between different subjects (last $3$ rows) and a few landmarks picked
@@ -1131,12 +940,6 @@ automatic CC detection system.  Furthermore, we can use different
 cutting thresholds on the underlying dendrogram to amalgamate together
 different structures (see e.g.~the cingulum bundles in the same panel).
 
-% \begin{matthewsays}
-%   Maybe something at the end of the paragraph to make clear the necessity of QB
-%   for this achievement?  For example, how would the QB tractography compare to
-%   a full hierarchichal clustering?  Just impractical?
-% \end{matthewsays}
-
 In the right panel of Fig.~\ref{Flo:LSC+HC+AP} we see an implementation
 of step (4) using the more recent algorithm, affinity propagation
 (AP)~\citep{dueck2009affinity}, which has been
@@ -1155,7 +958,7 @@ For affinity propagation we used the Python library \texttt{scikit-learn}.
 
 \begin{figure}
 \begin{centering}
-\includegraphics[scale=0.7]{last_figures/LSC_with_others}
+\includegraphics[scale=0.7]{Fig_8_QB_with_others}
 \par\end{centering}
 \caption{Two examples where QB output is used to cluster an entire set
   of $10$ tractographies together and then the result is given as input
@@ -1308,16 +1111,9 @@ of SMD depends on all the entries of $D$ as it is the mean of all those
 entries, while TC depends on the separate minimizations of the rows and
 columns of $D$.
 
-% \begin{matthewsays}
-%   Sorry, I haven't really thought this through, but is the TC related to the
-%   cost function for the registration?  This makes the TC invalid for an
-%   independent assessment of the registration quality.
-% \end{matthewsays}
-
-%
 \begin{figure}
 \begin{centering}
-\includegraphics[scale=0.8]{last_figures/LSC_registration2}
+\includegraphics[scale=0.8]{Fig_9_QB_registration2}
 \par\end{centering}
 \caption{In panel A we see two tractographies from different subjects
   before (top) and after rigid registration (bottom) using our
@@ -1349,7 +1145,7 @@ to as $\textrm{MAM}_{\textrm{min}}$ in Eq.~(\ref{eq:minimum_distance}).
 %
 \begin{figure}
 \begin{centering}
-\includegraphics[scale=0.7]{last_figures/arcuate_small_fibers}
+\includegraphics[scale=0.7]{Fig_10_arcuate_small_fibers}
 \par\end{centering}
 \caption{A simple and vigorous strategy for handling short and long
   tracks together by picking a track of interest from one of our
@@ -1392,10 +1188,6 @@ every virtual track in C we find the closest tracks using the
 ($m_{in}$) distance from the entire tractography.
 
 \section{Discussion and conclusion}
-
-%\begin% {matthewsays}
-%   Sorry - below - I didn't know what anatomy packing was.
-% \end{matthewsays}
 
 We have presented a novel and powerful algorithm -- QuickBundles
 (QB). This algorithm provides simplifications to the old problem of
@@ -1509,45 +1301,6 @@ $\textbf{Else}$ \# create new cluster\\
 \end{algorithm}
 
 \subsection{Comparison with BIRCH\label{sub:BIRCH}}
-
-% QB is a linear time $\mathcal{O}(N)$ (see section \ref{sub:Complexity}) distance
-% based clustering algorithm that we created in order to clarify huge
-% trajectory data sets such as those produced by current state-of-the-art
-% tractography generation algorithms \citep{Parker2003,WWS+08}.
-
-% In general, there are very few linear time clustering algorithms. Just
-% two are well known: CLARANS \citep{ng2002clarans} and BIRCH
-% \citep{zhang1997birch}. QB is different from both of these methods
-% though it does share some of the front-end features of BIRCH.
-
-% BIRCH uses clustering descriptors which are available for each item in
-% the data set; these are specific vectors of a fixed dimension of
-% numerical values. Each cluster in turn has a descriptor which is an
-% aggregate of the properties of the items that belong to it (e.g. the sum
-% or mean of the individual clustering feature vectors). Proceeding by a
-% single sweep through the data set, items are adjoined to clusters on the
-% basis of their proximity to the clusters, subject to a maximum cluster
-% size, or they are added as new leaves into the hierarchical tree
-% structure in which the evolving clusters are held. There then follow
-% updating steps which can involve the merging of previously created
-% clusters in a k-means
-% fashion~\citep{steinhaus1956division,macqueen1967some}.
-
-% It is the linear nature of BIRCH combined with the fixed dimensionality
-% of its cluster descriptors that makes it quite fast. However the further
-% steps involving reorganisation of the accumulated tree do add some major
-% overheads to BIRCH's performance. QB capitalises on these positive
-% features but does not try to create any kind of hierarchical structure
-% for the clusters. While items in BIRCH are fixed dimension vectors with
-% no additional structure, in QB each item (track) is a fixed-length
-% ordered sequence of points in $\mathbb{R}^{3}$, and uses metrics and
-% amalgamations which take account of and preserve this structure.
-% Moreover each item is either added to an existing cluster on the basis
-% of a distance between the cluster descriptor of the item and the
-% descriptors of the current set of clusters. Clusters are held in a list
-% which is extended according to need.
-
-% \subsection{Comparison of QB with BIRCH}
 
 QuickBundles (QB) is a notably fast algorithm which can simplify
 tractography representation in an accessible structure in a time that is
