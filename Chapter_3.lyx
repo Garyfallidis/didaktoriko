@@ -82,7 +82,7 @@ key "MCC+99,CLC+99"
 
 \end_inset
 
- p nearly 
+ nearly 
 \begin_inset Formula $12$
 \end_inset
 
@@ -2365,7 +2365,11 @@ reference "Alg:EuDX_Core"
  The variable delta is used as check point that no stopping criteria are
  met.
  As long as delta is True we can continue tracking using Euler integration
- (see eq.
+ (see Eq.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq: euler"
@@ -2408,7 +2412,10 @@ reference "eq: euler"
  After tracking towards the orthograde direction has stopped and lambda
  is now False, we repeat the same procedure as before for the retrograde
  direction in order to create the complete track (see Alg.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Alg:EuDX_Core"
@@ -3227,10 +3234,7 @@ Finally, we called EuDX with parameters
 \begin_inset Formula $\mathcal{A}_{thr}=0.2$
 \end_inset
 
-,
- 
-\lang english
-
+, 
 \begin_inset ERT
 status open
 
@@ -4956,7 +4960,7 @@ status open
 
 \begin_layout Plain Layout
 Every sub-table shows the percentage of tracks which started from areas
- A,B,C or D (rows) and reached the other areas A,B,C,D or 
+ A, B, C or D (rows) and reached the other areas A, B, C, D or 
 \begin_inset Formula $\emptyset$
 \end_inset
 
@@ -4966,8 +4970,8 @@ Every sub-table shows the percentage of tracks which started from areas
 \begin_inset Formula $\emptyset$
 \end_inset
 
- symbolizes here the number of tracks which didn't reach any of the A,B,C,D
- areas.
+ symbolizes here the number of tracks which didn't reach any of the A, B,
+ C, D areas.
  For example by looking only the first row of each sub-table we easily observe
  that the crossing area was well represented by EITL, DSI and GQI but not
  from DTI as it was expected because the Single Tensor cannot resolve crossings.
@@ -5169,17 +5173,870 @@ reference "Flo:eudx_fromABCD"
  
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+small
+\backslash
+addtolength{
+\backslash
+tabcolsep}{-5pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="6">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PMT100
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\emptyset$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+22%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45.2%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+32.6%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40.8%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.6%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11.1%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+47.5%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+28.9%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.4%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+51%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19.7%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.8%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+85.5%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10.6%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{1.5em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="6">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PMT5000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\emptyset$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+22.6%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+44.%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+33.2%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40.9%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.7%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9.3%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+49.1%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+28.2%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.3%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50.2%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+21.3%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.3%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.2%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+85.2%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10.3%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Independently from the deterministic tractography described above we also
+ generated probabilistic tracks using the Camino Diffusion MRI Toolkit 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+cmic.cs.ucl.ac.uk/camino
+\end_layout
+
+\end_inset
+
+.
+ We will call these PMT tracks where PMT stands for Probabilistic MultiTensor
+ Tractography.
+ In order to create the PMT tracks we fitted a two Tensor model in the data
+ with both Tensors enforced to be prolate.
+ For the fitting method we used the standard non-linear fit provided in
+ Camino with positivity constraints.
+ For this purpose we used the command 
+\emph on
+modelfit -model cylcyl nldt_pos
+\emph default
+.
+ The probabilistic tractography was generated using Pico PDFs sampled from
+ a Watson distribution (
+\emph on
+picopdfs -pdf watson
+\emph default
+).
+ In order to generate the streamlines we used the command 
+\emph on
+track
+\emph default
+ which took as input the PDFs from before and a seed file with the mask.
+ 
+\end_layout
+
+\begin_layout Standard
+As previously we performed two experiments; one where the seeds could be
+ anywhere in the simulated bundles and a second where the seeds were constrained
+ in prespecified ROIs A,B,C or D (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:eudx_fromABCD"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename eudx_last/PMT.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Results with humans
 \end_layout
 
 \begin_layout Standard
-We wanted to investigate how EuDX performed with real data.
+In this section we investigate how EuDX performed with real data.
  There are mainly two ways to validate tractographies with real data.
  The first is to compare against the results of another tractography method
  which has already gone through anatomical validation from experts and the
- second is to ask directly feedback from specialist neuroanatomists who
- have good understanding of the underlying anatomy.
+ second is to ask directly for feedback from specialist neuroanatomists
+ who have good understanding of the underlying white matter anatomy.
  We investigated first the second approach.
  In order to do that we generated tractographies (see Fig.
 \begin_inset ERT
@@ -5199,14 +6056,13 @@ reference "Flo:arcuate_and_whole_brain"
 
 \end_inset
 
- right panel) and asked from expert neuroanatomists Professor Luigi Cataneo
- and Dr.
+B) and asked from expert neuroanatomists Professor Luigi Cataneo and Dr.
  Nivedita Agarwal from the Center for Brain/Mind Science (CiMeC) in Trento,
  Italy to validate the quality of the data in relationship to their knowledge
  from anatomy and manually label bundles of their scientific interest in
  different subjects.
  They manually found and labeled on first subject Arcuate Fasciculus (AC)
- which is depicted in the left panel of Fig.
+ which is depicted in the Fig.
 \begin_inset ERT
 status open
 
@@ -5224,7 +6080,7 @@ reference "Flo:arcuate_and_whole_brain"
 
 \end_inset
 
-.
+A.
  They also identified in a second subject the right Corticospinal bundle
  depicted in Fig.
 \begin_inset ERT
@@ -5244,7 +6100,7 @@ reference "Flo:cst_cst_bcc"
 
 \end_inset
 
- (left panel).
+A.
  
 \end_layout
 
@@ -5301,7 +6157,8 @@ key "glasser2008dti"
 
 \end_inset
 
- Our experts used this tool to quickly select bundles of their interest.
+ Our team of medical experts used this tool to quickly select bundles of
+ their interes t FigsXXX.
 \end_layout
 
 \begin_layout Standard
@@ -5452,8 +6309,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Left Panel: right arcuate fasciculus generated by EuDX and segmented by
- two expert neuroanatomists.
+A: right arcuate fasciculus generated by EuDX and segmented by two expert
+ neuroanatomists.
  The tracks are in MNI coordinates and we visualize simultaneously the T1
  slice (X=
 \begin_inset Formula $29$
@@ -5470,8 +6327,8 @@ subject 5
 \end_inset
 
  for the same subject.
- Right Panel: the sagittal view of the whole brain tractography of the same
- subject is shown.
+ B: the sagittal view of the whole brain tractography of the same subject
+ is shown.
  For visualization purposes we are depicting only tracks of length from
  
 \begin_inset Formula $120$
@@ -5560,14 +6417,14 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Left panel: EuDX tracks from the CST segmented by our expert neuroanatomists.
+A: EuDX tracks from the CST segmented by our expert neuroanatomists.
  The tracks are linearly registered in MNI standard space and visible is
  also the T1 slice (Y=
 \begin_inset Formula $5$
 \end_inset
 
 ) from the same subject.
- Right panel: Here we see the intersection of the BCC with the right CST.
+ B: Here we see the intersection of the BCC with the right CST.
  This is a confirmation that EuDX can propagate successfully in crossing
  areas of human brain data.
  The T1 slice (Y=
@@ -5648,8 +6505,8 @@ reference "Flo:cst_cst_bcc"
 
 \end_inset
 
- (right panel) we can see that a part from the BCC shown with red is intersectin
-g the CST bundle shown with blue without being diverted from the CST.
+B we can see that a part from the BCC shown with red is intersecting the
+ CST bundle shown with blue without being diverted from the CST.
  If EuDX was not able to propagate in crossing areas then the tracks from
  BCC would stop in the intersection area or divert towards the direction
  of the CST.
