@@ -3219,8 +3219,7 @@ reference "sub:Peak-Finding"
  From now on we will call this output function from the ODF; PK.
  PK is different from QA because we do not remove the isotropic component
  neither normalize with water maximum ODF value.
- CHECK!!! We also calculated FA and zeroed the peaks with FA values less
- than 
+ We also calculated FA and zeroed the peaks with FA values less than 
 \begin_inset Formula $0.2$
 \end_inset
 
@@ -6009,7 +6008,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
+Showing the 
 \end_layout
 
 \end_inset
