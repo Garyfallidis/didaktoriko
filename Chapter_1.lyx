@@ -1701,7 +1701,7 @@ Another way to represent dMRI is the following.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1709,6 +1709,7 @@ status collapsed
 \lang english
 \begin_inset Graphics
 	filename last_figures/qspace.png
+	lyxscale 40
 	scale 35
 
 \end_inset

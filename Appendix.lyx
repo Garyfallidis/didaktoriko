@@ -521,6 +521,13 @@ Furthermore,
 
 \begin_layout Subsection
 The Tensor in GQI
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Tensor-in-GQI"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
