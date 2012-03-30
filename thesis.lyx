@@ -884,6 +884,25 @@ hies
 
 \begin_layout Standard
 
+\lang english
+Olivetti E, Nguyen T.
+ B, Garyfallidis E (2012), 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+The Approximation of the Dissimilarity Projection
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, 2nd International Workshop on Pattern Recognition in NeuroImaging.
+\end_layout
+
+\begin_layout Standard
+
 \series bold
 Garyfallidis E
 \series default
@@ -891,7 +910,11 @@ Garyfallidis E
 \begin_inset Quotes eld
 \end_inset
 
+
+\emph on
 Cartesian grid q-space reconstruction
+\emph default
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -928,7 +951,7 @@ QuickBundles for Effective Real-Time Tractography Clustering
 \begin_inset Quotes erd
 \end_inset
 
-, NeuroImage XXX , submitted.
+, NeuroImage , submitted.
 \end_layout
 
 \begin_layout Standard
