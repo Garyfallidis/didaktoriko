@@ -1354,6 +1354,13 @@ I think we need to make a stronger, clearer statement of what restrictions
 
 \begin_layout Subsection
 Q-space reconstruction
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Q-space-reconstruction"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1765,7 +1772,7 @@ One problem in the diffusion imaging literature is that names for techniques
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent

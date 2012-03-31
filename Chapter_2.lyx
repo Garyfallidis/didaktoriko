@@ -6731,6 +6731,13 @@ name "Flo:NPA_2"
 
 \begin_layout Subsubsection
 Quantitative Anisotropy
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Quantitative-Anisotropy"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
