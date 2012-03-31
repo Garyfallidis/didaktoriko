@@ -3219,8 +3219,7 @@ reference "sub:Peak-Finding"
  From now on we will call this output function from the ODF; PK.
  PK is different from QA because we do not remove the isotropic component
  neither normalize with water maximum ODF value.
- CHECK!!! We also calculated FA and zeroed the peaks with FA values less
- than 
+ We also calculated FA and zeroed the peaks with FA values less than 
 \begin_inset Formula $0.2$
 \end_inset
 
@@ -5922,8 +5921,36 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+In comparison with Tab.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Tab:EuDX_AtoB"
+
+\end_inset
+
+ we observe here that PMT performed worse that EuDX with DSI, GQI or EIT.
+ This becomes evidental by observing the 
+\begin_inset Formula $\emptyset$
+\end_inset
+
+ columns of the corresponding tables where we can see that EuDX had a lower
+ percentage of tracks which did not reach any of the other end-points.
+ The difference between PMT100 and PMT5000 is in the number of iterations
+ which was 100 and 5000 respectively.
+ Increasing the number of iterations did not increase considerably the performan
+ce of PMT.
+\end_layout
+
+\end_inset
+
 
 \end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:PMT_table"
 
 \end_inset
 
@@ -6009,7 +6036,32 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+Here we presenting the probabilistic tractography performed on the digital
+ phantom shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:crossing_eudx_sims"
 
+\end_inset
+
+.
+ We use here Pico and a Two Tensor model (PMT) to generate the tracks.
+ In (i) we see the result with 
+\begin_inset Formula $1$
+\end_inset
+
+ iteration of the Pico (showing 
+\begin_inset Formula $321$
+\end_inset
+
+ tracks).
+ In (ii) we see a detail of the left bundle.
+ We can see that some of the tracks are diverting on zig-zag fashion althought
+ the phantom at these voxels has only one main direction.
+ In (iii) we concentrate to the crossing region of the phantom where we
+ observer that many of the PMT tracks are able to propagate towarch both
+ pathways.
 \end_layout
 
 \end_inset
@@ -6018,6 +6070,12 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:PMT_phantom"
+
+\end_inset
+
 
 \end_layout
 
@@ -6663,18 +6721,6 @@ reference "Flo:cingulum_12_subjects"
 \end_layout
 
 \begin_layout Standard
-SLF PROBTRACKX VERSUS EUDX - Try to use with all 
-\begin_inset Formula $3$
-\end_inset
-
- EITL, DSI and GQI.
-\end_layout
-
-\begin_layout Standard
-XXXXX
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -6696,7 +6742,11 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
+We present here 5 tractographies from the same data sets of the same subject.
+ The 3 on the top and the one on the bottom left are created using our proposed
+ deterministict approach(EuDX).
+ The one on the bottom right uses probabilistic (PMT).
+ 
 \end_layout
 
 \end_inset
@@ -6705,6 +6755,12 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:EuDX_vs_PMT"
+
+\end_inset
+
 
 \end_layout
 
@@ -6811,21 +6867,10 @@ acm
 \begin_layout Standard
 
 \lang british
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\lang british
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "diffusion"
 options "ieeetr"
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
