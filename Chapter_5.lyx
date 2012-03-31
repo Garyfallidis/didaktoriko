@@ -355,7 +355,7 @@ name "Flo:SelectionViz"
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "diffusion"
-options "plain"
+options "ieeetr"
 
 \end_inset
 

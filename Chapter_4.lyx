@@ -93,7 +93,7 @@ ns but also puts a barrier on understanding and interpreting the quality
  In our approach we do not need to calculate all pairwise distances unlike
  most of the other existing methods.
  Furthermore we can update our clustering online or in parallel.
- We show that we can generate meaningful clusters ~
+ We show that we can generate meaningful clusters of the order of 
 \begin_inset Formula $1000$
 \end_inset
 
@@ -1418,22 +1418,9 @@ The QB Algorithm
 \end_layout
 
 \begin_layout Standard
-QuickBundles (QB) is a notably
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-MATTHEW: Might want to omit sales-pitchey words here.
- The risk will be that your reviewer will find themselves trying to find
- fault, rather than enjoying this new addition to the list of tools they
- can use.
- ELEF: I agree.
-\end_layout
-
-\end_inset
-
- fast algorithm which can simplify tractography representation in an accessible
- structure in a time that is linear in the number of tracks 
+QuickBundles (QB) is a notably fast algorithm which can simplify tractography
+ representation in an accessible structure in a time that is linear in the
+ number of tracks 
 \begin_inset Formula $N$
 \end_inset
 
@@ -1486,12 +1473,16 @@ BIRCH has two key components: first is relatively simple and involves the
  This second component is aimed at maintaining efficient searchability of
  the database while balancing what is kept in memory and what is on disc
  for very large databases.
- BIRCH uses clustering descriptors which are available for each item in
- the dataset; these are specific vectors of a fixed dimension of numerical
- values.
+ BIRCH uses clustering descriptors which are either directly available for
+ each item in the dataset or are easily computed from them, e.g.
+\begin_inset space ~
+\end_inset
+
+squares and products of components; these form specific vectors of a fixed
+ dimension of numerical values.
  Each cluster in turn has a descriptor which is an aggregate of the properties
  of the items that belong to it (e.g.
- the sum or mean of the individual clustering feature vectors).
+ the sum or mean of the individual descriptor vectors).
  Proceeding by a single sweep through the dataset, items are adjoined to
  clusters on the basis of their proximity to the clusters, subject to a
  maximum cluster size, or they are added as new leaves into the hierarchical
@@ -1514,38 +1505,37 @@ It is the linear nature of BIRCH combined with the fixed dimensionality
  do add some major overheads to BIRCH's performance.
  QB capitalises on these positive features but does not try to create any
  kind of hierarchical structure for the clusters.
- While items in BIRCH are fixed dimension vectors with no additional structure,
- in QB each item (track) is a fixed-length ordered sequence of points in
- 
+ Moreover, while items in BIRCH are fixed dimension vectors with no additional
+ structure, in QB each item (track) is a fixed-length ordered sequence of
+ points in 
 \begin_inset Formula $\mathbb{R}^{3}$
 \end_inset
 
-, and uses metrics and amalgamations which take account of and preserve
+, and uses metrics and amalgamations which take account of, and preserve,
  this structure.
- Moreover each item is either added to an existing cluster on the basis
+ Furthermore each item is either added to an existing cluster on the basis
  of a distance between the cluster descriptor of the item and the descriptors
  of the current set of clusters.
  Clusters are held in a list which is extended according to need.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-MATTHEW: More here on the comparison of BIRCH to QB? Can BIRCH be considered
- a superset of QB? What can BIRCH do that QB cannot? How about the other
- way round? ELEF and IAN: The items that BIRCH uses are simply vectors of
- a fixed dimension; the distances used are euclidean in this space; those
- from the tractographies on which QB operates have additional structure
- that is exploited and propagated to the virtual tracks: the items are ordered
- sequences of points in 3 dimensional space.
- Single pass; non-hierarchical; checks for flipping.
- Proximity to virtual track is criterion for allocating new item to a cluster.
- IAN: I have added something above on these lines.
 \end_layout
 
-\end_inset
-
-
+\begin_layout Standard
+The complete QB algorithm is described in formal detail in Alg.~
+\backslash
+ref{Alg:QuickBundles} and a simple step by step visual example is given
+ in Fig.~
+\backslash
+ref{Fig:LSC_simple}.
+ One of the reasons why QB has on average linear time complexity derives
+ from the structure of the cluster node: we only save the sum of current
+ tracks $h$ in the cluster and the sum is cumulative; moreover there is
+ no recalculation of clusters, the tracks are passed through only once and
+ a track is assigned to one cluster only.
+ There is more detail about this and other in section~
+\backslash
+ref{sub:BIRCH}.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2179,11 +2169,33 @@ name "Alg:QuickBundles"
 \end_layout
 
 \begin_layout Standard
-Flipping can become an issue when using the MDF distance and adding tracks
- together, because tracks do not have a preferred direction.
+Choice of orientation can become an issue when using the MDF distance and
+ adding tracks together, because the diffusion signal is symmetric around
+ the origin, and therefore the 
+\begin_inset Formula $K\times3$
+\end_inset
+
+ track can equivalently have its points ordered 
+\begin_inset Formula $1,\dots,K$
+\end_inset
+
+ or be flipped with order 
+\begin_inset Formula $K,\dots,1$
+\end_inset
+
+; the diffusion signal does not allow us to distinguish betweeen these two
+ directions.
  A step in QB takes account of the possibility of needing to perform a flip
- of a track before adding it to a representative track.
- The complete QB algorithm is described in detail in Alg.
+ of a track before adding it to a representative track according to which
+ direction produced the MDF value.
+ Though the appropriate orientation (direct or flip) of a track at the time
+ it entered a cluster was available in the MDF calculation we allow for
+ the possibility this might not be the same later on when the virtual track
+ has evolved so it will need to be recalculated.
+\end_layout
+
+\begin_layout Standard
+The complete QB algorithm is described in detail in Alg.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Alg:QuickBundles"
@@ -2364,20 +2376,7 @@ One of the major benefits of applying QB to tractographies is that it can
  provide meaningful simplifications and find structures that were previously
  invisible or difficult to locate because of the high density of the tractograph
 y.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-MATTHEW: Is this not true for any automated clusting technique? Emphasize
- need for speed in interactive applications? ELEF + IAN We have rephrased
- above.
- See also response in next note.
-\end_layout
-
-\end_inset
-
-For example we used QB to cluster the corticospinal tract (CST).
+ For example we used QB to cluster the corticospinal tract (CST).
  This bundle was part of the datasets provided by the Pittsburgh Brain Competiti
 on (PBC2009-ICDM) and it was selected by an expert.
  The result is clearly shown in Fig.
@@ -2437,17 +2436,6 @@ This is a part of the CST bundle consisting of
  merge towards the bottom, and spreading towards the top.
  However, this is a misreading caused by the opaque density when all the
  tracks are visualised.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-MATTHEW Too strong? Maybe 'is a simplification of the underlying data'.
- ELEF-IAN: Agreed - wording changed
-\end_layout
-
-\end_inset
-
  QB can help us see the full structure of the bundle and identify its elements.
  Here on the right hand side we see a simplification (virtual tracks) of
  the red CST generated by running QB with distance threshold of 
@@ -3602,23 +3590,10 @@ Because a track is a sequence of points without a preferred direction, it
 
 .
  We call this the bi-directionality problem.
- Using the MDF distance we found a way with QB to eliminate this problem.
+ Using the MDF distance we have identified a way with QB to eliminate this
+ problem.
  However, if we want to merge clusters together we need to have a way to
  minimize this problem.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-MATTHEW: I don't understand why this problem is not solved by just using
- the MDF distance between bundle virtuals or exemplars.
- ELEF: This ordering information is not stored at the time a track enters
- a cluster as it can potentially change as the virtual track is updated.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3659,19 +3634,6 @@ For this purpose we devised the following technique.
  It is well known that the mean is usually influenced more by outliers than
  the median.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-MATTHEW: Why the difference between virtuals and exemplars in the bi-directional
-ity problem? ELEF: Because of the way the virtual track is built up; it
- can be influenced by outliers and thus can be quite unrepresentative in
- terms of the shape of real tracks in the bundle 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
