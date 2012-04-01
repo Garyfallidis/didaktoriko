@@ -6731,6 +6731,13 @@ name "Flo:NPA_2"
 
 \begin_layout Subsubsection
 Quantitative Anisotropy
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Quantitative-Anisotropy"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7593,10 +7600,21 @@ dipy.org
 \begin_layout Standard
 
 \lang british
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang british
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "diffusion"
 options "ieeetr"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 

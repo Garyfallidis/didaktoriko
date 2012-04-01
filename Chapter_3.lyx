@@ -219,7 +219,7 @@ status open
 
 \end_inset
 
- 
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:FACTvsEuDX"
@@ -228,7 +228,10 @@ reference "fig:FACTvsEuDX"
 
 ).
  Euler integration with equal steps was used in Conturo et al.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "CLC+99"
@@ -330,7 +333,10 @@ Another interesting point is that most methods which belong in this category
  Tensor deflection tractography (TEND) proposed by 
 \lang british
 Lazar et al.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "LWT+03"
@@ -3029,7 +3035,7 @@ reference "sub:Digital-Phantoms"
 
 \end_inset
 
- using eigen values 
+ using eigenvalues 
 \begin_inset Formula $\lambda_{\parallel}=1.7\cdot10^{-3}$
 \end_inset
 
@@ -3059,8 +3065,8 @@ key "canalesrodriguez2009mdq"
 \end_inset
 
 .
- Both parts were added together to create a crossing configuration and no
- partial volume effects are assumed negligible.
+ Both parts were added together to create a crossing configuration and partial
+ volume effects are assumed negligible.
  The average thickness of both parts was 
 \begin_inset Formula $5$
 \end_inset
@@ -3076,8 +3082,8 @@ key "canalesrodriguez2009mdq"
 \begin_inset Formula $3$
 \end_inset
 
- first dimensions were giving the size of the volume and the last dimension
- is the number of diffusion weighted volumes (
+ first dimensions give the size of the volume and the last dimension is
+ the number of diffusion weighted volumes (
 \begin_inset Formula $101$
 \end_inset
 
@@ -3130,8 +3136,17 @@ reference "Fig:q-space"
 
 \end_inset
 
- upper left); therefore, DSI, GQI, EIT or DTI were suitable for the signal
- reconstruction into ODFs or Tensors respectively.
+); therefore, DSI, GQI, EIT or DTI were all suitable for the signal reconstructi
+on into ODFs or Tensors respectively for these type of data.
+ In contrast QBI is not suitable because it assumes a spherical grid in
+ q-space (see section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Q-space-reconstruction"
+
+\end_inset
+
+).
  For both experiments we used a high SNR of 
 \begin_inset Formula $100$
 \end_inset
@@ -3187,7 +3202,8 @@ reference "Flo:crossing_eudx_sims"
 \end_inset
 
 .
- The input of EuDX expects the peaks and the directions of the peaks.
+ As we presented earlier EuDX expects as input the peaks and the directions
+ of the peaks.
  For every voxel we used DSI to create the corresponding ODF (sampled on
  an evenly distributed sphere of 
 \begin_inset Formula $642$
@@ -3218,8 +3234,16 @@ reference "sub:Peak-Finding"
 .
  From now on we will call this output function from the ODF; PK.
  PK is different from QA because we do not remove the isotropic component
- neither normalize with water maximum ODF value.
- We also calculated FA and zeroed the peaks with FA values less than 
+ neither normalize with the overall maximum ODF value as it is common practice
+ with QA (see section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Quantitative-Anisotropy"
+
+\end_inset
+
+).
+ We also calculated FA and zeroed the peaks with FA values lower than 
 \begin_inset Formula $0.2$
 \end_inset
 
@@ -3229,7 +3253,7 @@ reference "sub:Peak-Finding"
 \end_layout
 
 \begin_layout Standard
-Finally, we called EuDX with parameters 
+For EuDX we used parameters 
 \begin_inset Formula $\mathcal{A}_{thr}=0.2$
 \end_inset
 
@@ -3254,7 +3278,7 @@ Delta s=0.5$
 \begin_inset Formula $TW=0.5$
 \end_inset
 
- and visualized the tracks.
+.
  The results are shown in Fig.
 \begin_inset ERT
 status open
@@ -3274,15 +3298,15 @@ reference "Flo:crossing_eudx_sims"
 \end_inset
 
 .
- The tracks are colourcoded with their orientation defined as the unit vector
- connecting the first with the last point of each track.
+ The tracks are colour-coded with their orientation; this is defined as
+ the unit vector connecting the first with the last point of each track.
  Because we generated random seeds that went everywhere in the phantom some
- of them had to be in the crossing area.
+ of them had to fall in the crossing area.
  In accordance with what we discussed in the previous section we know that
  if a seed falls in a crossing region EuDX will propagate towards both direction
 s of the crossing if and only if multiple peaks are supported from the underlyin
 g reconstruction method.
- We can confirm this by looking at Fig.
+ We can confirm this by observing the result at Fig.
 \begin_inset ERT
 status open
 
@@ -3300,16 +3324,18 @@ reference "Flo:crossing_eudx_sims"
 
 \end_inset
 
-(i) and in (ii), (iii) in higher resolution; where we can see that the crossing
- area is well represented and that the propagation was successful.
- We can also observe that not all tracks travel all the distance from end
- to end.
+(i) and in (ii), (iii) in higher resolution.
+ We can see that the crossing area is well represented and that the propagation
+ was successful.
+ We can also observe that not all tracks travel the entire distances from
+ end to end.
  Otherwise you would except to see the tracks of the entire elliptic part
  all with one colour and the tracks of the straight orbit all with a second
- colour.
- It seems that this had to do with the discrete nature of the phantom especially
- near the bundles boundary areas.
- Therefore, we created a different experiment to evaluate this observation.
+ colour because they have different orientation.
+ It seems that this observation had something to do with the discrete nature
+ of the phantom especially near the bundles' boundary areas and the functionalit
+y of EuDX.
+ For this purpose, we created a different experiment to evaluate this finding.
  
 \end_layout
 
@@ -3336,12 +3362,12 @@ status open
 
 \begin_layout Plain Layout
 (i) Tractrography generated by EuDX with DSI as the reconstruction method
- for a software phantom.
+ on digital phantom containing to intersecting bundles.
  A slice from the b0 volume of the phantom is also shown at the lower right
  corner.
- (ii), (iii) In higher resolution we can see that tracks travelling from
- the two different bundles crossing unimpeded in the intersection area of
- the two bundles.
+ (ii) and (iii) In higher resolution we can see that tracks travelling from
+ the two different bundles cross unimpeded in the intersection area of the
+ two simulated bundles.
 \end_layout
 
 \end_inset
@@ -3365,7 +3391,7 @@ In the second experiment we generated
 \begin_inset Formula $2000$
 \end_inset
 
- seeds inside specific regions (see left panel of Fig.
+ seeds inside specific regions of the bundles (see Fig.
 \begin_inset ERT
 status open
 
@@ -3406,7 +3432,7 @@ reference "Flo:eudx_fromABCD"
 \begin_inset Formula $0.4$
 \end_inset
 
- and gaussian weight of 
+ and Gaussian weight of 
 \begin_inset Formula $0.05$
 \end_inset
 
@@ -3432,10 +3458,17 @@ n sphere of
  experiment.
  The single peak of the DTI reconstruction was found by the eigenvector
  corresponding to the the maximum eigenvalue.
- EuDX expects the orientation input of the peaks as indices on a unit sphere;
- therefore, for the eigenvector which corresponds to the maximum eigenvalue
- we found the vertex in the reconstruction sphere (used above) with the
- minimum angular distance.
+ EuDX expects the orientation input of the peaks as indices on a unit sphere.
+ Therefore, for the Single Tensor case; for the eigenvector which corresponds
+ to the maximum eigenvalue we found the vertex in the reconstruction sphere
+ with the minimum angular distance.
+ An alternative way would be to calculate the ODF directly from the Tensor
+ in an analytical way.
+ Then we could continue as we do with the other methods i.e.
+ find the peaks in the ODF with our standard peak finding method.
+ We did not follow this approach because the Tensors because theoretically
+ the orientation of the peak of the Tensor ODF is identical with the direction
+ of the eigenvector which corresponds to the maximum eigenvalue.
  
 \end_layout
 
@@ -3459,9 +3492,9 @@ reference "Tab:EuDX_AtoB"
 \end_inset
 
 .
- A first general observation is that independently from which end-points
- the tracks start there will be always a percentage of tracks which will
- stop before reaching the other end-points.
+ A first general observation is that independently from which end-point
+ ROIs the tracks start there will be always a percentage of tracks which
+ will stop before reaching the other end-points.
  We can see clearly this phenomenon by looking at the last column of each
  sub-table.
  The last column that we symbolize with 
@@ -3469,10 +3502,10 @@ reference "Tab:EuDX_AtoB"
 \end_inset
 
  holds the percentage of tracks which did not reach any of the other end-points
- i.e.
+ e.g.
  tracks which started from seeds in region A never reached regions B, C
  or D.
- We can observe in those columns that the best case was 
+ We can observe in these columns that the best case was 
 \begin_inset Formula $3.7\%$
 \end_inset
 
@@ -4969,8 +5002,8 @@ Every sub-table shows the percentage of tracks which started from areas
 \begin_inset Formula $\emptyset$
 \end_inset
 
- symbolizes here the number of tracks which didn't reach any of the A, B,
- C, D areas.
+ symbolizes here the number of tracks which did not reach any of the A,
+ B, C, D areas.
  For example by looking only the first row of each sub-table we easily observe
  that the crossing area was well represented by EITL, DSI and GQI but not
  from DTI as it was expected because the Single Tensor cannot resolve crossings.
@@ -5002,8 +5035,8 @@ name "Tab:EuDX_AtoB"
 So, why is there always an amount of tracks which will not reach the other
  end-points? This happens because most of the area in high-dimensional volumes
  (3D volumes) is concentrated close to the boundaries of the volumes; therefore
- many from the random seeds will fall close to the boundaries.
- In addition, the boundaries are not smooth (see Fig.
+ many random seeds will fall close to the boundaries.
+ In addition, the boundaries are not smooth (see left panel of Fig.
 \begin_inset ERT
 status open
 
@@ -5021,10 +5054,10 @@ reference "Flo:eudx_fromABCD"
 
 \end_inset
 
--left panel) and for this reason the tracks which will start close to the
- boundaries will most likely not travel long distances and because the number
- of seeds which will fall close to the boundaries is not negligible; the
- number of tracks which will not travel far is not negligible as well.
+) and for this reason the tracks which will start close to the boundaries
+ will most likely not travel long distances and because the number of seeds
+ which will fall close to the boundaries is not negligible; the number of
+ tracks which will not travel far is not negligible as well.
  This is something to have in mind when generating tractographies.
  A naive solution would be to increase the resolution of the volume by interpola
 tion.
@@ -5101,8 +5134,8 @@ On the left panel we see the b0 volume of the digital phantom and on top
 
  seeds were generated inside each ROI and then we measured the amount of
  tracks which reached the other regions.
- On the right panel we see that when Single Tensor was used for the reconstructi
-on; the tracking started from A reached only C.
+ On the right panel we see that when the Single Tensor was used for the
+ reconstruction; the tracking started from A reached only C.
  However when EITL was used the tracks reached both areas B and C as it
  was expected.
 \end_layout
@@ -5170,6 +5203,147 @@ reference "Flo:eudx_fromABCD"
  when the tracks will reach the crossing region they will follow the branch
  to which there are closer to in terms of spatial and angular distances.
  
+\end_layout
+
+\begin_layout Standard
+Independently from the deterministic tractography described above we also
+ generated probabilistic tracks using the Camino Diffusion MRI Toolkit 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+cmic.cs.ucl.ac.uk/camino
+\end_layout
+
+\end_inset
+
+.
+ We will call these PMT tracks where PMT stands for Probabilistic MultiTensor
+ Tractography.
+ In order to create the PMT tracks we fitted a two Tensor model in the data
+ with both Tensors enforced to be prolate.
+ For the fitting method we used the standard non-linear fit provided in
+ Camino with positivity constraints.
+ For this purpose we used the command 
+\emph on
+modelfit -model cylcyl nldt_pos
+\emph default
+.
+ The probabilistic tractography was generated using Pico PDFs sampled from
+ a Watson distribution (
+\emph on
+picopdfs -pdf watson
+\emph default
+).
+ In order to generate the streamlines we used the Camino command 
+\emph on
+track
+\emph default
+ which took as input the PDFs from before and a seed file with the mask.
+ 
+\end_layout
+
+\begin_layout Standard
+As previously we performed two experiments; one where the seeds could be
+ anywhere in the simulated bundles and a second where the seeds were constrained
+ in the pre-specified ROIs A,B,C or D (see Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:eudx_fromABCD"
+
+\end_inset
+
+).
+ The results of the first experiment we can see in Fig.
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:PMT_phantom"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename eudx_last/PMT.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Here we presenting the probabilistic tractography performed on the digital
+ phantom shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:crossing_eudx_sims"
+
+\end_inset
+
+.
+ We use here Pico and a Two Tensor model (PMT) to generate the tracks.
+ In (i) we see the result with 
+\begin_inset Formula $1$
+\end_inset
+
+ iteration of the Pico (showing 
+\begin_inset Formula $321$
+\end_inset
+
+ tracks).
+ In (ii) we see a detail of the left bundle.
+ We can see that some of the tracks are diverting on zig-zag fashion althought
+ the phantom at these voxels has only one main direction.
+ In (iii) we concentrate to the crossing region of the phantom where we
+ observer that many of the PMT tracks are able to propagate towarch both
+ pathways.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:PMT_phantom"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+asdfasfasf
 \end_layout
 
 \begin_layout Standard
@@ -5937,7 +6111,15 @@ reference "Tab:EuDX_AtoB"
  columns of the corresponding tables where we can see that EuDX had a lower
  percentage of tracks which did not reach any of the other end-points.
  The difference between PMT100 and PMT5000 is in the number of iterations
- which was 100 and 5000 respectively.
+ which was 
+\begin_inset Formula $100$
+\end_inset
+
+ and 
+\begin_inset Formula $5000$
+\end_inset
+
+ respectively.
  Increasing the number of iterations did not increase considerably the performan
 ce of PMT.
 \end_layout
@@ -5951,128 +6133,6 @@ ce of PMT.
 \begin_inset CommandInset label
 LatexCommand label
 name "Flo:PMT_table"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Independently from the deterministic tractography described above we also
- generated probabilistic tracks using the Camino Diffusion MRI Toolkit 
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-cmic.cs.ucl.ac.uk/camino
-\end_layout
-
-\end_inset
-
-.
- We will call these PMT tracks where PMT stands for Probabilistic MultiTensor
- Tractography.
- In order to create the PMT tracks we fitted a two Tensor model in the data
- with both Tensors enforced to be prolate.
- For the fitting method we used the standard non-linear fit provided in
- Camino with positivity constraints.
- For this purpose we used the command 
-\emph on
-modelfit -model cylcyl nldt_pos
-\emph default
-.
- The probabilistic tractography was generated using Pico PDFs sampled from
- a Watson distribution (
-\emph on
-picopdfs -pdf watson
-\emph default
-).
- In order to generate the streamlines we used the command 
-\emph on
-track
-\emph default
- which took as input the PDFs from before and a seed file with the mask.
- 
-\end_layout
-
-\begin_layout Standard
-As previously we performed two experiments; one where the seeds could be
- anywhere in the simulated bundles and a second where the seeds were constrained
- in prespecified ROIs A,B,C or D (see Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Flo:eudx_fromABCD"
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename eudx_last/PMT.png
-	lyxscale 20
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Here we presenting the probabilistic tractography performed on the digital
- phantom shown in Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Flo:crossing_eudx_sims"
-
-\end_inset
-
-.
- We use here Pico and a Two Tensor model (PMT) to generate the tracks.
- In (i) we see the result with 
-\begin_inset Formula $1$
-\end_inset
-
- iteration of the Pico (showing 
-\begin_inset Formula $321$
-\end_inset
-
- tracks).
- In (ii) we see a detail of the left bundle.
- We can see that some of the tracks are diverting on zig-zag fashion althought
- the phantom at these voxels has only one main direction.
- In (iii) we concentrate to the crossing region of the phantom where we
- observer that many of the PMT tracks are able to propagate towarch both
- pathways.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:PMT_phantom"
 
 \end_inset
 
@@ -6441,11 +6501,11 @@ The tractographies were generated in diffusion native space and then linearly
 \begin_layout Standard
 In order to help the neuroanatomists to guide themselves with the segmentation
  of bundles we linearly registered structural MRIs i.e.
- T1 (MPRAGE) images from the same subjects to the standard template (
+ T1 (MPRAGE) images from the same subjects to the standard template 
 \begin_inset Formula $\texttt{MNI152\_T1\_1mm\_brain}$
 \end_inset
 
-).
+.
  Therefore, the tractography and the T1 image were registered in the same
  space.
  This was very useful for the neuroanatomists because they could find known
@@ -6867,10 +6927,21 @@ acm
 \begin_layout Standard
 
 \lang british
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang british
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "diffusion"
 options "ieeetr"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
