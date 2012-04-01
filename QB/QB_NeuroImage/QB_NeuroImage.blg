@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: QB_NeuroImage.aux
+The style file: elsarticle-harv.bst
+Database file #1: diffusion.bib
+Warning--empty pages in mayerdirect
+Warning--empty pages in zhang2005dti
+You've used 54 entries,
+            2821 wiz_defined-function locations,
+            955 strings with 15728 characters,
+and the built_in function-call counts, 30305 in all, are:
+= -- 3037
+> -- 1755
+< -- 28
++ -- 662
+- -- 600
+* -- 2706
+:= -- 5365
+add.period$ -- 176
+call.type$ -- 54
+change.case$ -- 495
+chr.to.int$ -- 52
+cite$ -- 56
+duplicate$ -- 1092
+empty$ -- 1954
+format.name$ -- 762
+if$ -- 6118
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 52
+newline$ -- 169
+num.names$ -- 216
+pop$ -- 499
+preamble$ -- 1
+purify$ -- 416
+quote$ -- 0
+skip$ -- 847
+stack$ -- 0
+substring$ -- 1637
+swap$ -- 212
+text.length$ -- 14
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 483
+warning$ -- 2
+while$ -- 247
+width$ -- 0
+write$ -- 594
+(There were 2 warnings)
