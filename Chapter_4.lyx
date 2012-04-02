@@ -5524,21 +5524,6 @@ key "Smith2006NeuroImage"
 \end_inset
 
 
-\change_deleted 1 1319032671
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-texttt{flirt}
-\end_layout
-
-\end_inset
-
-
 \change_unchanged
 , 
 \begin_inset Formula $\texttt{invwarp}$
