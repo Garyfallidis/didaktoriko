@@ -227,7 +227,7 @@ Appendix~\ref{sub:BIRCH}.
 %\begin{boxedalgorithmic}
 \begin{algorithmic}
 \REQUIRE $T=\{s_{0},...,s_{i},...,s_{|T|-1}\}$, $\theta$
-\ENSURE $C=\{c_{0},...,c_{k},...,c_{|C|-1}\}$ where $c=\{I,\mathbf{h},N\}$ \\
+\ENSURE $C=\{c_{0},...,c_{k},...,c_{|C|-1}\}$ \\
 \STATE $c_{0} \leftarrow \left\{[0],s_{0},1\right\}$
 \STATE $C\leftarrow\left\{c_{0}\right\}$
 \STATE $|C|\leftarrow1$ 
@@ -245,25 +245,26 @@ Appendix~\ref{sub:BIRCH}.
 	\ENDIF
 	\STATE $\texttt{alld}_{k} \leftarrow d$
 	\ENDFOR
-\ENDFOR 
 \STATE $m\leftarrow \min(\texttt{alld})$
 \STATE $l\leftarrow \mathrm{arg min}(\texttt{alld})$
 \IF{$m < \theta$} 
 \STATE \# append in current cluster
 	\IF{$\texttt{flip}_{l}$ is $1$} 
-		\STATE $C_{l}.\mathbf{h}+\leftarrow t'$
+		\STATE $C_{l}.\mathbf{h} \leftarrow C_{l}.\mathbf{h} + \textbf{t'}$
 	\ELSE
-		\STATE $C_{l}.\mathbf{h}+\leftarrow t$
+		\STATE $C_{l}.\mathbf{h} \leftarrow C_{l}.\mathbf{h} + \textbf{t}$
 	\ENDIF
-	\STATE $C_{l}.N+\leftarrow 1$
+	\STATE $C_{l}.N \leftarrow C_{l}.N + 1$
 	\STATE \textbf{append}($C_{l}.I$,$i$)
 \ELSE 
-\STATE \# create new cluster
-	\STATE $|C|+\leftarrow 1$
-	\STATE $C_{|C|-1}.I_{0}\leftarrow [l]$
+\STATE 
+	\STATE $|C|\leftarrow |C|+1$
+	\STATE \# create new cluster
 	\STATE $C_{|C|-1}.\mathbf{h}\leftarrow \mathbf{t}$
 	\STATE $C_{|C|-1}.N\leftarrow 1$
+	\STATE \textbf{append}($C_{|C|-1}.I$,$i$)
 \ENDIF
+\ENDFOR 
 \end{algorithmic}
 %\end{boxedalgorithmic}
 
