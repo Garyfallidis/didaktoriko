@@ -220,16 +220,7 @@ requires further phases of cluster amalgamation to optimise search time
 when adding future items. By contrast when QB assigns an item to a node
 it stays there, and clusters are not amalgamated.  For further
 discussion of the relationship between QB and BIRCH see
-section~\ref{sub:BIRCH}.
-
-Choice of orientation can become an issue when using the MDF distance
-and adding tracks together, because the diffusion signal is symmetric
-around the origin, and therefore the $K \times 3$ track can equivalently
-have its points ordered $1 \dots K$ or be flipped with order $K \dots
-1$; the diffusion signal does not allow us to distinguish betweeen these
-two directions. A step in QB takes account of the possibility of needing
-to perform a flip of a track before adding it to a representative track
-according to which direction produced the MDF value.
+Appendix~\ref{sub:BIRCH}.
 
 %\begin{float}
 \begin{algorithm}
@@ -280,6 +271,15 @@ according to which direction produced the MDF value.
 \label{Alg:QuickBundles}
 \end{algorithm}
 
+Choice of orientation can become an issue when using the MDF distance
+and adding tracks together, because the diffusion signal is symmetric
+around the origin, and therefore the $K \times 3$ track can equivalently
+have its points ordered $1 \dots K$ or be flipped with order $K \dots
+1$; the diffusion signal does not allow us to distinguish betweeen these
+two directions. A step in QB takes account of the possibility of needing
+to perform a flip of a track before adding it to a representative track
+according to which direction produced the MDF value.
+
 The complete QB algorithm is described in formal detail in
 Algorithm~\ref{Alg:QuickBundles} and a simple step by step visual example is
 given in Fig.~\ref{Fig:LSC_simple}.  One of the reasons why QB has on
@@ -288,41 +288,6 @@ node: we only save the sum of current tracks $h$ in the cluster and the
 sum is cumulative; moreover there is no recalculation of clusters, the
 tracks are passed through only once and a track is assigned to one
 cluster only. 
-
-\begin{figure*}
-\centering\includegraphics[scale=0.25]{Fig_1_QB_algorithm}
-\caption{QB step-by-step: Initially in panel (i) 6 unclustered tracks
-(A-F) are presented; imagine that the distance threshold $\theta$ used here is
-the same as the MDF distance (Eq.~\ref{eq:direct_flip_distance}) between B and
-E: $\theta = MDF(B,E)$. The algorithm starts and in (ii) we see that track A
-was selected; as no other clusters exist track A becomes the first cluster
-(labelled with purple color) and the virtual track of that cluster is
-identical with A as seen in (iii); next in (iv) track B is selected and we
-calculate the MDF distance between B and the virtual track of the other
-clusters. For the moment there is only one cluster to compare so QB calculates
-MDF (B,virtual-purple) and this is obviously bigger than threshold $\theta$
-($\theta = MDF(B,E)$).  Therefore a new cluster is assigned for B, and B
-becomes the virtual track of that cluster as shown in (v). In (vi) the next
-track C is selected and this is again far away from both purple and blue
-virtuals; therefore another cluster is created and C is the virtual of the
-blue cluster as shown in (vii).  In (viii) track D is selected and after we
-have calculated MDF(D,purple), MDF(D,Blue) and MDF(D,green) it is obvious that
-D belongs to the purple cluster as MDF(D,purple) is smaller and lower than
-threshold as shown in (ix).  However we can now see in (x) that things change
-for the purple cluster because the virtual track is not anymore made by only
-one track but it is the average of D and A shown with a dashed line. In (xi) E
-is the current track and will be assigned to the green cluster as shown in
-(xii) because MDF(E,virtual green) = MDF(E,B) = $\theta$, and in (xiii) we see
-the updated virtual track for the green cluster which is equal to (B+E)/2
-where + means track addition. In (xiv) the last track is picked and compared
-with the virtual tracks of the other 3 clusters; obviously MDF(F,purple) is
-the only distance smaller than threshold, and so F is assigned to the purple
-cluster in (xv).  Finally, in (xvi) the virtual purple track is updated as
-(D+A+F)/3. As there are no more tracks to select, the algorithm stops. We can
-see that all three clusters have been found and all tracks have been assigned
-successfully to a cluster.}
-\label{Fig:LSC_simple}
-\end{figure*}
 
 \subsection{\label{sub:track-distances}Track distances and preprocessing}
 
@@ -663,7 +628,8 @@ tracks (see Table~\ref{Flo:timings}).
 %
 \begin{table}
 \scriptsize\addtolength{\tabcolsep}{-5pt}
-
+\caption{Performance timings for QB compared with some timings
+  reported in the literature.\label{Flo:timings}}
 \begin{centering}
 \begin{tabular}{ccccc}
 \hline 
@@ -676,8 +642,6 @@ $400,000$ & \cite{Visser2010} & $75000$ & $160.1$ & $468$\tabularnewline
 \hline
 \end{tabular}
 \par\end{centering}
-\caption{Performance timings for QB compared with some timings
-  reported in the literature.\label{Flo:timings}}
 \end{table}
 
 \subsection{The QB Sketch}
@@ -1136,20 +1100,13 @@ of SMD depends on all the entries of $D$ as it is the mean of all those
 entries, while TC depends on the separate minimizations of the rows and
 columns of $D$.
 
-\begin{figure*}
+\begin{figure}
 \begin{centering}
-\includegraphics[scale=0.8]{Fig_9_QB_registration2}
+\includegraphics[scale=1.0]{Fig_9_QB_registration2_only_landscape}
 \par\end{centering}
-\caption{In panel A we see two tractographies from different subjects
-  before (top) and after rigid registration (bottom) using our
-  method. In panel B we see the metric $SMD$ that we chose to optimize
-  for two copies of the same tractography with the second copy
-  translated (above) and rotated (below). This metric appears to be
-  smooth with a single global minimum and is only slightly non-convex
-  with small local minima. In panel C another possible candidate metric
-  $SD$ is shown which although more convex on translations it was much
-  more problematic with rotations.\label{Flo:direct_registration}}
-\end{figure*}
+\caption{Tractographies from two different subjects
+  before (left) and after (right) rigid registration.\label{Flo:direct_registration}}
+\end{figure}
 
 \subsection{Strategies with short tracks}
 
@@ -1460,6 +1417,43 @@ minimum based on the minimum see Eq.~(\ref{eq:minimum_distance})
 or maximum distance see Eq.~(\ref{eq:maximum distance}) can be used.
 However, we have not investigated them in this work in relation to
 clustering algorithms.
+
+\section{QB Step-by-step\label{sub:QB_step_by_step}}
+
+\begin{figure*}[hb]
+\centering\includegraphics[scale=0.25]{Fig_1_QB_algorithm}
+\caption{QB step-by-step: Initially in panel (i) 6 unclustered tracks
+(A-F) are presented; imagine that the distance threshold $\theta$ used here is
+the same as the MDF distance (Eq.~\ref{eq:direct_flip_distance}) between B and
+E: $\theta = MDF(B,E)$. The algorithm starts and in (ii) we see that track A
+was selected; as no other clusters exist track A becomes the first cluster
+(labelled with purple color) and the virtual track of that cluster is
+identical with A as seen in (iii); next in (iv) track B is selected and we
+calculate the MDF distance between B and the virtual track of the other
+clusters. For the moment there is only one cluster to compare so QB calculates
+MDF (B,virtual-purple) and this is obviously bigger than threshold $\theta$
+($\theta = MDF(B,E)$).  Therefore a new cluster is assigned for B, and B
+becomes the virtual track of that cluster as shown in (v). In (vi) the next
+track C is selected and this is again far away from both purple and blue
+virtuals; therefore another cluster is created and C is the virtual of the
+blue cluster as shown in (vii).  In (viii) track D is selected and after we
+have calculated MDF(D,purple), MDF(D,Blue) and MDF(D,green) it is obvious that
+D belongs to the purple cluster as MDF(D,purple) is smaller and lower than
+threshold as shown in (ix).  However we can now see in (x) that things change
+for the purple cluster because the virtual track is not anymore made by only
+one track but it is the average of D and A shown with a dashed line. In (xi) E
+is the current track and will be assigned to the green cluster as shown in
+(xii) because MDF(E,virtual green) = MDF(E,B) = $\theta$, and in (xiii) we see
+the updated virtual track for the green cluster which is equal to (B+E)/2
+where + means track addition. In (xiv) the last track is picked and compared
+with the virtual tracks of the other 3 clusters; obviously MDF(F,purple) is
+the only distance smaller than threshold, and so F is assigned to the purple
+cluster in (xv).  Finally, in (xvi) the virtual purple track is updated as
+(D+A+F)/3. As there are no more tracks to select, the algorithm stops. We can
+see that all three clusters have been found and all tracks have been assigned
+successfully to a cluster.}
+\label{Fig:LSC_simple}
+\end{figure*}
 
 %\end{appendices}
 
