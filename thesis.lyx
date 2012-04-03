@@ -16,6 +16,7 @@
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 \usepackage{amsmath}
+\usepackage{siunitx}
 \end_preamble
 \use_default_options true
 \language british

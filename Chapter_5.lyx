@@ -60,6 +60,16 @@ Overview
 \begin_layout Standard
 \begin_inset CommandInset citation
 LatexCommand cite
+key "wedeen2012geometric"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
 key "ioannidis"
 
 \end_inset

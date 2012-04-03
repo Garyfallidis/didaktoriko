@@ -2485,7 +2485,7 @@ This is a part of the CST bundle consisting of
 \begin_inset Formula $11041$
 \end_inset
 
- tracks merged by an expert (PBC2009 data) shown with red color.
+ tracks labeled by an expert shown with red color.
  Visually it looks as though all tracks have a similar shape, and possibly
  merge towards the bottom, and spreading towards the top.
  However, this is a misreading caused by the opaque density when all the
@@ -6046,7 +6046,7 @@ Most clustering algorithms need to calculate all pairwise distances between
  exemplar or virtual tracks) of these clusters with other higher complexity
  operations and merge the clusters together in bigger clusters.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 MATTHEW: I remember Fernando talking about large scale diffusion clustering
@@ -6060,33 +6060,11 @@ MATTHEW: I remember Fernando talking about large scale diffusion clustering
 
 \end_inset
 
-
+ More precisely we propose to:
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-Procedure
-\series default
-:
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-We need a different name than algorithm so that we don't have any 
-\end_layout
-
-\begin_layout Plain Layout
-conflicts with the float algorithms
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-(1) Cluster using QB as explained in section
+\begin_layout Enumerate
+Cluster using QB as explained in section
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Atlases-made-easy"
@@ -6096,17 +6074,17 @@ reference "sub:Atlases-made-easy"
 
 \end_layout
 
-\begin_layout Standard
-(2) Gather virtual tracks.
+\begin_layout Enumerate
+Gather virtual tracks.
 \end_layout
 
-\begin_layout Standard
-(3) Calculate MDF distance of virtual tracks with themselves.
+\begin_layout Enumerate
+Calculate MDF distance of virtual tracks with themselves.
 \end_layout
 
-\begin_layout Standard
-(4) Use any other clustering method to segment this much smaller distance
- matrix 
+\begin_layout Enumerate
+Use any other clustering method to segment this much smaller distance matrix
+ 
 \begin_inset Formula $D$
 \end_inset
 
@@ -6587,8 +6565,8 @@ After the messages have converged, there are two ways you can identify exemplars
 : 
 \end_layout
 
-\begin_layout Standard
-1) For data point 
+\begin_layout Enumerate
+For data point 
 \begin_inset Formula $i$
 \end_inset
 
@@ -6603,8 +6581,8 @@ After the messages have converged, there are two ways you can identify exemplars
  is an exemplar 
 \end_layout
 
-\begin_layout Standard
-2) For data point 
+\begin_layout Enumerate
+For data point 
 \begin_inset Formula $i$
 \end_inset
 
@@ -6625,7 +6603,6 @@ After the messages have converged, there are two ways you can identify exemplars
 \end_inset
 
  is an exemplar.
- 
 \end_layout
 
 \begin_layout Standard
@@ -7227,12 +7204,7 @@ We now describe our algorithm and show that it is efficient and simple to
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-Procedure
-\series default
-.
- Here we describe a simple algorithm where 
+Here we describe a simple algorithm where 
 \begin_inset Formula $2$
 \end_inset
 
