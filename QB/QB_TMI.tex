@@ -48,41 +48,34 @@
 \thanks{M.~M.~Correia and I.~Nimmo-Smith are with the MRC Cognition and Brain Sciences Unit, Cambridge, UK.}%
 \thanks{G.~B.~Williams is with the Wolfson Brain Imaging Centre, University of Cambridge, Cambridge, UK.}}
 
-
-
 \maketitle
 
 \begin{abstract}
-  Diffusion MR white matter tractography algorithms generate datasets
-  (tractographies) with a very large number of tracks. Their size makes
-  it difficult to interpret, visualize and interact with
-  tractographies. This is even more of an issue when several
-  tractographies are being considered together. To overcome this
-  drawback, we present a clustering algorithm, QuickBundles (QB), that
-  simplifies the complexity of these large datasets and provides
-  anatomically meaningful clusters in seconds with minimum memory
-  consumption. Each QB cluster can be represented by a single track,
-  which collectively can be visualised as a first sketch of the
-  tractography.  Representative tracks from this QB sketch can be
-  selected and the associated tracks re-clustered in turn via QB. This
-  allows one to explore the neuroanatomy directly. Alternatively the QB
-  sketch can be used as a precursor tractography of reduced
-  dimensionality for input to other algorithms of higher order
-  complexity, resulting in their greater efficiency. Beyond these
-  fundamental uses we show how QB can help identify hidden structures,
-  find landmarks, create atlases, and compare and register
-  tractographies.
+  Diffusion MR white matter tractographies are very large data sets
+  which are hard to visualize, interact with, and interpret in a
+  clinically acceptable time scale, despite numerous proposed
+  approaches. As a solution we present a simple, compact, tailor-made
+  clustering algorithm, QuickBundles (QB), that overcomes the complexity
+  of these large datasets and provides anatomically meaningful clusters
+  in seconds. Each QB cluster can be represented by a single track;
+  collectively these representative tracks can be taken as a complete
+  distillation of the tractography. Representative tracks can then be
+  used as input to clustering algorithms of higher order complexity
+  which currently cannot be implemented on the full data set. We also
+  show the further potential of QB to find landmarks, create atlases,
+  and compare and register tractographies.
 \end{abstract}
 
 \begin{IEEEkeywords}
-Tractography, Diffusion MRI, Fiber clustering, White matter atlas, Direct tractography registration, Clustering algorithms, DTI.
+  Tractography, Diffusion MRI, Fiber clustering, White matter atlas,
+  Direct tractography registration, Clustering algorithms, DTI.
 \end{IEEEkeywords}
 %\end{frontmatter}
 
 \section{Introduction}
 
 Following the acquisition of diffusion MR scans, processes of
-reconstruction and integration (track propagation) are performed to
+reconstruction and integration are performed to
 create a tractography: a data set composed of tracks, which are
 sequences of points in 3D space. Irrespective of the types of
 reconstruction and integration a tractography can contain a very large
@@ -107,14 +100,36 @@ applied them to tractographies include: \textit{Hierarchical clustering}
 \textit{Graph theoretic segmentation} \cite{brun2004clustering};
 \textit{$k$-nearest neighbours} \cite{Ding2003a}; \textit{Generalized
   Procrustes Analysis and Principal Components Analysis (PCA)}
-\cite{Corouge2004, corouge2004towards, Corouge2006}; \textit{Spectral
-  embedding} \cite{ODonnell_IEEETMI07}; \textit{EM clustering}
-\cite{Maddah_MICCA2005, maddah2006statistical, Maddah_IEEEBI2008,
-  ziyan2009consistency}; \textit{Spectral clustering}
-\cite{jonasson2005fiber}; \textit{Affinity propagation}
-\cite{leemans17new, malcolm2009filtered}; \textit{Hierarchical Dirichlet
-  process mixture model} \cite{wang2010tractography}; \textit{Current
-  models} \cite{Durrleman2009, durrleman2010registration}.
+\cite{Corouge2004, corouge2004towards, Corouge2006};
+% \textit{Spectral embedding} \cite{ODonnell_IEEETMI07};
+\textit{EM clustering} \cite{Maddah_MICCA2005, maddah2006statistical,
+  Maddah_IEEEBI2008, ziyan2009consistency}; \textit{Spectral clustering}
+\cite{jonasson2005fiber, ODonnell_IEEETMI07}; \textit{Affinity
+  propagation} \cite{leemans17new, malcolm2009filtered};
+\textit{Hierarchical Dirichlet process mixture model}
+\cite{wang2010tractography}; \textit{Current models}
+\cite{Durrleman2009, durrleman2010registration}. 
+For recent reviews see \cite{ODonnell_IEEETMI07, wang2010tractography}.
+
+%
+\begin{figure}[ht]
+\begin{centering}
+\includegraphics[scale=0.26]{Fig_4_cst_simplification_relabeled}
+\par\end{centering}
+\caption{On the left the CST bundle is shown (red) consisting of $11041$
+  tracks labelled by an expert. At first glance
+  it looks as though all tracks have a similar shape, and possibly
+  converge towards the bottom, and fan out towards the top. However,
+  this is a misreading caused by the opaque density when all the tracks
+  are visualised.  QB can help us see the fuller structure of the bundle
+  and identify its elements. On the right hand side we see the 14 QB
+  representative tracks of the CST generated by running QB with distance
+  threshold of $10$~mm after downsampling to $12$ points. We can now
+  clearly see that lots of parts which looked homogeneous are actually
+  broken bundles e.g. dark green (A), light blue (C) or bundles with
+  very different shape e.g. light green (B). To cluster
+  this bundle took $0.1$~seconds.\label{Flo:cst_pbc}}
+\end{figure}
 
 Most of these proposed tractography clustering algorithms are very slow and many
 need to calculate a matrix of inter-track distances of size $\mathcal{O}(N^2)$.
@@ -128,11 +143,12 @@ and interpreting the quality of diffusion data sets.
 
 To address these key issues of time and space we present a stable,
 generally linear time clustering algorithm that can generate meaningful
-clusters of tracks in seconds with minimum memory consumption. In our
-approach we do not need to calculate all pairwise distances unlike most
-of the other existing methods. Furthermore we can update our clustering
-online or in parallel. In this way we can overcome the previous barriers
-of space and time.
+clusters of tracks in seconds with minimum memory consumption. Our
+approach is extremely straightforward and we do not need to calculate
+all pairwise distances unlike most of the other existing
+methods. Furthermore we can update our clustering online or in
+parallel. In this way we can overcome the previous barriers of space and
+time.
 
 We show that we can generate these clusters \textasciitilde1000 times faster than
 any other available method before even applying further
@@ -145,17 +161,17 @@ it can be used as a precursor tool which reduces the dimensionality of
 the data, which can then be used as an input to other algorithms of
 higher order complexity, resulting in their greater efficiency. Beyond
 the use of this algorithm to simplify tractographies, we show how it can
-help identify hidden structures, find landmarks, create atlases, and
-compare and register tractographies.
+help find landmarks, create atlases, and compare and register
+tractographies.
 
 \section{Methods}
 
 \subsection{The QB algorithm\label{sub:QB-description}}
 
-QuickBundles (QB) is a very fast algorithm which can simplify
-tractography representation to a simple structure in a time that is
-linear in the number of tracks $N$; it is an extended update on our
-preliminary work~\cite{EGMB10}.
+QuickBundles (QB) is a surprisingly simple, very fast algorithm which
+can reduce tractography representation to an accessible structure in a
+time that is linear in the number of tracks $N$; it is an extended
+update on our preliminary work~\cite{EGMB10}.
 
 In QB each item, a track, is a fixed-length ordered sequence of points
 in $\mathbb{R}^{3}$, and QB uses metrics and amalgamations which take
@@ -182,7 +198,7 @@ $K\times3$ matrix representing track $i$.
 QB stores information about clusters in \emph{cluster nodes}.  The
 cluster node is defined as $c=(I,\mathbf{h},n)$ where $I$ is the list of
 the integer indices $i = 1 \dots N$ of the tracks in that cluster, $n$
-is the number of tracks in the cluster, and $h$ is the \emph{track
+is the number of tracks in the cluster, and $\mathbf{h}$ is the \emph{track
   sum}. $\mathbf{h}$ is a $K \times3$ matrix which can be updated online
 when a track is added to a cluster and is equal to:
 \begin{equation}
@@ -196,31 +212,6 @@ tracks in the cluster. One summary of the cluster node is the centroid or
 \begin{equation}
   v = \mathbf{h} / n
 \end{equation}
-
-The algorithm proceeds as follows.  At any one step in the algorithm we
-have $|C|$ cluster nodes. Select the first track $s_{1}$ and place it in
-the first cluster node $c_{1}\leftarrow(\{1\},s_{1},1)$.  Obviously $|C|
-= 1$ at this point.  For each remaining track in turn $i = 2 \dots N$:
-(i) calculate the MDF distance between track $s_{i}$ and the virtual
-tracks $v_{e}$ of all the current clusters $c_{e}$, $e = 1 \dots |C|$,
-where $v$ is defined on the fly as $\mathbf{v}=\mathbf{h}/n$; (iii) if
-any of the MDF values $m_{e}$ are smaller than a distance threshold
-$\theta$, add track $i$ to the cluster $e$ with the minimum value for
-$m_{e}$; $c_{e}=(I,\mathbf{h},n)$, and update
-$c_{e}\leftarrow(I\cup\{i\},\mathbf{h}+s,n+1)$; otherwise create a new
-cluster $c_{|C|+1}\leftarrow(\{i\},s_{i},1)$, $|C|\leftarrow|C|+1$.
-
-Popular amalgamation clustering algorithms such as
-$k$-means~\cite{steinhaus1956division, macqueen1967some} require
-iterative reassignment of items to different clusters and hence do not
-run in linear time. Others such as BIRCH~\cite{zhang1997birch} have
-linear time performance while imposing limits on the size and spread of
-clusters; BIRCH clusters may be contiguous and the BIRCH algorithm
-requires further phases of cluster amalgamation to optimise search time
-when adding future items. By contrast when QB assigns an item to a node
-it stays there, and clusters are not amalgamated.  For further
-discussion of the relationship between QB and BIRCH see
-Appendix~\ref{sub:BIRCH}.
 
 %\begin{float}
 \begin{algorithm}
@@ -250,7 +241,7 @@ Appendix~\ref{sub:BIRCH}.
 \IF{$m < \theta$} 
 \STATE \# append in current cluster
 	\IF{$\texttt{flip}_{l}$ is $1$} 
-		\STATE $C_{l}.\mathbf{h} \leftarrow C_{l}.\mathbf{h} + \textbf{t'}$
+		\STATE $C_{l}.\mathbf{h} \leftarrow C_{l}.\mathbf{h} + \textbf{reverse}(\textbf{t})$
 	\ELSE
 		\STATE $C_{l}.\mathbf{h} \leftarrow C_{l}.\mathbf{h} + \textbf{t}$
 	\ENDIF
@@ -270,6 +261,29 @@ Appendix~\ref{sub:BIRCH}.
 \caption{QuickBundles}
 \label{Alg:QuickBundles}
 \end{algorithm}
+
+The algorithm proceeds as follows.  At any one step in the algorithm we
+have $|C|$ clusters. Select the first track $s_{1}$ and place it in
+the first cluster $c_{1}\leftarrow(\{1\},s_{1},1)$.  Obviously $|C|
+= 1$ at this point.  For each remaining track in turn $i = 2 \dots N$:
+(i) calculate the MDF distance between track $s_{i}$ and the virtual
+tracks $v_{e}$ of all the current clusters $c_{e}$, $e = 1 \dots |C|$,
+where $v$ is defined on the fly as $\mathbf{v}=\mathbf{h}/n$; (iii) if
+any of the MDF values $m_{e}$ are smaller than a distance threshold
+$\theta$, add track $i$ to the cluster $e$ with the minimum value for
+$m_{e}$; $c_{e}=(I,\mathbf{h},n)$, and update
+$c_{e}\leftarrow(I\cup\{i\},\mathbf{h}+s,n+1)$; otherwise create a new
+cluster $c_{|C|+1}\leftarrow(\{i\},s_{i},1)$, $|C|\leftarrow|C|+1$.
+
+Popular amalgamation clustering algorithms such as
+$k$-means~\cite{steinhaus1956division, macqueen1967some} require
+iterative reassignment of items to different clusters and hence do not
+run in linear time. Others such as BIRCH~\cite{zhang1997birch} have
+linear time performance while imposing limits on the size and spread of
+clusters; BIRCH clusters may be contiguous and the BIRCH algorithm
+requires further phases of cluster amalgamation to optimise search time
+when adding future items. By contrast when QB assigns an item to a node
+it stays there, and clusters are not amalgamated.
 
 Choice of orientation can become an issue when using the MDF distance
 and adding tracks together, because the diffusion signal is symmetric
@@ -658,26 +672,6 @@ clustering we used a tight threshold of $10$~mm. We observe that only a
 few virtual tracks travel the full distance from bottom to top and that
 they are many tracks that are broken (i.e. shorter than what was
 initially expected) or highly divergent.
-
-%
-\begin{figure}
-\begin{centering}
-\includegraphics[scale=0.26]{Fig_4_cst_simplification}
-\par\end{centering}
-\caption{On the left the CST bundle is shown (red) consisting of $11041$
-  tracks which were merged by an expert (PBC2009 data). At first glance
-  it looks as though all tracks have a similar shape, and possibly
-  converge towards the bottom, and fan out towards the top. However,
-  this is a misreading caused by the opaque density when all the tracks
-  are visualised.  QB can help us see the fuller structure of the bundle
-  and identify its elements. On the right hand side we see the 14 QB
-  virtual tracks of the CST generated by running QB with distance
-  threshold of $10$~mm after downsampling to $12$ points. We can now
-  clearly see that lots of parts which looked homogeneous are actually
-  broken bundles e.g. dark green (A), light blue (C) or bundles with
-  very different shape e.g. light green virtual track (B). To cluster
-  this bundle took $0.135$~s.\label{Flo:cst_pbc}}
-\end{figure}
 
 Another interesting feature of QB is that it can be used to merge or
 split different structures by changing the distance threshold.  This is
@@ -1334,52 +1328,52 @@ dipy.org.
 %\caption{QuickBundles\label{Alg:QuickBundles}}
 %\end{algorithm}
 
-\section{Comparison with BIRCH\label{sub:BIRCH}}
+% \section{Comparison with BIRCH\label{sub:BIRCH}}
 
-QuickBundles (QB) is a notably fast algorithm which can simplify
-tractography representation in an accessible structure in a time that is
-linear in the number of tracks $N$. QB is a linear time $\mathcal{O}(N)$ (see
-section \ref{sub:Complexity}) distance based clustering algorithm that
-we created in order to clarify huge trajectory data sets such as those
-produced by current state-of-the-art tractography generation algorithms
-\cite{Parker2003,WWS+08}. In general, there are very few linear time
-clustering algorithms. Just two are well known: CLARANS
-\cite{ng2002clarans} and BIRCH \cite{zhang1997birch}. QB is different
-from both of these methods; we will describing some
-aspects of BIRCH to shed further light in the conceptual basis of QB.
+% QuickBundles (QB) is a notably fast algorithm which can simplify
+% tractography representation in an accessible structure in a time that is
+% linear in the number of tracks $N$. QB is a linear time $\mathcal{O}(N)$ (see
+% section \ref{sub:Complexity}) distance based clustering algorithm that
+% we created in order to clarify huge trajectory data sets such as those
+% produced by current state-of-the-art tractography generation algorithms
+% \cite{Parker2003,WWS+08}. In general, there are very few linear time
+% clustering algorithms. Just two are well known: CLARANS
+% \cite{ng2002clarans} and BIRCH \cite{zhang1997birch}. QB is different
+% from both of these methods; we will describing some
+% aspects of BIRCH to shed further light in the conceptual basis of QB.
 
-BIRCH has two key components: the first is relatively simple and
-involves the use and updating of clusters' descriptors; the second is
-the construction of a tree structure in which the accumulated clusters
-are held. This second component is aimed at maintaining efficient
-searchability of the database while balancing what is kept in memory and
-what is on disc for very large databases. BIRCH uses clustering
-descriptors which are available or cumputable for each item in the data
-set; these are specific vectors of a fixed dimension of numerical values
-and their squares. Each cluster in turn has a descriptor which is an
-aggregate of the properties of the items that belong to it (e.g. the sum
-or mean of the individual clustering feature vectors). Proceeding by a
-single sweep through the data set, items are adjoined to clusters on the
-basis of their proximity to the clusters, subject to a maximum cluster
-size or variance, or they are added as new leaves into the hierarchical
-tree structure in which the evolving clusters are held. There then
-follow updating steps which can involve the merging off previously
-created clusters in a k-means fashion \cite{steinhaus1956division,
-  macqueen1967some}.
+% BIRCH has two key components: the first is relatively simple and
+% involves the use and updating of clusters' descriptors; the second is
+% the construction of a tree structure in which the accumulated clusters
+% are held. This second component is aimed at maintaining efficient
+% searchability of the database while balancing what is kept in memory and
+% what is on disc for very large databases. BIRCH uses clustering
+% descriptors which are available or cumputable for each item in the data
+% set; these are specific vectors of a fixed dimension of numerical values
+% and their squares. Each cluster in turn has a descriptor which is an
+% aggregate of the properties of the items that belong to it (e.g. the sum
+% or mean of the individual clustering feature vectors). Proceeding by a
+% single sweep through the data set, items are adjoined to clusters on the
+% basis of their proximity to the clusters, subject to a maximum cluster
+% size or variance, or they are added as new leaves into the hierarchical
+% tree structure in which the evolving clusters are held. There then
+% follow updating steps which can involve the merging off previously
+% created clusters in a k-means fashion \cite{steinhaus1956division,
+%   macqueen1967some}.
 
-It is the linear nature of BIRCH combined with the fixed dimensionality
-of its cluster descriptors that makes it quite fast. However the further
-steps involving reorganisation of the accumulated tree do add some major
-overheads to BIRCH's performance. QB capitalises on these positive
-features but does not try to create any kind of merged hierarchical
-structure for the clusters. While items in BIRCH are fixed dimension
-vectors with no additional structure, in QB each item (track) is a
-fixed-length ordered sequence of points in $\mathbb{R}^{3}$, and uses
-metrics and amalgamations which take account of and preserve this
-structure.  Moreover each item is either added to an existing cluster on
-the basis of a distance between the cluster descriptor of the item and
-the descriptors of the current set of clusters. Clusters are held in a
-list which is extended according to need.
+% It is the linear nature of BIRCH combined with the fixed dimensionality
+% of its cluster descriptors that makes it quite fast. However the further
+% steps involving reorganisation of the accumulated tree do add some major
+% overheads to BIRCH's performance. QB capitalises on these positive
+% features but does not try to create any kind of merged hierarchical
+% structure for the clusters. While items in BIRCH are fixed dimension
+% vectors with no additional structure, in QB each item (track) is a
+% fixed-length ordered sequence of points in $\mathbb{R}^{3}$, and uses
+% metrics and amalgamations which take account of and preserve this
+% structure.  Moreover each item is either added to an existing cluster on
+% the basis of a distance between the cluster descriptor of the item and
+% the descriptors of the current set of clusters. Clusters are held in a
+% list which is extended according to need.
 
 \section{Hausdorff (MAM) inter-track distance}
 
@@ -1420,38 +1414,42 @@ clustering algorithms.
 
 \section{QB Step-by-step\label{sub:QB_step_by_step}}
 
+Fig.~\ref{Fig:LSC_simple} illustrates the operation of QB step by step
+Initially in panel (i) 6 unclustered tracks (A-F) are presented; imagine
+that the distance threshold $\theta$ used here is the same as the MDF
+distance (Eq.~\ref{eq:direct_flip_distance}) between B and E: $\theta =
+MDF(B,E)$. The algorithm starts and in (ii) we see that track A was
+selected; as no other clusters exist track A becomes the first cluster
+(labelled with purple color) and the virtual track of that cluster is
+identical with A as seen in (iii); next in (iv) track B is selected and
+we calculate the MDF distance between B and the virtual track of the
+other clusters. For the moment there is only one cluster to compare so
+QB calculates MDF (B,virtual-purple) and this is obviously bigger than
+threshold $\theta$ ($\theta = MDF(B,E)$).  Therefore a new cluster is
+assigned for B, and B becomes the virtual track of that cluster as shown
+in (v). In (vi) the next track C is selected and this is again far away
+from both purple and blue virtuals; therefore another cluster is created
+and C is the virtual of the blue cluster as shown in (vii).  In (viii)
+track D is selected and after we have calculated MDF(D,purple),
+MDF(D,Blue) and MDF(D,green) it is obvious that D belongs to the purple
+cluster as MDF(D,purple) is smaller and lower than threshold as shown in
+(ix).  However we can now see in (x) that things change for the purple
+cluster because the virtual track is not anymore made by only one track
+but it is the average of D and A shown with a dashed line. In (xi) E is
+the current track and will be assigned to the green cluster as shown in
+(xii) because MDF(E,virtual green) = MDF(E,B) = $\theta$, and in (xiii)
+we see the updated virtual track for the green cluster which is equal to
+(B+E)/2 where + means track addition. In (xiv) the last track is picked
+and compared with the virtual tracks of the other 3 clusters; obviously
+MDF(F,purple) is the only distance smaller than threshold, and so F is
+assigned to the purple cluster in (xv).  Finally, in (xvi) the virtual
+purple track is updated as (D+A+F)/3. As there are no more tracks to
+select, the algorithm stops. We can see that all three clusters have
+been found and all tracks have been assigned successfully to a cluster.
+
 \begin{figure*}[hb]
 \centering\includegraphics[scale=0.25]{Fig_1_QB_algorithm}
-\caption{QB step-by-step: Initially in panel (i) 6 unclustered tracks
-(A-F) are presented; imagine that the distance threshold $\theta$ used here is
-the same as the MDF distance (Eq.~\ref{eq:direct_flip_distance}) between B and
-E: $\theta = MDF(B,E)$. The algorithm starts and in (ii) we see that track A
-was selected; as no other clusters exist track A becomes the first cluster
-(labelled with purple color) and the virtual track of that cluster is
-identical with A as seen in (iii); next in (iv) track B is selected and we
-calculate the MDF distance between B and the virtual track of the other
-clusters. For the moment there is only one cluster to compare so QB calculates
-MDF (B,virtual-purple) and this is obviously bigger than threshold $\theta$
-($\theta = MDF(B,E)$).  Therefore a new cluster is assigned for B, and B
-becomes the virtual track of that cluster as shown in (v). In (vi) the next
-track C is selected and this is again far away from both purple and blue
-virtuals; therefore another cluster is created and C is the virtual of the
-blue cluster as shown in (vii).  In (viii) track D is selected and after we
-have calculated MDF(D,purple), MDF(D,Blue) and MDF(D,green) it is obvious that
-D belongs to the purple cluster as MDF(D,purple) is smaller and lower than
-threshold as shown in (ix).  However we can now see in (x) that things change
-for the purple cluster because the virtual track is not anymore made by only
-one track but it is the average of D and A shown with a dashed line. In (xi) E
-is the current track and will be assigned to the green cluster as shown in
-(xii) because MDF(E,virtual green) = MDF(E,B) = $\theta$, and in (xiii) we see
-the updated virtual track for the green cluster which is equal to (B+E)/2
-where + means track addition. In (xiv) the last track is picked and compared
-with the virtual tracks of the other 3 clusters; obviously MDF(F,purple) is
-the only distance smaller than threshold, and so F is assigned to the purple
-cluster in (xv).  Finally, in (xvi) the virtual purple track is updated as
-(D+A+F)/3. As there are no more tracks to select, the algorithm stops. We can
-see that all three clusters have been found and all tracks have been assigned
-successfully to a cluster.}
+\caption{QB step-by-step}
 \label{Fig:LSC_simple}
 \end{figure*}
 
