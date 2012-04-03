@@ -6376,7 +6376,14 @@ reference "Flo:cst_cst_bcc"
 
 \end_inset
 
-A we see the right Corticospinal bundle in a different subject from before.
+A we see the right Corticospinal bundle
+\begin_inset CommandInset citation
+LatexCommand cite
+key "verstynen2011vivo"
+
+\end_inset
+
+ in a different healthy subject from before.
  
 \end_layout
 
