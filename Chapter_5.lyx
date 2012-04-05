@@ -50,268 +50,354 @@
 \begin_body
 
 \begin_layout Section
-Discussion
+Conclusion 
 \end_layout
 
 \begin_layout Subsection
-Overview
+Summary
 \end_layout
 
 \begin_layout Standard
+Very recently Wedeen et al.
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "wedeen2012geometric"
 
 \end_inset
 
-
+ published in Science a fascinating work.
+ They show that they can identify in the tractographies of the brains of
+ humans and other animals (in vivo and in vitro) structural connections
+ with agreement to confocal microscopy and other staining techniques.
+ This paper shows that a grid structure is omnivalent in the brain i.e.
+ tracks are crossing in more areas that we would previously expect and they
+ also curve vigourosly.
+ In order to create their tractographies the author used DSI reconstruction
+ and deterministic propagation which have been the inspiration of this thesis.
+ This thesis extends these ideas.
+ Here we present a summary of our main original contributions.
 \end_layout
 
 \begin_layout Standard
+
+\series bold
+Reconstructing voxels.
+
+\series default
+ We first proposed a new reconstruction method called Diffusion Nabla Imaging
+ (DNI) using an algorithm that directly approximates the Orientation Distributio
+n Function using the Laplacian of the signal in q-space.
+ However, we found that a family of transforms exists which is a superset
+ of DNI.
+ We call this the Equatorial Inversion Transform (EIT).
+ We showed that EIT has higher angular accuracy in simulations than the
+ other methods and that it introduces intresting theoretical foundations
+ for the interpretation of the dMRI signal.
+ We compared and evaluated different Cartesian-grid q-space dMRI acquisition
+ schemes, using methods based on the inverse Fourier transform of the diffusion
+ signal, with reconstructions by Diffusion Spectrum Imaging (DSI), Generalized
+ Q-sampling Imaging (GQI) and the EIT.
+ We also compared against GQI2 which was not applied to simulated and real
+ data until today.
+ We found that GQI2 has similar performance with that of the EIT and it
+ can generate smooth ODFs.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Integrating to tracks.
+
+\series default
+ Most previously published reconstruction methods are closely linked to
+ their own specific tracking method.
+ We have formulated a free-standing, data-representative, deterministic
+ tractography algorithm (EuDX) which is based on Euler integration and trilinear
+ interpolation.
+ This algorithm integrates voxel level information about fibre orientations
+ including multiple crossings, and employs a range of stopping criteria.
+ The purpose of this algorithm is to be faithful to the reconstruction results
+ rather than try to correct or enhance them by introducing regional or global
+ considerations.
+ Surprisingly, in the digital phantoms EuDX performed better than standard
+ probabilistic methods.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Segmenting tracks.
+ 
+\series default
+The end goal of clustering is to be able to segment tractography into tracts
+ that have biological meaning.
+ This is a difficult problem with no well-defined gold standard.
+ In order to succeed better, we need to be able to compare the results of
+ tractographies, and we need to be able to allow experts in anatomy to interact
+ with the results of the tractography.
+ Unfortunately most current methods so slow to compute that it is not practical
+ to compare different methods in reasonable time, and they cannot run fast
+ enough for an expert to interact with them in near real time.
+ This thesis provides a complete solution to this problem.
+ We developed a suprisingly simple, fully automatic, linear time, clustering
+ method (QuickBundles) which reduces massive tractographies into a few easily
+ accessible bundles.
+ These bundles are characterised by representative tracks which are multi-purpos
+e and can be used for interaction with the data or as the basis for applying
+ higher-complexity clustering methods which would have been impossible or
+ too slow with the full data set.
+ QuickBundles is currently and as far as we know the fastest tractography
+ clustering algorithm; providing the opportunity for clinical real-time
+ applications.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Registering tracks.
+ 
+\series default
+After applying QuickBundles to tractographies from different subjects, we
+ showed how to use the representative tracks to identify robust landmarks
+ within each subject which, with similarity metrics which we have introduced,
+ we can use them to directly register the different tractographies together
+ in a highly efficient way.
+ We believe the resulting correspondences provide important evidence for
+ the anatomical plausibility of the derived bundles.
+ We demonstrated how these methods can be used for group analysis, and for
+ atlas creation.
+\end_layout
+
+\begin_layout Subsection
+Software
+\end_layout
+
+\begin_layout Standard
+In providing this thesis we tried to do our best to follow good scientific
+ practices.
+ One of the important achievements was to create and distribute two different
+ software libraries DIPY and FOS.
+ We hope that these projects will add up to the stack of excisting OpenSource
+ projects in the Neuroimaging community like Camino, FSL, DSI Studio and
+ SPM.
+ We believe that by providing our code openly and non for-profit we allow
+ the other researchers to test and extend our findings.
+ We believe that this is a factor which can increase the quality of scientific
+ research beyond the standard expectations.
+ Ioannidis et al.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ioannidis"
 
 \end_inset
 
+ showed that many scientists are avoiding to publish negative results.
+ Unfortunately this is a problem in Neuroimaging too.
+ We believe that perhaps a way out of this is to publishing and sharing
+ code.
+ In that perspective others can confirm, validate and push forward our current
+ understandings.
+ Both DIPY and FOS have attracted more developers and scientists who contribute
+ today to these platforms.
+ 
+\end_layout
 
+\begin_layout Subsection
+Future work
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset citation
-LatexCommand cite
-key "moriBook"
+Here we will describe what are our future plans and which research path
+ we would like to take after the completion of this dissertation.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Extending EIT
+\series default
+.
+
+\series bold
+ 
+\series default
+Currently the EIT expects Cartesian grid-based q-space data as those used
+ in DSI reconstructions.
+ However, it seems that because the EIT is integrating directional information
+ radially on spherical shells it will be straightforward to extend it to
+ one or more spherical grid q-space data.
+ Spherical grid data are more commonly available and usually the need less
+ time to generate.
+ In order to make this possible we will need to research further on spherical
+ interpolations.
+ Perhaps our spherical smoothing functions described in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Spherical-Angular-Smoothing"
 
 \end_inset
 
-
+ will become handy.
+ However, this needs further examination.
 \end_layout
 
 \begin_layout Standard
-This thesis contains original contributions to many different aspects of
- diffusion weighted MR imaging (dMRI), from the signal reconstruction, via
- propagation of tracks, clustering of tracks, detection of bundles of tracks,
- and creation of atlases of white matter, to visualization tools with high
- interactivity with data, and for several brains simultaneously.
-\end_layout
 
-\begin_layout Standard
-Our most important new achievements are a powerful way of reconstructing
- the diffusion signal and a method for simplifying tractographies using
- a new super-efficient clustering algorithm.
+\series bold
+Non-linear Direct Registration
+\series default
+.
+
+\series bold
+ 
+\series default
+Our direct registration approach allows only for linear transformations.
+ It would be very interesting first to validate our method against volume
+ based registration.
+ Furthermore, we could investigate a log-Euclidean polyaffine framework
+ which allows for smooth non-linear transformations.
+ This will be a beautifully challenging problem as the optimization will
+ be more difficult.
+ Perhaps using robust optimizers like the Particle Swarm Optimizer (PSO)
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kennedy1995particle"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "oikonomidis2011full"
+
+\end_inset
+
+ will give better results than Powell's method which is what we currently
+ use.
  
 \end_layout
 
 \begin_layout Standard
-In more detail we give novel and robust solutions for all the following
- problems
-\end_layout
 
-\begin_layout Standard
-• 
 \series bold
-How to reconstruct and interpret the directional information in the diffusion
- signal
+Shape Correspondance
 \series default
-: 
-\end_layout
+.
 
-\begin_layout Standard
-We compare and evaluate different Cartesian-grid q-space dMRI acquisition
- schemes, using methods based on the inverse Fourier transform of the diffusion
- signal, with reconstructions by diffusion spectrum imaging or generalized
- q-ball imaging methods.
- These are applied to both software phantom and human data.
- We propose a new reconstruction method called diffusion nabla imaging (DNI)
- which works with the same grid type of acquisition schemes, using an algorithm
- that directly approximates the orientation distribution function using
- the Laplacian of the signal in q-space.
-\end_layout
-
-\begin_layout Standard
-• 
 \series bold
-How to integrate tracks from voxel to voxel
+ 
 \series default
-: 
+Using multi-brain visualization we were able to have a first investigation
+ of shape correspondence of tracks between subjects (see Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:Direct_correspondence"
+
+\end_inset
+
+).
+ We would like to augment this first implementation to bundle correspondence.
+ In other words a medical practitioner could select a representative track
+ or a bundle in one subject and see in real-time the corresponding bundles
+ in the other subjects.
 \end_layout
 
 \begin_layout Standard
-Most previously published reconstruction methods are closely linked to their
- own specific track integration method.
- We have formulated a general, free-standing, data-representative, non-inferenti
-al, fast, deterministic tractography algorithm (EuDX) which is based on
- Euler integration and trilinear interpolation, which works with voxel level
- information about fibre orientations including multiple crossings, and
- employs a range of stopping criteria.
- The purpose of this algorithm is to be faithful to the reconstruction results
- rather than try to correct or enhance them by introducing regional or global
- considerations.
-\end_layout
 
-\begin_layout Standard
-• 
 \series bold
-How to cluster tracks together into meaningful bundles
+Clinical Applications
 \series default
-: 
+.
+ Extending our priliminary evolvement with clinical research in trichotilomania
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chamberlain2010reduced"
+
+\end_inset
+
+ from FA to track density calculations.
+ Also we would like to investigate bundle differences with other disorders
+ like autism or schizophrenia.
+ Both autism and schizophrenia are considered to have strong relationship
+ with defects in white matter architecture with disrupted connectivity 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zalesky2011disrupted"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-We have developed an entirely new, fully automatic, linear time, clustering
- method (QuickBundles) which reduces massive tractographies into just a
- few bundles.
- These bundles are characterised by representative tracks which are multi-purpos
-e and can be used for interaction with the data or as the basis for applying
- higher-complexity clustering methods which would have been impossible or
- too slow with the full data set.
- QuickBundles is currently the fastest known tractography clustering algorithm.
-\end_layout
 
-\begin_layout Standard
-• 
 \series bold
-How to directly register tractographies
+Interactive Labeling
 \series default
-: 
+.
+ We present a scientific visualization tool that solves the problem of interacti
+ng with tractographies by creating real- time simplifications in terms of
+ the underlying bundle structures.
+ The process that we propose works recursively: starting from a small number
+ of clusters of streamlines the user decides which clusters to explore.
+ Exploring a cluster means that the application re-clusters its content
+ at a finer grained level.
+ 
 \end_layout
 
 \begin_layout Standard
-After applying QuickBundles to tractographies from different subjects, we
- show how to use the representative tracks to identify robust landmarks
- within each subject which, with similarity metrics which we have introduced,
- we use to directly register the different tractographies together in a
- highly efficient way.
- We believe the resulting correspondences provide important evidence for
- the anatomical plausibility of the derived bundles.
- We demonstrate how these methods can be used for group analysis, and for
- atlas creation.
-\end_layout
-
-\begin_layout Subsection
-Clinical Usage
-\end_layout
-
-\begin_layout Standard
-Atlas of wrong bundles.
-\end_layout
-
-\begin_layout Subsection
-Why speed is so important?
-\end_layout
-
-\begin_layout Subsection
-Future Work
+The application starts visualizing the brain as a set of a few representative
+ tracks, i.e.
+ the cluster representatives.
+ These representative tracks are provided by a very fast tractography clustering
+ algorithm called QuickBundles [1,9] (see fig.1B) which can cluster thousands
+ of tracks in milliseconds.
+ Each representative track acts as the access point to the streamlines within
+ that cluster and allows the user to address this portion of the tractography
+ as a single unit, which we call "bundle of interest" (BOI).
+ After visually inspecting the simplified tractography (fig.1B) the user
+ interactively selects one or more representative tracks (fig.1C, the selected
+ representative track is in white).
+ When one or more representative tracks are selected the user can see the
+ content of the related clusters (fig.1D).
+ In order to explore the detailed structure of content of the selection
+ the user may ask to re-cluster the selected BOIs into smaller clusters
+ (fig.1E) in order to address and possibly further refine the initial selection.
+ After selecting one or more of the small clusters through their representatives
+ (fig.1F, in white) the user can repeat the visual inspection step (fig.1G),
+ and the re-clustering step (fig.1H) as required in order to unveil the local
+ structures (fig.1I).
+ 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
-<features>
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-aaa
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-bbb
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-5
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-7
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Tab:DummyTable"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
+Additionally the user can visualise slices of structural volumes, e.g.
+ FA or T1 (see fig.2).
+ The volume is aligned in the same space (e.g standard space) of the tractography.
+ Then the user can click a point on a slice to define the center of a cubic
+ ROI and decide its size.
+ After defining one or more ROIs the user can filter out the representative
+ tracks which are not passing through the selected ROIs (fig.2B-C) and see
+ the related subset of tractography (fig.2D).
+ Thus fig.1 and fig.2 show results of interactive tractography exploration
+ using both BOIs and ROIs with user interactivity directly in the 3D space.
+ This enables medical practitioners and researchers to meaningfully navigate
+ the entire space of the tractography and to better understand diffusion
+ MRI data.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -324,8 +410,8 @@ status open
 \align center
 \begin_inset Graphics
 	filename hbm2012/hbm2012_fig1.png
-	lyxscale 30
-	scale 30
+	lyxscale 20
+	scale 40
 
 \end_inset
 
@@ -360,12 +446,103 @@ name "Flo:SelectionViz"
 \end_layout
 
 \begin_layout Standard
+We presented a novel visualization tool which provides an entirely original
+ way to interact with very large tractogaphies.
+ This goes far beyond the methods used in [4-8] and, as far as we know,
+ beyond any other available medical imaging software thanks to the scalability
+ of the QuickBundles algorithm [1].
+ We provide a software implementation of this application which is written
+ completely in Python language.
+ We use the modules DIPY [2,10] and FOS [3] as building blocks of the software
+ system.
+ The application is available under an OpenSource license at [3].
+ 
+\end_layout
 
-\lang british
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-bibfiles "diffusion"
-options "ieeetr"
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename three_brains_golden_new.png
+	lyxscale 50
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Direct track correspondence between different subjects
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:Direct_correspondence"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Microstructure.
+ Applying our methods in 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename art_figures/su01final.png
+	lyxscale 20
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Every participant received a picture of his tractography as a gift for their
+ help to our experiments.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
