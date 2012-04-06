@@ -58,12 +58,12 @@
   clustering algorithm, QuickBundles (QB), that overcomes the complexity
   of these large datasets and provides anatomically meaningful clusters
   in seconds. Each QB cluster can be represented by a single track;
-  collectively these representative tracks can be taken as a complete
-  distillation of the tractography. Representative tracks can then be
-  used as input to clustering algorithms of higher order complexity
-  which currently cannot be implemented on the full data set. We also
-  show the further potential of QB to find landmarks, create atlases,
-  and compare and register tractographies.
+  collectively these representative tracks can be taken as a faithful
+  representation of the tractography. We demonstrate how these presentative
+  tracks can be used as input to clustering algorithms of higher
+  order complexity which currently cannot be implemented on the full
+  data set. We also show the further potential of QB to find landmarks,
+  create atlases, and compare and register tractographies.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -137,15 +137,15 @@ This number of computations puts a very heavy load on clustering algorithms,
 making them hard to use for everyday analysis as it is difficult to compute all
 these distances or store them in memory. For the same reason, no current
 algorithm is practical for real time clustering on a large number of tracks. The
-heavy computational demands of clustering adds a further overhead to the use of
+heavy computational demands of clustering add a further overhead to the use of
 tractography for clinical applications but also puts a barrier on understanding
-and interpreting the quality of diffusion data sets.
+and interpreting the quality of diffusion MR data sets.
 
 To address these key issues of time and space we present a stable,
 generally linear time clustering algorithm that can generate meaningful
 clusters of tracks in seconds with minimum memory consumption. Our
 approach is extremely straightforward and we do not need to calculate
-all pairwise distances unlike most of the other existing
+all pairwise distances unlike most existing
 methods. Furthermore we can update our clustering online or in
 parallel. In this way we can overcome the previous barriers of space and
 time.
@@ -176,8 +176,8 @@ update on our preliminary work~\cite{EGMB10}.
 In QB each item, a track, is a fixed-length ordered sequence of points
 in $\mathbb{R}^{3}$, and QB uses metrics and amalgamations which take
 account of and preserve this structure.  Moreover each item is either
-added to an existing cluster on the basis of a distance between the
-cluster descriptor of the item and the descriptors of the current set of
+added to an existing cluster on the basis of the distances between the
+cluster descriptor of the item and the descriptors of the current list of
 clusters. Clusters are held in a list which is extended according to
 need. Unlike amalgamation clustering algorithms such as
 $k$-means~\cite{steinhaus1956division, macqueen1967some} or
@@ -217,18 +217,18 @@ tracks in the cluster. One summary of the cluster node is the centroid or
 \begin{algorithm}
 %\begin{boxedalgorithmic}
 \begin{algorithmic}
-\REQUIRE $T=\{\mathbf{s}_{1},...,\mathbf{s}_{i},...,\mathbf{s}_{|T|}\}$, $\theta$
-\ENSURE $C=\{c_{1},...,c_{k},...,c_{|C|}\}$ 
+\REQUIRE $T=\{\mathbf{s}_{1},...,\mathbf{s}_{i},...,\mathbf{s}_{N}\}$, $\theta$
+\ENSURE $C=[c_{1},...,c_{k},...,c_{M}]$ 
 \STATE \# create first cluster
-\STATE $c_{1} \leftarrow \left\{[1],\mathbf{s}_{1},1\right\}$
-\STATE $C\leftarrow\left\{c_{1}\right\}$
-\STATE $|C|\leftarrow1$ 
-\FOR{$i=2$ to $|T|$}
+\STATE $c_{1} \leftarrow ([1],\mathbf{s}_{1},1)$
+\STATE $C\leftarrow[c_{1}]$
+\STATE $M\leftarrow1$ 
+\FOR{$i=2$ to $N$}
 	\STATE $\textbf{t}\leftarrow T_{i}$
-	\STATE $\texttt{alld}\leftarrow\textbf{0}$ \# distance buffer
-	\STATE $\texttt{flip}\leftarrow\textbf{0}$ \# flipping check buffer
-	\FOR{$k=1$ to $|C|$ }
-		\STATE $\mathbf{v}\leftarrow C_{k}.\mathbf{h}/C_{k}.N$
+	\STATE $\texttt{alld}\leftarrow\textbf{infinity}(M)$ \# distance buffer
+	\STATE $\texttt{flip}\leftarrow\textbf{zeros}(M)$ \# flipping check buffer
+	\FOR{$k=1$ to $M$ }
+		\STATE $\mathbf{v}\leftarrow c_{k}.\mathbf{h}/c_{k}.n$
 		\STATE $d\leftarrow d_{\textrm{direct}}(\mathbf{t},\mathbf{v})$
 		\STATE $f\leftarrow d_{\textrm{flipped}}(\mathbf{t},\mathbf{v})$
 	\IF{$f$ < $d$}
@@ -240,20 +240,20 @@ tracks in the cluster. One summary of the cluster node is the centroid or
 \STATE $m\leftarrow \min(\texttt{alld})$
 \STATE $l\leftarrow \mathrm{arg min}(\texttt{alld})$
 \IF{$m < \theta$} 
-\STATE \# append in current cluster
+\STATE \# append to current cluster
 	\IF{$\texttt{flip}_{l}$ is $1$} 
-		\STATE $C_{l}.\mathbf{h} \leftarrow C_{l}.\mathbf{h} + \textbf{reverse}(\textbf{t})$
+		\STATE $c_{l}.\mathbf{h} \leftarrow c_{l}.\mathbf{h} + \textbf{reverse}(\textbf{t})$
 	\ELSE
-		\STATE $C_{l}.\mathbf{h} \leftarrow C_{l}.\mathbf{h} + \textbf{t}$
+		\STATE $c_{l}.\mathbf{h} \leftarrow c_{l}.\mathbf{h} + \textbf{t}$
 	\ENDIF
-	\STATE $C_{l}.N \leftarrow C_{l}.N + 1$
-	\STATE \textbf{append}($C_{l}.I$,$i$)
+	\STATE $c_{l}.n \leftarrow c_{l}.n + 1$
+	\STATE \textbf{append}($c_{l}.I$,$i$)
 \ELSE 
 \STATE \# create new cluster
-	\STATE $|C|\leftarrow |C|+1$
-	\STATE $C_{|C|}.\mathbf{h}\leftarrow \mathbf{t}$
-	\STATE $C_{|C|}.N\leftarrow 1$
-	\STATE \textbf{append}($C_{|C|}.I$,$i$)
+	\STATE $M\leftarrow M+1$
+	\STATE $c_{M}.\mathbf{h} \leftarrow \mathbf{t}$
+	\STATE $c_{M}.n \leftarrow 1$
+	\STATE $c_{M}.I \leftarrow [i]$
 \ENDIF
 \ENDFOR 
 \end{algorithmic}
@@ -264,17 +264,17 @@ tracks in the cluster. One summary of the cluster node is the centroid or
 \end{algorithm}
 
 The algorithm proceeds as follows.  At any one step in the algorithm we
-have $|C|$ clusters. Select the first track $\mathbf{s}_{1}$ and place it in
-the first cluster $c_{1}\leftarrow(\{1\},\mathbf{s}_{1},1)$.  Obviously $|C|
-= 1$ at this point.  For each remaining track in turn $i = 2 \dots N$:
-(i) calculate the MDF distance between track $s_{i}$ and the virtual
-tracks $\mathbf{v}_{e}$ of all the current clusters $c_{e}$, $e = 1 \dots |C|$,
-where $v$ is defined on the fly as $\mathbf{v}=\mathbf{h}/n$; (iii) if
+have $M$ clusters. Select the first track $\mathbf{s}_{1}$ and place it in
+the first cluster $c_{1}\leftarrow(\{1\},\mathbf{s}_{1},1)$;  
+$M=1$ at this point.  For each remaining track in turn $i = 2 \dots N$:
+(i) calculate the MDF distance between track $\mathbf{s}_{i}$ and the virtual
+tracks $\mathbf{v}_{e}$ of all the current clusters $c_{e}$, $e = 1 \dots M$,
+where $\mathbf{v}$ is defined on the fly as $\mathbf{v}=\mathbf{h}/n$; (iii) if
 any of the MDF values $m_{e}$ are smaller than a distance threshold
 $\theta$, add track $i$ to the cluster $e$ with the minimum value for
 $m_{e}$; $c_{e}=(I,\mathbf{h},n)$, and update
-$c_{e}\leftarrow(I\cup\{i\},\mathbf{h}+\mathbf{s},n+1)$; otherwise create a new
-cluster $c_{|C|+1}\leftarrow(\{i\},\mathbf{s}_{i},1)$, $|C|\leftarrow|C|+1$.
+$c_{e}\leftarrow(\mathbf{append}(I,i),\mathbf{h}+\mathbf{s},n+1)$; otherwise create a new
+cluster $c_{M+1}\leftarrow([i],\mathbf{s}_{i},1)$, $M\leftarrow M+1$.
 
 Popular amalgamation clustering algorithms such as
 $k$-means~\cite{steinhaus1956division, macqueen1967some} require
@@ -299,7 +299,7 @@ The complete QB algorithm is described in formal detail in
 Algorithm~\ref{Alg:QuickBundles} and a simple step by step visual example is
 given in Fig.~\ref{Fig:LSC_simple}.  One of the reasons why QB has on
 average linear time complexity derives from the structure of the cluster
-node: we only save the sum of current tracks $h$ in the cluster and the
+node: we only save the sum of current tracks $\mathbf{h}$ in the cluster and the
 sum is cumulative; moreover there is no recalculation of clusters, the
 tracks are passed through only once and a track is assigned to one
 cluster only. 
@@ -319,7 +319,7 @@ requires every point on the first track to be compared with every point
 on the second track, and vice versa. For these reasons we have opted to
 use a very simple symmetric distance \cite{EGMB10, Visser2010} which we
 call Minimum average Direct-Flip (MDF) distance $MDF(\mathbf{s},\mathbf{s'})$ between
-track $s\mathbf{s}$ and track $\mathbf{s'}$, see Eq.~(\ref{eq:direct_flip_distance}). This
+track $\mathbf{s}$ and track $\mathbf{s'}$, see Eq.~(\ref{eq:direct_flip_distance}). This
 distance can be applied only when both tracks have the same number of
 points. Therefore we assume that an initial downscaling of tracks has
 been implemented, where all segments on a track have approximately the
@@ -330,7 +330,7 @@ raw track.  Under this assumption MDF is defined as:
 \begin{eqnarray}
 \textrm{MDF}(\mathbf{s},\mathbf{s'}) & = & \min(d_{\textrm{direct}}(\mathbf{s},\mathbf{s'}),d_{\textrm{flipped}}(\mathbf{s},\mathbf{s'}))\label{eq:direct_flip_distance}\\
 d_{\textrm{direct}}(\mathbf{s},\mathbf{s'}) & = & \frac{1}{K}\sum_{i=1}^{K}|\mathbf{x}_{i}-\mathbf{x}_{i}'|,\,\,\textrm{and}\nonumber\\
-d_{\textrm{flipped}}(s,s') & = & \frac{1}{K}\sum_{i=1}^{K}|\mathbf{x}_{i}-\mathbf{x}_{K-i}'|.\nonumber
+d_{\textrm{flipped}}(\mathbf{s},\mathbf{s'}) & = & \frac{1}{K}\sum_{i=1}^{K}|\mathbf{x}_{i}-\mathbf{x}_{K-i}'|.\nonumber
 \end{eqnarray}
 \noindent
 Here $K$ is the number of points $\mathbf{x}_{i}$ and $\mathbf{x}_{i}'$ on the two tracks $\mathbf{s}$ and $\mathbf{s'}$
@@ -343,9 +343,9 @@ $\mathbf{x'}$.
 \caption{The principal distance used in this work is minimum average direct flip
 distance $\textrm{MDF}=\min(d_{\textrm{direct}},d_{\textrm{flipped}})$ which is
 a symmetric distance that can deal with the track bi-directionality problem; it
-works on tracks which have the same number of points.  Another distance is the
+works on tracks which have the same number of points.  Another distance we use is the
 mean average distance which is again symmetric but does not require the tracks
-to have the same number of points
+to have the same number of points:
 $\textrm{MAM}_{\textrm{mean}}=(d_{mean}(\mathbf{s},\mathbf{s'})+d_{mean}(\mathbf{s'},\mathbf{s}))/2$ (see Eq.
 (\ref{eq:mean_average_distance})).  In this figure the components of both
 distances are shown; the tracks are drawn with solid lines, and then with dashed
@@ -358,11 +358,11 @@ different numbers of points.
 
 The main advantages of the MDF distance are that it is fast to compute,
 it takes account of track direction issues through consideration of both
-direct and flipped tracks, and that it is easy to understand how it
-behaves, from the simplest case of parallel equi-length tracks to the
-most complicated with very divergent tracks. Another advantage is that
-it separates short tracks from long tracks; a track A that is half the length of
-track B will be relatively poorly matched on MDF to B.  
+direct and flipped tracks, and that its behaviour is easy to understand,
+from the simplest case of parallel equi-length tracks to the most
+complicated with very divergent tracks. Another advantage is that it
+separates short tracks from long tracks; a track $\mathbf{s}$ that is half the
+length of track $\mathbf{s'}$ will be relatively poorly matched on MDF to $\mathbf{s'}$.
 
 Another important advantage of having tracks with the same number of points is
 that we can easily do pairwise calculations on them; for example add two or more
@@ -398,9 +398,9 @@ other words to find an exemplar (medoid) track. Virtual tracks do not
 necessarily coincide with real tracks as they are just the outcome of
 large amalgamations. There are many strategies for how to select good
 exemplars for the bundles. A very fast procedure that we use in our
-work is to find which real track from the cluster is closest (by MDF
-distance) to the virtual track. We will call this exemplar track $\mathbf{e}_{1}$,
-i.e.~$\mathbf{e}_{1}={\displaystyle \argmin_{\mathbf{x} \in C_i}}\textrm{\,\ MDF}(\mathbf{v},\mathbf{x})$.
+work is to find which real track from the cluster $c$ is closest (by MDF
+distance) to the virtual track $\mathbf{v}$. We will call this exemplar track $\mathbf{e}_{1}$,
+i.e.~$\mathbf{e}_{1}={\displaystyle \argmin_{\mathbf{s} \in c}}\textrm{\,\ MDF}(\mathbf{v},\mathbf{s})$.
 The computational complexity of finding $\mathbf{e}_{1}$ is still linear in
 cluster size, and that will be very useful if we have created
 clusterings with clusters containing more than \textasciitilde5000 tracks
@@ -408,10 +408,11 @@ clusterings with clusters containing more than \textasciitilde5000 tracks
 
 A different exemplar can be defined as the most typical track among all
 tracks in the bundle, which we denote by $\mathbf{e}_{2}={\displaystyle
-  \argmin_{\mathbf{x} \in C_i}}\,{\displaystyle \sum_{y\in C_i}}\mathrm{MDF}(\mathbf{y},\mathbf{x})$, or
+  \argmin_{\mathbf{s} \in c}}\,{\displaystyle \sum_{s'\in c}}\mathrm{MDF}(\mathbf{s'},\mathbf{s})$, or
 if we want to work with tracks with possibly different numbers of points
-we could instead use $\mathbf{e}_{3}={\displaystyle \argmin_{\mathbf{x} \in
-    C_i}}\,{\displaystyle \sum_{\mathbf{y}\in C_i}}\mathrm{MAM}(\mathbf{y},\mathbf{x})$.
+we could instead use $\mathbf{e}_{3}={\displaystyle \argmin_{\mathbf{s} \in
+    c}}\,{\displaystyle \sum_{\mathbf{s'}\in C}}\mathrm{MAM}(\mathbf{s'},\mathbf{s})$.
+Here $\mathrm{MAM}$ can any one of the Hausdorff metrics (\ref{sec:Hausdorff}).
 Identification of exemplar tracks of type $\mathbf{e}_{2}$ and $\mathbf{e}_{3}$ will be
 efficient only for small bundles of less than $5000$ tracks because we
 need to calculate all pairwise distances in the bundle. We show below
@@ -431,55 +432,56 @@ clusterings is crucial for creating stable brain imaging procedures, and
 therefore it is necessary to develop a way to compare different
 clusterings of the same subject or different subjects. Although we
 recognise that this is a difficult problem, we propose the following
-approach with a novel metric which we call Bundle Adjacency (BA). This metric works as follows. Let us assume that we have gathered the
-exemplar tracks from clustering A in $E_{A}=\{\mathbf{e}_{1},...,\mathbf{e}_{|E_{A}|}\}$
-and from clustering B in $E_{B}=\{\mathbf{e}_{1}^{'},...,\mathbf{e}_{|E_{B}|}^{'}\}$ where
-$|E|$ denotes the number of exemplar tracks of each clustering $E$. The
-size of set $E_{A}$ does not need to be the same as that of
-$E_{B}$. Next, we calculate all pairwise MDF distances between the two
-sets and store them in rectangular matrix $D_{AB}$. The mimima of the
-rows of $D_{AB}$ provide the distance to the nearest track in B of each
-track in A ($E_{A\rightarrow B}$) and similarly the minima of the
-columns of $D_{AB}$ the distance to the nearest track in $A$ of each
-track in B ($E_{B\rightarrow A}$). From these correspondences we only
-keep those distances that are smaller than a tight threshold
-$\theta$. Then we define BA to be
+approach with a novel metric which we call Bundle Adjacency (BA). This
+metric works as follows. Let us assume that we have gathered the
+exemplar tracks from clustering $A$ in
+$E_{A}=[\mathbf{e}_{1},...,\mathbf{e}_{M_{A}}]$ and from clustering $B$
+in $E_{B}=[\mathbf{e}_{1}^{'},...,\mathbf{e}_{M_{B}}^{'}]$ where $M_A$
+, $M_B$ denote the number of exemplar tracks of the two
+clusterings. $M_{A}$ does not need to be equal to $M_{B}$. Next we
+calculate all pairwise MDF distances between the two sets and store them
+in rectangular matrix $D_{AB}$. The mimima of the rows of $D_{AB}$
+provide the distance to the nearest track in $B$ of each track in $A$
+($m_{A\rightarrow B}$) and similarly the minima of the columns of
+$D_{AB}$ the distance to the nearest track in $A$ of each track in $B$
+($m_{B\rightarrow A}$). From these correspondences we only keep those
+distances that are smaller than a tight threshold $\theta$. Then we
+define BA to be
 
 \begin{equation}
-BA=\frac{1}{2}\left(\frac{|E_{A\rightarrow B}\leq \theta |}{|E_{A}|}+\frac{|E_{B\rightarrow A}\leq \theta |}{|E_{B}|}\right)\label{eq:TC}
+BA=\frac{1}{2}\left(\frac{|m_{A\rightarrow B}\leq \theta |}{M_{A}}+\frac{|m_{B\rightarrow A}\leq \theta |}{M_{B}}\right)\label{eq:TC}
 \end{equation}
 
-\noindent where $|E_{A\rightarrow B}\leq \theta |$ denotes the number of
+\noindent where $|m_{A\rightarrow B}\leq \theta |$ denotes the number of
 exemplars from A which had a neighbour in B that is closer than $\theta$
-and similarly for $|E_{B\rightarrow A}\leq \theta |$ the number of
-exemplars from B to A which their distance was smaller than
-$\theta$. In other words, $BA$ is mean of the fraction of row minima of
+and similarly for $|m_{B\rightarrow A}\leq \theta |$. 
+In other words, $BA$ is mean of the fraction of row minima of
 $D_{AB}$ that are less than $\theta$ and the fraction of column minima
-less than $\theta$.  When $BA=0$ that means that every exemplar from the
-one set was further than $\theta$ to all exemplars in the other
-set. When $BA=1$ then all exemplars from one set had a close neighbour
+less than $\theta$.  $BA=0$ when every exemplar from the
+one set is further than $\theta$ to all exemplars in the other
+set. $BA=1$ when all exemplars from one set have a close neighbour
 in the other set. This metric is very useful especially when
 comparing tractographies from different subjects because it does not
-require $|E_{A}|=|E_{B}|$.
+require $M_{A}=M_{B}$.
 
 \subsection{Merging two sets of bundles\label{sub:merging}}
 
 We can merge bundles using exemplar tracks or virtual tracks. We first
 set a distance threshold $\theta$ usually the same as the one we used
 for the QBs in the previous step. Assume now that we have gathered the
-virtual tracks from clustering A in $V_{A}=\{v_{0},...,v_{|V_{A}|}\}$
-and from clustering $B$ in $V_{B}=\{v_{0}^{'},...,v_{|V_{B}|}^{'}\}$
-where $|V|$ denotes the number of virtual tracks of each clustering.
-$|V_{A}|$ can be different from $|V_{B}|$. (1) For every $v_{i}^{'}$ in set
-$V_{B}$ we find the closest $v_{j}$ in set $V_{A}$ and store the
+virtual tracks from clustering A in $V_{A}=[\mathbf{v}_{1},...,\mathbf{v}_{M_{A}}]$
+and from clustering $B$ in $V_{B}=[\mathbf{v}_{1}^{'},...,\mathbf{v}_{M_{B}}^{'}]$
+where $M_A$ and $M_B$ denote the number of virtual tracks of each clustering.
+$M_{A}$ can be different from $M_{B}$. (1) For every $\mathbf{v}_{i}^{'}$ in
+$V_{B}$ we find the closest $\mathbf{v}_{j}$ in $V_{A}$ and store the
 distance between these two tracks. Therefore we now have a set of
 minimum distances from $V_{B}$ to $V_{A}$. The size of this set is equal
-to $|V_{B}|$. (2) We merge those clusters from B whose virtual
+to $M_{B}|$. (2) We merge those clusters from B whose virtual
 tracks have minimum distances (e.g. MDF) smaller than $\theta$ into the
 corresponding clusters of A, and if a virtual track in $V_{B}$ has no
 sub-threshold neighbour in $V_{A}$ then its cluster becomes a new
 cluster in the final clustering. In that way clusters from the two sets
-who have very similar features will merge together, and, if not, new
+ho have very similar features will merge together, and, if not, new
 clusters will be created, and we will not have any loss of information
 from the two sets of clusters.
 
@@ -528,6 +530,8 @@ tractography database used in the Pittsburgh Brain Competition Fall
 $2009$, ICDM (pbc.lrdc.pitt.edu).
 
 \section{Results}
+
+\subsection{Overview}
 
 \subsection{Complexity and timings\label{sub:Complexity}}
 
@@ -646,7 +650,7 @@ tracks (see Table~\ref{Flo:timings}).
 \begin{centering}
 \begin{tabular}{ccccc}
 \hline 
-\hline
+%\hline
 Number of tracks ($N$) & Algorithms & Timings (secs) & QB (secs) & Speedup\tabularnewline
 \hline
 $1000$ & \cite{wang2010tractography} & $30$ & $0.07$ & $429$\tabularnewline
@@ -657,7 +661,7 @@ $400,000$ & \cite{Visser2010} & $75000$ & $160.1$ & $468$\tabularnewline
 \par\end{centering}
 \end{table}
 
-\subsection{The QB Sketch}
+\subsection{The QB Representation}
 
 One of the major benefits of applying QB to tractographies is that it
 can provide meaningful simplifications and find structures that were
@@ -665,7 +669,7 @@ previously invisible or difficult to locate because of the high density
 of the tractography. For example we used QB to cluster the corticospinal
 tract (CST). This bundle was part of the data sets provided by the
 Pittsburgh Brain Competition (PBC2009-ICDM) and it was selected by an
-expert. The QB Sketch is clearly shown in Fig.\ref{Flo:cst_pbc} where
+expert. The QB representation is clearly shown in Fig.\ref{Flo:cst_pbc} where
 every cluster is represented by a single virtual track. To generate this
 clustering we used a tight threshold of $10$~mm. We observe that only a
 few virtual tracks travel the full distance from bottom to top and that
@@ -692,7 +696,7 @@ track.
   threshold $1$ was used shown in the middle and $8$ on the right.  We
   can see that when the threshold is low enough the underlying structure
   is a more detailed representation of the underlying geometry. However,
-  when the distance threshold is higher, closer bundles could merge
+  when the distance threshold is higher, the closer bundles merged
   together as seen in the result on the right panel where the red and
   blue bundle have merged together in one cluster represented by the
   purple virtual track.\label{Flo:simulated_orbits}}
@@ -781,7 +785,7 @@ with the other volumes at lower b-values.
 
 The displacements estimated for every subject were applied
 to each tractography in its native space, mapping it into MNI
-space with voxel size $1\times1\times1~\textrm{~mm}^{3}$. Having all
+space with voxel size $1\times1\times1~\textrm{mm}^{3}$. Having all
 tractographies in MNI space is especially useful because we can now
 compare them against available templates or against each other and
 calculate different statistics. However this is not where we stop; we
@@ -827,10 +831,11 @@ correspond to well known bundle structures in the literature:
 
 \begin{table}
 \small\addtolength{\tabcolsep}{-5pt}
+\caption{The 17 fiber bundles chosen for the analysis in Fig.~\ref{Flo:CloseToSelected}.\label{Flo:structures}}
 \begin{centering}
 \begin{tabular}{lll}
 \hline 
-\hline
+%\hline
 Abbreviation & Structure \tabularnewline
 \hline
 GCC   & genu of corpus callosum \tabularnewline
@@ -853,7 +858,6 @@ UNC-R & right uncinate \tabularnewline
 \hline
 \end{tabular}
 \par\end{centering}
-\caption{The 17 fiber bundles chosen for the analysis in Fig.~\ref{Flo:CloseToSelected}.\label{Flo:structures}}
 \end{table}
 
 These $19$ tracks are coloured randomly. Then on the second row we show,
@@ -1152,18 +1156,17 @@ the closest tracks using the $\textrm{MAM}_{\textrm{min}}$ d $m_{in}$ distance. 
 amalgamation of shorter and longer tracks in one cluster.
 
 An example of this second strategy is shown in
-Fig.~\ref{Flo:arcuate_close}: (A) a track of interest from the arcuate
+Fig.~\ref{Flo:arcuate_close}. \textbf{A}: a track of interest from the arcuate
 fasciculus is selected from the tractographic atlas shown in
-Fig.~\ref{Flo:CloseToSelected} (top row, centre), (B) the tracks of the
+Fig.~\ref{Flo:CloseToSelected} (top row, centre); \textbf{B}: the tracks of the
 subject closer than 15~mm (MDF) from the selected cluster are shown
-and clustered with a distance threshold of $6.25$~mm in (C), (D) from
-every virtual track in C we find the closest tracks using the
-($m_{in}$) distance from the entire tractography.
+and clustered with a distance threshold of $6.25$~mm in \textbf{C}; \textbf{D}: from
+every virtual track in \textbf{C} we find the closest tracks using the
+$\textrm{MAM}_{\textrm{min}}$ distance from the entire tractography.
 
 \section{Discussion and conclusion}
 
-Matthew snippet
-
+\textit{
 The end goal of clustering is to be able to segment tractography into
 tracts that have biological meaning.  This is a difficult problem with
 no well-defined gold standard.  In order to succeed better, we need to
@@ -1172,8 +1175,9 @@ able to allow experts in anatomy to interact with the results of the
 tractography.  Unfortunately most current methods so slow to compute
 that it is not practical to compare different methods in reasonable
 time, and they cannot run fast enough for an expert to interact with
-them in near real time.
+them in near real time.}
 
+\textit{
 Here we describe a clustering technique called QuickBundles (QB) that
 we believe can solve this problem.   QB is extremely simple and very
 fast.  It uses a very small amount of memory.  It can provide a whole
@@ -1186,9 +1190,7 @@ compared to full clustering with the slower method.  This makes it
 practical to compare the results of clustering.  Fast clustering makes
 it practical to compile a large atlas of clusters across subjects.  It
 can be used to segment and merge clusters in real time for interactive
-exploration and refinement.
-
-Matthew snippet ends!
+exploration and refinement.}
 
 We have presented a novel and powerful algorithm -- QuickBundles
 (QB). This algorithm provides simplifications to the old problem of
@@ -1400,7 +1402,7 @@ $\texttt{dipy.org}$.
 % the descriptors of the current set of clusters. Clusters are held in a
 % list which is extended according to need.
 
-\section{Hausdorff (MAM) inter-track distance}
+\section{Hausdorff (MAM) inter-track distance\label{sec:Hausdorff}}
 
 In some stages in the analysis of tractographies we find a use for
 metrics from the family of Hausdorff distances which for simplicity we
