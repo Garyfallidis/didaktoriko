@@ -250,10 +250,9 @@ tracks in the cluster. One summary of the cluster node is the centroid or
 	\STATE \textbf{append}($c_{l}.I$,$i$)
 \ELSE 
 \STATE \# create new cluster
+        \STATE $c_{M+1} \leftarrow ([i],\mathbf{t},1)$
+        \STATE $\mathbf{append}(C,c_{M+1})$
 	\STATE $M\leftarrow M+1$
-	\STATE $c_{M}.\mathbf{h} \leftarrow \mathbf{t}$
-	\STATE $c_{M}.n \leftarrow 1$
-	\STATE $c_{M}.I \leftarrow [i]$
 \ENDIF
 \ENDFOR 
 \end{algorithmic}
