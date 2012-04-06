@@ -59,16 +59,18 @@ Data and sequences
 \end_layout
 
 \begin_layout Standard
-\align block
-
-\series bold
-12 Channels 101 and 118 MRC-CBU
+Summary of the acquisition protocols used in this thesis.
 \end_layout
 
 \begin_layout Standard
-\align block
-3T scanner (TIM Trio, Siemens), using Siemens advanced diffusion work-in-progres
-s sequence, and STEAM 
+\align left
+
+\series bold
+101 and 117 gradients at MRC-CBU
+\series default
+.
+ 3T scanner (TIM Trio, Siemens) with a 12 channel coil, using Siemens advanced
+ diffusion work-in-progress sequence, and STEAM 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "merboldt1992diffusion,MAB04"
@@ -95,7 +97,11 @@ n was
 \end_inset
 
 .
- Two sampling schemes were considered: a 102-point half grid acquisition(TR=
+ Two sampling schemes were considered: a 
+\begin_inset Formula $102$
+\end_inset
+
+-point half grid acquisition(TR=
 \begin_inset Formula $8200ms$
 \end_inset
 
@@ -107,8 +113,11 @@ n was
 \begin_inset Formula $4000\, s/mm^{2}$
 \end_inset
 
-, and a single shell acquisition using 118 non-collinear gradient directions
- (TR=
+, and a single shell acquisition using 
+\begin_inset Formula $118$
+\end_inset
+
+ non-collinear gradient directions (TR=
 \begin_inset Formula $7000ms$
 \end_inset
 
@@ -130,18 +139,17 @@ n was
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-32 Channels 101 MRC-CBU
 \end_layout
 
 \begin_layout Standard
-\align block
-3T scanner (TIM Trio, Siemens), using Siemens advanced diffusion work-in-progres
-s sequence, and STEAM 
+\align left
+
+\series bold
+101 gradients at MRC-CBU
+\series default
+.
+ 3T scanner (TIM Trio, Siemens) with a 32 channel coil, using Siemens advanced
+ diffusion work-in-progress sequence, and STEAM 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "merboldt1992diffusion,MAB04"
@@ -189,18 +197,18 @@ n was
 \end_inset
 
 
+\series bold
+ 
 \end_layout
 
 \begin_layout Standard
 \align left
 
 \series bold
-32 Channels EPFL 
-\end_layout
-
-\begin_layout Standard
-\align block
-3T scanner (TIM Trio, Siemens).
+257 gradients at EPFL
+\series default
+.
+ 3T scanner (TIM Trio, Siemens) with a 32 channel coil.
  The field of view was 
 \begin_inset Formula $210x210mm^{2}$
 \end_inset
@@ -239,7 +247,7 @@ n was
 \end_layout
 
 \begin_layout Subsection
-The cosine transform 
+The Cosine Transform 
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:The-cosine-transform"
@@ -250,6 +258,7 @@ name "sub:The-cosine-transform"
 \end_layout
 
 \begin_layout Standard
+Here we provide a simple derivation of the cosine transform:
 \begin_inset Formula $\int_{0}^{\infty}\cos(st)g(t)dt$
 \end_inset
 
@@ -261,7 +270,7 @@ name "sub:The-cosine-transform"
 \begin_inset Formula $[t,\infty)$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -296,11 +305,8 @@ F(s) & = & \int_{-\infty}^{\infty}f(t)e^{its}dt\\
 \begin_inset Formula $t\rightarrow-t$
 \end_inset
 
- 
-\end_layout
-
-\begin_layout Standard
-If you want to compute the integral in the whole space because of symmetry
+.
+ If you want to compute the integral in the whole space because of symmetry
  you have 
 \family roman
 \series medium
@@ -314,11 +320,11 @@ If you want to compute the integral in the whole space because of symmetry
 \begin_inset Formula $F(s)=\int_{-\infty}^{\infty}f(t)cos(st)dt$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsection
-Fourier transform of 
+Fourier Transform of 
 \begin_inset Formula $P(\mathbf{r})r^{2}$
 \end_inset
 
@@ -488,20 +494,35 @@ The factor
 \end_inset
 
 , Parseval's theorem states that 
-\end_layout
+\begin_inset Formula $\int\int\int_{\mathbb{R}^{3}}f(x,y,z)g^{*}(x,y,z)dxdydz$
+\end_inset
 
-\begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
-\int\int\int_{\mathbb{R}^{3}}f(x,y,z)g^{*}(x,y,z)dxdydz & = & (2\pi)^{-3}\int\int\int_{\mathbb{R}^{3}}f(q_{x},q_{y},q_{z})\hat{g}^{*}(q_{x},q_{y},q_{z})dq_{x}dq_{y}dq_{z}\end{eqnarray*}
+ is equal to 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
 
+\begin_inset Formula $(2\pi)^{-3}\int\int\int_{\mathbb{R}^{3}}f(q_{x},q_{y},q_{z})\hat{g}^{*}(q_{x},q_{y},q_{z})dq_{x}dq_{y}dq_{z}$
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\align left
-Furthermore, 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+.
+ Furthermore, 
 \begin_inset Formula $\hat{g}(q_{x},q_{y},q_{z})=2\pi\delta(q_{z})$
 \end_inset
 
@@ -623,7 +644,7 @@ Q(R) & =S_{0} & \iiint\exp(-b\sum_{i=1}^{3}q_{i}^{2}\lambda_{i}-j2\pi\sum_{i=1}^
 \end_layout
 
 \begin_layout Standard
-In that stage we could try to make use of the formula 
+In that stage we can make use of the formula 
 \begin_inset Formula $\int\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp(-\frac{(x-\mu)^{2}}{2\sigma^{2}})dx=1$
 \end_inset
 
@@ -1003,20 +1024,6 @@ Given
 
 \begin_layout Standard
 \align block
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
 
 \end_layout
 
