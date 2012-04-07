@@ -887,7 +887,11 @@ hies
 
 \lang english
 Olivetti E, Nguyen T.
- B, Garyfallidis E (2012), 
+ B, 
+\series bold
+Garyfallidis E
+\series default
+ (2012), 
 \begin_inset Quotes eld
 \end_inset
 
@@ -919,8 +923,8 @@ Cartesian grid q-space reconstruction
 \begin_inset Quotes erd
 \end_inset
 
-, HARDI Reconstruction Workshop of the IEEE International Symposium on Biomedica
-l Imaging.
+, HARDI Reconstruction Workshop of the 9th IEEE International Symposium
+ on Biomedical Imaging.
 \begin_inset Newline newline
 \end_inset
 
@@ -1028,7 +1032,11 @@ status open
 
 \end_inset
 
- dipy.org 
+ 
+\begin_inset Formula $\texttt{dipy.org}$
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1045,7 +1053,11 @@ status open
 
 \end_inset
 
- fos.me
+ 
+\begin_inset Formula $\texttt{fos.me}$
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
