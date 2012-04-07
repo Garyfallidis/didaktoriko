@@ -413,8 +413,11 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename distances.png
+	lyxscale 20
 	scale 60
 	rotateOrigin center
 
@@ -425,13 +428,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:Distances_used"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -452,6 +448,17 @@ Distances used in this work.
  we draw the tracks, and then with dashed lines we connect the pairs of
  points of the two tracks whose distances contribute to the overall metric.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:Distances_used"
 
 \end_inset
 
@@ -1405,13 +1412,23 @@ reference "Flo:QB_fornix"
 \begin_inset Formula $2009$
 \end_inset
 
- ICDM 
+ ICDM
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+ 
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
 pbc.lrdc.pitt.edu
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1440,11 +1457,7 @@ QuickBundles (QB) is a notably fast algorithm which can simplify tractography
 \begin_inset Formula $O(N)$
 \end_inset
 
- 
-\end_layout
-
-\begin_layout Standard
-(see section
+ (see section
 \begin_inset space ~
 \end_inset
 
@@ -1575,7 +1588,7 @@ The complete QB algorithm is described in formal detail in Alg.
 \begin_layout Standard
 QB creates an online list of cluster nodes.
  The cluster node is defined as 
-\begin_inset Formula $c=\{I,\mathbf{h},n\}$
+\begin_inset Formula $c=\{I,h,n\}$
 \end_inset
 
  where 
@@ -1583,11 +1596,11 @@ QB creates an online list of cluster nodes.
 \end_inset
 
  is the list of the integer indices of the tracks in that cluster, 
-\begin_inset Formula $\mathbf{h}$
+\begin_inset Formula $h$
 \end_inset
 
  is an 
-\begin_inset Formula $p\times3$
+\begin_inset Formula $K\times3$
 \end_inset
 
  matrix, which the most important descriptor of the cluster, and 
@@ -1596,13 +1609,13 @@ QB creates an online list of cluster nodes.
 
  is the number of tracks on that cluster.
  
-\begin_inset Formula $\mathbf{h}$
+\begin_inset Formula $h$
 \end_inset
 
  is a matrix which can be updated online when a track is added to a cluster
  and is equal to
 \begin_inset Formula \begin{equation}
-\mathbf{h}=\sum_{i=1}^{n}s_{i}\end{equation}
+h=\sum_{i=1}^{n}s_{i}\end{equation}
 
 \end_inset
 
@@ -1611,7 +1624,7 @@ where
 \end_inset
 
  is the 
-\begin_inset Formula $p\times3$
+\begin_inset Formula $K\times3$
 \end_inset
 
  matrix representing track 
@@ -1628,7 +1641,7 @@ where
 
  is the number of tracks in the cluster.
  QB assumes that all tracks have the same number of points 
-\begin_inset Formula $p$
+\begin_inset Formula $K$
 \end_inset
 
 , therefore a downsampling of tracks, typically equidistant, is necessary
@@ -1643,7 +1656,7 @@ Select the first track
 \end_inset
 
  and place it in the first cluster 
-\begin_inset Formula $c_{0}\leftarrow\{0,s_{0},1\}$
+\begin_inset Formula $c_{0}\leftarrow(0,s_{0},1)$
 \end_inset
 
 .
@@ -1657,7 +1670,7 @@ Select the first track
 \end_inset
 
 , where a virtual track is defined on the fly as 
-\begin_inset Formula $\mathbf{v}=\mathbf{h}/n$
+\begin_inset Formula $v=h/n$
 \end_inset
 
 ; (iii) if the minimum MDF distance is smaller than a distance threshold
@@ -1675,7 +1688,7 @@ Select the first track
 \noun off
 \color none
 
-\begin_inset Formula $c_{j}=\{I,\mathbf{h},n\}$
+\begin_inset Formula $c_{j}=(I,h,n)$
 \end_inset
 
 
@@ -1688,19 +1701,19 @@ Select the first track
 \noun default
 \color inherit
  with the minimum distance and update 
-\begin_inset Formula $c_{j}\leftarrow\{I\cup\{i\},\mathbf{h}+s,n+1\}$
+\begin_inset Formula $c_{j}\leftarrow(I\cup[i],h+s,n+1)$
 \end_inset
 
 ; otherwise create a new cluster 
-\begin_inset Formula $c_{|C|+1}\leftarrow\{0,s_{i},1\}$
+\begin_inset Formula $c_{|C|+1}\leftarrow(0,s_{i},1)$
 \end_inset
 
 , 
-\begin_inset Formula $|C|\leftarrow|C|+1$
+\begin_inset Formula $M\leftarrow M+1$
 \end_inset
 
  where 
-\begin_inset Formula $|C|$
+\begin_inset Formula $M$
 \end_inset
 
  denotes the current total number of clusters.
@@ -1723,7 +1736,7 @@ status open
 \backslash
 textbf{Input} tracks $T=
 \backslash
-{s_{0},...,s_{i},...,s_{|T|-1}
+{s_{1},...,s_{i},...,s_{N}
 \backslash
 }$, threshold $
 \backslash
@@ -1740,15 +1753,9 @@ theta $
 \backslash
 textbf{Output} clustering $C=
 \backslash
-{c_{0},...,c_{k},...,c_{|C|-1}
+{c_{1},...,c_{k},...,c_{M}
 \backslash
-}$ where cluster $c=
-\backslash
-{I,
-\backslash
-mathbf{h},N
-\backslash
-}$
+}$ where cluster $c=(I,h,N)$
 \backslash
 
 \backslash
@@ -1766,15 +1773,9 @@ mathbf{h},N
 
 \begin_layout Plain Layout
 
-$c_{0}=
+$c_{0} 
 \backslash
-left
-\backslash
-{0,s_{0},1
-\backslash
-right
-\backslash
-}$
+leftarrow ([1],s_{0},1)$
 \backslash
 
 \backslash
@@ -1783,13 +1784,11 @@ right
 
 \begin_layout Plain Layout
 
-$C=
+$C= 
 \backslash
-left
+leftarrow 
 \backslash
-{c_{0}
-\backslash
-right
+{c_{0} 
 \backslash
 }$ 
 \backslash
@@ -1802,7 +1801,9 @@ right
 
 \begin_layout Plain Layout
 
-$|C|=1$ 
+$M 
+\backslash
+leftarrow 1$ 
 \backslash
 # the total number of clusters is 1 
 \backslash
@@ -1815,13 +1816,9 @@ $|C|=1$
 
 $
 \backslash
-textbf{For}$ $i$ $
+textbf{For}$ $i=2$ to $N$ 
 \backslash
-textbf{From}$ $1$ $
-\backslash
-textbf{To}$ $|T|-1$ $
-\backslash
-textbf{Do}$ 
+textbf{Do} 
 \backslash
 # all tracks
 \backslash
@@ -1834,9 +1831,9 @@ textbf{Do}$
 
 
 \backslash
-hspace*{2em} $
+hspace*{2em} $t 
 \backslash
-textbf{t}=T_{i}$
+leftarrow T_{i}$
 \backslash
 
 \backslash
@@ -1849,9 +1846,11 @@ textbf{t}=T_{i}$
 \backslash
 hspace*{2em} $
 \backslash
-texttt{alld}=
+texttt{alld} 
 \backslash
-textbf{0}$ 
+leftarrow 
+\backslash
+textbf{infinity(M)}$ 
 \backslash
 # distance buffer
 \backslash
@@ -1866,9 +1865,11 @@ textbf{0}$
 \backslash
 hspace*{2em} $
 \backslash
-texttt{flip}=
+texttt{flip} 
 \backslash
-textbf{0}$ 
+leftarrow 
+\backslash
+textbf{zeros(M)}$ 
 \backslash
 # flipping check buffer
 \backslash
@@ -1883,11 +1884,9 @@ textbf{0}$
 \backslash
 hspace*{2em} $
 \backslash
-textbf{For}$ $k$ $
+textbf{For}$ $k=1$ to $M$ 
 \backslash
-textbf{From}$ $0$ $
-\backslash
-textbf{To}$ $|C|-1$ 
+textbf{Do} 
 \backslash
 # all clusters
 \backslash
@@ -1900,11 +1899,9 @@ textbf{To}$ $|C|-1$
 
 
 \backslash
-hspace*{4em} $
+hspace*{4em} $v 
 \backslash
-mathbf{v}=C_{k}.
-\backslash
-mathbf{h}/C_{k}.N$
+leftarrow C_{k}.h/C_{k}.n$
 \backslash
 
 \backslash
@@ -1915,11 +1912,9 @@ mathbf{h}/C_{k}.N$
 
 
 \backslash
-hspace*{4em} $d$=$d_{d}(
+hspace*{4em} $d 
 \backslash
-mathbf{t},
-\backslash
-mathbf{v})$
+leftarrow d_{d}(t,v)$
 \backslash
 
 \backslash
@@ -1930,11 +1925,9 @@ mathbf{v})$
 
 
 \backslash
-hspace*{4em} $f$=$d_{f}(
+hspace*{4em} $f 
 \backslash
-mathbf{t},
-\backslash
-mathbf{v})$
+leftarrow d_{f}(t,v)$
 \backslash
 
 \backslash
@@ -1960,7 +1953,9 @@ textbf{Then}$
 
 
 \backslash
-hspace*{6em} $d = f$
+hspace*{6em} $d 
+\backslash
+leftarrow f$
 \backslash
 
 \backslash
@@ -1973,7 +1968,9 @@ hspace*{6em} $d = f$
 \backslash
 hspace*{6em} $
 \backslash
-texttt{flip}_{k} = 1$
+texttt{flip}_{k} 
+\backslash
+leftarrow 1$
 \backslash
 
 \backslash
@@ -1986,7 +1983,9 @@ texttt{flip}_{k} = 1$
 \backslash
 hspace*{4em} $
 \backslash
-texttt{alld}_{k} = d$
+texttt{alld}_{k} 
+\backslash
+leftarrow d$
 \backslash
 
 \backslash
@@ -1997,7 +1996,9 @@ texttt{alld}_{k} = d$
 
 
 \backslash
-hspace*{2em} $m=
+hspace*{2em} $m 
+\backslash
+leftarrow 
 \backslash
 min(
 \backslash
@@ -2012,7 +2013,9 @@ texttt{alld})$
 
 
 \backslash
-hspace*{2em} $l=
+hspace*{2em} $l 
+\backslash
+leftarrow 
 \backslash
 mathrm{arg min}(
 \backslash
@@ -2033,6 +2036,8 @@ textbf{If}$ $m <
 \backslash
 theta$ 
 \backslash
+textbf{Then} 
+\backslash
 # append in current cluster 
 \backslash
 
@@ -2048,7 +2053,7 @@ hspace*{4em} $
 \backslash
 textbf{If}$ $
 \backslash
-texttt{flip}_{l}=1$ $
+texttt{flip}_{l} = 1$ $
 \backslash
 textbf{Then}$
 \backslash
@@ -2061,11 +2066,11 @@ textbf{Then}$
 
 
 \backslash
-hspace*{6em} $C_{l}.
+hspace*{6em} $C_{l}.h 
 \backslash
-mathbf{h}+=
+leftarrow C_{l}.h + 
 \backslash
-mathbf{t'}$
+textbf{reverse}(t)$
 \backslash
 
 \backslash
@@ -2089,11 +2094,9 @@ textbf{Else}$
 
 
 \backslash
-hspace*{6em} $C_{l}.
+hspace*{6em} $C_{l}.h 
 \backslash
-mathbf{h}+=
-\backslash
-mathbf{t}$
+leftarrow t$
 \backslash
 
 \backslash
@@ -2104,7 +2107,9 @@ mathbf{t}$
 
 
 \backslash
-hspace*{4em} $C_{l}.N+=1$
+hspace*{4em} $C_{l}.n 
+\backslash
+leftarrow C_{l}.n + 1$
 \backslash
 
 \backslash
@@ -2115,7 +2120,9 @@ hspace*{4em} $C_{l}.N+=1$
 
 
 \backslash
-hspace*{6em} $C_{l}.I$.append($i$)
+hspace*{4em} $
+\backslash
+textbf{append}(C_{l}.I,i$)
 \backslash
 
 \backslash
@@ -2141,20 +2148,9 @@ textbf{Else}$
 
 
 \backslash
-hspace*{4em} $|C|+=1$ 
+hspace*{4em} $c_{M+1} 
 \backslash
-# total number of clusters increases
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{4em} $C_{|C|-1}.I$.append($i$)
+leftarrow ([i],t,1)$
 \backslash
 
 \backslash
@@ -2165,11 +2161,9 @@ hspace*{4em} $C_{|C|-1}.I$.append($i$)
 
 
 \backslash
-hspace*{4em} $C_{|C|-1}.
+hspace*{4em} $
 \backslash
-mathbf{h}=
-\backslash
-mathbf{t}$
+textbf{append}(C,c_{M+1})$
 \backslash
 
 \backslash
@@ -2180,7 +2174,46 @@ mathbf{t}$
 
 
 \backslash
-hspace*{4em} $C_{|C|-1}.N=1$
+hspace*{4em} $M 
+\backslash
+leftarrow M + 1$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} $
+\backslash
+textbf{EndIf}$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} $
+\backslash
+textbf{EndFor}$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$
+\backslash
+textbf{EndFor}$ 
 \backslash
 
 \backslash
@@ -2279,13 +2312,13 @@ reference "Fig:LSC_simple"
 QB is can be extended for specific applications to contain more information
  about the clusters.
  For example we could redefine 
-\begin_inset Formula $c=\{I,\mathbf{h},n,\mathbf{h}^{(2)}\}$
+\begin_inset Formula $c=\{I,h,n,h^{(2)}\}$
 \end_inset
 
  to obtain second order information and in that way we could calculate the
  variance of the cluster where 
 \begin_inset Formula \[
-\mathbf{h}^{(2)}\leftarrow\{\sum_{i,j}x_{ij}^{2},\sum_{i,j}y_{ij}^{2},\sum_{i,j}z_{ij}^{2},\sum_{i,j}x_{ij}y_{ij},\sum_{i,j}y_{ij}z_{ij},\sum_{i,j}x_{ij}z_{ij}\}\]
+h^{(2)}\leftarrow\{\sum_{i,j}x_{ij}^{2},\sum_{i,j}y_{ij}^{2},\sum_{i,j}z_{ij}^{2},\sum_{i,j}x_{ij}y_{ij},\sum_{i,j}y_{ij}z_{ij},\sum_{i,j}x_{ij}z_{ij}\}\]
 
 \end_inset
 
@@ -2314,9 +2347,10 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename last_figures/LSC_algorithm.png
-	scale 27
 	rotateOrigin center
 
 \end_inset
@@ -2325,13 +2359,6 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Fig:LSC_simple"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -2377,6 +2404,16 @@ reference "eq:direct_flip_distance"
  assigned successfully.
  
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Fig:LSC_simple"
 
 \end_inset
 
@@ -2459,13 +2496,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:cst_pbc"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/cst_simplification.png
 	lyxscale 10
@@ -2525,6 +2555,17 @@ This is a part of the CST bundle consisting of
 
 \end_layout
 
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:cst_pbc"
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -2557,13 +2598,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:simulated_orbits"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/helix_phantom.png
 	lyxscale 60
@@ -2609,6 +2643,17 @@ On the left we see
  bundle have merged together in one cluster represented by the purple virtual
  track.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:simulated_orbits"
 
 \end_inset
 
@@ -2762,8 +2807,15 @@ A full tractography containing
 \begin_inset Formula $10$
 \end_inset
 
+
+\begin_inset space ~
+\end_inset
+
 mm (Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:QB_fornix"
@@ -2917,7 +2969,7 @@ We created the following experiment to investigate this claim and we found
 \end_inset
 
  tracks, with different initial number of points per track (
-\begin_inset Formula $3,6,12$
+\begin_inset Formula $3,\,6,\,12$
 \end_inset
 
  and 
@@ -2925,7 +2977,7 @@ We created the following experiment to investigate this claim and we found
 \end_inset
 
 ) and different QB thresholds (
-\begin_inset Formula $10.0,15.0,20.0,25.00$
+\begin_inset Formula $10,\,15,\,20,\,25$
 \end_inset
 
 
@@ -3096,7 +3148,10 @@ We compared QB with
 
 mm versus some timings reported from other state of the art methods found
  in the literature (Tab.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:timings"
@@ -3113,6 +3168,9 @@ reference "Flo:timings"
 \end_inset
 
  tracks (see Tab.
+\begin_inset space ~
+\end_inset
+
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3439,13 +3497,7 @@ mm compared with some timings reported from other state of the art methods
  Unfortunately timings were very rarely reported until today as most algorithms
  were very slow on full data sets.
  Nonetheless, we can observe in this table that the speedup that QB offers
- is substantial, holding out the prospect of real-time clustering on data
- sets containing fewer than 
-\begin_inset Formula $\sim20,000$
-\end_inset
-
- tracks.
- This experiment was executed on a standard PC using only a single CPU core.
+ is substantial, holding out the prospect of real-time clustering.
  
 \end_layout
 
@@ -3607,81 +3659,6 @@ In summary, a virtual (centroid) track is the average of all tracks in the
  We call it virtual because it doesn't really exist in the real data set
  and to distinguish it from exemplar (medoid) tracks which are again descriptors
  of the cluster but are represented by real tracks.
- 
-\end_layout
-
-\begin_layout Subsubsection
-The bi-directionality problem
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:The-bi-directionality-problem"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Because a track is a sequence of points without a preferred direction, it
- has two possible orientations when comparing it with another track.
- Most tractography methods will create tracks with arbitrary directions;
- meaning that close and similar tracks can have opposite directions.
- Of course the tracks do not really carry directional information.
- By direction we mean the encoding of the sequence of points which define
- the track.
- Thus a track may be ordered 
-\begin_inset Formula $p_{1},p_{2}\ldots p_{N-1},p_{N}$
-\end_inset
-
-, or 
-\begin_inset Formula $p_{N},p_{N-1}\ldots p_{2},p_{1}$
-\end_inset
-
-.
- We call this the bi-directionality problem.
- Using the MDF distance we have identified a way with QB to eliminate this
- problem.
- However, if we want to merge clusters together we need to have a way to
- minimize this problem.
-\end_layout
-
-\begin_layout Standard
-For this purpose we devised the following technique.
- Choose a fixed point or pole 
-\begin_inset Formula $P$
-\end_inset
-
- in the 3D space of the tractography, possibly away from the mid-sagittal
- plane.
- Then re-direct all tracks so that the first point of every track is the
- end closer to 
-\begin_inset Formula $P$
-\end_inset
-
-.
- If the tractography is in native space it suffices to have the origin 
-\begin_inset Formula $(0,0,0)$
-\end_inset
-
- as the pole point; in MNI space we can use the point 
-\begin_inset Formula $(100,100,100)$
-\end_inset
-
-.
- It is our empirical experience that this method will redirect correctly
- most tracks in the sense that similar tracks will have the same direction.
- However there will still be a small percentage for which the bi-directionality
- problem persists.
- We can correct for these by using exemplars rather than virtual tracks
- as virtual tracks can misrepresent a bundle if the bundle consists of tracks
- with ambiguous directionality.
- The exemplars are more preferable than the virtual tracks because of the
- way the latter can be influenced more by outliers and thus can be less
- representative in terms of the shape of real tracks in a bundle.
- The exemplars are similar to the concept of the median and the virtuals
- more similar to the concept of the mean.
- It is well known that the mean is usually influenced more by outliers than
- the median.
  
 \end_layout
 
@@ -4743,6 +4720,9 @@ status open
 \end_inset
 
  tractographies (Tab.
+\begin_inset space ~
+\end_inset
+
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4784,7 +4764,7 @@ However we also note that these metrics are all costly to calculate in terms
 \end_layout
 
 \begin_layout Subsubsection
-Tightness comparisons
+Bundle Adjacency
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Tightness-comparisons-1"
@@ -4812,8 +4792,8 @@ key "moberts2005evaluation"
  brain imaging procedures, and therefore it is necessary to develop a way
  to compare different clusterings of the same subject or different subjects.
  Although we recognise that this is a difficult problem, we propose the
- following solution with a metric which we call tight comparison (TC).
- Tight comparison works as follows.
+ following solution with a metric which we call bundle adjacency (BA).
+ BA works as follows.
  Let us assume that we have gathered the exemplar tracks from clustering
  
 \begin_inset Formula $A$
@@ -4898,17 +4878,17 @@ key "moberts2005evaluation"
 
 ).
  From these correspondences we only keep those distances that are smaller
- than a tight (small) threshold 
+ than a tight threshold 
 \begin_inset Formula $\theta$
 \end_inset
 
 .
- Then we define TC (Tightness Comparison) to be
+ Then we define BA (Bundle Adjacency) to be
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-TC=\frac{1}{2}\left(\frac{|E_{A\rightarrow B}\leq\theta|}{|E_{A}|}+\frac{|E_{B\rightarrow A}\leq\theta|}{|E_{B}|}\right)\end{equation}
+BA=\frac{1}{2}\left(\frac{|E_{A\rightarrow B}\leq\theta|}{|E_{A}|}+\frac{|E_{B\rightarrow A}\leq\theta|}{|E_{B}|}\right)\end{equation}
 
 \end_inset
 
@@ -4935,7 +4915,7 @@ where
 \end_inset
 
 .
- In other words, TC is mean of the fraction of row minima of 
+ In other words, BA is the mean of the fraction of row minima of 
 \begin_inset Formula $D_{AB}$
 \end_inset
 
@@ -4949,7 +4929,7 @@ where
 
 .
  When 
-\begin_inset Formula $TC=0$
+\begin_inset Formula $BA=0$
 \end_inset
 
  that means that every exemplar from the one set was further than 
@@ -4958,7 +4938,7 @@ where
 
  to all exemplars in the other set.
  When 
-\begin_inset Formula $TC=1$
+\begin_inset Formula $BA=1$
 \end_inset
 
  then all exemplars from one set had a close neighbour in the other set.
@@ -4971,7 +4951,7 @@ where
 \end_layout
 
 \begin_layout Standard
-We ran an experiment where we compared TC between pairs of 
+We ran an experiment where we compared BA between pairs of 
 \begin_inset Formula $10$
 \end_inset
 
@@ -4991,7 +4971,7 @@ reference "sub:QB-Data-sets"
 \begin_inset Formula $\binom{10}{2}=45$
 \end_inset
 
- TC values with 
+ BA values with 
 \begin_inset Formula $\theta=$
 \end_inset
 
@@ -5005,12 +4985,12 @@ mm.
 \begin_inset Formula $10$
 \end_inset
 
- tracks (TC10) and secondly by keeping only the bundles with more than 
+ tracks (BA10) and secondly by keeping only the bundles with more than 
 \begin_inset Formula $100$
 \end_inset
 
- tracks (TC100).
- The average value for TC10 was 
+ tracks (BA100).
+ The average value for BA10 was 
 \begin_inset Formula $47\%$
 \end_inset
 
@@ -5019,7 +4999,7 @@ mm.
 \end_inset
 
 .
- As expected TC100 (bigger landmarks) did better with average value of 
+ As expected BA100 (bigger landmarks) did better with average value of 
 \begin_inset Formula $53\%$
 \end_inset
 
@@ -5028,7 +5008,7 @@ mm.
 \end_inset
 
 .
- The difference between TC10 and TC100 is highly significant: Student's
+ The difference between BA10 and BA100 is highly significant: Student's
  t
 \begin_inset Formula $=4.692$
 \end_inset
@@ -5126,7 +5106,7 @@ We can merge bundles using exemplar tracks or virtual tracks.
 \end_inset
 
  in 
-\begin_inset Formula $V_{A}=\{v_{0},...,v_{|V_{A}|}\}$
+\begin_inset Formula $V_{A}=\{v_{1},...,v_{|V_{A}|}\}$
 \end_inset
 
  and from clustering 
@@ -5134,7 +5114,7 @@ We can merge bundles using exemplar tracks or virtual tracks.
 \end_inset
 
  in
-\begin_inset Formula $V_{B}=\{v_{0}^{'},...,v_{|V_{B}|}^{'}\}$
+\begin_inset Formula $V_{B}=\{v_{1}^{'},...,v_{|V_{B}|}^{'}\}$
 \end_inset
 
  where 
@@ -5457,6 +5437,10 @@ name "Flo:erroneous_tracks"
 \begin_inset Formula $10$
 \end_inset
 
+
+\begin_inset space ~
+\end_inset
+
 mm.
  This is the first known automatic detection system of outliers and erroneous
  tracks for tractography data based on more advanced shape characteristics
@@ -5618,7 +5602,7 @@ texttt{fnirtfileutils -withaff}
  at high b-values because there is no much signal for guiding a correct
  registration with the other volumes at lower b-values.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 ELEF: Perhaps I give to much technical information here? Any ideas?
@@ -5650,28 +5634,16 @@ After creating the displacements for every subject; these were applied to
 Tractographic Atlas.
 
 \series default
- For all subjects, (a) load warped tractography (b) re-direct towards a
- static point 
-\begin_inset Formula $(100,100,100)$
-\end_inset
-
- as explained in section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:The-bi-directionality-problem"
-
-\end_inset
-
-, (c) downsample the tracks to have only 
+ For all subjects, (a) load warped tractography, (b) downsample the tracks
+ to have only 
 \begin_inset Formula $12$
 \end_inset
 
- points, (d) calculate and store QB clustering with a 
+ points, (c) calculate and store QB clustering with a 
 \begin_inset Formula $10$
 \end_inset
 
-mm threshold.
- Then merge all clusterings again with 
+mm threshold, (d) merge all clusterings again with 
 \begin_inset Formula $10$
 \end_inset
 
@@ -6211,6 +6183,10 @@ reference "Flo:LSC+HC+AP"
 
  and the hierarchical clustering parameter was set to 
 \begin_inset Formula $20$
+\end_inset
+
+
+\begin_inset space ~
 \end_inset
 
 mm.
@@ -7509,7 +7485,7 @@ We used GQI-based tractographies from
 
 .
  Comparing different tractographies is not a trivial problem however we
- can use the tightness comparison (TC) metric explained in section 
+ can use the bundle adjacency (BA) metric explained in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Tightness-comparisons-1"
@@ -7517,11 +7493,11 @@ reference "sub:Tightness-comparisons-1"
 \end_inset
 
 .
- We are happy to report the mean initial TC was 
+ We are happy to report the mean initial BA was 
 \begin_inset Formula $34.8\%\pm8.0\%$
 \end_inset
 
- and the mean final TC after applying our direct registration method was
+ and the mean final BA after applying our direct registration method was
  
 \begin_inset Formula $48.1\%\pm6.1\%$
 \end_inset

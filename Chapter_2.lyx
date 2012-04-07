@@ -7580,10 +7580,11 @@ Finally, we showed that the first component of QA (highest QA value) can
  be used for subject comparisons in a similar way to FA.
  We also showed that NPA could replace FA if we want to calculate anisotropy
  in a completely geometric way.
+ 
 \end_layout
 
 \begin_layout Standard
-The source code for all these methods can be found in dipy (
+The source code for all these methods is available at 
 \begin_inset ERT
 status open
 
@@ -7594,7 +7595,7 @@ dipy.org
 
 \end_inset
 
- in module dipy.reconst).
+.
 \end_layout
 
 \begin_layout Standard

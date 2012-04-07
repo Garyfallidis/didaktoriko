@@ -238,7 +238,7 @@ d by the presence or variation in the magnetic field, the cumulative phase
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -262,14 +262,19 @@ status collapsed
 Three slices from diffusion data sets gathered with zero gradient strength
  on the left, medium gradient strength on the middle and high gradient strength
  on the right.
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:three_slices"
+\end_layout
 
 \end_inset
 
 
 \end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:three_slices"
 
 \end_inset
 
@@ -557,14 +562,17 @@ status open
 
 \begin_layout Plain Layout
 Pulsed Gradient Spin Echo (PGSE)
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:pgse"
+\end_layout
 
 \end_inset
 
 
 \end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:pgse"
 
 \end_inset
 
@@ -636,16 +644,19 @@ status open
 
 \begin_layout Plain Layout
 Twice-Refocused Spin Echo (TRSE)
-\lang english
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:trse"
+\end_layout
 
 \end_inset
 
 
 \end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:trse"
 
 \end_inset
 
@@ -767,14 +778,19 @@ status open
 
 \lang english
 STimulated Echo Acquisition Mode (STEAM)
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:steam"
+\end_layout
 
 \end_inset
 
 
 \end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:steam"
 
 \end_inset
 
@@ -1029,14 +1045,17 @@ What do you mean with directional effect?
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "Fig: signals"
+\end_layout
 
 \end_inset
 
 
 \end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Fig: signals"
 
 \end_inset
 
@@ -1725,13 +1744,6 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:qspace"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -1748,6 +1760,16 @@ key "Hagmann2006Radiographics"
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:qspace"
 
 \end_inset
 
@@ -2101,15 +2123,9 @@ status open
 \align center
 
 \lang english
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:ODF"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/pdf_iso_odf.png
+	lyxscale 30
 	scale 30
 
 \end_inset
@@ -2142,6 +2158,19 @@ key "Hagmann2006Radiographics"
 
 .
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:ODF"
 
 \end_inset
 
@@ -2377,21 +2406,15 @@ Tractography algorithms are based in local estimates of diffusion direction.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:tensortrack"
-
-\end_inset
-
 
 \lang english
-
 \begin_inset Graphics
 	filename last_figures/tensor_trajectory.png
+	lyxscale 50
 	scale 40
 
 \end_inset
@@ -2412,6 +2435,17 @@ The white line shows the track obtained by connecting up a set of voxels
  where red denotes left-right, green denotes back-front and blue up-down.
  
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:tensortrack"
 
 \end_inset
 
@@ -2549,7 +2583,7 @@ TALK ABOUT THE F-E PICTURE - SAY AS WELL THAT FACT PROPAGATES IN NON-FIXED
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -2557,6 +2591,7 @@ status collapsed
 \lang english
 \begin_inset Graphics
 	filename last_figures/colourtracks4.png
+	lyxscale 50
 	scale 35
 
 \end_inset
@@ -2565,13 +2600,6 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:Dipytracks"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -2594,6 +2622,16 @@ key "Demiralp-2009-CLF-url"
 .
  
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:Dipytracks"
 
 \end_inset
 
@@ -2722,6 +2760,7 @@ status open
 \lang english
 \begin_inset Graphics
 	filename last_figures/FACT_EUDX.png
+	lyxscale 50
 	scale 70
 	rotateOrigin center
 
@@ -2759,14 +2798,17 @@ With Euler or R-K intergration interpolation is needed.
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:FACTvsEuDX"
+\end_layout
 
 \end_inset
 
 
 \end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:FACTvsEuDX"
 
 \end_inset
 
@@ -3031,13 +3073,6 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:tractogram"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -3054,6 +3089,16 @@ Maxime page 213
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:tractogram"
 
 \end_inset
 
@@ -3221,18 +3266,6 @@ key "Behrens2003MRM,behrens2005rca,Behrens2003NatureNeuroscience"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-THE INFORMATION ABOUT PROBABILITIES HERE PERHAPS IS TOO SPECIFIC AND NEEDS
- TO BE TRANSFERED IN CHAPTER 3
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -3787,7 +3820,7 @@ reference "Flo:association_fibers"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3806,13 +3839,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:association_fibers"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -3831,6 +3857,18 @@ key "gray_anatomy"
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:association_fibers"
 
 \end_inset
 
@@ -3863,7 +3901,7 @@ istics.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3881,13 +3919,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:real_brain"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -3906,6 +3937,18 @@ key "williams1999human"
 .
  
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:real_brain"
 
 \end_inset
 
@@ -3943,13 +3986,15 @@ ical planning, and neuroscientiﬁc studies of white matter integrity, structure
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
+\align center
 
 \lang english
 \begin_inset Graphics
 	filename last_figures/bundles_invert2.png
+	lyxscale 20
 	scale 40
 	rotateOrigin center
 
@@ -3961,13 +4006,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:PBC_labels"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -3982,6 +4020,18 @@ An example of a tractography segmentation based on labeling provided by
  Fasciculus, CC-FM: Corpus Callosum Forceps Major, UNC: Uncinate Fasciculus.
  Data and labels from braincompetition.org
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:PBC_labels"
 
 \end_inset
 
