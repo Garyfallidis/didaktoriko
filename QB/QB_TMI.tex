@@ -532,6 +532,22 @@ $2009$, ICDM (pbc.lrdc.pitt.edu).
 
 \subsection{Overview}
 
+Complexity and timings (\ref{sub:Complexity})
+
+Stability of QB (\ref{sub:Comparisons})
+
+The QB Representation (\ref{QB_Representation})
+
+Alignments, atlases and landmarks (\ref{sub:Atlases-made-easy})
+
+QB as input to other clustering methods (\ref{sub:QB_as_input})
+
+Exemplars improve on use of ROIs or masks (\ref{sub:exemplars_vs_ROIs})
+
+Direct Tractography Registration (\ref{sub:direct_registration})
+
+Strategies with short tracks (\ref{sub:short_tracks}) 
+
 \subsection{Complexity and timings\label{sub:Complexity}}
 
 To apply QB to a data set we need to specify three key parameters:
@@ -660,7 +676,7 @@ $400,000$ & \cite{Visser2010} & $75000$ & $160.1$ & $468$\tabularnewline
 \par\end{centering}
 \end{table}
 
-\subsection{The QB Representation}
+\subsection{The QB Representation\label{QB_Representation}}
 
 One of the major benefits of applying QB to tractographies is that it
 can provide meaningful simplifications and find structures that were
@@ -774,7 +790,7 @@ technically very difficult with the FSL tools as they assume that these
 displacements will be applied only on volumetric data and not with point data as
 those used in tractographies. We found a combination of $\texttt{flirt}$,
 $\texttt{invwarp}$, $\texttt{fnirtfileutils}$ and $\texttt{fnirtfileutils
--withaff}$ which gave us the correct displacements. As this being very technical
+-withaff}$ which gave us the correct displacements. As this is rather technical
 we will not describe it further here but the code is available in our
 $\texttt{Dipy}$ software package, in module ($\texttt{dipy.external.fsl}$). It
 is important to note that we did not use eddy current correction with any of
@@ -886,7 +902,7 @@ every subject and then compare the subjects at the level of bundles.
   comparisons using tractographic data sets.\label{Flo:CloseToSelected}}
 \end{figure}
 
-\subsection{QB as input to other clustering methods}
+\subsection{QB as input to other clustering methods\label{sub:QB_as_input}}
 
 We found that QB is of great value as an adjunct to many less efficient
 algorithms e.g. hierarchical clustering, affinity propagation, nearest
@@ -967,7 +983,7 @@ clustered. Using QB to pre-process the tractography puts the whole data
 set, condensed to its virtual tracks, within the feasible range of these
 higher order algorithms.
 
-\subsection{Exemplars improve on use of ROIs or masks}
+\subsection{Exemplars improve on use of ROIs or masks\label{sub:exemplars_vs_ROIs}}
 
 Medical practitioners and neuroanatomists often argue that when they use
 multiple spherical or rectangular masks to select some bundles many
@@ -989,7 +1005,7 @@ visualization/interaction system for tractographies based on QB in
 Python and OpenGL. This code is available online at $\texttt{fos.me}$.
 
 
-\subsection{Direct Tractography Registration}
+\subsection{Direct Tractography Registration\label{sub:direct_registration}}
 
 Direct tractography registration is a recently described problem with
 only a small number of publications \cite{leemans2006multiscale,
@@ -1102,7 +1118,7 @@ columns of $D$.
   before (left) and after (right) QB-based direct registration.\label{Flo:direct_registration}}
 \end{figure}
 
-\subsection{Strategies with short tracks}
+\subsection{Strategies with short tracks\label{sub:short_tracks}}
 
 We have not so far taken account of short tracks in this report. That
 is perfectly valid because (a) the longer tracks are more likely to
@@ -1440,44 +1456,47 @@ clustering algorithms.
 
 \section{QB Step-by-step\label{sub:QB_step_by_step}}
 
-Fig.~\ref{Fig:LSC_simple} illustrates the operation of QB step by step
-Initially in panel (i) 6 unclustered tracks (A-F) are presented; imagine
-that the distance threshold $\theta$ used here is the same as the MDF
-distance (Eq.~\ref{eq:direct_flip_distance}) between B and E: $\theta =
-MDF(B,E)$. The algorithm starts and in (ii) we see that track A was
-selected; as no other clusters exist track A becomes the first cluster
-(labelled with purple color) and the virtual track of that cluster is
-identical with A as seen in (iii); next in (iv) track B is selected and
-we calculate the MDF distance between B and the virtual track of the
-other clusters. For the moment there is only one cluster to compare so
-QB calculates MDF (B,virtual-purple) and this is obviously bigger than
-threshold $\theta$ ($\theta = MDF(B,E)$).  Therefore a new cluster is
-assigned for B, and B becomes the virtual track of that cluster as shown
-in (v). In (vi) the next track C is selected and this is again far away
-from both purple and blue virtuals; therefore another cluster is created
-and C is the virtual of the blue cluster as shown in (vii).  In (viii)
-track D is selected and after we have calculated MDF(D,purple),
-MDF(D,Blue) and MDF(D,green) it is obvious that D belongs to the purple
-cluster as MDF(D,purple) is smaller and lower than threshold as shown in
-(ix).  However we can now see in (x) that things change for the purple
-cluster because the virtual track is not anymore made by only one track
-but it is the average of D and A shown with a dashed line. In (xi) E is
-the current track and will be assigned to the green cluster as shown in
-(xii) because MDF(E,virtual green) = MDF(E,B) = $\theta$, and in (xiii)
-we see the updated virtual track for the green cluster which is equal to
-(B+E)/2 where + means track addition. In (xiv) the last track is picked
-and compared with the virtual tracks of the other 3 clusters; obviously
-MDF(F,purple) is the only distance smaller than threshold, and so F is
-assigned to the purple cluster in (xv).  Finally, in (xvi) the virtual
-purple track is updated as (D+A+F)/3. As there are no more tracks to
-select, the algorithm stops. We can see that all three clusters have
-been found and all tracks have been assigned successfully to a cluster.
+Fig.~\ref{Fig:LSC_simple} illustrates the operation of QB step by step.
 
-\begin{figure*}[hb]
+
+\begin{figure*}
 \centering\includegraphics[scale=0.95]{Fig_1_QB_algorithm}
-\caption{This is a step-by-step explaination of the QuickBundles process when clustering 6 tracks on left top to 3 bundles (blue, red and green) shown at the right bottom}
+\caption{This is a step-by-step explanation of how QuickBundles proceeds when clustering six tracks (top left) resulting in three bundles (blue, red and green, bottom right)}
 \label{Fig:LSC_simple}
 \end{figure*}
+
+\noindent
+Initially in panel (i) 6 unclustered tracks ($A-F$) are presented; imagine
+that the distance threshold $\theta$ used here is the same as the MDF
+distance (Eq.~\ref{eq:direct_flip_distance}) between $B$ and $E$: $\theta =
+\mathrm{MDF}(B,E)$. The algorithm starts and in (ii) we see that track $A$ was
+selected; as no other clusters exist track $A$ becomes the first cluster
+(labelled with purple color) and the virtual track of that cluster is
+identical with $A$ as seen in (iii); next in (iv) track $B$ is selected and
+we calculate the MDF distance between $B$ and the virtual track of the
+other clusters. For the moment there is only one cluster to compare so
+QB calculates MDF ($B$,virtual-purple) and this is obviously bigger than
+threshold $\theta$ ($\theta = \mathrm{MDF}(B,E)$).  Therefore a new cluster is
+assigned for $B$, and $B$ becomes the virtual track of that cluster as shown
+in (v). In (vi) the next track $C$ is selected and this is again far away
+from both purple and blue virtuals; therefore another cluster is created
+and $C$ is the virtual of the blue cluster as shown in (vii).  In (viii)
+track $D$ is selected and after we have calculated MDF($D$,purple),
+MDF($D$,Blue) and MDF($D$,green) it is obvious that $D$ belongs to the purple
+cluster as MDF($D$,purple) is smaller and lower than threshold as shown in
+(ix).  However we can now see in (x) that things change for the purple
+cluster because the virtual track is not anymore made by only one track
+but it is the average of $D$ and $A$ shown with a dashed line. In (xi) $E$ is
+the current track and will be assigned to the green cluster as shown in
+(xii) because MDF($E$,virtual green) = MDF($E$,$B$) = $\theta$, and in (xiii)
+we see the updated virtual track for the green cluster which is equal to
+$(B+E)/2$ where `$+$' means track addition. In (xiv) the last track is picked
+and compared with the virtual tracks of the other 3 clusters; obviously
+MDF($F$,purple) is the only distance smaller than threshold, and so F is
+assigned to the purple cluster in (xv).  Finally, in (xvi) the virtual
+purple track is updated as $(D+A+F)/3$. As there are no more tracks to
+select, the algorithm stops. We can see that all three clusters have
+been found and all tracks have been assigned successfully to a cluster.
 
 %\end{appendices}
 
