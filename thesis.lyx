@@ -293,6 +293,7 @@ thispagestyle{empty}
 \end_layout
 
 \begin_layout Standard
+\align right
 
 \size huge
 \color black
@@ -420,6 +421,7 @@ thispagestyle{empty}
 \end_layout
 
 \begin_layout Standard
+\align right
 
 \size huge
 \color black
@@ -531,6 +533,7 @@ thispagestyle{empty}
 \end_layout
 
 \begin_layout Standard
+\align right
 
 \size huge
 \color black
@@ -545,7 +548,10 @@ Acknowledgements
 \begin_layout Standard
 
 \lang english
-Ian
+This PhD was funded by the Engineering and Physical Sciences Research Council,
+ the Vergottis Foundation, the Board of Graduate Studies of the University
+ of Cambridge, the Medical Research Council and Wolfson College, Cambridge,
+ United Kingdom, 
 \end_layout
 
 \begin_layout Standard
@@ -645,6 +651,7 @@ thispagestyle{empty}
 \end_layout
 
 \begin_layout Standard
+\align right
 
 \size huge
 \color black
@@ -755,7 +762,7 @@ thispagestyle{empty}
 
 \begin_layout Standard
 \noindent
-\align block
+\align right
 
 \size huge
 \color black
@@ -774,6 +781,10 @@ Publications
 \series bold
 \lang english
 CONFERENCES
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -936,6 +947,10 @@ Cartesian grid q-space reconstruction
 \end_inset
 
 JOURNALS
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -982,6 +997,10 @@ Reduced brain white matter integrity in trichotillomania: a diffusion tensor
 
 \series bold
 OUTREACH
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1016,6 +1035,10 @@ Surfing your Brain Super-Highways
 \end_inset
 
 SOFTWARE
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1114,6 +1137,7 @@ thispagestyle{empty}
 \end_layout
 
 \begin_layout Standard
+\align right
 
 \size huge
 \color black
@@ -1384,6 +1408,17 @@ filename "Appendix.lyx"
 
 \lang english
 \begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "diffusion"
+options "plain"
+
 \end_inset
 
 

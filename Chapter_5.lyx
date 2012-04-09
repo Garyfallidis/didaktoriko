@@ -55,6 +55,13 @@ Conclusion
 
 \begin_layout Subsection
 Summary
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Summary"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -225,6 +232,13 @@ key "ioannidis"
 
 \begin_layout Subsection
 Future work
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Future-work"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

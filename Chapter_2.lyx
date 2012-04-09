@@ -2793,6 +2793,13 @@ reference "Flo:FastvsStandardEITL"
 
 \begin_layout Subsection
 Peak Finding
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Peak-Finding"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2800,9 +2807,13 @@ After we have generated the ODFs we need to find the peaks (local maxima)
  from which we can easily approximate the direction of the fibres.
  Peak finding can be non-trivial if there are many local maxima in the ODFs
  or the ODFs are noisy.
- Here we present an algorithm (
+ Here we present an algorithm (see Alg.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "Alg:PeakFinding"
 
 \end_inset
@@ -2829,7 +2840,7 @@ C).
 \begin_inset Float algorithm
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -4659,7 +4670,7 @@ name "Flo:FastvsStandardEITL"
 \end_layout
 
 \begin_layout Subsubsection
-Digital Phantoms
+Software Phantoms
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Digital-Phantoms"
