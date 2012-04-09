@@ -2553,10 +2553,6 @@ This is a part of the CST bundle consisting of
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-\align center
 \begin_inset CommandInset label
 LatexCommand label
 name "Flo:cst_pbc"
@@ -2647,10 +2643,6 @@ On the left we see
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-\align center
 \begin_inset CommandInset label
 LatexCommand label
 name "Flo:simulated_orbits"
@@ -2780,10 +2772,6 @@ mm.
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-\align center
 \begin_inset CommandInset label
 LatexCommand label
 name "Flo:QB_fornix"
@@ -3029,13 +3017,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:Speed1"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename 2x2+leg-box.png
 	lyxscale 30
@@ -3097,6 +3078,13 @@ mm (cyan).
 
  (x-axis)
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:Speed1"
 
 \end_inset
 
@@ -3504,9 +3492,6 @@ mm compared with some timings reported from other state of the art methods
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
 name "Flo:timings"
@@ -5295,13 +5280,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:winding"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/winding.png
 	scale 50
@@ -5331,6 +5309,13 @@ Example of detecting a possibly erroneous 3D bundle (on the left) by projecting
 
  are removed from the data sets as most likely to be erroneous.
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:winding"
 
 \end_inset
 
@@ -5408,13 +5393,6 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:erroneous_tracks"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -5459,6 +5437,13 @@ MATTHEW: Really? Nothing for short tracks for example? ELEF: qualifying
 By calculating the number of winding tracks in your data sets over the total
  number of tracks you can have an indicator of the quality of our data sets.
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:erroneous_tracks"
 
 \end_inset
 
@@ -5690,13 +5675,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:atlas_big_bundles"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename last_figures/big_bundles_atlas.png
 	scale 60
@@ -5745,6 +5723,13 @@ MATTHEW: Not sure what largest bundles % is? Is the gradient at 100% then
 
 
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:atlas_big_bundles"
 
 \end_inset
 
@@ -5931,13 +5916,6 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:CloseToSelected"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -5959,6 +5937,13 @@ A novel way to do comparisons between subjects.
  rows from such a few skeletal tracks is a great hope for implementing new
  robust ways of statistical comparisons using tractographic data sets.
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:CloseToSelected"
 
 \end_inset
 
@@ -6211,13 +6196,6 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:LSC+HC+AP"
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -6243,6 +6221,13 @@ Two examples where QB output is used to cluster an entire set of
  Pay attention at the top left panel where QB+HC have managed to cluster
  the entire CC as one bundle.
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:LSC+HC+AP"
 
 \end_inset
 
@@ -6388,7 +6373,7 @@ d messages along the edges of the network until a good set of exemplars
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -6398,16 +6383,6 @@ status collapsed
 	lyxscale 40
 	scale 40
 	rotateOrigin center
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Fig:AP_2d"
 
 \end_inset
 
@@ -6435,6 +6410,13 @@ Simple example of affinity propagation at work where it can precisely identify
  You can see the exemplars - most representative actual points - with thicker
  dots perfectly aligned with the means.
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Fig:AP_2d"
 
 \end_inset
 
@@ -7540,18 +7522,25 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:direct_registration"
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename last_figures/LSC_registration2.png
 	lyxscale 30
-	scale 80
+	scale 85
 
 \end_inset
 
@@ -7579,6 +7568,13 @@ In panel A we see two tractographies from different subjects before (top)
  is shown which although more convex on translations it was much more problemati
 c with rotations.
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:direct_registration"
 
 \end_inset
 
@@ -7650,14 +7646,21 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\align center
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:arcuate_close"
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[ht!]
+\end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename last_figures/arcuate_small_fibers.png
 	lyxscale 50
@@ -7702,6 +7705,13 @@ mm (MAM distance) from the skeletons of B are shown.
  In that way we managed to bring together an entire bundle consisting both
  of long and short fibers by just selecting one track.
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:arcuate_close"
 
 \end_inset
 
