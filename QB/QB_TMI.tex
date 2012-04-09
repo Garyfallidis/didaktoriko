@@ -532,17 +532,25 @@ $2009$, ICDM (pbc.lrdc.pitt.edu).
 
 %\subsection{Overview}
 
-We first justify our claims about the speed and linear complexity of QB
-(\ref{sub:Complexity}) and about the robustness of QB to changes in
-ordering of the tractography (\ref{sub:Comparisons}). Next in section
-\ref{QB_Representation} we demonstrate the high level of clarity and
+In this section we first justify our claims about the speed and linear
+complexity of QB (\ref{sub:Complexity}) and about the robustness of QB
+to changes in ordering of the tractography (\ref{sub:Comparisons}). Next
+in \ref{QB_Representation} we demonstrate the high level of clarity and
 simplification that the QB representation can bring to a tractography,
-and how adjustment of the distance threshold $\theta$ can be use to
-merge or further disaggregate clusters.
+and how adjustment of the distance threshold $\theta$ can be used to
+merge or split clusters. In \ref{sub:Atlases-made-easy} we show how the
+QB representations for a group of subjects can be mapped into a common
+space and then reclustered to generate a multi-subject atlas of white
+matter tractographies. We show moreover how the resulting atlas can be
+used to access clusters in the individual tractographies that have a
+good correspondence bewteen subjects. Both the speed of performance and
+the data reduction provided by QB make this innovation a practical
+research tool. Tractography clustering algorithms have not to date been
+able to work on full tractography data sets. We show in
+\ref{sub:QB_as_input} how using the QB representation of the
+tractography as input brings full tractogprhies within the effective
+range of higher order clustering methods
 
-Alignments, atlases and landmarks (\ref{sub:Atlases-made-easy})
-
-QB as input to other clustering methods (\ref{sub:QB_as_input})
 
 Exemplars improve on use of ROIs or masks (\ref{sub:exemplars_vs_ROIs})
 
@@ -765,50 +773,54 @@ efficient ways of identifying broken or wandering tracks by using the
 rapid data compression of QB to identify short or erratic virtual
 tracks.
 
-\subsection{Alignments, atlases and landmarks\label{sub:Atlases-made-easy}}
+\subsection{Tractographic atlases and landmarks\label{sub:Atlases-made-easy}}
 
 We have used QB to construct a robust tractographic atlas in MNI space
-with data from 10 subjects. Here we explain the steps we used to achieve
-this.
+with data from 10 subjects. First we used the FSL toolbox using steps
+similar to those in~\cite{Smith2006NeuroImage} to register each
+subject's FA volume with the standard FSL template (\texttt{FMRIB58}) in
+MNI space. Next we applied the resulting non-linear transformations to
+the tractographies. This required technical solutions which are detailed
+in the DIPY software package.
 
-\textbf{Alignment}. Tractographies were created using EuDX as described
-in section \ref{sub:QB-Data-sets}. The tractographies for all subjects
-were initially in native space and the goal was to warp them in MNI
-space, using nonlinear registration.
+Having all tractographies in MNI space is especially useful because we
+can now compare them against available templates or against each other
+and calculate different statistics. However this is not where we stop;
+we proceed to generate a tractographic atlas using QB clusterings.
 
-Because registration of brain anatomy between any two individuals is generally
-considered a difficult problem with a non-unique solution we wanted to make sure
-that we are using a known, well established and robust method, therefore we
-chose to use $\texttt{fnirt}$ with the same parameters as used with the initial
-steps of TBSS~\cite{Smith2006NeuroImage}. For that reason FA volumes were
-generated from the same data sets using Tensor fitting with weighted least
-squares after skull stripping with $\texttt{bet}$ and parameters $\texttt{-F -f
-.2 -g 0}$. These FA volumes were again in native space therefore we needed to
-warp them in MNI space. For this purpose a standard template
-($\texttt{FMRIB58\_FA\_1~mm}$) from the FSL toolbox was used as the reference
-volume. However, we wanted primarily to have the displacements which would do a
-pointwise mapping from native space to MNI space and we found this to be
-technically very difficult with the FSL tools as they assume that these
-displacements will be applied only on volumetric data and not with point data as
-those used in tractographies. We found a combination of $\texttt{flirt}$,
-$\texttt{invwarp}$, $\texttt{fnirtfileutils}$ and $\texttt{fnirtfileutils
--withaff}$ which gave us the correct displacements. As this is rather technical
-we will not describe it further here but the code is available in our
-$\texttt{Dipy}$ software package, in module ($\texttt{dipy.external.fsl}$). It
-is important to note that we did not use eddy current correction with any of
-this type of data sets. This correction is unstable with volumes acquired with
-high b-values because there is not enough signal to guide a correct registration
-with the other volumes at lower b-values.
+% Because registration of brain anatomy between any two individuals is generally
+% considered a difficult problem with a non-unique solution we wanted to make sure
+% that we are using a known, well established and robust method, therefore we
+% chose to use $\texttt{fnirt}$ with the same parameters as used with the initial
+% steps of TBSS~\cite{Smith2006NeuroImage}. For that reason FA volumes were
+% generated from the same data sets using Tensor fitting with weighted least
+% squares after skull stripping with $\texttt{bet}$ and parameters $\texttt{-F -f
+% .2 -g 0}$. These FA volumes were again in native space therefore we needed to
+% warp them in MNI space. For this purpose a standard template
+% ($\texttt{FMRIB58\_FA\_1~mm}$) from the FSL toolbox was used as the reference
+% volume. However, we wanted primarily to have the displacements which would do a
+% pointwise mapping from native space to MNI space and we found this to be
+% technically very difficult with the FSL tools as they assume that these
+% displacements will be applied only on volumetric data and not with point data as
+% those used in tractographies. We found a combination of $\texttt{flirt}$,
+% $\texttt{invwarp}$, $\texttt{fnirtfileutils}$ and $\texttt{fnirtfileutils
+% -withaff}$ which gave us the correct displacements. As this is rather technical
+% we will not describe it further here but the code is available in our
+% $\texttt{Dipy}$ software package, in module ($\texttt{dipy.external.fsl}$). It
+% is important to note that we did not use eddy current correction with any of
+% this type of data sets. This correction is unstable with volumes acquired with
+% high b-values because there is not enough signal to guide a correct registration
+% with the other volumes at lower b-values.
 
-The displacements estimated for every subject were applied
-to each tractography in its native space, mapping it into MNI
-space with voxel size $1\times1\times1~\textrm{mm}^{3}$. Having all
-tractographies in MNI space is especially useful because we can now
-compare them against available templates or against each other and
-calculate different statistics. However this is not where we stop; we
-proceed to generate a tractographic atlas using QB clusterings.
+% The displacements estimated for every subject were applied
+% to each tractography in its native space, mapping it into MNI
+% space with voxel size $1\times1\times1~\textrm{mm}^{3}$. Having all
+% tractographies in MNI space is especially useful because we can now
+% compare them against available templates or against each other and
+% calculate different statistics. However this is not where we stop; we
+% proceed to generate a tractographic atlas using QB clusterings.
 
-\textbf{Tractographic Atlas:} For each subjects, (a) load the warped
+\textbf{Tractographic Atlases} For each subjects, (a) load the warped
 tractography, (b) downsample the tracks to have only $12$ points, (c) calculate
 and store QB clustering with a $10$~mm threshold, (d) merge all
 clusterings again with a $10$~mm threshold as explained in
@@ -831,7 +843,7 @@ tractography atlas with which to identify differences in morphology in
 an analogous manner to that achieved for the cingulate and parasingulate
 sulci by \cite{paus1996human}.
 
-\textbf{Finding and Using Landmarks:} One can use this atlas or similar
+\textbf{Finding and Using Landmarks} One can use this atlas or similar
 atlases created from more subjects in order to select specific
 structures and study these structures directly in different subjects
 without using any of the standard ROI based methods.
