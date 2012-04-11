@@ -15,6 +15,7 @@
 \newcommand{\rce}{\mathtt{rce}}
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
+\numberwithin{equation}{section}
 \usepackage{amsmath}
 \usepackage{siunitx}
 \end_preamble
@@ -436,13 +437,42 @@ Dedication
 \begin_layout Standard
 \align center
 
-\size larger
+\size large
 \lang english
-To 
-\begin_inset Newline newline
+\begin_inset VSpace medskip
 \end_inset
 
-my parents 
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+\lang english
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+\lang english
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+\lang english
+To my parents 
 \begin_inset Newline newline
 \end_inset
 
@@ -480,15 +510,26 @@ I needed both to excel.
 \begin_layout Standard
 \align center
 
-\size larger
+\size large
 \lang english
-To 
-\begin_inset Newline newline
+\begin_inset VSpace medskip
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+\lang english
+To
 \emph on
-the giants of OpenSource
+ the giants 
+\begin_inset Newline newline
+\end_inset
+
+of Open Source Software
 \end_layout
 
 \begin_layout Standard
@@ -561,73 +602,87 @@ I would like to thank my supervisor, Dr.
  Ian Nimmo-Smith, for the excellent guidance and advice throughout the entire
  course of my PhD.
  He has been an endless source of inspiration and support for my work.
- Although the hard work I also enjoyed our collaboration.
  I am also thankful to my second supervisor Dr.
  Guy Williams for his research suggestions and encouragement.
  The combination of the statistical knowledge from my first supervisor and
  the knowledge in MR physics from my second supervisor was a key component
- for the success of the thesis.
- 
+ for the complesion of this thesis.
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-Matthew
+I am grateful to Dr.
+ Matthew Brett who had been such a great friend and promoter of my work.
+ His suggestions have been enormously helpful especially on software development.
+ My great appriciation to my friend and collaborator Dr.
+ Marta Correia who helped on designing and collecting the MR data sets used
+ in this work.
+ The same goes for Mr.
+ John Griffiths and Dr.
+ Virginia Newcombe who were the first users of my work in Cambridge.
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-Guy
+A big thank you to Stephan Gerhard with who we gave birth to a new visualization
+ library, Frank Yeh for his suggestions on tractography algorithms and Dr.
+ Emanuele Olivetti on Machine Learning approaches.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Marta
+My great respect to Dr.
+ David Jarvis Dean Alumni of Wolfson College, Professor Mike Proctor and
+ Professor Peter Haynes from the Department of Applied Mathematics and Theoretic
+al Physics who helped me continue my career in research and supported me
+ at the most difficult and unfair moments of my life.
+ My gratitude also to Dr.
+ Rik Henson who introduced me to my supervisors at my current department.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-John + Virginia
+Life would be unbearable without friends.
+ Much love to my best friends from my homeland Vassilis Dimitriadis, Dimitris
+ Pritsos, Alexandros Triantafyllidis, Dr.
+ Periklis Akritidis and Dr.
+ Vassilis Tsiaras.
+ And the great friends I made here in Cambridge: Dr.
+ Andreas Georgiou, Dr.
+ Daniel Holland, Dr.
+ Mina Mprimpari, Dr.
+ Nikos Dikaios and my roomated Dr.
+ Magda Rapti.
+ A huge thanks to Magda for her support and understa
 \end_layout
 
 \begin_layout Standard
+I should not forget my first teachers who helped me develop my scientific
+ abilities and strengthened my courage Professor Nikolaos Vassilas, Professor
+ Antonis Argyros and Professor Alexandros Tomaras.
+ My great aknowledgement to my college tutor Dr Giles Yeo who was always
+ available to help with any bureaucratic issues.
+ Finally, I would like to thank my fellow colleagues and developers at NeuroImag
+ing in Python for their hard work and devotion to the principles of free
+ software and open Science.
+\begin_inset Newline newline
+\end_inset
 
-\lang english
-Stephan
+
 \end_layout
 
 \begin_layout Standard
+\align right
 
 \lang english
-Frank
+Eleftherios Garyallidis
 \end_layout
 
 \begin_layout Standard
+\align right
 
 \lang english
-++ Daniel, Mina, Periklis, Andreas, Magda, 
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Rik, Director of Maths, College tutors new and old, 
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Vassilis, Dimitris, Alexandros
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Tsiaras, Argyros, Vassilas
+Cambridge, 9 April, 2012
 \end_layout
 
 \begin_layout Standard
@@ -796,7 +851,19 @@ Publications
 
 \series bold
 \lang english
-CONFERENCES
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+large Conferences
+\end_layout
+
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -836,7 +903,7 @@ Identification of corresponding tracks in diffusion MRI tractographies
  Mag.
  Reson.
  Med.
- 18
+ 18.
 \end_layout
 
 \begin_layout Standard
@@ -865,7 +932,7 @@ g Imaging acquisition schemes
  Mag.
  Reson.
  Med.
- 19 
+ 19.
 \end_layout
 
 \begin_layout Standard
@@ -962,7 +1029,20 @@ Cartesian grid q-space reconstruction
 \begin_inset Newline newline
 \end_inset
 
-JOURNALS
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+large Journals
+\end_layout
+
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -1012,7 +1092,20 @@ Reduced brain white matter integrity in trichotillomania: a diffusion tensor
 
 
 \series bold
-OUTREACH
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+large Outreach
+\end_layout
+
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -1050,7 +1143,20 @@ Surfing your Brain Super-Highways
 \begin_inset Newline newline
 \end_inset
 
-SOFTWARE
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+large Software
+\end_layout
+
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 

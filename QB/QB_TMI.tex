@@ -43,7 +43,7 @@
 \title{QuickBundles for Real-Time Tractography Segmentation}
 
 \author{Eleftherios~Garyfallidis, Matthew~Brett, Marta~Morgado~Correia, Guy~B.~Williams and Ian~Nimmo-Smith%
-\thanks{E.~Garyfallidis is with the University of Cambridge, Cambridge, UK.}%
+\thanks{E.~Garyfallidis is with the University of Cambridge, Cambridge, UK, e-mail: garyfallidis@gmail.com.}%
 \thanks{M.~Brett is with the University of California, Henry H. Wheeler, Jr. Brain Imaging Center, Berkeley, CA.}%
 \thanks{M.~M.~Correia and I.~Nimmo-Smith are with the MRC Cognition and Brain Sciences Unit, Cambridge, UK.}%
 \thanks{G.~B.~Williams is with the Wolfson Brain Imaging Centre, University of Cambridge, Cambridge, UK.}}
@@ -63,7 +63,7 @@
   tracks can be used as input to clustering algorithms of higher
   order complexity which currently cannot be implemented on the full
   data set. We also show the further potential of QB to find landmarks,
-  create atlases, and compare and register tractographies.
+  create atlases, compare and register tractographies.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -408,7 +408,7 @@ tracks in the bundle, which we denote by $\mathbf{e}_{2}={\displaystyle
   \argmin_{\mathbf{s} \in c}}\,{\displaystyle \sum_{s'\in c}}\mathrm{MDF}(\mathbf{s'},\mathbf{s})$, or
 if we want to work with tracks with possibly different numbers of points
 we could instead use $\mathbf{e}_{3}={\displaystyle \argmin_{\mathbf{s} \in
-    c}}\,{\displaystyle \sum_{\mathbf{s'}\in C}}\mathrm{MAM}(\mathbf{s'},\mathbf{s})$.
+    c}}\,{\displaystyle \sum_{\mathbf{s'}\in c}}\mathrm{MAM}(\mathbf{s'},\mathbf{s})$.
 Here $\mathrm{MAM}$ can any one of the Hausdorff metrics (\ref{sec:Hausdorff}).
 Identification of exemplar tracks of type $\mathbf{e}_{2}$ and $\mathbf{e}_{3}$ will be
 efficient only for small bundles of less than $5000$ tracks because we
@@ -579,13 +579,12 @@ experiment we timed the duration of QB clustering of tractographies
 containing from \num{e5} to \num{e6} tracks, with different initial
 number of points per track ($3,6,12$ and $18$) and different QB
 thresholds ($10,15,20,25$~mm). These results were obtained using
-a single thread Intel(R) Xeon(R) CPU E5420 at 2.50GHz on a standard
-PC. The results can be seen in Fig.~\ref{Flo:Speed1}. We see how the
+a single thread Intel(R) CPU E5420 at 2.50GHz on a standard
+PC. The results can be seen in Fig.~\ref{Flo:Speed1}. We observe how the
 linearity of the QB algorithm with respect to $N$ only reduces slightly
 even when we use a very low threshold such as $10$ ~mm which can
 generate many thousand of clusters. This experiment concludes that QB is
-suitable for fast clustering. Even when the threshold value becomes
-impressively low ($10.0$~mm) the linearity is only slightly disturbed.
+suitable for fast and linear time clustering.
 
 \begin{figure}
 \noindent \begin{centering}
@@ -662,7 +661,7 @@ state of the art methods found in the literature (Table
 till now as most algorithms were very slow on full data sets. This
 experiment was performed using a single CPU core. Nonetheless the
 speedup that QB offers is obviously of great importance and holds out
-the prospect of real-time clustering on data sets of fewer than $20,000$
+the prospect of real-time clustering on data sets of fewer than \num{20000}
 tracks (see Table~\ref{Flo:timings}).
 
 %
@@ -677,8 +676,8 @@ tracks (see Table~\ref{Flo:timings}).
 Number of tracks ($N$) & Algorithms & Timings (secs) & QB (secs) & Speedup\tabularnewline
 \hline
 $1000$ & \cite{wang2010tractography} & $30$ & $0.07$ & $429$\tabularnewline
-$60,000$ & \cite{wang2010tractography} & $14400$ & $14.7$ & $980$\tabularnewline
-$400,000$ & \cite{Visser2010} & $75000$ & $160.1$ & $468$\tabularnewline
+$\num{60000}$ & \cite{wang2010tractography} & $\num{14400}$ & $14.7$ & $980$\tabularnewline
+$\num{400000}$ & \cite{Visser2010} & $\num{75000}$ & $160.1$ & $468$\tabularnewline
 \hline
 \end{tabular}
 \par\end{centering}
@@ -729,12 +728,12 @@ shown at the left panel of Fig.~\ref{Flo:QB_fornix} where we can obtain
 different number of clusters at different thresholds. In that way we can
 stress thinner or larger sub-bundles inside other bigger bundles. 
 
-A full tractography containing $250,000$ tracks was clustered using QB
+A full tractography containing $\num{250000}$ tracks was clustered using QB
 with a distance threshold of $10$~mm (Fig.~\ref{Flo:QB_fornix}).  We
 produced a useful reduction of the initial tractography leaving only
 $763$ virtual tracks. Bundles smaller than $10$ tracks were
 removed. Every track shown here represents an entire cluster containing
-from $10$ to $5000$ tracks each.
+from $10$ to $\num{5000}$ tracks each.
 
 \begin{figure}
 \begin{centering}
@@ -1043,7 +1042,7 @@ Let  $T_{A}$, and $T_{B}$ the two tractographies to be aligned
 in native
 space. The required steps are: (1) all tracks with length smaller than $100$~mm and longer than $300$~mm
 are removed from the data sets. (This will reduce the size of each tractography
-to about $1/4$ of its initial size i.e.~\textasciitilde200,000 tracks. While all
+to about $1/4$ of its initial size i.e.~\textasciitilde \num{200000} tracks. While all
 the subjects are adults, this filtering may have different effects
 depending on brain size. We have not investigated this question at
 present);
@@ -1154,7 +1153,7 @@ to as $\textrm{MAM}_{\textrm{min}}$ in Eq.~(\ref{eq:minimum_distance}).
   atlases. Colour map here encodes track length. A: a single selected
   atlas track, B: for a single subject, $245$ actual tracks closer than
   $15$~mm (MDF distance), C: the tracks from B clustered with $23$
-  virtual tracks using QuickBundles, D: $3421$ actual tracks closer than $6$~mm
+  virtual tracks using QuickBundles, D: $\num{3421}$ actual tracks closer than $6$~mm
   ($\textrm{MAM}_{\textrm{min}}$ distance) from the virtual tracks in C
   are shown. We can see that a great number of short tracks have been
   brought together along with the tracks in B. In this way we managed to
@@ -1166,18 +1165,18 @@ Here we show some simple strategies for clustering short fibres. The first
 is for unsupervised clustering and the second one is for supervised
 learning.
 
-\textbf{Strategy 1:} Cluster the long tracks using QB with distance
+1. Cluster the long tracks using QB with distance
 threshold at $10$~mm and then cluster the short tracks (<$100$~mm) to a
 lower threshold and assign them to their closest long track bundle from
 the first clustering using the $MAM_{min}$ distance.
 
-\textbf{Strategy 2:} Read the tractography of a single subject, use a
+2. Read the tractography of a single subject, use a
 tractographic atlas as the one created in
 section~\ref{sub:Atlases-made-easy} and pick one or more close virtual
 tracks from that atlas and then find the closest tracks from the subject
 to that selected track using MDF, cluster the closest tracks found
 from the previous step and for each one of these new virtual tracks find
-the closest tracks using the $\textrm{MAM}_{\textrm{min}}$ d $m_{in}$ distance. We should now have an
+the closest tracks using the $\textrm{MAM}_{\textrm{min}}$ distance. We should now have an
 amalgamation of shorter and longer tracks in one cluster.
 
 An example of this second strategy is shown in
@@ -1246,14 +1245,14 @@ fast algorithm of quadratic time on average $\mathcal{O}(M^{2})$ called affinity
 propagation where now $M\ll N$ therefore the overall time stays linear
 on the number of tracks $N$. Other algorithms previously too slow to be
 used on the entire tractography can now be used efficiently too
-e.g.~k-nearest neighbour (k-NN), and hierarchical clustering.
+e.g.~spectral and hierarchical clustering.
 
 We saw that QB is a linear time clustering method based on track
 distances, which is on average linear time $\mathcal{O}(N)$ where $N$ is
 the number of tracks and with worst case $\mathcal{O}(N^{2})$ when every
 track is a singleton cluster itself. Therefore QB is the fastest known
 tractography clustering method and even real-time on smaller
-tractographies (<20,000 tracks). We also showed that is uses a negligible amount of
+tractographies (<\num{20000} tracks). We also showed that is uses a negligible amount of
 memory.
 
 QB is fully automatic and very robust as when we use it we can find good
@@ -1267,10 +1266,10 @@ QB can be used as well for reducing the dimensionality of the data sets
 at the time of interaction providing an alternative way to ROIs using
 BOIs (bundles of interest). We also showed
 that it can be used to find obscured tracks not visible to the user
-at first instance. Therefore QB opens up the road to create a rapid
+at first instance. Therefore QB opens up the road to create rapid
 tools for exploring tractographies of any size.
 
-We have shown results with data from simulations, and single and
+We have shown results with data from simulations, single and
 multiple real subjects. The code for QuickBundles is freely available at
 $\texttt{dipy.org}$.
 
@@ -1469,8 +1468,8 @@ clustering algorithms.
 Fig.~\ref{Fig:LSC_simple} illustrates the operation of QB step by step.
 
 
-\begin{figure*}
-\centering\includegraphics[scale=0.95]{Fig_1_QB_algorithm}
+\begin{figure*}[t]
+\centering\includegraphics[scale=1.4]{Fig_1_QB_algorithm}
 \caption{This is a step-by-step explanation of how QuickBundles proceeds when clustering six tracks (top left) resulting in three bundles (blue, red and green, bottom right)}
 \label{Fig:LSC_simple}
 \end{figure*}
