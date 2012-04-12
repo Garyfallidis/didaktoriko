@@ -5,6 +5,9 @@
 \textclass article
 \begin_preamble
 \usepackage{amsmath}
+\usepackage{caption}
+\DeclareCaptionLabelFormat{boldfig}{\textbf{#1~#2}}
+\captionsetup{within=none,labelformat=boldfig}
 \newcommand{\argmax}{\operatornamewithlimits{argmax}}
 %\newcommand\argmin{\operatornamewithlimits{arg\,min}}
 %\DeclareMathOperator{\argmin}{arg\,min} 
@@ -313,6 +316,39 @@ Supervisors
 \begin_layout Standard
 \align center
 
+\size large
+\lang english
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+\lang english
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+\lang english
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
 \size larger
 \noun on
 \lang english
@@ -340,11 +376,10 @@ Cambridge,UK
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
+\size large
+\noun default
 
-
-\begin_inset Newline newline
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -354,6 +389,28 @@ Cambridge,UK
 \align center
 
 \size large
+\lang english
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+\lang english
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
 \noun on
 \lang english
 Dr.
