@@ -51,9 +51,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
 \author "Eleftherios Garyfallidis,,," 
+\author "" 
 \end_header
 
 \begin_body
@@ -1347,11 +1346,11 @@ key "Yeh2010"
 \end_inset
 
  with TR=
-\begin_inset Formula $8200\textrm{\, ms}$
+\begin_inset Formula $8200\textrm{\,\ ms}$
 \end_inset
 
  and TE=
-\begin_inset Formula $69\textrm{\, ms}$
+\begin_inset Formula $69\textrm{\,\ ms}$
 \end_inset
 
 .
@@ -3590,11 +3589,11 @@ The virtual tracks created by QB have very nice properties as they represent
 \begin_inset Formula $j$
 \end_inset
 
-th component is 
+-th component is 
 \begin_inset Formula $\sum_{x\in c}|x_{j}-v_{j}|^{2}/n.$
 \end_inset
 
- Here 
+ Here, 
 \begin_inset Formula $x_{j}$
 \end_inset
 
@@ -3632,16 +3631,15 @@ th component is
 Exemplars
 \series default
 .
- Another fruitful idea relating to the virtual track is to try to identify
- a corresponding feature for the bundle which actually belongs to the tractograp
-hy.
- In other words to find an exemplar or centroid track.
- Remember that the virtual tracks do necessarily coincide with real tracks
- as they are just the outcome of large amalgamations.
+ Another fruitful idea relating to the virtual track is to identify a correspond
+ing descriptor for the bundle which actually belongs to the tractography.
+ In other words to find an exemplar or medoid track.
+ Virtual tracks do not necessarily coincide with real tracks as they are
+ just the outcome of large amalgamations.
  There are many strategies for how to select good exemplars for the bundles.
  A very fast procedure that we use in this work is to find which real track
  from the cluster is closest (by MDF distance) to the virtual track.
- Let's call this exemplar track 
+ We call this exemplar track 
 \begin_inset Formula $e_{1}$
 \end_inset
 
@@ -3654,8 +3652,8 @@ hy.
 \begin_inset Formula $e_{1}$
 \end_inset
 
- is still linear in cluster size, and that will be very useful if we have
- created clusterings with clusters containing more than 
+ is linear in cluster size, and that will be very useful if we have created
+ clusterings with clusters containing more than 
 \begin_inset Formula $\sim5,000$
 \end_inset
 
@@ -3684,11 +3682,11 @@ A different exemplar can be defined as the most similar track among all
 \end_inset
 
  will be efficient only for small bundles of less than 
-\begin_inset Formula $5,000$
+\begin_inset Formula $\sim5,000$
 \end_inset
 
  tracks because we need to calculate all pairwise distances in the bundle.
- We will see next many applications of the exemplars.
+ Many applications of the exemplars will be discussed later.
  
 \end_layout
 
@@ -3716,7 +3714,7 @@ Robustness under reordering
 \end_layout
 
 \begin_layout Standard
-As mentioned above, QB shares the behaviour of most clustering algorithms
+As mentioned earlier, QB shares the behaviour of most clustering algorithms
  in that different orderings of the tracks give rise to different clusterings.
  As a first step towards examining the robustness of QB in this respect
  we recorded the numbers of QB clusters in 
@@ -3739,13 +3737,17 @@ reference "sub:QB-Data-sets"
 \begin_inset Formula $40$
 \end_inset
 
-mm and downsampled the tracks at 
+ mm and downsampled the tracks at 
 \begin_inset Formula $12$
 \end_inset
 
  points.
  Then we applied QB with threshold at 
 \begin_inset Formula $10$
+\end_inset
+
+
+\begin_inset space ~
 \end_inset
 
 mm.
@@ -3768,7 +3770,7 @@ mm.
 
 ).
  There is therefore a considerable between-subject variation in this metric.
- By contrast the within-subject variability of the number of clusters across
+ By contrast, the within-subject variability of the number of clusters across
  random orderings is rather small, with mean standard deviation 
 \begin_inset Formula $12.7$
 \end_inset
@@ -3843,7 +3845,7 @@ key "Kuncheva2004"
 \end_inset
 
 .
- There are a number of ways of measuring the similarity or dissimilarity
+ There are a number of ways for measuring the similarity or dissimilarity
  of 
 \begin_inset Formula $\mathcal{A}$
 \end_inset
@@ -3862,11 +3864,7 @@ key "Kuncheva2004"
 \begin_inset Formula $\mathcal{B}$
 \end_inset
 
--labelling, or 
-\emph on
-vice versa
-\emph default
-.
+-labelling, or vice versa.
 \end_layout
 
 \begin_layout Paragraph*
@@ -3901,7 +3899,7 @@ Suppose we have a probability distribution
 \end_inset
 
 .
- Then the probability of assigning the correct label is 
+ Then, the probability of assigning the correct label is 
 \begin_inset Formula $\sum p_{i}^{2}$
 \end_inset
 
@@ -4204,7 +4202,7 @@ The total number of pairs from
 \begin_inset Formula ${\displaystyle \sum_{1\le i\ne i'\le m}a_{i}a_{i'}}$
 \end_inset
 
-which in turn can be expressed in terms of the cumulative sum of 
+ which in turn can be expressed in terms of the cumulative sum of 
 \begin_inset Formula $(a_{i})$
 \end_inset
 
@@ -4224,7 +4222,7 @@ which in turn can be expressed in terms of the cumulative sum of
 
 \end_inset
 
- Similarly 
+ Similarly, 
 \begin_inset Formula \[
 \mathtt{lumped}(\mathcal{A}|\mathcal{B}){\displaystyle =\sum_{j=1}^{n}}\bigl({\displaystyle \sum_{1\le i\ne i'\le m}n_{ij}n_{i'j}}\bigr)=\mathtt{split}(\mathcal{B}|\mathcal{A}).\]
 
@@ -4261,16 +4259,13 @@ Completeness and Correctness are defined in terms of these quantities:
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula \[
 \mathtt{\mathtt{correctness}(\mathcal{A},\mathcal{B})=[correctness}(\mathcal{A}|\mathcal{B})+\mathtt{correctness}(\mathcal{B}|\mathcal{A})]/2.\]
 
 \end_inset
 
-For the clusterings we encounter in tractography typically the number of
- apart pairs in 
+For the clusterings encountered in tractography, the number of apart pairs
+ in 
 \begin_inset Formula $\mathcal{A}$
 \end_inset
 
@@ -4352,7 +4347,7 @@ where
 \begin_inset Formula $M=\max(m,n)$
 \end_inset
 
- by adding if necessary rows or columns of zeros.
+ by adding, if necessary, rows or columns of zeros.
  When we adapt this measure to the case of comparing two clusterings we
  further need to take into account the lack of prior correspondence between
  the two sets of labels.
@@ -4394,9 +4389,9 @@ where
 \end_inset
 
  if all permutations are tried.
- One way out of the problem caused by the size of the search set might be
- to use a randomised search strategy for instance based on a simulated annealing
- approach.
+ One way out to overcome the problem caused by the size of the search set
+ might be to use a randomised search strategy for instance based on a simulated
+ annealing approach.
  
 \end_layout
 
@@ -4405,8 +4400,7 @@ Matched Agreement via the Hungarian Method
 \end_layout
 
 \begin_layout Standard
-An alternative is to look to see if there is a simpler quantity that might
- be optimised.
+An alternative is to look for a simpler quantity that might be optimised.
  One obvious choice is the maximized number of agreements 
 \begin_inset Formula $\mu_{\max}={\displaystyle \sum_{i=1}^{M}}t_{i\pi(i)}$
 \end_inset
@@ -4420,13 +4414,17 @@ An alternative is to look to see if there is a simpler quantity that might
 \end_inset
 
 .
- Seeking to maximize the number of agreements amongst all permutations 
+ Maximizing the number of agreements amongst all permutations 
 \begin_inset Formula $\pi$
 \end_inset
 
  is a classical combinatorial optimization problem (weighted assignment
  problem on a bipartite graph) that can be reformulated as a linear programming
- problem whose efficient solution by the Hungarian Method 
+ problem whose efficient solution by the Hungarian Method
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Kuhn1955"
@@ -4437,8 +4435,11 @@ key "Kuhn1955"
 \end_layout
 
 \begin_layout Standard
-We have tried out various published coded implementations of the version
- by Lawler 
+We have tested various published implementations of the version by Lawler
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lawler2001"
@@ -4447,7 +4448,10 @@ key "Lawler2001"
 
  of the Hungarian Method and have found that the one published by Carpaneto
  et al.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Carpaneto1988"
@@ -4758,10 +4762,7 @@ status open
 \begin_inset Formula $10$
 \end_inset
 
- tractographies (Tab.
-\begin_inset space ~
-\end_inset
-
+ tractographies (see Tab.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4777,10 +4778,19 @@ n
 \end_inset
 
 ).
- Of these two metric we prefer matched agreement because is both simpler
+ Of these two metrics we prefer matched agreement because is both simpler
  to calculate and also to understand.
- Correctness, for the reasons discussed above, is too insensitive (near
- to ceiling) to be of use.
+ Correctness, for the reasons discussed above, is too insensitive 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(near to ceiling)
+\end_layout
+
+\end_inset
+
+ to be of use.
  We would therefore suggest, and on the basis of the mean of the standard
  deviations across pairings, that maximum probability matching, and matched
  agreement are suitable metrics for evaluating tractography clusterings.
@@ -4790,9 +4800,9 @@ n
 \end_layout
 
 \begin_layout Standard
-However we also note that these metrics are all costly to calculate in terms
+We have noticed that these metrics are all costly to calculate in terms
  of time and memory requirements.
- They will not be used further in this study.
+ Therefore, they will not be used further in this study.
  We instead look at ways to compare clusterings of tractographies that will
  work when comparing different tractographies either for the same or for
  different subjects.
@@ -4828,13 +4838,13 @@ key "moberts2005evaluation"
 
 .
  Being able to compare results of clusterings is crucial for creating stable
- brain imaging procedures, and therefore it is necessary to develop a way
- to compare different clusterings of the same subject or different subjects.
- Although we recognise that this is a difficult problem, we propose the
- following solution with a metric which we call bundle adjacency (BA).
- BA works as follows.
- Let us assume that we have gathered the exemplar tracks from clustering
- 
+ brain imaging procedures.
+ It is therefore necessary to develop a way to compare different clusterings
+ of the same subject or different subjects.
+ Although this is a difficult problem, we propose the following solution
+ with a metric which we call bundle adjacency (BA).
+ BA works as follows: Lets assume that we have gathered the exemplar tracks
+ from clustering 
 \begin_inset Formula $A$
 \end_inset
 
@@ -4868,22 +4878,22 @@ key "moberts2005evaluation"
 \end_inset
 
  (i.e.
- perhaps 
+ both 
 \begin_inset Formula $|E_{A}|\neq|E_{B}|$
 \end_inset
 
- rather then 
+ and 
 \begin_inset Formula $|E_{A}|=|E_{B}|$
 \end_inset
 
-).
+ are acceptable).
  Next, we calculate all pairwise MDF distances between the two sets and
  store them in rectangular matrix 
 \begin_inset Formula $D_{AB}$
 \end_inset
 
 .
- The mimima of the rows of 
+ The minima of the rows of 
 \begin_inset Formula $D_{AB}$
 \end_inset
 
@@ -4935,7 +4945,19 @@ BA=\frac{1}{2}\left(\frac{|E_{A\rightarrow B}\leq\theta|}{|E_{A}|}+\frac{|E_{B\r
 \end_layout
 
 \begin_layout Standard
-where 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+ where 
 \begin_inset Formula $|E_{A\rightarrow B}\leq\theta|$
 \end_inset
 
@@ -4950,7 +4972,7 @@ where
 
  the number of exemplars from B to A which their distance was smaller than
  
-\begin_inset Formula $t_{\textrm{thr}}$
+\begin_inset Formula $\theta$
 \end_inset
 
 .
@@ -4971,7 +4993,7 @@ where
 \begin_inset Formula $BA=0$
 \end_inset
 
- that means that every exemplar from the one set was further than 
+ every exemplar from the one set was further than 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -4980,13 +5002,13 @@ where
 \begin_inset Formula $BA=1$
 \end_inset
 
- then all exemplars from one set had a close neighbour in the other set.
+ all exemplars from one set had a close neighbour in the other set.
  This metric is extremely useful especially when comparing tractographies
  from different subjects because it does not require 
 \begin_inset Formula $|E_{A}|=|E_{B}|$
 \end_inset
 
-.
+ which was a requirement with metrics proposed in the previous section.
 \end_layout
 
 \begin_layout Standard
@@ -5018,9 +5040,9 @@ reference "sub:QB-Data-sets"
 \begin_inset Formula $10$
 \end_inset
 
-mm.
- We did this experiment twice; first by keeping only the bundles with more
- than 
+ mm.
+ We performed this experiment twice; first by keeping only the bundles with
+ more than 
 \begin_inset Formula $10$
 \end_inset
 
@@ -5038,7 +5060,8 @@ mm.
 \end_inset
 
 .
- As expected BA100 (bigger landmarks) did better with average value of 
+ As expected BA100 (bigger landmarks) performed better with average value
+ of 
 \begin_inset Formula $53\%$
 \end_inset
 
@@ -5077,17 +5100,17 @@ mm.
 \begin_inset Formula $10$
 \end_inset
 
-mm of those of the other tractographies.
+ mm of those of the other tractographies.
  This supports the notion that QB can be used to find agreements between
  different brains by concentrating on the larger (more important) clusters.
- We will see further evidence for this below (section 
+ Further evidence of this is discussed in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Atlases-made-easy"
 
 \end_inset
 
-).
+.
 \end_layout
 
 \begin_layout Subsection
@@ -5110,18 +5133,19 @@ QB is a very fast algorithm; however we wanted to make it even more efficient
  so that for example it is trivial to cluster hundreds of subjects together
  and use many CPUs or computers simultaneously.
  This could be used to create an atlas of hundreds of subjects in a few
- hours.
- Therefore, we have extended QB to a parallel version which we call pQB.
+ minutes.
+ Therefore, we have extended QB to a parallel version which we call pQuickBundle
+s (pQB).
  This algorithm works as follows.
- First we redirect and downsample all tracks.
+ We first redirect and downsample all tracks.
  Then we put all tracks together and break them into subsets.
  For every subset we assign a new thread and set QB to run on that thread.
- Therefore, we have now many QBs running on different CPUs.
+ We have therefere many QBs running on different CPUs.
  Then we collect all individual clusterings and start merging them together.
- We can pair every two results together and merge them in a binary way or
- just merge all clusterings to the first clustering.
+ We can pair every two results together and merge them in a binary fashion
+ or just merge all clusterings to the first clustering.
  We can do merging with many different ways.
- Here we present the most modest but useful attempt.
+ We present here the most modest but useful attempt.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5223,8 +5247,10 @@ We can merge bundles using exemplar tracks or virtual tracks.
 
  then its cluster becomes a new cluster in the merged clustering.
  In that way clusters from the two sets who have very similar features will
- merge together and if not new clusters will be created, and we will not
- have any loss of information from the two sets of clusters.
+ merge together.
+ If not, new clusters will be created.
+ With this approach we will not have any information loss from the merge
+ of the two sets of clusters.
 \end_layout
 
 \begin_layout Subsection
@@ -5234,7 +5260,7 @@ Direct applications
 \begin_layout Standard
 We found that QB has numerous applications from detecting erroneous tracks
  to creating atlases, finding landmarks and guiding registration algorithms.
- Here we present just a few of the strategies that can be pursued further.
+ Here we present just a few of the strategies that can be further pursued.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5245,16 +5271,16 @@ Rapidly detecting erroneous tracks
 It is well known that there are different artifacts seen in tractographies
  caused by subject motion, poor voxel reconstruction, incorrect tracking
  and many other reasons.
- However there is no known automatic method to try and detect these tracks
- and therefore remove them from the data sets.
+ There is no known automatic method to detect these tracks and therefore
+ remove them from the data sets.
  The idea here is to use QB to speed up the search for erroneous tracks.
- We will concentrate here on tracks that loop one or many times; something
- that it is considered impossible to happen in nature.
+ We will concentrate on tracks that loop one or many times; something that
+ it is considered impossible to happen in nature.
 \end_layout
 
 \begin_layout Standard
-One of the tracks which are most likely erroneous are tracks which wind
- more than one time, like a spiral.
+Tracks which most likely to be erroneous are those which wind more than
+ one time, like a spiral.
  We can detect those with the following algorithm.
  Lets assume that we have a track 
 \begin_inset Formula $s$
@@ -5293,33 +5319,77 @@ One of the tracks which are most likely erroneous are tracks which wind
 \begin_inset Formula $p_{y}$
 \end_inset
 
-; and (c) calculate the cumulative winding angle on the 2d plane; d) if
+; and (c) calculate the cumulative winding angle on the 2D plane; d) if
  the cumulative angle is more that 
 \begin_inset Formula $400^{\circ}$
 \end_inset
 
- then that would mean that the initial track 
+ it would mean that the initial track 
 \begin_inset Formula $s$
 \end_inset
 
- is winding and therefore needs to be removed, see Fig.
- 
+ is winding and therefore needs to be removed (see Fig.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:winding"
 
 \end_inset
 
-.
+).
 \end_layout
 
 \begin_layout Standard
 Winding tracks can be dangerous when we merge clusters because they could
- be close to many different clusters.
+ be close to many different clusters of different shape simultaneously.
  We found that winding tracks often form bundles with many similar tracks.
- Also, they are usually long tracks so they will not be removed with any
- filters which remove short tracks.
- We could use QB with a low threshold to reduce the number of tracks while
+ As these are usually long tracks, they will not be removed by filters which
+ remove short tracks.
+ In Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:erroneous_tracks"
+
+\end_inset
+
+ we show an example where 
+\begin_inset Formula $161$
+\end_inset
+
+ erroneous bundles were automatically detected by our winding method.
+ They all had total winding angle higher than 
+\begin_inset Formula $500^{\circ}$
+\end_inset
+
+.
+ To cluster the initial tractography not shown here we used QB with threshold
+ 
+\begin_inset Formula $10$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+mm.
+ This is the first known automatic detection system of outliers and erroneous
+ tracks for tractography data based on more advanced shape characteristics
+ that go beyond simple track length filtering.
+ By calculating the number of winding tracks in the data sets over the total
+ number of tracks we could have an indicator of the quality of the data
+ sets.
+ 
+\end_layout
+
+\begin_layout Standard
+We can use QB with a low threshold to reduce the number of tracks while
  avoiding embedding winding tracks into otherwise ordinary clusters and
  then run the winding algorithm just on the exemplar tracks of the bundles
  rather than the entire tractography.
@@ -5383,28 +5453,30 @@ name "Flo:winding"
 
 \begin_layout Standard
 QB can also simplify detection of tracks which are very dissimilar to others
- and therefore they are very distant from all other clusters.
- Usually when we use a QB threshold of about 
-\change_inserted 2 1319698782
+ and therefore very distant from all other clusters.
+ Usually, when we use a QB threshold of about 
+\change_inserted 0 1319698782
 
 \begin_inset Formula $10$
 \end_inset
 
 
 \change_unchanged
-mm these tracks will be part of small bundles containing a few tracks (
-\begin_inset Formula $<10$
-\end_inset
-
-) and the distance of the bundle they belong to from all other bundles will
- be much higher than average.
+ mm, the tracks will be part of small bundles containing a few tracks and
+ the distance of the bundle they belong to from all other bundles will be
+ much higher than average.
  This can give us another detection method for outliers.
+ We could find for example which bundles are most distant from all other
+ bundles and remove them from the data sets.
 \end_layout
 
 \begin_layout Standard
 Finally, QB can be used to remove small or broken tracks in an interactive
  way, for example see Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:cst_pbc"
@@ -5450,46 +5522,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-\begin_inset Formula $161$
-\end_inset
-
- most likely erroneous bundles automatically detected by our winding method
- all having total winding angle higher than 
-\begin_inset Formula $500$
-\end_inset
-
- degrees and shown with random colours per bundle.
- On the left panel we see the bundles on their exact position in the data
- set from the top of the head, on the middle panel we see the same tractography
- from the side and the third panel we see the part of middle panel on the
- red box slightly rotated and much zoomed so that some erroneous tracks
- can be easily shown.
- To cluster the initial tractography not shown here we used QB with threshold
- 
-\begin_inset Formula $10$
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-mm.
- This is the first known automatic detection system of outliers and erroneous
- tracks for tractography data based on more advanced shape characteristics
- that go beyond simple length.
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-MATTHEW: Really? Nothing for short tracks for example? ELEF: qualifying
- phrase added
-\end_layout
-
-\end_inset
-
-By calculating the number of winding tracks in your data sets over the total
- number of tracks you can have an indicator of the quality of our data sets.
+Example with erroneous tracks detected on real data sets.
+ Left: the erroneous bundles on their exact position in the data set from
+ the top of the head, Middle: the same from the saggital view.
+ Right: the area surrounded by the red box from the middle slightly rotated
+ and zoomed.
+ The colour encodes different bundle label.
 \end_layout
 
 \end_inset
@@ -5522,7 +5560,7 @@ name "sub:Atlases-made-easy"
 
 \begin_layout Standard
 We have used QB to construct a robust tractographic atlas in MNI space from
- data for 10 subjects.
+ 10 subjects' data sets.
  Here we explain the steps we used to achieve that.
 \end_layout
 
@@ -5539,14 +5577,14 @@ reference "sub:QB-Data-sets"
 
 \end_inset
 
- and see section 
+ (see section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Acquisition-sequences-in-use"
 
 \end_inset
 
- for acquisition details.
+ for acquisition details).
  The tractographies for all subjects were initially in native space and
  the goal was to warp them in MNI space, using nonlinear registration.
  
@@ -5554,13 +5592,17 @@ reference "sub:Acquisition-sequences-in-use"
 
 \begin_layout Standard
 Because the registration of tractographies is generally considered a difficult
- problem with a non-unique solution we wanted to make sure that we are using
- a known, well established and robust method, therefore we chose to use
- 
+ problem with a non-unique solution we wanted to make sure we are using
+ a known, well established and robust method.
+ We chose therefore, to use 
 \begin_inset Formula $\texttt{fnirt}$
 \end_inset
 
  with the same parameters as used with the first steps of TBSS
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Smith2006NeuroImage"
@@ -5580,8 +5622,8 @@ key "Smith2006NeuroImage"
 .
  These FA volumes were again in native space therefore we needed to warp
  them in MNI space.
- For this purpose a standard template (
-\begin_inset Formula $\texttt{FMRIB58\_FA\_1mm}$
+ For this purpose, a standard FA template (
+\begin_inset Formula $\texttt{FMRIB58}$
 \end_inset
 
 ) from the FSL toolbox was used as the reference volume.
@@ -5615,16 +5657,16 @@ key "Smith2006NeuroImage"
 
 \change_unchanged
  which gave us the correct displacements.
- As this being very technical we will not describe it further here but the
- code is available in module (
+ The code is available in module (
 \begin_inset Formula $\texttt{dipy.external.fsl}$
 \end_inset
 
 ).
- It is also important to say that we didn't use eddy correction with any
- of this type of data sets because eddy correction is unstable with volumes
- at high b-values because there is no much signal for guiding a correct
- registration with the other volumes at lower b-values.
+ It is also important to say that we did not use eddy correction with any
+ of this type of data sets.
+ Eddy correction is unstable with volumes at high b-values because there
+ is not enough signal for guiding a correct registration with the other
+ volumes at lower b-values.
 \begin_inset Note Note
 status collapsed
 
@@ -5634,14 +5676,15 @@ ELEF: Perhaps I give to much technical information here? Any ideas?
 
 \end_inset
 
-
+ It is like trying to mach two figures that have no similiarities at all.
+ The matching will be certainly poor and error prone.
 \end_layout
 
 \begin_layout Standard
 After creating the displacements for every subject; these were applied to
  all tractographies in the native space so they are mapped in the MNI space
  of voxel size 
-\begin_inset Formula $1\times1\times1\textrm{mm}^{3}$
+\begin_inset Formula $1\times1\times1\,\textrm{mm}^{3}$
 \end_inset
 
 .
@@ -5667,11 +5710,11 @@ Tractographic Atlas.
 \begin_inset Formula $10$
 \end_inset
 
-mm threshold, (d) merge all clusterings again with 
+ mm threshold, (d) merge all clusterings with 
 \begin_inset Formula $10$
 \end_inset
 
-mm threshold as explained in section 
+ mm threshold as explained in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Parallel-version"
@@ -5683,14 +5726,18 @@ reference "sub:Parallel-version"
  issue is what you remove from the atlas as outliers.
  QB here provides a possible solution for this problem.
  If we plot the number of tracks for each cluster sorted in ascending order
- we can see an interesting pattern see Fig.
+ we can see an interesting pattern (see Fig.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:atlas_big_bundles"
 
 \end_inset
 
-.
+).
  In this diagram we observe that 
 \begin_inset Formula $20\%$
 \end_inset
@@ -5703,7 +5750,7 @@ reference "Flo:atlas_big_bundles"
  This shows that there is much agreement between the biggest bundles of
  different subjects.
  We will use this property to create a solid atlas in which we keep the
- biggest bundles (landmarks) and remove small bundles (outliers).
+ biggest bundles (landmarks) and remove the smallest bundles (outliers).
 \end_layout
 
 \begin_layout Standard
@@ -5716,7 +5763,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename last_figures/big_bundles_atlas.png
-	scale 60
+	scale 50
 	rotateOrigin center
 
 \end_inset
@@ -5725,17 +5772,16 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-\begin_inset Formula $14520$
+\begin_inset Formula $14,520$
 \end_inset
 
- clusters where created by joining the QB clusterings of 
+ clusters created by joining the QB clusterings of 
 \begin_inset Formula $10$
 \end_inset
 
  subjects in MNI space.
- We found that most of the clusters had a few tracks and only a few clusters
- had many.
- In the diagram above we can see 
+ Most clusters had a few tracks and only few had many.
+ 
 \begin_inset Formula $20\%$
 \end_inset
 
@@ -5744,9 +5790,9 @@ status open
 \end_inset
 
  of the total amount of tracks.
- This result showed that there is much agreement between different subjects
- which would be useful for a solid atlas with the biggest bundles becoming
- landmark bundles and the small bundles removed as outliers.
+ The agreement between different subjects which would be useful for a solid
+ atlas with the biggest bundles becoming landmark bundles and the small
+ bundles removed as outliers.
 \begin_inset Note Note
 status open
 
@@ -5794,7 +5840,10 @@ One can use this atlas or similar atlases created from more subjects in
 
 \begin_layout Standard
 A simple example is given in Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:CloseToSelected"
@@ -5808,15 +5857,14 @@ reference "Flo:CloseToSelected"
 \end_inset
 
  healthy subjects as described in the previous section.
- Then from these clusters represented by their virtual tracks we keep only
- 
+ From these clusters, represented by their virtual tracks we only keep 
 \begin_inset Formula $196$
 \end_inset
 
  biggest clusters i.e.
- those which contain the highest number of tracks, so that we are sure that
- there is enough agreement from the different tractographies and from these
- we just pick by way of an example 
+ those which contain the highest number of tracks, so that we are sure there
+ is enough agreement between the different tractographies.
+ From these we just pick by way of an example 
 \begin_inset Formula $19$
 \end_inset
 
@@ -5825,77 +5873,77 @@ reference "Flo:CloseToSelected"
 \begin_inset Formula $1$
 \end_inset
 
- from genu of corpus callosum (GCC), 
+ from Genu of Corpus Callosum (GCC), 
 \begin_inset Formula $3$
 \end_inset
 
- from the body of corpus callosum (BCC), 
+ from the Body of Corpus Callosum (BCC), 
 \begin_inset Formula $1$
 \end_inset
 
- from the splenium (SCC), 
+ from the Splenium (SCC), 
 \begin_inset Formula $1$
 \end_inset
 
- from the pons cerebellar peduncle (CP), 
+ from the Pons Cerebellar Peduncle (CP), 
 \begin_inset Formula $1$
 \end_inset
 
- from left arcuate fasciculus (ARC-L), 
+ from left Arcuate Fasciculus (ARC-L), 
 \begin_inset Formula $1$
 \end_inset
 
- from right arcuate fasciculus (ARC-R), 
+ from right Arcuate Fasciculus (ARC-R), 
 \begin_inset Formula $1$
 \end_inset
 
- from left inferior occipitofrontal fasciculus (IFO-L) and 
+ from left Inferior Occipitofrontal Fasciculus (IFO-L) and 
 \begin_inset Formula $1$
 \end_inset
 
- from right inferior occipitofrontal fasciculus (IFO-R), 
+ from right Inferior Occipitofrontal Fasciculus (IFO-R), 
 \begin_inset Formula $1$
 \end_inset
 
- from right fornix (FX-R), 
+ from right Fornix (FX-R), 
 \begin_inset Formula $1$
 \end_inset
 
- from left fornix (FX-L), 
+ from left Fornix (FX-L), 
 \begin_inset Formula $1$
 \end_inset
 
- optic radiation (OR), 
+ from the Optic Radiation (OR), 
 \begin_inset Formula $1$
 \end_inset
 
- left cingulum (CGC-L), 
+ left Cingulum (CGC-L), 
 \begin_inset Formula $1$
 \end_inset
 
- from right cingulum (CGC-R), 
+ from right Cingulum (CGC-R), 
 \begin_inset Formula $1$
 \end_inset
 
- from left corticospinal tract (CST-L), 
+ from left Corticospinal tract (CST-L), 
 \begin_inset Formula $1$
 \end_inset
 
- from right corticospinal tract (CST-R), 
+ from right Corticospinal tract (CST-R), 
 \begin_inset Formula $1$
 \end_inset
 
- from left uncinate (UNC-L) and 
+ from left Uncinate (UNC-L) and 
 \begin_inset Formula $1$
 \end_inset
 
- from right uncinate (UNC-R).
+ from right Uncinate (UNC-R).
  These 
 \begin_inset Formula $19$
 \end_inset
 
  tracks are coloured randomly.
- Then on the second row we show, for the first 
+ On the second row we show, for the first 
 \begin_inset Formula $6$
 \end_inset
 
@@ -5903,7 +5951,7 @@ reference "Flo:CloseToSelected"
 \begin_inset Formula $20$
 \end_inset
 
-mm from 
+ mm from 
 \begin_inset Formula $3$
 \end_inset
 
@@ -5912,12 +5960,12 @@ mm from
 \begin_inset Formula $15$
 \end_inset
 
-mm to the next 
+ mm to the next 
 \begin_inset Formula $7$
 \end_inset
 
  selected tracks.
- Finally on the last row we bring the tracks from the same 
+ Finally, on the last row, we bring the tracks from the same 
 \begin_inset Formula $3$
 \end_inset
 
@@ -5925,12 +5973,12 @@ mm to the next
 \begin_inset Formula $18$
 \end_inset
 
-mm.
+ mm.
  The colours used for the selected tracks are automatically assigned from
  the colours of tracks picked from the atlas.
- We can see that there is a significant reliability and continuity both
- within and between subjects even though we have only selected a very small
- number of representative tracks.
+ We can see significant reliability and continuity both within and between
+ subjects even though we have only selected a very small number of representativ
+e tracks.
  Using a similar procedure we could create a book of bundles for every subject
  and then compare the subjects at the level of bundles.
  
@@ -5969,12 +6017,13 @@ A novel way to do comparisons between subjects.
 \end_inset
 
  subjects (top row).
- That we can see this amount of agreement and continuity on the last 
+ The fact that there is such a level of agreement and continuity on the
+ last 
 \begin_inset Formula $3$
 \end_inset
 
- rows from such a few skeletal tracks is a great hope for implementing new
- robust ways of statistical comparisons using tractographic data sets.
+ rows from such a few skeletal tracks offers a great prospect for implementing
+ new robust ways of statistical comparisons using tractographic data sets.
 \end_layout
 
 \end_inset
@@ -6025,7 +6074,7 @@ MATTHEW: I wonder if you can use QB as input to QB? I mean to try and find
 
 \begin_layout Standard
 Most clustering algorithms need to calculate all pairwise distances between
- tracks; that means that for a medium sized tractography of 
+ tracks; meaning that for a medium sized tractography of 
 \begin_inset Formula $250,000$
 \end_inset
 
@@ -6036,8 +6085,8 @@ Most clustering algorithms need to calculate all pairwise distances between
  GBytes of RAM with single floating point precision.
  Something which is not and will not be available soon in personal computers.
  In those cases some people might hope that sparse matrices could provide
- a nice approximation; however dense tractographies produce very dense distance
- matrices.
+ a nice approximation; however tractographies are densily packed and produce
+ very dense distance matrices.
  The straightforward solution to this problem is to use QB in order to first
  segment in small clusters and then use the representatives (i.e.
  exemplar or virtual tracks) of these clusters with other higher complexity
@@ -6061,14 +6110,14 @@ MATTHEW: I remember Fernando talking about large scale diffusion clustering
 \end_layout
 
 \begin_layout Enumerate
-Cluster using QB as explained in section
+Cluster using QB as explained in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Atlases-made-easy"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -6090,7 +6139,10 @@ Use any other clustering method to segment this much smaller distance matrix
 
 \begin_layout Standard
 In Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:LSC+HC+AP"
@@ -7320,7 +7372,7 @@ key "fletcher1987practical"
 \end_inset
 
  will be transformed by a rigid rotation and 
-\change_inserted 2 1319745183
+\change_inserted 0 1319745183
 
 \begin_inset Formula $\mathrm{SMD}$
 \end_inset
@@ -7424,7 +7476,7 @@ Experiments
 .
  The first large scale experiment took place using the same tractography
  of a single individual copied and transformed 
-\change_inserted 2 1319745405
+\change_inserted 0 1319745405
 
 \begin_inset Formula $1000$
 \end_inset
@@ -7813,7 +7865,7 @@ Strategy 2
 \series default
 .
  Read the tractography of a single subject,
-\change_deleted 2 1319745849
+\change_deleted 0 1319745849
  
 \change_unchanged
  use a tractographic atlas as the one created in section 
@@ -7829,7 +7881,7 @@ reference "sub:Atlases-made-easy"
 \end_inset
 
 ,
-\change_deleted 2 1319745849
+\change_deleted 0 1319745849
  
 \change_unchanged
  cluster the closest tracks found from the previous step and for each one
