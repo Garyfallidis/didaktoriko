@@ -5993,7 +5993,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename last_figures/close_distance.png
+	filename QB/Fig_7_close_distance.png
 	lyxscale 30
 	scale 70
 
@@ -6017,8 +6017,8 @@ A novel way to do comparisons between subjects.
 \end_inset
 
  subjects (top row).
- The fact that there is such a level of agreement and continuity on the
- last 
+ The fact, there is such a level of agreement and continuity on the last
+ 
 \begin_inset Formula $3$
 \end_inset
 
@@ -6084,9 +6084,10 @@ Most clustering algorithms need to calculate all pairwise distances between
 
  GBytes of RAM with single floating point precision.
  Something which is not and will not be available soon in personal computers.
- In those cases some people might hope that sparse matrices could provide
- a nice approximation; however tractographies are densily packed and produce
- very dense distance matrices.
+ A naive solution would be to use sparse matrices to approximate the distance
+ matrix; however tractographies are densily packed and produce very dense
+ distance matrices.
+ Therefore, this is not a viable solution.
  The straightforward solution to this problem is to use QB in order to first
  segment in small clusters and then use the representatives (i.e.
  exemplar or virtual tracks) of these clusters with other higher complexity
@@ -6149,32 +6150,35 @@ reference "Flo:LSC+HC+AP"
 
 \end_inset
 
- at the left panel we show a result were we used hierarchical clustering
+ at the left panel we show a result where we used hierarchical clustering
  with single linkage for step (4) with a threshold of 
 \begin_inset Formula $20$
 \end_inset
 
-mm using the package 
+ mm using the package 
 \begin_inset Formula $\texttt{hcluster}$
 \end_inset
 
- (see 
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "eads-hcluster-software"
 
 \end_inset
 
-).
+.
  A known drawback of single linkage is the so-called chaining phenomenon:
  clusters may be brought together due to single elements being close to
  each other, even though many of the elements in each cluster may be very
  distant to each other.
- Chaining is usually considered as a disadvantage because it is too driven
- by local neighbours.
+ Chaining is usually considered as a disadvantage as it is driven by local
+ neighbours.
  Nevertheless, we can use this property to cluster the corpus callosum (CC)
  all together (shown with dark red in left top of Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:LSC+HC+AP"
@@ -6200,14 +6204,17 @@ MATTHEW: How reliable is this do you think? ELEF: No further comment at
 
 \begin_layout Standard
 In the right panel of Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:LSC+HC+AP"
 
 \end_inset
 
- we see implementation of step (4) using a more recent algorithm: affinity
+ we see the implementation of step (4) using a more recent algorithm: affinity
  propagation (AP) 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -6215,22 +6222,15 @@ key "dueck2009affinity"
 
 \end_inset
 
-, which earlier was identified by us (see Fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Flo:LSC+HC+AP"
-
-\end_inset
-
-) and 
+, which was earlier identified by us and 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "malcolm2009filtered"
 
 \end_inset
 
- for being difficult or impossible to be used for group analysis or to cluster
- entire tractographies of many thousands of tracks.
+ for being impossible to be used for group analysis or to cluster entire
+ tractographies of many thousands of tracks.
  A small outline of how this algorithm works is given in section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6239,7 +6239,11 @@ reference "sub:Affinity-Propagation"
 \end_inset
 
 .
- Here we see in the bottom right panel of (see Fig.
+ In the bottom right panel of (see Fig.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:LSC+HC+AP"
@@ -6247,7 +6251,7 @@ reference "Flo:LSC+HC+AP"
 \end_inset
 
 ) how nicely AP, after the simplification provided by QB, has clustered
- arcuate, longitudinal occipitofrontal fasciculus and other structures known
+ Arcuate, Longitudinal Occipitofrontal Fasciculus and other structures known
  from the literature.
  The input of AP was the negative distance matrix
 \begin_inset Formula $-D$
@@ -6332,39 +6336,24 @@ name "Flo:LSC+HC+AP"
 
 \begin_layout Standard
 For hierarchical clustering parts we used the software 
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-hcluster
-\end_layout
-
+\begin_inset Formula $\texttt{hcluster}$
 \end_inset
 
+
+\lang english
  and for affinity propagation we used the library 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-scikit-learn
-\end_layout
-
+\begin_inset Formula $\texttt{scikit-learn}$
 \end_inset
 
 .
  They are both implemented in 
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-Python
-\end_layout
-
+\begin_inset Formula $\texttt{Python}$
 \end_inset
 
+
+\lang english
 .
 \end_layout
 
