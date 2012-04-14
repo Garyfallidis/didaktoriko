@@ -424,7 +424,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename distances.png
+	filename QB/Fig_2_distances2.png
 	lyxscale 20
 	scale 60
 	rotateOrigin center
@@ -7444,7 +7444,7 @@ reference "Flo:direct_registration"
 
 \end_inset
 
-A we see the result of this algorithm applied to two tractographies 
+ we see the result of this algorithm applied to two tractographies 
 \begin_inset ERT
 status open
 
@@ -7516,7 +7516,7 @@ reference "Flo:direct_registration"
 
 \end_inset
 
-B and C.
+.
  From, these two diagrams we can see that although for translations only
  the SD was entirely convex, with rotations, the SD had stronger local minima
  which is not a good property for registration.
@@ -7613,6 +7613,50 @@ MATTHEW: I seem to remember that registrations perform a bit differently
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename QB/Fig_9_QB_registration2_only_landscape.png
+	lyxscale 30
+	scale 140
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Two tractographies from different subjects before (top) and after rigid
+ registration (bottom) using our method.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:direct_registration2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 We used GQI-based tractographies from 
 \begin_inset Formula $10$
 \end_inset
@@ -7698,9 +7742,9 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename last_figures/LSC_registration2.png
+	filename last_figures/metrics.png
 	lyxscale 30
-	scale 85
+	scale 120
 
 \end_inset
 
@@ -7711,9 +7755,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-A: Two tractographies from different subjects before (top) and after rigid
- registration (bottom) using our method.
- In panel B: The metric 
+Left: The metric 
 \begin_inset Formula $SMD$
 \end_inset
 
@@ -7721,7 +7763,7 @@ A: Two tractographies from different subjects before (top) and after rigid
  the second copy translated (above) and rotated (below).
  This metric appears to be smooth with a single global minimum and is only
  slightly non-convex with small local minima.
- C: Another possible candidate metric was the 
+ Right: Another possible candidate metric was the 
 \begin_inset Formula $SD$
 \end_inset
 
@@ -7748,7 +7790,7 @@ name "Flo:direct_registration"
 \end_layout
 
 \begin_layout Subsection
-Strategies with Small fibres
+Bundle Quality Control
 \end_layout
 
 \begin_layout Standard
@@ -7759,14 +7801,11 @@ In many parts of this document we did not consider short tracks.
  short tracks facilitates the usage of distance based clustering (no need
  for manually setting the distance threshold) and interaction with the tractogra
 phy, (c) someone would first want to see the overall representation of the
- tractography and later go to the details.
+ tractography and go to the details later.
  Nonetheless, after having clustered the longer tracks there are many ways
  to assign the smaller bundles to their closest longer bundles.
- For this purpose we recommend to use a different distance from 
-\begin_inset Formula $d_{df}$
-\end_inset
-
- (MDF) for example the minimum version of MAM referred to as 
+ For this purpose, we recommend the use of different distance from MDF for
+ example the minimum version of MAM referred to as 
 \family roman
 \series medium
 \shape up
@@ -7788,15 +7827,18 @@ phy, (c) someone would first want to see the overall representation of the
 \bar default
 \noun default
 \color inherit
- in Eq.
- 
+ (see Eq.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:min_average_distance"
 
 \end_inset
 
-.
+).
  
 \end_layout
 
@@ -7839,8 +7881,8 @@ status open
 \begin_layout Plain Layout
 A simple and vigorous strategy for handling short and long tracks together
  by picking a track of interest from one of our atlases.
- Colourmap here encodes track length.
- A: one picked selected atlas track, B: 
+ Colourmap encodes track length.
+ A: one selected atlas track, B: 
 \begin_inset Formula $245$
 \end_inset
 
@@ -7848,11 +7890,11 @@ A simple and vigorous strategy for handling short and long tracks together
 \begin_inset Formula $15$
 \end_inset
 
-mm (MDF distance), C: B tracks clustered in 
+ mm (MDF distance), C: B tracks clustered in 
 \begin_inset Formula $23$
 \end_inset
 
- skeletons, D: 
+ virtuals, D: 
 \begin_inset Formula $3421$
 \end_inset
 
@@ -7860,11 +7902,11 @@ mm (MDF distance), C: B tracks clustered in
 \begin_inset Formula $6$
 \end_inset
 
-mm (MAM distance) from the skeletons of B are shown.
- We can see that a great number of short tracks have been brought together
- along with the tracks in B.
+ mm (MAM distance) from the representatives of B are shown.
+ A great number of short tracks have been brought together along with the
+ tracks in B.
  In that way we managed to bring together an entire bundle consisting both
- of long and short fibers by just selecting one track.
+ of long and short fibres by just selecting one track.
 \end_layout
 
 \end_inset
@@ -7885,26 +7927,22 @@ name "Flo:arcuate_close"
 \end_layout
 
 \begin_layout Standard
-Here are some simple strategies for clustering short fibres.
+Some simple strategies for clustering short fibres are discussed.
  The first is for unsupervised clustering and the second one is for supervised
  learning.
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-Strategy 1
-\series default
-.
+1.
  Cluster the long tracks using QB with distance threshold at 
 \begin_inset Formula $10$
 \end_inset
 
-mm and then cluster the short tracks (<
+ mm and then cluster the short tracks (<
 \begin_inset Formula $100$
 \end_inset
 
-mm) to a lower threshold and assign them to their closest long track bundle
+ mm) to a lower threshold and assign them to their closest long track bundle
  from the first clustering using the 
 \begin_inset Formula $MAM_{min}$
 \end_inset
@@ -7929,11 +7967,7 @@ ELEF: If there is a track like that we want to know about it!
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-Strategy 2
-\series default
-.
+2.
  Read the tractography of a single subject,
 \change_deleted 0 1319745849
  
@@ -7945,21 +7979,15 @@ reference "sub:Atlases-made-easy"
 
 \end_inset
 
- and pick one or more close skeletal tracks from that atlas and then find
- the closest tracks from the subject to that selected track using 
-\begin_inset Formula $d_{df}$
+ and pick one or more representative tracks from that atlas.
+ Then, find the closest tracks from the subject to that selected tracks
+ using MDF.
+ Cluster the closest tracks found from the previous step and for each one
+ of these new skeletons find the closest tracks using 
+\begin_inset Formula $MAM_{min}$
 \end_inset
 
-,
-\change_deleted 0 1319745849
- 
-\change_unchanged
- cluster the closest tracks found from the previous step and for each one
- of these new skeletons find the closest tracks using the 
-\begin_inset Formula $m_{in}$
-\end_inset
-
-.
+ distance.
  We should now have an amalgamation of shorter and longer fibres in one
  cluster.
  
@@ -7967,37 +7995,45 @@ reference "sub:Atlases-made-easy"
 
 \begin_layout Standard
 An example of this second strategy is shown in Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:arcuate_close"
 
 \end_inset
 
-: (A) a track of interest from the arcuate fasciculus is selected from the
- tractographic atlas shown in Fig.
+.
+ First we selected a single track from Arcuate Fasciculus.
+ Next, we brought all tracks closer than 
+\begin_inset Formula $15$
+\end_inset
+
+ mm using the MDF distance.
+ Then, we cluster the last tracks to 
+\begin_inset Formula $23$
+\end_inset
+
+ virtuals using QB with 
+\begin_inset Formula $\theta=6.25$
+\end_inset
+
+ mm.
+ Finally, we bring all tracks with 
+\begin_inset Formula $6$
+\end_inset
+
+ mm (
+\begin_inset Formula $MAM_{min}$
+\end_inset
+
+ distance) from the entire tractography.
+ Using this simple strategy we were able to bring together from the entire
+ data set and with minimum effort a bundle that consists of many shorter
+ and longer tracks.
  
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Flo:CloseToSelected"
-
-\end_inset
-
-(top row-middle), (B) the tracks of the subject closer than 15mm (
-\begin_inset Formula $d_{df}$
-\end_inset
-
-) from the selected cluster are shown and clustered with a distance threshold
- of 
-\begin_inset Formula $6.25$
-\end_inset
-
-mm in (C), (D) from every skeleton track in C we find the closest tracks
- using the (
-\begin_inset Formula $m_{in}$
-\end_inset
-
-) distance from the entire tractography.
 \end_layout
 
 \begin_layout Subsection
@@ -8005,7 +8041,7 @@ Discussion and conclusion
 \end_layout
 
 \begin_layout Standard
-In this document we presented a novel and powerful algorithm 
+In this chapter we presented a novel and powerful algorithm 
 \begin_inset ERT
 status open
 
@@ -8029,8 +8065,8 @@ status open
 
 \begin_layout Standard
 In common with mainstream clustering algorithms such as k-means, k-centers
- and expectation maximization, QB is not a global clustering method therefore
- it can give different results under different initial conditions of the
+ and expectation maximization, QB is not a global clustering method.
+ It can give different results under different initial conditions of the
  data set when there is no obvious distance threshold which can separate
  the clusters in to meaningful bundles; for example we should expect different
  clusters under different permutations/orderings of the tracks in a densely
@@ -8050,7 +8086,7 @@ In common with mainstream clustering algorithms such as k-means, k-centers
 \end_layout
 
 \begin_layout Standard
-Furthermore the output of QB can become now input for another recent quick
+Furthermore, the output of QB can become input for another recent quick
  algorithm of quadratic time on average 
 \begin_inset Formula $O(M^{2})$
 \end_inset
@@ -8059,7 +8095,7 @@ Furthermore the output of QB can become now input for another recent quick
 \begin_inset Formula $M\ll N$
 \end_inset
 
- therefore the overall time stays linear on the number of tracks 
+ therefore, the overall time stays linear on the number of tracks 
 \begin_inset Formula $N$
 \end_inset
 
@@ -8084,8 +8120,8 @@ We saw that QB is a linear time clustering method based on track distances,
 \end_inset
 
  when every track is a singleton cluster itself.
- Therefore QB is the fastest known tractography clustering method and even
- real-time on tractographies with less than 
+ QB is the fastest known tractography clustering method and even real-time
+ on tractographies with less than 
 \begin_inset Formula $20,000$
 \end_inset
 
@@ -8094,9 +8130,9 @@ We saw that QB is a linear time clustering method based on track distances,
 \end_layout
 
 \begin_layout Standard
-QB is fully automatic and very robust as when we use it we can find good
- agreements even between different subjects and can be used to create tractograp
-hy atlases at high speed.
+QB is fully automatic and very robust.
+ It gives good agreements even between different subjects and can be used
+ to create tractography atlases at high speed.
  Additionally, it can be used to explore multiple tractographies and find
  correspondences between tractographies, create landmarks used for registration
  or population comparisons.
@@ -8107,7 +8143,7 @@ hy atlases at high speed.
 QB can be used as well for reducing the dimensionality of the data sets
  at the time of interaction; providing an alternative way to ROIs using
  BOIs (bundles of interest) or TOIs (tracks of interest).
- We also showed that it can be used to find 
+ We also showed it can be used to find 
 \begin_inset Quotes eld
 \end_inset
 
@@ -8116,8 +8152,8 @@ hidden
 \end_inset
 
  tracks not visible to the user at first instance.
- Therefore QB opens up the road to create a rapid tools for exploring tractograp
-hies of any size.
+ Therefore QB opens up the road to create rapid tools for exploring tractographi
+es of any size.
 \begin_inset Note Note
 status open
 
@@ -8180,7 +8216,7 @@ The clustering creates a book of bundles/clusters which have easily obtainable
  to form bundles out of clusters, and downwards disaggregation to split
  clusters into finer sub-clusters corresponding to a lower distance threshold.
  However, we did not touch this hierarchical extension of this algorithm
- here and mostly concentrate on one level amalgamations.
+ here and mostly concentrated on one level amalgamations.
 \end_layout
 
 \begin_layout Standard
@@ -8193,84 +8229,14 @@ We worked mostly with long tracks but strategies for short tracks or bundles
 \begin_layout Standard
 We showed results with simulated, single or multiple real subjects and the
  code for QuickBundles is freely available at 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-dipy.org
-\end_layout
-
+\begin_inset Formula $\texttt{dipy.org}$
 \end_inset
 
  in module 
-\begin_inset Formula $\texttt{dipy.segment.quick\_bundles}$
+\begin_inset Formula $\texttt{dipy.segment.quickbundles}$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ELEF: Further notes for discussion
-\end_layout
-
-\begin_layout Plain Layout
--No distance matrix
-\end_layout
-
-\begin_layout Plain Layout
--empirically average linear time on the #tracks
-\end_layout
-
-\begin_layout Plain Layout
--used for regist.
- /visual./landmarks/simplification
-\end_layout
-
-\begin_layout Plain Layout
--clinical relevance
-\end_layout
-
-\begin_layout Plain Layout
--simple concept
-\end_layout
-
-\begin_layout Plain Layout
--fast -> real time
-\end_layout
-
-\begin_layout Plain Layout
-- we haven't worked with hierarchies
-\end_layout
-
-\begin_layout Plain Layout
--bundles of interest (BOIs) seem more useful than ROIs
-\end_layout
-
-\begin_layout Plain Layout
-Further notes for complexity
-\end_layout
-
-\begin_layout Plain Layout
-O(N) best case (one cluster only)
-\end_layout
-
-\begin_layout Plain Layout
-O(MN) average case but with M usually much smaller than N that can empirically
- go similar to O(N)
-\end_layout
-
-\begin_layout Plain Layout
-O(N^2) worst case scenario (every track is a cluster - not used in practice)
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
