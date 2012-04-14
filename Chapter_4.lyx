@@ -6373,26 +6373,18 @@ Medical practitioners and neuroanatomists often argue that when they use
  Our method attacks this problem and suggests a very efficient and robust
  solution which sets the limit for unsupervised clustering of tractographies
  and facilitates tractography exploration and interpretation.
- The point here is that one can now use exemplar tracks as access points
- into the full tractography and with a single click on that exemplar track
- obtain the entire bundle.
- Therefore a super-bundle can be created just with with a few clicks based
+ One can now use exemplar tracks as access points into the full tractography
+ and with a single click on that exemplar track obtain the entire bundle.
+ Therefore, a super-bundle can be created just with with a few clicks, based
  on a selection from exemplar tracks.
  
 \end_layout
 
 \begin_layout Standard
-In order to create this system we implemented a 3D visualization/interaction
+In order to create this system we implemented a 3D visualization and interaction
  system for tractographies based on QB in Python and OpenGL.
  This project is available online at 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-fos.me
-\end_layout
-
+\begin_inset Formula $\texttt{fos.me}$
 \end_inset
 
 .
