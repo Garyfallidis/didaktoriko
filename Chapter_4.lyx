@@ -6402,18 +6402,26 @@ name "sub:Affinity-Propagation"
 \end_layout
 
 \begin_layout Standard
-Affinity propagation (AP) is a very recent 
+Affinity propagation (AP) is a recent 
 \begin_inset Formula $O(N^{2})$
 \end_inset
 
- clustering method invented by 
+ clustering method invented by Frey et al.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "frey2007clustering"
 
 \end_inset
 
-, 
+ and Dueck et al.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "dueck2009affinity"
@@ -6435,9 +6443,9 @@ key "pearl1988probabilistic"
  is a real data point (exemplar) as in k-medoids, and k-centres rather than
  an average virtual point as in k-means.
  AP starts by simultaneously considering all data points as potential exemplars.
- Every data point is a node in a network and AP recursively transmits real-value
-d messages along the edges of the network until a good set of exemplars
- and corresponding clusters emerges.
+ Each data point is a node in a network and AP recursively transmits real-valued
+ messages along the edges of the network until a good set of exemplars and
+ corresponding clusters emerges.
  
 \end_layout
 
@@ -6446,6 +6454,20 @@ d messages along the edges of the network until a good set of exemplars
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \noindent
@@ -6465,17 +6487,17 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Simple example of affinity propagation at work where it can precisely identify
- 4 different normal distributions with means 
-\begin_inset Formula $(1,1),\;(-1,-1),\:(1,-1),$
+Simple example of affinity propagation (AP) at work where it can precisely
+ identify 
+\begin_inset Formula $4$
 \end_inset
 
-
-\begin_inset Formula $(-2,2)$
+ different normal distributions with means 
+\begin_inset Formula $(1,1),\;(-1,-1),\:(1,-1),\,(-2,2)$
 \end_inset
 
  and standard deviation 
-\begin_inset Formula $.5$
+\begin_inset Formula $0.5$
 \end_inset
 
 .
@@ -6521,14 +6543,18 @@ AP takes as input a collection of similarities between data points, where
 \begin_inset Formula $S(i,k)=-||x_{i}-x_{k}||^{2}$
 \end_inset
 
- see Fig.
+ (see Fig.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Fig:AP_2d"
 
 \end_inset
 
- therefore 
+) therefore 
 \begin_inset Formula $S$
 \end_inset
 
@@ -6543,18 +6569,18 @@ reference "Fig:AP_2d"
 \end_inset
 
  are more likely to become exemplars.
- For, simplicity we can choose the 
+ For simplicity, we can choose the 
 \begin_inset Formula $median(S)$
 \end_inset
 
- as the common preference weight for all points; in this way we don't enforce
+ as the common preference weight for all points; in this way we do not enforce
  any 
 \emph on
 a priori
 \emph default
  information for one point to be an exemplar any more than any other point.
  For some applications this could be an appropriate requirement.
- There are two different messages exchanged between points (1) responsibilities
+ There are two different messages exchanged between points: (1) responsibilities
  
 \begin_inset Formula $R(i,k)=S(i,k)-{\displaystyle \max_{k':k'\neq k}}[S(i,k')+A(i,k')]$
 \end_inset
@@ -6572,7 +6598,7 @@ initially
 \begin_inset Formula $A(i,k)=0$
 \end_inset
 
- and then equal to:
+ and then equal to
 \end_layout
 
 \begin_layout Standard
@@ -6588,12 +6614,8 @@ initially
 
 \begin_layout Standard
 A very interesting fact is the way we get the final exemplars using AP.
- 
-\end_layout
-
-\begin_layout Standard
-After the messages have converged, there are two ways you can identify exemplars
-: 
+ After the messages have converged, there are two ways you can identify
+ exemplars: 
 \end_layout
 
 \begin_layout Enumerate
@@ -6609,7 +6631,8 @@ For data point
 \begin_inset Formula $i$
 \end_inset
 
- is an exemplar 
+ is an exemplar.
+ 
 \end_layout
 
 \begin_layout Enumerate
@@ -6672,13 +6695,18 @@ Therefore, the availabilities and responsibilities are added to identify
 \end_layout
 
 \begin_layout Standard
-Of course when we need to calculate distances between many points then the
- distance matrix becomes too big for the available memory.
+Of course, when we need to calculate distances between many points then
+ the distance matrix becomes too big for the available memory.
  In that case if we are lucky and the data sets are sparse then we can use
- AP on sparse matrices but if the data sets are not sparse as it is the
- case with tractographies then we need to reduce the dimensionality of the
- data sets and this why QB can be very handy.
+ AP on sparse matrices.
+ When the data sets are not sparse as it is the case with tractographies
+ then we need to reduce the dimensionality of the data sets and this is
+ why QB can be very handy.
  The complete algorithm for AP is given in Alg.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:AP"
@@ -6722,17 +6750,17 @@ textbf{Input} Similarity/affinity matrix $S$ where the diagonal elements
 
 
 \backslash
-textbf{Output} Clustering $CAP=
+textbf{Output} Clustering $CAP 
 \backslash
-{c_{o},...,c_{k},...,c_{|CAP|-1}
+leftarrow 
 \backslash
-}$, where a cluster $c=
+{c_{1},...,c_{k},...,c_{|CAP|}
 \backslash
-{I,
+}$, where a cluster $c 
 \backslash
-mathbf{e},N
+leftarrow (I,
 \backslash
-}$
+mathbf{e},N) $
 \backslash
 
 \backslash
@@ -6745,7 +6773,11 @@ $
 \backslash
 forall i,k:
 \backslash
-: A(i,k)=R(i,k)=0$
+: A(i,k)
+\backslash
+leftarrow R(i,k) 
+\backslash
+leftarrow 0$
 \backslash
 
 \backslash
@@ -6754,7 +6786,9 @@ forall i,k:
 
 \begin_layout Plain Layout
 
-$S=S+n$ 
+$S 
+\backslash
+leftarrow S+n$ 
 \backslash
 # remove degeneracies
 \backslash
@@ -6765,7 +6799,9 @@ $S=S+n$
 
 \begin_layout Plain Layout
 
-$d=0.5$ 
+$d 
+\backslash
+leftarrow 0.5$ 
 \backslash
 # set damping factor
 \backslash
@@ -6778,7 +6814,9 @@ $d=0.5$
 
 last
 \backslash
-_iter=$100$ 
+_iter $
+\backslash
+leftarrow$ $100$ 
 \backslash
 # last iteration 
 \backslash
@@ -6791,11 +6829,7 @@ _iter=$100$
 
 $
 \backslash
-textbf{For}$ iter $
-\backslash
-textbf{From}$ $1$ $
-\backslash
-textbf{To}$ last
+textbf{For}$ iter $=1$ to last
 \backslash
 _iter $
 \backslash
@@ -6810,7 +6844,9 @@ textbf{Do}$
 
 
 \backslash
-hspace*{2em} $R_{old}=R$
+hspace*{2em} $R_{old} 
+\backslash
+leftarrow R$
 \backslash
 
 \backslash
@@ -6825,7 +6861,9 @@ hspace*{2em} $
 \backslash
 forall i,k:
 \backslash
-: R(i,k)=S(i,k)-max_{k':k'
+: R(i,k) 
+\backslash
+leftarrow S(i,k)-max_{k':k'
 \backslash
 neq k}[S(i,k')+A(i,k')]$ 
 \backslash
@@ -6838,7 +6876,9 @@ neq k}[S(i,k')+A(i,k')]$
 
 
 \backslash
-hspace*{2em} $R=(1-d)R+d*R_{old}$ 
+hspace*{2em} $R 
+\backslash
+leftarrow (1-d)R+d*R_{old}$ 
 \backslash
 # dampen responsibilities 
 \backslash
@@ -6851,7 +6891,9 @@ hspace*{2em} $R=(1-d)R+d*R_{old}$
 
 
 \backslash
-hspace*{2em} $A_{old}=A$ 
+hspace*{2em} $A_{old} 
+\backslash
+leftarrow A$ 
 \backslash
 
 \backslash
@@ -6879,7 +6921,9 @@ hspace*{2em} $
 \backslash
 forall i,k:
 \backslash
-: A(i,k)=
+: A(i,k) 
+\backslash
+leftarrow 
 \backslash
 begin{cases} 
 \backslash
@@ -6938,7 +6982,9 @@ end{cases}$
 
 
 \backslash
-hspace*{2em} $A=(1-d)A+dA_{old}$ 
+hspace*{2em} $A 
+\backslash
+leftarrow (1-d)A+dA_{old}$ 
 \backslash
 # dampen availabilities 
 \backslash
@@ -6951,7 +6997,9 @@ hspace*{2em} $A=(1-d)A+dA_{old}$
 
 $
 \backslash
-forall i, I_{e}=argmax
+forall i, I_{e} 
+\backslash
+leftarrow argmax
 \backslash
 : S(i,I_{d})$ 
 \backslash
@@ -6964,7 +7012,9 @@ forall i, I_{e}=argmax
 
 \begin_layout Plain Layout
 
-$I_{e}(I_{d})=1:size
+$I_{e}(I_{d}) 
+\backslash
+leftarrow 1:size
 \backslash
 : (I_{d})$ 
 \backslash
@@ -6975,7 +7025,9 @@ $I_{e}(I_{d})=1:size
 
 \begin_layout Plain Layout
 
-$L=I_{d}(I_{e})$ 
+$L 
+\backslash
+leftarrow I_{d}(I_{e})$ 
 \backslash
 # assign labels 
 \backslash
@@ -6986,9 +7038,11 @@ $L=I_{d}(I_{e})$
 
 \begin_layout Plain Layout
 
-$C_{AP}=
+$C_{AP} 
 \backslash
-{c_{0},...,c_{k},...,c_{|C_{AP}|-1}
+leftarrow 
+\backslash
+{c_{0},...,c_{k},...,c_{|C_{AP}|}
 \backslash
 }$ 
 \backslash
@@ -7003,13 +7057,11 @@ $C_{AP}=
 
 
 \backslash
-# where a cluster $c=
+# where a cluster $c 
 \backslash
-{I,
+leftarrow (I,
 \backslash
-mathbf{e},N
-\backslash
-}$ holds the AP exemplars $
+mathbf{e},N)$ holds the AP exemplars $
 \backslash
 mathbf{e}$,
 \backslash
@@ -7109,7 +7161,7 @@ key "goh2006algebraic"
 \end_layout
 
 \begin_layout Standard
-The currently described methodologies on this subject are as follows.
+The current described methodologies on this subject are as follows.
  Leemans et al.
 \begin_inset space ~
 \end_inset
@@ -7127,15 +7179,15 @@ key "leemans2006multiscale"
 \begin_inset space ~
 \end_inset
 
-used iterative closest point applied to register pre-selected bundles (bundles
- of interest - BOI) 
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mayer2008bundles"
 
 \end_inset
 
-, 
+ used iterative closest point applied to register pre-selected bundles (bundles
+ of interest - BOI) , 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mayerdirect"
@@ -7143,7 +7195,7 @@ key "mayerdirect"
 \end_inset
 
  and extended it using probabilistic boosting tree classifiers for bundle
- segmentation in
+ segmentation in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mayer2011supervised"
@@ -7175,7 +7227,7 @@ key "zvitia2008adaptive"
 
 \end_inset
 
- 
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Zvitia2010"
@@ -7190,6 +7242,10 @@ ion for the entire set of fibres.
  The registration between two fibre sets was treated as the alignment of
  two GMMs and is performed by maximizing their correlation ratio.
  A further refinement was added using RANSAC
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "fischler1981random"
@@ -7202,6 +7258,10 @@ key "fischler1981random"
 
  affine parameters.
  Ziyan et al.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ZiyanMICCAI07"
@@ -7210,22 +7270,30 @@ key "ZiyanMICCAI07"
 
  developed a nonlinear registration algorithm based on the log-Euclidean
  polyaffine framework
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Arsigny2009"
 
 \end_inset
 
-; however this is not a direct tractography registration algorithm as they
- first create scalar volumes, therefore they do not try to register the
- tracks themselves in their space.
+.
+ However, we will not classify this approach as a direct tractography registrati
+on algorithm as the authors first created scalar volumes from the tracks
+ and next warped the volumes.
+ Therefore, they did not registered the tracks in a straight fashion in
+ their space.
  
 \end_layout
 
 \begin_layout Standard
 We now describe our algorithm and show that it is efficient and simple to
- use, completely automatic and provides an evidently robust direct rigid
- tractography registration algorithm available in seconds.
+ use.
+ In addition, it is completely automatic and provides an evidently robust
+ direct rigid tractography registration algorithm available in seconds.
  This algorithm could be of great use when comparing healthy versus severely
  diseased brains e.g.
  stroke or vegetative state patients when non-rigid registration is not
@@ -7248,6 +7316,7 @@ Here we describe a simple algorithm where
 \end_inset
 
  are brought into alignment in native space.
+ The main steps of this approach are:
 \end_layout
 
 \begin_layout Enumerate
@@ -7255,12 +7324,12 @@ All tracks with length smaller than
 \begin_inset Formula $100$
 \end_inset
 
-mm and longer than 
+ mm and longer than 
 \begin_inset Formula $300$
 \end_inset
 
-mm are removed from the data sets.
- This will reduce the size of tractography to about 
+ mm are removed from the data sets.
+ This reduces the size of tractography to about 
 \begin_inset Formula $1/4$
 \end_inset
 
@@ -7269,8 +7338,7 @@ mm are removed from the data sets.
 \end_inset
 
  tracks).
- (While all the subjects are adults, this filtering may have different effects
- depending on brain size.
+ (This filtering may have different effects depending on brain size.
  We have not investigated this question at present.)
 \end_layout
 
@@ -7289,7 +7357,7 @@ We run QB with distance threshold at
 \begin_inset Formula $10$
 \end_inset
 
-mm for both tractographies.
+ mm for both tractographies.
 \end_layout
 
 \begin_layout Enumerate
@@ -7297,8 +7365,8 @@ Collect all exemplar tracks from clusters containing more than
 \begin_inset Formula $0.2\%$
 \end_inset
 
- tracks.
- Let us assume we have these now in 
+ of total number of tracks.
+ Let us assume we have these in 
 \begin_inset Formula $E_{A}$
 \end_inset
 
@@ -7366,13 +7434,17 @@ key "fletcher1987practical"
 
 \begin_layout Standard
 In Fig.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:direct_registration"
 
 \end_inset
 
- A we see the result of this algorithm applied to two tractographies 
+A we see the result of this algorithm applied to two tractographies 
 \begin_inset ERT
 status open
 
@@ -7434,15 +7506,19 @@ key "roche1998correlation"
  of these two cost functions.
  We plotted both functions under a single-axis translation or a single-angle
  rotation of the same tractography as show in Fig.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:direct_registration"
 
 \end_inset
 
- B and C.
+B and C.
  From, these two diagrams we can see that although for translations only
- the SD was entirely convex, with rotations the SD had stronger local minima
+ the SD was entirely convex, with rotations, the SD had stronger local minima
  which is not a good property for registration.
  Furthermore, the SMD had steeper gradients towards the global minimum which
  is a positive indicator for faster convergence.
@@ -7465,14 +7541,22 @@ Experiments
 
 \change_unchanged
  times with range of all three angles from 
-\begin_inset Formula $-45$
+\begin_inset Formula $-45^{\circ}$
 \end_inset
 
- degrees to 
-\begin_inset Formula $45$
+ to 
+\begin_inset Formula $45^{\circ}$
 \end_inset
 
- and range of all x,y,z translations from 
+ and range of all x,
+\begin_inset space ~
+\end_inset
+
+y,
+\begin_inset space ~
+\end_inset
+
+z translations from 
 \begin_inset Formula $-113$
 \end_inset
 
@@ -7480,7 +7564,7 @@ Experiments
 \begin_inset Formula $113$
 \end_inset
 
-mm.
+ mm.
  Then we registered all transformed tractographies to the static one and
  calculated all pairwise MDF distances storing them in a square matrix 
 \begin_inset Formula $D$
@@ -7488,7 +7572,7 @@ mm.
 
 .
  We would expect that if the registration was correct then the sum of all
- diagonals elements of 
+ diagonal elements of 
 \begin_inset Formula $D$
 \end_inset
 
@@ -7508,7 +7592,7 @@ mm.
 \end_inset
 
  decimals.
- Consequently we chosed SMD as a better cost function for direct tractography
+ Consequently we chose SMD as a better cost function for direct tractography
  registration.
 \begin_inset Note Note
 status open
@@ -7538,7 +7622,7 @@ We used GQI-based tractographies from
 \end_inset
 
 .
- Comparing different tractographies is not a trivial problem however we
+ Comparing different tractographies is not a trivial problem however, we
  can use the bundle adjacency (BA) metric explained in section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7562,10 +7646,14 @@ reference "sub:Tightness-comparisons-1"
 \end_inset
 
  ,
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $p\leq10^{-13}$
 \end_inset
 
- ).
+).
  We are planning in the future to compare this registration method against
  other standard methods which are common in the literature.
 \begin_inset Note Note
@@ -7623,9 +7711,9 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-In panel A we see two tractographies from different subjects before (top)
- and after rigid registration (bottom) using our method.
- In panel B we see the metric 
+A: Two tractographies from different subjects before (top) and after rigid
+ registration (bottom) using our method.
+ In panel B: The metric 
 \begin_inset Formula $SMD$
 \end_inset
 
@@ -7633,12 +7721,13 @@ In panel A we see two tractographies from different subjects before (top)
  the second copy translated (above) and rotated (below).
  This metric appears to be smooth with a single global minimum and is only
  slightly non-convex with small local minima.
- In panel C another possible candidate metric 
+ C: Another possible candidate metric was the 
 \begin_inset Formula $SD$
 \end_inset
 
- is shown which although more convex on translations it was much more problemati
-c with rotations.
+.
+ Although more convex on translations it had stronger local minima with
+ rotations.
 \end_layout
 
 \end_inset
