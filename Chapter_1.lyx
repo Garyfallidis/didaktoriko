@@ -86,6 +86,10 @@ are you sure about the cortex? what exactly do you mean?
 
 -weighted reference images, and a collection of diffusion-weighted images
  (see Fig.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:three_slices"
@@ -144,7 +148,7 @@ key "margolis5nal"
 \emph on
 in vitro
 \emph default
- brains and they lack ease of repeatability.
+ brains and they lack ease of reproducibility.
  For non-human brains as for example in macaque there are even 
 \emph on
 in vivo
@@ -156,8 +160,8 @@ key "Tuch2005"
 
 \end_inset
 
- however these are not available or recommended for human studies because
- they are highly invasive.
+ however, these are not available or recommended for human studies as they
+ are highly invasive.
 \end_layout
 
 \begin_layout Standard
@@ -214,7 +218,7 @@ Should we say everywhere rather than fluids?
 \end_inset
 
  and accounts for a number of interesting phenomena; the dMRI signal measures
- the history of the random (Brownian) displacements of spin-labelled hydrogen
+ the history of random (Brownian) displacements of spin-labelled hydrogen
  protons (spins) resolved in the direction of a magnetic field gradient.
  Though the actual probability displacement function of the protons is unaffecte
 d by the presence or variation in the magnetic field, the cumulative phase
@@ -333,7 +337,7 @@ name "sub:Acquisition-sequences-in-use"
 
 \begin_layout Standard
 MRI data are collected by changing certain magnetic fields on and off in
- a prescribed sequence, known as pulse sequence
+ a prescribed sequence, known as pulse sequence 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "DiffMRIBook,MoriNeuron2006"
@@ -353,13 +357,13 @@ key "DiffMRIBook,MoriNeuron2006"
 \begin_inset Formula $B_{0}$
 \end_inset
 
- which is typically measured in tesla (
+ which is typically measured in Tesla (
 \begin_inset Formula $T$
 \end_inset
 
 ).
  A second magnetic field is applied for only a brief duration and oscillates
- at radio frequences; known as the RF pulse
+ at radio frequences; known as the RF pulse 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "moriBook"
@@ -415,7 +419,7 @@ RF pulses are used primarily for excitation and refocusing.
 \begin_inset Formula $T_{1}$
 \end_inset
 
-and 
+ and 
 \begin_inset Formula $T_{2}$
 \end_inset
 
@@ -433,7 +437,7 @@ key "mcrobbie2006mpp"
 .
  The generated magnetic field from the coherently precessing spins induces
  a current in the receiver coils; this current is the signal used to generate
- MR images and corresponds to the image brightness.
+ MR images and corresponds to image brightness.
  The more coherent the phase of the precessing spins the higher the brightness
  in the image pixels.
  However, with time, spins lose their phase coherence.
@@ -463,7 +467,7 @@ key "mcrobbie2006mpp"
  after the excitation pulse.
  The moment of spin coherence is called a spin echo and it realizes photons.
  Acquisition sequences which use a refocusing pulse are called spin echo
- pulse sequences; and gradient echo sequence otherwise.
+ pulse sequences; and gradient echo sequences otherwise.
 \end_layout
 
 \begin_layout Standard
@@ -511,22 +515,25 @@ key "Stejskal1965JChemPhys"
 \end_inset
 
  spin echo pair of RF pulses with one gradient before the second pulse and
- one equal gradient after the second pulse (see 
+ one equal gradient after the second pulse 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mcrobbie2006mpp"
 
 \end_inset
 
-, p329), see Fig.
- 
+ (see Fig.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:pgse"
 
 \end_inset
 
-.
+).
  The refocusing is perfect only when the spins do not move between the two
  pulses.
  The diffusion weighted contrast acts as an inverse 
@@ -598,9 +605,12 @@ key "Reese2003MRM"
  Every time the magnetic field gradients switch they generate currents that
  produce other smaller magnetic fields which disturb the spins.
  The TRSE sequence is an improvement on the PGSE.
- The improvement is made using another refocusing pulse surrounded by the
- inverse mirror of the previous diffusion gradients (see Fig.
- 
+ This improvement is achieved by the use of another refocusing pulse surrounded
+ by the inverse mirror of the previous diffusion gradients (see Fig.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:trse"
@@ -685,15 +695,17 @@ key "MAB04"
 
 .
  STEAM, is presented in Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:steam"
 
 \end_inset
 
- and works in the following way.
- Three 
+ and works in the following way: Three 
 \begin_inset Formula $90^{\circ}$
 \end_inset
 
@@ -807,12 +819,12 @@ name "Flo:steam"
 \lang english
 Using STEAM we were able to generate high quality datasets in nearly half
  the time per direction required with the standard DTI sequence.
- For example we were able to acquire 
+ We were able for example to acquire 
 \begin_inset Formula $102$
 \end_inset
 
  grid directions with maximum b-value 
-\begin_inset Formula $4000$
+\begin_inset Formula $4,000$
 \end_inset
 
  at about 
@@ -828,7 +840,7 @@ Using STEAM we were able to generate high quality datasets in nearly half
 \end_inset
 
  directions with 
-\begin_inset Formula $b_{\mathrm{max}}=1200$
+\begin_inset Formula $b_{\mathrm{max}}=1,200$
 \end_inset
 
 .
@@ -836,18 +848,23 @@ Using STEAM we were able to generate high quality datasets in nearly half
 \end_layout
 
 \begin_layout Subsection
+Single gradient signal models
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Diffusion-Maths"
 
 \end_inset
 
-Single gradient signal models
+
 \end_layout
 
 \begin_layout Standard
-Under the Brownian motion assumption the diffusion signal strength is described
+Under the Brownian motion assumption, the diffusion signal strength is described
  by the following model known as the Stejskal-Tanner
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Stejskal1965JChemPhys"
@@ -863,11 +880,23 @@ S_{b}=S_{0}e^{-bD}\label{eq:mono-exponential}\end{equation}
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
-where 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+ where 
 \begin_inset Formula $S_{0}$
 \end_inset
 
@@ -879,17 +908,14 @@ where
 \begin_inset Formula $b$
 \end_inset
 
- the crucial experimental diffusion weighting parameter or 
-\begin_inset Formula $b$
-\end_inset
-
--value which summarises the amount of diffusion sensitising gradient history.
+ is the b-value; the crucial experimental diffusion weighting parameter
+ which summarises the amount of diffusion sensitising gradient history.
  
 \begin_inset Formula $D$
 \end_inset
 
- is often referred as the diffusivity value or apparent diffusivity coefficient
- (ADC).
+ is often referred to as the diffusivity value or apparent diffusivity coefficie
+nt (ADC).
  The units of 
 \begin_inset Formula $D$
 \end_inset
@@ -903,11 +929,7 @@ where
 \end_inset
 
 
-\begin_inset Formula $D\approx$
-\end_inset
-
-
-\begin_inset Formula $3\cdot10^{-3}$
+\begin_inset Formula $D\approx3\cdot10^{-3}$
 \end_inset
 
 
@@ -922,7 +944,7 @@ where
 \begin_inset Formula $\mathrm{mm^{2}}$
 \end_inset
 
-, typically in the range 
+, typically in the range of 
 \begin_inset Formula $0$
 \end_inset
 
@@ -962,7 +984,7 @@ key "Canales-Rodriguez2009"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "WWS+08"
@@ -971,7 +993,10 @@ key "WWS+08"
 
 .
  In Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Fig: signals"
@@ -980,18 +1005,19 @@ reference "Fig: signals"
 
  we see the signal decay for different b-values and specific diffusivities.
  The obvious conclusion here is that signal in areas with high diffusivity,
- as in the corticospinal fluid (CSF) were water persists, will be always
+ as in the corticospinal fluid (CSF) where water persists, will always be
  lower than the signal from areas of lower diffusivity as those found in
  fibrous brain structures, as the corpus callosum.
- Furthermore, there is least diffusivity and least signal loss when the
- gradient direction is into the wall of a fibre; along the fibre has greater
- diffusivity and greater signal loss; free water has greatest diffusivity
- and greatest signal loss.
+ Furthermore, there is lowest diffusivity and lowest signal loss when the
+ gradient direction is into the wall of a fibre; along the fibre has highest
+ diffusivity and highest signal loss.
+ Free water has uniform diffusivity and uniform signal loss towards all
+ gradient directions.
  Signal decreases exponentially with 
 \begin_inset Formula $b$
 \end_inset
 
-; Finally we can see that the 
+; Finally, we can see that the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1076,9 +1102,9 @@ The b-value
 \emph on
 diffusion weighting
 \emph default
- is a function of the strength, duration and temporal spacing and timing
- parameters of the specific paradigm.
- This function is derived from the Bloch-Torrey equations
+ is a function of the strength, duration, temporal spacing and timing parameters
+ of the specific paradigm.
+ This function is derived from the Bloch-Torrey equations 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Callaghan1991OUP"
@@ -1087,7 +1113,7 @@ key "Callaghan1991OUP"
 
 .
  In the case of the classical Stejskal-Tanner pulsed gradient spin-echo
- (PGSE) sequence (described further in 
+ (PGSE) sequence (see section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Acquisition-sequences-in-use"
@@ -1103,7 +1129,20 @@ b=\gamma^{2}G^{2}\delta^{2}\left(\Delta-\frac{\delta}{3}\right),\]
 
 \end_inset
 
-where 
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+ where 
 \begin_inset Formula $\gamma$
 \end_inset
 
@@ -1130,7 +1169,7 @@ where
 
 \begin_layout Standard
 Although the PGSE is useful for expository clarity, in reality as indicated
- in 
+ in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Acquisition-sequences-in-use"
@@ -1158,11 +1197,14 @@ key "Auerbach2004ISMRM"
 \end_layout
 
 \begin_layout Standard
-An important point to stress here is that we can control the size of b-values
- by changing the strength and timings of the gradient pulses, and that depending
- on the b-value, we can expect different amount of signal loss.
+An important point is that we can control the size of b-values by changing
+ the strength and timings of the gradient pulses, and that depending on
+ the b-value, we can expect different amount of signal loss.
  In Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig: directional"
@@ -1170,16 +1212,16 @@ reference "fig: directional"
 \end_inset
 
  we see the directional dependence of the simulated signal of a single fibre
- oriented at °  for two b-values.
- Note the important features that the signal is lower in the direction of
- the fibre and at higher b-value.
+ oriented at 0°  for two b-values.
+ Note that the signal is lowest in the direction of the fibre both at high
+ and low b-values.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -1240,7 +1282,11 @@ name "fig: directional"
 \end_layout
 
 \begin_layout Standard
-In eq.
+In Eq.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:mono-exponential"
@@ -1257,6 +1303,10 @@ reference "eq:mono-exponential"
 -values and more complicated models have been proposed in order to deal
  with this issue.
  One of these, is the multi-exponential model used by Ozarslan et al.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ozarslan2006resolution"
@@ -1264,19 +1314,25 @@ key "ozarslan2006resolution"
 \end_inset
 
  which is expressed as 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula \begin{equation}
 S_{b}=S_{0}\sum_{i}^{N}f_{i}e^{-bD_{i}}\label{eq:multi-exponential}\end{equation}
 
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
 \end_layout
 
-\begin_layout Standard
-where 
+\end_inset
+
+ where 
 \begin_inset Formula $N$
 \end_inset
 
@@ -1303,6 +1359,10 @@ where
 \begin_layout Standard
 Another model of higher order is found in diffusion kurtosis imaging (DKI)
  proposed by Jensen et al.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "jensen2005diffusional"
@@ -1310,19 +1370,25 @@ key "jensen2005diffusional"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula \begin{equation}
 \ln(S_{b})=\ln(S_{0})-bD+\frac{1}{6}b^{2}D^{2}K+O(b^{3})\label{eq:kurtosis}\end{equation}
 
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
 \end_layout
 
-\begin_layout Standard
-where 
+\end_inset
+
+ where 
 \begin_inset Formula $K$
 \end_inset
 
@@ -1332,7 +1398,10 @@ where
 
 \begin_layout Standard
 By putting together these single gradient models (Eq.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:mono-exponential"
@@ -1340,6 +1409,10 @@ reference "eq:mono-exponential"
 \end_inset
 
 ,
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:multi-exponential"
@@ -1347,6 +1420,10 @@ reference "eq:multi-exponential"
 \end_inset
 
 ,
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:kurtosis"
@@ -1355,9 +1432,9 @@ reference "eq:kurtosis"
 
 ) for every gradient direction we can create systems of equations where
  we can fit and identify their unknown parameters.
- In this thesis we will try to avoid fitting in that way but we will try
- to reconstruct the signal in an non-parametric Fourier-analysis based approach
- using the combined information from many gradient directions.
+ In this thesis, we will try to avoid fitting.
+ We will try to reconstruct the signal in an non-parametric Fourier-analysis
+ based approach using the combined information from many gradient directions.
 \begin_inset Note Note
 status collapsed
 
