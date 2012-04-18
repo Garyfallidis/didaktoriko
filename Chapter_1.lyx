@@ -2053,7 +2053,7 @@ Reference?
 \begin_layout Standard
 A 
 \emph on
-q-space 3D grid (volume)
+q-space 3D Cartesian grid
 \emph default
  method is an acquisition method that is more easily thought of as a collection
  of points regularly distributed through a region in q-space.
@@ -2084,9 +2084,9 @@ reference "sec:Cartesian-Lattice-Q-space"
 
 \end_inset
 
- we will concentrate more on q-space grid methods and propose a new reconstructi
-on method which we call DNI (Diffusion Nabla Imaging) which also uses q-space
- grid data.
+ we will concentrate more on q-space Cartesian grid methods and propose
+ a new reconstruction method which we call DNI (Diffusion Nabla Imaging)
+ which also uses q-space Cartesian grid data sets.
 \end_layout
 
 \begin_layout Subsection
