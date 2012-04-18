@@ -1433,8 +1433,9 @@ reference "eq:kurtosis"
 ) for every gradient direction we can create systems of equations where
  we can fit and identify their unknown parameters.
  In this thesis, we will try to avoid fitting.
- We will try to reconstruct the signal in an non-parametric Fourier-analysis
- based approach using the combined information from many gradient directions.
+ We will concentrate on reconstructing the diffusion signal in an non-parametric
+ Fourier-based approach using the combined information from many gradient
+ directions.
 \begin_inset Note Note
 status collapsed
 
@@ -1460,7 +1461,11 @@ name "sub:Q-space-reconstruction"
 \end_layout
 
 \begin_layout Standard
-Bloch and Torrey 
+Bloch and Torrey
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "torrey1956bed"
@@ -1468,7 +1473,11 @@ key "torrey1956bed"
 \end_inset
 
  established differential equations governing MR diffusion in non-isotropic
- magnetic fields by analogy with Fick's Laws 
+ magnetic fields by analogy with Fick's Laws
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "einstein1956itb"
@@ -1477,14 +1486,18 @@ key "einstein1956itb"
 
  for spontaneous dispersion along concentration gradients of inhomogeneous
  substances.
- Callaghan 
+ Callaghan
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Callaghan1991OUP"
 
 \end_inset
 
- also showed how these bulk properties could be derived by statistical methods
+ showed how these bulk properties can be derived by statistical methods
  from the collective spin histories of individual protons.
  When a molecule is at position 
 \begin_inset Formula $x_{0}$
@@ -1526,7 +1539,11 @@ key "Stejskal1965JChemPhys"
 \begin_inset Formula $S(\mathbf{q},t)$
 \end_inset
 
- from a pulsed gradient spin echo (PGSE) experiment (see 
+ from a pulsed gradient spin echo (PGSE) experiment (see section
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Acquisition-sequences-in-use"
@@ -1544,10 +1561,19 @@ S(\mathbf{q},t)=S_{0}\int P(\mathbf{r},t)e^{i\mathbf{q}\cdot\mathbf{r}}d\mathbf{
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
 \end_layout
 
-\begin_layout Standard
-where 
+\end_inset
+
+ where 
 \begin_inset Formula $S_{0}$
 \end_inset
 
@@ -1572,13 +1598,13 @@ where
 \begin_inset Formula $\mathbf{q}$
 \end_inset
 
- is the spin displacement wave vector, related to the applied magnetic gradient
+ is the spin displacement wave vector.
  
-\begin_inset Formula $\mathbf{g}$
+\begin_inset Formula $\mathbf{q}$
 \end_inset
 
- by the formula 
-\begin_inset Formula $\mathbf{q}=(2\pi)^{-1}\gamma\delta\mathbf{g}$
+ is parallel with the applied magnetic gradient 
+\begin_inset Formula $\mathbf{g}$
 \end_inset
 
 .
@@ -1590,9 +1616,12 @@ where
  by measuring the signal in a number of different directions and gradient
  magnitudes.
  Q-space imaging (QSI) and Diffusion Spectrum Imaging (DSI) are the best
- known methods which try to reconstruct the full diffusion propagator in
- that way.
- In eq.
+ known methods which reconstruct the diffusion propagator in that way.
+ In Eq.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:fourier"
@@ -1604,7 +1633,11 @@ reference "eq:fourier"
 \end_inset
 
  in a later chapter we will see a more general interpretation of this relationsh
-ip (see eq.
+ip (see Eq.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:kq"
@@ -1621,7 +1654,11 @@ Q-space is the space defined by the coordinates of the 3D spin displacement
 \begin_inset Formula $\mathbf{q}$
 \end_inset
 
- as shown in equation 
+ as shown in Eq.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:fourier"
@@ -1662,11 +1699,12 @@ key "lenglet2009mathematical"
 \begin_inset Formula $g$
 \end_inset
 
- of the gradient field, We actually have 
+ of the gradient field.
+ We have also 
 \begin_inset Formula $\mathbf{q}=k\sqrt{b}\mathbf{\hat{g}}$
 \end_inset
 
- where 
+, where 
 \begin_inset Formula $b$
 \end_inset
 
@@ -1678,11 +1716,7 @@ key "lenglet2009mathematical"
 
 
 \series default
- is the unit gradient direction 
-\begin_inset Formula $\mathbf{g}\mathbf{/|}\mathbf{g}\mathbf{|}$
-\end_inset
-
-, and 
+ is the unit gradient direction, and 
 \begin_inset Formula $k$
 \end_inset
 
@@ -1714,21 +1748,37 @@ Every single point in q-space corresponds to a possible diffusion weighted
  acquisition i.e.
  a 3D brain volume of measured signal for a specific gradient direction
  and strength (see Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "Fig:q-space"
+reference "Flo:qspace"
 
 \end_inset
 
 ).
- Therefore if for example we have programmed the scanner to apply 60 gradient
- directions then our data should have 60 diffusion volumes with each volume
- obtained for a specific gradient.
+ If for example we have programmed the scanner to apply 
+\begin_inset Formula $60$
+\end_inset
+
+ gradient directions then our data should have 
+\begin_inset Formula $60$
+\end_inset
+
+ diffusion volumes with each volume obtained for a specific gradient.
  A Diffusion Weighted Image (DWI) is the volume acquired from only one direction
  gradient.
- Hence, in the previous example we would gather 60 DWI volumes corresponding
- to 60 locations (
+ Hence, in the previous example we would gather 
+\begin_inset Formula $60$
+\end_inset
+
+ DWI volumes corresponding to 
+\begin_inset Formula $60$
+\end_inset
+
+ locations (
 \begin_inset Formula $\mathbf{q}$
 \end_inset
 
@@ -1763,11 +1813,8 @@ key "Callaghan1991OUP"
 \begin_inset Formula $\mathbf{r}$
 \end_inset
 
-, just as in conventional MRI 
-\begin_inset Formula $\mathbf{k}$
-\end_inset
-
- space is the reciprocal parametrisation of the brain space vector 
+, just as in conventional MRI k-space is the reciprocal parametrisation
+ of the space of voxel position 
 \series bold
 
 \begin_inset Formula $\mathbf{v}$
@@ -1841,15 +1888,18 @@ status open
 
 \lang english
 One volume is collected for every sampling point in q-space.
- Picture from Hagmann et al.
- 
+ Picture adapted from Hagmann et al.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Hagmann2006Radiographics"
 
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
@@ -1918,9 +1968,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-A (Upper Left): DSI 604 directions, B (Upper Right): HARDI 65 directions,
- C (Lower Left): HARDI with 2 shells of 65 directions in each shell, D (Lower
- Right): QBI 515 directions
+A: DSI 604 directions, B: HARDI 65 directions, C: HARDI with 2 shells of
+ 65 directions in each shell, D: QBI 515 directions.
 \end_layout
 
 \end_inset
@@ -1949,7 +1998,7 @@ We refer to a method as a
 q-space spherical shell
 \emph default
  method if it is an acquisition method using a collection of points in q-space
- that can be thought of as being on a curved surface, typically a sphere.
+ that can be thought of as lying on a sphere.
  Examples include techniques referred to as HARDI (High Angular Diffusion
  Imaging), Q-ball Imaging and HYDI (Hybrid Diffusion Imaging)
 \begin_inset Note Note
@@ -1963,7 +2012,10 @@ References?
 
 .
  A q-space shell method might involve a  single shell (Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Fig:q-space"
@@ -1991,10 +2043,10 @@ Reference?
 \end_inset
 
 .
- In clinical settings where we can only use a few directions (less than
- 60 with minimum 6) it is recommended to use the SDT (simple diffusion tensor)
- reconstruction model which is relatively easy to fit as it has only a few
- parameters.
+ In clinical settings, where we can only use a few directions (less than
+ 60 with minimum 6) it is recommended to use the SDT (Single Diffusion Tensor
+ also known as DTI) reconstruction model which is relatively easy to fit
+ as it has only a few parameters.
  
 \end_layout
 
@@ -2006,7 +2058,10 @@ q-space 3D grid (volume)
  method is an acquisition method that is more easily thought of as a collection
  of points regularly distributed through a region in q-space.
  The characteristic example is DSI (diffusion spectrum imaging) (Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Fig:q-space"
@@ -2014,11 +2069,7 @@ reference "Fig:q-space"
 \end_inset
 
 A).
- and QSI (
-\begin_inset Formula $\mathbf{q}-$
-\end_inset
-
-space imaging)
+ and QSI (Q-Space Imaging)
 \begin_inset CommandInset citation
 LatexCommand cite
 key "king1994q,Callaghan1991OUP"
@@ -2029,7 +2080,7 @@ key "king1994q,Callaghan1991OUP"
  In chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Grid-based-Q-space-Reconstructions"
+reference "sec:Cartesian-Lattice-Q-space"
 
 \end_inset
 

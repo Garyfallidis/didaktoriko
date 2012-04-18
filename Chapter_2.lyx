@@ -52,6 +52,13 @@
 
 \begin_layout Section
 Cartesian Lattice Q-space Reconstructions
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Cartesian-Lattice-Q-space"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -7850,12 +7857,9 @@ Finally, we showed that the first component of QA (highest QA value) can
 \begin_layout Standard
 The source code for all the methods analyzed in this chapter is available
  at 
-
 \begin_inset Formula $\texttt{dipy.org}$
 \end_inset
 
-
-\lang english
  under module 
 \begin_inset Formula $\texttt{dipy.reconst}$
 \end_inset
