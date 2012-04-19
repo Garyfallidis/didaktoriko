@@ -2867,9 +2867,12 @@ status open
 \begin_layout Plain Layout
 
 \lang english
-Deterministic whole brain tractography based on EuDX and generated using
- 
+Deterministic whole brain tractography based on EuDX, generated using 
 \begin_inset Formula $\texttt{DIPY}$
+\end_inset
+
+ and visualised using 
+\begin_inset Formula $\texttt{FOS}$
 \end_inset
 
 .
@@ -4008,7 +4011,10 @@ The goal of the methods described in this thesis is to automatically ﬁnd
 The white matter contains pathways known as ﬁbre tracts that connect functional
  areas of the brain.
  A diagram of commonly found ﬁbre tracts is sketched in Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:association_fibers"
@@ -4016,7 +4022,10 @@ reference "Flo:association_fibers"
 \end_inset
 
  and real fibre tracts are shown in Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:real_brain"
@@ -4025,7 +4034,7 @@ reference "Flo:real_brain"
 
 .
  The white matter contains three types of ﬁbre tracts: commissural, association,
- and projection
+ and projection 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "o2006cerebral"
@@ -4048,7 +4057,10 @@ key "o2006cerebral"
 
 \lang english
 A major issue with white matter is that it is particularly dense (see Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:real_brain"
@@ -4058,7 +4070,10 @@ reference "Flo:real_brain"
 ) i.e.
  the boundaries between different tracts are very difficult to distinguish,
  many bundles cross or touch other bundles (see Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:association_fibers"
@@ -4111,7 +4126,7 @@ key "gray_anatomy"
 
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
@@ -4141,14 +4156,25 @@ name "Flo:association_fibers"
 \lang english
 Previously it was not possible to automatically create white matter models
  similar to these anatomical atlas diagrams of ﬁbre tracts in vivo.
- However, methods are now available to estimate white matter ﬁbre trajectories
+ However, methods are now available to estimate white matter ﬁbre tracts
  using diﬀusion MRI.
  In this thesis we present a method for segmentation of the trajectories
  estimated from diﬀusion MRI by automatically grouping them into anatomical
  regions or to be more accurate regions of similar proximity and shape character
 istics.
- This is the main topic of chapter 4 where we propose QuickBundles an extremely
- efficient algorithm for tractography segmentation.
+ This is the main topic of chapter 
+\lang british
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Highly-Efficient-Tractography"
+
+\end_inset
+
+
+\lang english
+ where we propose QuickBundles a highly efficient algorithm for tractography
+ segmentation.
 \end_layout
 
 \begin_layout Standard
@@ -4237,7 +4263,31 @@ key "o2006cerebral"
  matter ﬁbre tracts has applications in neuroanatomical visualization, neurosurg
 ical planning, and neuroscientiﬁc studies of white matter integrity, structure,
  and variability.
- 
+ An example of a segmentation is shown in Fig.
+\begin_inset space ~
+\end_inset
+
+
+\lang british
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:PBC_labels"
+
+\end_inset
+
+.
+ The data set and labels using in this figure are from 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+braincompetition.org
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -4272,16 +4322,12 @@ status open
 \lang english
 An example of a tractography segmentation based on labeling provided by
  a neuroanatomist.
- A major project of this thesis is to automatically find the labels or simplify
- the work of an expert by clustering tractographies.
+ An important aim of this thesis is to automatically find the labels or
+ simplify the work of an expert by clustering tractographies.
  CST: Corticospinal Tract, FX: Fornix, CG: Cingulum Bundle, SLF: Superior
  Longitudinal Fasciculus, ARC: Arcuate Fasciculus, IOF: Inferior Occipitofrontal
  Fasciculus, CC-FM: Corpus Callosum Forceps Major, UNC: Uncinate Fasciculus.
- Data and labels are from 
-\begin_inset Formula $\texttt{braincompetition.org}$
-\end_inset
-
-.
+ 
 \end_layout
 
 \end_inset
@@ -4329,7 +4375,7 @@ In the next chapters we will use the following definitions.
 
 .
  For an anatomical (physical) bundle (tract) e.g.
- arcuate fasciculus we use 
+ Arcuate Fasciculus we use 
 \begin_inset Formula $\upsilon$
 \end_inset
 
