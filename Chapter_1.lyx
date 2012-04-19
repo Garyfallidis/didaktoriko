@@ -2535,10 +2535,12 @@ name "sub:Tractography"
 \end_layout
 
 \begin_layout Standard
+Tractography algorithms integrate local estimates of diffusion direction.
 
 \lang english
-Once we know the orientation of fibres at every voxel, we can try to join
- these directions up to reconstruct complete tracks and hence brain connections.
+ Once we know the orientation of fibres at every voxel, we can join these
+ directions up to reconstruct complete tracks and hence approximate anatomical
+ tracts.
  In its simplest form, this consists of starting at a seed location and
  following the preferred direction until we reach a new voxel.
  We can then change to this voxel's referred direction and carry on until
@@ -2558,42 +2560,23 @@ reference "Flo:tensortrack"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-Tractography algorithms effectively reconstruct the paths in the brain,
- along which water diffusion is least hindered (Behrens and Jbabdi, 2009).
- In the case ofWM,molecu- les are more hindered in a systematic way by the
- axonal membranes and the myelin sheaths (Beaulieu, 2002).
- They will, thus, diffuse along rather than across the neuronal axons.
- This preferred diffusion directionality can indirectly infer geometrical
- features of the underlying axonal bundles.
- Therefore, tractography methods provide informa- tion on the route of group
- of axons, rather than on individual axonal processes (note that individual
- subcortical axons have a diameter in the order of a few µm, while the DWimaging
- resolution is in the order of 2 mm).
-\end_layout
-
+The two best known families of track propagation (also known as track integratio
+n, tracking or tractography) algorithms are: deterministic
+\begin_inset space ~
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-The two best known families of track propagation algorithms are: deterministic
- 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "CLC+99,MCC+99"
 
 \end_inset
 
- and probabilistic 
+ and probabilistic
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Behrens2007NeuroImage"
@@ -2604,9 +2587,13 @@ key "Behrens2007NeuroImage"
  A track propagation algorithm belongs to the probabilistic domain if the
  fibre model that is being used incorporates uncertainty i.e.
  errors in estimating the orientation of the fibre at every voxel.
- If it does not assume any uncertainty along the path of the track then
- it is deterministic.
- In chapter 
+ In the case it does not assume any uncertainty along the path of the track
+ then it belongs to the deterministic domain.
+ In chapter
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Euler-Delta-Crossings"
@@ -2615,6 +2602,10 @@ reference "sec:Euler-Delta-Crossings"
 
  we will give a short overview of many other track propagation methods including
  global tractography
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Kreher2008ISMRM"
@@ -2714,12 +2705,30 @@ reference "fig:FACTvsEuDX"
 
 ).
  The FACT algorithm starts through the input of an arbitrary point in the
- volume and then propagates in both directions e.g.
- forward and backwards.
- Perhaps the most interesting part with these tracking methods is how they
- decide when to stop tracking.
- FACT uses a single threshold variable 
-\begin_inset Formula $R={\displaystyle \sum_{i}^{s}\sum_{j}^{s}|\mathbf{e}_{i}\cdot\mathbf{e}_{j}|/s(s-1)}$
+ volume and then propagates in both directions i.e.
+ forward and backward.
+ Perhaps the most interesting part with these tracking methods is the way
+ which they decide when to stop tracking.
+ FACT uses a single threshold variable
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+R={\displaystyle \sum_{i}^{s}\sum_{j}^{s}|\mathbf{e}_{i}\cdot\mathbf{e}_{j}|/s(s-1)}\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
 \end_inset
 
  where 
@@ -2739,7 +2748,7 @@ reference "fig:FACTvsEuDX"
 \begin_inset Formula $\mathbf{e}$
 \end_inset
 
- is the eigenvector corresponding to the largest eigenvalue in each voxel.
+ is the eigenvector corresponding to the highest eigenvalue in each voxel.
 
 \family default
 \series default
@@ -2800,8 +2809,9 @@ reference "fig:FACTvsEuDX"
 \bar default
 \noun default
 \color inherit
- An important problem with FACT is that it fails to track axons deviating
- from major pathways where it only tracks one of the major branches.
+ An important problem with FACT is that it fails to track in crossing areas.
+ In this case, it only tracks one of the major pathways of the crossing
+ area .
 \begin_inset Note Note
 status open
 
@@ -2858,12 +2868,12 @@ status open
 
 \lang english
 Deterministic whole brain tractography based on EuDX and generated using
- Diffusion Imaging in Python (
-\emph on
-www.dipy.org
-\emph default
-).
- The color encodes the orientation of the mid-segment of every track using
+ 
+\begin_inset Formula $\texttt{DIPY}$
+\end_inset
+
+.
+ The colour encodes the orientation of the mid-segment of every track using
  a colourmap based on Boy's real projective plane immersion 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2912,10 +2922,11 @@ key "BPP+00"
 
 \end_inset
 
- assuming again a continuous vector field but now the track is propagated
- by the solution of a system of differential equations subject to an initial
- condition, the position of the seed point.
- Here the authors propose that a fibre can be represented by a 3D curve
+.
+ The authors made the assumption of a continuous vector field where the
+ track is propagated by the solution of a system of differential equations
+ subject to an initial condition, the position of the seed point.
+ Here the authors propose that a track can be represented by a 3D curve
  
 \begin_inset Formula $\mathbf{r}$
 \end_inset
@@ -2925,20 +2936,26 @@ key "BPP+00"
 \end_inset
 
  of the track.
- The iterative solution of the equation
-\end_layout
-
-\begin_layout Standard
+ This is provided by the iterative solution of the differential equation
 \begin_inset Formula \begin{equation}
 d\mathbf{r}(s)/ds=\mathbf{e}(\bm{r}(s))\end{equation}
 
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
 \end_layout
 
-\begin_layout Standard
-where 
+\end_inset
+
+ where 
 \series bold
 
 \begin_inset Formula $\bm{e}$
@@ -2947,7 +2964,7 @@ where
 
 \series default
  is the primary direction of the Tensor or a different model.
- The solution of this system of ordinary differential equations (ODE) in
+ The solution of this system of Ordinary Differential Equations (ODE) in
  its simplest case is given by iterative methods like Euler integration
  bound to an initial condition 
 \begin_inset Formula $\bm{r}(0)=\bm{r}_{0}$
@@ -2957,7 +2974,7 @@ where
 \begin_inset Formula $\bm{r}_{0}$
 \end_inset
 
-is the seed point.
+ is the seed point
 \end_layout
 
 \begin_layout Standard
@@ -2967,16 +2984,29 @@ is the seed point.
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
 \end_layout
 
-\begin_layout Standard
-where 
+\end_inset
+
+ where 
 \begin_inset Formula $0<\alpha\leq1$
 \end_inset
 
  defines the integration finite step.
- In Euler integration we areusing the first two terms of the Taylor expansion.
+ In Euler integration we are using the first two terms of the Taylor expansion.
  Conturo et al.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "CLC+99"
@@ -2984,7 +3014,10 @@ key "CLC+99"
 \end_inset
 
  used Euler integration and Basser et al.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "BPP+00"
@@ -3025,31 +3058,23 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-FACT (left) uses propagates with different steps indicated by the entering
- point on each voxel.
- Other deterministic methods use static steps.
- In that case interpolation is necessary.
- For example in EuDX (right) trilinear interpolation is used.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
- (Picture modified by Stamatopoulos thesis)
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-With Euler or R-K intergration interpolation is needed.
-\end_layout
-
+Left: FACT propagates with different steps indicated by the entering point
+ on each voxel.
+ Right: Other deterministic methods use constant steps.
+ In this case interpolation of the neighbouring directions is necessary.
+ For example in EuDX trilinear interpolation is used.
+ Picture adapted from Stamatopoulos
+\begin_inset space ~
 \end_inset
 
 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sotiropoulos2010processing"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -3074,6 +3099,10 @@ name "fig:FACTvsEuDX"
 
 \begin_layout Standard
 Wedeen et al.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "WWS+08"
@@ -3105,11 +3134,12 @@ key "WWS+08"
 \bar default
 \noun default
 \color inherit
- The authors suggests that diffusion MRI with sufficient signal to noise
+ The authors suggest that diffusion MRI with sufficient signal to noise
  ratio (SNR) could make tractography a mathematically well-posed problem.
- However, we need much more scanning time to reach the necessary resolution
- which is often impractical.
- Our novel tractography algorithm EuDX is presented in chapter 
+ However, much longer scanning time is needed in order to reach the necessary
+ resolution and this is often impractical.
+ Our novel tractography algorithm (EuDX) belongs in the deterministic domain
+ and it is presented in chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Euler-Delta-Crossings"
@@ -3117,47 +3147,33 @@ reference "sec:Euler-Delta-Crossings"
 \end_inset
 
  (see Fig.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:Dipytracks"
 
 \end_inset
 
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:FACTvsEuDX"
+
+\end_inset
+
 ).
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Perhaps you should talk me through this paragraph?
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Conturo might need referencing.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 In summary, the deterministic algorithms propagate tracks by making a series
  of discrete locally optimum decisions.
  These are fast, simple and easy to interpret.
- Usually, we depict them using streamlines.
- A streamline is a curve that is always tangent to the velocity vector of
- the flow.
- The disadvantages of deterministic algorithms are that a pathway either
- exists or not (no uncertainty) and that they do not explore the entire
- space of possible white matter tracts.
- In other words, local thresholding makes our tractography vulnerable to
- small noise aberrations.
+ Usually, we depict them using tracks (also known as streamlines or polylines).
+ The main disadvantage of deterministic algorithms is that it is vulnerable
+ to local noise.
  
 \begin_inset Note Note
 status collapsed
@@ -3184,8 +3200,8 @@ Probabilistic tractography is meant to deal with this problem of noise and
 \begin_layout Standard
 
 \lang english
-Imagine a particle in a seed voxel moving in a random manner with a constant
- speed within the brain whitematter.
+Imagine a particle in a seed voxel moving in a random fashion with a constant
+ speed within the brain white matter.
  The transition probability to a neighbouring point depends on the local
  orientation distribution or underlying model.
  This yields high transitional probabilities along the main fibre directions.
@@ -3196,9 +3212,11 @@ Imagine a particle in a seed voxel moving in a random manner with a constant
  ODF and count the number of times a voxel is reached by the path of a particle
  (connectivity values).
  The random walk is stopped when the particle leaves the white matter volume.
- The 3-dimensional image of the connectivity values is called a tractogram
- (see Fig.
- 
+ Probabilistic tractography is commonly depicted as a tractogram (see Fig.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:tractogram"
@@ -3206,6 +3224,9 @@ reference "Flo:tractogram"
 \end_inset
 
 ).
+ In a tractogram, we count and store the number of tracks that go through
+ each voxel and visualise the entire volume of the stored values.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3231,14 +3252,15 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-A simplified example showing in (i) & (ii) the same dataset but in (i) the
- yellow line shows the result of deterministic tractography which is given
- by a single trajectory and in (ii) is given by connectivity matrix depicting
- with red the probability of different pathways throughout the hole slice.
- Here only 3 possible pathways are depicted for the ease of understanding.
- Finally, in (iii) an example is given where it shows that probabilistic
+A simplified example showing in (i) and (ii) the same data set but in (i)
+ the yellow line shows the result of deterministic tractography which is
+ given by a single trajectory and in (ii) is given by connectivity matrix
+ depicting with red the probability of different pathways throughout the
+ hole slice.
+ For the ease of understanding, only 3 possible pathways are depicted.
+ Finally, in (iii) an example is given where it is shown that probabilistic
  tractography weights more closer connections.
- However it can tract further deep than deterministic tractography.
+ However, it can track further deep than deterministic tractography.
  
 \end_layout
 
@@ -3263,16 +3285,19 @@ name "fig:deterministic_probabilistic"
 \end_layout
 
 \begin_layout Standard
-We will try to illustrate the difference between the two approaches using
- a simplified 2D example shown in Fig.
- 
+We will try to illustrate the difference between the two approaches (determinist
+ic and probabilistic) using a simplified 2D example shown in Fig.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:deterministic_probabilistic"
 
 \end_inset
 
- (i,ii).
+.
  Generalising afterwards in 3D is straightforward.
  
 \end_layout
@@ -3284,24 +3309,27 @@ Let's imagine that we have a 2D slice where in each pixel we have calculated
 \begin_inset Formula $\mathbf{e}$
 \end_inset
 
- could have been calculated from the tensor as the principal eigenvector
+ could have been calculated from the Tensor as the principal eigenvector
  or as a principal direction of a different model e.g.
  the maximum point of the ODF.
  Let's now think that we want to find the best track from seed A to seed
  Z.
  When using deterministic tractography we are using only the local direction
  information in every pixel therefore in a direction field as this of Fig.
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:deterministic_probabilistic"
 
 \end_inset
 
-(i) we will have to use only one track and this is the diagonal pathway
- with yellow colour.
- However there are other possible tracks as well in this diagram e.g rather
- than taking the diagonal we could go first up north from A and then right.
+(i) we will have to use only one track and this is depicted in the diagonal
+ pathway with yellow colour.
+ However, there are other possible tracks as well in this diagram e.g rather
+ than taking the diagonal we could go first up from A and then right.
  
 \end_layout
 
@@ -3317,6 +3345,7 @@ status open
 \lang english
 \begin_inset Graphics
 	filename last_figures/tractogram_human_connectome.png
+	lyxscale 30
 	scale 40
 
 \end_inset
@@ -3376,8 +3405,8 @@ reference "fig:deterministic_probabilistic"
 
 \end_inset
 
-(ii) the orientation of the blue vectors can be represented by a single
- parameter, angle 
+(ii) the orientation of the blue vectors is represented by a single parameter,
+ angle 
 \begin_inset Formula $\omega$
 \end_inset
 
@@ -3386,12 +3415,15 @@ reference "fig:deterministic_probabilistic"
 \begin_inset Formula $\omega$
 \end_inset
 
- here is a random variable that takes values from a probability distribution
- function (PDF).
- Now we have many possible directions to move next but with different probabilit
-ies.
+ here is a random variable that takes values from a Probability Density
+ Function (PDF).
+ We have many possible directions to move next but with different probabilities.
  The weights of all directions again sum to 1.
  After this explanation we can identify in Fig.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:deterministic_probabilistic"
@@ -3420,10 +3452,10 @@ reference "fig:deterministic_probabilistic"
  are assuming that the probability of moving along the primary direction
  (shown with blue arrow) is 0.9 and there is only a secondary direction given
  by 0.1 (1-0.9) i.e.
- we assume for ease of understanding here only 2 directions.
+ for ease of understanding, we assume only 2 possible directions.
  We can see that there is a discontinuity in position K.
  In that point an Euler based deterministic approach (without interpolation)
- would have to stop at K (see yellow line).
+ has to stop at K (yellow line).
  The probabilistic method will continue tracking and it will generate two
  tracks that both reach the target.
  The probability of each track is calculated by multiplying the probability
@@ -3489,36 +3521,15 @@ key "PPC+05"
 
 \end_inset
 
- and used in many software packages as well 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-as PICO
-\begin_inset CommandInset citation
-LatexCommand cite
-key "PHW03"
-
-\end_inset
-
- in Camino? 
-\end_layout
-
-\end_inset
-
-, FSL FDT 
+ and used in many software packages as well FSL FDT 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Behrens2003MRM,behrens2005rca,Behrens2003NatureNeuroscience"
 
 \end_inset
 
- in FSL, and others.
- However there are some problems.
-\end_layout
-
-\begin_layout Standard
-
+ and others.
+ However, there are some problems which are discussed next.
 \end_layout
 
 \begin_layout Subsection
