@@ -95,8 +95,8 @@ key "MCC+99,CLC+99"
 \end_inset
 
  years ago a great number methods have been published.
- Most of these algorithms depend strictly on the underlying voxel model
- or acquisition paradigm making it difficult for other researchers to apply
+ Often these algorithms depend strictly on the underlying voxel model or
+ acquisition paradigm making it difficult for other researchers to apply
  their own reconstruction methods and evaluate their data sets.
 \end_layout
 
@@ -155,7 +155,7 @@ reference "sub:Tractography"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Known-problems"
@@ -216,7 +216,7 @@ key "MCC+99"
 
 \end_inset
 
- tracks are propagated in anequal steps governed by the entry point of the
+ tracks are propagated in unequal steps governed by the entry point of the
  streamline in the voxel (see Fig.
 \begin_inset ERT
 status open
@@ -751,7 +751,7 @@ Other probabilistic
  
 \series default
 \emph default
-approaches estimate the orientation uncertainty as an empeiricaly defined
+approaches estimate the orientation uncertainty as an empirically defined
  function.
  For example in Parker et al.
 \begin_inset space ~
@@ -1176,7 +1176,7 @@ key "sherbondy2010microtrack"
 
 \end_inset
 
- is a recent examply of this category.
+ is a recent example of this category.
  This type of algorithms need of course special data sets of acquisitions
  similar with those employed in ActiveAx invented by Alexander et al.
 \begin_inset CommandInset citation
@@ -1728,9 +1728,8 @@ Apart from the direction we also need to check when to stop tracking.
 
  then EuDX stops propagating.
  Otherwise it appends the point to the current track.
- This can be useful for cancelling out any seed points which are in the
- background or in very low anisotropy areas where tracking is not recommended
- e.g.
+ This can be useful for canceling out any seed points which are in the backgroun
+d or in very low anisotropy areas where tracking is not recommended e.g.
  in the CSF.
  One important point here is that 
 \begin_inset Formula $\mathcal{A}_{thr}$
@@ -1751,7 +1750,7 @@ In order to generate a smooth tractography it is recommended to use some
  kind of interpolation; this is in contrast with FACT which does not use
  neighbouring information.
  Here we have been using trilinear interpolation which works in the following
- way: The seed devides the neibourhing area (constrained by the centers
+ way: The seed devides the neighbouring area (constrained by the centers
  of the neighbouring voxels) in 
 \begin_inset Formula $8$
 \end_inset
@@ -1807,7 +1806,7 @@ We describe here how we use the trilinear interpolation weights in order
  c) All the adjacent weights will contribute to the new direction according
  to the following formula
 \begin_inset Formula \begin{equation}
-\mathbf{v}^{'}(\mathbf{p}_{n})=\sum_{m}w_{m}\mathbf{v}(\mathbf{p}_{n})\label{eq:trilinear_weights}\end{equation}
+\mathbf{v}^{'}(\mathbf{p}_{n})=\sum_{m}w_{m}\mathbf{v}(\mathbf{p}_{m})\label{eq:trilinear_weights}\end{equation}
 
 \end_inset
 
@@ -1825,7 +1824,7 @@ noindent
 \end_inset
 
  where 
-\begin_inset Formula $\mathbf{v}(\mathbf{p}_{n})=\dfrac{\mathbf{v}^{'}(\mathbf{p}_{n})}{||\mathbf{v}^{'}(\mathbf{p}_{n})||}$
+\begin_inset Formula $\mathbf{v}(\mathbf{p}_{m})=\dfrac{\mathbf{v}^{'}(\mathbf{p}_{m})}{||\mathbf{v}^{'}(\mathbf{p}_{m})||}$
 \end_inset
 
  is normalized.
@@ -1848,7 +1847,7 @@ reference "eq: euler"
 \begin_inset Formula $\mathbf{v}(\mathbf{p}_{o})$
 \end_inset
 
- and for the smaller peaks as descibed above.
+ and for the smaller peaks as described above.
  Finally, we will have to repeat the procedure for the next seed point until
  all seed points are visited.
  When all seeds have been visited we will have in our hands the entire tractogra
@@ -1915,7 +1914,7 @@ Apart from the anisotropic threshold
 \end_inset
 
  points).
- c) Finally we need to check that we are always inside the image volume.
+ c) Finally, we need to check that we are always inside the image volume.
  The 
 \begin_inset Formula $3$
 \end_inset
@@ -3328,7 +3327,7 @@ key "canalesrodriguez2009mdq"
 \end_inset
 
  voxels.
- The elliptical orbit did not complete a full ellipsis in order to avoid
+ The elliptical orbit did not complete a full ellipse in order to avoid
  creating looping tracks which have no anatomical relevance.
  We created two experiments using the same data set of size 
 \begin_inset Formula $64\times64\times64\times102$
@@ -3442,7 +3441,7 @@ status open
  on digital phantom containing to intersecting bundles.
  A slice from the b0 volume of the phantom is also shown at the lower right
  corner.
- (ii) and (iii) In higher resolution we can see that tracks travelling from
+ (ii) and (iii) In higher resolution we can see that tracks traveling from
  the two different bundles cross unimpeded in the intersection area of the
  two simulated bundles.
 \end_layout
@@ -5596,10 +5595,10 @@ reference "Flo:crossing_eudx_sims"
 
  tracks).
  (ii) A detail of the left bundle.
- Some of the tracks are diverting on a zig-zag fashion althought the phantom
+ Some of the tracks are diverting on a zig-zag fashion although the phantom
  at these voxels has only one main direction.
  (iii) Focus on the crossing region of the phantom.
- Many of the PMT tracks are successfuly propagating towards both pathways.
+ Many of the PMT tracks are successfully propagating towards both pathways.
 \end_layout
 
 \end_inset
@@ -5659,8 +5658,8 @@ reference "Flo:PMT_phantom"
 \end_inset
 
 (ii) we see a detail of the left bundle.
- It is obvious that some of the tracks are diverting vigourosly on a zig-zag
- fashion althought the phantom at these voxels has only one main direction.
+ It is obvious that some of the tracks are diverting vigorously on a zig-zag
+ fashion although the phantom at these voxels has only one main direction.
  In Fig.
 \begin_inset space ~
 \end_inset
@@ -5673,7 +5672,7 @@ reference "Flo:PMT_phantom"
 \end_inset
 
 (iii) we zoom in the crossing region of the phantom where we observe that
- many of the PMT tracks are successfuly propagating towards both pathways
+ many of the PMT tracks are successfully propagating towards both pathways
  through the crossing region.
 \end_layout
 
@@ -6604,7 +6603,7 @@ reference "Flo:arcuate_and_whole_brain"
 \end_inset
 
 A we see Arcuate Fasciculus (AC) which is described in the literature as
- belongin in the language pathways 
+ belonging in the language pathways 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Frey2008"
@@ -6667,7 +6666,7 @@ key "verstynen2011vivo"
 \end_layout
 
 \begin_layout Standard
-In order to help the medical practicioners to perform the manual labeling
+In order to help the medical practitioners to perform the manual labeling
  we developed an interactive visualization application (available in 
 \begin_inset ERT
 status open
@@ -7092,13 +7091,13 @@ The left and right Cingulum (CG) bundles of
 \end_inset
 
  healthy subjects are presented here.
- Left and right CGs were selected in MNI space from entire EuDX tractophies
+ Left and right CGs were selected in MNI space from entire EuDX tractographies
  of 1 million seeds and GQI as the reconstruction input.
  We also show the T1 image slice Z=
 \begin_inset Formula $10$
 \end_inset
 
- for every subject except from last subject whos T1 was not available.
+ for every subject except from last subject whose T1 was not available.
  For that subject we use the standard MNI template.
 \end_layout
 
@@ -7135,12 +7134,12 @@ In the following experiment we visually compared specific bundles across
 \end_inset
 
  years old).
- The cingulum (CG) is an association fibre tract that runs within the cingulate
- gyrus along its entire length.
- It collects axons from the cingulate gyrus that travel immediately dorsal
- to the corpus callosum (CC) and along the ventral face of the hippocampus,
+ The Cingulum (CG) is an association fibre tract that runs within the Cingulate
+ Gyrus along its entire length.
+ It collects axons from the Cingulate Gyrus that travel immediately dorsal
+ to the Corpus Callosum (CC) and along the ventral face of the Hippocampus,
  forming a large C-shape trajectory.
- It carries afferent connections from the cingulate gyrus to the entorhinal
+ It carries afferent connections from the Cingulate Gyrus to the entorhinal
  cortex.
  Because of its narrow tubular shape, it is often difficult to reveal its
  entire length by a single data set 
@@ -7263,7 +7262,7 @@ status open
 \begin_inset Formula $3$
 \end_inset
 
- top and the bottom left are created using our proposed deterministict approach
+ top and the bottom left are created using our proposed deterministic approach
  (EuDX).
  The bottom right is created using Probabilistic tractography (PMT) .
  
@@ -7335,7 +7334,7 @@ reference "Flo:EuDX_vs_PMT"
  We can also observe that the DTI tracks do not represent well the SLF regions
  of the bundles especially on the left hemisphere.
  Finally, we can observe the GQI, DSI and EIT tracks look the most similar
- which was expected as they have comparable angular accurancy (see Fig.
+ which was expected as they have comparable angular accuracy (see Fig.
 \begin_inset space ~
 \end_inset
 
@@ -7466,7 +7465,7 @@ tions which is the topic of other methods which were reviewed earlier.
 \end_layout
 
 \begin_layout Standard
-We think that most algorithms concentrated on infering the distributions
+We think that most algorithms concentrated on inferring the distributions
  of the major directions in each voxel.
  Nevertheless, not much attention was payed to the actual track density
  and integrity of the bundle.
