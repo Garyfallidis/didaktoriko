@@ -50,6 +50,22 @@
 
 \begin_body
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+appendix
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Appendix
 \end_layout
@@ -60,11 +76,26 @@ Data and sequences
 
 \begin_layout Standard
 Summary of the acquisition protocols used in this thesis.
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-\align left
+\begin_inset ERT
+status open
 
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+ 
 \series bold
 101 and 117 gradients at MRC-CBU
 \series default
@@ -102,7 +133,7 @@ n was
 \end_inset
 
 -point half grid acquisition(TR=
-\begin_inset Formula $8200ms$
+\begin_inset Formula $8,200ms$
 \end_inset
 
 , TE=
@@ -110,7 +141,7 @@ n was
 \end_inset
 
 ) with a maximum b-value of 
-\begin_inset Formula $4000\, s/mm^{2}$
+\begin_inset Formula $4,000\, s/mm^{2}$
 \end_inset
 
 , and a single shell acquisition using 
@@ -118,7 +149,7 @@ n was
 \end_inset
 
  non-collinear gradient directions (TR=
-\begin_inset Formula $7000ms$
+\begin_inset Formula $7,000ms$
 \end_inset
 
 , TE=
@@ -126,7 +157,7 @@ n was
 \end_inset
 
 ) and a b-value of 
-\begin_inset Formula $1000\, s/mm^{2}$
+\begin_inset Formula $1,000\, s/mm^{2}$
 \end_inset
 
 .
@@ -142,8 +173,19 @@ n was
 \end_layout
 
 \begin_layout Standard
-\align left
+\begin_inset ERT
+status open
 
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+ 
 \series bold
 101 gradients at MRC-CBU
 \series default
@@ -158,7 +200,7 @@ key "merboldt1992diffusion,MAB04"
 
  as the diffusion preparation method.
  The field of view was 
-\begin_inset Formula $240x240mm^{2}$
+\begin_inset Formula $240x240\, mm^{2}$
 \end_inset
 
 , matrix size 
@@ -166,7 +208,7 @@ key "merboldt1992diffusion,MAB04"
 \end_inset
 
 , and slice thickness 
-\begin_inset Formula $2.5mm$
+\begin_inset Formula $2.5\, mm$
 \end_inset
 
  (no gap).
@@ -176,7 +218,7 @@ n was
 \end_inset
 
 .A 102-point half grid acquisition with a maximum b-value of 
-\begin_inset Formula $4000\, s/mm^{2}$
+\begin_inset Formula $4,000\, s/mm^{2}$
 \end_inset
 
  was used.
@@ -185,7 +227,7 @@ n was
 \end_inset
 
  with TR=
-\begin_inset Formula $8200ms$
+\begin_inset Formula $8,200ms$
 \end_inset
 
  and TE=
@@ -203,7 +245,19 @@ n was
 
 \begin_layout Standard
 \align left
+\begin_inset ERT
+status open
 
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+ 
 \series bold
 257 gradients at EPFL
 \series default
@@ -494,10 +548,15 @@ The factor
 \end_inset
 
 , Parseval's theorem states that 
-\begin_inset Formula $\int\int\int_{\mathbb{R}^{3}}f(x,y,z)g^{*}(x,y,z)dxdydz$
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+\int\int\int_{\mathbb{R}^{3}}f(x,y,z)g^{*}(x,y,z)dxdydz & =\quad\quad\quad\quad\quad\quad\quad\quad\end{eqnarray*}
+
 \end_inset
 
- is equal to 
+
 \family roman
 \series medium
 \shape up
@@ -508,21 +567,16 @@ The factor
 \color none
 \lang british
 
-\begin_inset Formula $(2\pi)^{-3}\int\int\int_{\mathbb{R}^{3}}f(q_{x},q_{y},q_{z})\hat{g}^{*}(q_{x},q_{y},q_{z})dq_{x}dq_{y}dq_{z}$
+\begin_inset Formula \begin{eqnarray*}
+(2\pi)^{-3}\int\int\int_{\mathbb{R}^{3}}f(q_{x},q_{y},q_{z})\hat{g}^{*}(q_{x},q_{y},q_{z})dq_{x}dq_{y}dq_{z}\end{eqnarray*}
+
 \end_inset
 
 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-\lang english
-.
- Furthermore, 
+\end_layout
+
+\begin_layout Standard
+Furthermore, 
 \begin_inset Formula $\hat{g}(q_{x},q_{y},q_{z})=2\pi\delta(q_{z})$
 \end_inset
 
@@ -554,8 +608,11 @@ name "sub:Tensor-in-GQI"
 \begin_layout Standard
 We now apply this formulation under the assumption that the diffusion voxel
  can be represented by a single tensor model.
- eq.
- 
+ Eq.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:W"
@@ -593,7 +650,10 @@ where
 \end_inset
 
  matrix, known as the diffusion tensor.
- Then from eq.
+ Then from Eq.
+\begin_inset space ~
+\end_inset
+
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -662,8 +722,11 @@ In that stage we can make use of the formula
 \end_inset
 
 .
- Therefore, eq.
- 
+ Therefore, Eq.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:NextQ"
@@ -706,8 +769,11 @@ where
 \begin_inset Formula $\mathbf{R}=L\hat{\mathbf{u}}$
 \end_inset
 
- and from eq.
- 
+ and from Eq.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:TensorQ"
@@ -766,7 +832,11 @@ Setting
 \begin_inset Formula $m=\sqrt{k}L$
 \end_inset
 
- and using the derivation for the error function eq.
+ and using the derivation for the error function Eq.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:TensorQ2"
@@ -803,8 +873,11 @@ key "Yeh2010"
 
 \end_inset
 
- with eq.
- 
+ with Eq.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:spinodf_cdf"
@@ -817,7 +890,11 @@ reference "eq:spinodf_cdf"
 
 \begin_layout Standard
 What is also very interesting is to try to derive what the normalization
- factor should be for the spin odf in eq.
+ factor should be for the spin odf in Eq.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:TensorQ2"
@@ -825,7 +902,11 @@ reference "eq:TensorQ2"
 \end_inset
 
 .
- Because calculating a spherical intergral from eq.
+ Because calculating a spherical intergral from Eq.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:spinodf_cdf"
@@ -884,8 +965,11 @@ reference "eq:hole_space_known"
 \end_inset
 
 ).
- By expanding it in polar form we can find surface integral needed in eq.
- 
+ By expanding it in polar form we can find surface integral needed in Eq.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:spherical_integral_Z"
@@ -906,11 +990,12 @@ MHG & = & \iiint f_{D}(x)e^{-|x|^{2}}dx\label{eq:hole_space_known}\\
 \end_layout
 
 \begin_layout Standard
-However we know that 
+However, we know that 
 \begin_inset Formula $f_{D}(r\mathbf{u})=((r\mathbf{u})^{T}D^{-1}(r\mathbf{u}))^{-\frac{1}{2}}=r^{-1}(\mathbf{u}^{T}D^{-1}\mathbf{u})^{-\frac{1}{2}}$
 \end_inset
 
- therefore 
+ .
+ Therefore, 
 \end_layout
 
 \begin_layout Standard
@@ -925,7 +1010,7 @@ MHG & = & \intop_{0}^{\infty}\left[\iint f_{D}(u)du\right]e^{-r^{2}}rdr\\
 \end_layout
 
 \begin_layout Standard
-Consequently,
+Consequently, 
 \begin_inset Formula $\frac{Z}{\sqrt{\pi\tau}}=2MHG$
 \end_inset
 

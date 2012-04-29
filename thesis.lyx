@@ -21,6 +21,18 @@
 \numberwithin{equation}{section}
 \usepackage{amsmath}
 \usepackage{siunitx}
+\definecolor{MetallicGrey}{RGB}{153, 153, 153}
+\usepackage{sectsty}
+\sectionfont{\color{MetallicGrey}\selectfont\Huge}
+%\renewcommand{\section}{\@startsection 
+% {section}
+%{1}
+%{1em}
+%{\baselineskip}
+%{-\fontdimen2\font
+% plus -\fontdimen3\font
+% minus -\fontdimen4\font}
+% {\normalfont\raggedright\normalsize\itshape}}	
 \end_preamble
 \use_default_options true
 \language british
@@ -83,7 +95,7 @@
 
 \lang english
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -96,7 +108,7 @@ thispagestyle{empty}
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -113,10 +125,12 @@ definecolor{magenta}{RGB}{185, 23, 62}
 \begin_layout Standard
 \align center
 
+\series bold
 \size largest
 \color magenta
 \lang english
 TOWARDS AN ACCURATE BRAIN
+\series default
 \color inherit
  
 \size large
@@ -130,6 +144,7 @@ TOWARDS AN ACCURATE BRAIN
 \begin_layout Standard
 \align center
 
+\series bold
 \size largest
 \color magenta
 \lang english
@@ -141,7 +156,7 @@ TRACTOGRAPHY
 
 \lang english
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -184,11 +199,13 @@ definecolor{magenta}{RGB}{255, 0, 255}
 \begin_layout Standard
 \align center
 
+\series bold
 \shape smallcaps
 \size larger
 \color black
 \lang english
 ELEFTHERIOS GARYFALLIDIS
+\series default
 \shape default
 \size large
 \color inherit
@@ -218,7 +235,7 @@ University of Cambridge
 \begin_inset Newline newline
 \end_inset
 
-UK
+United Kingdom
 \end_layout
 
 \begin_layout Standard
@@ -238,7 +255,7 @@ UK
 \size larger
 \color black
 \lang english
-March 2012
+May 2012
 \end_layout
 
 \begin_layout Standard
@@ -279,8 +296,6 @@ A dissertation submitted to the University of Cambridge for the degree of
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -288,7 +303,7 @@ status open
 
 
 \backslash
-thispagestyle{empty}
+pagenumbering{roman}
 \end_layout
 
 \end_inset
@@ -297,20 +312,23 @@ thispagestyle{empty}
 \end_layout
 
 \begin_layout Standard
-\align right
+\begin_inset ERT
+status open
 
-\size huge
-\color black
-\lang english
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{secnumdepth}{-1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Supervisors
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -460,35 +478,8 @@ Cambridge, UK
 
 \end_layout
 
-\begin_layout Standard
-
-\lang english
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-thispagestyle{empty}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align right
-
-\size huge
-\color black
-\lang english
+\begin_layout Section
 Dedication
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -612,35 +603,8 @@ who pushed the world forward.
 
 \end_layout
 
-\begin_layout Standard
-
-\lang english
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-thispagestyle{empty}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align right
-
-\size huge
-\color black
-\lang english
+\begin_layout Section
 Acknowledgements
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -732,14 +696,14 @@ ing in Python for their hard work and devotion to the principles of free
 \align right
 
 \lang english
-Eleftherios Garyallidis
+Eleftherios Garyfallidis
 \end_layout
 
 \begin_layout Standard
 \align right
 
 \lang english
-Cambridge, 9 April, 2012
+Cambridge, 10 May, 2012
 \end_layout
 
 \begin_layout Standard
@@ -760,35 +724,8 @@ Cambridge, 9 April, 2012
 
 \end_layout
 
-\begin_layout Standard
-
-\lang english
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-thispagestyle{empty}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align right
-
-\size huge
-\color black
-\lang english
+\begin_layout Section
 Disclaimer
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -847,7 +784,7 @@ Eleftherios Garyfallidis
 \begin_inset Newline newline
 \end_inset
 
-January 2012
+Cambridge, 10 May 2012
 \end_layout
 
 \begin_layout Standard
@@ -868,38 +805,8 @@ January 2012
 
 \end_layout
 
-\begin_layout Standard
-\noindent
-\align block
-
-\lang english
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-thispagestyle{empty}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align right
-
-\size huge
-\color black
-\lang english
+\begin_layout Section
 Publications
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1264,19 +1171,6 @@ status open
 \end_inset
 
 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-thispagestyle{empty}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1297,35 +1191,8 @@ thispagestyle{empty}
 
 \end_layout
 
-\begin_layout Standard
-
-\lang english
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-thispagestyle{empty}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align right
-
-\size huge
-\color black
-\lang english
+\begin_layout Section
 Abstract
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1403,24 +1270,6 @@ This thesis contributes to the understanding of the diffusion signal in
 \begin_layout Standard
 
 \lang english
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-thispagestyle{empty}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -1431,6 +1280,41 @@ thispagestyle{empty}
 
 \lang english
 \begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\lang british
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Contents}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage cleardoublepage
 \end_inset
 
 
@@ -1453,10 +1337,15 @@ setcounter{page}{1}
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
 
-\lang english
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{arabic}
+\end_layout
 
 \end_inset
 
@@ -1464,9 +1353,16 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
 
-\lang english
-\begin_inset Newpage cleardoublepage
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{secnumdepth}{2}
+\end_layout
+
 \end_inset
 
 
@@ -1597,6 +1493,19 @@ filename "Appendix.lyx"
 LatexCommand bibtex
 bibfiles "diffusion"
 options "plain"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{References}
+\end_layout
 
 \end_inset
 

@@ -51,7 +51,11 @@
 \begin_body
 
 \begin_layout Section
-Cartesian Lattice Q-space Reconstructions
+Cartesian Lattice 
+\begin_inset Newline newline
+\end_inset
+
+Q-space Reconstructions
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Cartesian-Lattice-Q-space"
@@ -108,7 +112,7 @@ key "callaghan1988nmr"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "wedeen2005mapping"
@@ -207,15 +211,7 @@ reference "eq:kq"
 
 \end_inset
 
- of joint 
-\series bold
-k
-\series default
--space and 
-\series bold
-q
-\series default
--space imaging (Callaghan p.
+ of joint k-space and q-space imaging (Callaghan p.
 \begin_inset space ~
 \end_inset
 
@@ -292,11 +288,7 @@ Here
 \end_layout
 
 \begin_layout Standard
-The 
-\series bold
-k
-\series default
--space reconstruction gives us diffusion weighted image data 
+The k-space reconstruction gives us diffusion weighted image data 
 \begin_inset Formula $S$
 \end_inset
 
@@ -550,20 +542,13 @@ with
 \begin_inset Formula $515$
 \end_inset
 
- 
-\begin_inset Formula $\mathbf{q}$
-\end_inset
-
--vectors (which also means that we need to collect 
+ q-vectors (which also means that we need to collect 
 \begin_inset Formula $515$
 \end_inset
 
  diffusion weighted volumes), the overall acquisition time would be too
- long and a smaller number of unique 
-\series bold
-q
-\series default
--vectors are employed for just a single hemisphere usually between 
+ long and a smaller number of unique q-vectors are employed for just a single
+ hemisphere usually between 
 \begin_inset Formula $101$
 \end_inset
 

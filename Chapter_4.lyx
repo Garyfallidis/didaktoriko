@@ -51,6 +51,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \author "Eleftherios Garyfallidis,,," 
 \author "" 
 \end_header
@@ -58,7 +59,11 @@
 \begin_body
 
 \begin_layout Section
-Highly Efficient Tractography Clustering
+Highly Efficient 
+\begin_inset Newline newline
+\end_inset
+
+Tractography Clustering
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Highly-Efficient-Tractography"
@@ -5455,7 +5460,7 @@ name "Flo:winding"
 QB can also simplify detection of tracks which are very dissimilar to others
  and therefore very distant from all other clusters.
  Usually, when we use a QB threshold of about 
-\change_inserted 0 1319698782
+\change_inserted 1 1319698782
 
 \begin_inset Formula $10$
 \end_inset
@@ -5633,7 +5638,7 @@ key "Smith2006NeuroImage"
  displacements will be applied only on volumetric data and not with point
  data as those used in tractographies.
  Finally, after some considerable effort we found a combination of 
-\change_inserted 1 1319032651
+\change_inserted 2 1319032651
 
 \begin_inset Formula $\texttt{flirt}$
 \end_inset
@@ -5649,7 +5654,7 @@ key "Smith2006NeuroImage"
 \end_inset
 
  and 
-\change_inserted 1 1319032687
+\change_inserted 2 1319032687
 
 \begin_inset Formula $\texttt{fnirtfileutils -withaff}$
 \end_inset
@@ -6336,24 +6341,18 @@ name "Flo:LSC+HC+AP"
 
 \begin_layout Standard
 For hierarchical clustering parts we used the software 
-
 \begin_inset Formula $\texttt{hcluster}$
 \end_inset
 
-
-\lang english
  and for affinity propagation we used the library 
 \begin_inset Formula $\texttt{scikit-learn}$
 \end_inset
 
 .
  They are both implemented in 
-
 \begin_inset Formula $\texttt{Python}$
 \end_inset
 
-
-\lang english
 .
 \end_layout
 
@@ -7421,7 +7420,7 @@ key "fletcher1987practical"
 \end_inset
 
  will be transformed by a rigid rotation and 
-\change_inserted 0 1319745183
+\change_inserted 1 1319745183
 
 \begin_inset Formula $\mathrm{SMD}$
 \end_inset
@@ -7533,7 +7532,7 @@ Experiments
 .
  The first large scale experiment took place using the same tractography
  of a single individual copied and transformed 
-\change_inserted 0 1319745405
+\change_inserted 1 1319745405
 
 \begin_inset Formula $1000$
 \end_inset
@@ -7969,7 +7968,7 @@ ELEF: If there is a track like that we want to know about it!
 \begin_layout Standard
 2.
  Read the tractography of a single subject,
-\change_deleted 0 1319745849
+\change_deleted 1 1319745849
  
 \change_unchanged
  use a tractographic atlas as the one created in section 
