@@ -32,7 +32,7 @@
 %{-\fontdimen2\font
 % plus -\fontdimen3\font
 % minus -\fontdimen4\font}
-% {\normalfont\raggedright\normalsize\itshape}}	
+% {\normalfont\raggedright\normalsize\itshape}}
 \end_preamble
 \use_default_options true
 \language british
@@ -275,6 +275,26 @@ May 2012
 \lang english
 A dissertation submitted to the University of Cambridge for the degree of
  Doctor of Philosophy 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Title}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard

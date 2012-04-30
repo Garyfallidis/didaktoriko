@@ -8231,7 +8231,11 @@ We showed results with simulated, single or multiple real subjects and the
 \begin_inset Formula $\texttt{dipy.org}$
 \end_inset
 
- in module 
+ in module
+\begin_inset Newline newline
+\end_inset
+
+ 
 \begin_inset Formula $\texttt{dipy.segment.quickbundles}$
 \end_inset
 
