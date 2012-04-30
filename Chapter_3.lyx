@@ -330,8 +330,8 @@ key "tournier2004direct"
 \end_inset
 
 .
- There are different approaches for propagating across voxels with more
- than one fibre directions.
+ There are different approaches for propagating across voxelswhere more
+ than one fibre orientation has been identified.
  One approach is, upon entering a voxel, to choose the orientation that
  produces the smallest curvature with the incoming path used in Wedeen et
  al.
@@ -398,7 +398,7 @@ key "LWT+03"
 \end_layout
 
 \begin_layout Standard
-All the methods presented up to this point provide binary connectivity informati
+All the methods described up to this point provide binary connectivity informati
 on i.e.
  a voxel B can be either connected or not connected to the seed S, depending
  on whether a streamline from S passes through B.
@@ -768,7 +768,7 @@ key "Parker2003"
 
 \end_inset
 
- this is determined using the degree of FA.
+ this is determined using the value of FA.
  The higher the FA the higher the confidence on the principal eigenvector
  of the Tensor.
  In Parker and Alexander
@@ -1181,8 +1181,8 @@ key "sherbondy2010microtrack"
 \end_inset
 
  is a recent example of this category.
- This type of algorithms need of course special data sets of acquisitions
- similar with those employed in ActiveAx invented by Alexander et al.
+ Algorithms of this type require their own acquisition schemes, similar
+ to those employed in ActiveAx, developed by Alexander et al.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "alexander2010orientationally"
@@ -1371,7 +1371,7 @@ http://www.docstoc.com/docs/58019487/Diffusion-Tensor-MRI-at-3-Tesla
 \end_layout
 
 \begin_layout Subsection
-Algorithm
+The EuDX Algorithm
 \end_layout
 
 \begin_layout Standard
@@ -1588,8 +1588,8 @@ key "aganj2010reconstruction"
 \end_inset
 
 .
- For QA which can allow for any number of peaks, usually we constraint to
- maximum of 
+ For QA which can allow for any number of peaks, where usually we constrain
+ it to maximum of 
 \begin_inset Formula $3$
 \end_inset
 
@@ -1602,11 +1602,11 @@ key "aganj2010reconstruction"
 \end_inset
 
  denotes the current peak.
- The peak can be characterised by two things: a) the anisotropy value 
+ The peak can be characterised by two things: (a) the anisotropy value 
 \begin_inset Formula $\alpha_{i}$
 \end_inset
 
- and b) the unit direction of the peak 
+ and (b) the unit direction of the peak 
 \begin_inset Formula $\mathbf{u}_{i}$
 \end_inset
 
@@ -1661,12 +1661,12 @@ The EuDX algorithm can be described further in the following way:
 \end_inset
 
  and start propagating.
- We need to remember that the propagation direction can go forward and backward
- or better said; towards one direction (orthograde) and its opposite direction
+ We need to remember that the propagation direction can go forward and backward,
+ or better said towards one direction (orthograde) and its opposite direction
  (retrograde).
  For the moment we only propagate towards one direction set by
 \begin_inset Formula \begin{equation}
-\mathbf{v}(\mathbf{p}_{0})=argmax_{u_{i}}\mathcal{A}(\mathbf{u})\label{eq:argmax_anisotropy}\end{equation}
+\mathbf{v}(\mathbf{p}_{0})=\argmax_{\mathbf{u}}\mathcal{A}(\mathbf{u})\label{eq:argmax_anisotropy}\end{equation}
 
 \end_inset
 
@@ -1784,7 +1784,7 @@ In order to generate a smooth tractography it is recommended to use some
 \begin_layout Standard
 We describe here how we use the trilinear interpolation weights in order
  to find the next propagation direction.
- a) We find the nearest direction from the seed's initial direction 
+ (a) We find the nearest direction from the seed's initial direction 
 \begin_inset Formula $\mathbf{v}(\mathbf{p_{n}})$
 \end_inset
 
@@ -1797,7 +1797,7 @@ We describe here how we use the trilinear interpolation weights in order
 \end_inset
 
  corners of the neighbourhood of the seed.
- b) If 
+ (b) If 
 \begin_inset Formula $\textnormal{arccos}(\mathbf{x}_{i},\mathbf{p}_{n})\leqq\theta_{thr}$
 \end_inset
 
@@ -1807,7 +1807,7 @@ We describe here how we use the trilinear interpolation weights in order
 \end_inset
 
 .
- c) All the adjacent weights will contribute to the new direction according
+ (c) All the adjacent weights will contribute to the new direction according
  to the following formula
 \begin_inset Formula \begin{equation}
 \mathbf{v}^{'}(\mathbf{p}_{n})=\sum_{m}w_{m}\mathbf{v}(\mathbf{p}_{m})\label{eq:trilinear_weights}\end{equation}
@@ -3295,7 +3295,7 @@ reference "sub:Digital-Phantoms"
 \end_inset
 
  using eigenvalues 
-\begin_inset Formula $\lambda_{\parallel}=1.7\cdot10^{-3}$
+\begin_inset Formula $\lambda_{\parallel}=1.7\times10^{-3}$
 \end_inset
 
  
@@ -3307,7 +3307,7 @@ reference "sub:Digital-Phantoms"
 
 \lang english
  and 
-\begin_inset Formula $\lambda_{\perp}=0.1\cdot10^{-3}m^{2}/sec$
+\begin_inset Formula $\lambda_{\perp}=0.1\times10^{-3}m^{2}/sec$
 \end_inset
 
  which are in the range typically found in the human brain 
@@ -3442,7 +3442,7 @@ status open
 
 \begin_layout Plain Layout
 (i) Tractrography generated by EuDX with DSI as the reconstruction method
- on digital phantom containing to intersecting bundles.
+ on a software phantom containing two intersecting bundles.
  A slice from the b0 volume of the phantom is also shown at the lower right
  corner.
  (ii) and (iii) In higher resolution we can see that tracks traveling from
@@ -3721,7 +3721,7 @@ name "Flo:eudx_fromABCD"
 
 \begin_layout Standard
 In the second experiment we generated 
-\begin_inset Formula $2000$
+\begin_inset Formula $2,000$
 \end_inset
 
  seeds inside specific regions of the bundles (see Fig.
@@ -3848,7 +3848,123 @@ reference "Tab:EuDX_AtoB"
 \end_inset
 
  loss using DTI.
+\end_layout
+
+\begin_layout Standard
+To simplify comparisons within Tab.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Tab:EuDX_AtoB"
+
+\end_inset
+
+ we can use a maximum standard error of difference (MaxSED) between any
+ two corresponding entries in any pair of rows.
+ MaxSED
+\begin_inset Formula $=100z_{\alpha/2}\sqrt{2p(1-p)/n}$
+\end_inset
+
+, where 
+\begin_inset Formula $z_{\alpha/2}=\textrm{\alpha/2}$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+th percentile of standard normal distribution,
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
  
+\begin_inset Formula $n=2,000$
+\end_inset
+
+ is the number of seeds in each row (ROI), and 
+\begin_inset Formula $p=0.5$
+\end_inset
+
+ gives the worst case (largest) standard error
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+.
+ If we take 
+\begin_inset Formula $\alpha=0.0001$
+\end_inset
+
+, 
+\begin_inset Formula $z_{\alpha/2}=3.29$
+\end_inset
+
+, then MaxSED
+\begin_inset Formula $=5.2\%$
+\end_inset
+
+.
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+The same value can be used as a conservative MaxSED in comparisons involving
+ Tab.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:PMT_table"
+
+\end_inset
+
+ for which the effective 
+\begin_inset Formula $n$
+\end_inset
+
+ is greater than 
+\begin_inset Formula $2,000$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -5407,8 +5523,8 @@ tion.
 \begin_layout Standard
 Another general observation is that in the curved branch less tracks reached
  their target than in the diagonal branch.
- This is sensible because the discretization is more asymmetric in the curved
- branch (see Fig.
+ This is to be expected because the discretization is more asymmetric in
+ the curved branch (see Fig.
 \begin_inset ERT
 status open
 
@@ -6585,7 +6701,7 @@ B) and asked expert neuroanatomists Professor Luigi Cataneo and Dr.
  Nivedita Agarwal from the Center for Brain/Mind Science (CiMeC) in Trento,
  Italy to validate the quality of the data in relationship to their knowledge
  of anatomy.
- We then asked them to manually label bundles of their scientific interest
+ We thn asked them to manually label bundles of their scientific interest
  in different subjects.
  We show here two of the many known bundles that they segmented.
  In Fig.
@@ -6862,11 +6978,11 @@ key "merboldt1992diffusion,MAB04"
 
  as the diffusion preparation method.
  The field of view was 
-\begin_inset Formula $240x240\, mm^{2}$
+\begin_inset Formula $240\times240\, mm^{2}$
 \end_inset
 
 , matrix size 
-\begin_inset Formula $96x96$
+\begin_inset Formula $96\times96$
 \end_inset
 
 , and slice thickness 
@@ -6880,7 +6996,7 @@ key "merboldt1992diffusion,MAB04"
 
  slices were acquired to achieve full brain coverage, and the voxel resolution
  was 
-\begin_inset Formula $2.5x2.5x2.5\, mm{}^{3}$
+\begin_inset Formula $2.5\times2.5\times2.5\, mm{}^{3}$
 \end_inset
 
 .
