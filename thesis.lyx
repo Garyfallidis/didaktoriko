@@ -171,6 +171,22 @@ definecolor{magenta}{RGB}{255, 0, 255}
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Title}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \align center
 
 \size large
@@ -275,22 +291,6 @@ May 2012
 \lang english
 A dissertation submitted to the University of Cambridge for the degree of
  Doctor of Philosophy 
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-addcontentsline{toc}{section}{Title}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
