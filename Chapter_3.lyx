@@ -6611,7 +6611,7 @@ reference "Flo:PMT_table"
 
  command.
  The default value recommended is 
-\begin_inset Formula $5000$
+\begin_inset Formula $5,000$
 \end_inset
 
  however for this experiment we do not see a significant difference between
@@ -6620,7 +6620,7 @@ reference "Flo:PMT_table"
 \end_inset
 
  and 
-\begin_inset Formula $5000$
+\begin_inset Formula $5,000$
 \end_inset
 
  iterations.
@@ -7001,16 +7001,16 @@ key "merboldt1992diffusion,MAB04"
 \end_inset
 
 -point half grid acquisition with a maximum b-value of 
-\begin_inset Formula $4000\, s/mm^{2}$
+\begin_inset Formula $4,000\, s/mm^{2}$
 \end_inset
 
  was used.
  The total acquisition time was only 
-\begin_inset Formula $14\, min\,21s$
+\begin_inset Formula $14\, min\,21\, s$
 \end_inset
 
  with TR=
-\begin_inset Formula $8200\, ms$
+\begin_inset Formula $8,200\, ms$
 \end_inset
 
  and TE=
