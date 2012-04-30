@@ -110,7 +110,7 @@ key "merboldt1992diffusion,MAB04"
 
  as the diffusion preparation method.
  The field of view was 
-\begin_inset Formula $240x240mm^{2}$
+\begin_inset Formula $240x240\, mm^{2}$
 \end_inset
 
 , matrix size 
@@ -124,7 +124,7 @@ key "merboldt1992diffusion,MAB04"
  (no gap).
  55 slices were acquired to achieve full brain coverage, and the voxel resolutio
 n was 
-\begin_inset Formula $2.5x2.5x2.5mm{}^{3}$
+\begin_inset Formula $2.5x2.5x2.5\, mm{}^{3}$
 \end_inset
 
 .
@@ -133,11 +133,11 @@ n was
 \end_inset
 
 -point half grid acquisition(TR=
-\begin_inset Formula $8,200ms$
+\begin_inset Formula $8,200\, ms$
 \end_inset
 
 , TE=
-\begin_inset Formula $69ms$
+\begin_inset Formula $69\, ms$
 \end_inset
 
 ) with a maximum b-value of 
@@ -149,7 +149,7 @@ n was
 \end_inset
 
  non-collinear gradient directions (TR=
-\begin_inset Formula $7,000ms$
+\begin_inset Formula $7,000\, ms$
 \end_inset
 
 , TE=
@@ -214,7 +214,7 @@ key "merboldt1992diffusion,MAB04"
  (no gap).
  55 slices were acquired to achieve full brain coverage, and the voxel resolutio
 n was 
-\begin_inset Formula $2.5x2.5x2.5mm{}^{3}$
+\begin_inset Formula $2.5x2.5x2.5\, mm{}^{3}$
 \end_inset
 
 .A 102-point half grid acquisition with a maximum b-value of 
@@ -244,7 +244,6 @@ n was
 \end_layout
 
 \begin_layout Standard
-\align left
 \begin_inset ERT
 status open
 
@@ -264,7 +263,7 @@ noindent
 .
  3T scanner (TIM Trio, Siemens) with a 32 channel coil.
  The field of view was 
-\begin_inset Formula $210x210mm^{2}$
+\begin_inset Formula $210x210\, mm^{2}$
 \end_inset
 
 , matrix size 
@@ -272,12 +271,12 @@ noindent
 \end_inset
 
 , and slice thickness 
-\begin_inset Formula $3mm$
+\begin_inset Formula $3\, mm$
 \end_inset
 
 .
  44 slices were acquired and the voxel resolution was 
-\begin_inset Formula $2.2x2.2x3.0mm{}^{3}$
+\begin_inset Formula $2.2x2.2x3.0\, mm{}^{3}$
 \end_inset
 
 .A 258-point half grid acquisition scheme with a maximum b-value of 
@@ -290,11 +289,11 @@ noindent
 \end_inset
 
  with TR=
-\begin_inset Formula $8200ms$
+\begin_inset Formula $8200\, ms$
 \end_inset
 
  and TE=
-\begin_inset Formula $165ms$
+\begin_inset Formula $165\, ms$
 \end_inset
 
 .
@@ -620,10 +619,6 @@ reference "eq:W"
 \end_inset
 
  can be written in the form
-\end_layout
-
-\begin_layout Standard
-\align center
 \begin_inset Formula \begin{eqnarray}
 S(\mathbf{q}) & = & S_{0}exp(-b\mathbf{q}^{T}D\mathbf{q})\label{eq:Tensor}\end{eqnarray}
 

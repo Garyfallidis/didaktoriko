@@ -54,14 +54,7 @@ Conclusion
 \end_layout
 
 \begin_layout Subsection
-Summary
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Summary"
-
-\end_inset
-
-
+Crossings
 \end_layout
 
 \begin_layout Standard
@@ -81,16 +74,40 @@ key "wedeen2012geometric"
 \end_inset
 
  published in Science Magazine a fascinating work.
+ A work that further strengthens the importance of the topics presented
+ in this thesis.
  They showed that they can identify in the tractographies of the brains
  of humans and other animals (in vivo and in vitro) fibre bundles with agreement
  to confocal microscopy and other staining techniques.
- The authors showed that a grid structure is prevalent in the brain i.e.
+ The authors clarified that a grid-like structure is prevalent in the brain
+ i.e.
  fibre bundles are crossing in more areas that we would previously expect.
- Furthermore, they also showed that they curve vigourosly and rapidly.
- In order to create their tractographies the authors used Diffusion Spectrum
- Imaging for reconstruction and deterministic tracking which have both been
- widely used and extended in this thesis.
- Here we present a summary of our main original contributions in the areas.
+ Furthermore, they also showed that they curve more vigourosly than initially
+ expected.
+ Crossings from the voxel level to the tractography and bundle level have
+ been the main focus of this thesis.
+\end_layout
+
+\begin_layout Standard
+In order to create their tractographies the authors used Diffusion Spectrum
+ Imaging for signal reconstruction and deterministic tracking which have
+ both been widely used and extended in this thesis.
+ 
+\end_layout
+
+\begin_layout Subsection
+Summary
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Summary"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here we present a summary of our main original contributions.
 \end_layout
 
 \begin_layout Standard
@@ -102,11 +119,11 @@ Reconstructing voxels.
  We first proposed a new reconstruction method called Diffusion Nabla Imaging
  (DNI) using an algorithm that directly approximates the Orientation Distributio
 n Function using the Laplacian of the signal in q-space.
- Additionaly, we found that a family of transforms exists which is a superset
+ Additionally, we found that a family of transforms exists which is a superset
  of DNI.
  We call this the Equatorial Inversion Transform (EIT).
  We showed that EIT has higher angular accuracy in simulations than the
- other methods and that it introduces intresting theoretical foundations
+ other methods and that it introduces interesting theoretical foundations
  for the interpretation of the dMRI signal.
  We compared and evaluated different Cartesian-grid q-space dMRI acquisition
  schemes, using methods based on the inverse Fourier transform of the diffusion
@@ -154,7 +171,7 @@ The end goal of clustering is to be able to segment tractography into tracts
  to compare different methods in reasonable time, and they cannot run fast
  enough for an expert to interact with them in near real time.
  This thesis provides a complete solution to this problem.
- We developed a suprisingly simple, fully automatic, linear time, clustering
+ We developed a surprisingly simple, fully automatic, linear time, clustering
  method (QuickBundles) which reduces massive tractographies into a few easily
  accessible bundles.
  These bundles are characterised by representative tracks which are multi-purpos
@@ -204,6 +221,10 @@ key "garyfallidis2011dipy"
 \end_inset
 
  and FOS
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "garyfallidis2012hbm"
@@ -214,7 +235,7 @@ key "garyfallidis2012hbm"
  DIPY is used for dMRI analysis and FOS concentrates only on the visualization
  aspects using OpenGL.
  They are both implemented in the Python programming language.
- We hope that these projects will add up to the stack of excisting OpenSource
+ We hope that these projects will add up to the stack of existing OpenSource
  projects in the Neuroimaging community like Camino, FSL, DSI Studio and
  SPM.
  We believe that by providing our code openly and non for-profit we allow
@@ -339,7 +360,7 @@ key "oikonomidis2011full"
 Clinical Applications
 \series default
 .
- Extending our priliminary evolvement with clinical research in trichotilomania
+ Extending our preliminary involvement with clinical research in trichotilomania
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -478,7 +499,7 @@ reference "Flo:SelectionViz"
 \end_inset
 
 C, white tracks).
- When one or more representative tracks are selected the practicioner can
+ When one or more representative tracks are selected the practitioner can
  see the content of the related clusters (see Fig.
 \begin_inset space ~
 \end_inset
@@ -749,7 +770,7 @@ The End
 
 \begin_layout Standard
 We are very glad to see that the pictures we generate are both beautiful
- and useful pushing our knowledge and insipiration for the advancement of
+ and useful pushing our knowledge and inspiration for the advancement of
  brain mapping.
  To honour our participants who took part in our experiments we gave them
  a picture of their tractography like the one shown in Fig.
