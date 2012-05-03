@@ -3961,6 +3961,12 @@ reference "Flo:PMT_table"
 \end_inset
 
 .
+ Differences greater than MaxSED are highly significant (
+\begin_inset Formula $p<0.0001$
+\end_inset
+
+).
+  
 \end_layout
 
 \begin_layout Standard
