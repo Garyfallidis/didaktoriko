@@ -3966,7 +3966,7 @@ reference "Flo:PMT_table"
 \end_inset
 
 ).
-  
+ 
 \end_layout
 
 \begin_layout Standard
@@ -5460,8 +5460,9 @@ Every sub-table shows the percentage of tracks which started from areas
  observe that the crossing area was well represented by EITL, DSI and GQI
  but not from DTI as it was expected because the Single Tensor cannot resolve
  crossings.
- We can also observe by comparing all the rows that in the more curved branch
- of the phantom less tracks reached their target that in the diagonal branch.
+ We can also observe by comparing all the rows that in the more curve branch
+ AB of the phantom fewer tracks reached their target that in the diagonal
+ branch CD.
 \end_layout
 
 \end_inset
@@ -5485,7 +5486,160 @@ name "Tab:EuDX_AtoB"
 \end_layout
 
 \begin_layout Standard
-So, why is there always a number of tracks which will not reach the other
+When DTI is compared with any of EITL, DSI and GQI, each of the connections
+ 
+\begin_inset Formula $A\rightarrow\emptyset$
+\end_inset
+
+, 
+\begin_inset Formula $B\rightarrow\emptyset$
+\end_inset
+
+, 
+\begin_inset Formula $C\rightarrow\emptyset$
+\end_inset
+
+, 
+\begin_inset Formula $D\rightarrow\emptyset$
+\end_inset
+
+ is significantly more frequent with DTI.
+ Similarly 
+\begin_inset Formula $A\rightarrow B$
+\end_inset
+
+, and 
+\begin_inset Formula $B\rightarrow A$
+\end_inset
+
+ are less frequent with DTI, as are 
+\begin_inset Formula $C\rightarrow D$
+\end_inset
+
+, and 
+\begin_inset Formula $D\rightarrow C$
+\end_inset
+
+.
+ By contrast 
+\begin_inset Formula $A\rightarrow C$
+\end_inset
+
+, and 
+\begin_inset Formula $C\rightarrow A$
+\end_inset
+
+ are more frequent with DTI, as are 
+\begin_inset Formula $B\rightarrow D$
+\end_inset
+
+, and 
+\begin_inset Formula $D\rightarrow B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Between EITL and DSI we note that for tracks starting in 
+\begin_inset Formula $B$
+\end_inset
+
+, 
+\begin_inset Formula $B\rightarrow\emptyset$
+\end_inset
+
+ more frequently with EITL whereas 
+\begin_inset Formula $B\rightarrow A$
+\end_inset
+
+ less frequently.
+ For tracks starting in 
+\begin_inset Formula $D$
+\end_inset
+
+, 
+\begin_inset Formula $D\rightarrow C$
+\end_inset
+
+ more frequently with EITL than DSI , and 
+\begin_inset Formula $D\rightarrow B$
+\end_inset
+
+ less frequently with EITL then DSI.
+\end_layout
+
+\begin_layout Standard
+Between EITL and GQI, for tracks starting in 
+\begin_inset Formula $A,$
+\end_inset
+
+ 
+\begin_inset Formula $A\rightarrow\emptyset$
+\end_inset
+
+ less often with EITL than with GQI, whereas 
+\begin_inset Formula $A\rightarrow B$
+\end_inset
+
+ and 
+\begin_inset Formula $A\rightarrow C$
+\end_inset
+
+ occur more often.
+ However 
+\begin_inset Formula $B\rightarrow\emptyset$
+\end_inset
+
+ more often for EITL than GQI.
+ By contrast 
+\begin_inset Formula $C\rightarrow D$
+\end_inset
+
+ occurs more frequently, and 
+\begin_inset Formula $C\rightarrow A$
+\end_inset
+
+ less frequently.
+ Also 
+\begin_inset Formula $D\rightarrow B$
+\end_inset
+
+ occurs less.
+\end_layout
+
+\begin_layout Standard
+Finally, comparing DSI with GQI, 
+\begin_inset Formula $A\rightarrow\emptyset$
+\end_inset
+
+ less often with DSI whereas 
+\begin_inset Formula $A\rightarrow B$
+\end_inset
+
+ and 
+\begin_inset Formula $B\rightarrow A$
+\end_inset
+
+ more often.
+ Similarly 
+\begin_inset Formula $C\rightarrow D$
+\end_inset
+
+ and 
+\begin_inset Formula $D\rightarrow C$
+\end_inset
+
+ more often.
+ Correspondingly 
+\begin_inset Formula $D\rightarrow B$
+\end_inset
+
+ happens more often with GQI.
+\end_layout
+
+\begin_layout Standard
+So, why are there always a number of tracks which will not reach the other
  end-points? This happens because most of the area in high-dimensional volumes
  (3D volumes) is concentrated close to the boundaries of the volumes; therefore
  many random seeds will fall close to the boundaries.
@@ -6641,14 +6795,44 @@ reference "Tab:EuDX_AtoB"
 
 \end_inset
 
- we observe that PMT performed worse that EuDX with DSI, GQI or EIT.
+ we observe that PMT performed worse that EuDX with any of DSI, GQI or EIT.
  This becomes obvious when comparing the 
 \begin_inset Formula $\emptyset$
 \end_inset
 
- columns of the corresponding tables where we see that EuDX had a lower
- percentage of tracks that did not reach any of the other end-points.
- This is an exciting outcome as probabilistic approaches are usually supposed
+ columns of the corresponding tables where we see that EuDX had a significantly
+ lower percentage of tracks that did not reach any of the other end-points.
+ Further detailed comparison of EITL with PMT shows that the two-way connections
+ 
+\begin_inset Formula $A\rightarrow B$
+\end_inset
+
+ & 
+\begin_inset Formula $B\rightarrow A$
+\end_inset
+
+, and 
+\begin_inset Formula $C\rightarrow D$
+\end_inset
+
+ & 
+\begin_inset Formula $D\rightarrow C$
+\end_inset
+
+ are stronger with EITL.
+ By contrast 
+\begin_inset Formula $A\rightarrow C$
+\end_inset
+
+ & 
+\begin_inset Formula $C\rightarrow A$
+\end_inset
+
+ are stronger with PMT.
+\end_layout
+
+\begin_layout Standard
+This is an important outcome as probabilistic approaches are usually supposed
  to perform better than deterministic 
 \begin_inset CommandInset citation
 LatexCommand cite
