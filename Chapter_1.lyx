@@ -71,7 +71,7 @@ Diffusion MRI
 \lang english
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -170,7 +170,7 @@ key "Tuch2005"
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -238,7 +238,7 @@ d by the presence or variation in the magnetic field, the cumulative phase
  the orientations of the supposed underlying brain fibres that provides
  the unique insights of diffusion tractography.
  In dMRI it is assumed that the protons will move more along the directions
- of the axons and less perpendicular to that direction.
+ of the axons, and move less perpendicular to that direction.
  
 \end_layout
 
@@ -246,7 +246,7 @@ d by the presence or variation in the magnetic field, the cumulative phase
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -296,10 +296,10 @@ name "Flo:three_slices"
 
 \begin_layout Standard
 Anisotropy is one of the terms that are very common in diffusion terminology.
- Anisotropy means that the average displacement of the particles is greater
- along some directions than along others.
- On the other hand, isotropy means that the average displacement is equal
- in all directions i.e.
+ Anisotropy means that the mean square displacement of the particles is
+ greater along some directions than along others.
+ On the other hand, isotropy means that the mean square displacement is
+ equal in all directions i.e.
  complete lack of anisotropy.
  It is this level of anisotropy that is the basis of dMRI as a method of
  investigation of the structure of biological materials.
@@ -821,7 +821,7 @@ name "Flo:steam"
 \begin_layout Standard
 
 \lang english
-Using STEAM we were able to generate high quality datasets in nearly half
+Using STEAM we were able to acquire high quality datasets in nearly half
  the time per direction required with the standard DTI sequence.
  We were able for example to acquire 
 \begin_inset Formula $102$
@@ -848,7 +848,14 @@ Using STEAM we were able to generate high quality datasets in nearly half
 \end_inset
 
 .
- 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In the same way as TRSE, STEAM has the advantage that it minimises eddy
+ current effects and for this reason we have not applied any eddy current
+ corrrections to the STEAM datasets described later 
 \end_layout
 
 \begin_layout Subsection
@@ -912,7 +919,7 @@ noindent
 \begin_inset Formula $b$
 \end_inset
 
- is the b-value; the crucial experimental diffusion weighting parameter
+ is the b-value -- the crucial experimental diffusion weighting parameter
  which summarises the amount of diffusion sensitising gradient history.
  
 \begin_inset Formula $D$
@@ -933,7 +940,7 @@ nt (ADC).
 \end_inset
 
 
-\begin_inset Formula $D\approx3\cdot10^{-3}$
+\begin_inset Formula $D\approx3\times10^{-3}$
 \end_inset
 
 
@@ -1064,9 +1071,12 @@ Signal as a function of
 \begin_inset Formula $D$
 \end_inset
 
-
+.
+ The directional effect is the difference between signals from gradients
+ along and perpendicular to the fibre.
+ 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 What do you mean with directional effect?
@@ -1437,9 +1447,9 @@ reference "eq:kurtosis"
 ) for every gradient direction we can create systems of equations where
  we can fit and identify their unknown parameters.
  In this thesis, we will try to avoid fitting.
- We will concentrate on reconstructing the diffusion signal in an non-parametric
- Fourier-based approach using the combined information from many gradient
- directions.
+ We will concentrate on reconstructing the diffusion signal using a non-parametr
+ic Fourier-based approach applied to the combined information from many
+ gradient directions.
 \begin_inset Note Note
 status collapsed
 
@@ -2161,7 +2171,7 @@ key "moseley1995clinical,warach1995acute"
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-MD=\frac{trace(D)}{3}=\frac{\lambda_{1}+\lambda_{2}+\lambda_{3}}{3}\label{eq:mean_diffusivity}\end{equation}
+MD=\frac{\mathrm{trace}(D)}{3}=\frac{\lambda_{1}+\lambda_{2}+\lambda_{3}}{3}\label{eq:mean_diffusivity}\end{equation}
 
 \end_inset
 
@@ -2263,7 +2273,7 @@ reference "eq: euler"
 \begin_layout Standard
 One possible approach would be to replace the diffusion probability density
  function with an isosurface, which is a surface that passes through all
- points of equal value.
+ points of equal probability density value.
  For instance, an isosurface of a 3D Gaussian distribution is an ellipsoid.
  A more commonly used technique that is less sensitive to noise involves
  the computation of the Orientation Distribution Function (ODF) from the
@@ -2564,8 +2574,12 @@ reference "Flo:tensortrack"
 \end_layout
 
 \begin_layout Standard
-The two best known families of track propagation (also known as track integratio
-n, tracking or tractography) algorithms are: deterministic
+The two best known families of algorithms for track propagation (also known
+ as track integration, tracking or tractography) are 
+\emph on
+deterministic
+\emph default
+
 \begin_inset space ~
 \end_inset
 
@@ -2576,7 +2590,11 @@ key "CLC+99,MCC+99"
 
 \end_inset
 
- and probabilistic
+ and 
+\emph on
+probabilistic
+\emph default
+
 \begin_inset space ~
 \end_inset
 
@@ -2688,8 +2706,8 @@ name "Flo:tensortrack"
 \end_layout
 
 \begin_layout Standard
-One of the simplest and first deterministic methods is called Fibre Assignment
- by Continuous Tracking (FACT) 
+One of the simplest and earliest deterministic methods is called Fibre Assignmen
+t by Continuous Tracking (FACT) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "MCC+99"
@@ -2777,14 +2795,18 @@ noindent
 \begin_inset Formula $R$
 \end_inset
 
- will increase as the absolute value of the dot product grows bigger as
- the normalised vectors become more co-linear.
+ will be near to 1 as the absolute value of each dot product will come closer
+ to 1 as the normalised vectors become more co-linear.
  On the other side, 
 \begin_inset Formula $R$
 \end_inset
 
- will grow shorter in regions without continuity in fibre direction, where
- 
+ will be smaller in regions without consistency in fibre direction.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+, where 
 \family roman
 \series medium
 \shape up
@@ -2797,7 +2819,25 @@ noindent
 \begin_inset Formula $R=0$
 \end_inset
 
- in perfect isotropic conditions.
+ in perfect isotropic conditions IAN: don't believe this is true - when
+ isotropic - I think it should be 2/
+\begin_inset Formula $\pi$
+\end_inset
+
+ which equals about 0.637.
+\end_layout
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
  In voxels with 
 \begin_inset Formula $R$
 \end_inset
@@ -2813,7 +2853,8 @@ noindent
 \bar default
 \noun default
 \color inherit
- An important problem with FACT is that it fails to track in crossing areas.
+ An important problem with FACT is that it fails to track in areas where
+ there are crossings.
  In this case, it only tracks one of the major pathways of the crossing
  area .
 \begin_inset Note Note
@@ -3007,7 +3048,7 @@ noindent
 \begin_inset Formula $0<\alpha\leq1$
 \end_inset
 
- defines the integration finite step.
+ defines the integration step length.
  In Euler integration we are using the first two terms of the Taylor expansion.
  Conturo et al.
 \begin_inset space ~
@@ -3130,7 +3171,7 @@ key "WWS+08"
 \end_inset
 
  from the local maxima of the ODF calculated in each voxel.
- In that way we could visualise crossing distributions and depict crossing
+ In that way one could visualise crossing distributions and depict crossing
  fibres.
 
 \family default
@@ -3179,7 +3220,7 @@ In summary, the deterministic algorithms propagate tracks by making a series
  of discrete locally optimum decisions.
  These are fast, simple and easy to interpret.
  Usually, we depict them using tracks (also known as streamlines or polylines).
- The main disadvantage of deterministic algorithms is that it is vulnerable
+ The main disadvantage of deterministic algorithms is that they are vulnerable
  to local noise.
  
 \begin_inset Note Note
@@ -3269,6 +3310,16 @@ A simplified example showing in (i) and (ii) the same data set but in (i)
  tractography weights more closer connections.
  However, it can track further deep than deterministic tractography.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ian: Should the word 'tract' be changed to 'track' in this figure legend?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3642,11 +3693,11 @@ key "Sherbondy2008JVision"
  introduced an algorithm that separates the pathway sampling and scoring
  steps.
  In that way the scoring does not depend any more on whether we are tracking
- from seed A to seed B or from B to A therefore, it assumes symmetry when
+ from seed A to seed B or from B to A; therefore it assumes symmetry when
  the other probabilistic methods do not.
  At the same time Sherbondy's method assumes independence between different
  tracts i.e.
- path 
+ pathway 
 \begin_inset Formula $A\rightarrow B$
 \end_inset
 
@@ -3668,7 +3719,7 @@ key "Sherbondy2008JVision"
  matter anatomy otherwise the results might be biased.
  Other tools like FSL's FDT uses waypoint masks to reduce the effect of
  this problem.
- But these need to be defined by the user too.
+ But these too need to be defined by the user.
  
 \end_layout
 
@@ -4188,10 +4239,6 @@ reference "sec:Highly-Efficient-Tractography"
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \align center

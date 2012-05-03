@@ -110,7 +110,7 @@ key "merboldt1992diffusion,MAB04"
 
  as the diffusion preparation method.
  The field of view was 
-\begin_inset Formula $240x240\, mm^{2}$
+\begin_inset Formula $240\times240\, mm^{2}$
 \end_inset
 
 , matrix size 
@@ -124,7 +124,7 @@ key "merboldt1992diffusion,MAB04"
  (no gap).
  55 slices were acquired to achieve full brain coverage, and the voxel resolutio
 n was 
-\begin_inset Formula $2.5x2.5x2.5\, mm{}^{3}$
+\begin_inset Formula $2.5\times2.5\times2.5\, mm{}^{3}$
 \end_inset
 
 .
@@ -200,7 +200,7 @@ key "merboldt1992diffusion,MAB04"
 
  as the diffusion preparation method.
  The field of view was 
-\begin_inset Formula $240x240\, mm^{2}$
+\begin_inset Formula $240\times240\, mm^{2}$
 \end_inset
 
 , matrix size 
@@ -214,7 +214,7 @@ key "merboldt1992diffusion,MAB04"
  (no gap).
  55 slices were acquired to achieve full brain coverage, and the voxel resolutio
 n was 
-\begin_inset Formula $2.5x2.5x2.5\, mm{}^{3}$
+\begin_inset Formula $2.5\times2.5\times2.5\, mm{}^{3}$
 \end_inset
 
 .A 102-point half grid acquisition with a maximum b-value of 
@@ -263,11 +263,11 @@ noindent
 .
  3T scanner (TIM Trio, Siemens) with a 32 channel coil.
  The field of view was 
-\begin_inset Formula $210x210\, mm^{2}$
+\begin_inset Formula $210\times210\, mm^{2}$
 \end_inset
 
 , matrix size 
-\begin_inset Formula $96x96$
+\begin_inset Formula $96\times96$
 \end_inset
 
 , and slice thickness 
@@ -276,7 +276,7 @@ noindent
 
 .
  44 slices were acquired and the voxel resolution was 
-\begin_inset Formula $2.2x2.2x3.0\, mm{}^{3}$
+\begin_inset Formula $2.2\times2.2\times3.0\, mm{}^{3}$
 \end_inset
 
 .A 258-point half grid acquisition scheme with a maximum b-value of 
@@ -331,14 +331,15 @@ Let
 \begin_inset Formula $f(t)$
 \end_inset
 
- be an even function 
+ be an even function, 
 \begin_inset Formula $f(t)=f(-t)$
 \end_inset
 
- defined for 
+, defined for 
 \begin_inset Formula $-\infty<t<\infty$
 \end_inset
 
+.
  
 \end_layout
 
@@ -349,18 +350,26 @@ F(s) & = & \int_{-\infty}^{\infty}f(t)e^{its}dt\\
  & = & \int_{0}^{\infty}f(t)e^{its}dt-\int_{-\infty}^{0}f(-t)e^{-its}dt\\
  & = & \int_{0}^{\infty}f(t)e^{its}dt+\int_{0}^{\infty}f(t)e^{-its}dt\\
  & = & \int_{0}^{\infty}f(t)[e^{its}+e^{-its}]dt\\
- & = & \int_{0}^{\infty}f(t)[cos(its)+isin(its)+cos(its)-isin(its)]dt\\
+ & = & \int_{0}^{\infty}f(t)[\cos(its)+i\sin(its)+\cos(its)-i\sin(its)]dt\\
  & = & 2\int_{0}^{\infty}f(t)cos(st)dt\end{eqnarray*}
 
 \end_inset
 
- In the third row above we replace 
+
+\begin_inset Formula $\noindent$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+In the third row above we replaced 
 \begin_inset Formula $t\rightarrow-t$
 \end_inset
 
-.
- If you want to compute the integral in the whole space because of symmetry
- you have 
+ in the second integral.
+ If we want to express the Fourier transform of a symmetric function as
+ an integral over the whole space we have 
 \family roman
 \series medium
 \shape up
@@ -370,7 +379,7 @@ F(s) & = & \int_{-\infty}^{\infty}f(t)e^{its}dt\\
 \noun off
 \color none
 
-\begin_inset Formula $F(s)=\int_{-\infty}^{\infty}f(t)cos(st)dt$
+\begin_inset Formula $F(s)=\int_{-\infty}^{\infty}f(t)\cos(st)dt$
 \end_inset
 
 .
@@ -739,9 +748,13 @@ Q(\mathbf{R}) & =S_{0} & \prod_{i=1}^{3}\sqrt{\frac{\pi}{b\lambda_{i}}}\exp(-\fr
 \end_inset
 
 
-\end_layout
+\begin_inset Formula $\noindent$
+\end_inset
 
-\begin_layout Standard
+
+\begin_inset space ~
+\end_inset
+
 where 
 \begin_inset Formula $D$
 \end_inset
@@ -860,8 +873,8 @@ reference "eq:TensorQ2"
 \end_layout
 
 \begin_layout Standard
-This can be used as a check to compare the approximated/sampled spin odf
- that is derived in 
+This can be used as a check to compare the approximated or sampled spin
+ ODF that is derived in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Yeh2010"
@@ -885,7 +898,7 @@ reference "eq:spinodf_cdf"
 
 \begin_layout Standard
 What is also very interesting is to try to derive what the normalization
- factor should be for the spin odf in Eq.
+ factor should be for the spin ODF in Eq.
 \begin_inset space ~
 \end_inset
 
@@ -897,7 +910,7 @@ reference "eq:TensorQ2"
 \end_inset
 
 .
- Because calculating a spherical intergral from Eq.
+ Because calculating a spherical integral from Eq.
 \begin_inset space ~
 \end_inset
 
@@ -938,7 +951,7 @@ key "Tuch2004"
 \end_layout
 
 \begin_layout Standard
-Lets now define 
+Let us now define 
 \begin_inset Formula $f_{D}(\mathbf{u})=(\mathbf{u}^{T}D^{-1}\mathbf{u})^{-\frac{1}{2}}$
 \end_inset
 
@@ -960,7 +973,8 @@ reference "eq:hole_space_known"
 \end_inset
 
 ).
- By expanding it in polar form we can find surface integral needed in Eq.
+ By expanding it in polar form we can find the surface integral required
+ in Eq.
 \begin_inset space ~
 \end_inset
 
@@ -1100,11 +1114,6 @@ Given
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\align block
-
 \end_layout
 
 \begin_layout Standard

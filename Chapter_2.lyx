@@ -1337,7 +1337,7 @@ We propose an important theoretical construction called the Equatorial Inversion
  Transform (EIT) which creates a general formulation for the interpretation
  of the directionality of the diffusion signal.
  This idea is founded on two general properties of the diffusion signal:
- a) If we visualize the diffusion signal for a single fibre for all gradient
+ (a) If we visualize the diffusion signal for a single fibre for all gradient
  directions we see the generated shape to be lowest towards the direction
  of the fibre and highest on the plane perpendicular to that direction (see
  Fig.
@@ -1352,7 +1352,7 @@ reference "Flo:single_fibre_spherical_grid"
 \end_inset
 
 ).
- b) The diffusion signal is additive i.e.
+ (b) The diffusion signal is additive i.e.
  
 \begin_inset Formula $S(\hat{\mathbf{f}}_{1})+S(\hat{\mathbf{f}}_{2})=S(\hat{\mathbf{f}}_{1}+\hat{\mathbf{f}}_{2})$
 \end_inset
@@ -1393,8 +1393,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-The diffusion signal has the beautiful property to be minimum along the
- direction of a fibre with unit direction 
+The diffusion signal has the beautiful property that it is minimum along
+ the direction of a fibre with unit direction 
 \begin_inset Formula $\mathbf{\hat{\bm{f}}}$
 \end_inset
 
@@ -1482,8 +1482,8 @@ ction sphere.
 With EIT the most important goal is to try to identify the orientational
  variation in the signal in the most accurate way by generating a spherical
  density.
- However, it is possible to calculate as well the classical ODF as defined
- by Wedeen et al.
+ However, it is possible to calculate additionally the classical ODF as
+ defined by Wedeen et al.
 \begin_inset space ~
 \end_inset
 
@@ -6503,7 +6503,7 @@ key "Basser1994"
 \end_inset
 
  which works well when there is a single dominant fibre direction.
- When the local organization is more complex hoever, the information it
+ When the local organization is more complex however, the information it
  provides is not so valid 
 \begin_inset CommandInset citation
 LatexCommand cite
