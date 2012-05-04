@@ -3346,10 +3346,6 @@ b
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-\align center
 \begin_inset CommandInset label
 LatexCommand label
 name "Flo:sphere_642"
@@ -4809,10 +4805,6 @@ This diagram shows that when we compute EITL with the fast or standard method
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-\align center
 \begin_inset CommandInset label
 LatexCommand label
 name "Flo:FastvsStandardEITL"

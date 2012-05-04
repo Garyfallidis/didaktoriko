@@ -3698,9 +3698,6 @@ On the left panel we see the b0 volume of the digital phantom and on top
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
 name "Flo:eudx_fromABCD"

@@ -799,11 +799,6 @@ STimulated Echo Acquisition Mode (STEAM)
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "Flo:steam"
@@ -1090,9 +1085,6 @@ What do you mean with directional effect?
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
 name "Fig: signals"
