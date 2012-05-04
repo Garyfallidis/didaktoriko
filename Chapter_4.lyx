@@ -6729,13 +6729,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:AP"
-
-\end_inset
-
-
 \begin_inset ERT
 status open
 
@@ -7098,29 +7091,9 @@ caption{Affinity Propagation}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Using now the labels we can add an extra step in AP where we create a tree
- structure $C_{AP}=
-\backslash
-{c_{0},...,c_{k},...,c_{|C_{AP}|-1}
-\backslash
-}$, where a cluster $c=
-\backslash
-{I,
-\backslash
-mathbf{e},N
-\backslash
-}$ holds the exemplars $
-\backslash
-mathbf{e}$, the indices $I$ of the cluster elements and $N$ the number of
- elements in a cluster so that it resembles with the output of QB.
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:AP"
 
 \end_inset
 
@@ -7541,7 +7514,7 @@ Experiments
  of a single individual copied and transformed 
 \change_inserted 2 1319745405
 
-\begin_inset Formula $1000$
+\begin_inset Formula $1,000$
 \end_inset
 
 
