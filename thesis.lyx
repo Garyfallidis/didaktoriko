@@ -647,7 +647,7 @@ I would like to thank my supervisor, Dr.
  Guy Williams for his research suggestions and encouragement.
  The combination of the statistical knowledge from my first supervisor and
  the knowledge in MR physics from my second supervisor was a key component
- for the complesion of this thesis.
+ for the completion of this thesis.
 \end_layout
 
 \begin_layout Standard
@@ -656,9 +656,9 @@ I would like to thank my supervisor, Dr.
 I am grateful to Dr.
  Matthew Brett who had been such a great friend and promoter of my work.
  His suggestions have been enormously helpful especially on software development.
- My great appriciation to my friend and collaborator Dr.
- Marta Correia who helped on designing and collecting the MR data sets used
- in this work.
+ My great appreciation to my friend and collaborator Dr.
+ Marta Correia who helped with designing and collecting the MR data sets
+ used in this work.
  The same goes for Mr.
  John Griffiths and Dr.
  Virginia Newcombe who were the first users of my work in Cambridge.
@@ -667,8 +667,9 @@ I am grateful to Dr.
 \begin_layout Standard
 
 \lang english
-A big thank you to Stephan Gerhard with who we gave birth to a new visualization
- library, Frank Yeh for his suggestions on tractography algorithms and Dr.
+A big thank you to Stephan Gerhard with whom I worked to give birth to a
+ new visualization library, to Frank Yeh for his suggestions on tractography
+ algorithms and to Dr.
  Emanuele Olivetti on Machine Learning approaches.
 \end_layout
 
@@ -692,22 +693,19 @@ Life would be unbearable without friends.
  Andreas Georgiou, Dr.
  Daniel Holland, Dr.
  Mina Mprimpari, Dr.
- Nikos Dikaios and my roomated Dr.
+ Nikos Dikaios and my room mate Dr.
  Magda Rapti.
- A huge thanks to Magda for her support and understa
+ A huge thank you to Magda for her support and understanding.
 \end_layout
 
 \begin_layout Standard
-I should not forget my first teachers who helped me develop my scientific
- abilities and strengthened my courage Professor Nikolaos Vassilas, Professor
- Antonis Argyros, Professor Alexandros Tomaras, Mr.
- Vassilis Valavanis and Mr.
- George Katradis.
- My great aknowledgement to my college tutor Dr.
- Giles Yeo who was always available to help with any bureaucratic issues.
+I should not forget my first teachers who helped me develop my scientific abilities and strengthened my courage: Professor Nikolaos Vassilas, Professor
+ Antonis Argyros and Professor Alexandros Tomaras.
+ My great acknowledgement to my college tutor Dr Giles Yeo who was always
+ available to help with any bureaucratic issues.
  Finally, I would like to thank my fellow colleagues and developers at NeuroImag
 ing in Python for their hard work and devotion to the principles of free
- software and open Science.
+ software and open science.
 \begin_inset Newline newline
 \end_inset
 
