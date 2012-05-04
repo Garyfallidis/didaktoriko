@@ -50,49 +50,7 @@
 \begin_body
 
 \begin_layout Section
-Conclusion 
-\end_layout
-
-\begin_layout Subsection
-Crossings
-\end_layout
-
-\begin_layout Standard
-On March 
-\begin_inset Formula $2,012$
-\end_inset
-
- Wedeen et al.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "wedeen2012geometric"
-
-\end_inset
-
- published in Science Magazine a fascinating work.
- A work that further strengthens the importance of the topics presented
- in this thesis.
- They showed that they can identify in the tractographies of the brains
- of humans and other animals (in vivo and in vitro) fibre bundles with agreement
- to confocal microscopy and other staining techniques.
- The authors clarified that a grid-like structure is prevalent in the brain
- i.e.
- fibre bundles are crossing in more areas that we would previously expect.
- Furthermore, they also showed that they curve more vigourosly than initially
- expected.
- Crossings from the voxel level to the tractography and bundle level have
- been the main focus of this thesis.
-\end_layout
-
-\begin_layout Standard
-In order to create their tractographies the authors used Diffusion Spectrum
- Imaging for signal reconstruction and deterministic tracking which have
- both been widely used and extended in this thesis.
- 
+Conclusion
 \end_layout
 
 \begin_layout Subsection
@@ -129,8 +87,8 @@ n Function using the Laplacian of the signal in q-space.
  schemes, using methods based on the inverse Fourier transform of the diffusion
  signal, with reconstructions by Diffusion Spectrum Imaging (DSI), Generalized
  Q-sampling Imaging (GQI) and the EIT.
- We also compared against GQI2 which was not applied to simulated and real
- data until today.
+ We also compared EIT against GQI2 which had not been applied to simulated
+ or real data until now.
  We found that GQI2 has similar performance with that of the EIT and it
  can generate smooth ODFs.
 \end_layout
@@ -143,8 +101,8 @@ Integrating to tracks.
 \series default
  Most previously published reconstruction methods are closely linked to
  their own specific tracking method.
- We have formulated a minimalistic tracking (EuDX) which is based on Euler
- integration and trilinear interpolation.
+ We have formulated a minimal tracking algorithm (EuDX) which is based on
+ Euler integration and trilinear interpolation.
  This algorithm integrates voxel level information about fibre orientations
  including multiple crossings, and employs a range of stopping criteria.
  The purpose of this algorithm is to be faithful to the reconstruction results
@@ -167,9 +125,9 @@ The end goal of clustering is to be able to segment tractography into tracts
  In order to succeed better, we need to be able to compare the results of
  tractographies, and we need to be able to allow experts in anatomy to interact
  with the results of the tractography.
- Unfortunately most current methods so slow to compute that it is not practical
- to compare different methods in reasonable time, and they cannot run fast
- enough for an expert to interact with them in near real time.
+ Unfortunately most current methods are so slow to compute that it is not
+ practical to compare different methods in reasonable time, and they cannot
+ run fast enough for an expert to interact with them in close to real time.
  This thesis provides a complete solution to this problem.
  We developed a surprisingly simple, fully automatic, linear time, clustering
  method (QuickBundles) which reduces massive tractographies into a few easily
@@ -178,9 +136,8 @@ The end goal of clustering is to be able to segment tractography into tracts
 e and can be used for interaction with the data or as the basis for applying
  higher-complexity clustering methods which would have been impossible or
  too slow with the full data set.
- QuickBundles is currently and as far as we know the fastest tractography
- clustering algorithm; providing the opportunity for clinical real-time
- applications.
+ QuickBundles is as far as we know the fastest existing tractography clustering
+ algorithm; providing the opportunity for clinical real-time applications.
  
 \end_layout
 
@@ -238,8 +195,8 @@ key "garyfallidis2012hbm"
  We hope that these projects will add up to the stack of existing OpenSource
  projects in the Neuroimaging community like Camino, FSL, DSI Studio and
  SPM.
- We believe that by providing our code openly and non for-profit we allow
- the other researchers to test and extend our findings.
+ We believe that by providing our code open source and not-for-profit we
+ allow other researchers to test and extend our findings.
  We believe that this is a factor which can increase the quality of scientific
  research beyond the standard expectations.
  Ioannidis et al.
@@ -264,8 +221,9 @@ key "ioannidis2005most"
 \begin_layout Standard
 We have enjoyed writing thousands of lines of code in order to generate
  the dMRI algorithms or even the figures of this dissertation.
- Both DIPY and FOS have attracted more developers and scientists from acknowledg
-ed universities around the world who contribute today to these platforms.
+ Both DIPY and FOS have attracted further developers and scientists from
+ acknowledged universities around the world who contribute today to these
+ platforms.
  
 \end_layout
 
@@ -295,14 +253,14 @@ Extending EIT
 \series bold
  
 \series default
-Currently the EIT expects Cartesian grid-based q-space data as those used
+Currently the EIT expects Cartesian grid-based q-space data like those used
  in DSI reconstructions.
- However, it seems that because the EIT is integrating directional information
+ However, it seems that because the EIT integrates directional information
  radially on spherical shells it will be straightforward to extend it to
  one or more spherical grid q-space data.
  Spherical grid data are more commonly available and usually they need less
- time to generate.
- In order to make this possible we will need to research further about spherical
+ scanner time.
+ In order to make this possible we will need to do further research on spherical
  interpolations.
  Perhaps our spherical smoothing functions described in section 
 \begin_inset CommandInset ref
@@ -336,8 +294,8 @@ Our direct registration approach allows only for linear transformations.
  linear registration for this approach.
  However, with the nonlinear difformations many more parameters will need
  fitting.
- Perhaps using robust optimizers like the Particle Swarm Optimizer (PSO)
- 
+ Perhaps with the aid of robust optimizers like the Particle Swarm Optimizer
+ (PSO) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kennedy1995particle"
@@ -351,7 +309,7 @@ key "oikonomidis2011full"
 
 \end_inset
 
- will provide more accurate registration.
+ we will be able to provide more accurate registration.
 \end_layout
 
 \begin_layout Standard
@@ -360,8 +318,8 @@ key "oikonomidis2011full"
 Clinical Applications
 \series default
 .
- Extending our preliminary involvement with clinical research in trichotilomania
- 
+ We propose extending our preliminary involvement with clinical research
+ into trichotilomania 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "chamberlain2010reduced"
@@ -370,7 +328,7 @@ key "chamberlain2010reduced"
 
  from fractional anisotropy to track density calculations.
  Also we would like to investigate bundle differences with other disorders
- like autism or schizophrenia.
+ such as autism or schizophrenia.
  Both autism and schizophrenia are considered to have strong relationship
  with defects in white matter architecture caused by disrupted connectivity
  
@@ -389,13 +347,9 @@ key "zalesky2011disrupted"
 Interactive Labeling
 \series default
 .
- On June 
-\begin_inset Formula $2012$
-\end_inset
-
- we are presenting at OHBM in China a scientific visualization tool that
- solves the problem of interacting with tractographies by creating real-time
- simplifications of the underlying anatomical bundle structures.
+ We are developing a scientific visualization tool that solves the problem
+ of interacting with tractographies by creating real-time simplifications
+ of the underlying anatomical bundle structures.
  The process that we propose works recursively: starting from a small number
  of clusters of streamlines the user decides which clusters to explore.
  Exploring a cluster means that the application re-clusters its content
@@ -765,33 +719,46 @@ name "Flo:Subj_1_orange"
 \end_layout
 
 \begin_layout Subsection
-The End
+New frontiers
 \end_layout
 
 \begin_layout Standard
-We are very glad to see that the pictures we generate are both beautiful
- and useful pushing our knowledge and inspiration for the advancement of
- brain mapping.
- To honour our participants who took part in our experiments we gave them
- a picture of their tractography like the one shown in Fig.
+White matter fibre crossings -- from the voxel level to the tractography
+ and bundle level -- have been a major motivation for this thesis.
+ In March 
+\begin_inset Formula $2012$
+\end_inset
+
+, Wedeen et al.
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Flo:Subj_1_orange"
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wedeen2012geometric"
 
 \end_inset
 
-.
- Albert Einstein suggested that imagination is even more important than
- knowledge.
- Perhaps one day of our near future we will be able to reconstruct single
- axons in vivo and in great precision.
- I hope I will be around to see it happening and help accomplish this achievemen
-t.
- 
+ published in Science Magazine a fascinating work that reinforces the importance
+ of these topics.
+ They showed that they can identify in the tractographies of the brains
+ of humans and other animals (in vivo and in vitro) fibre bundles which
+ are in agreement with confocal microscopy and other staining techniques.
+ The authors clarified that a grid-like structure is prevalent in the brain
+ i.e.
+ fibre bundles crossing in more areas than would previously have been expected.
+ Furthermore, they also showed that the bundles curve more vigorously than
+ previously understood.
+ Wedeen et al.
+\begin_inset space ~
+\end_inset
+
+created their tractographies using Diffusion Spectrum Imaging for signal
+ reconstruction and deterministic tracking.
+ We believe we have enhanced and extended the techniques that were used
+ to establish these ground-breaking results, and have created a framework
+ for them to be applied by the neuroscience community.
 \end_layout
 
 \end_body

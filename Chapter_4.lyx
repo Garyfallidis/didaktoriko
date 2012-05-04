@@ -2559,8 +2559,8 @@ mm and downsampling to
 \end_inset
 
  points.
- We observe that only a few virtual tracks travel the full distance from
- bottom to top and that many tracks that are broken (i.e.
+ We observe that only a few virtual tracks span the full distance from bottom
+ to top and that many tracks that are broken (i.e.
  shorter than what was initially expected) or highly divergent.
 \end_layout
 
@@ -4458,8 +4458,7 @@ key "Lawler2001"
 
 \end_inset
 
- of the Hungarian Method and have found that the one published by Carpaneto
- et al.
+ of the Hungarian Method and have found that the one by Carpaneto et al.
 \begin_inset space ~
 \end_inset
 
@@ -4470,7 +4469,7 @@ key "Carpaneto1988"
 
 \end_inset
 
- and implemented by them 
+, implemented by them 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "CarpanetoAPC"
@@ -4481,7 +4480,8 @@ key "CarpanetoAPC"
 \begin_inset Formula $\textsc{Fortran}$
 \end_inset
 
- is both fast and capable of handling assignment problems of unlimited size.
+, is both fast and capable of handling assignment problems of unlimited
+ size.
 \end_layout
 
 \begin_layout Standard
@@ -4855,7 +4855,7 @@ key "moberts2005evaluation"
  of the same subject or different subjects.
  Although this is a difficult problem, we propose the following solution
  with a metric which we call bundle adjacency (BA).
- BA works as follows: Lets assume that we have gathered the exemplar tracks
+ BA works as follows: Let us assume that we have gathered the exemplar tracks
  from clustering 
 \begin_inset Formula $A$
 \end_inset
@@ -5014,7 +5014,11 @@ noindent
 \begin_inset Formula $BA=1$
 \end_inset
 
- all exemplars from one set had a close neighbour in the other set.
+ all exemplars from one set had a 
+\begin_inset Formula $\theta$
+\end_inset
+
+-close neighbour in the other set.
  This metric is extremely useful especially when comparing tractographies
  from different subjects because it does not require 
 \begin_inset Formula $|E_{A}|=|E_{B}|$
@@ -5294,7 +5298,7 @@ It is well known that there are different artifacts seen in tractographies
 Tracks which most likely to be erroneous are those which wind more than
  one time, like a spiral.
  We can detect those with the following algorithm.
- Lets assume that we have a track 
+ Let us assume that we have a track 
 \begin_inset Formula $s$
 \end_inset
 
@@ -6067,7 +6071,7 @@ We found that QB is of great value as an adjunct to many less efficient
  We present here one example with QB as input to affinity propagation and
  one with QB as input to hierarchical clustering.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 MATTHEW: I wonder if you can use QB as input to QB? I mean to try and find
@@ -6610,7 +6614,7 @@ initially
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
 \forall i,k:\: A(i,k)=\begin{cases}
-{\displaystyle \sum_{i':i'\neq i}} & max[0,\: R(i',k)],\: for\:\: k=i\\
+{\displaystyle \sum_{i':i'\neq i}} & \max[0,\: R(i',k)],\: for\:\: k=i\\
 \min & \left[0,\: r(k,k)+{\displaystyle \sum\max_{i':i'\notin\{i,k\}}[0,r(i',k)]}\right],\: for\:\: k\neq i\end{cases}\end{equation}
 
 \end_inset
@@ -7874,7 +7878,7 @@ A simple and vigorous strategy for handling short and long tracks together
 \end_inset
 
  virtuals, D: 
-\begin_inset Formula $3421$
+\begin_inset Formula $3,421$
 \end_inset
 
  tracks closer than 
@@ -7923,12 +7927,12 @@ Some simple strategies for clustering short fibres are discussed.
 
  mm) to a lower threshold and assign them to their closest long track bundle
  from the first clustering using the 
-\begin_inset Formula $MAM_{min}$
+\begin_inset Formula $\mathrm{MA}\mathrm{M}_{\mathrm{min}}$
 \end_inset
 
  distance.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 MATTHEW: I could imagine a short track crossing a large track at right angles
@@ -7963,7 +7967,7 @@ reference "sub:Atlases-made-easy"
  using MDF.
  Cluster the closest tracks found from the previous step and for each one
  of these new skeletons find the closest tracks using 
-\begin_inset Formula $MAM_{min}$
+\begin_inset Formula $\mathrm{MA}\mathrm{M}_{\mathrm{min}}$
 \end_inset
 
  distance.
@@ -8005,7 +8009,7 @@ reference "Flo:arcuate_close"
 \end_inset
 
  mm (
-\begin_inset Formula $MAM_{min}$
+\begin_inset Formula $\mathrm{MA}\mathrm{M}_{\mathrm{min}}$
 \end_inset
 
  distance) from the entire tractography.
@@ -8172,9 +8176,10 @@ The main concept of this clustering method is that a cluster can be represented
 
 \begin_layout Standard
 A virtual (centroid) track is the average of all tracks in the cluster.
- We call it virtual because it doesn't really exist in the real data set
- and to distinguish it from exemplar (medoid) tracks which are again descriptors
- of the cluster but are represented by real tracks.
+ We call it virtual because it doesn't need to correspond to an actual track
+ in the real data set, and to distinguish it from exemplar (medoid) tracks
+ which are again descriptors of the cluster but are represented by actual
+ tracks.
  
 \begin_inset Note Note
 status open

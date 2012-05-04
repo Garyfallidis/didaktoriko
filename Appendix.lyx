@@ -204,7 +204,7 @@ key "merboldt1992diffusion,MAB04"
 \end_inset
 
 , matrix size 
-\begin_inset Formula $96x96$
+\begin_inset Formula $96\times96$
 \end_inset
 
 , and slice thickness 
@@ -1114,10 +1114,6 @@ Given
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \end_body
