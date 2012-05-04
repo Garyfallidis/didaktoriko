@@ -700,9 +700,11 @@ Life would be unbearable without friends.
 \begin_layout Standard
 I should not forget my first teachers who helped me develop my scientific
  abilities and strengthened my courage Professor Nikolaos Vassilas, Professor
- Antonis Argyros and Professor Alexandros Tomaras.
- My great aknowledgement to my college tutor Dr Giles Yeo who was always
- available to help with any bureaucratic issues.
+ Antonis Argyros, Professor Alexandros Tomaras, Mr.
+ Vassilis Valavanis and Mr.
+ George Katradis.
+ My great aknowledgement to my college tutor Dr.
+ Giles Yeo who was always available to help with any bureaucratic issues.
  Finally, I would like to thank my fellow colleagues and developers at NeuroImag
 ing in Python for their hard work and devotion to the principles of free
  software and open Science.
@@ -1512,7 +1514,7 @@ filename "Appendix.lyx"
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "diffusion"
-options "plain"
+options "ieeetr"
 
 \end_inset
 
