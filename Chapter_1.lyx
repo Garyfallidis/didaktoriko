@@ -855,7 +855,7 @@ Using STEAM we were able to acquire high quality datasets in nearly half
 \lang english
 In the same way as TRSE, STEAM has the advantage that it minimises eddy
  current effects and for this reason we have not applied any eddy current
- corrrections to the STEAM datasets described later 
+ corrections to the STEAM datasets described later.
 \end_layout
 
 \begin_layout Subsection
@@ -2184,7 +2184,7 @@ Fractional Anisotropy (FA) is the most common scalar metric used in diffusion
  direction for diffusion.
  Like the MD it depends only on the eigenvalues.
 \begin_inset Formula \begin{equation}
-FA=\frac{1}{\sqrt{2}}\frac{\sqrt{(\lambda_{1}-\lambda_{2})^{2}+(\lambda_{2}-\lambda_{3})^{2}+(\lambda_{3}-\lambda_{1})^{2}}}{\sqrt{\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}}}\end{equation}
+FA=\frac{1}{\sqrt{2}}\frac{\sqrt{(\lambda_{1}-\lambda_{2})^{2}+(\lambda_{2}-\lambda_{3})^{2}+(\lambda_{3}-\lambda_{1})^{2}}}{\sqrt{\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}}}\label{eq:FA_classical}\end{equation}
 
 \end_inset
 
@@ -2803,7 +2803,7 @@ noindent
 
  will be smaller in regions without consistency in fibre direction.
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 , where 
@@ -3288,8 +3288,8 @@ status open
 \align center
 \begin_inset Graphics
 	filename figures/probtrack2.png
-	lyxscale 35
-	scale 50
+	lyxscale 25
+	scale 45
 
 \end_inset
 

@@ -6734,14 +6734,14 @@ With
 \end_inset
 
 , non-parametric anisotropy (NPA) was calculated by applying the classical
- FA 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Correia2009"
+ FA formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:FA_classical"
 
 \end_inset
 
- formula to the 3 values (
+ to the 3 values (
 \begin_inset Formula $\textrm{npd}_{1},\textrm{npd}_{2},\textrm{npd}_{3}$
 \end_inset
 

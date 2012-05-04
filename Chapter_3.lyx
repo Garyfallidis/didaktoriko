@@ -3911,6 +3911,12 @@ th percentile of standard normal distribution,
 \noun off
 \color none
 .
+ 
+\begin_inset Formula $p$
+\end_inset
+
+ is the probability that tracks from seeds in the row ROI will terminate
+ in the column ROI.
  If we take 
 \begin_inset Formula $\alpha=0.0001$
 \end_inset
