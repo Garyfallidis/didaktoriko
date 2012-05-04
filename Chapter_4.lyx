@@ -119,7 +119,7 @@ ns but also introduces a barrier on understanding and interpreting the quality
  which can then be used as an input to other algorithms of higher order
  complexity, resulting in their greater efficiency.
  Beyond the use of this algorithm to simplify tractographies, we show here
- how it can help identify landmarks, create atlases, compare and register
+ how it can help identify landmarks, create atlases, and compare and register
  tractographies.
 \end_layout
 
@@ -183,7 +183,7 @@ key "Visser2010"
 \end_inset
 
  which we call Minimum average Direct-Flip 
-\begin_inset Formula $MDF(s_{A},s_{B})$
+\begin_inset Formula $\textrm{MDF}(s_{A},s_{B})$
 \end_inset
 
  distance between track 
@@ -676,11 +676,11 @@ key "gerig2004analysis"
 
  also used hierarchical clustering with a symmetrised version of closest
  point distances, 
-\begin_inset Formula $MAM_{avg}$
+\begin_inset Formula $\mathrm{MA}\mathrm{M}_{\mathrm{avg}}$
 \end_inset
 
  and 
-\begin_inset Formula $MAM_{max}$
+\begin_inset Formula $\mathrm{MA}\mathrm{M}_{\mathrm{max}}$
 \end_inset
 
  (Hausdorff).
@@ -794,11 +794,11 @@ key "ElKouby2005"
 
 \end_inset
 
- created a ROI-based connectivity matrix where every 
+ created a ROI-based connectivity matrix where the 
 \begin_inset Formula $i,j$
 \end_inset
 
- point of the matrix holds the number of tracks which connect 
+th entry of the matrix holds the number of tracks which connect 
 \begin_inset Formula $ROI_{i}$
 \end_inset
 
@@ -1222,7 +1222,7 @@ We experimented with QuickBundles using simulations,
 \begin_inset Formula $10$
 \end_inset
 
- human tractographies collected and processed by ourselves and one tractography
+ human tractographies collected and processed by ourselves, and one tractography
  with segmented bundles which was available online.
 \end_layout
 
@@ -1369,8 +1369,15 @@ For the reconstruction of the real data sets we used Generalized Q-samping
 \begin_inset Formula $1.2$
 \end_inset
 
- and for the tractography propagation we used EuDX (euler integration with
- trilinear interpolation) with 
+ and for the tractography propagation we used EuDX (Euler integration with
+ trilinear interpolation, see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Euler-Delta-Crossings"
+
+\end_inset
+
+) with 
 \begin_inset Formula $1$
 \end_inset
 
@@ -2313,9 +2320,9 @@ Choice of orientation can become an issue when using the MDF distance and
  A step in QB takes account of the possibility of needing to perform a flip
  of a track before adding it to a representative track according to which
  direction produced the MDF value.
- Though the appropriate orientation (direct or flip) of a track at the time
- it entered a cluster was available in the MDF calculation, we allow for
- the possibility this might not be the same later on when the virtual track
+ Though the appropriate orientation (direct or flip) of a track was available
+ in the MDF calculation at the time it entered a cluster, we allow for the
+ possibility this might not be the same later on when the virtual track
  has evolved so it will need to be recalculated.
 \end_layout
 
@@ -2335,13 +2342,13 @@ One of the reasons why QB has on average linear time complexity derives
 QB can be extended for specific applications to contain more information
  about the clusters.
  For example, we could redefine 
-\begin_inset Formula $c\leftarrow\{I,h,n,h^{(2)}\}$
+\begin_inset Formula $c\leftarrow(I,h,n,h^{(2)})$
 \end_inset
 
  to obtain second order information and in that way we could calculate the
  variance of the cluster where 
 \begin_inset Formula \[
-h^{(2)}\leftarrow\{\sum_{i,j}\mathbf{x}_{ij}^{2},\sum_{i,j}\mathbf{y}_{ij}^{2},\sum_{i,j}\mathbf{z}_{ij}^{2},\sum_{i,j}\mathbf{x}_{ij}\mathbf{y}_{ij},\sum_{i,j}\mathbf{y}_{ij}\mathbf{z}_{ij},\sum_{i,j}\mathbf{x}_{ij}\mathbf{z}_{ij}\}\]
+h^{(2)}\leftarrow(\sum_{i,j}\mathbf{x}_{ij}^{2},\sum_{i,j}\mathbf{y}_{ij}^{2},\sum_{i,j}\mathbf{z}_{ij}^{2},\sum_{i,j}\mathbf{x}_{ij}\mathbf{y}_{ij},\sum_{i,j}\mathbf{y}_{ij}\mathbf{z}_{ij},\sum_{i,j}\mathbf{x}_{ij}\mathbf{z}_{ij})\]
 
 \end_inset
 
@@ -2488,7 +2495,7 @@ key "dempster1977maximum"
 
 \end_inset
 
- and k-centers
+ and k-centres
 \begin_inset space ~
 \end_inset
 
