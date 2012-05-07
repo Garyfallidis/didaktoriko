@@ -51,7 +51,11 @@
 \begin_body
 
 \begin_layout Section
-Tracking with Euler Delta Crossings
+Tracking with 
+\begin_inset Newline newline
+\end_inset
+
+Euler Delta Crossings
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Euler-Delta-Crossings"

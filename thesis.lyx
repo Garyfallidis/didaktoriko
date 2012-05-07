@@ -35,7 +35,7 @@
 % {\normalfont\raggedright\normalsize\itshape}}
 \end_preamble
 \use_default_options true
-\language british
+\language english
 \inputencoding auto
 \font_roman palatino
 \font_sans default
@@ -92,8 +92,6 @@
 \begin_body
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -128,7 +126,6 @@ definecolor{magenta}{RGB}{185, 23, 62}
 \series bold
 \size largest
 \color magenta
-\lang english
 TOWARDS AN ACCURATE BRAIN
 \series default
 \color inherit
@@ -147,14 +144,11 @@ TOWARDS AN ACCURATE BRAIN
 \series bold
 \size largest
 \color magenta
-\lang english
 TRACTOGRAPHY
 \end_layout
 
 \begin_layout Standard
 \align center
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -171,6 +165,8 @@ definecolor{magenta}{RGB}{255, 0, 255}
 \end_layout
 
 \begin_layout Standard
+
+\lang british
 \begin_inset ERT
 status open
 
@@ -190,7 +186,6 @@ addcontentsline{toc}{section}{Title}
 \align center
 
 \size large
-\lang english
 \begin_inset Graphics
 	filename figures/Cambridge_University_Crest.png
 	lyxscale 20
@@ -205,7 +200,6 @@ addcontentsline{toc}{section}{Title}
 \align center
 
 \size large
-\lang english
 \begin_inset VSpace vfill
 \end_inset
 
@@ -219,7 +213,6 @@ addcontentsline{toc}{section}{Title}
 \shape smallcaps
 \size larger
 \color black
-\lang english
 ELEFTHERIOS GARYFALLIDIS
 \series default
 \shape default
@@ -237,7 +230,6 @@ ELEFTHERIOS GARYFALLIDIS
 
 \size larger
 \color black
-\lang english
 Wolfson College
 \end_layout
 
@@ -246,7 +238,6 @@ Wolfson College
 
 \size larger
 \color black
-\lang english
 University of Cambridge
 \begin_inset Newline newline
 \end_inset
@@ -258,7 +249,6 @@ United Kingdom
 \align center
 
 \size large
-\lang english
 \begin_inset VSpace vfill
 \end_inset
 
@@ -270,7 +260,6 @@ United Kingdom
 
 \size larger
 \color black
-\lang english
 May 2012
 \end_layout
 
@@ -278,7 +267,6 @@ May 2012
 \align center
 
 \size large
-\lang english
 \begin_inset VSpace vfill
 \end_inset
 
@@ -287,8 +275,6 @@ May 2012
 
 \begin_layout Standard
 \align center
-
-\lang english
 A dissertation submitted to the University of Cambridge for the degree of
  Doctor of Philosophy 
 \end_layout
@@ -298,8 +284,6 @@ A dissertation submitted to the University of Cambridge for the degree of
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -307,8 +291,6 @@ A dissertation submitted to the University of Cambridge for the degree of
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage newpage
 \end_inset
 
@@ -316,6 +298,8 @@ A dissertation submitted to the University of Cambridge for the degree of
 \end_layout
 
 \begin_layout Standard
+
+\lang british
 \begin_inset ERT
 status open
 
@@ -332,6 +316,8 @@ pagenumbering{roman}
 \end_layout
 
 \begin_layout Standard
+
+\lang british
 \begin_inset ERT
 status open
 
@@ -348,6 +334,8 @@ setcounter{secnumdepth}{-1}
 \end_layout
 
 \begin_layout Section
+
+\lang british
 Supervisors
 \end_layout
 
@@ -355,7 +343,6 @@ Supervisors
 \align center
 
 \size large
-\lang english
 \begin_inset VSpace medskip
 \end_inset
 
@@ -366,7 +353,6 @@ Supervisors
 \align center
 
 \size large
-\lang english
 \begin_inset VSpace medskip
 \end_inset
 
@@ -377,7 +363,6 @@ Supervisors
 \align center
 
 \size large
-\lang english
 \begin_inset VSpace medskip
 \end_inset
 
@@ -389,7 +374,6 @@ Supervisors
 
 \size larger
 \noun on
-\lang english
 Dr.
  Ian Nimmo-Smith
 \size default
@@ -427,7 +411,6 @@ Cambridge,UK
 \align center
 
 \size large
-\lang english
 \begin_inset VSpace medskip
 \end_inset
 
@@ -438,7 +421,6 @@ Cambridge,UK
 \align center
 
 \size large
-\lang english
 \begin_inset VSpace medskip
 \end_inset
 
@@ -450,7 +432,6 @@ Cambridge,UK
 
 \size larger
 \noun on
-\lang english
 Dr.
  Guy B.
  Williams
@@ -481,8 +462,6 @@ Cambridge, UK
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -490,8 +469,6 @@ Cambridge, UK
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage newpage
 \end_inset
 
@@ -499,6 +476,8 @@ Cambridge, UK
 \end_layout
 
 \begin_layout Section
+
+\lang british
 Dedication
 \end_layout
 
@@ -506,7 +485,6 @@ Dedication
 \align center
 
 \size large
-\lang english
 \begin_inset VSpace medskip
 \end_inset
 
@@ -517,7 +495,6 @@ Dedication
 \align center
 
 \size large
-\lang english
 \begin_inset VSpace medskip
 \end_inset
 
@@ -528,7 +505,6 @@ Dedication
 \align center
 
 \size large
-\lang english
 \begin_inset VSpace medskip
 \end_inset
 
@@ -539,28 +515,33 @@ Dedication
 \align center
 
 \size larger
-\lang english
-To my parents 
+To 
+\emph on
+my parents
+\emph default
+ 
 \begin_inset Newline newline
 \end_inset
 
 
-\emph on
+\noun on
 Stavros and Amalia
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
-\align center
 
-\lang english
-for his creativity and her patience.
+\begin_inset Newline newline
+\end_inset
+
+
+\size default
+\noun default
+for his cretivity and her patience.
  
 \end_layout
 
 \begin_layout Standard
 \align center
-
-\lang english
 I needed both to excel.
 \end_layout
 
@@ -568,7 +549,6 @@ I needed both to excel.
 \align center
 
 \size large
-\lang english
 \begin_inset VSpace medskip
 \end_inset
 
@@ -579,7 +559,6 @@ I needed both to excel.
 \align center
 
 \size large
-\lang english
 \begin_inset VSpace medskip
 \end_inset
 
@@ -590,24 +569,31 @@ I needed both to excel.
 \align center
 
 \size larger
-\lang english
 To
 \emph on
- the giants 
+ the giants of 
 \begin_inset Newline newline
 \end_inset
 
-of Open Source Software
-\end_layout
 
-\begin_layout Standard
-\align center
+\emph default
+\noun on
+Open Source Software
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\size default
+\noun default
+\lang british
 who pushed the world forward.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -615,8 +601,6 @@ who pushed the world forward.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage newpage
 \end_inset
 
@@ -624,21 +608,19 @@ who pushed the world forward.
 \end_layout
 
 \begin_layout Section
+
+\lang british
 Acknowledgements
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 This PhD was funded by the Engineering and Physical Sciences Research Council,
  the Vergottis Foundation, the Board of Graduate Studies of the University
  of Cambridge, the Medical Research Council and Wolfson College, Cambridge,
- United Kingdom, 
+ United Kingdom.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 I would like to thank my supervisor, Dr.
  Ian Nimmo-Smith, for the excellent guidance and advice throughout the entire
  course of my PhD.
@@ -651,22 +633,18 @@ I would like to thank my supervisor, Dr.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 I am grateful to Dr.
  Matthew Brett who had been such a great friend and promoter of my work.
  His suggestions have been enormously helpful especially on software development.
  My great appreciation to my friend and collaborator Dr.
  Marta Correia who helped with designing and collecting the MR data sets
  used in this work.
- The same goes for Mr.
+ The same goes for dearest Mr.
  John Griffiths and Dr.
  Virginia Newcombe who were the first users of my work in Cambridge.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 A big thank you to Stephan Gerhard with whom I worked to give birth to a
  new visualization library, to Frank Yeh for his suggestions on tractography
  algorithms and to Dr.
@@ -674,6 +652,8 @@ A big thank you to Stephan Gerhard with whom I worked to give birth to a
 \end_layout
 
 \begin_layout Standard
+
+\lang british
 My great respect to Dr.
  David Jarvis Dean Alumni of Wolfson College, Professor Mike Proctor and
  Professor Peter Haynes from the Department of Applied Mathematics and Theoretic
@@ -684,25 +664,31 @@ al Physics who helped me continue my career in research and supported me
 \end_layout
 
 \begin_layout Standard
+
+\lang british
 Life would be unbearable without friends.
  Much love to my best friends from my homeland Vassilis Dimitriadis, Dimitris
  Pritsos, Alexandros Triantafyllidis, Dr.
  Periklis Akritidis and Dr.
  Vassilis Tsiaras.
  And the great friends I made here in Cambridge: Dr.
+ Euan Spence, Dr.
+ Ian Charest, Dr.
  Andreas Georgiou, Dr.
  Daniel Holland, Dr.
  Mina Mprimpari, Dr.
- Nikos Dikaios and my room mate Dr.
+ Nikos Dikaios and my incredible house mate Dr.
  Magda Rapti.
- A huge thank you to Magda for her support and understanding.
 \end_layout
 
 \begin_layout Standard
-I should not forget my first teachers who helped me develop my scientific abilities and strengthened my courage: Professor Nikolaos Vassilas, Professor
+
+\lang british
+I should not forget my first teachers who helped me develop my scientific
+ abilities and strengthened my courage: Professor Nikolaos Vassilas, Professor
  Antonis Argyros and Professor Alexandros Tomaras.
- My great acknowledgement to my college tutor Dr Giles Yeo who was always
- available to help with any bureaucratic issues.
+ My great acknowledgement to my college tutor Dr.
+ Giles Yeo who was always available to help with any bureaucratic issues.
  Finally, I would like to thank my fellow colleagues and developers at NeuroImag
 ing in Python for their hard work and devotion to the principles of free
  software and open science.
@@ -714,21 +700,15 @@ ing in Python for their hard work and devotion to the principles of free
 
 \begin_layout Standard
 \align right
-
-\lang english
 Eleftherios Garyfallidis
 \end_layout
 
 \begin_layout Standard
 \align right
-
-\lang english
 Cambridge, 10 May, 2012
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -736,8 +716,6 @@ Cambridge, 10 May, 2012
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage newpage
 \end_inset
 
@@ -745,12 +723,12 @@ Cambridge, 10 May, 2012
 \end_layout
 
 \begin_layout Section
+
+\lang british
 Disclaimer
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 This dissertation is the result of my own work and contains nothing which
  is the outcome of work done in collaboration with others, except where
  stated explicitly.
@@ -762,8 +740,6 @@ This dissertation is the result of my own work and contains nothing which
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 No part of this dissertation has previously been submitted for any degree
  or diploma at any institution.
  
@@ -774,8 +750,6 @@ No part of this dissertation has previously been submitted for any degree
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 This dissertation does not exceed 60,000 words in length (including tables,
  footnotes, bibliography and appendices).
  
@@ -786,8 +760,6 @@ This dissertation does not exceed 60,000 words in length (including tables,
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Throughout this dissertation the plural pronoun ‘we’ is used for stylistic
  reasons and should be taken to refer to either the singular author, the
  reader and the author or, when stated explicity, the author and collaborators.
@@ -798,8 +770,6 @@ Throughout this dissertation the plural pronoun ‘we’ is used for stylistic
 \begin_layout Standard
 \noindent
 \align right
-
-\lang english
 Eleftherios Garyfallidis
 \begin_inset Newline newline
 \end_inset
@@ -808,8 +778,6 @@ Cambridge, 10 May 2012
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -817,8 +785,6 @@ Cambridge, 10 May 2012
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage newpage
 \end_inset
 
@@ -826,6 +792,8 @@ Cambridge, 10 May 2012
 \end_layout
 
 \begin_layout Section
+
+\lang british
 Publications
 \end_layout
 
@@ -834,7 +802,6 @@ Publications
 \align block
 
 \series bold
-\lang english
 \begin_inset ERT
 status open
 
@@ -857,7 +824,6 @@ large Conferences
 \begin_layout Standard
 
 \series bold
-\lang english
 Garyfallidis E
 \series default
 , Brett M, Nimmo-Smith I (2010), 
@@ -874,25 +840,17 @@ Fast Dimensionality Reduction for Brain Tractography Clustering
 \begin_layout Standard
 
 \series bold
-\lang english
 Garyfallidis E
 \series default
 , Brett M, Tsiaras V, Vogiatzis G, Nimmo-Smith I (2010), “
 \emph on
 Identification of corresponding tracks in diffusion MRI tractographies
 \emph default
-” Proc.
- Intl.
- Soc.
- Mag.
- Reson.
- Med.
- 18.
+”, 18th Proceedings of the International Society of Magnetic Resonance in
+ Medicine.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Correia MM, Williams GB, Yeh F-C, Nimmo-Smith I, 
 \series bold
 Garyfallidis E
@@ -910,19 +868,13 @@ g Imaging acquisition schemes
 \begin_inset Quotes erd
 \end_inset
 
-, Proc.
- Intl.
- Soc.
- Mag.
- Reson.
- Med.
- 19.
+, 19th Proceedings of the International Society of Magnetic Resonance in
+ Medicine.
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 Garyfallidis E
 \series default
 , Brett M, Amirbekian B, Nguyen C, Yeh F-C, Olivetti E, Halchenko Y, Nimmo-Smith
@@ -940,7 +892,6 @@ Dipy - a novel software library for diffusion MR and tractography
 \begin_layout Standard
 
 \series bold
-\lang english
 Garyfallidis E
 \series default
 , Gerhard S, Avesani P, Nguyen T, Tsiaras V, Nimmo-Smith I, Olivetti E (2012),
@@ -957,13 +908,11 @@ hies
 \begin_inset Quotes erd
 \end_inset
 
-,18th Annual Meeting of the Organization for Human Brain Mapping.
+, 18th Annual Meeting of the Organization for Human Brain Mapping.
  
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Olivetti E, Nguyen T.
  B, 
 \series bold
@@ -981,12 +930,13 @@ The Approximation of the Dissimilarity Projection
 \begin_inset Quotes erd
 \end_inset
 
-, 2nd International Workshop on Pattern Recognition in NeuroImaging.
+, 2nd IEEE International Workshop on Pattern Recognition in NeuroImaging.
 \end_layout
 
 \begin_layout Standard
 
 \series bold
+\lang british
 Garyfallidis E
 \series default
 , Nimmo-Smith I (2012), 
@@ -1036,7 +986,6 @@ large Journals
 \begin_layout Standard
 
 \series bold
-\lang english
 Garyfallidis E
 \series default
 , Brett M, Correia M, Williams G.B, Nimmo-Smith I (2012), 
@@ -1051,12 +1000,10 @@ Segmentation
 \begin_inset Quotes erd
 \end_inset
 
-, IEEE-TMI, submitted.
+, IEEE Transactions of Medical Imaging, submitted.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Chamberlain SR, Hampshire A, Menzies LA, 
 \series bold
 Garyfallidis E
@@ -1066,7 +1013,7 @@ Garyfallidis E
 Reduced brain white matter integrity in trichotillomania: a diffusion tensor
  imaging study.
 \emph default
-” Arch Gen Psychiatry 67(9):965-71
+”, Archives of General Psychiatry 67(9):965-71.
 \begin_inset Newline newline
 \end_inset
 
@@ -1099,7 +1046,6 @@ large Outreach
 \begin_layout Standard
 
 \series bold
-\lang english
 Garyfallidis E
 \series default
 , Nimmo-Smith I (2010), 
@@ -1148,45 +1094,11 @@ large Software
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Diffusion Imaging in Python 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
---
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Formula $\texttt{dipy.org}$
-\end_inset
-
- 
+Diffusion Imaging in Python: DIPY.org 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Free On Shades 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
---
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Formula $\texttt{fos.me}$
-\end_inset
-
-
+Free On Shades: FOS.me
 \begin_inset Newline newline
 \end_inset
 
@@ -1194,8 +1106,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -1203,8 +1113,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage newpage
 \end_inset
 
@@ -1212,12 +1120,12 @@ status open
 \end_layout
 
 \begin_layout Section
+
+\lang british
 Abstract
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 The objective of this thesis is to improve on the methods for inferring
  neural tracts from diffusion weighted magnetic resonance imaging (dMRI).
  Accordingly, I present improvements to the reconstruction, integration,
@@ -1225,8 +1133,6 @@ The objective of this thesis is to improve on the methods for inferring
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 I compare and evaluate different Cartesian-grid q-space dMRI acquisition
  schemes, using methods based on the Fourier transform of the diffusion
  signal, with reconstructions by diffusion spectrum imaging or generalised
@@ -1239,8 +1145,6 @@ I compare and evaluate different Cartesian-grid q-space dMRI acquisition
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Most previously published reconstruction methods are closely linked to their
  own specific track integration method.
  I have formulated a general, non-inferential, deterministic tractography
@@ -1253,8 +1157,6 @@ n, which works with voxel level information about fibre orientations including
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 I have developed an entirely new, fully automatic, linear time, clustering
  method (QuickBundles) which reduces massive tractographies to just a few
  bundles.
@@ -1266,8 +1168,6 @@ e and can be used for interaction with the data or as the basis for applying
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 After applying QuickBundles to tractographies from different subjects, I
  show how to use the representative tracks to identify robust landmarks
  within each subject which I use to directly register the different tractographi
@@ -1279,8 +1179,6 @@ es together in a highly efficient way.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 This thesis contributes to the understanding of the diffusion signal in
  the context of dMRI acquisitions and builds on this foundation towards
  a more robust brain tractography which approximates more closely the underlying
@@ -1288,8 +1186,6 @@ This thesis contributes to the understanding of the diffusion signal in
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -1297,8 +1193,6 @@ This thesis contributes to the understanding of the diffusion signal in
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage newpage
 \end_inset
 
@@ -1306,8 +1200,6 @@ This thesis contributes to the understanding of the diffusion signal in
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
@@ -1332,8 +1224,6 @@ addcontentsline{toc}{section}{Contents}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage cleardoublepage
 \end_inset
 
@@ -1341,6 +1231,8 @@ addcontentsline{toc}{section}{Contents}
 \end_layout
 
 \begin_layout Standard
+
+\lang british
 \begin_inset ERT
 status open
 
@@ -1357,6 +1249,8 @@ setcounter{page}{1}
 \end_layout
 
 \begin_layout Standard
+
+\lang british
 \begin_inset ERT
 status open
 
@@ -1373,6 +1267,8 @@ pagenumbering{arabic}
 \end_layout
 
 \begin_layout Standard
+
+\lang british
 \begin_inset ERT
 status open
 
@@ -1389,6 +1285,8 @@ setcounter{secnumdepth}{2}
 \end_layout
 
 \begin_layout Standard
+
+\lang british
 \begin_inset CommandInset include
 LatexCommand include
 filename "Chapter_1.lyx"
@@ -1399,8 +1297,6 @@ filename "Chapter_1.lyx"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage cleardoublepage
 \end_inset
 
@@ -1408,6 +1304,8 @@ filename "Chapter_1.lyx"
 \end_layout
 
 \begin_layout Standard
+
+\lang british
 \begin_inset CommandInset include
 LatexCommand include
 filename "Chapter_2.lyx"
@@ -1418,8 +1316,6 @@ filename "Chapter_2.lyx"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage cleardoublepage
 \end_inset
 
@@ -1427,6 +1323,8 @@ filename "Chapter_2.lyx"
 \end_layout
 
 \begin_layout Standard
+
+\lang british
 \begin_inset CommandInset include
 LatexCommand include
 filename "Chapter_3.lyx"
@@ -1437,8 +1335,6 @@ filename "Chapter_3.lyx"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage cleardoublepage
 \end_inset
 
@@ -1446,8 +1342,6 @@ filename "Chapter_3.lyx"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset CommandInset include
 LatexCommand include
 filename "Chapter_4.lyx"
@@ -1458,8 +1352,6 @@ filename "Chapter_4.lyx"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage cleardoublepage
 \end_inset
 
@@ -1467,8 +1359,6 @@ filename "Chapter_4.lyx"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset CommandInset include
 LatexCommand include
 filename "Chapter_5.lyx"
@@ -1479,8 +1369,6 @@ filename "Chapter_5.lyx"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage cleardoublepage
 \end_inset
 
@@ -1488,8 +1376,6 @@ filename "Chapter_5.lyx"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset CommandInset include
 LatexCommand include
 filename "Appendix.lyx"
@@ -1500,8 +1386,6 @@ filename "Appendix.lyx"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage cleardoublepage
 \end_inset
 
@@ -1509,6 +1393,8 @@ filename "Appendix.lyx"
 \end_layout
 
 \begin_layout Standard
+
+\lang british
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "diffusion"
