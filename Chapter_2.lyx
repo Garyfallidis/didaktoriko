@@ -211,11 +211,7 @@ reference "eq:kq"
 
 \end_inset
 
- of joint k-space and q-space imaging (Callaghan p.
-\begin_inset space ~
-\end_inset
-
-438)
+ of joint k-space and q-space imaging described in Callaghan
 \begin_inset space ~
 \end_inset
 
@@ -226,7 +222,7 @@ key "Callaghan1991OUP"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "callaghan1988nmr"
@@ -234,10 +230,9 @@ key "callaghan1988nmr"
 \end_inset
 
  using the narrow pulse gradient spin echo (PGSE) sequence of Tanner and
- Stejskal.
- 
+ Stejskal 
 \begin_inset Formula \begin{eqnarray}
-RF(\mathbf{k},\mathbf{q}) & = & \int\rho(\mathbf{v})\exp(i2\pi\mathbf{k}\cdot\mathbf{v})\int P_{\Delta}(\mathbf{v},\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})\, d\mathbf{r\,}d\mathbf{v}\label{eq:kq}\end{eqnarray}
+RF(\mathbf{k},\mathbf{q}) & = & \int\rho(\mathbf{v})\exp(i2\pi\mathbf{k}\cdot\mathbf{v})\int P_{\Delta}(\mathbf{v},\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})\, d\mathbf{r\,}d\mathbf{v}.\label{eq:kq}\end{eqnarray}
 
 \end_inset
 
@@ -245,7 +240,19 @@ RF(\mathbf{k},\mathbf{q}) & = & \int\rho(\mathbf{v})\exp(i2\pi\mathbf{k}\cdot\ma
 \end_layout
 
 \begin_layout Standard
-Here 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+ Here 
 \begin_inset Formula $RF$
 \end_inset
 
@@ -822,8 +829,8 @@ noindent
  This ODF was used as the basis of the analysis of the GQI method.
  It provides a simple direct analytical solution of the ODF which can be
  written in a simple matrix form
-\begin_inset Formula \begin{eqnarray*}
-\bm{\psi}_{GQI}= & \mathbf{s}\cdot\mathtt{sinc}((6D\cdot G\circ\mathbf{b}\circ\mathbb{1})\cdot G)\lambda/\pi\end{eqnarray*}
+\begin_inset Formula \begin{eqnarray}
+\bm{\psi}_{GQI}= & \mathbf{s}\cdot\mathtt{sinc}((6D\cdot G\circ\mathbf{b}\circ\mathbb{1})\cdot G)\lambda/\pi\label{eq:GQI_analytical}\end{eqnarray}
 
 \end_inset
 
@@ -2388,12 +2395,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-A: Standard EIT vs B: Fast EIT algorithm.
+A: Standard EIT.
+ B: Fast EIT.
  Fast EIT is an order of magnitude faster than standard EIT.
- The key idea here is that reduce computations by storing the sum of the
- radial integrals for every vertex in the reconstruction sphere and then
- we can also precompute the indices of the vertices that are near the equator
- of every vertex (inside an equatorial zone).
+ The key idea here is that we can reduce computations by storing the sum
+ of the radial integrals for every vertex in the reconstruction sphere and
+ then we can also precompute the indices of the vertices that are near the
+ equator of every vertex (inside an equatorial zone).
 \end_layout
 
 \end_inset
@@ -2464,7 +2472,7 @@ A.
 \begin_inset Formula $16\times16\times16$
 \end_inset
 
- where and the radial integration (
+ where the radial integration (
 \begin_inset Formula $q$
 \end_inset
 
@@ -2485,8 +2493,8 @@ A.
 \end_inset
 
  million times on the cubic grid.
- For this reason we invented Fast EIT a new method that needs an order of
- magnitude less evaluations.
+ For this reason we invented Fast EIT, a new method that needs an order
+ of magnitude less evaluations.
 \end_layout
 
 \begin_layout Standard
@@ -2571,7 +2579,7 @@ reference "Alg:Fast_EIT"
 \begin_inset Formula $642$
 \end_inset
 
- vertices which is the one we used then the zone can be smaller.
+ vertices, which is the one we used, then the zone can be smaller.
  That can potentially increase the angular resolution of the method.
 \end_layout
 
@@ -3295,7 +3303,7 @@ b
 a
 \series default
  but none of the unlabeled points could be a second peak.
- Nevertheless we found Alg.
+ Nevertheless, we found Alg.
 \begin_inset space ~
 \end_inset
 
@@ -4758,7 +4766,7 @@ These summarization plots give strong evidence that both DNI (EITL) and
  in general EIT can be used to accurately generate spherical distribution
  functions for the determination of the directional information of the diffusion
  signal.
- The performed equivalently or better from the current state-of-the-art
+ They performed equivalently or better than the current state-of-the-art
  grid-based reconstruction methods i.e DSI and GQI.
  The determination of the fibre directions was not affected considerably
  by noise.

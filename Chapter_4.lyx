@@ -1364,8 +1364,14 @@ key "Yeh2010"
 \end_layout
 
 \begin_layout Standard
-For the reconstruction of the real data sets we used Generalized Q-samping
- with diffusion sampling length 
+For the reconstruction of the real data sets we used GQI (formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:GQI_analytical"
+
+\end_inset
+
+) with diffusion sampling length 
 \begin_inset Formula $1.2$
 \end_inset
 
@@ -1431,7 +1437,7 @@ reference "Flo:cst_pbc"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:QB_fornix"
@@ -2484,29 +2490,21 @@ name "Fig:LSC_simple"
 \begin_layout Standard
 One of the disadvantages of most clustering algorithms is that they give
  different results with different initial conditions; for example this is
- recognised with k-means, expectation-maximization
-\begin_inset space ~
-\end_inset
-
-
+ recognised with k-means, expectation-maximization 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "dempster1977maximum"
 
 \end_inset
 
- and k-centres
-\begin_inset space ~
-\end_inset
-
-
+ and k-centres 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "gonzalez1985clustering"
 
 \end_inset
 
- where it is common practice to try a number of different random initial
+, where it is common practice to try a number of different random initial
  configurations.
  The same holds for QB so if there are not distinct clusters such that the
  distance between any pair of clusters is supra-threshold, then with different
@@ -2539,6 +2537,10 @@ y.
  This bundle was part of the datasets provided by the Pittsburgh Brain Competiti
 on (PBC2009-ICDM) and it was selected by an expert.
  The result is clearly shown in Fig.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:cst_pbc"
@@ -2554,7 +2556,7 @@ reference "Flo:cst_pbc"
 \begin_inset space ~
 \end_inset
 
-mm and downsampling to
+mm and downsampling to 
 \begin_inset Formula $12$
 \end_inset
 
@@ -2571,6 +2573,20 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename QB/Fig_4_cst_simplification_relabeled.png
@@ -2581,9 +2597,6 @@ status open
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -2637,7 +2650,7 @@ Another interesting feature of QB is that it can be used to merge or split
 \begin_inset space ~
 \end_inset
 
- 
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:simulated_orbits"
@@ -2864,7 +2877,7 @@ A full tractography containing
 \begin_inset space ~
 \end_inset
 
-mm (Fig.
+mm (see Fig.
 \begin_inset space ~
 \end_inset
 
@@ -3223,7 +3236,7 @@ reference "Flo:timings"
 \begin_inset space ~
 \end_inset
 
- 
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Flo:timings"
@@ -3879,12 +3892,13 @@ key "Kuncheva2004"
 -labelling, or vice versa.
 \end_layout
 
-\begin_layout Paragraph*
-Purity
-\end_layout
-
 \begin_layout Standard
-Suppose we have a probability distribution 
+
+\series bold
+Purity.
+
+\series default
+ Suppose we have a probability distribution 
 \begin_inset Formula $P$
 \end_inset
 
@@ -4028,12 +4042,13 @@ If
 .
 \end_layout
 
-\begin_layout Paragraph
-Maximum probability matching
-\end_layout
-
 \begin_layout Standard
-Another way to estimate a label for each item is to assign it the label
+
+\series bold
+Maximum probability matching.
+
+\series default
+ Another way to estimate a label for each item is to assign it the label
  with maximum probability 
 \begin_inset Formula $i_{\mathrm{max}}=\argmax\, p_{i}$
 \end_inset
@@ -4057,7 +4072,7 @@ Another way to estimate a label for each item is to assign it the label
 \begin_inset Formula $\mathcal{B}$
 \end_inset
 
-, 
+,
 \begin_inset Formula \[
 \mathrm{MPM}(\mathcal{A}|\mathcal{B})={\displaystyle \sum_{j=1}^{n}\frac{b_{j}}{N}\thinspace\max_{i}p_{i|\mathcal{B_{j}}}.}\]
 
@@ -4081,11 +4096,16 @@ We define
 
 \end_layout
 
-\begin_layout Paragraph*
-Correctness and completeness (splitting and lumping pairs of items)
-\end_layout
-
 \begin_layout Standard
+
+\series bold
+Correctness and completeness 
+\series default
+(splitting and lumping pairs of items).
+
+\series bold
+ 
+\series default
 For the next two metrics the focus moves to comparison of the labels assigned
  by 
 \begin_inset Formula $\mathcal{A}$
@@ -4299,15 +4319,16 @@ For the clusterings encountered in tractography, the number of apart pairs
  measure is more sensitive.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Standard
+
+\series bold
 Maximum Agreement (
 \begin_inset Formula $\kappa_{\max}$
 \end_inset
 
-)
-\end_layout
-
-\begin_layout Standard
+).
+ 
+\series default
 Our fifth metric is Cohen's 
 \begin_inset Formula $\kappa$
 \end_inset
@@ -4372,9 +4393,6 @@ where
 \end_inset
 
  over all possible correspondences:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula \[
 \kappa_{\max}=\max_{\pi}\kappa(T_{\pi})=\frac{{\displaystyle \sum_{i=1}^{M}}t_{i\pi(i)}/N-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{\pi(i)}/N^{2}}{1-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{\pi(i)}/N^{2}},\]
 
@@ -4407,11 +4425,12 @@ where
  
 \end_layout
 
-\begin_layout Paragraph
-Matched Agreement via the Hungarian Method
-\end_layout
-
 \begin_layout Standard
+
+\series bold
+Matched Agreement via the Hungarian Method.
+ 
+\series default
 An alternative is to look for a simpler quantity that might be optimised.
  One obvious choice is the maximized number of agreements 
 \begin_inset Formula $\mu_{\max}={\displaystyle \sum_{i=1}^{M}}t_{i\pi(i)}$
@@ -4945,18 +4964,12 @@ key "moberts2005evaluation"
 
 .
  Then we define BA (Bundle Adjacency) to be
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula \begin{equation}
 BA=\frac{1}{2}\left(\frac{|E_{A\rightarrow B}\leq\theta|}{|E_{A}|}+\frac{|E_{B\rightarrow A}\leq\theta|}{|E_{B}|}\right)\end{equation}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -5112,7 +5125,7 @@ reference "sub:QB-Data-sets"
 \begin_inset Formula $50\%$
 \end_inset
 
- of larger bundles of each tractography lie within
+ of larger bundles of each tractography lie within 
 \begin_inset Formula $10$
 \end_inset
 
@@ -5776,9 +5789,24 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename last_figures/big_bundles_atlas.png
+	lyxscale 50
 	scale 50
 	rotateOrigin center
 
@@ -5846,10 +5874,9 @@ name "Flo:atlas_big_bundles"
 
 \series bold
 Finding and Using Landmarks
-\end_layout
-
-\begin_layout Standard
-One can use this atlas or similar atlases created from more subjects in
+\series default
+.
+ One can use this atlas or similar atlases created from more subjects in
  order to select specific structures and study these structures directly
  in different subjects without using any of the standard ROI based methods.
 \end_layout
@@ -6295,6 +6322,20 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename last_figures/LSC_with_others.png
@@ -6304,9 +6345,6 @@ status open
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -6609,9 +6647,15 @@ initially
 \end_inset
 
  and then equal to
-\end_layout
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
 
-\begin_layout Standard
 \begin_inset Formula \begin{equation}
 \forall i,k:\: A(i,k)=\begin{cases}
 {\displaystyle \sum_{i':i'\neq i}} & \max[0,\: R(i',k)],\: for\:\: k=i\\
@@ -6619,10 +6663,6 @@ initially
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 A very interesting fact is the way we get the final exemplars using AP.
  After the messages have converged, there are two ways you can identify
  exemplars: 
@@ -6731,6 +6771,20 @@ reference "alg:AP"
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -7374,7 +7428,7 @@ Calculate all pairwise distances
 \end_layout
 
 \begin_layout Enumerate
-Create a cost function (optimizer) which we will try to minimize the symmetric
+Create a cost function (optimizer) which will try to minimize the symmetric
  minimum distance 
 \begin_inset Formula $\mathrm{SMD}=\sum_{i}\min_{j}D(i,j)+\sum_{j}\min_{i}D(i,j)$
 \end_inset
