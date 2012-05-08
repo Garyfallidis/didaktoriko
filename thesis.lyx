@@ -1276,7 +1276,7 @@ status open
 
 
 \backslash
-setcounter{secnumdepth}{2}
+setcounter{secnumdepth}{3}
 \end_layout
 
 \end_inset

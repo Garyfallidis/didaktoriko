@@ -465,7 +465,7 @@ key "mcrobbie2006mpp"
 \end_inset
 
 ).
- Often a second RF pulse is applied at some time 
+ Often, a second RF pulse is applied at some time 
 \begin_inset Formula $TE/2$
 \end_inset
 
@@ -1040,7 +1040,8 @@ reference "Fig: signals"
 \begin_inset Formula $b$
 \end_inset
 
-; Finally, we can see that the 
+.
+ Finally, we can see that the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1050,7 +1051,7 @@ directional effect
 
 , i.e.
  the contrast between 'along' and 'transverse' signal is greatest when 
-\begin_inset Formula $b\sim1000$
+\begin_inset Formula $b\sim1,000$
 \end_inset
 
  .
@@ -1362,7 +1363,7 @@ reference "eq:mono-exponential"
 
  we assume that the signal can be expressed by a single exponential term
  (mono-exponential).
- In fact there is evidence that this assumption may break down at higher
+ In fact, there is evidence that this assumption may break down at higher
  
 \begin_inset Formula $b$
 \end_inset
@@ -1826,8 +1827,8 @@ When creating a grid in q-space we usually normalize
 \begin_layout Standard
 
 \lang british
-Every single point in q-space corresponds to a possible diffusion weighted
- acquisition i.e.
+Every single point in q-space corresponds to a diffusion weighted image
+ i.e.
  a 3D brain volume of measured signal for a specific gradient direction
  and strength (see Fig.
 \begin_inset space ~
@@ -2130,7 +2131,7 @@ reference "Fig:q-space"
 
 \end_inset
 
-B,D), e.g.
+B,D) e.g.
  QBI, or multiple shells (see Fig.
 \begin_inset space ~
 \end_inset
@@ -2183,8 +2184,7 @@ reference "Fig:q-space"
 
 \end_inset
 
-A).
- and QSI (Q-Space Imaging) 
+A) and QSI (Q-Space Imaging) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "king1994q,Callaghan1991OUP"
@@ -2223,7 +2223,7 @@ reference "eq:fourier"
 
 \end_inset
 
-we write
+ we write
 \begin_inset Formula \begin{equation}
 P(\mathbf{r},t)=\frac{1}{\sqrt{4\pi t^{3}\mid\mathbf{D}\mid}}exp(-\frac{\mathbf{r}^{T}\mathbf{D}^{-1}\mathbf{r}}{4t})\end{equation}
 
@@ -3475,11 +3475,11 @@ status open
 \begin_layout Plain Layout
 
 \lang british
-A simplified example showing in (i) and (ii) the same data set but in (i)
- the yellow line shows the result of deterministic tractography which is
- given by a single trajectory and in (ii) is given by connectivity matrix
- depicting with red the probability of different pathways throughout the
- hole slice.
+A simplified example showing in (i) and (ii) the same data set.
+ (i) The yellow line shows the result of deterministic tractography which
+ is given by a single trajectory and in (ii) is given by connectivity matrix
+ depicting in red the probability of different pathways throughout the hole
+ slice.
  For the ease of understanding, only 3 possible pathways are depicted.
  Finally, in (iii) an example is given where it is shown that probabilistic
  tractography weights more closer connections.
@@ -3720,7 +3720,7 @@ reference "fig:deterministic_probabilistic"
  by 0.1 (1-0.9) i.e.
  for ease of understanding, we assume only 2 possible directions.
  We can see that there is a discontinuity in position K.
- In that point an Euler based deterministic approach (without interpolation)
+ In that point, an Euler based deterministic approach (without interpolation)
  has to stop at K (yellow line).
  The probabilistic method will continue tracking and it will generate two
  tracks that both reach the target.
@@ -3818,7 +3818,7 @@ name "sub:Known-problems"
 \lang british
 Although the probabilistic methods are able to identify many known tracts,
  they miss several large tracts such as the visual pathways LGN-MT and callosal
- MT
+ MT 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Sherbondy2008JVision"
@@ -3866,7 +3866,7 @@ key "Behrens2003MRM"
 
  can be very misleading because someone might believe that they represent
  the actual connectivity profile of the subject.
- For example we are certain (with probability 1) that LGN (lateral geniculate
+ For example, we are certain (with probability 1) that LGN (lateral geniculate
  nucleus) is connected to V1 and V2 (primary visual cortex) in any healthy
  brain however the estimated connection probability in FDT is much less
  than 1.
@@ -3894,7 +3894,7 @@ key "PHW03"
 \begin_layout Standard
 
 \lang british
-In 2008 Sherbondy et al.
+In 2008, Sherbondy et al.
 \begin_inset space ~
 \end_inset
 
@@ -4388,60 +4388,6 @@ Commissural tracts connect related regions of the two cerebral hemispheres.
 \end_layout
 
 \begin_layout Standard
-A major issue with white matter is that it is particularly dense (see Fig.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Flo:real_brain"
-
-\end_inset
-
-) i.e.
- the boundaries between different tracts are very difficult to distinguish,
- many bundles cross or touch other bundles (see Fig.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Flo:association_fibers"
-
-\end_inset
-
-) and most bundles diverge into smaller and smaller tracts as they reach
- and enter gray matter areas.
- 
-\end_layout
-
-\begin_layout Standard
-Previously it was not possible to automatically create white matter models
- similar to these anatomical atlas diagrams of ﬁbre tracts in vivo.
- However, methods are now available to estimate white matter ﬁbre tracts
- using diﬀusion MRI.
- In this thesis we present a method for segmentation of the trajectories
- estimated from diﬀusion MRI by automatically grouping them into anatomical
- regions or to be more accurate regions of similar proximity and shape character
-istics.
- This is the main topic of chapter 
-\lang british
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Highly-Efficient-Tractography"
-
-\end_inset
-
-
-\lang english
- where we propose QuickBundles a highly efficient algorithm for tractography
- segmentation.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -4511,54 +4457,61 @@ name "Flo:real_brain"
 \end_layout
 
 \begin_layout Standard
-There are three main goals which should be satisﬁed by an automatic tractography
- segmentation algorithm
-\begin_inset CommandInset citation
-LatexCommand cite
-key "o2006cerebral"
+A major issue with white matter is that it is particularly dense (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:real_brain"
 
 \end_inset
 
-: automatic grouping of like trajectories into regions, region correspondence
- across subjects, and anatomical labeling of regions.
- Our ability to perform automatic, subject-speciﬁc deﬁnition of the white
- matter ﬁbre tracts has applications in neuroanatomical visualization, neurosurg
-ical planning, and neuroscientiﬁc studies of white matter integrity, structure,
- and variability.
- An example of a segmentation is shown in Fig.
+) i.e.
+ the boundaries between different tracts are very difficult to distinguish,
+ many bundles cross or touch other bundles (see Fig.
 \begin_inset space ~
 \end_inset
 
 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:association_fibers"
+
+\end_inset
+
+) and most bundles diverge into smaller and smaller tracts as they reach
+ and enter gray matter areas.
+ 
+\end_layout
+
+\begin_layout Standard
+Previously it was not possible to automatically create white matter models
+ similar to these anatomical atlas diagrams of ﬁbre tracts in vivo.
+ However, methods are now available to estimate white matter ﬁbre tracts
+ using diﬀusion MRI.
+ In this thesis we present a method for segmentation of the trajectories
+ estimated from diﬀusion MRI by automatically grouping them into anatomical
+ regions or to be more accurate regions of similar proximity and shape character
+istics.
+ This is the main topic of chapter 
 \lang british
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "Flo:PBC_labels"
+reference "sec:Highly-Efficient-Tractography"
 
 \end_inset
 
-.
- The data set and labels using in this figure are from 
-\begin_inset Foot
-status open
 
-\begin_layout Plain Layout
-
-\lang british
-braincompetition.org
-\end_layout
-
-\end_inset
-
-.
+\lang english
+ where we propose QuickBundles a highly efficient algorithm for tractography
+ segmentation.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -4618,6 +4571,54 @@ name "Flo:PBC_labels"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+There are three main goals which should be satisﬁed by an automatic tractography
+ segmentation algorithm
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "o2006cerebral"
+
+\end_inset
+
+: automatic grouping of like trajectories into regions, region correspondence
+ across subjects, and anatomical labeling of regions.
+ Our ability to perform automatic, subject-speciﬁc deﬁnition of the white
+ matter ﬁbre tracts has applications in neuroanatomical visualization, neurosurg
+ical planning, and neuroscientiﬁc studies of white matter integrity, structure,
+ and variability.
+ An example of a segmentation is shown in Fig.
+\begin_inset space ~
+\end_inset
+
+
+\lang british
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:PBC_labels"
+
+\end_inset
+
+.
+ The data set and labels using in this figure are from 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang british
+braincompetition.org
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard

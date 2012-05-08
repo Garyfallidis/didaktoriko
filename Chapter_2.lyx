@@ -501,16 +501,8 @@ In the classical Q-ball acquisition, at each location, diffusion-weighted
 \begin_inset Formula $N=515$
 \end_inset
 
- or fewer values of 
-\series bold
-q
-\series default
--encoding, comprising in 
-\series bold
-q
-\series default
--space the points of a cubic lattice within the sphere of five lattice units
- in radius.
+ or fewer values of q-encoding, comprising in q-space the points of a cubic
+ lattice within the sphere of five lattice units in radius.
  Therefore,
 \begin_inset Formula \begin{eqnarray}
 \mathbf{q} & = & \alpha\mathbf{q}_{x}+\beta\mathbf{q}_{y}+\gamma\mathbf{q}_{z}\label{eq:q_lattice}\end{eqnarray}
@@ -582,11 +574,8 @@ Since we are mainly interested in the angular structure of the underlying
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
 \lang british
+
 \begin_inset Formula \begin{equation}
 \psi_{DSI}(\hat{\mathbf{u}})=\int_{0}^{\infty}P(r\hat{\mathbf{u}})r^{2}dr\label{eq:ODF_DSI}\end{equation}
 
@@ -1439,7 +1428,7 @@ Apart from the visual confirmation, further supporting evidence that equatorial
 \begin_inset space ~
 \end_inset
 
- 
+
 \family roman
 \series medium
 \shape up
@@ -1553,9 +1542,8 @@ where
 \end_inset
 
  could be for example any of the following functions
-\end_layout
+\lang english
 
-\begin_layout Standard
 \begin_inset Formula \begin{equation}
 F(E(q))=\begin{cases}
 \,\,\,\,\,\,\,\,\, E(q) & (I)\\
@@ -1565,19 +1553,11 @@ F(E(q))=\begin{cases}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\align left
 and 
 \begin_inset Formula $O$
 \end_inset
 
  could be for example any of the following functions
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula \begin{equation}
 O(q)=\begin{cases}
 1 & (0)\\
@@ -1588,9 +1568,6 @@ q^{2} & (2)\\
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float table
 wide false
 sideways false
@@ -2128,7 +2105,11 @@ key "ozarslan2006resolution"
 \end_layout
 
 \begin_layout Standard
-Jansons et al.
+
+\lang british
+J
+\lang english
+ansons et al.
 \begin_inset space ~
 \end_inset
 
@@ -2363,11 +2344,7 @@ key "assaf2008axcaliber"
 
 \end_inset
 
- and the orientation invariant ActiveAx
-\begin_inset space ~
-\end_inset
-
-
+ and the orientation invariant ActiveAx 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "alexander2010orientationally"
@@ -2599,85 +2576,6 @@ reference "Alg:Fast_EIT"
 \end_layout
 
 \begin_layout Standard
-At the next stage we calculate sums along every radius on the direction
- of 
-\begin_inset Formula $\hat{\bm{u}}_{i}$
-\end_inset
-
- in the following way: 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$
-\backslash
-mathbb{B}(
-\backslash
-hat{
-\backslash
-bm{u}}_{i})=
-\backslash
-sum_{k=0}^{n}F(E(q_{k}
-\backslash
-hat{
-\backslash
-bm{u}}_{i}))O(q_{k}
-\backslash
-hat{
-\backslash
-bm{u}}_{i})$
-\end_layout
-
-\end_inset
-
- and obtain the final EIT ODF as the average of the sums in the equator
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$
-\backslash
-psi_{EIT}(
-\backslash
-hat{
-\backslash
-bm{u}}_{i})=
-\backslash
-frac{1}{N_i}
-\backslash
-sum_{j
-\backslash
-in J_i}
-\backslash
-mathbb{B}(
-\backslash
-hat{
-\backslash
-bm{u}}_{j})$
-\end_layout
-
-\end_inset
-
- where 
-\begin_inset Formula $F$
-\end_inset
-
- is evaluated with trilinear for example interpolation on the lattice and
- 
-\begin_inset Formula $N_{i}$
-\end_inset
-
- is the number of indices in 
-\begin_inset Formula $J_{i}.$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float algorithm
 wide false
 sideways false
@@ -2740,11 +2638,11 @@ psi}_{EIT}$
 
 
 \backslash
-textbf{Foreach} $
+textbf{For} $
 \backslash
 hat{
 \backslash
-bm{u}}_{i}$ 
+bm{u}}_{i}$ in $U$ 
 \backslash
 textbf{Do}
 \backslash
@@ -2786,11 +2684,22 @@ leq z
 
 
 \backslash
-textbf{Foreach} $
+textbf{EndFor} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{For} $
 \backslash
 hat{
 \backslash
-bm{u}}_{i}$ 
+bm{u}}_{i}$ in $U$ 
 \backslash
 textbf{Do}
 \backslash
@@ -2875,6 +2784,17 @@ bm{u}}_{j})$
 
 \backslash
 hspace*{4em} where $N_i$ is the number of indices in $J_i$.
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{EndFor}
 \end_layout
 
 \begin_layout Plain Layout
@@ -2907,6 +2827,85 @@ name "Alg:Fast_EIT"
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+At the next stage we calculate sums along every radius on the direction
+ of 
+\begin_inset Formula $\hat{\bm{u}}_{i}$
+\end_inset
+
+ in the following way: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+mathbb{B}(
+\backslash
+hat{
+\backslash
+bm{u}}_{i})=
+\backslash
+sum_{k=0}^{n}F(E(q_{k}
+\backslash
+hat{
+\backslash
+bm{u}}_{i}))O(q_{k}
+\backslash
+hat{
+\backslash
+bm{u}}_{i})$
+\end_layout
+
+\end_inset
+
+ and obtain the final EIT ODF as the average of the sums in the equator
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+psi_{EIT}(
+\backslash
+hat{
+\backslash
+bm{u}}_{i})=
+\backslash
+frac{1}{N_i}
+\backslash
+sum_{j
+\backslash
+in J_i}
+\backslash
+mathbb{B}(
+\backslash
+hat{
+\backslash
+bm{u}}_{j})$
+\end_layout
+
+\end_inset
+
+ where 
+\begin_inset Formula $F$
+\end_inset
+
+ is evaluated with trilinear for example interpolation on the lattice and
+ 
+\begin_inset Formula $N_{i}$
+\end_inset
+
+ is the number of indices in 
+\begin_inset Formula $J_{i}.$
 \end_inset
 
 
@@ -3037,9 +3036,11 @@ textbf{Output} peaks $P$ and indices $I$
 
 
 \backslash
-textbf{Foreach} face $
+textbf{For} face $
 \backslash
-Phi_i$ 
+Phi_i$ in $
+\backslash
+Phi$ 
 \backslash
 textbf{Do}
 \backslash
@@ -3125,6 +3126,26 @@ textbf{continue}
 
 \backslash
 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} 
+\backslash
+textbf{EndIf} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{EndFor}
 \end_layout
 
 \begin_layout Plain Layout
@@ -3616,8 +3637,8 @@ We can easily observe that when we increase the smoothing factor
 \begin_inset Formula $\sigma$
 \end_inset
 
- , small noisy peaks, as seen in the center of the unsmoothed spherical
- function, can easily be removed.
+, small noisy peaks, as seen in the center of the unsmoothed spherical function,
+ can easily be removed.
  However, with too much smoothing even the strongest peaks can lose their
  definition.
  This spherical operator can help to set the trade-off between noise and
@@ -3673,19 +3694,19 @@ name "sub:Multi-fiber-Simulations"
 \end_layout
 
 \begin_layout Standard
-
-\lang british
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename last_figures/low_angles_with_labels.png
-	lyxscale 30
-	scale 60
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
 
 \end_inset
 
@@ -3693,37 +3714,20 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename last_figures/low_angles_with_labels.png
+	lyxscale 20
+	scale 60
 
-\lang british
+\end_inset
+
+
 \begin_inset Caption
 
 \begin_layout Plain Layout
 Visualizing ODFs created from different reconstruction methods sDNI (sEITL),
- EITL, EITL2, DSI, GQI, GQI2.
- These are based on simulations of 2-fibre crossings from 
-\begin_inset Formula $0^{\circ}$
-\end_inset
-
-to 
-\begin_inset Formula $90^{\circ}$
-\end_inset
-
-at steps of 
-\begin_inset Formula $5^{\circ}$
-\end_inset
-
- using Eq.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:sticks_ball_eq"
-
-\end_inset
-
-.
+ EITL, EITL2, DSI, GQI and GQI2.
  We can see that standard DNI (sDNI), EITL and EITL2 can resolve the correct
  angular fibre directions at lower angles than the other methods.
  For example see column at angle of 
@@ -3731,7 +3735,7 @@ reference "eq:sticks_ball_eq"
 \end_inset
 
 .
- XXXXX Not referenced
+ 
 \end_layout
 
 \end_inset
@@ -3851,6 +3855,73 @@ where
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+In Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:multi-fibre-sims"
+
+\end_inset
+
+ we present the outcome of an experiment of two crossing fibres using different
+ reconstruction methods: sDNI (sEITL), EITL, EITL2, DSI, GQI and GQI2.
+ These are based on simulations of 2-fibre crossings from 
+\begin_inset Formula $0^{\circ}$
+\end_inset
+
+ to 
+\begin_inset Formula $90^{\circ}$
+\end_inset
+
+ using Eq.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sticks_ball_eq"
+
+\end_inset
+
+ with diffusivity value of 
+\begin_inset Formula $1.5\times10^{-3}$
+\end_inset
+
+ 
+\lang british
+
+\begin_inset Formula $\textrm{mm}^{2}/\textrm{sec}$
+\end_inset
+
+
+\lang english
+ and 257 b-values with maximum b-value 
+\begin_inset Formula $11,000$
+\end_inset
+
+.
+ However, all these methods will perform accurately beyond 
+\begin_inset Formula $50^{\circ}$
+\end_inset
+
+ therefore in this figure we present only the lower angles.
+ We can see that sDNI, EITL and EITL2 performed better than the other methods.
+ Especially EITL2 was able to resolve crossing at 
+\begin_inset Formula $25^{\circ}$
+\end_inset
+
+ which is lower than the accuracy resolved in the current state of the art
+ methods.
+ In order to confirm this fascinating result we created a more general experimen
+t with many iterations (of 2-fibre and 3-fibre crossings) which is presented
+ below.
 \end_layout
 
 \begin_layout Standard
@@ -4195,25 +4266,17 @@ If our ground truth set consists of
 \end_inset
 
 .
- This is because according to the AS definition we have
-\end_layout
-
-\begin_layout Standard
-\align block
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang british
-\begin_inset Formula $AS(g,m)=\max(|g_{0}\cdot m_{0}|,|g_{1},m_{0}|)=\nicefrac{\sqrt{2}}{2}.$
+ This is because according to the AS definition we have 
+\begin_inset Formula $AS(g,m)=\max(|g_{0}\cdot m_{0}|,|g_{1},m_{0}|)$
 \end_inset
 
+.
+ Which is equal to 
 
+\begin_inset Formula $\nicefrac{\sqrt{2}}{2}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -4424,7 +4487,7 @@ EITS where
 \begin_inset Formula $>$
 \end_inset
 
- means better average angular similarity.
+ means higher average angular similarity.
  The same pattern takes place even when we increase the noise level see
  for example Fig.
 \begin_inset space ~
@@ -5649,9 +5712,9 @@ reference "Flo:x-shape-fat-tensor-zoomed"
  we do not use any amount of smoothing as used in DSI (through hanning filter),
  GQI, GQI2 (through sampling length) and it is extraordinary that we still
  obtain such well defined distributions.
- If we want to apply some weighting / smoothing / denoising in EIT-based
- methods that is simply possible through the spherical angular smoothing
- approach described in section 
+ If we want to apply some weighting/smoothing/denoising in EIT-based methods
+ that is simply possible through the spherical angular smoothing approach
+ described in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Spherical-Angular-Smoothing"
@@ -5853,7 +5916,7 @@ The parameters used for these simulations were for DSI: radial sampling
 \begin_inset Formula $36$
 \end_inset
 
- , GQI: 
+, GQI: 
 \begin_inset Formula $\text{\lambda=1.2}$
 \end_inset
 
@@ -6741,7 +6804,7 @@ reference "eq:FA_classical"
  
 \end_layout
 
-\begin_layout Subparagraph
+\begin_layout Standard
 
 \series medium
 The rationale for the squared ODF values is based on Tuch's formula (Eq.
@@ -6794,7 +6857,7 @@ ref{sub:Tensor-in-GQI}
  
 \end_layout
 
-\begin_layout Subparagraph
+\begin_layout Standard
 
 \series medium
 The average NPA and FA are presented in Fig.
@@ -6835,7 +6898,7 @@ reference "Flo:NPA_2"
  
 \end_layout
 
-\begin_layout Subparagraph
+\begin_layout Standard
 
 \series medium
 We plan to extend this approach with voxels containing multiple peaks where
@@ -6865,6 +6928,20 @@ key "Tuch2004"
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \align center
@@ -6910,6 +6987,20 @@ name "Flo:NPA_1"
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \align center
@@ -7052,11 +7143,25 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename QA.png
 	lyxscale 50
-	scale 50
+	scale 60
 
 \end_inset
 
@@ -7423,9 +7528,6 @@ reference "eq:CV_roi"
 
 ).
  
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula \begin{eqnarray}
 CV_{ROI} & = & \frac{\sigma_{x}}{<x>}=\frac{N_{voxels}\sqrt{\sum_{x_{i}\in ROI}(x_{i}-<x>)^{2}}}{\sqrt{N_{voxels}-1}\sum_{x_{i}\in ROI}x_{i}}\label{eq:CV_roi}\end{eqnarray}
 
@@ -7458,9 +7560,6 @@ key "correia_garyfallidis2011"
 
 .
  
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula \begin{eqnarray}
 CSR(FA) & = & \frac{mean(FA)_{ROI_{1}}-mean(FA)_{ROI_{2}}}{\sqrt{var(FA)_{ROI_{1}}+var(FA)_{ROI_{2}}}}\label{eq:CSR_FA}\end{eqnarray}
 
