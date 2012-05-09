@@ -108,7 +108,7 @@ Integrating to tracks.
  The purpose of this algorithm is to be faithful to the reconstruction results
  rather than try to correct or enhance them by introducing regional or global
  considerations which is the topic of other popular approaches.
- Interestingly, in the experiments with the digital phantoms EuDX performed
+ Interestingly, in the experiments with the software phantoms, EuDX performed
  better than a popular probabilistic method.
  With the real data sets it generated more uniform bundles.
 \end_layout
@@ -125,7 +125,7 @@ The end goal of clustering is to be able to segment tractography into tracts
  In order to succeed better, we need to be able to compare the results of
  tractographies, and we need to be able to allow experts in anatomy to interact
  with the results of the tractography.
- Unfortunately most current methods are so slow to compute that it is not
+ Unfortunately, most current methods are so slow to compute that it is not
  practical to compare different methods in reasonable time, and they cannot
  run fast enough for an expert to interact with them in close to real time.
  This thesis provides a complete solution to this problem.
@@ -154,8 +154,8 @@ After applying QuickBundles to tractographies from different subjects, we
  in a highly efficient way.
  We believe the resulting correspondences provide important evidence for
  the anatomical plausibility of the derived bundles.
- We demonstrated how these methods can be used for group analysis, and for
- atlas creation.
+ We demonstrated how these methods can be used for group analysis, as well
+ as for atlas creation.
 \end_layout
 
 \begin_layout Subsection
@@ -163,7 +163,7 @@ Software
 \end_layout
 
 \begin_layout Standard
-In providing this thesis we tried to do our best to follow state-of-the-are
+In providing this thesis we tried to do our best to follow state-of-the-art
  scientific practices.
  One of the important achievements was to create and distribute two different
  software libraries DIPY
@@ -239,8 +239,8 @@ name "sub:Future-work"
 \end_layout
 
 \begin_layout Standard
-Here we will describe what are our future plans and which research path
- we would like to take after the completion of this dissertation.
+Here we will describe what our future plans are and the research path we
+ wish to take after the completion of this dissertation.
 \end_layout
 
 \begin_layout Standard
@@ -302,7 +302,7 @@ key "kennedy1995particle"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "oikonomidis2011full"
@@ -318,7 +318,7 @@ key "oikonomidis2011full"
 Clinical Applications
 \series default
 .
- We propose extending our preliminary involvement with clinical research
+ We propose to extend our preliminary involvement with clinical research
  into trichotilomania 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -326,8 +326,8 @@ key "chamberlain2010reduced"
 
 \end_inset
 
- from fractional anisotropy to track density calculations.
- Also we would like to investigate bundle differences with other disorders
+ from fractional aniso- tropy to track density calculations.
+ We would also like to investigate bundle differences with other disorders
  such as autism or schizophrenia.
  Both autism and schizophrenia are considered to have strong relationship
  with defects in white matter architecture caused by disrupted connectivity
@@ -452,7 +452,7 @@ reference "Flo:SelectionViz"
 
 \end_inset
 
-C, white tracks).
+C, white track).
  When one or more representative tracks are selected the practitioner can
  see the content of the related clusters (see Fig.
 \begin_inset space ~
@@ -479,7 +479,7 @@ reference "Flo:SelectionViz"
 \end_inset
 
 E).
- In that way he can further refine his previous selection.
+ In that way one can further refine his previous selection.
  After selecting one or more of the small clusters through their representatives
  (see Fig.
 \begin_inset CommandInset ref
@@ -521,7 +521,7 @@ reference "Flo:SelectionViz"
 
 \end_inset
 
-I) which are interesting to his work.
+I) which are interesting to their work.
  
 \end_layout
 
@@ -648,9 +648,10 @@ Microstructure
 
 mm.
  Axon fibres, which are about one micron in diameter, are much smaller than
- single voxels Nevertheless, diffusion MRI can provide information on the
- distribution of microstructural features, such as the fibre orientation,
- fibre diameter or density, within each voxel.
+ single voxels.
+ Nevertheless, diffusion MRI can provide information on the distribution
+ of microstructural features, such as the fibre orientation, fibre diameter
+ or density, within each voxel.
  We would like to extend our work and in that area of microanatomy tracking
  which has recently shown very interesting results 
 \begin_inset CommandInset citation
