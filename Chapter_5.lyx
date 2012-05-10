@@ -762,5 +762,41 @@ created their tractographies using Diffusion Spectrum Imaging for signal
  for them to be applied by the neuroscience community.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We are very glad to see that the pictures we generate are both beautiful
+ and useful pushing our knowledge and inspiration for the advancement of
+ brain mapping.
+ To honour our participants who took part in our experiments we gave them
+ a picture of their tractography like the one shown in Fig.
+ 
+\backslash
+begin_inset space "Flo:Subj_1_orange"
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end_inset
+\end_layout
+
+\begin_layout Plain Layout
+.
+ Albert Einstein suggested that imagination is even more important than
+ knowledge.
+ Perhaps one day of our near future we will be able to reconstruct single
+ axons in vivo and in great precision.
+ I hope I will be around to see it happening and help accomplish this achievemen
+t.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
