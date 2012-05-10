@@ -636,7 +636,7 @@ reference "Flo:SelectionViz"
 Microstructure
 \series default
 .
- Our work until today has focused on estimating the structure of white matter
+ Our work up till now has focused on estimating the structure of white matter
  in the brain from standard diffusion MRI acquisitions.
  However these acquisitions provide voxel sizes of about 
 \begin_inset Formula $2$
@@ -724,8 +724,29 @@ New frontiers
 \end_layout
 
 \begin_layout Standard
-White matter fibre crossings -- from the voxel level to the tractography
- and bundle level -- have been a major motivation for this thesis.
+White matter fibre crossings 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ from the voxel level to the tractography and bundle level 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ have been a major motivation for this thesis.
  In March 
 \begin_inset Formula $2012$
 \end_inset
@@ -751,20 +772,33 @@ key "wedeen2012geometric"
  fibre bundles crossing in more areas than would previously have been expected.
  Furthermore, they also showed that the bundles curve more vigorously than
  previously understood.
- Wedeen et al.
+ We believe that in this thesis we have significantly enhanced and extended
+ the techniques that were used to establish these ground-breaking results,
+ and have created a framework for them to be applied by the neuroscience
+ community.
+\end_layout
+
+\begin_layout Standard
+In bringing this thesis to a close we would like to thank the participants
+ who took part in our imaging studies.
+ To honour them we created special pictures of their tractographies like
+ the one shown in Fig.
 \begin_inset space ~
 \end_inset
 
-created their tractographies using Diffusion Spectrum Imaging for signal
- reconstruction and deterministic tracking.
- We believe we have enhanced and extended the techniques that were used
- to establish these ground-breaking results, and have created a framework
- for them to be applied by the neuroscience community.
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:Subj_1_orange"
+
+\end_inset
+
+ which were subsequently presented to them.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 We are very glad to see that the pictures we generate are both beautiful
