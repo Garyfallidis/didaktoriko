@@ -98,7 +98,7 @@ key "MCC+99,CLC+99"
 \begin_inset Formula $12$
 \end_inset
 
- years ago a great number methods have been published.
+ years ago a great number of methods have been published.
  Often these algorithms depend strictly on the underlying voxel model or
  acquisition paradigm making it difficult for other researchers to apply
  their own reconstruction methods and evaluate their data sets.
@@ -330,7 +330,7 @@ key "tournier2004direct"
 \end_inset
 
 .
- There are different approaches for propagating across voxelswhere more
+ There are different approaches for propagating across voxels where more
  than one fibre orientation has been identified.
  One approach is, upon entering a voxel, to choose the orientation that
  produces the smallest curvature with the incoming path used in Wedeen et
@@ -526,21 +526,21 @@ key "Behrens2003MRM"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Behrens2007NeuroImage"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hosey2005inference"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "friman2006bayesian"
@@ -566,7 +566,7 @@ key "Behrens2003MRM"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Behrens2007NeuroImage"
@@ -628,7 +628,7 @@ key "lazar2005bootstrap"
 \end_inset
 
  are two of the first to apply this method in dMRI.
- This is an non-parametric approach where a diffusion acquisition is repeated
+ This is a non-parametric approach where a diffusion acquisition is repeated
  many times creating a large set of images for the same subject.
  Some images from this set are drawn in random with replacement.
  This process gives a single bootstrap sample.
@@ -756,7 +756,7 @@ Other probabilistic
 \emph default
 approaches estimate the orientation uncertainty as an empirically defined
  function.
- For example in Parker et al.
+ For example, in Parker et al.
 \begin_inset space ~
 \end_inset
 
@@ -781,7 +781,7 @@ key "parker2003probabilistic"
 
 \end_inset
 
- Monte-Carlo simulations are used to predict the orientation uncertainty
+, Monte-Carlo simulations are used to predict the orientation uncertainty
  for multiple Tensors and later for PAS
 \begin_inset space ~
 \end_inset
@@ -805,7 +805,7 @@ key "descoteaux2009deterministic"
 
 \end_inset
 
- the fODF was used for the same purpose.
+, the fODF was used for the same purpose.
  Cook et al.
 \begin_inset space ~
 \end_inset
@@ -867,7 +867,7 @@ reference "sub:Tractography"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Known-problems"
@@ -879,18 +879,14 @@ reference "sub:Known-problems"
  Global approaches try to overcome these limitations by being distance-independe
 nt and by increasing resistance against noise in a global fashion.
  These are achieved by finding an optimal path between two voxels, according
- to a global property (see Johansen-Berg et al.
-\begin_inset space ~
-\end_inset
-
-
+ to a global property 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "DiffMRIBook"
 
 \end_inset
 
-).
+.
 \end_layout
 
 \begin_layout Standard
@@ -1044,7 +1040,7 @@ key "Fillard2009a"
 \begin_inset space ~
 \end_inset
 
- 
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "sotiropoulos2010brain"
@@ -1202,9 +1198,9 @@ Simulated
 \begin_layout Standard
 This family of methods take a very different approach from what we have
  discussed up until this point.
- They simulate the diffusion of water molecules within the brain tissue
- or directly solve Fick’s second law of diffusion in the entire brain (see
- Batchelor et al.
+ They simulate the diffusion of water mole- cules within the brain tissue
+ or directly solve Fick’s second law of diffusion in the entire brain.
+ In this category belong the work of Batchelor et al.
 \begin_inset space ~
 \end_inset
 
@@ -1248,7 +1244,7 @@ key "hagmann2003dti"
 
 \end_inset
 
-).
+.
 \end_layout
 
 \begin_layout Standard
@@ -1575,7 +1571,7 @@ key "aganj2010reconstruction"
 .
  The only constraint for these functions is to be greater or equal to zero
  everywhere in the volume.
- In most cases all these functions try to measure in some way the anisotropy
+ In most cases, all these functions try to measure in some way the anisotropy
  of diffusion in every single voxel so we decided to use the letter 
 \begin_inset Formula $\mathcal{A}$
 \end_inset
@@ -1673,7 +1669,7 @@ The EuDX algorithm can be described further in the following way:
 \end_inset
 
  and then we generate random or prespecified seed points.
- In more detail: We select a seed point 
+ In more detail: we select a seed point 
 \begin_inset Formula $\mathbf{p}_{0}$
 \end_inset
 
@@ -1737,7 +1733,7 @@ reference "sub:Quantitative-Anisotropy"
 \end_layout
 
 \begin_layout Standard
-Apart from the direction we also need to check when to stop tracking.
+Apart from the direction, we also need to check when to stop tracking.
  EuDX takes as input a threshold for anisotropy 
 \begin_inset Formula $\mathcal{A}_{thr}$
 \end_inset
@@ -1758,8 +1754,7 @@ d or in very low anisotropy areas where tracking is not recommended e.g.
 
  depends on the reconstruction method and it will have a different value
  for every different metric QA, FA, GFA etc.
- Therefore, we expect EuDX to give different results with with different
- 
+ Therefore, we expect EuDX to give different results with different 
 \begin_inset Formula $\mathcal{A}$
 \end_inset
 
@@ -1771,7 +1766,7 @@ In order to generate a smooth tractography it is recommended to use some
  kind of interpolation; this is in contrast with FACT which does not use
  neighbouring information.
  Here we have been using trilinear interpolation which works in the following
- way: The seed devides the neighbouring area (constrained by the centers
+ way: the seed devides the neighbouring area (constrained by the centers
  of the neighbouring voxels) in 
 \begin_inset Formula $8$
 \end_inset
@@ -1952,6 +1947,20 @@ Apart from the anisotropic threshold
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -2205,7 +2214,7 @@ reference "Alg:EuDX_Main"
 \begin_inset Formula $N$
 \end_inset
 
- are is the number of vertices in the sphere.
+ is the number of vertices in the sphere.
  
 \begin_inset Formula $S$
 \end_inset
@@ -2638,8 +2647,8 @@ reference "Alg:EuDX_Core"
 .
  This is called for every seed and every peak.
  The algorithm starts by calling the function Initial_Direction which finds
- the closest peak direction to follow from the nearby voxels and if the
- values of these peaks are lower than 
+ the closest peak direction to follow from the nearby voxels.
+ If the values of these peaks are lower than 
 \begin_inset Formula $\mathcal{A}_{thr}$
 \end_inset
 
@@ -3335,8 +3344,8 @@ key "canalesrodriguez2009mdq"
 \end_inset
 
 .
- The digital phantom consists of two parts: a) a diagonal orbit and b) an
- elliptical orbit with axes ratio 
+ The software phantom consists of two parts: a) a diagonal orbit and b)
+ an elliptical orbit with axes ratio 
 \begin_inset Formula $\nicefrac{\lambda_{2}}{\lambda_{1}}=0.6$
 \end_inset
 
@@ -3387,14 +3396,14 @@ reference "Flo:crossing_eudx_sims"
 
 (i) lower right corner).
  We generated b-vectors and b-values by using a keyhole Cartesian sampling
- grid
+ grid 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Tuch2002ThesisMIT"
 
 \end_inset
 
-(see Fig.
+ (see Fig.
 \begin_inset ERT
 status open
 
@@ -3414,7 +3423,7 @@ reference "Fig:q-space"
 
 ); therefore, DSI, GQI, EIT or DTI were all suitable for the signal reconstructi
 on into ODFs or Tensors respectively for these type of data.
- In contrast QBI is not suitable because it assumes a spherical grid in
+ In contrast, QBI is not suitable because it assumes a spherical grid in
  q-space (see section
 \begin_inset space ~
 \end_inset
@@ -3533,7 +3542,7 @@ reference "Flo:crossing_eudx_sims"
 \end_inset
 
 .
- As we presented earlier EuDX expects as input the peaks and the directions
+ As we presented earlier, EuDX expects as input the peaks and the directions
  of the peaks.
  For every voxel we used DSI to create the corresponding ODF (sampled on
  an evenly distributed sphere of 
@@ -3541,7 +3550,7 @@ reference "Flo:crossing_eudx_sims"
 \end_inset
 
  vertices and 
-\begin_inset Formula $1280$
+\begin_inset Formula $1,280$
 \end_inset
 
  faces) and from the ODF we used the peak finding function introduced in
@@ -3643,9 +3652,9 @@ reference "Flo:crossing_eudx_sims"
  Because we generated random seeds that went everywhere in the phantom some
  of them had to fall in the crossing area.
  In accordance with what we discussed in the previous section we know that
- if a seed falls in a crossing region EuDX will propagate towards both direction
-s of the crossing if and only if multiple peaks are supported from the underlyin
-g reconstruction method.
+ if a seed falls in a crossing region, EuDX will propagate towards both
+ directions of the crossing if and only if multiple peaks are supported
+ from the underlying reconstruction method.
  We can confirm this by observing the result at Fig.
 \begin_inset ERT
 status open
@@ -3667,10 +3676,10 @@ reference "Flo:crossing_eudx_sims"
 .
  We can see that the crossing area is well represented and that the propagation
  was successful.
- We can also observe that not all tracks travel the entire distances from
+ We can also observe that not all tracks travel the entire distance from
  end to end.
- Otherwise we would except to see the tracks of the entire elliptic part
- all with one colour and the tracks of the straight orbit all with a second
+ Otherwise we would expect to see all tracks of the entire elliptic part
+ with one colour and the tracks of the straight orbit all with a different
  colour because they have different orientation.
  It seems that this observation had something to do with the discrete nature
  of the phantom especially near the bundles' boundary areas and of course
@@ -3698,21 +3707,20 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-On the left panel we see the b0 volume of the digital phantom and on top
- we see 
+On the left panel we see the b0 volume of the software phantom with 
 \begin_inset Formula $4$
 \end_inset
 
- ROIs; A, B, C and D.
+ ROIs; A, B, C and D presented with different colours.
  
-\begin_inset Formula $2000$
+\begin_inset Formula $2,000$
 \end_inset
 
  seeds were generated inside each ROI and we then measured the amount of
  tracks which reached the other regions.
  On the right panel we see that when the DTI (Single Tensor) was used for
  the reconstruction; the tracking started from A reached only C.
- However when EITL was used the tracks reached both areas B and C as it
+ However, when EITL was used the tracks reached both areas B and C as it
  was expected.
 \end_layout
 
@@ -3757,7 +3765,7 @@ reference "Flo:eudx_fromABCD"
 \end_inset
 
 ).
- More precisely the end-point areas of the phantom denoted with A, B, C
+ More precisely, the end-point areas of the phantom denoted with A, B, C
  and D.
  The goal was to count the percentage of tracks which reached any of the
  other end-point areas.
@@ -3843,7 +3851,7 @@ reference "Tab:EuDX_AtoB"
  A first general observation is that independently from which end-point
  ROIs the tracks start there will always be a percentage of tracks which
  will stop before reaching the other end-points.
- We can clearly see this phenomenon by observing at the last column of each
+ We can clearly see this phenomenon by observing the last column of each
  sub-table.
  The last column that we symbolize with 
 \begin_inset Formula $\emptyset$
@@ -5485,7 +5493,7 @@ Every sub-table shows the percentage of tracks which started from areas
  but not from DTI as it was expected because the Single Tensor cannot resolve
  crossings.
  We can also observe by comparing all the rows that in the more curve branch
- AB of the phantom fewer tracks reached their target that in the diagonal
+ AB of the phantom fewer tracks reached their target than in the diagonal
  branch CD.
 \end_layout
 
@@ -5701,8 +5709,8 @@ tion.
 \end_layout
 
 \begin_layout Standard
-Another general observation is that in the curved branch less tracks rea-
- ched their target than in the diagonal branch.
+Another general observation is that in the curved branch less tracks reached
+ their target than in the diagonal branch.
  This is to be expected because the discretization is more asymmetric in
  the curved branch (see Fig.
 \begin_inset ERT
@@ -5722,8 +5730,8 @@ reference "Flo:eudx_fromABCD"
 
 \end_inset
 
--left panel) therefore more tracks close to the boundaries will stop propagating
- because they reach background voxels where anisotropy is much lower.
+-left panel) therefore, more tracks close to the boundaries will stop propagatin
+g because they reach background voxels where anisotropy is much lower.
  This is in agreement with EuDX which is designed to stop in low anisotropic
  regions as defined by parameter 
 \begin_inset Formula $\mathcal{A}_{thr}$
@@ -5786,7 +5794,10 @@ Independently from the deterministic tractography described previously we
 status open
 
 \begin_layout Plain Layout
-cmic.cs.ucl.ac.uk/camino
+\begin_inset Formula $\texttt{cmic.cs.ucl.ac.uk/camino}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5799,7 +5810,7 @@ cmic.cs.ucl.ac.uk/camino
  For the fitting method we used the standard non-linear fit provided in
  Camino with positivity constraints.
  For this purpose we used the command 
-\begin_inset Formula $\text{modelfit -model cylcyl nldt\_pos}$
+\begin_inset Formula $\texttt{modelfit\,-model\, cylcyl\, nldt\_pos}$
 \end_inset
 
 .
@@ -6746,7 +6757,7 @@ reference "Tab:EuDX_AtoB"
 \end_inset
 
  and 
-\begin_inset Formula $5000$
+\begin_inset Formula $5,000$
 \end_inset
 
  respectively.
@@ -6864,7 +6875,7 @@ key "Behrens2007NeuroImage"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Parker2003"
@@ -6883,7 +6894,8 @@ Results with humans
 
 \begin_layout Standard
 In this section we investigate how EuDX performed with real data sets.
- There are mainly two ways to validate tractographies with real data sets.
+ There are mainly two ways to validate tractographies with real data sets
+ of healthy humans.
  The first is to directly ask for feedback from specialist neuroanatomists
  who have good understanding of the underlying white matter anatomy and
  the second is to compare against the results of another published tractography
@@ -6911,7 +6923,7 @@ B) and asked expert neuroanatomists Professor Luigi Cataneo and Dr.
  Nivedita Agarwal from the Center for Brain/Mind Science (CiMeC) in Trento,
  Italy to validate the quality of the data in relationship to their knowledge
  of anatomy.
- We thn asked them to manually label bundles of their scientific interest
+ We then asked them to manually label bundles of their scientific interest
  in different subjects.
  We show here two of the many known bundles that they segmented.
  In Fig.
@@ -6940,14 +6952,14 @@ key "Frey2008"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "rilling2008evolution"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "glasser2008dti"
@@ -7015,9 +7027,9 @@ texttt{fos.me}$
  of the next chapter.
  This application has the capability to create an accessible representation
  of the initial tractography into bundles of interest (BOIs).
- In this concept bundles is a collection of tracks with similar spatial
+ In this concept, a bundle is a collection of tracks with similar spatial
  and shape characteristics.
- After the BOIs are created the medical practitioners can select one or
+ After the BOIs are created, the medical practitioners can select one or
  more BOIs interactively and hide the parts of the tractography which are
  not interesting to their investigations.
  This application is further explained in Chapter
@@ -7056,8 +7068,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-A: right arcuate fasciculus generated by EuDX and segmented by two expert
- neuroanatomists.
+A: right arcuate fasciculus generated by EuDX and segmented by expert neuroanato
+mists.
  The tracks are in MNI coordinates and we visualize simultaneously the T1
  slice (X=
 \begin_inset Formula $29$
@@ -7081,8 +7093,16 @@ subject 5
 \begin_inset Formula $120$
 \end_inset
 
+
+\begin_inset space ~
+\end_inset
+
 mm to 
 \begin_inset Formula $150$
+\end_inset
+
+
+\begin_inset space ~
 \end_inset
 
 mm.
@@ -7245,7 +7265,7 @@ The tractographies were generated in diffusion native space and then linearly
 \end_inset
 
 .
- These FA volumes were again in diffusion native space therefore we used
+ These FA volumes were again in diffusion native space, therefore we used
  FSL 
 \begin_inset Formula $\texttt{flirt}$
 \end_inset
@@ -7263,7 +7283,7 @@ The tractographies were generated in diffusion native space and then linearly
 
 \begin_layout Standard
 In order to help the neuroanatomists to guide themselves with the segmentation
- of bundles we linearly registered structural MRIs (T1 MPRAGE) images from
+ of bundles, we linearly registered structural MRIs (T1 MPRAGE) images from
  the same subjects to the standard template 
 \begin_inset Formula $\texttt{MNI152}$
 \end_inset
@@ -7516,7 +7536,7 @@ reference "Flo:cingulum_12_subjects"
 \end_inset
 
  million.
- Furthermore the tractographies of all subjects were registered together
+ Furthermore, the tractographies of all subjects were registered together
  with the structural images in MNI space.
  The only exception was with the last subject 
 \begin_inset Formula $12$
@@ -7785,7 +7805,7 @@ The purpose of EuDX is to be faithful to the reconstruction results rather
  than try to correct or enhance them by introducing regional or global considera
 tions which is the topic of other methods which were reviewed earlier.
  Therefore, EuDX serves mainly as a robust method for quickly inspecting
- different reconstruction results using deterministic tracks.
+ different reconstruction results using deterministic tractography.
  However, we observed that EuDX performed better than standard probabilistic
  approaches in the simulations.
  This observation needs further exploration and contradicts what is commonly
