@@ -134,7 +134,7 @@ The end goal of clustering is to be able to segment tractography into tracts
  accessible bundles.
  These bundles are characterised by representative tracks which are multi-purpos
 e and can be used for interaction with the data or as the basis for applying
- higher-complexity clustering methods which would have been impossible or
+ higher complexity clustering methods which would have been impossible or
  too slow with the full data set.
  QuickBundles is as far as we know the fastest existing tractography clustering
  algorithm; providing the opportunity for clinical real-time applications.

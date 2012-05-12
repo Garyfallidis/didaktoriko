@@ -372,6 +372,16 @@ Supervisors
 \begin_layout Standard
 \align center
 
+\size large
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
 \size larger
 \noun on
 Dr.
@@ -479,6 +489,16 @@ Cambridge, UK
 
 \lang british
 Dedication
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -655,10 +675,10 @@ A big thank you to Stephan Gerhard with whom I worked to give birth to a
 
 \lang british
 My great respect to Dr.
- David Jarvis Dean Alumni of Wolfson College, Professor Mike Proctor and
+ David Jarvis Alumni Dean of Wolfson College, Professor Mike Proctor and
  Professor Peter Haynes from the Department of Applied Mathematics and Theoretic
 al Physics who helped me continue my career in research and supported me
- at the most difficult and unfair moments of my life.
+ at the most difficult moments of my life.
  My gratitude also to Dr.
  Rik Henson who introduced me to my supervisors at my current department.
 \end_layout
@@ -667,9 +687,8 @@ al Physics who helped me continue my career in research and supported me
 
 \lang british
 Life would be unbearable without friends.
- Much love to my best friends from my homeland Vassilis Dimitriadis, Dimitris
- Pritsos, Alexandros Triantafyllidis, Dr.
- Periklis Akritidis and Dr.
+ Much love and gratitude to my best friends from my homeland: Vassilis Dimitriad
+is, Dimitris Pritsos, Alexandros Triantafyllidis and Dr.
  Vassilis Tsiaras.
  And the great friends I made here in Cambridge: Dr.
  Euan Spence, Dr.
@@ -677,6 +696,7 @@ Life would be unbearable without friends.
  Andreas Georgiou, Dr.
  Daniel Holland, Dr.
  Mina Mprimpari, Dr.
+ Periklis Akritidis, Dr.
  Nikos Dikaios, Dr.
  Johan Carlin, Dr.
  Annika Linke, Alex Walther, Michael Worthington, Dimitra Datsiou, Dr.
@@ -852,7 +872,7 @@ Garyfallidis E
 Identification of corresponding tracks in diffusion MRI tractographies
 \emph default
 ”, 18th Proceedings of the International Society of Magnetic Resonance in
- Medicine.
+ Medi- cine.
 \end_layout
 
 \begin_layout Standard
@@ -918,8 +938,7 @@ hies
 \end_layout
 
 \begin_layout Standard
-Olivetti E, Nguyen T.
- B, 
+Olivetti E, Nguyen TB, 
 \series bold
 Garyfallidis E
 \series default
@@ -993,7 +1012,7 @@ large Journals
 \series bold
 Garyfallidis E
 \series default
-, Brett M, Correia M, Williams G.B, Nimmo-Smith I (2012), 
+, Brett M, Correia M, Williams GB, Nimmo-Smith I (2012), 
 \emph on
 
 \begin_inset Quotes eld
@@ -1059,7 +1078,7 @@ Garyfallidis E
 
 
 \emph on
-Surfing your Brain Super-Highways
+Surfing your Brain Super-High- ways
 \emph default
 
 \begin_inset Quotes erd

@@ -232,7 +232,7 @@ key "callaghan1988nmr"
  using the narrow pulse gradient spin echo (PGSE) sequence of Tanner and
  Stejskal 
 \begin_inset Formula \begin{eqnarray}
-RF(\mathbf{k},\mathbf{q}) & = & \int\rho(\mathbf{v})\exp(i2\pi\mathbf{k}\cdot\mathbf{v})\int P_{\Delta}(\mathbf{v},\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})\, d\mathbf{r\,}d\mathbf{v}.\label{eq:kq}\end{eqnarray}
+RF(\mathbf{k},\mathbf{q}) & = & \int\rho(\mathbf{v})\exp(i2\pi\mathbf{k}\cdot\mathbf{v})\int P_{\Delta}(\mathbf{v},\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})\, d\mathbf{r\,}d\mathbf{v}\label{eq:kq}\end{eqnarray}
 
 \end_inset
 
@@ -305,7 +305,7 @@ The k-space reconstruction gives us diffusion weighted image data
 
  of each voxel 
 \begin_inset Formula \begin{eqnarray}
-S(\mathbf{v},\mathbf{q}) & = & \int\rho(\mathbf{v})P_{\Delta}(\mathbf{v},\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}.\label{eq:W}\end{eqnarray}
+S(\mathbf{v},\mathbf{q}) & = & \int\rho(\mathbf{v})P_{\Delta}(\mathbf{v},\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}\label{eq:W}\end{eqnarray}
 
 \end_inset
 
@@ -495,7 +495,7 @@ The modulus of the signal coincides with the output of the standard MRI
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "Flo:beautiful-triple-crossing"
+reference "Flo:ODF"
 
 \end_inset
 
@@ -592,11 +592,22 @@ Since we are mainly interested in the angular structure of the underlying
 \end_layout
 
 \begin_layout Standard
-\align left
+\begin_inset ERT
+status open
 
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+ This defines the 
 \lang british
-This defines the orientation density function (ODF) for DSI which measures
- the quantity of diffusion in the direction of the unit vector 
+orientation density function (ODF) for DSI which measures the quantity of
+ diffusion in the direction of the unit vector 
 \begin_inset Formula $\mathbf{\hat{u}}$
 \end_inset
 
@@ -1060,24 +1071,9 @@ Showing the ODFs from two randomly oriented simulated
 \begin_inset Formula $90^{\circ}$
 \end_inset
 
- angles between each other using different grid based reconstruction methods.
- The parameters used here are DSI: radial sampling range 
-\begin_inset Formula $[2.1,6$
-\end_inset
-
-], Hanning filter width 
-\begin_inset Formula $36$
-\end_inset
-
-, GQI: 
-\begin_inset Formula $\text{\lambda=1.2}$
-\end_inset
-
-, GQI2: 
-\begin_inset Formula $\lambda=3$
-\end_inset
-
-, DNI: standard.
+ angles between each pair of fibres using different Cartesian lattice q-space
+ reconstruction methods.
+ 
 \end_layout
 
 \end_inset
@@ -1322,6 +1318,69 @@ This is a filter commonly used for image processing.
 \noun default
 \color inherit
 is the symbol for the Laplacian operator.
+ In Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:beautiful-triple-crossing"
+
+\end_inset
+
+ we present the ODFs from two randomly oriented simulated 
+\begin_inset Formula $3$
+\end_inset
+
+-fibre crossings at 
+\begin_inset Formula $50^{\circ}$
+\end_inset
+
+ and 
+\begin_inset Formula $90^{\circ}$
+\end_inset
+
+ angles between each other using different grid based reconstruction methods.
+ The parameters used here are for DSI: radial sampling range 
+\begin_inset Formula $2.1-6$
+\end_inset
+
+ with 
+\begin_inset Formula $0.2$
+\end_inset
+
+ and Hanning filter width 
+\begin_inset Formula $36$
+\end_inset
+
+, GQI: 
+\begin_inset Formula $\text{\lambda=1.2}$
+\end_inset
+
+, GQI2: 
+\begin_inset Formula $\lambda=3$
+\end_inset
+
+ and DNI: radial sampling 
+\begin_inset Formula $0-5$
+\end_inset
+
+ with 
+\begin_inset Formula $0.2$
+\end_inset
+
+ steps.
+ All methods used the same reconstruction sphere with 
+\begin_inset Formula $642$
+\end_inset
+
+ vertices and 
+\begin_inset Formula $1,280$
+\end_inset
+
+ faces.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -1353,7 +1412,7 @@ reference "Flo:single_fibre_spherical_grid"
 \begin_inset Formula $S(\hat{\mathbf{f}}_{1})+S(\hat{\mathbf{f}}_{2})=S(\hat{\mathbf{f}}_{1}+\hat{\mathbf{f}}_{2})$
 \end_inset
 
- , where 
+, where 
 \begin_inset Formula $\hat{\mathbf{f}}_{1}$
 \end_inset
 
@@ -2426,6 +2485,13 @@ name "Flo:sEITvsEIT"
 
 \begin_layout Subsubsection
 Standard EIT
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Standard-EIT"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2469,7 +2535,7 @@ A.
 \end_inset
 
  vertices and the signal is centered inside a cubic grid of size 
-\begin_inset Formula $16\times16\times16$
+\begin_inset Formula $17\times17\times17$
 \end_inset
 
  where the radial integration (
@@ -3576,6 +3642,16 @@ reference "Flo:Smoothing_Example"
 \end_inset
 
  and reconstructed as an EITL density function.
+ The simulation was used using a Sticks and Ball model with diffusivity
+ value 
+\begin_inset Formula $0.0015$
+\end_inset
+
+ and S0=
+\begin_inset Formula $100$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -3601,22 +3677,8 @@ status open
 
 \begin_layout Plain Layout
 An example of spherical angular Gaussian smoothing applied with different
- smoothing factors on the distribution function of a triple-fibre crossing
- on the left.
- The simulation was used using a Sticks and Ball model with diffusivity
- value 
-\begin_inset Formula $0.0015$
-\end_inset
-
-, S0=
-\begin_inset Formula $100$
-\end_inset
-
-, and Gaussian noise with SNR 
-\begin_inset Formula $20$
-\end_inset
-
-.
+ smoothing factors on the ODF of a triple-fibre crossing on the left.
+ 
 \end_layout
 
 \end_inset
@@ -3749,10 +3811,6 @@ Visualizing ODFs created from different reconstruction methods sDNI (sEITL),
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-\align center
 \begin_inset CommandInset label
 LatexCommand label
 name "Flo:multi-fibre-sims"
@@ -3933,8 +3991,8 @@ t with many iterations (of 2-fibre and 3-fibre crossings) which is presented
 \end_layout
 
 \begin_layout Standard
-A comparison method/metric is needed in order to evaluate the new/old reconstruc
-tion methods discussed in this chapter.
+A comparison metric is needed in order to evaluate the new and old reconstructio
+n methods discussed in this chapter.
  The standard procedure is to calculate the similarity between the measured
  and simulated ground truth data sets.
  We want to calculate the angular precision of the ODFs from simulations
@@ -4280,7 +4338,6 @@ If our ground truth set consists of
 
 .
  Which is equal to 
-
 \begin_inset Formula $\nicefrac{\sqrt{2}}{2}$
 \end_inset
 
@@ -5064,11 +5121,6 @@ The method we use to create these software phantoms offers the opportunity
  to simulate partial volume effects.
  If partial volume effects are not desired, we need to normalize by dividing
  by the number of fibre elements for each voxel.
- This function is implemented in module 
-\begin_inset Formula $\texttt{dipy.sims.phantom}$
-\end_inset
-
-.
  In Fig.
 \begin_inset space ~
 \end_inset
@@ -5082,6 +5134,11 @@ reference "Flo:cool_phantoms"
 
  we can see the volume renderings of two different phantoms created with
  the method described here.
+ This function is implemented in module 
+\begin_inset Formula $\texttt{dipy.sims.phantom}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -5264,6 +5321,20 @@ key "Tuch2002ThesisMIT"
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \align center
@@ -5479,6 +5550,20 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[ht!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename last_figures/software_phantom_comparisons_rician_05_zoomed.png
@@ -5535,6 +5620,20 @@ name "Flo:x-shape-thin-tensor-zoomed"
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[ht!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \align center
@@ -5640,6 +5739,20 @@ reference "Flo:x-shape-fat-tensor"
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th]
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \align center
@@ -5856,6 +5969,20 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename last_figures/real_data_257_all_grid_methods_purple.png
@@ -5988,6 +6115,20 @@ reference "Flo:real_257_zoomed"
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \align center
@@ -6140,6 +6281,20 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename last_figures/real_101_eitl_0.05.png
@@ -6217,6 +6372,20 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename last_figures/real_101_eitl_0.05_left_up_purple.png
@@ -6284,6 +6453,20 @@ name "Flo:real_101_CBU_left_up"
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \align center
@@ -6635,9 +6818,33 @@ In addition to the SDT a two compartment model with an isotropic component
 \end_inset
 
  and diffusivity 
-\begin_inset Formula $0.7\times10^{-3}\,\textrm{mm}^{2}/\textrm{s}$
+\begin_inset Formula $0.7\times10^{-3}$
 \end_inset
 
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang british
+
+\backslash
+textrm{mm}^{2}/
+\backslash
+textrm{s}
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
 .
  For each acquisition scheme and fibre type, the “ideal” (noise-free) diffusion
  weighted signals were calculated according to the SDT model, assuming a
@@ -6805,7 +7012,7 @@ reference "eq:FA_classical"
 \end_inset
 
  to the 3 values (
-\begin_inset Formula $\textrm{npd}_{1},\textrm{npd}_{2},\textrm{npd}_{3}$
+\begin_inset Formula $\textrm{npd}_{1},\textrm{\, npd}_{2},\,\textrm{npd}_{3}$
 \end_inset
 
 ).
@@ -6899,7 +7106,7 @@ reference "Flo:NPA_2"
 \end_inset
 
  simulations for each noise level, and single fibres with or without an
- isotropic component and with different diffusion sampling length.
+ isotro- pic component and with different diffusion sampling length.
  We can see that NPA gives very similar results with FA and as expected
  it is modulated by the degree of smoothing controlled by the value of the
  diffusion sampling length.
@@ -7283,6 +7490,20 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename figures/dsi_studio_result.png
@@ -7371,6 +7592,20 @@ s have not been compared to those of FA.
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \align center
@@ -7477,11 +7712,12 @@ key "correia_garyfallidis2011"
 \end_inset
 
 .
- The two acquisition schemes were matched for total acquisition time (
-\begin_inset Formula $14\,\textrm{min}\,37\textrm{s}$
+ The two acquisition schemes were matched for total acquisition time in
+ (14 min 37
+\begin_inset space ~
 \end_inset
 
-), voxel resolution, and bandwidth.
+s), voxel resolution, and bandwidth.
  FA, MD and 
 \begin_inset Formula $QA_{0}$
 \end_inset
@@ -7494,11 +7730,7 @@ key "correia_garyfallidis2011"
 \begin_inset Formula $\texttt{DIPY}$
 \end_inset
 
-
-\begin_inset space ~
-\end_inset
-
-
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "garyfallidis2011dipy"
@@ -7601,6 +7833,20 @@ Combining the left and right versions of each ROI, we have
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \align center
