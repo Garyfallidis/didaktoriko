@@ -684,7 +684,7 @@ key "gerig2004analysis"
 \end_inset
 
  (Hausdorff).
- However, they tested their method only with two bundles: Uncinate Fasciculus
+ However, they tested their method with only two bundles: Uncinate Fasciculus
  and the Corticospinal Tract.
  
 \end_layout
@@ -705,9 +705,9 @@ key "Guevara2010"
  to 3D watershed on track extremities.
  They first divided the tractography into left-right hemisphere, inter-hemispher
 ic and cerebellum subsets.
- They then create further subsets of different track length, use hierarchical
- clustering based on the random voxel parcels, use watershed over extremities
- and finally use hierarchical clustering to merge the different sub-bundles
+ They then created further subsets of different track length, used hierarchical
+ clustering based on the random voxel parcels, used watershed over extremities
+ and finally used hierarchical clustering to merge the different sub-bundles
  using the Hausdorff distance (see section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -779,7 +779,8 @@ key "Zvitia2010"
 
  used adaptive mean shift.
  This is a clustering algorithm which finds automatically the number of
- clusters for example in contrast with k-means that the user needs to prespecify
+ clusters.
+ This is in contrast for example with k-means that the user needs to prespecify
  the number of clusters.
  They also used this approach for direct registration of tractographies
  but only with tractographies from the same subject.
@@ -886,7 +887,7 @@ key "ODonnell_IEEETMI07"
  They then automatically segmented using spectral clustering and expressed
  the tracks as points in the embedded space to the closest existing atlas
  clusters.
- The full affinity matrix was too big to compute therefore they used the
+ The full affinity matrix was too big to compute, therefore they used the
  Nystrom approximation: working on a subset and avoid generating the complete
  affinity/distance matrix.
  Later in 
@@ -912,7 +913,7 @@ key "Maddah_MICCA2005"
 \end_inset
 
  used B-spline representations of tracks referenced to an atlas, and then
- the tracks were clustered based on the labeled atlas .
+ the tracks were clustered based on the labeled atlas.
  Later Maddah et al.
 \begin_inset space ~
 \end_inset
@@ -1115,7 +1116,7 @@ key "ODonnell_IEEETMI07"
 \end_layout
 
 \begin_layout Standard
-Often it is useful to use some protocols in order to add prior information
+Often, it is useful to use some protocols in order to add prior information
  to the automated learning process.
  Protocols to manually label 
 \begin_inset Formula $11$
@@ -1158,13 +1159,13 @@ From this short review we observe two main trends in the literature.
  subsets of the initial tractography.
  The second trend and least common recommends avoiding track distances because
  the computation of the distance matrix is memory intensive.
- In this case using Dirichlet Processes or Currents or Connectivity based
+ In this case, using Dirichlet Processes or Currents or Connectivity based
  parcelation seem to be some viable solutions.
  However, clustering is to be applied in clinical usage or to make neuroscientis
 ts' analysis more efficient and practical we need algorithms that can provide
  useful clusters and cluster descriptors in minimum time.
  None of the papers described in this literature review provide a solution
- for this issue of efficiency and most of the methods would require from
+ to this issue of efficiency and most of the methods would require from
  many hours to many days to run on a standard sized data set.
  The method we propose in this document can provide a solution to this problem
  and it is an extensive update of our preliminary work described in Garyfallidis
@@ -1257,7 +1258,7 @@ reference "Flo:simulated_orbits"
  sheet; the blue bundle was similarly made from a divergent rays on a sinsusoida
 lly corrugated sheet, with the rays undergoing sinusoidal modulated lateral
  bending over a range of amplitudes.
- The data set contained of 
+ The data set contained 
 \begin_inset Formula $450$
 \end_inset
 
@@ -1334,7 +1335,7 @@ key "Yeh2010"
 \end_inset
 
 -value of 
-\begin_inset Formula $4000$
+\begin_inset Formula $4,000$
 \end_inset
 
 
@@ -1351,7 +1352,7 @@ key "Yeh2010"
 \end_inset
 
  with TR=
-\begin_inset Formula $8200\textrm{\,\ ms}$
+\begin_inset Formula $8,200\textrm{\,\ ms}$
 \end_inset
 
  and TE=
@@ -1455,14 +1456,8 @@ status open
 
 \begin_layout Plain Layout
  
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-pbc.lrdc.pitt.edu
-\end_layout
-
+\begin_inset Formula $\texttt{braincompetition.org}$
 \end_inset
 
 
@@ -1636,149 +1631,24 @@ The complete QB algorithm is described in formal detail in Alg.
 \end_layout
 
 \begin_layout Standard
-QB creates an online list of cluster nodes.
- The cluster node is defined as 
-\begin_inset Formula $c=(I,h,n)$
-\end_inset
-
- where 
-\begin_inset Formula $I$
-\end_inset
-
- is the list of the integer indices of the tracks in that cluster, 
-\begin_inset Formula $h$
-\end_inset
-
- is an 
-\begin_inset Formula $K\times3$
-\end_inset
-
- matrix, the most important descriptor of the cluster, and 
-\begin_inset Formula $n$
-\end_inset
-
- is the number of tracks on that cluster.
- 
-\begin_inset Formula $h$
-\end_inset
-
- is a matrix which can be updated online when a track is added to a cluster
- and is equal to
-\begin_inset Formula \begin{equation}
-h=\sum_{i=1}^{n}s_{i}\end{equation}
-
-\end_inset
-
-where 
-\begin_inset Formula $s_{i}$
-\end_inset
-
- is the 
-\begin_inset Formula $K\times3$
-\end_inset
-
- matrix representing track 
-\begin_inset Formula $i$
-\end_inset
-
-, 
-\begin_inset Formula $\Sigma$
-\end_inset
-
- represents matrix addition, and 
-\begin_inset Formula $n$
-\end_inset
-
- is the number of tracks in the cluster.
- QB assumes that all tracks have the same number of points 
-\begin_inset Formula $K$
-\end_inset
-
-, therefore a downsampling of tracks, typically equidistant, is necessary
- before QB starts.
- A short summary of the algorithm goes as follows.
- 
-\end_layout
-
-\begin_layout Standard
-Select the first track 
-\begin_inset Formula $s_{1}$
-\end_inset
-
- and place it in the first cluster 
-\begin_inset Formula $c_{1}\leftarrow([1],s_{1},1)$
-\end_inset
-
-.
- For all remaining tracks (i) goto next track 
-\begin_inset Formula $s_{i}$
-\end_inset
-
-; (ii) calculate MDF distance between this track and virtual tracks of all
- existing clusters 
-\begin_inset Formula $c_{k}$
-\end_inset
-
-, where a virtual track is defined on the fly as 
-\begin_inset Formula $v=h/n$
-\end_inset
-
-; (iii) if the minimum MDF distance is smaller than a distance threshold
- 
-\begin_inset Formula $\theta$
-\end_inset
-
- add the track to the cluster 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-
-\begin_inset Formula $c_{j}\leftarrow(I,h,n)$
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
- with the minimum distance and update 
-\begin_inset Formula $c_{j}\leftarrow(I\cup[i],h+s,n+1)$
-\end_inset
-
-; otherwise create a new cluster 
-\begin_inset Formula $c_{M+1}\leftarrow([i],s_{i},1)$
-\end_inset
-
- and increase the total number of clusters 
-\begin_inset Formula $M\leftarrow M+1$
-\end_inset
-
-.
- The complete algorithm is given in Alg.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\ref{Alg:QuickBundles}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float algorithm
 wide false
 sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -2306,74 +2176,142 @@ name "Alg:QuickBundles"
 \end_layout
 
 \begin_layout Standard
-Choice of orientation can become an issue when using the MDF distance and
- adding tracks together.
- This happens because the diffusion signal is symmetric around the origin.
- Therefore, the 
+QB creates an online list of cluster nodes.
+ The cluster node is defined as 
+\begin_inset Formula $c=(I,h,n)$
+\end_inset
+
+ where 
+\begin_inset Formula $I$
+\end_inset
+
+ is the list of the integer indices of the tracks in that cluster, 
+\begin_inset Formula $h$
+\end_inset
+
+ is an 
 \begin_inset Formula $K\times3$
 \end_inset
 
- track can equivalently have its points ordered 
-\begin_inset Formula $1,\dots,K$
+ matrix, the most important descriptor of the cluster, and 
+\begin_inset Formula $n$
 \end_inset
 
- or be flipped with order 
-\begin_inset Formula $K,\dots,1$
+ is the number of tracks on that cluster.
+ 
+\begin_inset Formula $h$
 \end_inset
 
-; the diffusion signal does not allow us to distinguish betweeen these two
- directions.
- A step in QB takes account of the possibility of needing to perform a flip
- of a track before adding it to a representative track according to which
- direction produced the MDF value.
- Though the appropriate orientation (direct or flip) of a track was available
- in the MDF calculation at the time it entered a cluster, we allow for the
- possibility this might not be the same later on when the virtual track
- has evolved so it will need to be recalculated.
-\end_layout
+ is a matrix which can be updated online when a track is added to a cluster
+ and is equal to
+\begin_inset Formula \begin{equation}
+h=\sum_{i=1}^{n}s_{i}\end{equation}
 
-\begin_layout Standard
-One of the reasons why QB has on average linear time complexity derives
- the fact that we only save the sum of current tracks in the cluster and
- this is achieved cumulatively.
- QB passes through the tracks only once and that a track is assigned to
- one cluster only.
- By contrast if we were using k-means at every iteration we would have to
- re-assign tracks to clusters and recalculate averages which is computationally
- much more intensive.
+\end_inset
+
+where 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ is the 
+\begin_inset Formula $K\times3$
+\end_inset
+
+ matrix representing track 
+\begin_inset Formula $i$
+\end_inset
+
+, 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ represents matrix addition, and 
+\begin_inset Formula $n$
+\end_inset
+
+ is the number of tracks in the cluster.
+ QB assumes that all tracks have the same number of points 
+\begin_inset Formula $K$
+\end_inset
+
+, therefore a downsampling of tracks, typically equidistant, is necessary
+ before QB starts.
+ A short summary of the algorithm goes as follows.
  
 \end_layout
 
 \begin_layout Standard
-QB can be extended for specific applications to contain more information
- about the clusters.
- For example, we could redefine 
-\begin_inset Formula $c\leftarrow(I,h,n,h^{(2)})$
+Select the first track 
+\begin_inset Formula $s_{1}$
 \end_inset
 
- to obtain second order information and in that way we could calculate the
- variance of the cluster where 
-\begin_inset Formula \[
-h^{(2)}\leftarrow(\sum_{i,j}\mathbf{x}_{ij}^{2},\sum_{i,j}\mathbf{y}_{ij}^{2},\sum_{i,j}\mathbf{z}_{ij}^{2},\sum_{i,j}\mathbf{x}_{ij}\mathbf{y}_{ij},\sum_{i,j}\mathbf{y}_{ij}\mathbf{z}_{ij},\sum_{i,j}\mathbf{x}_{ij}\mathbf{z}_{ij})\]
-
+ and place it in the first cluster 
+\begin_inset Formula $c_{1}\leftarrow([1],s_{1},1)$
 \end_inset
 
- and 
-\begin_inset Formula $\mathbf{x}_{ij},\,\mathbf{y}_{ij},\,\mathbf{z}_{ij}$
+.
+ For all remaining tracks (i) go to next track 
+\begin_inset Formula $s_{i}$
 \end_inset
 
- are the coordinates of the 
-\begin_inset Formula $j$
+; (ii) calculate MDF distance between this track and virtual tracks of all
+ existing clusters 
+\begin_inset Formula $c_{k}$
 \end_inset
 
-th point of the 
-\begin_inset Formula $i$
+, where a virtual track is defined on the fly as 
+\begin_inset Formula $v=h/n$
 \end_inset
 
-th track in the cluster.
- Although this alternative would be very useful, as even more refined cluster
- distances could be used which take into account the additional information,
- this is not addressed in this thesis.
+; (iii) if the minimum MDF distance is smaller than a distance threshold
+ 
+\begin_inset Formula $\theta$
+\end_inset
+
+ add the track to the cluster 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $c_{j}\leftarrow(I,h,n)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+ with the minimum distance and update 
+\begin_inset Formula $c_{j}\leftarrow(I\cup[i],h+s,n+1)$
+\end_inset
+
+; otherwise create a new cluster 
+\begin_inset Formula $c_{M+1}\leftarrow([i],s_{i},1)$
+\end_inset
+
+ and increase the total number of clusters 
+\begin_inset Formula $M\leftarrow M+1$
+\end_inset
+
+.
+ The complete algorithm is given in Alg.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\ref{Alg:QuickBundles}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -2488,6 +2426,77 @@ name "Fig:LSC_simple"
 \end_layout
 
 \begin_layout Standard
+Choice of orientation can become an issue when using the MDF distance and
+ adding tracks together.
+ This happens because the diffusion signal is symmetric around the origin.
+ Therefore, the 
+\begin_inset Formula $K\times3$
+\end_inset
+
+ track can equivalently have its points ordered 
+\begin_inset Formula $1,\dots,K$
+\end_inset
+
+ or be flipped with order 
+\begin_inset Formula $K,\dots,1$
+\end_inset
+
+; the diffusion signal does not allow us to distinguish betweeen these two
+ directions.
+ A step in QB takes account of the possibility of needing to perform a flip
+ of a track before adding it to a representative track according to which
+ direction produced the MDF value.
+ Though the appropriate orientation (direct or flip) of a track was available
+ in the MDF calculation at the time it entered a cluster, we allow for the
+ possibility this might not be the same later on when the virtual track
+ has evolved so it will need to be recalculated.
+\end_layout
+
+\begin_layout Standard
+One of the reasons why QB has on average linear time complexity derives
+ from the fact that we only save the sum of current tracks in the cluster
+ and this is achieved cumulatively.
+ QB passes through the tracks only once and that a track is assigned to
+ one cluster only.
+ By contrast, if we were using k-means at every iteration we would have
+ to re-assign tracks to clusters and recalculate averages which is computational
+ly much more intensive.
+ 
+\end_layout
+
+\begin_layout Standard
+QB can be extended for specific applications to contain more information
+ about the clusters.
+ For example, we could redefine 
+\begin_inset Formula $c\leftarrow(I,h,n,h^{(2)})$
+\end_inset
+
+ to obtain second order information and in that way we could calculate the
+ variance of the cluster where 
+\begin_inset Formula \[
+h^{(2)}\leftarrow(\sum_{i,j}\mathbf{x}_{ij}^{2},\sum_{i,j}\mathbf{y}_{ij}^{2},\sum_{i,j}\mathbf{z}_{ij}^{2},\sum_{i,j}\mathbf{x}_{ij}\mathbf{y}_{ij},\sum_{i,j}\mathbf{y}_{ij}\mathbf{z}_{ij},\sum_{i,j}\mathbf{x}_{ij}\mathbf{z}_{ij})\]
+
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{x}_{ij},\,\mathbf{y}_{ij},\,\mathbf{z}_{ij}$
+\end_inset
+
+ are the coordinates of the 
+\begin_inset Formula $j$
+\end_inset
+
+th point of the 
+\begin_inset Formula $i$
+\end_inset
+
+th track in the cluster.
+ Although this alternative would be very useful, as even more refined cluster
+ distances could be used which take into account the additional information,
+ this is not addressed in this thesis.
+\end_layout
+
+\begin_layout Standard
 One of the disadvantages of most clustering algorithms is that they give
  different results with different initial conditions; for example this is
  recognised with k-means, expectation-maximization 
@@ -2562,7 +2571,7 @@ mm and downsampling to
 
  points.
  We observe that only a few virtual tracks span the full distance from bottom
- to top and that many tracks that are broken (i.e.
+ to top and that many tracks are broken (i.e.
  shorter than what was initially expected) or highly divergent.
 \end_layout
 
@@ -2605,8 +2614,8 @@ Part of the CST bundle (red) consisting of
 \end_inset
 
  tracks labelled by an expert.
- At first glance it looks as though all tracks have a similar shape, and
- possibly converge towards the bottom, and fan out towards the top.
+ At first glance it looks as though all tracks have a similar shape, possibly
+ converge towards the bottom, and fan out towards the top.
  However, this is a misreading caused by the opaque density when all the
  tracks are visualised.
  QB can help us see the finer structure of the bundle and identify its elements.
@@ -2986,7 +2995,8 @@ The complexity of QB is in the best case linear time
 \begin_inset Formula $M$
 \end_inset
 
- is the number of clusters however because 
+ is the number of clusters.
+ However, because 
 \begin_inset Formula $M$
 \end_inset
 
@@ -3068,8 +3078,7 @@ mm).
 \begin_inset Formula $N$
 \end_inset
 
- only reduces only slightly even when we use a very low threshold such as
- 
+ only reduces slightly even when we use a very low threshold such as 
 \begin_inset Formula $10$
 \end_inset
 
@@ -3097,6 +3106,20 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename 2x2+leg-box.png
@@ -3107,9 +3130,6 @@ status open
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -3189,14 +3209,14 @@ Furthermore, the memory usage of QB is
 \end_inset
 
  we consider memory consumption to be negligible.
- Because in QB we store only the indices of the tracks even for very large
+ Because in QB we store only the indices of the tracks, even for very large
  tractographies 
 \begin_inset Formula $20$
 \end_inset
 
  or more clusterings can be stored simultaneously in the RAM of a simple
  notebook without any problems.
- Therefore, another feature of QB is memory efficiency.
+ Memory efficiency is therefore another feature of QB.
 \end_layout
 
 \begin_layout Standard
@@ -3225,7 +3245,7 @@ reference "Flo:timings"
 \end_inset
 
 ).
- Unfortunately timings were very rarely reported because most algorithms
+ Unfortunately, timings were very rarely reported because most algorithms
  were very slow on full data sets.
  Nonetheless the speedup that QB offers is obviously of great importance
  and even real-time on data sets of less than 
@@ -4181,7 +4201,7 @@ by
 \begin_inset Formula $\mathcal{B}$
 \end_inset
 
- will equally be split (lumped) by 
+ will equally be lumped by 
 \family default
 \series default
 \shape default
@@ -4315,7 +4335,7 @@ For the clusterings encountered in tractography, the number of apart pairs
  number of clusters.
  As a consequence, the correctness measure is not a particularly useful
  metric.
- By contrast the number of together pairs is modest, and the completeness
+ By contrast, the number of together pairs is modest, and the completeness
  measure is more sensitive.
 \end_layout
 
@@ -4810,7 +4830,7 @@ n
 
 ).
  Of these two metrics we prefer matched agreement because is both simpler
- to calculate and also to understand.
+ to calculate and understand.
  Correctness, for the reasons discussed above, is too insensitive 
 \begin_inset Note Note
 status open
@@ -4835,8 +4855,8 @@ We have noticed that these metrics are all costly to calculate in terms
  of time and memory requirements.
  Therefore, they will not be used further in this study.
  We instead look at ways to compare clusterings of tractographies that will
- work when comparing different tractographies either for the same or for
- different subjects.
+ work when comparing different tractographies either for the same or different
+ subjects.
  These need to be based on metrics for distances between tracks, whether
  virtual tracks, exemplar tracks or raw tracks from the original tractographies.
  This is the subject of the next section.
@@ -4874,7 +4894,7 @@ key "moberts2005evaluation"
  of the same subject or different subjects.
  Although this is a difficult problem, we propose the following solution
  with a metric which we call bundle adjacency (BA).
- BA works as follows: Let us assume that we have gathered the exemplar tracks
+ BA works as follows: let us assume that we have gathered the exemplar tracks
  from clustering 
 \begin_inset Formula $A$
 \end_inset
@@ -5018,7 +5038,7 @@ noindent
 \begin_inset Formula $BA=0$
 \end_inset
 
- every exemplar from the one set was further than 
+ every exemplar from one set was further than 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -5037,7 +5057,7 @@ noindent
 \begin_inset Formula $|E_{A}|=|E_{B}|$
 \end_inset
 
- which was a requirement with metrics proposed in the previous section.
+ which was a requirement with the metrics proposed in the previous section.
 \end_layout
 
 \begin_layout Standard
@@ -5070,12 +5090,12 @@ reference "sub:QB-Data-sets"
 \end_inset
 
  mm.
- We performed this experiment twice; first by keeping only the bundles with
+ We performed this experiment twice; first by only keeping the bundles with
  more than 
 \begin_inset Formula $10$
 \end_inset
 
- tracks (BA10) and secondly by keeping only the bundles with more than 
+ tracks (BA10) and secondly by only keeping the bundles with more than 
 \begin_inset Formula $100$
 \end_inset
 
@@ -5169,7 +5189,7 @@ s (pQB).
  We first redirect and downsample all tracks.
  Then we put all tracks together and break them into subsets.
  For every subset we assign a new thread and set QB to run on that thread.
- We have therefere many QBs running on different CPUs.
+ We have therefore many QBs running on different CPUs.
  Then we collect all individual clusterings and start merging them together.
  We can pair every two results together and merge them in a binary fashion
  or just merge all clusterings to the first clustering.
@@ -5278,8 +5298,9 @@ We can merge bundles using exemplar tracks or virtual tracks.
  In that way clusters from the two sets who have very similar features will
  merge together.
  If not, new clusters will be created.
- With this approach we will not have any information loss from the merge
- of the two sets of clusters.
+ Using this approach, no information loss will occur from the merge of the
+ two sets of clusters.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -5308,10 +5329,10 @@ It is well known that there are different artifacts seen in tractographies
 \end_layout
 
 \begin_layout Standard
-Tracks which most likely to be erroneous are those which wind more than
- one time, like a spiral.
- We can detect those with the following algorithm.
- Let us assume that we have a track 
+Tracks most likely to be erroneous are those which wind more than one time,
+ like a spiral.
+ We can detect those with the following approach: let us assume that we
+ have a track 
 \begin_inset Formula $s$
 \end_inset
 
@@ -5639,7 +5660,7 @@ key "Smith2006NeuroImage"
 \end_inset
 
 .
- For that reason FA volumes were generated from the same data sets using
+ For that reason, FA volumes were generated from the same data sets using
  Tensor fitting with weighted least squares after skull stripping with 
 \begin_inset Formula $\texttt{bet}$
 \end_inset
@@ -5725,64 +5746,6 @@ After creating the displacements for every subject; these were applied to
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-Tractographic Atlas.
-
-\series default
- For all subjects, (a) load warped tractography, (b) downsample the tracks
- to have only 
-\begin_inset Formula $12$
-\end_inset
-
- points, (c) calculate and store QB clustering with a 
-\begin_inset Formula $10$
-\end_inset
-
- mm threshold, (d) merge all clusterings with 
-\begin_inset Formula $10$
-\end_inset
-
- mm threshold as explained in section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Parallel-version"
-
-\end_inset
-
- (merging).
- When creating an atlas by merging many different subjects the most important
- issue is what you remove from the atlas as outliers.
- QB here provides a possible solution for this problem.
- If we plot the number of tracks for each cluster sorted in ascending order
- we can see an interesting pattern (see Fig.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Flo:atlas_big_bundles"
-
-\end_inset
-
-).
- In this diagram we observe that 
-\begin_inset Formula $20\%$
-\end_inset
-
- of the largest clusters had more than 
-\begin_inset Formula $90\%$
-\end_inset
-
- of the total amount of tracks.
- This shows that there is much agreement between the biggest bundles of
- different subjects.
- We will use this property to create a solid atlas in which we keep the
- biggest bundles (landmarks) and remove the smallest bundles (outliers).
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -5794,7 +5757,7 @@ status open
 
 \begin_layout Plain Layout
 
-[th!]
+[h!]
 \end_layout
 
 \end_inset
@@ -5868,6 +5831,64 @@ name "Flo:atlas_big_bundles"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Tractographic Atlas.
+
+\series default
+ For all subjects: (a) load warped tractography, (b) downsample the tracks
+ to have only 
+\begin_inset Formula $12$
+\end_inset
+
+ points, (c) calculate and store QB clustering with a 
+\begin_inset Formula $10$
+\end_inset
+
+ mm threshold, (d) merge all clusterings with 
+\begin_inset Formula $10$
+\end_inset
+
+ mm threshold as explained in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Parallel-version"
+
+\end_inset
+
+ (merging).
+ When creating an atlas by merging many different subjects the most important
+ issue is what you remove from the atlas as outliers.
+ QB here provides a possible solution for this problem.
+ If we plot the number of tracks for each cluster sorted in ascending order
+ we can see an interesting pattern (see Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Flo:atlas_big_bundles"
+
+\end_inset
+
+).
+ In this diagram we observe that 
+\begin_inset Formula $20\%$
+\end_inset
+
+ of the largest clusters had more than 
+\begin_inset Formula $90\%$
+\end_inset
+
+ of the total amount of tracks.
+ This shows that there is much agreement between the biggest bundles of
+ different subjects.
+ We will use this property to create a solid atlas in which we keep the
+ biggest bundles (landmarks) and remove the smallest bundles (outliers).
 \end_layout
 
 \begin_layout Standard
@@ -6034,6 +6055,20 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename QB/Fig_7_close_distance.png
@@ -6043,9 +6078,6 @@ status open
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -6282,7 +6314,7 @@ reference "sub:Affinity-Propagation"
 \end_inset
 
 .
- In the bottom right panel of (see Fig.
+ In the bottom right panel of Fig.
 \begin_inset space ~
 \end_inset
 
@@ -6293,9 +6325,9 @@ reference "Flo:LSC+HC+AP"
 
 \end_inset
 
-) how nicely AP, after the simplification provided by QB, has clustered
- Arcuate, Longitudinal Occipitofrontal Fasciculus and other structures known
- from the literature.
+, we observe how nicely AP, after the simplification provided by QB, has
+ clustered Arcuate, Longitudinal Occipitofrontal Fasciculus and other structures
+ known from the literature.
  The input of AP was the negative distance matrix
 \begin_inset Formula $-D$
 \end_inset
@@ -6423,7 +6455,7 @@ Medical practitioners and neuroanatomists often argue that when they use
  and facilitates tractography exploration and interpretation.
  One can now use exemplar tracks as access points into the full tractography
  and with a single click on that exemplar track obtain the entire bundle.
- Therefore, a super-bundle can be created just with with a few clicks, based
+ Therefore, a super-bundle can be created just with a few clicks, based
  on a selection from exemplar tracks.
  
 \end_layout
@@ -6747,11 +6779,11 @@ Therefore, the availabilities and responsibilities are added to identify
 \begin_layout Standard
 Of course, when we need to calculate distances between many points then
  the distance matrix becomes too big for the available memory.
- In that case if we are lucky and the data sets are sparse then we can use
- AP on sparse matrices.
- When the data sets are not sparse as it is the case with tractographies
- then we need to reduce the dimensionality of the data sets and this is
- why QB can be very handy.
+ In that case, if we are lucky and the data sets are sparse then we can
+ use AP on sparse matrices.
+ When the data sets are not sparse, as it is the case with tractographies,
+ we need to reduce the dimensionality of the data sets and this is why QB
+ can be very handy.
  The complete algorithm for AP is given in Alg.
 \begin_inset space ~
 \end_inset
@@ -6990,10 +7022,6 @@ neq i} & max[0,
 \backslash
 : R(i',k)],
 \backslash
-: for
-\backslash
-:
-\backslash
 : k=i
 \backslash
 
@@ -7019,10 +7047,6 @@ notin
 }}[0,R(i',k)]}
 \backslash
 right],
-\backslash
-: for
-\backslash
-:
 \backslash
 : k
 \backslash
@@ -7169,7 +7193,7 @@ Direct Tractography Registration
 
 \begin_layout Standard
 Direct tractography registration is a recently described problem with only
- a small number of publications, and so far as we know there are no publicly
+ a small number of publications, and as far as we know there are no publicly
  available solutions.
  By direct registration we mean that no other information apart from the
  tractographies themselves is used to guide the registration.
@@ -7321,8 +7345,8 @@ key "Arsigny2009"
  However, we will not classify this approach as a direct tractography registrati
 on algorithm as the authors first created scalar volumes from the tracks
  and next warped the volumes.
- Therefore, they did not registered the tracks in a straight fashion in
- their space.
+ Therefore, they did not register the tracks in a straight fashion in their
+ space.
  
 \end_layout
 
@@ -7433,7 +7457,7 @@ Create a cost function (optimizer) which will try to minimize the symmetric
 \begin_inset Formula $\mathrm{SMD}=\sum_{i}\min_{j}D(i,j)+\sum_{j}\min_{i}D(i,j)$
 \end_inset
 
- .
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -7470,6 +7494,61 @@ key "fletcher1987practical"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename QB/Fig_9_QB_registration2_only_landscape.png
+	lyxscale 30
+	scale 140
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Two tractographies from different subjects before (left) and after rigid
+ registration (right) using our method.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Flo:direct_registration2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 In Fig.
 \begin_inset space ~
 \end_inset
@@ -7477,7 +7556,7 @@ In Fig.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "Flo:direct_registration"
+reference "Flo:direct_registration2"
 
 \end_inset
 
@@ -7504,8 +7583,8 @@ status open
 \end_inset
 
  depicted with orange and purple.
- We can see in the upper panel that the orange tractography is misaligned
- with respect to the purple one, and in the lower panel we see their improved
+ We can see in the left panel that the orange tractography is misaligned
+ with respect to the purple one, and in the right panel we see their improved
  alignment after applying our algorithm.
 \end_layout
 
@@ -7516,7 +7595,7 @@ Metric
 \series default
 .
  SMD is proposed here for registration of trajectory data sets, but one
- could equally use mutual information
+ could equally use mutual information 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "maes1997multimodality"
@@ -7539,7 +7618,7 @@ key "roche1998correlation"
 \end_inset
 
 .
- Therefore, we made a small experiment to validate the smoothness and convexity
+ Therefore, we performed an experiment to validate the smoothness and convexity
  of these two cost functions.
  We plotted both functions under a single-axis translation or a single-angle
  rotation of the same tractography as show in Fig.
@@ -7554,206 +7633,12 @@ reference "Flo:direct_registration"
 \end_inset
 
 .
- From, these two diagrams we can see that although for translations only
+ From these two diagrams we can see, that although for translations only
  the SD was entirely convex, with rotations, the SD had stronger local minima
  which is not a good property for registration.
  Furthermore, the SMD had steeper gradients towards the global minimum which
  is a positive indicator for faster convergence.
  
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Experiments
-\series default
-.
- The first large scale experiment took place using the same tractography
- of a single individual copied and transformed 
-\change_inserted 2 1319745405
-
-\begin_inset Formula $1,000$
-\end_inset
-
-
-\change_unchanged
- times with range of all three angles from 
-\begin_inset Formula $-45^{\circ}$
-\end_inset
-
- to 
-\begin_inset Formula $45^{\circ}$
-\end_inset
-
- and range of all x,
-\begin_inset space ~
-\end_inset
-
-y,
-\begin_inset space ~
-\end_inset
-
-z translations from 
-\begin_inset Formula $-113$
-\end_inset
-
- to 
-\begin_inset Formula $113$
-\end_inset
-
- mm.
- Then we registered all transformed tractographies to the static one and
- calculated all pairwise MDF distances storing them in a square matrix 
-\begin_inset Formula $D$
-\end_inset
-
-.
- We would expect that if the registration was correct then the sum of all
- diagonal elements of 
-\begin_inset Formula $D$
-\end_inset
-
- would be close to 
-\begin_inset Formula $0$
-\end_inset
-
-.
- This was confirmed with both cost functions used SD and SMD getting close
- to zero 
-\begin_inset Formula $99.8\%$
-\end_inset
-
- of the time however SMD was always closer to perfect alignment than SD,
- having precision of more than 
-\begin_inset Formula $7$
-\end_inset
-
- decimals.
- Consequently we chose SMD as a better cost function for direct tractography
- registration.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-MATTHEW: I seem to remember that registrations perform a bit differently
- when registering to transformed versions of themselves.
- I haven't got internet, but look for the AIR website (Roger Woods) and
- a comment about registrations to rotated versions of self.
- ELEF: This is just *rigid* registration we tried here.
- Do you think that this is truly an issue? We need to write a full paper
- for direct registration using QB.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename QB/Fig_9_QB_registration2_only_landscape.png
-	lyxscale 30
-	scale 140
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Two tractographies from different subjects before (top) and after rigid
- registration (bottom) using our method.
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Flo:direct_registration2"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We used GQI-based tractographies from 
-\begin_inset Formula $10$
-\end_inset
-
- subjects and we registered all combinations of pairs 
-\begin_inset Formula $\binom{10}{2}=45$
-\end_inset
-
-.
- Comparing different tractographies is not a trivial problem however, we
- can use the bundle adjacency (BA) metric explained in section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Tightness-comparisons-1"
-
-\end_inset
-
-.
- We are happy to report the mean initial BA was 
-\begin_inset Formula $34.8\%\pm8.0\%$
-\end_inset
-
- and the mean final BA after applying our direct registration method was
- 
-\begin_inset Formula $48.1\%\pm6.1\%$
-\end_inset
-
-.
- This was a statistically highly significant improvement (
-\begin_inset Formula $t_{\text{\textrm{paired}}}(44)=11.2$
-\end_inset
-
- ,
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $p\leq10^{-13}$
-\end_inset
-
-).
- We are planning in the future to compare this registration method against
- other standard methods which are common in the literature.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-MATTHEW: Isn't the metric used in the registration related to the metric
- used to assess the registration? Maybe you could some measure of alignment
- of the structural image instead? I mean, transform the structural image
- with the same parameters.
- ELEF: There isn't time!! This is just the first result of using QB for
- registration.
- To develop a full registration algorithm a new chapter or paper is needed.
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -7819,6 +7704,156 @@ name "Flo:direct_registration"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Experiments
+\series default
+.
+ The first large scale experiment took place using the same tractography
+ of a single individual copied and transformed 
+\change_inserted 2 1319745405
+
+\begin_inset Formula $1,000$
+\end_inset
+
+
+\change_unchanged
+ times with range of all three angles from 
+\begin_inset Formula $-45^{\circ}$
+\end_inset
+
+ to 
+\begin_inset Formula $45^{\circ}$
+\end_inset
+
+ and range of all x,
+\begin_inset space ~
+\end_inset
+
+y,
+\begin_inset space ~
+\end_inset
+
+z translations from 
+\begin_inset Formula $-113$
+\end_inset
+
+ to 
+\begin_inset Formula $113$
+\end_inset
+
+ mm.
+ Then we registered all transformed tractographies to the static one and
+ calculated all pairwise MDF distances storing them in a square matrix 
+\begin_inset Formula $D$
+\end_inset
+
+.
+ We would expect that if the registration was correct then the sum of all
+ diagonal elements of 
+\begin_inset Formula $D$
+\end_inset
+
+ would be close to 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ This was confirmed with both cost functions used SD and SMD getting close
+ to zero 
+\begin_inset Formula $99.8\%$
+\end_inset
+
+ of the time; however, SMD was always closer to perfect alignment than SD,
+ having precision of more than 
+\begin_inset Formula $7$
+\end_inset
+
+ decimals.
+ Consequently we chose SMD as a better cost function for direct tractography
+ registration.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MATTHEW: I seem to remember that registrations perform a bit differently
+ when registering to transformed versions of themselves.
+ I haven't got internet, but look for the AIR website (Roger Woods) and
+ a comment about registrations to rotated versions of self.
+ ELEF: This is just *rigid* registration we tried here.
+ Do you think that this is truly an issue? We need to write a full paper
+ for direct registration using QB.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We used GQI-based tractographies from 
+\begin_inset Formula $10$
+\end_inset
+
+ subjects and we registered all combinations of pairs 
+\begin_inset Formula $\binom{10}{2}=45$
+\end_inset
+
+.
+ Comparing different tractographies is not a trivial problem however, we
+ can use the bundle adjacency (BA) metric explained in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Tightness-comparisons-1"
+
+\end_inset
+
+.
+ We are happy to report the mean initial BA was 
+\begin_inset Formula $34.8\%\pm8.0\%$
+\end_inset
+
+ and the mean final BA after applying our direct registration method was
+ 
+\begin_inset Formula $48.1\%\pm6.1\%$
+\end_inset
+
+.
+ This was a statistically highly significant improvement (
+\begin_inset Formula $t_{\text{\textrm{paired}}}(44)=11.2$
+\end_inset
+
+ ,
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $p\leq10^{-13}$
+\end_inset
+
+).
+ We are planning in the future to compare this registration method against
+ other standard methods which are common in the literature.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MATTHEW: Isn't the metric used in the registration related to the metric
+ used to assess the registration? Maybe you could some measure of alignment
+ of the structural image instead? I mean, transform the structural image
+ with the same parameters.
+ ELEF: There isn't time!! This is just the first result of using QB for
+ registration.
+ To develop a full registration algorithm a new chapter or paper is needed.
+ 
 \end_layout
 
 \end_inset
@@ -8102,10 +8137,10 @@ status open
 
 \begin_layout Standard
 In common with mainstream clustering algorithms such as k-means, k-centers
- and expectation maximization, QB is not a global clustering method.
+ and expectation maximization (EM), QB is not a global clustering method.
  It can give different results under different initial conditions of the
  data set when there is no obvious distance threshold which can separate
- the clusters in to meaningful bundles; for example we should expect different
+ the clusters into meaningful bundles; for example we should expect different
  clusters under different permutations/orderings of the tracks in a densely
  packed tractography.
  However, we found that there is enough agreement even between two clusterings

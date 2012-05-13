@@ -638,7 +638,7 @@ Microstructure
 .
  Our work up till now has focused on estimating the structure of white matter
  in the brain from standard diffusion MRI acquisitions.
- However these acquisitions provide voxel sizes of about 
+ However, these acquisitions provide voxel sizes of about 
 \begin_inset Formula $2$
 \end_inset
 
@@ -652,7 +652,7 @@ mm.
  Nevertheless, diffusion MRI can provide information on the distribution
  of microstructural features, such as the fibre orientation, fibre diameter
  or density, within each voxel.
- We would like to extend our work and in that area of microanatomy tracking
+ We would also like to extend our work in that area of microanatomy tracking
  which has recently shown very interesting results 
 \begin_inset CommandInset citation
 LatexCommand cite
