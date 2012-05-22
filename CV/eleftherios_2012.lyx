@@ -1,0 +1,835 @@
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\definecolor{magenta}{RGB}{150, 150, 150}
+\date{}
+\end_preamble
+\use_default_options true
+\language british
+\inputencoding auto
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 1cm
+\topmargin 1cm
+\rightmargin 1cm
+\bottommargin 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\align center
+
+\shape smallcaps
+\size huge
+\color black
+Eleftherios Garyfallidis
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Address:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+36 Cambanks
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Telephone:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++44 (0) 7760409207
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cambridge CB4 1PZ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+E-mail:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+garyfallidis@gmail.com
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+United Kingdom
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Citizenship:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Greek, EU
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color black
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+Education
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2008 - 2012
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+PhD in Brain Imaging
+\series default
+, MRC CBU, University of Cambridge, UK.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2004 - 2006
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+MSc in Machine Vision, Robotics & Medical Imaging
+\series default
+, University of Crete, GR.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1999 - 2003
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+BSc in Computer Science
+\series default
+, Technological Institution of Athens, GR.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+Engineering
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2009 - 2012
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Diffusion Imaging in Python
+\series default
+, dMRI Analysis Toolbox, www.dipy.org.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2010 - 2012
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Free on Shades
+\series default
+, Scientific Visualization Software, www.fos.me.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+Research experience
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+asdf
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+Publications
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+asss
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+Invited Talks
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+asdfa
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+Teaching
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+Awards
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+Employment
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+Outreach
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+Programming
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+Activities
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
