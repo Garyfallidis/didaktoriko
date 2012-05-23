@@ -751,7 +751,7 @@ status open
 
 \begin_layout Plain Layout
 The objective of this thesis was to improve on the methods for inferring
- neural tracts from 
+ neural tracts from diffusion 
 \begin_inset ERT
 status open
 
@@ -766,8 +766,8 @@ status open
 
 \end_inset
 
- diffusion weighted magnetic resonance imaging (dMRI).
- Accordingly, I presented improvements 
+ weighted magnetic resonance imaging (dMRI).
+ Accordingly, I presented advancements to the 
 \begin_inset ERT
 status open
 
@@ -782,9 +782,24 @@ status open
 
 \end_inset
 
- to the reconstruction, tracking, segmentation and registration modalities
- of dMRI analysis.
- 
+ reconstruction, tracking, segmentation and registration modalities of dMRI
+ analysis.
+ The thesis 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ is available for download at tinyurl.com/eleftherios-phd .
 \end_layout
 
 \end_inset
@@ -844,7 +859,11 @@ Research Project
 
 
 \series bold
-Direct inversion of MEG dipoles
+Direct source localization
+\series default
+ 
+\series bold
+using MEG
 \series default
 
 \begin_inset Quotes erd
@@ -899,7 +918,7 @@ status open
 
 \end_inset
 
- analyical inversion approach.
+ analytical inversion approach.
 \end_layout
 
 \end_inset
@@ -2703,6 +2722,10 @@ Machine Learning
 
 \begin_layout Plain Layout
 Interactive Tractography
+\end_layout
+
+\begin_layout Plain Layout
+Segmentation
 \end_layout
 
 \end_inset
