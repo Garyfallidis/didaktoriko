@@ -21,9 +21,9 @@
 
 \graphics default
 \paperfontsize default
-\spacing single
+\spacing onehalf
 \use_hyperref false
-\papersize default
+\papersize a4paper
 \use_geometry true
 \use_amsmath 1
 \use_esint 1
@@ -41,7 +41,7 @@
 \quotes_language english
 \papercolumns 1
 \papersides 1
-\paperpagestyle default
+\paperpagestyle empty
 \tracking_changes false
 \output_changes false
 \author "" 
@@ -62,8 +62,10 @@ Eleftherios Garyfallidis
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="4">
+<lyxtabular version="3" rows="3" columns="6">
 <features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -100,7 +102,41 @@ Telephone:
 \begin_inset Text
 
 \begin_layout Plain Layout
-+44 (0) 7760409207
++44
+\begin_inset space ~
+\end_inset
+
+(0)
+\begin_inset space ~
+\end_inset
+
+7760
+\begin_inset space ~
+\end_inset
+
+409
+\begin_inset space ~
+\end_inset
+
+207
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Citizenship: 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Greek, EU
 \end_layout
 
 \end_inset
@@ -143,6 +179,24 @@ garyfallidis@gmail.com
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Marital Status:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Single
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="left" valignment="top" usebox="none">
@@ -167,7 +221,7 @@ United Kingdom
 \begin_inset Text
 
 \begin_layout Plain Layout
-Citizenship:
+Website:
 \end_layout
 
 \end_inset
@@ -176,7 +230,25 @@ Citizenship:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Greek, EU
+eleftherios.net
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Children: 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+None
 \end_layout
 
 \end_inset
@@ -188,21 +260,6 @@ Greek, EU
 
 
 \begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\color black
-
-\lyxline
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace -0.2cm
 \end_inset
 
 
@@ -234,8 +291,10 @@ Education
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
+<lyxtabular version="3" rows="3" columns="4">
 <features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row>
@@ -243,7 +302,18 @@ Education
 \begin_inset Text
 
 \begin_layout Plain Layout
-2008 - 2012
+2008 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ 2012
 \end_layout
 
 \end_inset
@@ -254,9 +324,25 @@ Education
 \begin_layout Plain Layout
 
 \series bold
-PhD in Brain Imaging
-\series default
-, MRC CBU, University of Cambridge, UK.
+PhD in Brain Tractography
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MRC Cognition & Brain Sciences Unit, University of Cambridge
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+UK
 \end_layout
 
 \end_inset
@@ -267,7 +353,18 @@ PhD in Brain Imaging
 \begin_inset Text
 
 \begin_layout Plain Layout
-2004 - 2006
+2004 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ 2006
 \end_layout
 
 \end_inset
@@ -278,9 +375,25 @@ PhD in Brain Imaging
 \begin_layout Plain Layout
 
 \series bold
-MSc in Machine Vision, Robotics & Medical Imaging
-\series default
-, University of Crete, GR.
+MSc in Robotic Vision 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+University of Crete and FORTH
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GR
 \end_layout
 
 \end_inset
@@ -291,7 +404,18 @@ MSc in Machine Vision, Robotics & Medical Imaging
 \begin_inset Text
 
 \begin_layout Plain Layout
-1999 - 2003
+1999 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ 2003
 \end_layout
 
 \end_inset
@@ -303,9 +427,24 @@ MSc in Machine Vision, Robotics & Medical Imaging
 
 \series bold
 BSc in Computer Science
-\series default
-, Technological Institution of Athens, GR.
- 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Technological Institution of Athens
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GR
 \end_layout
 
 \end_inset
@@ -334,23 +473,10 @@ BSc in Computer Science
 
 \begin_layout Standard
 
-\lyxline
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace -0.2cm
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
 \series bold
 \shape smallcaps
 \color blue
-Engineering
+Head Engineer
 \end_layout
 
 \begin_layout Standard
@@ -371,8 +497,10 @@ Engineering
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="2">
+<lyxtabular version="3" rows="2" columns="4">
 <features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row>
@@ -380,7 +508,18 @@ Engineering
 \begin_inset Text
 
 \begin_layout Plain Layout
-2009 - 2012
+2009 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ current
 \end_layout
 
 \end_inset
@@ -392,8 +531,24 @@ Engineering
 
 \series bold
 Diffusion Imaging in Python
-\series default
-, dMRI Analysis Toolbox, www.dipy.org.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+diffusion MRI analysis software library
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dipy.org
 \end_layout
 
 \end_inset
@@ -404,7 +559,18 @@ Diffusion Imaging in Python
 \begin_inset Text
 
 \begin_layout Plain Layout
-2010 - 2012
+2010 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ current
 \end_layout
 
 \end_inset
@@ -416,8 +582,24 @@ Diffusion Imaging in Python
 
 \series bold
 Free on Shades
-\series default
-, Scientific Visualization Software, www.fos.me.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+medical imaging and network visualization library
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+fos.me
 \end_layout
 
 \end_inset
@@ -439,19 +621,6 @@ Free on Shades
 
 \begin_layout Standard
 \begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lyxline
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace -0.2cm
 \end_inset
 
 
@@ -482,11 +651,624 @@ Research experience
 \end_layout
 
 \begin_layout Standard
-asdf
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="4">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2008 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ 2012
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PhD Project 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+Towards an accurate brain tractography
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MRC
+ 
+\lang british
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ CBU, University of Cambridge
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace smallskip
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features>
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The objective of this thesis was to improve on the methods for inferring
+ neural tracts from 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ diffusion weighted magnetic resonance imaging (dMRI).
+ Accordingly, I presented improvements 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ to the reconstruction, tracking, segmentation and registration modalities
+ of dMRI analysis.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="4">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2006 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ 2008
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Research Project 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+Direct inversion of MEG dipoles
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DAMTP, University of Cambridge
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features>
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Investigating the possibility of localizing dipoles using magnetoencephalography
+ with a direct 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ analyical inversion approach.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="4">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2005 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ 2006
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MSc 1st Project 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+Automatic shape decomposition
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Foundation for Research and Technology Hellas
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features>
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The goal of this project was to decompose complex solid shapes, e.g.
+ binary images of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ human hands, into meaningful parts using machine learning approaches.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="4">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2005 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ 2006
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MSc 2nd Project 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+Developing fMRI applications
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Foundation for Research and Technology Hellas
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features>
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The goal of this project was to implement some standard visualization algorithms
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ for inpsecting fMRI-based activations.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="4">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2002 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ 2003
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BSc Project 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+Classification of OCDs and NCs using EEG ERPs
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Technological Institution of Athens
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features>
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The purpose of this project was to encode and classify event related potentials
+ of EEG 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ signals between obsessive compulsive disorder patients and normal controls.
+ For this 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ purpose we used neural associative memories.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
 \end_inset
 
 
@@ -494,19 +1276,6 @@ asdf
 
 \begin_layout Standard
 \begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lyxline
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace -0.2cm
 \end_inset
 
 
@@ -537,7 +1306,201 @@ Publications
 \end_layout
 
 \begin_layout Standard
-asss
+
+\series bold
+\lang english
+Garyfallidis E
+\series default
+, Brett M, Nimmo-Smith I (2010), 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Fast Dimensionality Reduction for Brain Tractography Clustering
+\emph default
+”, 16th Annual Meeting of the Organization for Human Brain Mapping.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Garyfallidis E
+\series default
+, Brett M, Tsiaras V, Vogiatzis G, Nimmo-Smith I (2010), “
+\emph on
+Identification of corresponding tracks in diffusion MRI tractographies
+\emph default
+”, 18th Proceedings of the International Society of Magnetic Resonance in
+ Medi- cine.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Correia MM, Williams GB, Yeh F-C, Nimmo-Smith I, 
+\series bold
+Garyfallidis E
+\series default
+ (2011), 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Robustness of diffusion scalar metrics when estimated with Generalized Q-Samplin
+g Imaging acquisition schemes
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, 19th Proceedings of the International Society of Magnetic Resonance in
+ Medicine.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Garyfallidis E
+\series default
+, Brett M, Amirbekian B, Nguyen C, Yeh F-C, Olivetti E, Halchenko Y, Nimmo-Smith
+ I (2011), 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Dipy - a novel software library for diffusion MR and tractography
+\emph default
+”, 17th Annual Meeting of the Organization for Human Brain Mapping.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Garyfallidis E
+\series default
+, Gerhard S, Avesani P, Nguyen T, Tsiaras V, Nimmo-Smith I, Olivetti E (2012),
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+A software application for real-time, clustering-based exploration of tractograp
+hies
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, 18th Annual Meeting of the Organization for Human Brain Mapping.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Olivetti E, Nguyen TB, 
+\series bold
+Garyfallidis E
+\series default
+ (2012), 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+The Approximation of the Dissimilarity Projection
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, 2nd IEEE International Workshop on Pattern Recognition in NeuroImaging.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Garyfallidis E
+\series default
+, Nimmo-Smith I (2012), 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Cartesian grid q-space reconstruction
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, HARDI Reconstruction Workshop of the 9th IEEE International Symposium
+ on Biomedical Imaging.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Garyfallidis E
+\series default
+, Brett M, Correia M, Williams GB, Nimmo-Smith I (2012), 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+QuickBundles for Real-Time Tractography 
+\emph default
+Segmentation
+\begin_inset Quotes erd
+\end_inset
+
+, IEEE Transactions of Medical Imaging, submitted.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Chamberlain SR, Hampshire A, Menzies LA, 
+\series bold
+Garyfallidis E
+\series default
+, Grant JE, Odlaug BL, Craig K, Fineberg N, Sahakian BJ (2010), “
+\emph on
+Reduced brain white matter integrity in trichotillomania: a diffusion tensor
+ imaging study.
+\emph default
+”, Archives of General Psychiatry 67(9):965-71.
+\end_layout
+
+\begin_layout Standard
+Tsiaras V, Simos PG, Rezaie R, Sheth BR, 
+\series bold
+Garyfallidis E
+\series default
+, Castillo EM, Papanicolaou AC (2011), 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Extracting biomarkers of autism from MEG resting-state functional connectivity
+ networks
+\emph default
+.
+\begin_inset Quotes erd
+\end_inset
+
+, Computers in biology and medicine 41(12):1166-77.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -549,15 +1512,6 @@ asss
 
 \begin_layout Standard
 \begin_inset VSpace smallskip
-\end_inset
-
-
-\lyxline
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace -0.2cm
 \end_inset
 
 
@@ -588,7 +1542,32 @@ Invited Talks
 \end_layout
 
 \begin_layout Standard
-asdfa
+Garyfallidis E (Mar.
+ 2010), “Exploring the land of tracks, using Python”, University of California
+ at Berkeley.
+\end_layout
+
+\begin_layout Standard
+Garyfallidis E (Oct.
+ 2011), “ Tractography Segmentation using QuickBundles”, FBK, Trento, Italy.
+ 
+\end_layout
+
+\begin_layout Standard
+Garyfallidis E (Jun.
+ 2012), “The future of dMRI analysis”, University of California at Berkeley.
+ 
+\end_layout
+
+\begin_layout Standard
+Garyfallidis E (Jul.
+ 2012), “Accuracy in voxel reconstruction using dMRI”, Stanford University.
+\end_layout
+
+\begin_layout Standard
+Garyfallidis E (Sep.
+ 2012), “Dipy 0.6 on the edge of diffusion MR analysis”, University of Sherbrooke
+, Canada.
 \end_layout
 
 \begin_layout Standard
@@ -600,130 +1579,6 @@ asdfa
 
 \begin_layout Standard
 \begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lyxline
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace -0.2cm
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\shape smallcaps
-\color blue
-Teaching
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace -0.2cm
-\end_inset
-
-
-\lyxline
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lyxline
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace -0.2cm
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\shape smallcaps
-\color blue
-Awards
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace -0.2cm
-\end_inset
-
-
-\lyxline
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lyxline
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace -0.2cm
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\shape smallcaps
-\color blue
-Employment
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace -0.2cm
-\end_inset
-
-
-\lyxline
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lyxline
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace -0.2cm
 \end_inset
 
 
@@ -755,12 +1610,195 @@ Outreach
 
 \begin_layout Standard
 
+\series bold
+\lang english
+Garyfallidis E
+\series default
+, Nimmo-Smith I (2010), 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Surfing your Brain Super-Highways
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Presented at the 350th celebration of the Royal Society, London, UK.
+ In the presence of Her Majesty Queen Elizabeth II and His Royal Highness
+ the Duke of Edinburgh.
+ Video available at tinyurl.com/dipyfirst.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+Awards
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
 \lyxline
 
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Distinction Award for the MSc 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ Gra
+d
+\lang british
+e 8.65/10.
+\end_layout
+
+\begin_layout Standard
+Distinction Award for the BSc Project 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ Grade 10/10.
+\end_layout
+
+\begin_layout Standard
+Scholarship from the Board of Graduate Studies, University of Cambridge
+ (2009 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ 2010).
+ 
+\end_layout
+
+\begin_layout Standard
+EPSRC funding for College and Tuition Fees for the 4 years of the PhD course.
+\end_layout
+
+\begin_layout Standard
+Sponsorship from the Vergottis Foundation for the living expenses for the
+ PhD course.
+ 
+\end_layout
+
+\begin_layout Standard
+Scholarship (Jul.
+ 2004 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ Jun.
+ 2005) awarded after competitive examination at the MSc course.
+\end_layout
+
+\begin_layout Standard
+Scholarship (Mar.
+ 2006 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ Jul.
+ 2006) from the Computation Vision and Robotics Laboratory, FORTH, GR.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+Employment
+\end_layout
+
+\begin_layout Standard
 \begin_inset VSpace -0.2cm
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
 \end_inset
 
 
@@ -792,23 +1830,6 @@ Programming
 
 \begin_layout Standard
 
-\end_layout
-
-\begin_layout Standard
-
-\lyxline
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace -0.2cm
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
 \series bold
 \shape smallcaps
 \color blue
@@ -826,6 +1847,1122 @@ Activities
 
 \begin_layout Standard
 \begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Crossfit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Swimming
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Political Philosophy
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Captain of Ki-Aikido
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Member of Wolfson College
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Co-Founder of Ultimate Workout
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+Personal Characteristics
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="5">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Team player
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Passionate
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Friendly
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hard working
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Inventive
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+References
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align left
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Ian Nimmo-Smith
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PhD 1st advisor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Head of Methods Group 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MRC - CBU, Cambridge, UK 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ iannimmosmith@gmail.com
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Matthew Brett
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Collaborator
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Head Engineer at NIPY 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+University of California, Berkeley, US 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ matthew.brett@gmail.com
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Emanuele Olivetti
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Collaborator
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Senior Research Associate
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Foundation Bruno Kessler, Trento, IT 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ olivetti@fbk.edu
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Guy Williams
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PhD 2nd advisor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Senior Research Associate
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WBIC, University of Cambridge, UK 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ gbw1000@cam.ac.uk
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Professor Antonis Argyros
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MSc supervisor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Computational Vision
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+University of Crete and FORTH, GR 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ argyros@ics.forth.gr
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Professor Nikolaos Vassilas
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BSc supervisor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Director of Informatics
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Technological Institution of Athens, GR 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ nvas@teiath.gr
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+Collaborators
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="3">
+<features>
+<column alignment="center" valignment="top" width="5cm">
+<column alignment="center" valignment="top" width="5cm">
+<column alignment="center" valignment="top" width="5cm">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Vassilis Tsiaras
+\series default
+ GR Network Visualization Biomarkers 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Matthew Brett 
+\series default
+US 
+\end_layout
+
+\begin_layout Plain Layout
+Reconstruction
+\end_layout
+
+\begin_layout Plain Layout
+Coding
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Ian Nimmo-Smith
+\series default
+ UK
+\end_layout
+
+\begin_layout Plain Layout
+PhD supervision
+\end_layout
+
+\begin_layout Plain Layout
+Statistical Analysis
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Bagart Amirbegian 
+\series default
+US
+\end_layout
+
+\begin_layout Plain Layout
+Co-developer at DIPY
+\end_layout
+
+\begin_layout Plain Layout
+Reconstruction
+\end_layout
+
+\begin_layout Plain Layout
+Tracking
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Stefan Van Der Walt
+\series default
+ US
+\end_layout
+
+\begin_layout Plain Layout
+Spherical Functions
+\end_layout
+
+\begin_layout Plain Layout
+Coding
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Guy Williams 
+\series default
+UK
+\end_layout
+
+\begin_layout Plain Layout
+PhD supervision
+\end_layout
+
+\begin_layout Plain Layout
+MR acquisitions
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Marta Morgado Correia
+\series default
+ UK
+\end_layout
+
+\begin_layout Plain Layout
+MRI acquisitions
+\end_layout
+
+\begin_layout Plain Layout
+DTI simulations
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+John Griffiths 
+\series default
+UK
+\end_layout
+
+\begin_layout Plain Layout
+Tractography validation
+\end_layout
+
+\begin_layout Plain Layout
+DKI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Virginia Newcombe 
+\series default
+UK
+\end_layout
+
+\begin_layout Plain Layout
+Neuroanatomy
+\end_layout
+
+\begin_layout Plain Layout
+Tractography validation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Emanuele Olivetti
+\series default
+ IT
+\end_layout
+
+\begin_layout Plain Layout
+Machine Learning
+\end_layout
+
+\begin_layout Plain Layout
+Interactive Tractography
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Stephan Gerhard
+\series default
+ CH
+\end_layout
+
+\begin_layout Plain Layout
+3D visualization
+\end_layout
+
+\begin_layout Plain Layout
+Connectomics
+\end_layout
+
+\begin_layout Plain Layout
+Co-developer at FOS
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Frank Yeh
+\series default
+ US
+\end_layout
+
+\begin_layout Plain Layout
+Deterministic Tracking
+\end_layout
+
+\begin_layout Plain Layout
+GQI and GQI2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Luigi Cataneo 
+\series default
+IT
+\end_layout
+
+\begin_layout Plain Layout
+Neuroanatomy
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Nivedita Agarwa
+\series default
+l IT
+\end_layout
+
+\begin_layout Plain Layout
+Neuroanatomy
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Eric Canales-Rodriguez
+\series default
+ ES
+\end_layout
+
+\begin_layout Plain Layout
+DSI deconvolution
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Adam Hampshire
+\series default
+ CA
+\end_layout
+
+\begin_layout Plain Layout
+Trichotilomania
+\end_layout
+
+\begin_layout Plain Layout
+DTI
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Arno Klein
+\series default
+ US
+\end_layout
+
+\begin_layout Plain Layout
+Landmark-based registration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Alexis Roche
+\series default
+ CH
+\end_layout
+
+\begin_layout Plain Layout
+Nonlinear registration
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Stam Sotiropoulos
+\series default
+ UK
+\end_layout
+
+\begin_layout Plain Layout
+ODF denoising
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Alessandro Daducci
+\series default
+ CH
+\end_layout
+
+\begin_layout Plain Layout
+Global tractography
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dr.
+ Satra Gosh
+\series default
+ US
+\end_layout
+
+\begin_layout Plain Layout
+Pipelines 
+\end_layout
+
+\begin_layout Plain Layout
+Clustering
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
 \end_inset
 
 
