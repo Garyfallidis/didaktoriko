@@ -651,6 +651,7 @@ Research experience
 \end_layout
 
 \begin_layout Standard
+\align block
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="4">
 <features>
@@ -740,66 +741,29 @@ status open
 \end_layout
 
 \begin_layout Standard
-\align center
+\align left
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
-<column alignment="left" valignment="top" width="0">
+<column alignment="block" valignment="top" width="15cm">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 The objective of this thesis was to improve on the methods for inferring
- neural tracts from diffusion 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
- weighted magnetic resonance imaging (dMRI).
- Accordingly, I presented advancements to the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
- reconstruction, tracking, segmentation and registration modalities of dMRI
- analysis.
- The thesis 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
- is available for download at tinyurl.com/eleftherios-phd .
+ neural tracts from diffusion weighted magnetic resonance imaging (dMRI).
+ Accordingly, I presented advancements to the reconstruction, tracking,
+ segmentation and registration modalities of dMRI analysis.
+ The thesis is available for download at tinyurl.com/eleftherios-phd .
 \end_layout
 
 \end_inset
@@ -813,6 +777,7 @@ status open
 \end_layout
 
 \begin_layout Standard
+\align block
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="4">
 <features>
@@ -892,33 +857,26 @@ DAMTP, University of Cambridge
 \end_layout
 
 \begin_layout Standard
-\align center
+\align left
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
-<column alignment="left" valignment="top" width="0">
+<column alignment="block" valignment="top" width="15cm">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Investigating the possibility of localizing dipoles using magnetoencephalography
- with a direct 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
- analytical inversion approach.
+ with a direct analytical inversion approach.
 \end_layout
 
 \end_inset
@@ -932,6 +890,7 @@ status open
 \end_layout
 
 \begin_layout Standard
+\align block
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="4">
 <features>
@@ -1007,33 +966,27 @@ Foundation for Research and Technology Hellas
 \end_layout
 
 \begin_layout Standard
-\align center
+\align left
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
-<column alignment="left" valignment="top" width="0">
+<column alignment="block" valignment="top" width="15cm">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 The goal of this project was to decompose complex solid shapes, e.g.
- binary images of 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
- human hands, into meaningful parts using machine learning approaches.
+ binary images of human hands, into meaningful parts using machine learning
+ approaches.
 \end_layout
 
 \end_inset
@@ -1047,6 +1000,7 @@ status open
 \end_layout
 
 \begin_layout Standard
+\align block
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="4">
 <features>
@@ -1122,32 +1076,25 @@ Foundation for Research and Technology Hellas
 \end_layout
 
 \begin_layout Standard
-\align center
+\align left
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
-<column alignment="left" valignment="top" width="0">
+<column alignment="block" valignment="top" width="15cm">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-The goal of this project was to implement some standard visualization algorithms
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
+The goal of this project was to implement standard visualization algorithms
  for inpsecting fMRI-based activations.
 \end_layout
 
@@ -1162,6 +1109,7 @@ status open
 \end_layout
 
 \begin_layout Standard
+\align block
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="4">
 <features>
@@ -1208,7 +1156,7 @@ BSc Project
 
 
 \series bold
-Classification of OCDs and NCs using EEG ERPs
+Classification of OCDs and NCs using ERPs
 \series default
 
 \begin_inset Quotes erd
@@ -1237,49 +1185,28 @@ Technological Institution of Athens
 \end_layout
 
 \begin_layout Standard
-\align center
+\align left
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
-<column alignment="left" valignment="top" width="0">
+<column alignment="block" valignment="top" width="15cm">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 The purpose of this project was to encode and classify event related potentials
- of EEG 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
- signals between obsessive compulsive disorder patients and normal controls.
- For this 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
- purpose we used neural associative memories.
+ of EEG signals between obsessive compulsive disorder patients and normal
+ controls.
+ For this purpose we used neural associative memories.
  
 \end_layout
 
@@ -1824,6 +1751,256 @@ Employment
 \end_layout
 
 \begin_layout Standard
+\align block
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1997 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ 2000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Seller
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Golden Jewels 
+\begin_inset Quotes eld
+\end_inset
+
+STAVROS
+\begin_inset Quotes erd
+\end_inset
+
+, Athens, GR.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align block
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2000 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ 2001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Company Developer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+AlphaCyber Group, Stock Market Analysis, Athens, GR.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align block
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2002 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ 2003
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Security Analyst
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+National Center for Scientific Research, Athens, GR.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align block
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2004 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ 2006
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Freelance Developer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Applications for Booking Air-tickets, Athens, GR.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \series bold
 \shape smallcaps
@@ -1837,6 +2014,137 @@ Programming
 
 
 \lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I am the lead developer of Diffusion Imaging in Python (DIPY).
+ I created this open library together with Dr.
+ Ian Nimmo-Smith and Dr.
+ Matthew Brett with the aim to make it easier to do better dMRI/DTI research.
+ This project has been successful and has now more than 12 contributors
+ working from top universities around the world.
+ Our goal is to create the most complete, robust and easy to use dMRI software.
+ I am also the lead developer of Free on Shades (FOS) which concentrates
+ mainly on 3D and 4D visualization of scientific data.
+ Especially, medical imaging and network visualization.
+ This library is still not released except from a module for tractography
+ interaction.
+ 
+\end_layout
+
+\begin_layout Standard
+I have programmed in more than 20 different languages.
+ A professional Python developer.
+ Experienced in C/C++ and Matlab.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+PhD Courses
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align block
+Machine Learning, Statistical Pattern Processing, Signal Detection and Estimatio
+n, High Performance Computing, Statistical, Methods, and Complex Optimization.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\color blue
+MSc Courses
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -0.2cm
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Medical Imaging, Neurobiology, Neurophysiology, Introduction to Robotics,
+ Developmental Psychology, Biomedial Technology, Robotic Action, Biomimetic
+ Robotics, Philosophy of the Mind, and Machine Vision.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
 
 \end_layout
 
@@ -1872,76 +2180,8 @@ Activities
 \end_layout
 
 \begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="3">
-<features>
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Crossfit
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Swimming
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Political Philosophy
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Captain of Ki-Aikido
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Member of Wolfson College
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Co-Founder of Ultimate Workout
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
+Crossfit, Swimming, Political Philosophy, Martial Arts, Running, Co-Founder
+ of the Ultimate Workout.
 \end_layout
 
 \begin_layout Standard
@@ -1983,67 +2223,7 @@ Personal Characteristics
 \end_layout
 
 \begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="1" columns="5">
-<features>
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Team player
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Passionate
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Friendly
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Hard working
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Inventive
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
+Team player, Passionate, Friendly, Hard Working, Inventive.
 \end_layout
 
 \begin_layout Standard
@@ -2085,10 +2265,12 @@ References
 \end_layout
 
 \begin_layout Standard
-\align left
+
+\size small
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="4">
+<lyxtabular version="3" rows="18" columns="5">
 <features>
+<column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -2100,10 +2282,20 @@ References
 \begin_layout Plain Layout
 
 \series bold
+\size small
 Dr.
  Ian Nimmo-Smith
-\series default
- 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Position:
 \end_layout
 
 \end_inset
@@ -2112,7 +2304,9 @@ Dr.
 \begin_inset Text
 
 \begin_layout Plain Layout
-PhD 1st advisor
+
+\size small
+Head of Methods Group
 \end_layout
 
 \end_inset
@@ -2121,7 +2315,9 @@ PhD 1st advisor
 \begin_inset Text
 
 \begin_layout Plain Layout
-Head of Methods Group 
+
+\size small
+Telephone:
 \end_layout
 
 \end_inset
@@ -2130,22 +2326,21 @@ Head of Methods Group
 \begin_inset Text
 
 \begin_layout Plain Layout
-MRC - CBU, Cambridge, UK 
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
+\size small
++44
+\begin_inset space ~
 \end_inset
 
- iannimmosmith@gmail.com
+7966
+\begin_inset space ~
+\end_inset
+
+699
+\begin_inset space ~
+\end_inset
+
+097
 \end_layout
 
 \end_inset
@@ -2157,275 +2352,998 @@ status open
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+MRC
+ 
+\lang british
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ CBU
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+E-mail:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+iannimmosmith@gmail.com 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Cambridge, UK
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Relationship: 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+PhD 1st advisor
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \series bold
+\size small
 Dr.
  Matthew Brett
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Collaborator
+
+\size small
+Position:
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Head Engineer at NIPY 
+
+\size small
+Head Engineer at NIPY
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-University of California, Berkeley, US 
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
+\size small
+Telephone:
 \end_layout
 
 \end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
- matthew.brett@gmail.com
+\begin_layout Plain Layout
+
+\size small
++1
+\begin_inset space ~
+\end_inset
+
+5106
+\begin_inset space ~
+\end_inset
+
+434
+\begin_inset space ~
+\end_inset
+
+053
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+University of California
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+E-mail:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+matthew.brett@gmail.com 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Berkeley, US
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Relationship: 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Collaborator
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \series bold
+\size small
 Dr.
  Emanuele Olivetti
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Collaborator
+
+\size small
+Position:
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Senior Research Associate
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Foundation Bruno Kessler, Trento, IT 
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
+\size small
+Telephone:
 \end_layout
 
 \end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
- olivetti@fbk.edu
+\begin_layout Plain Layout
+
+\size small
++39
+\begin_inset space ~
+\end_inset
+
+3200
+\begin_inset space ~
+\end_inset
+
+642
+\begin_inset space ~
+\end_inset
+
+102
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Foundation Bruno Kessler
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+E-mail:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+olivetti@fbk.edu 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Trento, IT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Relationship: 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Collaborator
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \series bold
+\size small
 Dr.
  Guy Williams
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-PhD 2nd advisor
+
+\size small
+Position:
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Senior Research Associate
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-WBIC, University of Cambridge, UK 
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
+\size small
+Telephone:
 \end_layout
 
 \end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
- gbw1000@cam.ac.uk
+\begin_layout Plain Layout
+
+\size small
++44
+\begin_inset space ~
+\end_inset
+
+1223
+\begin_inset space ~
+\end_inset
+
+746
+\begin_inset space ~
+\end_inset
+
+464
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+WBIC, University of Cambridge
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+E-mail:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+gbw1000@cam.ac.uk 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Cambridge, UK
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Relationship: 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+PhD 2nd advisor
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \series bold
+\size small
 Professor Antonis Argyros
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-MSc supervisor
+
+\size small
+Position:
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Computational Vision
+
+\size small
+Researcher
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-University of Crete and FORTH, GR 
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
+\size small
+Telephone:
 \end_layout
 
 \end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
- argyros@ics.forth.gr
+\begin_layout Plain Layout
+
+\size small
++30
+\begin_inset space ~
+\end_inset
+
+2810
+\begin_inset space ~
+\end_inset
+
+391
+\begin_inset space ~
+\end_inset
+
+704
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+FORTH 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+E-mail:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+argyros@ics.forth.gr 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Crete, GR
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Relationship: 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+MSc supervisor
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \series bold
+\size small
 Professor Nikolaos Vassilas
-\series default
- 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
+Position:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Head of Informatics
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Telephone:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
++30
+\begin_inset space ~
+\end_inset
+
+6977
+\begin_inset space ~
+\end_inset
+
+840
+\begin_inset space ~
+\end_inset
+
+215
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Technological Institution of Athens
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+E-mail:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+nvas@teiath.gr 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Athens, GR
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Relationship: 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
 BSc supervisor
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Director of Informatics
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Technological Institution of Athens, GR 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
- nvas@teiath.gr
 \end_layout
 
 \end_inset
@@ -2453,6 +3371,10 @@ status open
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 
 \series bold
 \shape smallcaps
@@ -2460,7 +3382,7 @@ status open
 Collaborators
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset VSpace -0.2cm
 \end_inset
 
@@ -2469,14 +3391,14 @@ Collaborators
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset VSpace smallskip
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="3">
@@ -2801,10 +3723,6 @@ IT
 Neuroanatomy
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
@@ -2985,6 +3903,11 @@ Clustering
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
