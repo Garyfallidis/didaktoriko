@@ -1,5 +1,5 @@
-#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -8,18 +8,26 @@
 \date{}
 \end_preamble
 \use_default_options true
+\maintain_unincluded_children false
 \language british
+\language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman palatino
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing onehalf
 \use_hyperref false
@@ -27,9 +35,18 @@
 \use_geometry true
 \use_amsmath 1
 \use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \leftmargin 1cm
 \topmargin 1cm
 \rightmargin 1cm
@@ -37,15 +54,16 @@
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -63,7 +81,7 @@ Eleftherios Garyfallidis
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="6">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -274,11 +292,19 @@ Education
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset VSpace -0.2cm
 \end_inset
 
 
-\lyxline
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
 
 \end_layout
 
@@ -292,7 +318,7 @@ Education
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -480,11 +506,19 @@ Head Engineer
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset VSpace -0.2cm
 \end_inset
 
 
-\lyxline
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
 
 \end_layout
 
@@ -498,7 +532,7 @@ Head Engineer
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -635,11 +669,19 @@ Research experience
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset VSpace -0.2cm
 \end_inset
 
 
-\lyxline
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
 
 \end_layout
 
@@ -654,7 +696,7 @@ Research experience
 \align block
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -713,10 +755,7 @@ Towards an accurate brain tractography
 \begin_inset Text
 
 \begin_layout Plain Layout
-MRC
- 
-\lang british
-
+MRC 
 \begin_inset ERT
 status open
 
@@ -752,7 +791,7 @@ status open
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="block" valignment="top" width="15cm">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
@@ -780,7 +819,7 @@ The objective of this thesis was to improve on the methods for inferring
 \align block
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -868,7 +907,7 @@ DAMTP, University of Cambridge
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="block" valignment="top" width="15cm">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
@@ -893,7 +932,7 @@ Investigating the possibility of localizing dipoles using magnetoencephalography
 \align block
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -977,7 +1016,7 @@ Foundation for Research and Technology Hellas
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="block" valignment="top" width="15cm">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
@@ -1003,7 +1042,7 @@ The goal of this project was to decompose complex solid shapes, e.g.
 \align block
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -1087,7 +1126,7 @@ Foundation for Research and Technology Hellas
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="block" valignment="top" width="15cm">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
@@ -1112,7 +1151,7 @@ The goal of this project was to implement standard visualization algorithms
 \align block
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -1196,7 +1235,7 @@ Technological Institution of Athens
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="block" valignment="top" width="15cm">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
@@ -1236,11 +1275,19 @@ Publications
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset VSpace -0.2cm
 \end_inset
 
 
-\lyxline
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
 
 \end_layout
 
@@ -1472,11 +1519,19 @@ Invited Talks
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset VSpace -0.2cm
 \end_inset
 
 
-\lyxline
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
 
 \end_layout
 
@@ -1497,23 +1552,6 @@ Garyfallidis E (Mar.
 Garyfallidis E (Oct.
  2011), “ Tractography Segmentation using QuickBundles”, FBK, Trento, Italy.
  
-\end_layout
-
-\begin_layout Standard
-Garyfallidis E (Jun.
- 2012), “The future of dMRI analysis”, University of California at Berkeley.
- 
-\end_layout
-
-\begin_layout Standard
-Garyfallidis E (Jul.
- 2012), “Accuracy in voxel reconstruction using dMRI”, Stanford University.
-\end_layout
-
-\begin_layout Standard
-Garyfallidis E (Sep.
- 2012), “Dipy 0.6 on the edge of diffusion MR analysis”, University of Sherbrooke
-, Canada.
 \end_layout
 
 \begin_layout Standard
@@ -1539,11 +1577,19 @@ Outreach
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset VSpace -0.2cm
 \end_inset
 
 
-\lyxline
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
 
 \end_layout
 
@@ -1603,11 +1649,19 @@ Awards
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset VSpace -0.2cm
 \end_inset
 
 
-\lyxline
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
 
 \end_layout
 
@@ -1630,10 +1684,7 @@ status open
 
 \end_inset
 
- Gra
-d
-\lang british
-e 8.65/10.
+ Grade 8.65/10.
 \end_layout
 
 \begin_layout Standard
@@ -1735,11 +1786,19 @@ Employment
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset VSpace -0.2cm
 \end_inset
 
 
-\lyxline
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
 
 \end_layout
 
@@ -1754,7 +1813,7 @@ Employment
 \align block
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -1819,7 +1878,7 @@ STAVROS
 \align block
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -1876,7 +1935,7 @@ AlphaCyber Group, Stock Market Analysis, Athens, GR.
 \align block
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -1933,7 +1992,7 @@ National Center for Scientific Research, Athens, GR.
 \align block
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -2009,11 +2068,19 @@ Programming
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset VSpace -0.2cm
 \end_inset
 
 
-\lyxline
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
 
 \end_layout
 
@@ -2076,11 +2143,19 @@ PhD Courses
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset VSpace -0.2cm
 \end_inset
 
 
-\lyxline
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
 
 \end_layout
 
@@ -2120,11 +2195,19 @@ MSc Courses
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset VSpace -0.2cm
 \end_inset
 
 
-\lyxline
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
 
 \end_layout
 
@@ -2164,11 +2247,19 @@ Activities
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset VSpace -0.2cm
 \end_inset
 
 
-\lyxline
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
 
 \end_layout
 
@@ -2207,11 +2298,19 @@ Personal Characteristics
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset VSpace -0.2cm
 \end_inset
 
 
-\lyxline
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
 
 \end_layout
 
@@ -2222,7 +2321,7 @@ Personal Characteristics
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Team player, Passionate, Friendly, Hard Working, Inventive.
 \end_layout
 
@@ -2249,11 +2348,19 @@ References
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset VSpace -0.2cm
 \end_inset
 
 
-\lyxline
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
 
 \end_layout
 
@@ -2269,7 +2376,7 @@ References
 \size small
 \begin_inset Tabular
 <lyxtabular version="3" rows="18" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -2371,10 +2478,7 @@ Telephone:
 \begin_layout Plain Layout
 
 \size small
-MRC
- 
-\lang british
-
+MRC 
 \begin_inset ERT
 status open
 
@@ -3383,11 +3487,19 @@ Collaborators
 \end_layout
 
 \begin_layout Plain Layout
+\noindent
 \begin_inset VSpace -0.2cm
 \end_inset
 
 
-\lyxline
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
 
 \end_layout
 
@@ -3402,7 +3514,7 @@ Collaborators
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="5cm">
 <column alignment="center" valignment="top" width="5cm">
 <column alignment="center" valignment="top" width="5cm">
