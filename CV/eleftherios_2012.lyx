@@ -713,10 +713,7 @@ Towards an accurate brain tractography
 \begin_inset Text
 
 \begin_layout Plain Layout
-MRC
- 
-\lang british
-
+MRC 
 \begin_inset ERT
 status open
 
@@ -1257,79 +1254,6 @@ Publications
 \lang english
 Garyfallidis E
 \series default
-, Brett M, Nimmo-Smith I (2010), 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-Fast Dimensionality Reduction for Brain Tractography Clustering
-\emph default
-”, 16th Annual Meeting of the Organization for Human Brain Mapping.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\lang english
-Garyfallidis E
-\series default
-, Brett M, Tsiaras V, Vogiatzis G, Nimmo-Smith I (2010), “
-\emph on
-Identification of corresponding tracks in diffusion MRI tractographies
-\emph default
-”, 18th Proceedings of the International Society of Magnetic Resonance in
- Medi- cine.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Correia MM, Williams GB, Yeh F-C, Nimmo-Smith I, 
-\series bold
-Garyfallidis E
-\series default
- (2011), 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-Robustness of diffusion scalar metrics when estimated with Generalized Q-Samplin
-g Imaging acquisition schemes
-\emph default
-
-\begin_inset Quotes erd
-\end_inset
-
-, 19th Proceedings of the International Society of Magnetic Resonance in
- Medicine.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\lang english
-Garyfallidis E
-\series default
-, Brett M, Amirbekian B, Nguyen C, Yeh F-C, Olivetti E, Halchenko Y, Nimmo-Smith
- I (2011), 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-Dipy - a novel software library for diffusion MR and tractography
-\emph default
-”, 17th Annual Meeting of the Organization for Human Brain Mapping.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\lang english
-Garyfallidis E
-\series default
 , Gerhard S, Avesani P, Nguyen T, Tsiaras V, Nimmo-Smith I, Olivetti E (2012),
  
 \begin_inset Quotes eld
@@ -1415,16 +1339,43 @@ Segmentation
 \begin_layout Standard
 
 \lang english
-Chamberlain SR, Hampshire A, Menzies LA, 
+Correia MM, Williams GB, Yeh F-C, Nimmo-Smith I, 
 \series bold
 Garyfallidis E
 \series default
-, Grant JE, Odlaug BL, Craig K, Fineberg N, Sahakian BJ (2010), “
+ (2011), 
+\begin_inset Quotes eld
+\end_inset
+
+
 \emph on
-Reduced brain white matter integrity in trichotillomania: a diffusion tensor
- imaging study.
+Robustness of diffusion scalar metrics when estimated with Generalized Q-Samplin
+g Imaging acquisition schemes
 \emph default
-”, Archives of General Psychiatry 67(9):965-71.
+
+\begin_inset Quotes erd
+\end_inset
+
+, 19th Proceedings of the International Society of Magnetic Resonance in
+ Medicine.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Garyfallidis E
+\series default
+, Brett M, Amirbekian B, Nguyen C, Yeh F-C, Olivetti E, Halchenko Y, Nimmo-Smith
+ I (2011), 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Dipy - a novel software library for diffusion MR and tractography
+\emph default
+”, 17th Annual Meeting of the Organization for Human Brain Mapping.
 \end_layout
 
 \begin_layout Standard
@@ -1447,6 +1398,52 @@ Extracting biomarkers of autism from MEG resting-state functional connectivity
 
 , Computers in biology and medicine 41(12):1166-77.
  
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Garyfallidis E
+\series default
+, Brett M, Nimmo-Smith I (2010), 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Fast Dimensionality Reduction for Brain Tractography Clustering
+\emph default
+”, 16th Annual Meeting of the Organization for Human Brain Mapping.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Garyfallidis E
+\series default
+, Brett M, Tsiaras V, Vogiatzis G, Nimmo-Smith I (2010), “
+\emph on
+Identification of corresponding tracks in diffusion MRI tractographies
+\emph default
+”, 18th Proceedings of the International Society of Magnetic Resonance in
+ Medi- cine.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Chamberlain SR, Hampshire A, Menzies LA, 
+\series bold
+Garyfallidis E
+\series default
+, Grant JE, Odlaug BL, Craig K, Fineberg N, Sahakian BJ (2010), “
+\emph on
+Reduced brain white matter integrity in trichotillomania: a diffusion tensor
+ imaging study.
+\emph default
+”, Archives of General Psychiatry 67(9):965-71.
 \end_layout
 
 \begin_layout Standard
@@ -1488,15 +1485,14 @@ Invited Talks
 \end_layout
 
 \begin_layout Standard
-Garyfallidis E (Mar.
- 2010), “Exploring the land of tracks, using Python”, University of California
- at Berkeley.
+Garyfallidis E (Sep.
+ 2012), “Dipy 0.6 on the edge of diffusion MR analysis”, University of Sherbrooke
+, Canada.
 \end_layout
 
 \begin_layout Standard
-Garyfallidis E (Oct.
- 2011), “ Tractography Segmentation using QuickBundles”, FBK, Trento, Italy.
- 
+Garyfallidis E (Jul.
+ 2012), “Accuracy in voxel reconstruction using dMRI”, Stanford University.
 \end_layout
 
 \begin_layout Standard
@@ -1506,14 +1502,15 @@ Garyfallidis E (Jun.
 \end_layout
 
 \begin_layout Standard
-Garyfallidis E (Jul.
- 2012), “Accuracy in voxel reconstruction using dMRI”, Stanford University.
+Garyfallidis E (Oct.
+ 2011), “ Tractography Segmentation using QuickBundles”, FBK, Trento, Italy.
+ 
 \end_layout
 
 \begin_layout Standard
-Garyfallidis E (Sep.
- 2012), “Dipy 0.6 on the edge of diffusion MR analysis”, University of Sherbrooke
-, Canada.
+Garyfallidis E (Mar.
+ 2010), “Exploring the land of tracks, using Python”, University of California
+ at Berkeley.
 \end_layout
 
 \begin_layout Standard
@@ -1630,10 +1627,7 @@ status open
 
 \end_inset
 
- Gra
-d
-\lang british
-e 8.65/10.
+ Grade 8.65/10.
 \end_layout
 
 \begin_layout Standard
@@ -1709,7 +1703,7 @@ status open
 \end_inset
 
  Jul.
- 2006) from the Computation Vision and Robotics Laboratory, FORTH, GR.
+ 2006) from the Computational Vision and Robotics Laboratory, FORTH, GR.
 \end_layout
 
 \begin_layout Standard
@@ -1763,7 +1757,7 @@ Employment
 \begin_inset Text
 
 \begin_layout Plain Layout
-1997 
+2004 
 \begin_inset ERT
 status open
 
@@ -1774,7 +1768,7 @@ status open
 
 \end_inset
 
- 2000
+ 2006
 \end_layout
 
 \end_inset
@@ -1785,7 +1779,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Seller
+Freelance Developer
 \end_layout
 
 \end_inset
@@ -1794,72 +1788,7 @@ Seller
 \begin_inset Text
 
 \begin_layout Plain Layout
-Golden Jewels 
-\begin_inset Quotes eld
-\end_inset
-
-STAVROS
-\begin_inset Quotes erd
-\end_inset
-
-, Athens, GR.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align block
-\begin_inset Tabular
-<lyxtabular version="3" rows="1" columns="3">
-<features>
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2000 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
---
-\end_layout
-
-\end_inset
-
- 2001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Company Developer
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-AlphaCyber Group, Stock Market Analysis, Athens, GR.
+Applications for Booking Air-tickets, Athens, GR.
 \end_layout
 
 \end_inset
@@ -1942,7 +1871,7 @@ National Center for Scientific Research, Athens, GR.
 \begin_inset Text
 
 \begin_layout Plain Layout
-2004 
+2000 
 \begin_inset ERT
 status open
 
@@ -1953,7 +1882,7 @@ status open
 
 \end_inset
 
- 2006
+ 2001
 \end_layout
 
 \end_inset
@@ -1964,7 +1893,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Freelance Developer
+Company Developer
 \end_layout
 
 \end_inset
@@ -1973,7 +1902,72 @@ Freelance Developer
 \begin_inset Text
 
 \begin_layout Plain Layout
-Applications for Booking Air-tickets, Athens, GR.
+AlphaCyber Group, Stock Market Analysis, Athens, GR.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align block
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1997 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+--
+\end_layout
+
+\end_inset
+
+ 2000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Seller
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Golden Jewels 
+\begin_inset Quotes eld
+\end_inset
+
+STAVROS
+\begin_inset Quotes erd
+\end_inset
+
+, Athens, GR.
 \end_layout
 
 \end_inset
@@ -2222,7 +2216,7 @@ Personal Characteristics
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Team player, Passionate, Friendly, Hard Working, Inventive.
 \end_layout
 
@@ -2371,10 +2365,7 @@ Telephone:
 \begin_layout Plain Layout
 
 \size small
-MRC
- 
-\lang british
-
+MRC 
 \begin_inset ERT
 status open
 
