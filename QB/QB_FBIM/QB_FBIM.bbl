@@ -21,10 +21,28 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{moberts2005evaluation}
+B.~Moberts, A.~Vilanova, and J.~van Wijk, ``{Evaluation of fiber clustering
+  methods for diffusion tensor imaging},'' in \emph{IEEE Visualization}, 2005,
+  pp. 65--72.
+
+\bibitem{wang2010tractography}
+X.~Wang, W.~Grimson, and C.~Westin, ``{Tractography segmentation using a
+  hierarchical Dirichlet processes mixture model},'' \emph{NeuroImage}, 2010.
+
 \bibitem{Visser2010}
 E.~Visser, E.~H.~J. Nijhuis, J.~K. Buitelaar, and M.~P. Zwiers,
   ``Partition-based mass clustering of tractography streamlines.''
   \emph{NeuroImage}, Jul. 2010.
+
+\bibitem{EGMB10}
+E.~Garyfallidis, M.~Brett, and I.~Nimmo-Smith, ``Fast {D}imensionality
+  {R}eduction for {B}rain {T}ractography {C}lustering,'' \emph{16th Annual
+  Meeting of the Organization for Human Brain Mapping}, 2010.
+
+\bibitem{catani2005perisylvian}
+M.~Catani, D.~Jones \emph{et~al.}, ``Perisylvian language networks of the human
+  brain,'' \emph{Annals of neurology}, vol.~57, no.~1, pp. 8--16, 2005.
 
 \bibitem{gerig2004analysis}
 G.~Gerig, S.~Gouttard, and I.~Corouge, ``{Analysis of brain white matter via
@@ -37,28 +55,26 @@ P.~Guevara, C.~Poupon, D.~Rivi\`ere, Y.~Cointepas, M.~Descoteaux, B.~Thirion,
   and J.-F. Mangin, ``Robust clustering of massive tractography datasets.''
   \emph{NeuroImage}, vol.~54, no.~3, pp. 1975--1993, Oct. 2010.
 
-\bibitem{zhang2005dti}
-S.~Zhang and D.~Laidlaw, ``{DTI fiber clustering and cross-subject cluster
-  analysis},'' in \emph{Int. Soc. Magn. Reson. Med}, 2005.
-
-\bibitem{jianu2009exploring}
-R.~Jianu, C.~Demiralp, and D.~Laidlaw, ``{Exploring 3D DTI fiber tracts with
-  linked 2D representations},'' \emph{Visualization and Computer Graphics, IEEE
-  Transactions on}, vol.~15, no.~6, pp. 1449--1456, 2009.
-
-\bibitem{ElKouby2005}
-V.~El~Kouby, Y.~Cointepas, C.~Poupon, D.~Rivi\`ere, N.~Golestani, J.~B. Poline,
-  D.~Le~Bihan, and J.~F. Mangin, ``M{R} diffusion-based inference of a fiber
-  bundle model from a population of subjects.'' \emph{Medical image computing
-  and computer-assisted intervention : MICCAI ... International Conference on
-  Medical Image Computing and Computer-Assisted Intervention}, vol.~8, no. Pt
-  1, pp. 196--204, Jan. 2005.
-
 \bibitem{Tsai2007}
 A.~Tsai, C.~Westin, A.~Hero, and A.~Willsky, ``Fiber tract clustering on
   manifolds with dual rooted-graphs,'' in \emph{Computer Vision and Pattern
   Recognition, 2007. CVPR'07. IEEE Conference on}.\hskip 1em plus 0.5em minus
   0.4em\relax IEEE, 2007, pp. 1--6.
+
+\bibitem{zhang2005dti}
+S.~Zhang and D.~Laidlaw, ``{DTI fiber clustering and cross-subject cluster
+  analysis},'' in \emph{Int. Soc. Magn. Reson. Med}, 2005.
+
+\bibitem{zhang2003visualizing}
+S.~Zhang \emph{et~al.}, ``{Visualizing diffusion tensor MR images using
+  streamtubes and streamsurfaces},'' \emph{IEEE Transactions on Visualization
+  and Computer Graphics}, pp. 454--462, 2003.
+
+\bibitem{zhang2008identifying}
+S.~Zhang, S.~Correia, and D.~Laidlaw, ``{Identifying White-Matter Fiber Bundles
+  in DTI Data Using an Automated Proximity-Based Fiber Clustering Method},''
+  \emph{IEEE transactions on visualization and computer graphics}, vol.~14,
+  no.~5, p. 1044, 2008.
 
 \bibitem{zvitia2008adaptive}
 O.~Zvitia, A.~Mayer, and H.~Greenspan, ``{Adaptive mean-shift registration of
@@ -72,6 +88,14 @@ O.~Zvitia, A.~Mayer, R.~Shadmi, S.~Miron, and H.~K. Greenspan,
   Gaussian mixture modeling.}'' \emph{IEEE transactions on medical imaging},
   vol.~29, no.~1, pp. 132--45, Jan. 2010.
 
+\bibitem{ElKouby2005}
+V.~El~Kouby, Y.~Cointepas, C.~Poupon, D.~Rivi\`ere, N.~Golestani, J.~B. Poline,
+  D.~Le~Bihan, and J.~F. Mangin, ``M{R} diffusion-based inference of a fiber
+  bundle model from a population of subjects.'' \emph{Medical image computing
+  and computer-assisted intervention : MICCAI ... International Conference on
+  Medical Image Computing and Computer-Assisted Intervention}, vol.~8, no. Pt
+  1, pp. 196--204, Jan. 2005.
+
 \bibitem{brun2004clustering}
 A.~Brun, H.~Knutsson, H.~Park, M.~Shenton, and C.~Westin, ``{Clustering fiber
   traces using normalized cuts},'' \emph{Medical Image Computing and
@@ -82,21 +106,31 @@ Z.~Ding, J.~C. Gore, and A.~W. Anderson, ``{Classification and quantification
   of neuronal fiber pathways using diffusion tensor MRI.}'' \emph{Magnetic
   Resonance in Medicine}, vol.~49, no.~4, pp. 716--21, 2003.
 
-\bibitem{Corouge2004}
-I.~Corouge, S.~Gouttard, and G.~Gerig, ``A statistical shape model of
-  individual fiber tracts extracted from diffusion {T}ensor {MRI},''
-  \emph{Medical Image Computing and Computer Assisted Intervention}, pp.
-  671--679, 2004.
-
 \bibitem{corouge2004towards}
-------, ``{Towards a shape model of white matter fiber bundles using diffusion
-  tensor MRI},'' in \emph{International Symposium on Biomedical Imaging}, 2004,
-  pp. 344--347.
+I.~Corouge, S.~Gouttard, and G.~Gerig, ``{Towards a shape model of white matter
+  fiber bundles using diffusion tensor MRI},'' in \emph{International Symposium
+  on Biomedical Imaging}, 2004, pp. 344--347.
+
+\bibitem{Corouge2004}
+------, ``A statistical shape model of individual fiber tracts extracted from
+  diffusion {T}ensor {MRI},'' \emph{Medical Image Computing and Computer
+  Assisted Intervention}, pp. 671--679, 2004.
 
 \bibitem{Corouge2006}
 I.~Corouge, P.~T. Fletcher, S.~Joshi, S.~Gouttard, and G.~Gerig, ``{Fiber
   tract-oriented statistics for quantitative diffusion tensor MRI analysis.}''
   \emph{Medical image analysis}, vol.~10, no.~5, pp. 786--98, 2006.
+
+\bibitem{ODonnell_IEEETMI07}
+L.~J. O'Donnell and C.~F. Westin, ``\BIBforeignlanguage{eng}{Automatic
+  tractography segmentation using a high-dimensional white matter atlas.}''
+  \emph{\BIBforeignlanguage{eng}{IEEE Trans Med Imaging}}, vol.~26, no.~11, pp.
+  1562--75, 2007.
+
+\bibitem{o2009tract}
+L.~O'Donnell, C.~Westin, and A.~Golby, ``{Tract-based morphometry for white
+  matter group analysis},'' \emph{NeuroImage}, vol.~45, no.~3, pp. 832--844,
+  2009.
 
 \bibitem{Maddah_MICCA2005}
 M.~Maddah, A.~U. Mewes, S.~Haker, W.~E. Grimson, and S.~K. Warfield,
@@ -111,42 +145,34 @@ M.~Maddah, W.~Grimson, and S.~Warfield, ``{Statistical modeling and EM
   Biomedical Imaging}.\hskip 1em plus 0.5em minus 0.4em\relax Citeseer, 2006,
   pp. 53--56.
 
+\bibitem{witelson1989hand}
+S.~Witelson, ``{Hand and sex differences in the isthmus and genu of the human
+  corpus callosum},'' \emph{Brain}, vol. 112, no.~3, p. 799, 1989.
+
 \bibitem{Maddah_IEEEBI2008}
 M.~Maddah, L.~Zollei, W.~Grimson, C.~Westin, and W.~Wells, ``A mathematical
   framework for incorporating anatomical knowledge in dt-mri analysis,'' in
   \emph{5th IEEE International Symposium on Biomedical Imaging: From Nano to
   Macro}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2008, pp. 105--108.
 
-\bibitem{ziyan2009consistency}
-U.~Ziyan, M.~Sabuncu, W.~Grimson, and C.~Westin, ``{Consistency clustering: a
-  robust algorithm for group-wise registration, segmentation and automatic
-  atlas construction in diffusion MRI},'' \emph{International Journal of
-  Computer Vision}, vol.~85, no.~3, pp. 279--290, 2009.
-
 \bibitem{jonasson2005fiber}
 L.~Jonasson, P.~Hagmann, J.~Thiran, and V.~Wedeen, ``{Fiber tracts of high
   angular resolution diffusion MRI are easily segmented with spectral
   clustering.}'' in \emph{Int. Soc. Mag. Reson. Med}, 2005, p. 1310.
 
-\bibitem{ODonnell_IEEETMI07}
-L.~J. O'Donnell and C.~F. Westin, ``\BIBforeignlanguage{eng}{Automatic
-  tractography segmentation using a high-dimensional white matter atlas.}''
-  \emph{\BIBforeignlanguage{eng}{IEEE Trans Med Imaging}}, vol.~26, no.~11, pp.
-  1562--75, 2007.
+\bibitem{jianu2009exploring}
+R.~Jianu, C.~Demiralp, and D.~Laidlaw, ``{Exploring 3D DTI fiber tracts with
+  linked 2D representations},'' \emph{Visualization and Computer Graphics, IEEE
+  Transactions on}, vol.~15, no.~6, pp. 1449--1456, 2009.
 
-\bibitem{leemans17new}
-A.~Leemans and D.~Jones, ``A new approach to fully automated fiber tract
-  clustering using affinity propagation,'' in \emph{Int. Symp. on Magnetic
-  Resonance in Medicine (ISMRM)}, vol.~17, 2009, p. 856.
+\bibitem{chalmers1996linear}
+M.~Chalmers, ``{A linear iteration time layout algorithm for visualising
+  high-dimensional data},'' in \emph{Visualization'96. Proceedings.}\hskip 1em
+  plus 0.5em minus 0.4em\relax IEEE, 1996, pp. 127--131.
 
-\bibitem{malcolm2009filtered}
-J.~Malcolm, M.~Shenton, and Y.~Rathi, ``{Filtered Tractography: State
-  estimation in a constrained subspace},'' \emph{Proceedings of MICCAI
-  (Diffusion Modeling and Fiber Cup)}, pp. 122--133, 2009.
-
-\bibitem{wang2010tractography}
-X.~Wang, W.~Grimson, and C.~Westin, ``{Tractography segmentation using a
-  hierarchical Dirichlet processes mixture model},'' \emph{NeuroImage}, 2010.
+\bibitem{eades1984heuristic}
+P.~Eades, ``{A heuristic for graph drawing},'' \emph{Congressus numerantium},
+  vol.~42, pp. 149--160, 1984.
 
 \bibitem{Durrleman2009}
 S.~Durrleman, P.~Fillard, X.~Pennec, A.~Trouv\'{e}, and N.~Ayache, ``{A
@@ -159,10 +185,34 @@ S.~Durrleman, P.~Fillard, X.~Pennec, A.~Trouv{\'e}, and N.~Ayache,
   ``{Registration, atlas estimation and variability analysis of white matter
   fiber bundles modeled as currents},'' \emph{NeuroImage}, 2010.
 
-\bibitem{EGMB10}
-E.~Garyfallidis, M.~Brett, and I.~Nimmo-Smith, ``Fast {D}imensionality
-  {R}eduction for {B}rain {T}ractography {C}lustering,'' \emph{16th Annual
-  Meeting of the Organization for Human Brain Mapping}, 2010.
+\bibitem{leemans17new}
+A.~Leemans and D.~Jones, ``A new approach to fully automated fiber tract
+  clustering using affinity propagation,'' in \emph{Int. Symp. on Magnetic
+  Resonance in Medicine (ISMRM)}, vol.~17, 2009, p. 856.
+
+\bibitem{malcolm2009filtered}
+J.~Malcolm, M.~Shenton, and Y.~Rathi, ``{Filtered Tractography: State
+  estimation in a constrained subspace},'' \emph{Proceedings of MICCAI
+  (Diffusion Modeling and Fiber Cup)}, pp. 122--133, 2009.
+
+\bibitem{ziyan2009consistency}
+U.~Ziyan, M.~Sabuncu, W.~Grimson, and C.~Westin, ``{Consistency clustering: a
+  robust algorithm for group-wise registration, segmentation and automatic
+  atlas construction in diffusion MRI},'' \emph{International Journal of
+  Computer Vision}, vol.~85, no.~3, pp. 279--290, 2009.
+
+\bibitem{Wakana2007NeuroImage}
+S.~Wakana, A.~Caprihan, M.~M. Panzenboeck, J.~H. Fallon, M.~Perry, R.~L.
+  Gollub, K.~Hua, J.~Zhang, H.~Jiang, P.~Dubey, A.~Blitz, P.~{van Zijl}, and
+  S.~Mori, ``Reproducibility of quantitative tractography methods applied to
+  cerebral white matter,'' \emph{NeuroImage}, vol.~36, no.~1, pp. 630--644,
+  2007.
+
+\bibitem{Hua2008NeuroImage}
+K.~Hua, J.~Zhang, S.~Wakana, H.~Jiang, X.~Li, D.~S. Reich, P.~A. Calabresi,
+  J.~J. Pekar, P.~C. {van Zijl}, and S.~Mori, ``Tract probability maps in
+  stereotaxic spaces: Analyses of white matter anatomy and tract-specific
+  quantification,'' \emph{NeuroImage}, vol.~39, no.~1, pp. 336--347, 2008.
 
 \bibitem{steinhaus1956division}
 H.~Steinhaus, ``Sur la division des corp materiels en parties,'' \emph{Bull.
@@ -189,11 +239,6 @@ M.~Maddah, W.~M. Wells, 3rd, S.~K. Warfield, C.~F. Westin, and W.~E. Grimson,
   ``\BIBforeignlanguage{eng}{Probabilistic clustering and quantitative analysis
   of white matter fiber tracts.}'' \emph{\BIBforeignlanguage{eng}{Inf Process
   Med Imaging}}, vol.~20, pp. 372--83, 2007.
-
-\bibitem{moberts2005evaluation}
-B.~Moberts, A.~Vilanova, and J.~van Wijk, ``{Evaluation of fiber clustering
-  methods for diffusion tensor imaging},'' in \emph{IEEE Visualization}, 2005,
-  pp. 65--72.
 
 \bibitem{merboldt1992diffusion}
 K.~Merboldt, W.~Hanicke, H.~Bruhn, M.~Gyngell, and J.~Frahm, ``{Diffusion
