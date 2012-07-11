@@ -1,51 +1,45 @@
 This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: QB_FBIM.aux
-The style file: IEEEtran.bst
-Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+The style file: plainnat.bst
 Database file #1: diffusion.bib
--- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
--- http://www.michaelshell.org/tex/ieeetran/bibtex/
--- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
-
-Done.
 You've used 60 entries,
-            4039 wiz_defined-function locations,
-            1167 strings with 19387 characters,
-and the built_in function-call counts, 48904 in all, are:
-= -- 3999
-> -- 1270
-< -- 439
-+ -- 698
-- -- 222
-* -- 2364
-:= -- 7181
-add.period$ -- 128
+            2773 wiz_defined-function locations,
+            971 strings with 17250 characters,
+and the built_in function-call counts, 33193 in all, are:
+= -- 2986
+> -- 2156
+< -- 39
++ -- 728
+- -- 666
+* -- 2824
+:= -- 5054
+add.period$ -- 214
 call.type$ -- 60
-change.case$ -- 59
-chr.to.int$ -- 1002
-cite$ -- 60
-duplicate$ -- 3488
-empty$ -- 3777
-format.name$ -- 272
-if$ -- 11337
-int.to.chr$ -- 0
-int.to.str$ -- 60
-missing$ -- 599
-newline$ -- 203
-num.names$ -- 60
-pop$ -- 1346
+change.case$ -- 397
+chr.to.int$ -- 58
+cite$ -- 120
+duplicate$ -- 1426
+empty$ -- 2479
+format.name$ -- 739
+if$ -- 7006
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 58
+newline$ -- 334
+num.names$ -- 240
+pop$ -- 769
 preamble$ -- 1
-purify$ -- 0
-quote$ -- 2
-skip$ -- 3802
+purify$ -- 340
+quote$ -- 0
+skip$ -- 1147
 stack$ -- 0
-substring$ -- 2441
-swap$ -- 2961
-text.length$ -- 105
+substring$ -- 1303
+swap$ -- 246
+text.length$ -- 22
 text.prefix$ -- 0
-top$ -- 5
-type$ -- 60
+top$ -- 0
+type$ -- 655
 warning$ -- 0
-while$ -- 233
-width$ -- 62
-write$ -- 608
+while$ -- 281
+width$ -- 0
+write$ -- 841

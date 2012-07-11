@@ -10,8 +10,7 @@
 \citation{zhang2005dti}
 \citation{zhang2003visualizing}
 \citation{zhang2008identifying}
-\citation{zvitia2008adaptive}
-\citation{Zvitia2010}
+\citation{zvitia2008adaptive,Zvitia2010}
 \citation{ElKouby2005}
 \newcplabel{^_1}{1}
 \select@language{english}
@@ -55,7 +54,8 @@
 \citation{leemans17new,malcolm2009filtered}
 \citation{wang2010tractography}
 \citation{Durrleman2009,durrleman2010registration}
-\citation{ODonnell_IEEETMI07,wang2010tractography}
+\citation{ODonnell_IEEETMI07}
+\citation{wang2010tractography}
 \citation{EGMB10}
 \citation{steinhaus1956division,macqueen1967some}
 \citation{zhang1997birch}
@@ -66,113 +66,103 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {{2.1}}The QB algorithm}{3}}
 \citation{steinhaus1956division,macqueen1967some}
 \citation{zhang1997birch}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces QuickBundles}}{4}}
+\newlabel{Alg:QuickBundles}{{1}{4}}
 \citation{Ding2003,MaddahIPMI2007,zhang2005dti}
 \citation{corouge2004towards}
 \citation{EGMB10,Visser2010}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces QuickBundles}}{4}}
-\newlabel{Alg:QuickBundles}{{1}{4}}
-\newlabel{sub:track-distances}{{{2.2}}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {{2.2}}Track distances and preprocessing}{4}}
-\newlabel{eq:direct_flip_distance}{{3}{4}}
 \citation{EGMB10}
-\citation{moberts2005evaluation}
+\newlabel{sub:track-distances}{{{2.2}}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {{2.2}}Track distances and preprocessing}{5}}
+\newlabel{eq:direct_flip_distance}{{3}{5}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The principal distance used in this work is minimum average direct flip distance $\textrm  {MDF}=\qopname  \relax m{min}(d_{\textrm  {direct}},d_{\textrm  {flipped}})$ which is a symmetric distance that can deal with the track bi-directionality problem; it works on tracks which have the same number of points. Another distance we use is the mean average distance which is again symmetric but does not require the tracks to have the same number of points: $\textrm  {MAM}_{\textrm  {mean}}=(d_{mean}(\mathbf  {s},\mathbf  {s'})+d_{mean}(\mathbf  {s'},\mathbf  {s}))/2$ (see Eq. (\ref  {eq:mean_average_distance})). In this figure the components of both distances are shown; the tracks are drawn with solid lines, and then with dashed lines we connect the pairs of points of the two tracks whose distances contribute to the overall metric. Note that we cannot calculate the $\textrm  {MDF}$ between the tracks on the left of the figure because they have different numbers of points. }}{5}}
 \newlabel{Flo:Distances_used}{{2}{5}}
 \newlabel{sub:exemplars}{{{2.3}}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {{2.3}}Exemplar tracks}{5}}
-\newlabel{sub:Tightness-comparisons-1}{{{2.4}}{5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {{2.4}}Bundle Adjacency Comparisons}{5}}
-\newlabel{eq:TC}{{4}{5}}
-\newlabel{sub:merging}{{{2.5}}{5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {{2.5}}Merging two sets of bundles}{5}}
+\citation{moberts2005evaluation}
 \citation{merboldt1992diffusion,MAB04}
 \citation{Yeh2010}
 \citation{Yeh2010}
 \citation{Garyfallidis_thesis}
-\citation{dempster1977maximum}
-\citation{gonzalez1985clustering}
+\newlabel{sub:Tightness-comparisons-1}{{{2.4}}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {{2.4}}Bundle Adjacency Comparisons}{6}}
+\newlabel{eq:TC}{{4}{6}}
+\newlabel{sub:merging}{{{2.5}}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {{2.5}}Merging two sets of bundles}{6}}
 \newlabel{sub:QB-Data-sets}{{{2.6}}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {{2.6}}Data sets}{6}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Results}{6}}
 \newlabel{sub:Complexity}{{{3.1}}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {{3.1}}Complexity and timings}{6}}
-\newlabel{sub:Comparisons}{{{3.2}}{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {{3.2}}Stability of QB}{6}}
+\citation{dempster1977maximum}
+\citation{gonzalez1985clustering}
 \citation{wang2010tractography}
 \citation{wang2010tractography}
 \citation{Visser2010}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Time comparisons of QB using different number of points per track, different distance thresholds and different number of tracks. QB is a very efficient algorithm whose performance is controlled by just three parameters. (1) the initial downsampling $K$ of the tracks exemplified in four sub-diagrams: 3 points (A), 6 points (B) 12 points (C), 18 points (D). (2) the distance threshold $\theta $ in millimeters shown in 4 colours: 10~mm (blue), 15~mm (green), 20~mm (red), 25~mm (cyan). The final parameter, not shown explicitly in these diagrams, is the underlying structure of the data which is expressed by the resulting number of clusters. We used a full tractography to generate these figures without removing or preselecting any parts. Random subsets of the tractography were chosen with size $N$ from \numrange {e5}{e6} (x-axis)}}{7}}
 \newlabel{Flo:Speed1}{{3}{7}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Performance timings for QB compared with some timings reported in the literature.}}{7}}
-\newlabel{Flo:timings}{{1}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Left: $3$ bundles of simulated trajectories; red, blue and green consisting of $150$ tracks each. All $450$ tracks are clustered together using QB. Middle and Right: virtual tracks using thresholds $1$ and $8$ respectively. At low threshold the underlying structure is reflected in a more detailed representation. At higher threshold, closer bundles merge together. Here the red and blue bundle have merged together in one cluster represented by the purple virtual track.}}{7}}
-\newlabel{Flo:simulated_orbits}{{4}{7}}
+\newlabel{sub:Comparisons}{{{3.2}}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {{3.2}}Stability of QB}{7}}
 \newlabel{QB_Representation}{{{3.3}}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {{3.3}}The QB Representation}{7}}
 \citation{Smith2006NeuroImage}
-\citation{paus1996human}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Performance timings for QB compared with some timings reported in the literature.}}{8}}
+\newlabel{Flo:timings}{{1}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Left: $3$ bundles of simulated trajectories; red, blue and green consisting of $150$ tracks each. All $450$ tracks are clustered together using QB. Middle and Right: virtual tracks using thresholds $1$ and $8$ respectively. At low threshold the underlying structure is reflected in a more detailed representation. At higher threshold, closer bundles merge together. Here the red and blue bundle have merged together in one cluster represented by the purple virtual track.}}{8}}
+\newlabel{Flo:simulated_orbits}{{4}{8}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Left: QB clustering of the fornix bundle. The original fornix is shown in black ($1076$ tracks). All tracks were equidistantly downsampled at $3$ points. With a $5$~mm threshold QB generates $22$ clusters (top right). With $10$~mm it generates $7$ (bottom left) and with $20$~mm the whole fornix is determined by one cluster only (bottom right). Right panel: an example of a full tractography (\num {0.25e6} tracks) being clustered using QB with a distance threshold of $10$~mm. $763$ virtual tracks were produced which is a huge simplification of the initial tractography. Every track shown here represents an entire cluster from $10$ to $5000$ tracks each. These can be thought as fast access points to explore the entire data set. The colour here encodes track orientation.}}{8}}
 \newlabel{Flo:QB_fornix}{{5}{8}}
 \newlabel{sub:Atlases-made-easy}{{{3.4}}{8}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {{3.4}}Tractographic atlases and landmarks}{8}}
-\newlabel{sub:QB_as_input}{{{3.5}}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {{3.5}}QB as input to higher complexity methods}{8}}
-\citation{eads-hcluster-software}
-\citation{dueck2009affinity}
-\citation{malcolm2009filtered}
+\citation{paus1996human}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces The 17 fiber bundles chosen for the analysis in Fig.~\ref  {Flo:CloseToSelected}.}}{9}}
 \newlabel{Flo:structures}{{2}{9}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces A novel way to do comparisons between subjects. Correspondence between different subjects (last $3$ rows) and a few landmarks picked from the tractographic atlas generated by merging QB clusterings of $10$ subjects (top row). The fact that we can see this amount of agreement and continuity on the last $3$ rows from so few virtual tracks provides a new robust way to statistical comparison between tractographic data sets. (Rows 3 and 4 are from different viewpoints from that in rows 1 and 2.) }}{9}}
 \newlabel{Flo:CloseToSelected}{{6}{9}}
+\newlabel{sub:QB_as_input}{{{3.5}}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {{3.5}}QB as input to higher complexity methods}{9}}
+\citation{eads-hcluster-software}
+\citation{dueck2009affinity}
+\citation{malcolm2009filtered}
 \citation{leemans2006multiscale,mayer2008bundles,mayerdirect,mayer2011supervised,durrleman2010registration,zvitia2008adaptive,Zvitia2010,ZiyanMICCAI07}
 \citation{goh2006algebraic}
+\newlabel{sub:exemplars_vs_ROIs}{{{3.6}}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {{3.6}}Exemplars replace ROI masks}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces QB was used to cluster an entire set of $10$ tractographies together (\num {2500000} tracks). The resulting QB representation was used as input to hierarchical clustering (HC) using single linkage (left) and to affinity propagation (AP, right). Colours encode cluster labels. HC results in 19 clusters, AP in 23. QB facilitates significantly the operation of the other two algorithms which would not be able to cluster the entire data sets on current computers. Note the top left panel where QB+HC have managed to cluster the entire CC in one bundle.}}{10}}
+\newlabel{Flo:LSC+HC+AP}{{7}{10}}
+\newlabel{sub:direct_registration}{{{3.7}}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {{3.7}}Direct Tractography Registration}{10}}
 \citation{fletcher1987practical}
 \citation{maes1997multimodality}
 \citation{roche1998correlation}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces QB was used to cluster an entire set of $10$ tractographies together (\num {2500000} tracks). The resulting QB representation was used as input to hierarchical clustering (HC) using single linkage (left) and to affinity propagation (AP, right). Colours encode cluster labels. HC results in 19 clusters, AP in 23. QB facilitates significantly the operation of the other two algorithms which would not be able to cluster the entire data sets on current computers. Note the top left panel where QB+HC have managed to cluster the entire CC in one bundle.}}{10}}
-\newlabel{Flo:LSC+HC+AP}{{7}{10}}
-\newlabel{sub:exemplars_vs_ROIs}{{{3.6}}{10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {{3.6}}Exemplars replace ROI masks}{10}}
-\newlabel{sub:direct_registration}{{{3.7}}{10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {{3.7}}Direct Tractography Registration}{10}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Tractographies from two different subjects before (left) and after (right) QB-based direct registration.}}{11}}
 \newlabel{Flo:direct_registration}{{8}{11}}
 \newlabel{sub:short_tracks}{{{3.8}}{11}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {{3.8}}Quality Control}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces A simple and vigorous strategy for handling short and long tracks together by picking a track of interest from one of our atlases. Colour map here encodes track length. A: a single selected atlas track, B: for a single subject, $245$ actual tracks closer than $15$~mm (MDF distance), C: the tracks from B clustered with $23$ virtual tracks using QuickBundles, D: $\num {3421}$ actual tracks closer than $6$~mm ($\textrm  {MAM}_{\textrm  {min}}$ distance) from the virtual tracks in C are shown. We can see that a great number of short tracks have been brought together along with the tracks in B. In this way we managed to bring together in an automatic fashion an entire bundle consisting both of long and short tracks by just selecting a single track.}}{11}}
-\newlabel{Flo:arcuate_close}{{9}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces A simple and vigorous strategy for handling short and long tracks together by picking a track of interest from one of our atlases. Colour map here encodes track length. A: a single selected atlas track, B: for a single subject, $245$ actual tracks closer than $15$~mm (MDF distance), C: the tracks from B clustered with $23$ virtual tracks using QuickBundles, D: $\num {3421}$ actual tracks closer than $6$~mm ($\textrm  {MAM}_{\textrm  {min}}$ distance) from the virtual tracks in C are shown. We can see that a great number of short tracks have been brought together along with the tracks in B. In this way we managed to bring together in an automatic fashion an entire bundle consisting both of long and short tracks by just selecting a single track.}}{12}}
+\newlabel{Flo:arcuate_close}{{9}{12}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Discussion and conclusion}{12}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Technical stuff}{12}}
-\newlabel{sec:Hausdorff}{{{5.1}}{12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {{5.1}}Hausdorff (MAM) inter-track distance}{12}}
-\newlabel{eq:minimum_distance}{{5}{12}}
-\newlabel{eq:maximum distance}{{6}{12}}
-\newlabel{eq:min_average_distance}{{7}{12}}
-\newlabel{eq:mean_average_distance}{{8}{12}}
-\newlabel{sub:QB_step_by_step}{{{5.2}}{12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {{5.2}}QB Step-by-step}{12}}
-\bibstyle{IEEEtran}
+\bibstyle{plainnat}
 \bibdata{diffusion}
-\bibcite{moberts2005evaluation}{{1}{}{{}}{{}}}
-\bibcite{wang2010tractography}{{2}{}{{}}{{}}}
-\bibcite{Visser2010}{{3}{}{{}}{{}}}
-\bibcite{EGMB10}{{4}{}{{}}{{}}}
-\bibcite{catani2005perisylvian}{{5}{}{{}}{{}}}
-\bibcite{gerig2004analysis}{{6}{}{{}}{{}}}
-\bibcite{Guevara2010}{{7}{}{{}}{{}}}
-\bibcite{Tsai2007}{{8}{}{{}}{{}}}
-\bibcite{zhang2005dti}{{9}{}{{}}{{}}}
-\bibcite{zhang2003visualizing}{{10}{}{{}}{{}}}
-\bibcite{zhang2008identifying}{{11}{}{{}}{{}}}
-\bibcite{zvitia2008adaptive}{{12}{}{{}}{{}}}
-\bibcite{Zvitia2010}{{13}{}{{}}{{}}}
-\bibcite{ElKouby2005}{{14}{}{{}}{{}}}
-\bibcite{brun2004clustering}{{15}{}{{}}{{}}}
-\bibcite{Ding2003a}{{16}{}{{}}{{}}}
-\bibcite{corouge2004towards}{{17}{}{{}}{{}}}
-\bibcite{Corouge2004}{{18}{}{{}}{{}}}
-\bibcite{Corouge2006}{{19}{}{{}}{{}}}
-\bibcite{ODonnell_IEEETMI07}{{20}{}{{}}{{}}}
+\bibcite{MAB04}{{1}{2004}{{Bernstein et~al.}}{{Bernstein, King, and Zhou}}}
+\bibcite{brun2004clustering}{{2}{2004}{{Brun et~al.}}{{Brun, Knutsson, Park, Shenton, and Westin}}}
+\bibcite{catani2005perisylvian}{{3}{2005}{{Catani et~al.}}{{Catani, Jones, et~al.}}}
+\bibcite{chalmers1996linear}{{4}{1996}{{Chalmers}}{{}}}
+\bibcite{Corouge2004}{{5}{2004{a}}{{Corouge et~al.}}{{Corouge, Gouttard, and Gerig}}}
+\bibcite{corouge2004towards}{{6}{2004{b}}{{Corouge et~al.}}{{Corouge, Gouttard, and Gerig}}}
+\bibcite{Corouge2006}{{7}{2006}{{Corouge et~al.}}{{Corouge, Fletcher, Joshi, Gouttard, and Gerig}}}
+\bibcite{dempster1977maximum}{{8}{1977}{{Dempster et~al.}}{{Dempster, Laird, and Rubin}}}
+\bibcite{Ding2003}{{9}{2003{a}}{{Ding et~al.}}{{Ding, Gore, and Anderson}}}
+\bibcite{Ding2003a}{{10}{2003{b}}{{Ding et~al.}}{{Ding, Gore, and Anderson}}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Technical stuff}{13}}
+\newlabel{sec:Hausdorff}{{{5.1}}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {{5.1}}Hausdorff (MAM) inter-track distance}{13}}
+\newlabel{eq:minimum_distance}{{5}{13}}
+\newlabel{eq:maximum distance}{{6}{13}}
+\newlabel{eq:min_average_distance}{{7}{13}}
+\newlabel{eq:mean_average_distance}{{8}{13}}
+\newlabel{sub:QB_step_by_step}{{{5.2}}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {{5.2}}QB Step-by-step}{13}}
 \select@language{british}
 \@writefile{toc}{\select@language{british}}
 \@writefile{lof}{\select@language{british}}
@@ -181,47 +171,56 @@
 \@writefile{toc}{\select@language{english}}
 \@writefile{lof}{\select@language{english}}
 \@writefile{lot}{\select@language{english}}
-\bibcite{o2009tract}{{21}{}{{}}{{}}}
-\bibcite{Maddah_MICCA2005}{{22}{}{{}}{{}}}
-\bibcite{maddah2006statistical}{{23}{}{{}}{{}}}
-\bibcite{witelson1989hand}{{24}{}{{}}{{}}}
-\bibcite{Maddah_IEEEBI2008}{{25}{}{{}}{{}}}
-\bibcite{jonasson2005fiber}{{26}{}{{}}{{}}}
-\bibcite{jianu2009exploring}{{27}{}{{}}{{}}}
-\bibcite{chalmers1996linear}{{28}{}{{}}{{}}}
-\bibcite{eades1984heuristic}{{29}{}{{}}{{}}}
-\bibcite{Durrleman2009}{{30}{}{{}}{{}}}
-\bibcite{durrleman2010registration}{{31}{}{{}}{{}}}
-\bibcite{leemans17new}{{32}{}{{}}{{}}}
-\bibcite{malcolm2009filtered}{{33}{}{{}}{{}}}
-\bibcite{ziyan2009consistency}{{34}{}{{}}{{}}}
-\bibcite{Wakana2007NeuroImage}{{35}{}{{}}{{}}}
-\bibcite{Hua2008NeuroImage}{{36}{}{{}}{{}}}
-\bibcite{steinhaus1956division}{{37}{}{{}}{{}}}
-\bibcite{macqueen1967some}{{38}{}{{}}{{}}}
-\bibcite{zhang1997birch}{{39}{}{{}}{{}}}
-\bibcite{Ding2003}{{40}{}{{}}{{}}}
-\bibcite{MaddahIPMI2007}{{41}{}{{}}{{}}}
-\bibcite{merboldt1992diffusion}{{42}{}{{}}{{}}}
-\bibcite{MAB04}{{43}{}{{}}{{}}}
-\bibcite{Yeh2010}{{44}{}{{}}{{}}}
-\bibcite{Garyfallidis_thesis}{{45}{}{{}}{{}}}
-\bibcite{dempster1977maximum}{{46}{}{{}}{{}}}
-\bibcite{gonzalez1985clustering}{{47}{}{{}}{{}}}
-\bibcite{Smith2006NeuroImage}{{48}{}{{}}{{}}}
-\bibcite{paus1996human}{{49}{}{{}}{{}}}
-\bibcite{eads-hcluster-software}{{50}{}{{}}{{}}}
-\bibcite{dueck2009affinity}{{51}{}{{}}{{}}}
-\bibcite{leemans2006multiscale}{{52}{}{{}}{{}}}
-\bibcite{mayer2008bundles}{{53}{}{{}}{{}}}
-\bibcite{mayerdirect}{{54}{}{{}}{{}}}
-\bibcite{mayer2011supervised}{{55}{}{{}}{{}}}
-\bibcite{ZiyanMICCAI07}{{56}{}{{}}{{}}}
-\bibcite{goh2006algebraic}{{57}{}{{}}{{}}}
-\bibcite{fletcher1987practical}{{58}{}{{}}{{}}}
-\bibcite{maes1997multimodality}{{59}{}{{}}{{}}}
-\bibcite{roche1998correlation}{{60}{}{{}}{{}}}
+\bibcite{dueck2009affinity}{{11}{2009}{{Dueck}}{{}}}
+\bibcite{durrleman2010registration}{{12}{2010}{{Durrleman et~al.}}{{Durrleman, Fillard, Pennec, Trouv{\'e}, and Ayache}}}
+\bibcite{Durrleman2009}{{13}{2009}{{Durrleman et~al.}}{{Durrleman, Fillard, Pennec, Trouv\'{e}, and Ayache}}}
+\bibcite{eades1984heuristic}{{14}{1984}{{Eades}}{{}}}
+\bibcite{eads-hcluster-software}{{15}{2008}{{Eads}}{{}}}
+\bibcite{ElKouby2005}{{16}{2005}{{El~Kouby et~al.}}{{El~Kouby, Cointepas, Poupon, Rivi\`ere, Golestani, Poline, Le~Bihan, and Mangin}}}
+\bibcite{fletcher1987practical}{{17}{1987}{{Fletcher}}{{}}}
+\bibcite{Garyfallidis_thesis}{{18}{2012}{{Garyfallidis}}{{}}}
+\bibcite{EGMB10}{{19}{2010}{{Garyfallidis et~al.}}{{Garyfallidis, Brett, and Nimmo-Smith}}}
+\bibcite{gerig2004analysis}{{20}{2004}{{Gerig et~al.}}{{Gerig, Gouttard, and Corouge}}}
+\bibcite{goh2006algebraic}{{21}{2006}{{Goh and Vidal}}{{}}}
+\bibcite{gonzalez1985clustering}{{22}{1985}{{Gonzalez}}{{}}}
+\bibcite{Guevara2010}{{23}{2010}{{Guevara et~al.}}{{Guevara, Poupon, Rivi\`ere, Cointepas, Descoteaux, Thirion, and Mangin}}}
+\bibcite{Hua2008NeuroImage}{{24}{2008}{{Hua et~al.}}{{Hua, Zhang, Wakana, Jiang, Li, Reich, Calabresi, Pekar, {van Zijl}, and Mori}}}
+\bibcite{jianu2009exploring}{{25}{2009}{{Jianu et~al.}}{{Jianu, Demiralp, and Laidlaw}}}
+\bibcite{jonasson2005fiber}{{26}{2005}{{Jonasson et~al.}}{{Jonasson, Hagmann, Thiran, and Wedeen}}}
+\bibcite{leemans17new}{{27}{2009}{{Leemans and Jones}}{{}}}
+\bibcite{leemans2006multiscale}{{28}{2006}{{Leemans et~al.}}{{Leemans, Sijbers, De~Backer, Vandervliet, and Parizel}}}
+\bibcite{macqueen1967some}{{29}{1967}{{MacQueen}}{{}}}
+\bibcite{Maddah_MICCA2005}{{30}{2005}{{Maddah et~al.}}{{Maddah, Mewes, Haker, Grimson, and Warfield}}}
+\bibcite{maddah2006statistical}{{31}{2006}{{Maddah et~al.}}{{Maddah, Grimson, and Warfield}}}
+\bibcite{MaddahIPMI2007}{{32}{2007}{{Maddah et~al.}}{{Maddah, Wells, Warfield, Westin, and Grimson}}}
+\bibcite{Maddah_IEEEBI2008}{{33}{2008}{{Maddah et~al.}}{{Maddah, Zollei, Grimson, Westin, and Wells}}}
+\bibcite{maes1997multimodality}{{34}{1997}{{Maes et~al.}}{{Maes, Collignon, Vandermeulen, Marchal, and Suetens}}}
+\bibcite{malcolm2009filtered}{{35}{2009}{{Malcolm et~al.}}{{Malcolm, Shenton, and Rathi}}}
+\bibcite{mayer2008bundles}{{36}{2008}{{Mayer and Greenspan}}{{}}}
+\bibcite{mayer2011supervised}{{37}{2011}{{Mayer et~al.}}{{Mayer, Zimmerman-Moreno, Shadmi, Batikoff, and Greenspan}}}
+\bibcite{mayerdirect}{{38}{2007}{{Mayer and Greenspan}}{{}}}
+\bibcite{merboldt1992diffusion}{{39}{1992}{{Merboldt et~al.}}{{Merboldt, Hanicke, Bruhn, Gyngell, and Frahm}}}
+\bibcite{moberts2005evaluation}{{40}{2005}{{Moberts et~al.}}{{Moberts, Vilanova, and van Wijk}}}
+\bibcite{ODonnell_IEEETMI07}{{41}{2007}{{O'Donnell and Westin}}{{}}}
+\bibcite{o2009tract}{{42}{2009}{{O'Donnell et~al.}}{{O'Donnell, Westin, and Golby}}}
+\bibcite{paus1996human}{{43}{1996}{{Paus et~al.}}{{Paus, Tomaiuolo, Otaky, MacDonald, Petrides, Atlas, Morris, and Evans}}}
+\bibcite{roche1998correlation}{{44}{1998}{{Roche et~al.}}{{Roche, Malandain, Pennec, and Ayache}}}
+\bibcite{Smith2006NeuroImage}{{45}{2006}{{Smith et~al.}}{{Smith, Jenkinson, Johansen-Berg, Rueckert, Nichols, Mackay, Watkins, Ciccarelli, Cader, Matthews, and Behrens}}}
+\bibcite{steinhaus1956division}{{46}{1956}{{Steinhaus}}{{}}}
+\bibcite{Tsai2007}{{47}{2007}{{Tsai et~al.}}{{Tsai, Westin, Hero, and Willsky}}}
+\bibcite{Visser2010}{{48}{2010}{{Visser et~al.}}{{Visser, Nijhuis, Buitelaar, and Zwiers}}}
+\bibcite{Wakana2007NeuroImage}{{49}{2007}{{Wakana et~al.}}{{Wakana, Caprihan, Panzenboeck, Fallon, Perry, Gollub, Hua, Zhang, Jiang, Dubey, Blitz, {van Zijl}, and Mori}}}
+\bibcite{wang2010tractography}{{50}{2010}{{Wang et~al.}}{{Wang, Grimson, and Westin}}}
+\bibcite{witelson1989hand}{{51}{1989}{{Witelson}}{{}}}
+\bibcite{Yeh2010}{{52}{2010}{{Yeh et~al.}}{{Yeh, Wedeen, and Tseng}}}
+\bibcite{zhang2005dti}{{53}{2005}{{Zhang and Laidlaw}}{{}}}
+\bibcite{zhang2008identifying}{{54}{2008}{{Zhang et~al.}}{{Zhang, Correia, and Laidlaw}}}
+\bibcite{zhang2003visualizing}{{55}{2003}{{Zhang et~al.}}{{}}}
+\bibcite{zhang1997birch}{{56}{1997}{{Zhang et~al.}}{{Zhang, Ramakrishnan, and Livny}}}
+\bibcite{ZiyanMICCAI07}{{57}{2007}{{Ziyan et~al.}}{{Ziyan, Sabuncu, O'Donnell, and Westin}}}
+\bibcite{ziyan2009consistency}{{58}{2009}{{Ziyan et~al.}}{{Ziyan, Sabuncu, Grimson, and Westin}}}
+\bibcite{zvitia2008adaptive}{{59}{2008}{{Zvitia et~al.}}{{Zvitia, Mayer, and Greenspan}}}
+\bibcite{Zvitia2010}{{60}{2010}{{Zvitia et~al.}}{{Zvitia, Mayer, Shadmi, Miron, and Greenspan}}}
 \global\@namedef{@lastpage@}{15}
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces This is a step-by-step explanation of how QuickBundles proceeds when clustering six tracks (top left) resulting in three bundles (blue, red and green, bottom right)}}{16}}
 \newlabel{Fig:LSC_simple}{{10}{16}}
-\providecommand\NAT@force@numbers{}\NAT@force@numbers
