@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.6.10)  11 JUL 2012 13:16
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.6.10)  11 JUL 2012 14:41
 entering extended mode
  %&-line parsing enabled.
 **QB_FBIM
@@ -504,12 +504,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Underfull \hbox (badness 4673) in paragraph at lines 237--246
-\T1/ppl/m/n/9 WARD REF-ER-ENCE NEEDED?] to clus-ter the fronto-
+Underfull \hbox (badness 4291) in paragraph at lines 237--246
+[]\T1/ppl/m/n/9 Leemans and Jones [2009] used affin-ity prop-a-ga-tion
  []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <8> not available
 (Font)              Font shape `T1/phv/b/it' tried instead on input line 281.
@@ -529,8 +526,9 @@ Overfull \hbox (261.0pt too wide) has occurred while \output is active
  []
 
 [2]
-File: Figures/Fig_4_cst_simplification_relabeled.eps Graphic file (type eps)
- <Figures/Fig_4_cst_simplification_relabeled.eps>
+File: Figures/Fig_4_cst_simplification_relabeled_triple.eps Graphic file (type 
+eps)
+ <Figures/Fig_4_cst_simplification_relabeled_triple.eps>
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <8> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 332.
 LaTeX Font Info:    Try loading font information for U+fplmbb on input line 380
@@ -539,14 +537,6 @@ LaTeX Font Info:    Try loading font information for U+fplmbb on input line 380
 (/usr/share/texmf-texlive/tex/latex/psnfss/ufplmbb.fd
 File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
 )
-Overfull \hbox (261.0pt too wide) has occurred while \output is active
-[][] 
- []
-
-
-Overfull \vbox (1.0pt too high) has occurred while \output is active []
-
- [3]
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <9> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 423.
 LaTeX Font Info:    Try loading font information for T1+pcr on input line 431.
@@ -557,10 +547,24 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
+Overfull \hbox (261.0pt too wide) has occurred while \output is active
+[][] 
+ []
+
+
+Overfull \vbox (1.0pt too high) has occurred while \output is active []
+
+ [3]
+Overfull \vbox (85.0545pt too high) has occurred while \output is active []
+
+
 Overfull \hbox (2.34142pt too wide) in paragraph at lines 481--490
 []\T1/ppl/m/n/8 Popular amal-ga-ma-tion clus-ter-ing al-go-rithms such as $\OML
 /zplm/m/it/8 k$\T1/ppl/m/n/8 -means Stein-
  []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (261.0pt too wide) has occurred while \output is active
@@ -631,10 +635,21 @@ File: Figures/Fig_5_helix_phantom.eps Graphic file (type eps)
 <Figures/Fig_5_helix_phantom.eps>
 File: Figures/Fig_6_QB_simple.eps Graphic file (type eps)
  <Figures/Fig_6_QB_simple.eps>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Underfull \hbox (badness 1910) in paragraph at lines 1038--1051
 []\T1/ppl/b/n/9 Tractographic At-lases \T1/ppl/m/n/9 For each sub-jects, (a) lo
 ad the
  []
+
+
+Underfull \hbox (badness 4156) in paragraph at lines 1052--1060
+[]\T1/ppl/m/n/9 This at-las has been con-structed with-out con-sid-er-ing
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (261.0pt too wide) has occurred while \output is active
@@ -650,12 +665,11 @@ Overfull \hbox (261.0pt too wide) has occurred while \output is active
  []
 
 [8]
-Underfull \hbox (badness 4156) in paragraph at lines 1052--1060
-[]\T1/ppl/m/n/9 This at-las has been con-structed with-out con-sid-er-ing
- []
-
 File: Figures/Fig_7_close_distance.eps Graphic file (type eps)
-<Figures/Fig_7_close_distance.eps>
+ <Figures/Fig_7_close_distance.eps>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (261.0pt too wide) has occurred while \output is active
 [][] 
  []
@@ -688,18 +702,18 @@ Overfull \hbox (261.0pt too wide) has occurred while \output is active
  []
 
 [10]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 File: Figures/Fig_9_QB_registration2_only_landscape.eps Graphic file (type eps)
 
- <Figures/Fig_9_QB_registration2_only_landscape.eps>
+
+<Figures/Fig_9_QB_registration2_only_landscape.eps>
 File: Figures/Fig_10_arcuate_small_fibers.eps Graphic file (type eps)
 
 <Figures/Fig_10_arcuate_small_fibers.eps>
 Overfull \hbox (16.01524pt too wide) in paragraph at lines 1370--1371
  [][] 
  []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (261.0pt too wide) has occurred while \output is active
@@ -710,12 +724,6 @@ Overfull \hbox (261.0pt too wide) has occurred while \output is active
 Overfull \vbox (1.0pt too high) has occurred while \output is active []
 
  [11]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (261.0pt too wide) has occurred while \output is active
 [][] 
  []
@@ -772,20 +780,48 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:10.19347pt when 484.3657pt
+Extra height:10.19347pt when 444.69347pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:0.0pt when 485.3657pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-(2)Left:485.3657pt Right:484.73141pt Output:485.3657pt
+Extra height:10.19347pt when 445.69347pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:10.19347pt when 446.69347pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:10.19347pt when 447.69347pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:10.19347pt when 448.69347pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:0.0pt when 449.69347pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+(2)Left:449.69347pt Right:449.38693pt Output:449.69347pt
 - LAST -
 Extra skip:0.0pt
-Left:485.3657pt
-Right:484.73141pt
-Output:485.3657pt
+Left:449.69347pt
+Right:449.38693pt
+Output:449.69347pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -818,17 +854,14 @@ Overfull \hbox (261.0pt too wide) has occurred while \output is active
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
  5793 strings out of 495062
- 77799 string characters out of 1182644
- 171282 words of memory out of 3000000
+ 77813 string characters out of 1182644
+ 169282 words of memory out of 3000000
  8821 multiletter control sequences out of 15000+50000
  74533 words of font info for 154 fonts, out of 3000000 for 9000
  32 hyphenation exceptions out of 8191
  50i,15n,67p,1090b,643s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on QB_FBIM.dvi (16 pages, 129176 bytes).
+Output written on QB_FBIM.dvi (16 pages, 128080 bytes).
