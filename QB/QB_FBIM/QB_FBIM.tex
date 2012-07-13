@@ -287,17 +287,12 @@ For further recent overviews see \citet{ODonnell_IEEETMI07} and
 \begin{figure*}[htp]
 \centerline{\includegraphics[width=160mm]{Figures/Fig_4_cst_simplification_relabeled_triple.eps}}
     % \par\end{centering}
-\caption{Part of the CST bundle (blue) consisting of $11041$ tracks
-  labelled by an expert. At first glance it looks as though all tracks
+\caption{Part of the CST bundle (blue) consisting of $11041$ tracks. At first glance it looks as though all tracks
   have a similar shape, and possibly converge towards the bottom, and
   fan out towards the top. However, this is a misreading caused by the
   opaque density when all the tracks are visualised.  QB can help us see
-  the finer structure of the bundle and identify its elements. On the
-  right hand side we see the 14 QB representative tracks of the CST. We
-  can now clearly see that several parts which looked homogeneous are
-  actually broken bundles e.g.~dark green (A), light blue (C), or
-  bundles with very different shape e.g.~light green (B). To cluster
-  this bundle took $0.1$~seconds.\label{Flo:cst_pbc}}
+  the finer structure of the bundle and identify its elements. In the middle we see the 16 QB representative tracks of the CST. We can now clearly obvserve that several parts which looked homogeneous are
+  actually broken bundles or bundles with very different shape. On the right panel we see the tracks coloured according to their cluster label. The distance threshold used here was $10$~mm. \label{Flo:cst_pbc}}
 \end{figure*}
 
 Most of these proposed tractography clustering algorithms are very slow and many
@@ -991,7 +986,7 @@ from $10$ to $\num{5000}$ tracks each.
 
 \begin{figure*}[htp]
 \centerline{\includegraphics[width=160mm]{Figures/Fig_6_QB_fornix}}
-\caption{NEW: QB clustering of the Fornix bundle. The original Fornix ($1076$ streamlines) is shown on the left panel using a standard orientation colormap. We observe that the Fornix consists of two long distant legs (left and right Fimbria) and a thicker upper part (Body of Fornix). We show here how QB will be able to distinguish the parts of the Fornix at different resolutions. With is a $15$~mm threshold QB generates 4 clusters shown on the second panel with distinct colors. Here the left and right Fimbria are clearly distinguished from the Body. A last cluster (with blue) exposes a shorter part of the Body which is probably due to noise in the data. With a $18$~mm threshold only two clusters are created. Both Fibria are brought together as one cluster. A property useful for studies which want to use both Fimbria as one. With a $20$~mm threshold the entire Fornix is one cluster. A case useful for interactive applications because now the entire Fornix can be described by only on centroid track.  OBSOLETE:Left: QB clustering of the fornix bundle. The original fornix
+\caption{NEW: QB clustering of the Fornix bundle. The original Fornix ($1076$ streamlines) is shown on the left panel using a standard orientation colormap. We observe that the Fornix consists of two long distant legs (left and right Fimbria) and a thicker upper part (Body of Fornix). We show here how QB will be able to distinguish the parts of the Fornix at different resolutions. With is a $15$~mm threshold QB generates 4 clusters shown on the second panel with distinct colors. Here the left and right Fimbria are clearly distinguished from the Body. A last cluster (with blue) exposes a shorter part of the Body which is probably due to noise in the data. With a $18$~mm threshold only two clusters are created. Both Fibria are brought together as one cluster. A property useful for studies which want to use both Fimbria as one. With a $20$~mm threshold the entire Fornix is one cluster. A case useful for interactive applications because now the entire Fornix can be described by only on centroid track. In all cases the streamlines of the Fornix were downsampled to have $18$ points.  OBSOLETE:Left: QB clustering of the fornix bundle. The original fornix
   is shown in black ($1076$ tracks). All tracks were equidistantly
   downsampled at $3$ points. With a $5$~mm threshold QB generates $22$
   clusters (top right). With $10$~mm it generates $7$ (bottom left) and
