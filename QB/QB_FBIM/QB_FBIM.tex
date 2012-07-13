@@ -989,11 +989,9 @@ $763$ virtual tracks. Bundles smaller than $10$ tracks were
 removed. Every track shown here represents an entire cluster containing
 from $10$ to $\num{5000}$ tracks each.
 
-\begin{figure}
-\begin{centering}
-\includegraphics[scale=0.45]{Figures/Fig_6_QB_simple}
-\par\end{centering}
-\caption{Left: QB clustering of the fornix bundle. The original fornix
+\begin{figure*}[htp]
+\centerline{\includegraphics[width=160mm]{Figures/Fig_6_QB_fornix}}
+\caption{NEW: QB clustering of the Fornix bundle. The original Fornix ($1076$ streamlines) is shown on the left panel using a standard orientation colormap. We observe that the Fornix consists of two long distant legs (left and right Fimbria) and a thicker upper part (Body of Fornix). We show here how QB will be able to distinguish the parts of the Fornix at different resolutions. With is a $15$~mm threshold QB generates 4 clusters shown on the second panel with distinct colors. Here the left and right Fimbria are clearly distinguished from the Body. A last cluster (with blue) exposes a shorter part of the Body which is probably due to noise in the data. With a $18$~mm threshold only two clusters are created. Both Fibria are brought together as one cluster. A property useful for studies which want to use both Fimbria as one. With a $20$~mm threshold the entire Fornix is one cluster. A case useful for interactive applications because now the entire Fornix can be described by only on centroid track.  OBSOLETE:Left: QB clustering of the fornix bundle. The original fornix
   is shown in black ($1076$ tracks). All tracks were equidistantly
   downsampled at $3$ points. With a $5$~mm threshold QB generates $22$
   clusters (top right). With $10$~mm it generates $7$ (bottom left) and
@@ -1006,8 +1004,7 @@ from $10$ to $\num{5000}$ tracks each.
   each. These can be thought as fast access points to explore the entire
   data set. The colour here encodes track
   orientation.\label{Flo:QB_fornix}}
-\centering{}
-\end{figure}
+\end{figure*}
 
 The virtual tracks can be thought as fast access points to explore the
 entire data set (see Fig.~\ref{Flo:QB_fornix}). With an appropriate
