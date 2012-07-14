@@ -113,18 +113,18 @@ exception. \citeauthor{moberts2005evaluation} evaluated different
 popular hierarchical clustering methods including a less common one,
 shared nearest neighbor (SNN), against a gold standard segmentation by
 physicians. The authors concluded that single-link clustering with mean
-average distance was the method which performed
-best. \citet{wang2010tractography} proposed a nonparametric Bayesian
-framework using hierarchical Dirichlet processes mixture model
-(HDPM). This is one of the very few methods not based on distances. In
-this work a streamline is modeled as a discrete distribution over a
-codebook of discretized orientations and voxel regions. The authors
-explain that calculating pairwise distances is very time consuming and
-therefore they avoid using them. Their approach automatically learns the
-number of clusters from data with Dirichlet processes priors but it is
-still not efficient enough for real time operation. A disadvantage of
-this method is that the priors do not originate from anatomical
-knowledge.
+average distance was the method which performed best.
+
+\citet{wang2010tractography} proposed a nonparametric Bayesian framework
+using hierarchical Dirichlet processes mixture model (HDPM). This is one
+of the very few methods not based on distances. In this work a
+streamline is modeled as a discrete distribution over a codebook of
+discretized orientations and voxel regions. The authors explain that
+calculating pairwise distances is very time consuming and therefore they
+avoid using them. Their approach automatically learns the number of
+clusters from data with Dirichlet processes priors but it is still not
+efficient enough for real time operation. A disadvantage of this method
+is that the priors do not originate from anatomical knowledge.
 
 \citet{Visser2010} used hierarchical clustering and fuzzy c-means
 together with recombination of subsets of the same tractography to
@@ -133,8 +133,9 @@ the MDF distance (see section~\ref{sub:track-distances})
 \citep{EGMB10}. An interesting result with this method was that they
 could automatically find the different sub-bundles of the Arcuate
 Fasciculus region in accordance with the supervised labeling described
-in \citet{catani2005perisylvian}. The algorithm that we present in this
-chapter also uses the minimum average flip (MDF) metric as a measure of
+in \citet{catani2005perisylvian}. In common with \citet{Visser2010} 
+the algorithm that we present in this
+paper also uses the minimum average flip (MDF) metric as a measure of
 distance between streamlines. \citet{gerig2004analysis} also used
 hierarchical clustering with a symmetrised version of closest point
 distances, $\mathrm{MA}\mathrm{M}_{\mathrm{avg}}$ and
@@ -151,26 +152,32 @@ based on the random voxel parcels, use watershed over extremities and
 finally use hierarchical clustering to merge the different sub-bundles
 using the Hausdorff distance (see section
 \ref{sub:track-distances}). This work stressed the need to divide the
-data set between shorter and longer streamlines. \citet{Tsai2007} used a
-combination of cluster methods based on minimum spanning trees, locally
-linear embedding and k-means.  They were able to incorporate both local
-and global structures by changing a few parameters. The main advantage
-of this method was that it showed a way to merge a chain of neighbouring
-structures into one cluster. \citet*{zhang2005dti} used an agglomerative
-hierarchical clustering using the same distance as in
-\citet{zhang2003visualizing} and later in \citet{zhang2008identifying}
-combined distance-based single linkage hierarchical clustering with
-expert labeling of specific bundles. \citet{zvitia2008adaptive,
-  Zvitia2010} used adaptive mean shift. This is a clustering algorithm
-which finds automatically the number of clusters for example in contrast
-with k-means that the user needs to prespecify the number of clusters.
-They also used this approach for direct registration of tractographies
-but only with tractographies from the same subject. \Citet{ElKouby2005}
-created a ROI-based connectivity matrix where the $i,j$th entry of the
-matrix holds the number of streamlines which connect $ROI_{i}$ to
-$ROI_{j}$. K-means was used afterwards on the rows of the matrix to
-cluster the streamlines. This technique can be used for clustering
-bundles across subjects.
+data set between shorter and longer streamlines.
+
+\citet{Tsai2007} used a combination of cluster methods based on minimum
+spanning trees, locally linear embedding and k-means.  They were able to
+incorporate both local and global structures by changing a few
+parameters. The main advantage of this method was that it showed a way
+to merge a chain of neighbouring structures into one cluster.
+
+\citet*{zhang2005dti} used an agglomerative hierarchical clustering
+using the same distance as in \citet{zhang2003visualizing} and later in
+\citet{zhang2008identifying} combined distance-based single linkage
+hierarchical clustering with expert labeling of specific
+bundles. 
+
+\citet{zvitia2008adaptive, Zvitia2010} used adaptive mean shift. This is
+a clustering algorithm which finds automatically the number of clusters
+for example in contrast with k-means that the user needs to prespecify
+the number of clusters.  They also used this approach for direct
+registration of tractographies but only with tractographies from the
+same subject.
+
+\Citet{ElKouby2005} created a ROI-based connectivity matrix where the
+$i,j$th entry of the matrix holds the number of streamlines which
+connect $ROI_{i}$ to $ROI_{j}$. K-means was used afterwards on the rows
+of the matrix to cluster the streamlines. This technique can be used for
+clustering bundles across subjects.
 
 \citet{brun2004clustering} used the mean and covariance of the
 streamline as the feature space and normalized cuts based on a graph
@@ -178,7 +185,7 @@ theoretic approach for the segmentation. \citet{Ding2003a} used
 k-nearest neighbours, another agglomerative approach, applied to
 corresponding streamline segments. \citet{corouge2004towards} used
 different types of streamline distances, e.g. Hausdorff distances, and
-other geometric properties such as torsion and curvature, and in
+higher order geometric properties such as torsion and curvature, and in
 \citet{Corouge2004} and \citet{Corouge2006} used Generalized Procrustes
 Analysis and Principal Components Analysis (PCA) to analyze the shape of
 bundles.
@@ -197,8 +204,8 @@ referenced to an atlas, and then the streamlines were clustered based on
 the labeled atlas . Later \citet{maddah2006statistical} using a similar
 streamline representation (quintic B-splines) calculated a model for
 each bundle as the average and standard deviation of that parametric
-representation. In that way they created an atlas which is used as a
-prior for expectation maximization (EM) clustering of the Corpus
+representation. In this way they created an atlas which is used as a
+prior for expectation-maximization (EM) clustering of the Corpus
 Callosum streamlines into Witelson subdivisions \citep{witelson1989hand}
 using population averages. Later in \citet{Maddah_IEEEBI2008} showed
 that it is possible to combine spatial priors with metrics for the shape
@@ -223,51 +230,56 @@ This methodology does not impose point-to-point or fibre-to-fibre
 correspondences, however it is sensitive to fibre density and
 orientation of the bundles and it is computationally expensive.
 
-\citet*{leemans17new} used affinity propagation [FORWARD REFERENCE
-NEEDED?] to cluster the fronto-occipital fibres, Cingulum and Arcuate
-Fasciculus after reducing the complexity of the data sets using
-additional frontal and occipital boolean masks on the right
-cerebrum. Results however were shown on a very small part of the entire
-tractography where clustering is a much easier problem.  Later
-\citet{malcolm2009filtered} used affinity propagation to cluster a full
-brain tractography created using filtered tractography and suggested
-that affinity propagation is not suitable for group clustering.
+\citet*{leemans17new} used affinity propagation to cluster the
+fronto-occipital fibres, Cingulum and Arcuate Fasciculus after reducing
+the complexity of the data sets using additional frontal and occipital
+boolean masks on the right cerebrum. Results however were shown on a
+very small part of the entire tractography where clustering is a much
+easier problem.  Later \citet{malcolm2009filtered} used affinity
+propagation to cluster a full brain tractography created using filtered
+tractography and suggested that affinity propagation is not suitable for
+group clustering.
 
 \citet{ziyan2009consistency} introduced a probabilistic registration and
-clustering algorithm based on expectation maximization (EM) which
-creates a sharper atlas from a set of subjects on three bundles: Corpus
-Callosum, Cingulate and Fornix. This work used an initial spectral
-clustering \citep{ODonnell_IEEETMI07} to label the bundles and then
-updated these labels iteratively while performing bundle-wise
+clustering algorithm based on expectation-maximization (EM) which
+creates a sharper atlas from a set of subjects based on three bundles:
+Corpus Callosum, Cingulum and Fornix. This work used an initial
+spectral clustering \citep{ODonnell_IEEETMI07} to label the bundles and
+then updated these labels iteratively while performing bundle-wise
 registration combined using polyaffine integration.
 
 Often it is useful to use some protocols in order to add prior
 information to the automated learning process. Protocols to manually
 label $11$ major white matter tracts were described in
 \citet{Wakana2007NeuroImage} using ROIs to include or exclude
-streamlines generated by deterministic
-tractography. \citet{Hua2008NeuroImage} used regions of interest
-together with probabilistic tractography in order to create probability
-maps of known fibre bundles.
+streamlines generated by deterministic tractography.
+\citet{Hua2008NeuroImage} used regions of interest together with
+probabilistic tractography in order to create probability maps of known
+fibre bundles.
 
 From this short review we observe two main trends in the literature.
 The first and most common one makes use of streamline distances and
 calculates distance matrices. The most prevailing approaches here for
 deciphering the distance matrix are with Hierarchical and Spectral
 Clustering which are applied only on subsets of the initial
-tractography. The second trend and least common recommends avoiding
+tractography. The second trend, and the less common, favours avoiding
 streamline distances because the computation of the distance matrix is
 memory intensive.  In this case using Dirichlet Processes or Currents or
-Connectivity based parcelation seem to be some viable
-solutions. However, clustering is to be applied in clinical usage or to
-make neuroscientists' analysis more efficient and practical we need
+Connectivity based parcelation seem to be some viable solutions. For
+further recent overviews see \citet{ODonnell_IEEETMI07} and
+\citet{wang2010tractography}.
+
+However, clustering is to be applied in clinical usage or to make
+neuroscientists' analysis more efficient and practical we need
 algorithms that can provide useful clusters and cluster descriptors in
 minimum time. None of the papers described in this literature review
 provide a solution for this issue of efficiency and most of the methods
 would require from many hours to many days to run on a standard sized
-data set. The method we propose in this document can provide a solution
-to this problem and it is an extensive update of our preliminary work
-described in \citet{EGMB10}.
+data set. 
+
+% The method we propose in this document can provide a solution
+% to this problem and it is an extensive update of our preliminary work
+% described in \citet{EGMB10}.
 
 Most authors agree that unsupervised learning with tractographies is a
 difficult problem as the data sets are very large, dense, cluttered with
@@ -284,9 +296,6 @@ yet established.  Nevertheless, the clustering that we propose
 concentrates on reducing the complexity of the data rather than finding
 bundles with anatomical relevance. We believe this step is more useful
 at this stage of tractography analysis research.
-
-For further recent overviews see \citet{ODonnell_IEEETMI07} and
-\citet{wang2010tractography}.
 
 %
 \begin{figure*}[htp]
