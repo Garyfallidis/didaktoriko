@@ -60,20 +60,22 @@ Diffusion MR white matter tractographies are very large data sets which
 are hard to visualize, interact with, and interpret in a clinically
 acceptable time scale, despite numerous proposed approaches. As a
 solution we present a simple, compact, tailor-made clustering algorithm,
-QuickBundles (QB), that overcomes the complexity of these large datasets
-and provides anatomically meaningful clusters in seconds. Each QB
-cluster can be represented by a single track; collectively these
-representative tracks can be taken as a faithful representation of the
-tractography. We demonstrate how these presentative tracks can be used
+QuickBundles (QB), that overcomes the complexity of these large data
+sets and provides informative clusters in seconds. Each QB cluster can
+be represented by a single centroid streamline; collectively these
+centroid streamlines can be taken as a faithful representation of the
+tractography. We demonstrate how these centroid streamlines can be used
 as input to clustering algorithms of higher order complexity which
-currently cannot be implemented on the full data set. We also show the
-further potential of QB to find landmarks, create atlases, compare and
-register tractographies.
+currently cannot be implemented on full data sets.
+% We also show the
+% further potential of QB to find landmarks, create atlases, compare and
+% register tractographies
 
 
 \section{Keywords:} Tractography, Diffusion MRI, Fiber clustering, White
-matter atlas, Direct tractography registration, Clustering algorithms,
-DTI.
+matter atlas,
+% Direct tractography registration,
+Clustering algorithms, DTI.
 
 \end{abstract}
 
@@ -81,134 +83,136 @@ DTI.
 \section{Introduction}
 
 Following the acquisition of diffusion MR scans, processes of
-reconstruction and integration are performed to
-create a tractography: a data set composed of tracks, which are
-sequences of points in 3D space. Irrespective of the types of
-reconstruction and integration a tractography can contain a very large
-number of tracks (up to $10^6$) depending principally on the number of
-seed points used to generate the tractography but also on how the
-propagation algorithm handles voxels with underlying fiber crossings.
+reconstruction and integration are performed to create a tractography: a
+data set composed of streamlines, which are sequences of points in 3D
+space. Irrespective of the types of reconstruction and integration a
+tractography can contain a very large number of streamlines (up to
+$10^6$) depending principally on the number of seed points used to
+generate the tractography but also on how the propagation algorithm
+handles voxels with underlying fiber crossings.
 
 The size of these tractographies makes them difficult to interpret and
 visualize. A clustering of some kind seems to be an obvious route to
 simplify the complexity of these data sets and provide a useful
 segmentation.  As a result, during the last 10 years there have been
 numerous efforts by many researchers to address both unsupervised and
-supervised learning problems of brain tractography. Though these studies
-do provide many useful ideas, all these methods suffer ultimately from
-lack of practical efficiency.
-
-During the last $10$ years there have been numerous efforts from many
-researchers to address the unsupervised and supervised learning problems
-of brain tractography. As far as we know all these methods suffer from
+supervised learning problems of brain tractography. 
+% Though these studies
+% do provide many useful ideas, all these methods suffer ultimately from
+% lack of practical efficiency.
+% During the last $10$ years there have been numerous efforts from many
+% researchers to address the unsupervised and supervised learning problems
+% of brain tractography. 
+As far as we know all these methods suffer from
 low efficiency, however they provide many useful ideas which we describe
 in this section.
 
 Tractography clustering algorithms are rarely compared in the
-literature.  Nonetheless, \citet{moberts2005evaluation} are an
-exception. They evaluated different popular hierarchical clustering
-methods including a less common one, shared nearest neighbor (SNN),
-against a gold standard segmentation by physicians. The authors
-concluded that single-link clustering with mean average distance was the
-method which performed best. \citet{wang2010tractography} proposed a
-nonparametric Bayesian framework using hierarchical Dirichlet processes
-mixture model (HDPM). This is one of the very few methods not based on
-distances. In this work a track is modeled as a discrete distribution
-over a codebook of discretized orientations and voxel regions. The
-authors explain that calculating pairwise distances is very time
-consuming and therefore they avoid using them. Their approach
-automatically learns the number of clusters from data with Dirichlet
-processes priors but it is still not efficient enough for real time
-operation. A disadvantage of this method is that the priors do not
-originate from anatomical knowledge.
+literature.  In this regard, \citet{moberts2005evaluation} is an
+exception. \citeauthor{moberts2005evaluation} evaluated different
+popular hierarchical clustering methods including a less common one,
+shared nearest neighbor (SNN), against a gold standard segmentation by
+physicians. The authors concluded that single-link clustering with mean
+average distance was the method which performed
+best. \citet{wang2010tractography} proposed a nonparametric Bayesian
+framework using hierarchical Dirichlet processes mixture model
+(HDPM). This is one of the very few methods not based on distances. In
+this work a streamline is modeled as a discrete distribution over a
+codebook of discretized orientations and voxel regions. The authors
+explain that calculating pairwise distances is very time consuming and
+therefore they avoid using them. Their approach automatically learns the
+number of clusters from data with Dirichlet processes priors but it is
+still not efficient enough for real time operation. A disadvantage of
+this method is that the priors do not originate from anatomical
+knowledge.
 
 \citet{Visser2010} used hierarchical clustering and fuzzy c-means
 together with recombination of subsets of the same tractography to
-reduce the effect of the large datasets on the distance matrix based on
+reduce the effect of the large data sets on the distance matrix based on
 the MDF distance (see section~\ref{sub:track-distances})
 \citep{EGMB10}. An interesting result with this method was that they
 could automatically find the different sub-bundles of the Arcuate
 Fasciculus region in accordance with the supervised labeling described
 in \citet{catani2005perisylvian}. The algorithm that we present in this
 chapter also uses the minimum average flip (MDF) metric as a measure of
-distance between tracks. \citet{gerig2004analysis} also
-used hierarchical clustering with a symmetrised version of closest point
+distance between streamlines. \citet{gerig2004analysis} also used
+hierarchical clustering with a symmetrised version of closest point
 distances, $\mathrm{MA}\mathrm{M}_{\mathrm{avg}}$ and
 $\mathrm{MA}\mathrm{M}_{\mathrm{max}}$ (Hausdorff). However, they tested
 their method only with two bundles: Uncinate Fasciculus and the
 Corticospinal Tract.
 
 \citet{Guevara2010} combined a great number of different algorithms from
-hierarchical clustering to 3D watershed on track extremities.  They
+hierarchical clustering to 3D watershed on streamline extremities.  They
 first divided the tractography into left-right hemisphere,
 inter-hemispheric and cerebellum subsets. They then create further
-subsets of different track length, use hierarchical clustering based on
-the random voxel parcels, use watershed over extremities and finally use
-hierarchical clustering to merge the different sub-bundles using the
-Hausdorff distance (see section \ref{sub:track-distances}). This work
-stressed the need to divide the data set between shorter and longer
-tracks. \citet{Tsai2007} used a combination of cluster methods based on
-minimum spanning trees, locally linear embedding and k-means.  They were
-able to incorporate both local and global structures by changing a few
-parameters. The main advantage of this method was that it showed a way
-to merge a chain of neighbouring structures into one
-cluster. \citet*{zhang2005dti} used an agglomerative hierarchical
-clustering using the same distance as in \citet{zhang2003visualizing}
-and later in \citet{zhang2008identifying} combined distance-based single
-linkage hierarchical clustering with expert labeling of specific
-bundles. \citet{zvitia2008adaptive, Zvitia2010} used adaptive mean
-shift. This is a clustering algorithm which finds automatically the
-number of clusters for example in contrast with k-means that the user
-needs to prespecify the number of clusters.  They also used this
-approach for direct registration of tractographies but only with
-tractographies from the same subject. \Citet{ElKouby2005} created a
-ROI-based connectivity matrix where the $i,j$th entry of the matrix
-holds the number of tracks which connect $ROI_{i}$ to $ROI_{j}$. K-means
-was used afterwards on the rows of the matrix to cluster the
-tracks. This technique can be used for clustering bundles across
-subjects.
+subsets of different streamline length, use hierarchical clustering
+based on the random voxel parcels, use watershed over extremities and
+finally use hierarchical clustering to merge the different sub-bundles
+using the Hausdorff distance (see section
+\ref{sub:track-distances}). This work stressed the need to divide the
+data set between shorter and longer streamlines. \citet{Tsai2007} used a
+combination of cluster methods based on minimum spanning trees, locally
+linear embedding and k-means.  They were able to incorporate both local
+and global structures by changing a few parameters. The main advantage
+of this method was that it showed a way to merge a chain of neighbouring
+structures into one cluster. \citet*{zhang2005dti} used an agglomerative
+hierarchical clustering using the same distance as in
+\citet{zhang2003visualizing} and later in \citet{zhang2008identifying}
+combined distance-based single linkage hierarchical clustering with
+expert labeling of specific bundles. \citet{zvitia2008adaptive,
+  Zvitia2010} used adaptive mean shift. This is a clustering algorithm
+which finds automatically the number of clusters for example in contrast
+with k-means that the user needs to prespecify the number of clusters.
+They also used this approach for direct registration of tractographies
+but only with tractographies from the same subject. \Citet{ElKouby2005}
+created a ROI-based connectivity matrix where the $i,j$th entry of the
+matrix holds the number of streamlines which connect $ROI_{i}$ to
+$ROI_{j}$. K-means was used afterwards on the rows of the matrix to
+cluster the streamlines. This technique can be used for clustering
+bundles across subjects.
 
-\citet{brun2004clustering} used the mean and covariance
-of the track as the feature space and normalized cuts based on a graph
-theoretic approach for the segmentation. \citet{Ding2003a}
-used k-nearest neighbours, another agglomerative approach, applied
-to corresponding track segments. \citet{corouge2004towards}
-used different types of track distances, e.g. Hausdorff distances,
-and other geometric properties such as torsion and curvature, and
-in \citet{Corouge2004} and \citet{Corouge2006} used Generalized Procrustes
-Analysis and Principal Components Analysis (PCA) to analyze the shape
-of bundles.
+\citet{brun2004clustering} used the mean and covariance of the
+streamline as the feature space and normalized cuts based on a graph
+theoretic approach for the segmentation. \citet{Ding2003a} used
+k-nearest neighbours, another agglomerative approach, applied to
+corresponding streamline segments. \citet{corouge2004towards} used
+different types of streamline distances, e.g. Hausdorff distances, and
+other geometric properties such as torsion and curvature, and in
+\citet{Corouge2004} and \citet{Corouge2006} used Generalized Procrustes
+Analysis and Principal Components Analysis (PCA) to analyze the shape of
+bundles.
 
-\citet{ODonnell_IEEETMI07} created a tractographic
-atlas using spectral embedding and expert anatomical labeling. They
-then automatically segmented using spectral clustering and expressed
-the tracks as points in the embedded space to the closest existing
-atlas clusters. The full affinity matrix was too big to compute therefore
-they used the Nystrom approximation: working on a subset and avoid
-generating the complete affinity/distance matrix. Later in \citet{o2009tract}
-they tried group analysis on prespecified bundles.
+\citet{ODonnell_IEEETMI07} created a tractographic atlas using spectral
+embedding and expert anatomical labeling. They then automatically
+segmented using spectral clustering and expressed the streamlines as
+points in the embedded space to the closest existing atlas clusters. The
+full affinity matrix was too big to compute therefore they used the
+Nystrom approximation: working on a subset and avoid generating the
+complete affinity/distance matrix. Later in \citet{o2009tract} they
+tried group analysis on prespecified bundles.
 
-\citet{Maddah_MICCA2005} used B-spline representations of tracks
-referenced to an atlas, and then the tracks were clustered based on the
-labeled atlas . Later \citet{maddah2006statistical} using a similar
-track representation (quintic B-splines) calculated a model for each
-bundle as the average and standard deviation of that parametric
+\citet{Maddah_MICCA2005} used B-spline representations of streamlines
+referenced to an atlas, and then the streamlines were clustered based on
+the labeled atlas . Later \citet{maddah2006statistical} using a similar
+streamline representation (quintic B-splines) calculated a model for
+each bundle as the average and standard deviation of that parametric
 representation. In that way they created an atlas which is used as a
 prior for expectation maximization (EM) clustering of the Corpus
-Callosum tracks into Witelson subdivisions \citep{witelson1989hand}
+Callosum streamlines into Witelson subdivisions \citep{witelson1989hand}
 using population averages. Later in \citet{Maddah_IEEEBI2008} showed
 that it is possible to combine spatial priors with metrics for the shape
-of the tracks in order to guide the clustering process.
+of the streamlines in order to guide the clustering process.
 
-\citet{jonasson2005fiber} created a large $N\times N$
-co-occurrence matrix, where $N$ is the number of the fibers to cluster.
-The co-occurrence (affinity) matrix contained the number of times
-that two fibers share the same voxel. They then used spectral clustering.
-\citet{jianu2009exploring} presented a new method for
-visualizing and navigating through tractography data combining dendrograms
-from hierarchical clustering along with 3D- and 2D-embeddings using
-the approximation that \citet{chalmers1996linear} introduced
-for the technique of \citet{eades1984heuristic}.
+\citet{jonasson2005fiber} created a large $N\times N$ co-occurrence
+matrix, where $N$ is the number of the fibers to cluster.  The
+co-occurrence (affinity) matrix contained the number of times that two
+fibers share the same voxel. They then used spectral clustering.
+\citet{jianu2009exploring} presented a new method for visualizing and
+navigating through tractography data combining dendrograms from
+hierarchical clustering along with 3D- and 2D-embeddings using the
+approximation that \citet{chalmers1996linear} introduced for the
+technique of \citet{eades1984heuristic}.
 
 \citet{Durrleman2009} introduced electrical current models of fibre
 bundles where a fibre is seen as a set of wires sending information in
@@ -240,19 +244,20 @@ registration combined using polyaffine integration.
 Often it is useful to use some protocols in order to add prior
 information to the automated learning process. Protocols to manually
 label $11$ major white matter tracts were described in
-\citet{Wakana2007NeuroImage} using ROIs to include or exclude tracks
-generated by deterministic tractography. \citet{Hua2008NeuroImage} used
-regions of interest together with probabilistic tractography in order to
-create probability maps of known fibre bundles.
+\citet{Wakana2007NeuroImage} using ROIs to include or exclude
+streamlines generated by deterministic
+tractography. \citet{Hua2008NeuroImage} used regions of interest
+together with probabilistic tractography in order to create probability
+maps of known fibre bundles.
 
 From this short review we observe two main trends in the literature.
-The first and most common one makes use of track distances and
+The first and most common one makes use of streamline distances and
 calculates distance matrices. The most prevailing approaches here for
 deciphering the distance matrix are with Hierarchical and Spectral
 Clustering which are applied only on subsets of the initial
 tractography. The second trend and least common recommends avoiding
-track distances because the computation of the distance matrix is memory
-intensive.  In this case using Dirichlet Processes or Currents or
+streamline distances because the computation of the distance matrix is
+memory intensive.  In this case using Dirichlet Processes or Currents or
 Connectivity based parcelation seem to be some viable
 solutions. However, clustering is to be applied in clinical usage or to
 make neuroscientists' analysis more efficient and practical we need
@@ -266,9 +271,9 @@ described in \citet{EGMB10}.
 
 Most authors agree that unsupervised learning with tractographies is a
 difficult problem as the data sets are very large, dense, cluttered with
-noisy tracks which could have no anatomic relevance and bundles which
-are more than often tangled together in many areas. Furthermore, we
-observe that there is a strong disagreement on the number of clusters
+noisy streamlines which could have no anatomic relevance and bundles
+which are more than often tangled together in many areas. Furthermore,
+we observe that there is a strong disagreement on the number of clusters
 (from 10 to 60). Because of the difficulty of the problem an
 international contest was also organized by SchLab in Pittsburgh
 University (PBC Brain Connectivity Challenge - IEEE ICDM) in
@@ -287,37 +292,43 @@ For further recent overviews see \citet{ODonnell_IEEETMI07} and
 \begin{figure*}[htp]
 \centerline{\includegraphics[width=160mm]{Figures/Fig_4_cst_simplification_relabeled_triple.eps}}
     % \par\end{centering}
-\caption{Part of the CST bundle (blue) consisting of $11041$ tracks. At first glance it looks as though all tracks
-  have a similar shape, and possibly converge towards the bottom, and
-  fan out towards the top. However, this is a misreading caused by the
-  opaque density when all the tracks are visualised.  QB can help us see
-  the finer structure of the bundle and identify its elements. In the middle we see the 16 QB representative tracks of the CST. We can now clearly obvserve that several parts which looked homogeneous are
-  actually broken bundles or bundles with very different shape. On the right panel we see the tracks coloured according to their cluster label. The distance threshold used here was $10$~mm. \label{Flo:cst_pbc}}
+\caption{Part of the CST bundle (blue) consisting of $11041$
+  streamlines. At first glance it looks as though all streamlines have a
+  similar shape, and possibly converge towards the bottom, and fan out
+  towards the top. However, this is a misreading caused by the opaque
+  density when all the streamlines are visualised.  QB can help us see
+  the finer structure of the bundle and identify its elements. In the
+  middle we see the 16 QB centroid streamlines of the CST. We can
+  now clearly obvserve that several parts which looked homogeneous are
+  actually broken bundles or bundles with very different shape. On the
+  right panel we see the streamlines coloured according to their cluster
+  label. The distance threshold used here was
+  $10$~mm. \label{Flo:cst_pbc}}
 \end{figure*}
 
-Most of these proposed tractography clustering algorithms are very slow and many
-need to calculate a matrix of inter-track distances of size $\mathcal{O}(N^2)$.
-This number of computations puts a very heavy load on clustering algorithms,
-making them hard to use for everyday analysis as it is difficult to compute all
-these distances or store them in memory. For the same reason, no current
-algorithm is practical for real time clustering on a large number of tracks. The
-heavy computational demands of clustering add a further overhead to the use of
-tractography for clinical applications but also puts a barrier on understanding
-and interpreting the quality of diffusion MR data sets.
+Most of these proposed tractography clustering algorithms are very slow
+and many need to calculate a matrix of inter-streamline distances of
+size $\mathcal{O}(N^2)$.  This number of computations puts a very heavy
+load on clustering algorithms, making them hard to use for everyday
+analysis as it is difficult to compute all these distances or store them
+in memory. For the same reason, no current algorithm is practical for
+real time clustering on a large number of streamlines. The heavy
+computational demands of clustering add a further overhead to the use of
+tractography for clinical applications but also puts a barrier on
+understanding and interpreting the quality of diffusion MR data sets.
 
 To address these key issues of time and space we present a stable,
 generally linear time clustering algorithm that can generate meaningful
-clusters of tracks in seconds with minimum memory consumption. Our
+clusters of streamlines in seconds with minimum memory consumption. Our
 approach is extremely straightforward and we do not need to calculate
-all pairwise distances unlike most existing
-methods. Furthermore we can update our clustering online or in
-parallel. In this way we can overcome the previous barriers of space and
-time.
+all pairwise distances unlike most existing methods. Furthermore we can
+update our clustering online or in parallel. In this way we can overcome
+the previous barriers of space and time.
 
-We show that we can generate these clusters \textasciitilde1000 times faster than
-any other available method before even applying further
+We show that we can generate these clusters \textasciitilde1000 times
+faster than any other available method before even applying further
 acceleration through parallel processing, and that it can be used to
-cluster from a few hundred to many millions of tracks.
+cluster from a few hundred to many millions of streamlines.
 
 Moreover our new algorithm leads to many valuable additional results. QB
 can either be used on its own to explore the neuroanatomy directly, or
@@ -336,44 +347,44 @@ tractographies.
 
 QuickBundles (QB) is a surprisingly simple and very fast algorithm which
 can reduce tractography representation to an accessible structure in a
-time that is linear in the number of tracks $N$. QB is an extended
+time that is linear in the number of streamlines $N$. QB is an extended
 update on our preliminary work~\citet{EGMB10}.
 
-In QB each item, a track, is a fixed-length ordered sequence of points
-in $\mathbb{R}^{3}$, and QB uses metrics and amalgamations which take
-account of and preserve this structure.  Moreover each item is either
-added to an existing cluster on the basis of the distances between the
-cluster descriptor of the item and the descriptors of the current list of
-clusters. Clusters are held in a list which is extended according to
-need. Unlike amalgamation clustering algorithms such as
+In QB each item, a streamline, is a fixed-length ordered sequence of
+points in $\mathbb{R}^{3}$, and QB uses metrics and amalgamations which
+take account of and preserve this structure.  Moreover each item is
+either added to an existing cluster on the basis of the distances
+between the cluster descriptor of the item and the descriptors of the
+current list of clusters. Clusters are held in a list which is extended
+according to need. Unlike amalgamation clustering algorithms such as
 $k$-means~\citep{steinhaus1956division, macqueen1967some} or
 BIRCH~\citep{zhang1997birch}, there is no reassignment or updating phase
 -- once an item is assigned to a cluster it stays there, and clusters
 are not amalgamated.
 
-A track is a ordered sequence of points in $\mathbb{R}^{3}$.  The
-clustering algorithm needs a measure of distance between two tracks, and
-QB uses a particular distance measure that we call minimum average
-direct flip (MDF).  The MDF measure requires that each track be
-resampled to have $K$ points. We describe the MDF measure and the
-resampling in section~\ref{sub:track-distances}.
+A streamline is a ordered sequence of points in $\mathbb{R}^{3}$.  The
+clustering algorithm needs a measure of distance between two
+streamlines, and QB uses a particular distance measure that we call
+minimum average direct flip (MDF).  The MDF measure requires that each
+streamline be resampled to have $K$ points. We describe the MDF measure
+and the resampling in section~\ref{sub:track-distances}.
 
-We index the tracks with $i = 1 \dots N$ where $\mathbf{s}_{i}$ is the
-$K\times3$ matrix representing track $i$.
+We index the streamlines with $i = 1 \dots N$ where $\mathbf{s}_{i}$ is
+the $K\times3$ matrix representing streamline $i$.
 
 QB stores information about clusters in \emph{cluster nodes}.  The
 cluster node is defined as $c=(I,\mathbf{h},n)$ where $I$ is the list of
-the integer indices $i = 1 \dots N$ of the tracks in that cluster, $n$
-is the number of tracks in the cluster, and $\mathbf{h}$ is the \emph{track
-  sum}. $\mathbf{h}$ is a $K \times3$ matrix which can be updated online
-when a track is added to a cluster and is equal to:
+the integer indices $i = 1 \dots N$ of the streamlines in that cluster,
+$n$ is the number of streamlines in the cluster, and $\mathbf{h}$ is the
+\emph{streamline sum}. $\mathbf{h}$ is a $K \times3$ matrix which can be
+updated online when a streamline is added to a cluster and is equal to:
 \begin{equation}
   \mathbf{h}=\sum_{i=1}^{n}\mathbf{s}_{i}
 \end{equation} 
-where $\mathbf{s}_{i}$ is the $K\times3$ matrix representing track $i$,
+where $\mathbf{s}_{i}$ is the $K\times3$ matrix representing streamline $i$,
 $\Sigma$ here represents matrix addition, and $n$ is the number of
-tracks in the cluster. One summary of the cluster node is the centroid or
-\emph{virtual} track $\mathbf{v}$ where:
+streamlines in the cluster. One summary of the cluster node is the centroid or
+\emph{virtual} streamline $\mathbf{v}$ where:
 
 \begin{equation}
   \mathbf{v} = \mathbf{h} / n
@@ -429,108 +440,118 @@ tracks in the cluster. One summary of the cluster node is the centroid or
 \end{algorithm}
 
 The algorithm proceeds as follows.  At any one step in the algorithm we
-have $M$ clusters. Select the first track $\mathbf{s}_{1}$ and place it in
-the first cluster $c_{1}\leftarrow(\{1\},\mathbf{s}_{1},1)$;  
-$M=1$ at this point.  For each remaining track in turn $i = 2 \dots N$:
-(i) calculate the MDF distance between track $\mathbf{s}_{i}$ and the virtual
-tracks $\mathbf{v}_{e}$ of all the current clusters $c_{e}$, $e = 1 \dots M$,
-where $\mathbf{v}$ is defined on the fly as $\mathbf{v}=\mathbf{h}/n$; (iii) if
-any of the MDF values $m_{e}$ are smaller than a distance threshold
-$\theta$, add track $i$ to the cluster $e$ with the minimum value for
-$m_{e}$; $c_{e}=(I,\mathbf{h},n)$, and update
-$c_{e}\leftarrow(\mathbf{append}(I,i),\mathbf{h}+\mathbf{s},n+1)$; otherwise create a new
-cluster $c_{M+1}\leftarrow([i],\mathbf{s}_{i},1)$, $M\leftarrow M+1$.
+have $M$ clusters. Select the first streamline $\mathbf{s}_{1}$ and
+place it in the first cluster $c_{1}\leftarrow(\{1\},\mathbf{s}_{1},1)$;
+$M=1$ at this point.  For each remaining streamline in turn $i = 2 \dots
+N$: (i) calculate the MDF distance between streamline $\mathbf{s}_{i}$
+and the centroid streamlines $\mathbf{v}_{e}$ of all the current clusters
+$c_{e}$, $e = 1 \dots M$, where $\mathbf{v}$ is defined on the fly as
+$\mathbf{v}=\mathbf{h}/n$; (iii) if any of the MDF values $m_{e}$ are
+smaller than a distance threshold $\theta$, add streamline $i$ to the
+cluster $e$ with the minimum value for $m_{e}$;
+$c_{e}=(I,\mathbf{h},n)$, and update
+$c_{e}\leftarrow(\mathbf{append}(I,i),\mathbf{h}+\mathbf{s},n+1)$;
+otherwise create a new cluster
+$c_{M+1}\leftarrow([i],\mathbf{s}_{i},1)$, $M\leftarrow M+1$.
 
 %\subsection{QB Step-by-step\label{sub:QB_step_by_step}}
 
 \begin{figure*}[t]
 \centering\includegraphics[width=160mm,angle=0]{Figures/Fig_1_QB_algorithm}
-\caption{This is a step-by-step explanation of how QuickBundles proceeds when clustering six tracks (top left) resulting in three bundles (blue, red and green, bottom right)}
+\caption{This is a step-by-step explanation of how QuickBundles proceeds
+  when clustering six streamlines (top left) resulting in three bundles
+  (blue, red and green, bottom right)}
 \label{Fig:LSC_simple}
 \end{figure*}
 
 Fig.~\ref{Fig:LSC_simple} illustrates the operation of QB step by step.
-Initially in panel (i) 6 unclustered tracks ($A-F$) are presented; imagine
-that the distance threshold $\theta$ used here is the same as the MDF
-distance (Eq.~\ref{eq:direct_flip_distance}) between $B$ and $E$: $\theta =
-\mathrm{MDF}(B,E)$. The algorithm starts and in (ii) we see that track $A$ was
-selected; as no other clusters exist track $A$ becomes the first cluster
-(labelled with purple color) and the virtual track of that cluster is
-identical with $A$ as seen in (iii); next in (iv) track $B$ is selected and
-we calculate the MDF distance between $B$ and the virtual track of the
-other clusters. For the moment there is only one cluster to compare so
-QB calculates MDF ($B$,virtual-purple) and this is obviously bigger than
-threshold $\theta$ ($\theta = \mathrm{MDF}(B,E)$).  Therefore a new cluster is
-assigned for $B$, and $B$ becomes the virtual track of that cluster as shown
-in (v). In (vi) the next track $C$ is selected and this is again far away
-from both purple and blue virtuals; therefore another cluster is created
-and $C$ is the virtual of the blue cluster as shown in (vii).  In (viii)
-track $D$ is selected and after we have calculated MDF($D$,purple),
-MDF($D$,Blue) and MDF($D$,green) it is obvious that $D$ belongs to the purple
-cluster as MDF($D$,purple) is smaller and lower than threshold as shown in
-(ix).  However we can now see in (x) that things change for the purple
-cluster because the virtual track is not anymore made by only one track
-but it is the average of $D$ and $A$ shown with a dashed line. In (xi) $E$ is
-the current track and will be assigned to the green cluster as shown in
-(xii) because MDF($E$,virtual green) = MDF($E$,$B$) = $\theta$, and in (xiii)
-we see the updated virtual track for the green cluster which is equal to
-$(B+E)/2$ where `$+$' means track addition. In (xiv) the last track is picked
-and compared with the virtual tracks of the other 3 clusters; obviously
+Initially in panel (i) 6 unclustered streamlines ($A-F$) are presented;
+imagine that the distance threshold $\theta$ used here is the same as
+the MDF distance (Eq.~\ref{eq:direct_flip_distance}) between $B$ and
+$E$: $\theta = \mathrm{MDF}(B,E)$. The algorithm starts and in (ii) we
+see that streamline $A$ was selected; as no other clusters exist
+streamline $A$ becomes the first cluster (labelled with purple color)
+and the centroid streamline of that cluster is identical with $A$ as seen
+in (iii); next in (iv) streamline $B$ is selected and we calculate the
+MDF distance between $B$ and the centroid streamline of the other
+clusters. For the moment there is only one cluster to compare so QB
+calculates MDF ($B$,centroid-purple) and this is obviously bigger than
+threshold $\theta$ ($\theta = \mathrm{MDF}(B,E)$).  Therefore a new
+cluster is assigned for $B$, and $B$ becomes the centroid streamline of
+that cluster as shown in (v). In (vi) the next streamline $C$ is
+selected and this is again far away from both purple and blue centroids;
+therefore another cluster is created and $C$ is the centroid of the blue
+cluster as shown in (vii).  In (viii) streamline $D$ is selected and
+after we have calculated MDF($D$,purple), MDF($D$,Blue) and
+MDF($D$,green) it is obvious that $D$ belongs to the purple cluster as
+MDF($D$,purple) is smaller and lower than threshold as shown in (ix).
+However we can now see in (x) that things change for the purple cluster
+because the centroid streamline is not anymore made by only one
+streamline but it is the average of $D$ and $A$ shown with a dashed
+line. In (xi) $E$ is the current streamline and will be assigned to the
+green cluster as shown in (xii) because MDF($E$,centroid green) =
+MDF($E$,$B$) = $\theta$, and in (xiii) we see the updated centroid
+streamline for the green cluster which is equal to $(B+E)/2$ where `$+$'
+means streamline addition. In (xiv) the last streamline is picked and
+compared with the centroid streamlines of the other 3 clusters; obviously
 MDF($F$,purple) is the only distance smaller than threshold, and so F is
-assigned to the purple cluster in (xv).  Finally, in (xvi) the virtual
-purple track is updated as $(D+A+F)/3$. As there are no more tracks to
-select, the algorithm stops. We can see that all three clusters have
-been found and all tracks have been assigned successfully to a cluster.
-Popular amalgamation clustering algorithms such as
-$k$-means~\citep{steinhaus1956division, macqueen1967some} require
-iterative reassignment of items to different clusters and hence do not
-run in linear time. Others such as BIRCH~\citep{zhang1997birch} have
-linear time performance while imposing limits on the size and spread of
-clusters; BIRCH clusters may be contiguous and the BIRCH algorithm
-requires further phases of cluster amalgamation to optimise search time
-when adding future items. By contrast when QB assigns an item to a node
-it stays there, and clusters are not amalgamated.
+assigned to the purple cluster in (xv).  Finally, in (xvi) the centroid
+purple streamline is updated as $(D+A+F)/3$. As there are no more
+streamlines to select, the algorithm stops. We can see that all three
+clusters have been found and all streamlines have been assigned
+successfully to a cluster.  Popular amalgamation clustering algorithms
+such as $k$-means~\citep{steinhaus1956division, macqueen1967some}
+require iterative reassignment of items to different clusters and hence
+do not run in linear time. Others such as BIRCH~\citep{zhang1997birch}
+have linear time performance while imposing limits on the size and
+spread of clusters; BIRCH clusters may be contiguous and the BIRCH
+algorithm requires further phases of cluster amalgamation to optimise
+search time when adding future items. By contrast when QB assigns an
+item to a node it stays there, and clusters are not amalgamated.
 
 Choice of orientation can become an issue when using the MDF distance
-and adding tracks together, because the diffusion signal is symmetric
-around the origin, and therefore the $K \times 3$ track can equivalently
-have its points ordered $1 \dots K$ or be flipped with order $K \dots
-1$; the diffusion signal does not allow us to distinguish betweeen these
-two directions. A step in QB takes account of the possibility of needing
-to perform a flip of a track before adding it to a representative track
-according to which direction produced the MDF value.
+and adding streamlines together, because the diffusion signal is
+symmetric around the origin, and therefore the $K \times 3$ streamline
+can equivalently have its points ordered $1 \dots K$ or be flipped with
+order $K \dots 1$; the diffusion signal does not allow us to distinguish
+betweeen these two directions. A step in QB takes account of the
+possibility of needing to perform a flip of a streamline before adding
+it to a centroid streamline according to which direction produced
+the MDF value.
 
 The complete QB algorithm is described in formal detail in
-Algorithm~\ref{Alg:QuickBundles} and a simple step by step visual example is
-given in Fig.~\ref{Fig:LSC_simple}.  One of the reasons why QB has on
-average linear time complexity derives from the structure of the cluster
-node: we only save the sum of current tracks $\mathbf{h}$ in the cluster and the
-sum is cumulative; moreover there is no recalculation of clusters, the
-tracks are passed through only once and a track is assigned to one
-cluster only. 
+Algorithm~\ref{Alg:QuickBundles} and a simple step by step visual
+example is given in Fig.~\ref{Fig:LSC_simple}.  One of the reasons why
+QB has on average linear time complexity derives from the structure of
+the cluster node: we only save the sum of current streamlines
+$\mathbf{h}$ in the cluster and the sum is cumulative; moreover there is
+no recalculation of clusters, the streamlines are passed through only
+once and a streamline is assigned to one cluster only.
 
-\subsection{\label{sub:track-distances}Track distances and preprocessing}
+\subsection{\label{sub:track-distances}Streamline distances and preprocessing}
 
 A wide range of approaches have been taken in the literature for
-representing or coding for tractographies. The approach we have taken with track
-coding has gone in parallel with the selection of appropriate metrics for
-inter-track distances.  Numerous inter-track distance metrics have been
-proposed~\citep{Ding2003, MaddahIPMI2007, zhang2005dti}. The most common is the
-Hausdorff distance~\citep[and many other
-studies]{corouge2004towards}. There are two primary disadvantages of
-this metric: (1) it ignores the sequential nature of the tracks and
-treats each track simply as a cloud of points, and (2) its computation
-requires every point on the first track to be compared with every point
-on the second track, and vice versa. For these reasons we have opted to
-use a very simple symmetric distance \citep{EGMB10, Visser2010} which we
-call Minimum average Direct-Flip (MDF) distance $MDF(\mathbf{s},\mathbf{s'})$ between
-track $\mathbf{s}$ and track $\mathbf{s'}$, see Eq.~(\ref{eq:direct_flip_distance}). This
-distance can be applied only when both tracks have the same number of
-points. Therefore we assume that an initial downscaling of tracks has
-been implemented, where all segments on a track have approximately the
-same length, and all tracks have the same number of points $K$, and segments
-$K-1$, which are much less than the number of points or segments in the typical
-raw track.  Under this assumption MDF is defined as:
+representing or coding for tractographies. The approach we have taken
+with streamline coding has gone in parallel with the selection of
+appropriate metrics for inter-streamline distances.  Numerous
+inter-streamline distance metrics have been proposed~\citep{Ding2003,
+  MaddahIPMI2007, zhang2005dti}. The most common is the Hausdorff
+distance~\citep[and many other studies]{corouge2004towards}. There are
+two primary disadvantages of this metric: (1) it ignores the sequential
+nature of the streamlines and treats each streamline simply as a cloud
+of points, and (2) its computation requires every point on the first
+streamline to be compared with every point on the second streamline, and
+vice versa. For these reasons we have opted to use a very simple
+symmetric distance \citep{EGMB10, Visser2010} which we call Minimum
+average Direct-Flip (MDF) distance $MDF(\mathbf{s},\mathbf{s'})$ between
+streamline $\mathbf{s}$ and streamline $\mathbf{s'}$, see
+Eq.~(\ref{eq:direct_flip_distance}). This distance can be applied only
+when both streamlines have the same number of points. Therefore we
+assume that an initial downscaling of streamlines has been implemented,
+where all segments on a streamline have approximately the same length,
+and all streamlines have the same number of points $K$, and segments
+$K-1$, which are much less than the number of points or segments in the
+typical raw streamline.  Under this assumption MDF is defined as:
 
 \begin{eqnarray}
 \textrm{MDF}(\mathbf{s},\mathbf{s'}) & = & \min(d_{\textrm{direct}}(\mathbf{s},\mathbf{s'}),d_{\textrm{flipped}}(\mathbf{s},\mathbf{s'}))\label{eq:direct_flip_distance}\\
@@ -538,7 +559,7 @@ d_{\textrm{direct}}(\mathbf{s},\mathbf{s'}) & = & \frac{1}{K}\sum_{i=1}^{K}|\mat
 d_{\textrm{flipped}}(\mathbf{s},\mathbf{s'}) & = & \frac{1}{K}\sum_{i=1}^{K}|\mathbf{x}_{i}-\mathbf{x}_{K-i}'|.\nonumber
 \end{eqnarray}
 \noindent
-Here $K$ is the number of points $\mathbf{x}_{i}$ and $\mathbf{x}_{i}'$ on the two tracks $\mathbf{s}$ and $\mathbf{s'}$
+Here $K$ is the number of points $\mathbf{x}_{i}$ and $\mathbf{x}_{i}'$ on the two streamlines $\mathbf{s}$ and $\mathbf{s'}$
 and $|\mathbf{x}-\mathbf{x'}|$ denotes the euclidean distance between two points $\mathbf{x}$ and
 $\mathbf{x'}$.
 
@@ -547,45 +568,47 @@ $\mathbf{x'}$.
 \centering{}
 \caption{The principal distance used in this work is minimum average direct flip
 distance $\textrm{MDF}=\min(d_{\textrm{direct}},d_{\textrm{flipped}})$ which is
-a symmetric distance that can deal with the track bi-directionality problem; it
-works on tracks which have the same number of points.  Another distance we use is the
-mean average distance which is again symmetric but does not require the tracks
+a symmetric distance that can deal with the streamline bi-directionality problem; it
+works on streamlines which have the same number of points.  Another distance we use is the
+mean average distance which is again symmetric but does not require the streamlines
 to have the same number of points:
 $\textrm{MAM}_{\textrm{mean}}=(d_{mean}(\mathbf{s},\mathbf{s'})+d_{mean}(\mathbf{s'},\mathbf{s}))/2$ (see Eq.
 (\ref{eq:mean_average_distance})).  In this figure the components of both
-distances are shown; the tracks are drawn with solid lines, and then with dashed
-lines we connect the pairs of points of the two tracks whose distances
+distances are shown; the streamlines are drawn with solid lines, and then with dashed
+lines we connect the pairs of points of the two streamlines whose distances
 contribute to the overall metric. Note that we cannot calculate the
-$\textrm{MDF}$ between the tracks on the left of the figure because they have
+$\textrm{MDF}$ between the streamlines on the left of the figure because they have
 different numbers of points.
 \label{Flo:Distances_used}}
 \end{figure}
 
 The main advantages of the MDF distance are that it is fast to compute,
-it takes account of track direction issues through consideration of both
-direct and flipped tracks, and that its behaviour is easy to understand,
-from the simplest case of parallel equi-length tracks to the most
-complicated with very divergent tracks. Another advantage is that it
-separates short tracks from long tracks; a track $\mathbf{s}$ that is half the
-length of track $\mathbf{s'}$ will be relatively poorly matched on MDF to $\mathbf{s'}$.
+it takes account of streamline direction issues through consideration of
+both direct and flipped streamlines, and that its behaviour is easy to
+understand, from the simplest case of parallel equi-length streamlines
+to the most complicated with very divergent streamlines. Another
+advantage is that it separates short streamlines from long streamlines;
+a streamline $\mathbf{s}$ that is half the length of streamline
+$\mathbf{s'}$ will be relatively poorly matched on MDF to $\mathbf{s'}$.
 
-Another important advantage of having tracks with the same number of points is
-that we can easily do pairwise calculations on them; for example add two or more
-tracks together to create a new average track. We saw in the previous section
-how track addition is a key property that we exploit in the QB clustering
-algorithm.
+Another important advantage of having streamlines with the same number
+of points is that we can easily do pairwise calculations on them; for
+example add two or more streamlines together to create a new average
+streamline. We saw in the previous section how streamline addition is a
+key property that we exploit in the QB clustering algorithm.
 
 Care needs to be given to choosing the number of points required in a
-track (track downsampling). We always keep the endpoints intact and then
-downsample in equidistant segments. One consequence of short tracks
-having the same number of points as long tracks is that more of the
-curvature information from the long tracks is lost relative to the short
-tracks i.e. the short tracks will have higher resolution.  We found
-empirically that this is not an important issue and that for clustering
-purposes even downsampling to only $K=3$ points in total can be useful
-\cite{EGMB10}. Depending on the application, more or fewer points can
-be used. In the results presented in often use $K=12$ which is a good trade-off 
-between track resolution and dimensionality reduction.
+streamline (streamline downsampling). We always keep the endpoints
+intact and then downsample in equidistant segments. One consequence of
+short streamlines having the same number of points as long streamlines
+is that more of the curvature information from the long streamlines is
+lost relative to the short streamlines i.e. the short streamlines will
+have higher resolution.  We found empirically that this is not an
+important issue and that for clustering purposes even downsampling to
+only $K=3$ points in total can be useful \cite{EGMB10}. Depending on the
+application, more or fewer points can be used. In the results presented
+in often use $K=12$ which is a good trade-off between streamline
+resolution and dimensionality reduction.
 
 In some stages in the analysis of tractographies we find a use for
 metrics from the family of Hausdorff distances which for simplicity we
@@ -593,8 +616,8 @@ denote as MAM distances -- short for Minimum, or Maximum, or Mean,
 Average Minimum distance (MAM). We mostly use the Mean version of this
 family, see Eq.~(\ref{eq:mean_average_distance}) but the others are
 potentially useful as they can weight different properties of the
-tracks. These distances are slower to compute but they can work with
-different number of segments on tracks that is useful for some
+streamlines. These distances are slower to compute but they can work
+with different number of segments on streamlines that is useful for some
 applications. The equations below show the formulation of these
 distances:
 
@@ -609,60 +632,64 @@ d(x,s') & = & \min_{j=1,...,K'}|x-x_{j}'|.\nonumber \\
 
 
 \noindent
-where the number of points $K=\#s$ and $K'=\#s'$ on the two tracks
-are not necessarily the same. For the same threshold value $\textrm{MAM}_{\textrm{min}}$,
-$\textrm{MAM}_{\textrm{max}}$ and $\textrm{MAM}_{\textrm{mean}}$
-will give different results. For example, $\textrm{MAM}_{\textrm{min}}$ will
-bring together more short tracks with long tracks than $\textrm{MAM}_{\textrm{max}}$,
-and 
-$\textrm{MAM}_{\textrm{mean}}$ 
-will have an in-between effect. Finally, other distances than the average
-minimum based on the minimum see Eq.~(\ref{eq:minimum_distance})
-or maximum distance see Eq.~(\ref{eq:maximum distance}) can be used.
-However, we have not investigated them in this work in relation to
-clustering algorithms.
+where the number of points $K=\#s$ and $K'=\#s'$ on the two streamlines
+are not necessarily the same. For the same threshold value
+$\textrm{MAM}_{\textrm{min}}$, $\textrm{MAM}_{\textrm{max}}$ and
+$\textrm{MAM}_{\textrm{mean}}$ will give different results. For example,
+$\textrm{MAM}_{\textrm{min}}$ will bring together more short streamlines
+with long streamlines than $\textrm{MAM}_{\textrm{max}}$, and
+$\textrm{MAM}_{\textrm{mean}}$ will have an in-between effect. Finally,
+other distances than the average minimum based on the minimum see
+Eq.~(\ref{eq:minimum_distance}) or maximum distance see
+Eq.~(\ref{eq:maximum distance}) can be used.  However, we have not
+investigated them in this work in relation to clustering algorithms.
 
-\subsection{Exemplar tracks\label{sub:exemplars}}
+\subsection{Medoid streamlines\label{sub:medoids}}
 
-The virtual tracks created by QB have very nice properties as they
-represent an average track which can stand as the most characteristic
-feature of the cluster that they belong to. However, now that we have
-segmented our tractography into small bundles, we can calculate many more
-potentially important descriptors for the cluster. One of the most
-useful approaches is the calculation of exemplars.
+The centroid streamlines created by QB have very nice properties as they
+represent an average streamline which can stand as the most
+characteristic feature of the cluster that they belong to. However, now
+that we have segmented our tractography into small bundles, we can
+calculate many more potentially important descriptors for the
+cluster. One of the most useful approaches is the calculation of
+medoids.
 
-Here the idea is to identify an actual track belonging to the
-tractography which corresponds in some way to the virtual track. In
-other words to find an exemplar (medoid) track. Virtual tracks do not
-necessarily coincide with real tracks as they are just the outcome of
-large amalgamations. There are many strategies for how to select good
-exemplars for the bundles. A very fast procedure that we use in our
-work is to find which real track from the cluster $c$ is closest (by MDF
-distance) to the virtual track $\mathbf{v}$. We will call this exemplar track $\mathbf{e}_{1}$,
-i.e.~$\mathbf{e}_{1}={\displaystyle \argmin_{\mathbf{s} \in c}}\textrm{\,\ MDF}(\mathbf{v},\mathbf{s})$.
-The computational complexity of finding $\mathbf{e}_{1}$ is still linear in
-cluster size, and that will be very useful if we have created
-clusterings with clusters containing more than \textasciitilde5000 tracks
-(depending on system memory).
+Here the idea is to identify an actual streamline belonging to the
+tractography which corresponds in some way to the centroid streamline. In
+other words to find an medoid (medoid) streamline. Centroid streamlines
+do not necessarily coincide with real streamlines as they are just the
+outcome of large amalgamations. There are many strategies for how to
+select good medoids for the bundles. A very fast procedure that we use
+in our work is to find which real streamline from the cluster $c$ is
+closest (by MDF distance) to the centroid streamline $\mathbf{v}$. We
+will call this medoid streamline $\mathbf{e}_{1}$,
+i.e.~$\mathbf{e}_{1}={\displaystyle \argmin_{\mathbf{s} \in
+    c}}\textrm{\,\ MDF}(\mathbf{v},\mathbf{s})$.  The computational
+complexity of finding $\mathbf{e}_{1}$ is still linear in cluster size,
+and that will be very useful if we have created clusterings with
+clusters containing more than \textasciitilde5000 streamlines (depending
+on system memory).
 
-A different exemplar can be defined as the most typical track among all
-tracks in the bundle, which we denote by $\mathbf{e}_{2}={\displaystyle
-  \argmin_{\mathbf{s} \in c}}\,{\displaystyle \sum_{s'\in
+A different medoid can be defined as the most typical streamline among
+all streamlines in the bundle, which we denote by
+$\mathbf{e}_{2}={\displaystyle \argmin_{\mathbf{s} \in
+    c}}\,{\displaystyle \sum_{s'\in
     c}}\mathrm{MDF}(\mathbf{s'},\mathbf{s})$, or if we want to work with
-tracks with possibly different numbers of points we could instead use
-$\mathbf{e}_{3}={\displaystyle \argmin_{\mathbf{s} \in
+streamlines with possibly different numbers of points we could instead
+use $\mathbf{e}_{3}={\displaystyle \argmin_{\mathbf{s} \in
     c}}\,{\displaystyle \sum_{\mathbf{s'}\in
     c}}\mathrm{MAM}(\mathbf{s'},\mathbf{s})$.  Here $\mathrm{MAM}$ can
-be any one of the Hausdorff MAM metrics (REFERENCE?).
-Identification of exemplar tracks of type $\mathbf{e}_{2}$ and
-$\mathbf{e}_{3}$ will be efficient only for small bundles of less than
-$5000$ tracks because we need to calculate all pairwise distances in the
-bundle. We show below many applications of the exemplars.
+be any one of the Hausdorff MAM metrics (REFERENCE?).  Identification of
+medoid streamlines of type $\mathbf{e}_{2}$ and $\mathbf{e}_{3}$ will
+be efficient only for small bundles of less than $5000$ streamlines
+because we need to calculate all pairwise distances in the bundle. We
+show below many applications of the medoids.
 
-In summary, a virtual (centroid) track is the average of all tracks in
-the cluster. We call it virtual because it does not really exist in the
-real data set, and to distinguish it from exemplar (medoid) tracks which
-are again descriptors of the cluster but are represented by real tracks.
+In summary, a centroid (centroid) streamline is the average of all
+streamlines in the cluster. We call it centroid because it does not
+really exist in the real data set, and to distinguish it from medoid
+(medoid) streamlines which are again descriptors of the cluster but are
+represented by real streamlines.
 
 \subsection{Bundle Adjacency Comparisons\label{sub:Tightness-comparisons-1}}
 
@@ -675,87 +702,88 @@ clusterings of the same subject or different subjects. Although we
 recognise that this is a difficult problem, we propose the following
 approach with a novel metric which we call Bundle Adjacency (BA). This
 metric works as follows. Let us assume that we have gathered the
-exemplar tracks from clustering $A$ in
+medoid streamlines from clustering $A$ in
 $E_{A}=[\mathbf{e}_{1},...,\mathbf{e}_{M_{A}}]$ and from clustering $B$
-in $E_{B}=[\mathbf{e}_{1}^{'},...,\mathbf{e}_{M_{B}}^{'}]$ where $M_A$
-, $M_B$ denote the number of exemplar tracks of the two
+in $E_{B}=[\mathbf{e}_{1}^{'},...,\mathbf{e}_{M_{B}}^{'}]$ where $M_A$ ,
+$M_B$ denote the number of medoid streamlines of the two
 clusterings. $M_{A}$ does not need to be equal to $M_{B}$. Next we
 calculate all pairwise MDF distances between the two sets and store them
 in rectangular matrix $D_{AB}$. The mimima of the rows of $D_{AB}$
-provide the distance to the nearest track in $B$ of each track in $A$
-($m_{A\rightarrow B}$) and similarly the minima of the columns of
-$D_{AB}$ the distance to the nearest track in $A$ of each track in $B$
-($m_{B\rightarrow A}$). From these correspondences we only keep those
-distances that are smaller than a tight threshold $\theta$. Then we
-define BA to be
+provide the distance to the nearest streamline in $B$ of each streamline
+in $A$ ($m_{A\rightarrow B}$) and similarly the minima of the columns of
+$D_{AB}$ the distance to the nearest streamline in $A$ of each
+streamline in $B$ ($m_{B\rightarrow A}$). From these correspondences we
+only keep those distances that are smaller than a tight threshold
+$\theta$. Then we define BA to be
 
 \begin{equation}
 BA=\frac{1}{2}\left(\frac{|m_{A\rightarrow B}\leq \theta |}{M_{A}}+\frac{|m_{B\rightarrow A}\leq \theta |}{M_{B}}\right)\label{eq:TC}
 \end{equation}
 
 \noindent where $|m_{A\rightarrow B}\leq \theta |$ denotes the number of
-exemplars from A which had a neighbour in B that is closer than $\theta$
-and similarly for $|m_{B\rightarrow A}\leq \theta |$. 
-In other words, $BA$ is mean of the fraction of row minima of
-$D_{AB}$ that are less than $\theta$ and the fraction of column minima
-less than $\theta$.  $BA=0$ when every exemplar from the
-one set is further than $\theta$ to all exemplars in the other
-set. $BA=1$ when all exemplars from one set have a close neighbour
-in the other set. This metric is very useful especially when
-comparing tractographies from different subjects because it does not
-require $M_{A}=M_{B}$.
+medoids from A which had a neighbour in B that is closer than $\theta$
+and similarly for $|m_{B\rightarrow A}\leq \theta |$.  In other words,
+$BA$ is mean of the fraction of row minima of $D_{AB}$ that are less
+than $\theta$ and the fraction of column minima less than $\theta$.
+$BA=0$ when every medoid from the one set is further than $\theta$ to
+all medoids in the other set. $BA=1$ when all medoids from one set
+have a close neighbour in the other set. This metric is very useful
+especially when comparing tractographies from different subjects because
+it does not require $M_{A}=M_{B}$.
 
 \subsection{Merging two sets of bundles\label{sub:merging}}
 
-We can merge bundles using exemplar tracks or virtual tracks. We first
-set a distance threshold $\theta$ usually the same as the one we used
-for the QBs in the previous step. Assume now that we have gathered the
-virtual tracks from clustering A in $V_{A}=[\mathbf{v}_{1},...,\mathbf{v}_{M_{A}}]$
-and from clustering $B$ in $V_{B}=[\mathbf{v}_{1}^{'},...,\mathbf{v}_{M_{B}}^{'}]$
-where $M_A$ and $M_B$ denote the number of virtual tracks of each clustering.
-$M_{A}$ can be different from $M_{B}$. (1) For every $\mathbf{v}_{i}^{'}$ in
-$V_{B}$ we find the closest $\mathbf{v}_{j}$ in $V_{A}$ and store the
-distance between these two tracks. Therefore we now have a set of
-minimum distances from $V_{B}$ to $V_{A}$. The size of this set is equal
-to $M_{B}|$. (2) We merge those clusters from B whose virtual
-tracks have minimum distances (e.g. MDF) smaller than $\theta$ into the
-corresponding clusters of A, and if a virtual track in $V_{B}$ has no
-sub-threshold neighbour in $V_{A}$ then its cluster becomes a new
-cluster in the final clustering. In that way clusters from the two sets
-ho have very similar features will merge together, and, if not, new
-clusters will be created, and we will not have any loss of information
-from the two sets of clusters.
+We can merge bundles using medoid streamlines or centroid
+streamlines. We first set a distance threshold $\theta$ usually the same
+as the one we used for the QBs in the previous step. Assume now that we
+have gathered the centroid streamlines from clustering A in
+$V_{A}=[\mathbf{v}_{1},...,\mathbf{v}_{M_{A}}]$ and from clustering $B$
+in $V_{B}=[\mathbf{v}_{1}^{'},...,\mathbf{v}_{M_{B}}^{'}]$ where $M_A$
+and $M_B$ denote the number of centroid streamlines of each clustering.
+$M_{A}$ can be different from $M_{B}$. (1) For every
+$\mathbf{v}_{i}^{'}$ in $V_{B}$ we find the closest $\mathbf{v}_{j}$ in
+$V_{A}$ and store the distance between these two streamlines. Therefore
+we now have a set of minimum distances from $V_{B}$ to $V_{A}$. The size
+of this set is equal to $M_{B}|$. (2) We merge those clusters from B
+whose centroid streamlines have minimum distances (e.g. MDF) smaller than
+$\theta$ into the corresponding clusters of A, and if a centroid
+streamline in $V_{B}$ has no sub-threshold neighbour in $V_{A}$ then its
+cluster becomes a new cluster in the final clustering. In that way
+clusters from the two sets ho have very similar features will merge
+together, and, if not, new clusters will be created, and we will not
+have any loss of information from the two sets of clusters.
 
 \subsection{\label{sub:QB-Data-sets}Data sets}
 
-We applied QuickBundles to a variety of data sets: simulations, $10$ human
-tractographies collected and processed by ourselves, and one tractography
-with segmented bundles which was available online.
+We applied QuickBundles to a variety of data sets: simulations, $10$
+human tractographies collected and processed by ourselves, and one
+tractography with segmented bundles which was available online.
 
 \textbf{Simulated trajectories.} We generated $3$ different bundles of
-parametric paths sampled at $200$ points. The tracks were made from
+parametric paths sampled at $200$ points. The streamlines were made from
 different combinations of sinusoidal and helicoidal functions.  Each
-bundle contained 150 tracks.  For the red bundle in
-Fig.~\ref{Flo:simulated_orbits} a pencil of helical tracks all starting
-at the same point on a cylinder was generated by linearly varying the
-pitch of the helices; the green bundle was made up from a divergent
-pencil of rays on a sinusoidally corrugated sheet; the blue bundle is
-similarly made from a divergent rays on a sinsusoidally corrugated
-sheet, with the rays undergoing sinusoidal modulated lateral bending
-over a range of amplitudes.
+bundle contained 150 streamlines.  For the red bundle in
+Fig.~\ref{Flo:simulated_orbits} a pencil of helical streamlines all
+starting at the same point on a cylinder was generated by linearly
+varying the pitch of the helices; the green bundle was made up from a
+divergent pencil of rays on a sinusoidally corrugated sheet; the blue
+bundle is similarly made from a divergent rays on a sinsusoidally
+corrugated sheet, with the rays undergoing sinusoidal modulated lateral
+bending over a range of amplitudes.
 
 \textbf{Human subjects.} We collected data from $10$ healthy subjects at
-the Medical Research Council Cognition and Brain Sciences Unit 3 Tesla scanner
-(TIM Trio, Siemens), using Siemens advanced diffusion work-in-progress sequence,
-and STEAM \citep{merboldt1992diffusion,MAB04} as the diffusion preparation
-method. The field of view was $240\times240\,\textrm{mm}^{2}$, matrix size
-$96\times96$, and slice thickness $2.5\,\textrm{mm}$ (no gap).  $55$ slices were
-acquired to achieve full brain coverage, and the voxel resolution was
-$2.5\times2.5\times2.5\,\textrm{mm}^{3}$. A $102$-point half grid acquisition
-\citep{Yeh2010} with a maximum $b$-value of $4000\, \textrm{s/mm}^{2}$ was used.
-The total acquisition time was $14'\,21''$ with TR=$8200\,\textrm{ms}$ and
-TE=$69\,\textrm{ms}$. The experiment was approved by the Cambridge Psychology
-Research Ethics Committee (CPREC).
+the Medical Research Council Cognition and Brain Sciences Unit 3 Tesla
+scanner (TIM Trio, Siemens), using Siemens advanced diffusion
+work-in-progress sequence, and STEAM \citep{merboldt1992diffusion,MAB04}
+as the diffusion preparation method. The field of view was
+$240\times240\,\textrm{mm}^{2}$, matrix size $96\times96$, and slice
+thickness $2.5\,\textrm{mm}$ (no gap).  $55$ slices were acquired to
+achieve full brain coverage, and the voxel resolution was
+$2.5\times2.5\times2.5\,\textrm{mm}^{3}$. A $102$-point half grid
+acquisition \citep{Yeh2010} with a maximum $b$-value of $4000\,
+\textrm{s/mm}^{2}$ was used.  The total acquisition time was $14'\,21''$
+with TR=$8200\,\textrm{ms}$ and TE=$69\,\textrm{ms}$. The experiment was
+approved by the Cambridge Psychology Research Ethics Committee (CPREC).
 
 For the reconstruction of the 10 human data sets we used Generalized
 Q-Sampling \citep{Yeh2010} with diffusion sampling length $1.2$ and for
@@ -766,9 +794,9 @@ propagation step size $0.5$ and anisotropy stopping threshold $0.0239$
 (see Fig.~\ref{Flo:CloseToSelected} and Fig.~\ref{Flo:arcuate_close}).
 
 \textbf{PBC human subjects}. We also used a labelled data sets (see
-Fig.~\ref{Flo:cst_pbc} and \ref{Flo:QB_fornix}), from the freely available
-tractography database used in the Pittsburgh Brain Competition Fall
-$2009$, ICDM (pbc.lrdc.pitt.edu).
+Fig.~\ref{Flo:cst_pbc} and \ref{Flo:QB_fornix}), from the freely
+available tractography database used in the Pittsburgh Brain Competition
+Fall $2009$, ICDM (pbc.lrdc.pitt.edu).
 
 \end{methods}
 
@@ -780,7 +808,7 @@ robustness of QB as a method for clustering tractographies.  In
 \ref{QB_Representation} we illustrate the high level of clarity and
 simplification that the QB representation can bring to a tractography,
 and how adjustment of the distance threshold $\theta$ can be used to
-merge or split clusters. 
+merge or split clusters.
 % In \ref{sub:Atlases-made-easy} we show how the
 % QB representations for a group of subjects can be mapped into a common
 % space and then reclustered to generate a multi-subject atlas of white
@@ -795,29 +823,28 @@ the QB representation of the tractography as input to higher complexity
 clustering methods brings full tractographies within their effective
 range.
 % We indicate
-% (\ref{sub:exemplars_vs_ROIs}) exemplars tracks from the QB
+% (\ref{sub:exemplars_vs_ROIs}) medoids streamlines from the QB
 % representation can improve on interaction with tractographies and can be
 % used for the direct registration of tractographies
 %(\ref{sub:direct_registration}).  
 \noindent
-Finally, quality control of
-tractographies is an important issue and we show how QB can be used as a
-fast tool to identify clusters containing long or short tracks
-(\ref{sub:short_tracks}).
+Finally, quality control of tractographies is an important issue and we
+show how QB can be used as a fast tool to identify clusters containing
+long or short streamlines (\ref{sub:short_track}).
 
 \subsection{Complexity and timings\label{sub:Complexity}}
 
-To apply QB to a data set we need to specify three key parameters:
-$K$, the fixed number of downsampled points per track; $\theta$
-the distance threshold, which controls the heterogeneity of clusters;
-and $N$ the size of the subset of the tractography on which the clustering
+To apply QB to a data set we need to specify three key parameters: $K$,
+the fixed number of downsampled points per streamline; $\theta$ the
+distance threshold, which controls the heterogeneity of clusters; and
+$N$ the size of the subset of the tractography on which the clustering
 will be performed. When $\theta$ is higher, fewer more heterogeneous
 clusters are assembled, and conversely when $\theta$ is low, more
 clusters of greater homogeneity are created.
 
 The complexity of QB is in the best case linear time $\mathcal{O}(N)$
-with the number of tracks $N$ and worst case $\mathcal{O}(N^{2})$ when
-every cluster contains only one track. The average case is
+with the number of streamlines $N$ and worst case $\mathcal{O}(N^{2})$
+when every cluster contains only one streamline. The average case is
 $\mathcal{O}(MN)$ where $M$ is the number of clusters however because
 $M$ is usually much smaller than $N$ ($M\ll N$) we can neglect $M$ and
 denote it only as $\mathcal{O}(N)$ as it is common in complexity
@@ -825,11 +852,11 @@ theory. We created the following experiment to investigate this claim
 and we found empirically that the average case is actually
 $\mathcal{O}(N)$ for tractographies (see Fig.\ref{Flo:Speed1}).  In this
 experiment we timed the duration of QB clustering of tractographies
-containing from \num{e5} to \num{e6} tracks, with different initial
-number of points per track ($3,6,12$ and $18$) and different QB
-thresholds ($10,15,20,25$~mm). These results were obtained using
-a single thread Intel(R) CPU E5420 at 2.50GHz on a standard
-PC. The results can be seen in Fig.~\ref{Flo:Speed1}. We observe how the
+containing from \num{e5} to \num{e6} streamlines, with different initial
+number of points per streamline ($3,6,12$ and $18$) and different QB
+thresholds ($10,15,20,25$~mm). These results were obtained using a
+single thread Intel(R) CPU E5420 at 2.50GHz on a standard PC. The
+results can be seen in Fig.~\ref{Flo:Speed1}. We observe how the
 linearity of the QB algorithm with respect to $N$ only reduces slightly
 even when we use a very low threshold such as $10$ ~mm which can
 generate many thousand of clusters. This experiment concludes that QB is
@@ -840,18 +867,18 @@ suitable for fast and linear time clustering.
 \includegraphics[scale=0.23]{Figures/Fig_3_timings}
 \par\end{centering}
 \caption{Time comparisons of QB using different number of points per
-  track, different distance thresholds and different number of
-  tracks. QB is a very efficient algorithm whose performance is
+  streamline, different distance thresholds and different number of
+  streamlines. QB is a very efficient algorithm whose performance is
   controlled by just three parameters. (1) the initial downsampling $K$
-  of the tracks exemplified in four sub-diagrams: 3 points (A), 6 points
-  (B) 12 points (C), 18 points (D). (2) the distance threshold $\theta$
-  in millimeters shown in 4 colours: 10~mm (blue), 15~mm (green), 20~mm
-  (red), 25~mm (cyan). The final parameter, not shown explicitly in
-  these diagrams, is the underlying structure of the data which is
-  expressed by the resulting number of clusters.  We used a full
-  tractography to generate these figures without removing or
-  preselecting any parts. Random subsets of the tractography were
-  chosen with size $N$ from \numrange{e5}{e6} (x-axis)\label{Flo:Speed1}}
+  of the streamlines exemplified in four sub-diagrams: 3 points (A), 6
+  points (B) 12 points (C), 18 points (D). (2) the distance threshold
+  $\theta$ in millimeters shown in 4 colours: 10~mm (blue), 15~mm
+  (green), 20~mm (red), 25~mm (cyan). The final parameter, not shown
+  explicitly in these diagrams, is the underlying structure of the data
+  which is expressed by the resulting number of clusters.  We used a
+  full tractography to generate these figures without removing or
+  preselecting any parts. Random subsets of the tractography were chosen
+  with size $N$ from \numrange{e5}{e6} (x-axis)\label{Flo:Speed1}}
 \end{figure}
 
 \subsection{Stability of QB\label{sub:Comparisons}}
@@ -871,47 +898,47 @@ this respect here.
 As a first step towards examining the robustness of QB in this respect
 we recorded the numbers of QB clusters in $20$ different random
 orderings of the tractographies of $10$ human subjects acquired as
-described in section \ref{sub:QB-Data-sets}. We removed short tracks
-shorter than $40$~mm and downsampled the tracks at $12$ points. Then we
-applied QB with threshold at $10$~mm. The mean number of clusters was
-$2645.9$ (min $1937.6$; max $3857.8$; s.d.~$653.8$). There is therefore
-a considerable between-subject variation in this metric. By contrast the
-within-subject variability of the number of clusters across random
-orderings is rather small, with mean standard deviation $12.7$ (min
-$7.3$; max $17.4$). This suggests an encouraging level of robustness in
-terms of the numbers of clusters that QB creates.
+described in section \ref{sub:QB-Data-sets}. We removed short
+streamlines shorter than $40$~mm and downsampled the streamlines at $12$
+points. Then we applied QB with threshold at $10$~mm. The mean number of
+clusters was $2645.9$ (min $1937.6$; max $3857.8$; s.d.~$653.8$). There
+is therefore a considerable between-subject variation in this metric. By
+contrast the within-subject variability of the number of clusters across
+random orderings is rather small, with mean standard deviation $12.7$
+(min $7.3$; max $17.4$). This suggests an encouraging level of
+robustness in terms of the numbers of clusters that QB creates.
 
 We ran an experiment were we evaluated BA~(\ref{eq:TC}) between pairs of
 $10$ subjects with their tractographies warped in MNI space. This
-generated $45$ BA values with $\theta=10$~mm. We did
-this experiment twice; first by keeping only the bundles with more than
-$10$ tracks (BA10) and secondly by keeping only the bundles with more
-than $100$ tracks (BA100). The average value for BA10 was $47\%$ and
-standard deviation $2.6\%$. As expected BA100 (bigger landmarks) did
-better with average value of $53\%$ and standard deviation $4.9\%$. The
-difference between BA10 and BA100 is highly significant: Student's
-t$=4.692$, df=88, $p=1.97\times10^{-5}$, two-sided; and, as a precaution
-against non-normality of the underlying distributions, Mann-Whitney U =
-530., $p=5.65\times10^{-5}$. If we think that the small bundles of size
-$<100$ are more idiosyncratic or possibly more likely to reflect noise
-in the data, whereas larger bundles are more indicative of substantial
+generated $45$ BA values with $\theta=10$~mm. We did this experiment
+twice; first by keeping only the bundles with more than $10$ streamlines
+(BA10) and secondly by keeping only the bundles with more than $100$
+streamlines (BA100). The average value for BA10 was $47\%$ and standard
+deviation $2.6\%$. As expected BA100 (bigger landmarks) did better with
+average value of $53\%$ and standard deviation $4.9\%$. The difference
+between BA10 and BA100 is highly significant: Student's t$=4.692$,
+df=88, $p=1.97\times10^{-5}$, two-sided; and, as a precaution against
+non-normality of the underlying distributions, Mann-Whitney U = 530.,
+$p=5.65\times10^{-5}$. If we think that the small bundles of size $<100$
+are more idiosyncratic or possibly more likely to reflect noise in the
+data, whereas larger bundles are more indicative of substantial
 structures and landmarks in the tractographies, then we are encouraged
-to see that on average the virtual tracks of $50\%$ of larger bundles of
-each tractography lie within $10$~mm of those of the other
+to see that on average the centroid streamlines of $50\%$ of larger
+bundles of each tractography lie within $10$~mm of those of the other
 tractographies. This supports the notion that QB can be used to find
 agreements between different brains by concentrating on the larger (more
 important) clusters. We will see further evidence for this below
 (section \ref{sub:Atlases-made-easy}).
 
-As a further test we compared QB with $12$ point tracks and distance
-threshold at $\theta=10$~mm versus some timings reported from other
-state of the art methods found in the literature (Table
+As a further test we compared QB with $12$ point streamlines and
+distance threshold at $\theta=10$~mm versus some timings reported from
+other state of the art methods found in the literature (Table
 \ref{Flo:timings}). Unfortunately timings were very rarely reported up
 till now as most algorithms were very slow on full data sets. This
 experiment was performed using a single CPU core. Nonetheless the
 speedup that QB offers is obviously of great importance and holds out
-the prospect of real-time clustering on data sets of fewer than \num{20000}
-tracks (see Table~\ref{Flo:timings}).
+the prospect of real-time clustering on data sets of fewer than
+\num{20000} streamlines (see Table~\ref{Flo:timings}).
 
 %
 \begin{table}
@@ -922,7 +949,7 @@ tracks (see Table~\ref{Flo:timings}).
 \begin{tabular}{ccccc}
 \hline 
 %\hline
-Number of tracks ($N$) & Algorithms & Timings (secs) & QB (secs) & Speedup\tabularnewline
+Number of streamlines ($N$) & Algorithms & Timings (secs) & QB (secs) & Speedup\tabularnewline
 \hline
 $1000$ & \citet{wang2010tractography} & $30$ & $0.07$ & $429$\tabularnewline
 $\num{60000}$ & \citet{wang2010tractography} & $\num{14400}$ & $14.7$ & $980$\tabularnewline
@@ -940,12 +967,12 @@ previously invisible or difficult to locate because of the high density
 of the tractography. For example we used QB to cluster the corticospinal
 tract (CST). This bundle was part of the data sets provided by the
 Pittsburgh Brain Competition (PBC2009-ICDM) and it was selected by an
-expert. The QB representation is clearly shown in Fig.\ref{Flo:cst_pbc} where
-every cluster is represented by a single virtual track. To generate this
-clustering we used a tight threshold of $10$~mm. We observe that only a
-few virtual tracks travel the full distance from bottom to top and that
-they are many tracks that are broken (i.e. shorter than what was
-initially expected) or highly divergent.
+expert. The QB representation is clearly shown in Fig.\ref{Flo:cst_pbc}
+where every cluster is represented by a single centroid streamline. To
+generate this clustering we used a tight threshold of $10$~mm. We
+observe that only a few centroid streamlines travel the full distance
+from bottom to top and that they are many streamlines that are broken
+(i.e. shorter than what was initially expected) or highly divergent.
 
 Another interesting feature of QB is that it can be used to merge or
 split different structures by changing the distance threshold.  This is
@@ -954,64 +981,70 @@ paths made from simple sinusoidal and helicoidal functions packed
 together. The colour coding is used to distinguish the three different
 structures. With a lower threshold the three different structures remain
 separated but when we use a higher threshold the red and blue bundles
-are represented by only one cluster indicated by the purple virtual
-track.
+are represented by only one cluster indicated by the purple centroid
+streamline.
 
 \begin{figure}
 \begin{centering}
 \includegraphics[scale=0.5]{Figures/Fig_5_helix_phantom}
 \par\end{centering}
 \caption{Left: $3$ bundles of simulated trajectories; red, blue and
-  green consisting of $150$ tracks each. All $450$ tracks are clustered
-  together using QB. Middle and Right: virtual tracks using thresholds
-  $1$ and $8$ respectively.  At low threshold the underlying structure
-  is reflected in a more detailed representation. At higher threshold,
-  closer bundles merge together. Here the red and blue bundle have
-  merged together in one cluster represented by the purple virtual
-  track.\label{Flo:simulated_orbits}}
+  green consisting of $150$ streamlines each. All $450$ streamlines are
+  clustered together using QB. Middle and Right: centroid streamlines
+  using thresholds $1$ and $8$ respectively.  At low threshold the
+  underlying structure is reflected in a more detailed
+  representation. At higher threshold, closer bundles merge
+  together. Here the red and blue bundle have merged together in one
+  cluster represented by the purple centroid
+  streamline.\label{Flo:simulated_orbits}}
 \end{figure}
 
 Similarly, with the simulations shown in Fig.\ref{Flo:simulated_orbits}
-we can see the same effect on real tracks, e.g. those of the fornix
+we can see the same effect on real streamlines, e.g. those of the fornix
 shown at the left panel of Fig.~\ref{Flo:QB_fornix} where we can obtain
 different number of clusters at different thresholds. In that way we can
-stress thinner or larger sub-bundles inside other bigger bundles. 
+stress thinner or larger sub-bundles inside other bigger bundles.
 
-A full tractography containing $\num{250000}$ tracks was clustered using QB
-with a distance threshold of $10$~mm (Fig.~\ref{Flo:QB_fornix}).  We
-produced a useful reduction of the initial tractography leaving only
-$763$ virtual tracks. Bundles smaller than $10$ tracks were
-removed. Every track shown here represents an entire cluster containing
-from $10$ to $\num{5000}$ tracks each.
+A full tractography containing $\num{250000}$ streamlines was clustered
+using QB with a distance threshold of $10$~mm
+(Fig.~\ref{Flo:QB_fornix}).  We produced a useful reduction of the
+initial tractography leaving only $763$ centroid streamlines. Bundles
+smaller than $10$ streamlines were removed. Every streamline shown here
+represents an entire cluster containing from $10$ to $\num{5000}$
+streamlines each.
 
 \begin{figure*}[htp]
 \centerline{\includegraphics[width=160mm]{Figures/Fig_6_QB_fornix}}
-\caption{NEW: QB clustering of the Fornix bundle. The original Fornix ($1076$ streamlines) is shown on the left panel using a standard orientation colormap. We observe that the Fornix consists of two long distant legs (left and right Fimbria) and a thicker upper part (Body of Fornix). We show here how QB will be able to distinguish the parts of the Fornix at different resolutions. With is a $15$~mm threshold QB generates 4 clusters shown on the second panel with distinct colors. Here the left and right Fimbria are clearly distinguished from the Body. A last cluster (with blue) exposes a shorter part of the Body which is probably due to noise in the data. With a $18$~mm threshold only two clusters are created. Both Fibria are brought together as one cluster. A property useful for studies which want to use both Fimbria as one. With a $20$~mm threshold the entire Fornix is one cluster. A case useful for interactive applications because now the entire Fornix can be described by only on centroid track. In all cases the streamlines of the Fornix were downsampled to have $18$ points.  OBSOLETE:Left: QB clustering of the fornix bundle. The original fornix
-  is shown in black ($1076$ tracks). All tracks were equidistantly
-  downsampled at $3$ points. With a $5$~mm threshold QB generates $22$
-  clusters (top right). With $10$~mm it generates $7$ (bottom left) and
-  with $20$~mm the whole fornix is determined by one cluster only
-  (bottom right). Right panel: an example of a full tractography
-  (\num{0.25e6} tracks) being clustered using QB with a distance
-  threshold of $10$~mm. $763$ virtual tracks were produced which is a
-  huge simplification of the initial tractography. Every track shown
-  here represents an entire cluster from $10$ to $5000$ tracks
-  each. These can be thought as fast access points to explore the entire
-  data set. The colour here encodes track
-  orientation.\label{Flo:QB_fornix}}
+\caption{NEW: QB clustering of the Fornix bundle. The original Fornix
+  ($1076$ streamlines) is shown on the left panel using a standard
+  orientation colormap. We observe that the Fornix consists of two long
+  distant legs (left and right Fimbria) and a thicker upper part (Body
+  of Fornix). We show here how QB will be able to distinguish the parts
+  of the Fornix at different resolutions. With is a $15$~mm threshold QB
+  generates 4 clusters shown on the second panel with distinct
+  colors. Here the left and right Fimbria are clearly distinguished from
+  the Body. A last cluster (with blue) exposes a shorter part of the
+  Body which is probably due to noise in the data. With a $18$~mm
+  threshold only two clusters are created. Both Fibria are brought
+  together as one cluster. A property useful for studies which want to
+  use both Fimbria as one. With a $20$~mm threshold the entire Fornix is
+  one cluster. A case useful for interactive applications because now
+  the entire Fornix can be described by only on centroid streamline. In
+  all cases the streamlines of the Fornix were downsampled to have $18$
+  points.\label{Flo:QB_fornix}}
 \end{figure*}
 
-The virtual tracks can be thought as fast access points to explore the
-entire data set (see Fig.~\ref{Flo:QB_fornix}). With an appropriate
-visualization tool we can click on a track and obtain the entire
+The centroid streamlines can be thought as fast access points to explore
+the entire data set (see Fig.~\ref{Flo:QB_fornix}). With an appropriate
+visualization tool we can click on a streamline and obtain the entire
 cluster/bundle that it represents. Visualizing an entire data set of
 that size is impossible on standard graphic cards and most visualization
 tools e.g.~Trackvis (trackvis.org) or DSI Studio
 (dsi-studio.labsolver.org) can only show a small random sample of the
 full tractography at real time. In addition we have developed fast and
-efficient ways of identifying broken or wandering tracks by using the
-rapid data compression of QB to identify short or erratic virtual
-tracks.
+efficient ways of identifying broken or wandering streamlines by using
+the rapid data compression of QB to identify short or erratic centroid
+streamlines.
 
 % \subsection{Tractographic atlases and landmarks\label{sub:Atlases-made-easy}}
 
@@ -1029,14 +1062,14 @@ tracks.
 % we proceed to generate a tractographic atlas using QB clusterings.
 
 % \textbf{Tractographic Atlases} For each subjects, (a) load the warped
-% tractography, (b) downsample the tracks to have only $12$ points, (c) calculate
+% tractography, (b) downsample the streamlines to have only $12$ points, (c) calculate
 % and store QB clustering with a $10$~mm threshold, (d) merge all
 % clusterings again with a $10$~mm threshold as explained in
 % section~\ref{sub:merging}. When creating an atlas by merging
 % many different subjects the most important issue is what one removes
 % from the atlas as outliers.  QB here provides a possible solution for
 % this problem. From the distribution of cluster sizes we find that $20\%$
-% of the largest clusters had more than $90\%$ of all tracks. This shows
+% of the largest clusters had more than $90\%$ of all streamlines. This shows
 % that there is much agreement between the biggest bundles of different
 % subjects.  We will use this property to create a solid atlas in which we
 % keep the biggest bundles (landmarks) and remove small bundles
@@ -1059,11 +1092,11 @@ tracks.
 % A simple example is given in Fig.~\ref{Flo:CloseToSelected}. In the
 % first row we see a tractographic atlas joined by merging the QB
 % clusterings of $10$ healthy subjects as described in the previous
-% section. Then from these clusters represented by their virtual tracks we
+% section. Then from these clusters represented by their centroid streamlines we
 % keep only $196$ biggest clusters i.e. those which contain the highest
-% number of tracks, so that we are sure that there is enough agreement
+% number of streamlines, so that we are sure that there is enough agreement
 % from the different tractographies. From these we pick by way of an
-% example $19$ virtual tracks (see Tab.~\ref{Flo:structures} which
+% example $19$ centroid streamlines (see Tab.~\ref{Flo:structures} which
 % correspond to well known bundle structures in the literature:
 
 % \begin{table}
@@ -1097,17 +1130,17 @@ tracks.
 % \par\end{centering}
 % \end{table}
 
-% These $19$ tracks are coloured randomly. Then on the second row we show,
-% for the first $6$ of these selected representative tracks, the tracks
+% These $19$ streamlines are coloured randomly. Then on the second row we show,
+% for the first $6$ of these selected centroid streamlines, the streamlines
 % closer than $20$~mm from $3$ arbitrarily selected subjects. Similarly,
-% on the third row the tracks closer than $15$~mm to the next $7$ selected
-% tracks. Finally on the last row we bring the tracks from the same $3$
+% on the third row the streamlines closer than $15$~mm to the next $7$ selected
+% streamlines. Finally on the last row we bring the streamlines from the same $3$
 % subjects which are closer than $18$~mm.  The colours used for the
-% selected tracks are automatically assigned from the colours assigned to
-% the tracks picked from the atlas. We can see that there is a significant
+% selected streamlines are automatically assigned from the colours assigned to
+% the streamlines picked from the atlas. We can see that there is a significant
 % reliability and continuity both within and between subjects even though
-% we have only selected a very small number of representative
-% tracks. Using a similar procedure we could create a list of bundles of
+% we have only selected a very small number of centroid
+% streamlines. Using a similar procedure we could create a list of bundles of
 % every subject and then compare the subjects at the level of bundles.
 
 % %
@@ -1119,8 +1152,8 @@ tracks.
 %   between different subjects (last $3$ rows) and a few landmarks picked
 %   from the tractographic atlas generated by merging QB clusterings of
 %   $10$ subjects (top row). The fact that we can see this amount of
-%   agreement and continuity on the last $3$ rows from so few virtual
-%   tracks provides a new robust way to statistical comparison between
+%   agreement and continuity on the last $3$ rows from so few centroid
+%   streamlines provides a new robust way to statistical comparison between
 %   tractographic data sets. (Rows 3 and 4 are from different viewpoints
 %   from that in rows 1 and 2.) \label{Flo:CloseToSelected}}
 % \end{figure}
@@ -1130,27 +1163,28 @@ tracks.
 We found that QB is of great value as an adjunct to many less efficient
 algorithms e.g.~hierarchical clustering, affinity propagation, nearest
 neighbours, spectral clustering and other unsupervised and supervised
-machine learning methods. We present here one example with QB as input to
-affinity propagation and one with QB as input to hierarchical
+machine learning methods. We present here one example with QB as input
+to affinity propagation and one with QB as input to hierarchical
 clustering.
 
 Most clustering algorithms need to calculate all pairwise distances
-between tracks; that means that for a medium sized tractography of
-\num{250000} tracks we would need $232$ GBytes of RAM with single floating
-point precision. Something which is not and will not be available soon
-in personal computers. In those cases some people might hope that sparse
-matrices could provide a nice approximation; however dense
-tractographies produce very dense distance matrices. The straightforward
-solution to this problem is to use QB in order to first segment in small
-clusters and then use the representative tracks (i.e. exemplar or virtual
-tracks) of these clusters with other higher complexity operations and merge the
-clusters together in bigger clusters.
+between streamlines; that means that for a medium sized tractography of
+\num{250000} streamlines we would need $232$ GBytes of RAM with single
+floating point precision. Something which is not and will not be
+available soon in personal computers. In those cases some people might
+hope that sparse matrices could provide a nice approximation; however
+dense tractographies produce very dense distance matrices. The
+straightforward solution to this problem is to use QB in order to first
+segment in small clusters and then use the representative streamlines
+(i.e. medoid or centroid streamlines) of these clusters with other
+higher complexity operations and merge the clusters together in bigger
+clusters.
 
 The required steps are: (1) cluster each tractography using QB as
 explained in section~\ref{sub:Atlases-made-easy}); (2) gather up the
-virtual tracks; (3) calculate MDF distances between the virtual tracks;
-(4) use any other clustering method to segment this much smaller
-distance matrix $D$.
+centroid streamlines; (3) calculate MDF distances between the centroid
+streamlines; (4) use any other clustering method to segment this much
+smaller distance matrix $D$.
 
 In the left panel of Fig.~\ref{Flo:LSC+HC+AP} we show a result where we
 used hierarchical clustering with single linkage for step (4) with a
@@ -1160,9 +1194,9 @@ single linkage is the so-called chaining phenomenon: clusters may be
 brought together due to single elements being close to each other, even
 though many of the elements in each cluster may be very distant to each
 other. Chaining is usually considered as a disadvantage because it is
-too driven by local neighbours. Nevertheless, we can take advantage of this
-property to cluster the entire corpus callosum (CC) together (shown in
-dark red in left top of Fig.~\ref{Flo:LSC+HC+AP}) creating a fully
+too driven by local neighbours. Nevertheless, we can take advantage of
+this property to cluster the entire corpus callosum (CC) together (shown
+in dark red in left top of Fig.~\ref{Flo:LSC+HC+AP}) creating a fully
 automatic CC detection system.  Furthermore, we can use different
 cutting thresholds on the underlying dendrogram to amalgamate together
 different structures (see e.g.~the cingulum bundles in the same panel).
@@ -1172,24 +1206,25 @@ of step (4) using the more recent algorithm, affinity propagation
 (AP)~\citep{dueck2009affinity}, which has been
 identified~\citep{malcolm2009filtered}) as being difficult or impossible
 to be used for group analysis or to cluster entire tractographies of
-many thousands of tracks.
+many thousands of streamlines.
 
 Here we see in the bottom right panel of (see Fig.~\ref{Flo:LSC+HC+AP})
 how nicely AP, after the simplification provided by QB, has clustered
 arcuate, longitudinal occipitofrontal fasciculus and other structures
 known from the literature. The input of AP was the negative distance
-matrix $-D$, the preference weights were set to matrix $\mathtt{median}(-D)$
-and the hierarchical clustering parameter was set to $20$~mm.
-For affinity propagation we used the Python library \texttt{scikit-learn}.
+matrix $-D$, the preference weights were set to matrix
+$\mathtt{median}(-D)$ and the hierarchical clustering parameter was set
+to $20$~mm.  For affinity propagation we used the Python library
+\texttt{scikit-learn}.
 
 \begin{figure}
 \begin{centering}
 \includegraphics[scale=0.6]{Figures/Fig_8_QB_with_others}
 \par\end{centering}
 \caption{QB was used to cluster an entire set of $10$ tractographies
-  together (\num{2500000} tracks). The resulting QB representation was used as
-  input to hierarchical clustering (HC) using single linkage (left)
-  and to affinity propagation (AP, right). Colours encode cluster
+  together (\num{2500000} streamlines). The resulting QB representation
+  was used as input to hierarchical clustering (HC) using single linkage
+  (left) and to affinity propagation (AP, right). Colours encode cluster
   labels. HC results in 19 clusters, AP in 23. QB facilitates
   significantly the operation of the other two algorithms which would
   not be able to cluster the entire data sets on current computers. Note
@@ -1202,14 +1237,14 @@ have considerable theoretical appeal and have a deserved reputation for
 being able discover meaningful structure in data sets they are simply
 impracticable when more than a few thousand items are being
 clustered. Using QB to pre-process the tractography puts the whole data
-set, condensed to its virtual tracks, within the feasible range of these
-higher order algorithms.
+set, condensed to its centroid streamlines, within the feasible range of
+these higher order algorithms.
 
-% \subsection{Exemplars replace ROI masks\label{sub:exemplars_vs_ROIs}}
+% \subsection{Medoids replace ROI masks\label{sub:exemplars_vs_ROIs}}
 
 % Medical practitioners and neuroanatomists often argue that when they use
 % multiple spherical or rectangular masks to select some bundles many
-% tracks are thrown away because they are small and the mask operations
+% streamlines are thrown away because they are small and the mask operations
 % cannot get hold of them. Our method provides a solution to this problem
 % as it can identify broken or smaller bundles inside other bigger bundles
 % which are otherwise very difficult or even sometimes impossible to
@@ -1217,10 +1252,10 @@ higher order algorithms.
 % problem and suggests a very efficient and robust solution which sets the
 % limit for unsupervised clustering of tractographies and facilitates
 % tractography exploration and interpretation. The point here is that one
-% can now use exemplar tracks as access points into the full tractography
-% and with a single click on that exemplar track obtain the entire bundle.
+% can now use medoid streamlines as access points into the full tractography
+% and with a single click on that medoid streamline obtain the entire bundle.
 % Therefore a super-bundle can be created just with with a few clicks
-% based on a selection from exemplar tracks.
+% based on a selection from medoid streamlines.
 
 % In order to create this system we implemented a 3D
 % visualization/interaction system for tractographies based on QB in
@@ -1252,16 +1287,16 @@ higher order algorithms.
 % good representative descriptors.
 
 % Let $T_{A}$, and $T_{B}$ the two tractographies to be aligned in native
-% space. The required steps are: (1) all tracks with length smaller than
+% space. The required steps are: (1) all streamlines with length smaller than
 % $100$~mm and longer than $300$~mm are removed from the data sets. (This
 % will reduce the size of each tractography to about $1/4$ of its initial
-% size i.e.~\textasciitilde \num{200000} tracks. While all the subjects
+% size i.e.~\textasciitilde \num{200000} streamlines. While all the subjects
 % are adults, this filtering may have different effects depending on brain
 % size. We have not investigated this question at present); (2) downsample
 % both tractographies equidistantly to $12$ points; (3) run QB with
 % distance threshold at $10$~mm for both tractographies; (4) collect all
-% exemplar tracks from clusters containing more than $0.2\%$ of all
-% tracks; (5) assuming we have these now in $E_{A}$ and $E_{B}$, calculate
+% medoid streamlines from clusters containing more than $0.2\%$ of all
+% streamlines; (5) assuming we have these now in $E_{A}$ and $E_{B}$, calculate
 % all pairwise distances $D=\mathtt{MDF}(E_{A},E_{B})$ and save them in
 % rectangular matrix $D$; (6) use the modified Powell's method
 % \citep{fletcher1987practical} to minimize the symmetric distance
@@ -1273,7 +1308,7 @@ higher order algorithms.
 
 % In Fig.\ref{Flo:direct_registration} A we see the result of this
 % algorithm applied to two tractographies represented by their
-% exemplar tracks, depicted in orange and purple. We can see in the
+% medoid streamlines, depicted in orange and purple. We can see in the
 % upper panel that the orange tractography is misaligned with respect to
 % the purple one, and in the lower panel we see their improved alignment
 % after applying our algorithm.
@@ -1323,8 +1358,8 @@ higher order algorithms.
 % are common in the literature.
 
 % It should be noted that both BA and SMD are derived from the same
-% distance matrix $D_{AB}$ between the two sets of virtual
-% tracks. However, using BA to assess a registration that has minimised
+% distance matrix $D_{AB}$ between the two sets of centroid
+% streamlines. However, using BA to assess a registration that has minimised
 % SMD is less circular than might appear at first sight; the minimization
 % of SMD depends on all the entries of $D$ as it is the mean of all those
 % entries, while BA depends on the separate minimizations of the rows and
@@ -1340,18 +1375,18 @@ higher order algorithms.
 
 \subsection{Quality Control\label{sub:short_tracks}}
 
-We have not so far taken account of short tracks in this report. That is
-perfectly valid because (a) the longer tracks are more likely to be used
-as useful landmarks when comparing or registering different subjects
-because it is more likely for them to exist in most subjects, (b)
-removing short tracks facilitates the usage of distance based clustering
-(no need for manually setting the distance threshold) and interaction
-with the tractography, (c) typically one first wants to see the overall
-representation of the tractography and later go to the
-details. Nonetheless, after having clustered the longer tracks there are
-many ways to assign the smaller bundles to their closest longer
-bundles. For this purpose we recommend to use a different distance from
-MDF for example the minimum version of MAM referred to as
+We have not so far taken account of short streamlines in this
+report. That is perfectly valid because (a) the longer streamlines are
+more likely to be used as useful landmarks when comparing or registering
+different subjects because it is more likely for them to exist in most
+subjects, (b) removing short streamlines facilitates the usage of
+distance based clustering (no need for manually setting the distance
+threshold) and interaction with the tractography, (c) typically one
+first wants to see the overall representation of the tractography and
+later go to the details. Nonetheless, after having clustered the longer
+streamlines there are many ways to assign the smaller bundles to their
+closest longer bundles. For this purpose we recommend to use a different
+distance from MDF for example the minimum version of MAM referred to as
 $\textrm{MAM}_{\textrm{min}}$ in Eq.~(\ref{eq:minimum_distance}).
 
 %
@@ -1360,45 +1395,48 @@ $\textrm{MAM}_{\textrm{min}}$ in Eq.~(\ref{eq:minimum_distance}).
 \includegraphics[scale=0.65]{Figures/Fig_10_arcuate_small_fibers}
 \par\end{centering}
 \caption{A simple and vigorous strategy for handling short and long
-  tracks together by picking a track of interest from one of our
-  atlases. Colour map here encodes track length. A: a single selected
-  atlas track, B: for a single subject, $245$ actual tracks closer than
-  $15$~mm (MDF distance), C: the tracks from B clustered with $23$
-  virtual tracks using QuickBundles, D: $\num{3421}$ actual tracks closer than $6$~mm
-  ($\textrm{MAM}_{\textrm{min}}$ distance) from the virtual tracks in C
-  are shown. We can see that a great number of short tracks have been
-  brought together along with the tracks in B. In this way we managed to
-  bring together in an automatic fashion an entire bundle consisting both of long and short
-  tracks by just selecting a single track.\label{Flo:arcuate_close}}
+  streamlines together by picking a streamline of interest from one of
+  our atlases. Colour map here encodes streamline length. A: a single
+  selected atlas streamline, B: for a single subject, $245$ actual
+  streamlines closer than $15$~mm (MDF distance), C: the streamlines
+  from B clustered with $23$ centroid streamlines using QuickBundles, D:
+  $\num{3421}$ actual streamlines closer than $6$~mm
+  ($\textrm{MAM}_{\textrm{min}}$ distance) from the centroid streamlines
+  in C are shown. We can see that a great number of short streamlines
+  have been brought together along with the streamlines in B. In this
+  way we managed to bring together in an automatic fashion an entire
+  bundle consisting both of long and short streamlines by just selecting
+  a single streamline.\label{Flo:arcuate_close}}
 \end{figure}
 
 Here we show some simple strategies for clustering short fibres. The
 first is for unsupervised clustering and the second one is for
 supervised learning.
 
-1. Cluster the long tracks using QB with distance threshold at $10$~mm
-and then cluster the short tracks (<$100$~mm) to a lower threshold and
-assign them to their closest long track bundle from the first clustering
-using the $MAM_{min}$ distance.
+1. Cluster the long streamlines using QB with distance threshold at
+$10$~mm and then cluster the short streamlines (<$100$~mm) to a lower
+threshold and assign them to their closest long streamline bundle from
+the first clustering using the $MAM_{min}$ distance.
 
 2. Read the tractography of a single subject, use a tractographic atlas
 as the one created in section~\ref{sub:Atlases-made-easy} and pick one
-or more close virtual tracks from that atlas and then find the closest
-tracks from the subject to that selected track using MDF, cluster the
-closest tracks found from the previous step and for each one of these
-new virtual tracks find the closest tracks using the
-$\textrm{MAM}_{\textrm{min}}$ distance. We should now have an
-amalgamation of shorter and longer tracks in one cluster.
+or more close centroid streamlines from that atlas and then find the
+closest streamlines from the subject to that selected streamline using
+MDF, cluster the closest streamlines found from the previous step and
+for each one of these new centroid streamlines find the closest
+streamlines using the $\textrm{MAM}_{\textrm{min}}$ distance. We should
+now have an amalgamation of shorter and longer streamlines in one
+cluster.
 
 An example of this second strategy is shown in
-Fig.~\ref{Flo:arcuate_close}. \textbf{A}: a track of interest from the
-arcuate fasciculus is selected from the tractographic atlas shown in
-Fig.~\ref{Flo:CloseToSelected} (top row, centre); \textbf{B}: the tracks
-of the subject closer than 15~mm (MDF) from the selected cluster are
-shown and clustered with a distance threshold of $6.25$~mm in
-\textbf{C}; \textbf{D}: from every virtual track in \textbf{C} we find
-the closest tracks using the $\textrm{MAM}_{\textrm{min}}$ distance from
-the entire tractography.
+Fig.~\ref{Flo:arcuate_close}. \textbf{A}: a streamline of interest from
+the arcuate fasciculus is selected from the tractographic atlas shown in
+Fig.~\ref{Flo:CloseToSelected} (top row, centre); \textbf{B}: the
+streamlines of the subject closer than 15~mm (MDF) from the selected
+cluster are shown and clustered with a distance threshold of $6.25$~mm
+in \textbf{C}; \textbf{D}: from every centroid streamline in \textbf{C}
+we find the closest streamlines using the $\textrm{MAM}_{\textrm{min}}$
+distance from the entire tractography.
 
 \section{Discussion and conclusion}
 
@@ -1417,8 +1455,8 @@ method therefore it can give different results under different initial
 conditions of the data set when there is no obvious distance threshold
 which can separate the clusters into meaningful bundles; for example we
 should expect different clusters under different permutations/orderings
-of the tracks in a densely packed tractography. However, we found that
-there is enough agreement even between two clusterings of the same
+of the streamlines in a densely packed tractography. However, we found
+that there is enough agreement even between two clusterings of the same
 tractography with different orderings. If the clusters are truly
 separable by distances then there is a global solution independent of
 orderings. This is often visible in smaller subsets of the initial
@@ -1429,17 +1467,17 @@ used.
 Furthermore the output of QB can be used as the input to another recent
 fast algorithm of quadratic time on average $\mathcal{O}(M^{2})$ called
 affinity propagation where now $M\ll N$ therefore the overall time stays
-linear on the number of tracks $N$. Other algorithms previously too slow
-to be used on the entire tractography can now be used efficiently too
-e.g.~spectral and hierarchical clustering.
+linear on the number of streamlines $N$. Other algorithms previously too
+slow to be used on the entire tractography can now be used efficiently
+too e.g.~spectral and hierarchical clustering.
 
-We saw that QB is a linear time clustering method based on track
+We saw that QB is a linear time clustering method based on streamline
 distances, which is on average linear time $\mathcal{O}(N)$ where $N$ is
-the number of tracks and with worst case $\mathcal{O}(N^{2})$ when every
-track is a singleton cluster itself. Therefore QB is the fastest known
-tractography clustering method and even real-time on smaller
-tractographies (<\num{20000} tracks). We also showed that is uses a
-negligible amount of memory.
+the number of streamlines and with worst case $\mathcal{O}(N^{2})$ when
+every streamline is a singleton cluster itself. Therefore QB is the
+fastest known tractography clustering method and even real-time on
+smaller tractographies (<\num{20000} streamlines). We also showed that
+is uses a negligible amount of memory.
 
 QB is fully automatic and very robust as when we use it we can find good
 agreements even between different subjects and can be used to create
@@ -1451,9 +1489,9 @@ comparisons.
 QB can be used as well for reducing the dimensionality of the data sets
 at the time of interaction providing an alternative way to ROIs using
 BOIs (bundles of interest). We also showed that it can be used to find
-obscured tracks not visible to the user at first instance. Therefore QB
-opens up the road to create rapid tools for exploring tractographies of
-any size.
+obscured streamlines not visible to the user at first
+instance. Therefore QB opens up the road to create rapid tools for
+exploring tractographies of any size.
 
 We have shown results with data from simulations, single and multiple
 real subjects. The code for QuickBundles is freely available at
