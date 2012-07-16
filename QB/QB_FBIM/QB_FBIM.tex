@@ -400,7 +400,7 @@ streamlines in the cluster. One summary of the cluster node is the centroid or
 \end{equation}
 
 %\begin{float}
-\begin{algorithm}
+\begin{algorithm}[h]
 %\begin{boxedalgorithmic}
 \begin{algorithmic}
 \REQUIRE $T=\{\mathbf{s}_{1},...,\mathbf{s}_{i},...,\mathbf{s}_{N}\}$, $\theta$
@@ -417,6 +417,7 @@ streamlines in the cluster. One summary of the cluster node is the centroid or
 		\STATE $\mathbf{v}\leftarrow c_{k}.\mathbf{h}/c_{k}.n$
 		\STATE $d\leftarrow d_{\textrm{direct}}(\mathbf{t},\mathbf{v})$
 		\STATE $f\leftarrow d_{\textrm{flipped}}(\mathbf{t},\mathbf{v})$
+	\STATE \# evaluate MDF
 	\IF{$f$ < $d$}
 		\STATE $d \leftarrow f$
 		\STATE $\texttt{flip}_{k} \leftarrow 1$
@@ -443,7 +444,6 @@ streamlines in the cluster. One summary of the cluster node is the centroid or
 \ENDFOR 
 \end{algorithmic}
 %\end{boxedalgorithmic}
-
 \caption{QuickBundles}
 \label{Alg:QuickBundles}
 \end{algorithm}
@@ -571,6 +571,12 @@ d_{\textrm{flipped}}(\mathbf{s},\mathbf{s'}) & = & \frac{1}{K}\sum_{i=1}^{K}|\ma
 Here $K$ is the number of points $\mathbf{x}_{i}$ and $\mathbf{x}_{i}'$ on the two streamlines $\mathbf{s}$ and $\mathbf{s'}$
 and $|\mathbf{x}-\mathbf{x'}|$ denotes the euclidean distance between two points $\mathbf{x}$ and
 $\mathbf{x'}$.
+
+\begin{figure}
+\includegraphics[scale=0.15]{Figures/Fig_11_MDF_arcuate}
+\centering{}
+\caption{Color coding shows MDF distances from centroid to every other track of the Arcuate Fasciculus.\label{Flo:MDF_arcuate}}
+\end{figure}
 
 \begin{figure}
 \includegraphics[scale=0.35]{Figures/Fig_2_distances2}
