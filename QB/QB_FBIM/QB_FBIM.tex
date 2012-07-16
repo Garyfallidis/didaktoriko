@@ -400,7 +400,7 @@ streamlines in the cluster. One summary of the cluster node is the centroid or
 \end{equation}
 
 %\begin{float}
-\begin{algorithm}
+\begin{algorithm}[h]
 %\begin{boxedalgorithmic}
 \begin{algorithmic}
 \REQUIRE $T=\{\mathbf{s}_{1},...,\mathbf{s}_{i},...,\mathbf{s}_{N}\}$, $\theta$
@@ -417,6 +417,7 @@ streamlines in the cluster. One summary of the cluster node is the centroid or
 		\STATE $\mathbf{v}\leftarrow c_{k}.\mathbf{h}/c_{k}.n$
 		\STATE $d\leftarrow d_{\textrm{direct}}(\mathbf{t},\mathbf{v})$
 		\STATE $f\leftarrow d_{\textrm{flipped}}(\mathbf{t},\mathbf{v})$
+	\STATE \# evaluate MDF
 	\IF{$f$ < $d$}
 		\STATE $d \leftarrow f$
 		\STATE $\texttt{flip}_{k} \leftarrow 1$
@@ -443,7 +444,6 @@ streamlines in the cluster. One summary of the cluster node is the centroid or
 \ENDFOR 
 \end{algorithmic}
 %\end{boxedalgorithmic}
-
 \caption{QuickBundles}
 \label{Alg:QuickBundles}
 \end{algorithm}
