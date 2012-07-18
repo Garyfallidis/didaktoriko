@@ -348,6 +348,31 @@ the use of this algorithm to simplify tractographies, we show how it can
 help find landmarks, create atlases, and compare and register
 tractographies.
 
+\subsection{Focus}
+
+Many published methods on tractography segmentation - some evidence of
+lengthy computation time - because of size of datasets on top of
+complexity of segmentation methods - lack of evidence that methods have
+been taken up and used for practical problems - ‘automatic’
+classification in reality requires significant intervention by
+neuroanatomists - data sets have high redundancy with many rather
+similar tracks - our approach is to reduce the size and dimensionality
+of the datasets by QB as a precursor for higher complexity
+classification and/or input from experts. We provide a number of tests
+to show how the QB reduction has good consistency, robustness etc. We
+show one application involving multiple subjects - to look at the
+correspondence problem and hint at the power of the QB approach.
+
+Data reduction - preprocessing - unsupervised - automatic. No claims for
+anatomical segmentation.
+
+There is no current unsupervised anatomical segmentation method that can
+have general usability without expert knowledge
+integration. Nonetheless, neuroanatomists often disagree on definition
+of major structures [cite]. What we propose is to create a method that
+simplifies the tractography at the level where distinction is not an
+issue.
+
 \begin{methods}
 
 \section{Methods and Materials}
@@ -465,58 +490,58 @@ $c_{M+1}\leftarrow([i],\mathbf{s}_{i},1)$, $M\leftarrow M+1$.
 
 %\subsection{QB Step-by-step\label{sub:QB_step_by_step}}
 
-\begin{figure*}[t]
-\centering\includegraphics[width=160mm,angle=0]{Figures/Fig_1_QB_algorithm}
-\caption{This is a step-by-step explanation of how QuickBundles proceeds
-  when clustering six streamlines (top left) resulting in three bundles
-  (blue, red and green, bottom right)}
-\label{Fig:LSC_simple}
-\end{figure*}
+% \begin{figure*}[t]
+% \centering\includegraphics[width=160mm,angle=0]{Figures/Fig_1_QB_algorithm}
+% \caption{This is a step-by-step explanation of how QuickBundles proceeds
+%   when clustering six streamlines (top left) resulting in three bundles
+%   (blue, red and green, bottom right)}
+% \label{Fig:LSC_simple}
+% \end{figure*}
 
-Fig.~\ref{Fig:LSC_simple} illustrates the operation of QB step by step.
-Initially in panel (i) 6 unclustered streamlines ($A-F$) are presented;
-imagine that the distance threshold $\theta$ used here is the same as
-the MDF distance (Eq.~\ref{eq:direct_flip_distance}) between $B$ and
-$E$: $\theta = \mathrm{MDF}(B,E)$. The algorithm starts and in (ii) we
-see that streamline $A$ was selected; as no other clusters exist
-streamline $A$ becomes the first cluster (labelled with purple color)
-and the centroid streamline of that cluster is identical with $A$ as seen
-in (iii); next in (iv) streamline $B$ is selected and we calculate the
-MDF distance between $B$ and the centroid streamline of the other
-clusters. For the moment there is only one cluster to compare so QB
-calculates MDF ($B$,centroid-purple) and this is obviously bigger than
-threshold $\theta$ ($\theta = \mathrm{MDF}(B,E)$).  Therefore a new
-cluster is assigned for $B$, and $B$ becomes the centroid streamline of
-that cluster as shown in (v). In (vi) the next streamline $C$ is
-selected and this is again far away from both purple and blue centroids;
-therefore another cluster is created and $C$ is the centroid of the blue
-cluster as shown in (vii).  In (viii) streamline $D$ is selected and
-after we have calculated MDF($D$,purple), MDF($D$,Blue) and
-MDF($D$,green) it is obvious that $D$ belongs to the purple cluster as
-MDF($D$,purple) is smaller and lower than threshold as shown in (ix).
-However we can now see in (x) that things change for the purple cluster
-because the centroid streamline is not anymore made by only one
-streamline but it is the average of $D$ and $A$ shown with a dashed
-line. In (xi) $E$ is the current streamline and will be assigned to the
-green cluster as shown in (xii) because MDF($E$,centroid green) =
-MDF($E$,$B$) = $\theta$, and in (xiii) we see the updated centroid
-streamline for the green cluster which is equal to $(B+E)/2$ where `$+$'
-means streamline addition. In (xiv) the last streamline is picked and
-compared with the centroid streamlines of the other 3 clusters; obviously
-MDF($F$,purple) is the only distance smaller than threshold, and so F is
-assigned to the purple cluster in (xv).  Finally, in (xvi) the centroid
-purple streamline is updated as $(D+A+F)/3$. As there are no more
-streamlines to select, the algorithm stops. We can see that all three
-clusters have been found and all streamlines have been assigned
-successfully to a cluster.  Popular amalgamation clustering algorithms
-such as $k$-means~\citep{steinhaus1956division, macqueen1967some}
-require iterative reassignment of items to different clusters and hence
-do not run in linear time. Others such as BIRCH~\citep{zhang1997birch}
-have linear time performance while imposing limits on the size and
-spread of clusters; BIRCH clusters may be contiguous and the BIRCH
-algorithm requires further phases of cluster amalgamation to optimise
-search time when adding future items. By contrast when QB assigns an
-item to a node it stays there, and clusters are not amalgamated.
+% Fig.~\ref{Fig:LSC_simple} illustrates the operation of QB step by step.
+% Initially in panel (i) 6 unclustered streamlines ($A-F$) are presented;
+% imagine that the distance threshold $\theta$ used here is the same as
+% the MDF distance (Eq.~\ref{eq:direct_flip_distance}) between $B$ and
+% $E$: $\theta = \mathrm{MDF}(B,E)$. The algorithm starts and in (ii) we
+% see that streamline $A$ was selected; as no other clusters exist
+% streamline $A$ becomes the first cluster (labelled with purple color)
+% and the centroid streamline of that cluster is identical with $A$ as seen
+% in (iii); next in (iv) streamline $B$ is selected and we calculate the
+% MDF distance between $B$ and the centroid streamline of the other
+% clusters. For the moment there is only one cluster to compare so QB
+% calculates MDF ($B$,centroid-purple) and this is obviously bigger than
+% threshold $\theta$ ($\theta = \mathrm{MDF}(B,E)$).  Therefore a new
+% cluster is assigned for $B$, and $B$ becomes the centroid streamline of
+% that cluster as shown in (v). In (vi) the next streamline $C$ is
+% selected and this is again far away from both purple and blue centroids;
+% therefore another cluster is created and $C$ is the centroid of the blue
+% cluster as shown in (vii).  In (viii) streamline $D$ is selected and
+% after we have calculated MDF($D$,purple), MDF($D$,Blue) and
+% MDF($D$,green) it is obvious that $D$ belongs to the purple cluster as
+% MDF($D$,purple) is smaller and lower than threshold as shown in (ix).
+% However we can now see in (x) that things change for the purple cluster
+% because the centroid streamline is not anymore made by only one
+% streamline but it is the average of $D$ and $A$ shown with a dashed
+% line. In (xi) $E$ is the current streamline and will be assigned to the
+% green cluster as shown in (xii) because MDF($E$,centroid green) =
+% MDF($E$,$B$) = $\theta$, and in (xiii) we see the updated centroid
+% streamline for the green cluster which is equal to $(B+E)/2$ where `$+$'
+% means streamline addition. In (xiv) the last streamline is picked and
+% compared with the centroid streamlines of the other 3 clusters; obviously
+% MDF($F$,purple) is the only distance smaller than threshold, and so F is
+% assigned to the purple cluster in (xv).  Finally, in (xvi) the centroid
+% purple streamline is updated as $(D+A+F)/3$. As there are no more
+% streamlines to select, the algorithm stops. We can see that all three
+% clusters have been found and all streamlines have been assigned
+% successfully to a cluster.  Popular amalgamation clustering algorithms
+% such as $k$-means~\citep{steinhaus1956division, macqueen1967some}
+% require iterative reassignment of items to different clusters and hence
+% do not run in linear time. Others such as BIRCH~\citep{zhang1997birch}
+% have linear time performance while imposing limits on the size and
+% spread of clusters; BIRCH clusters may be contiguous and the BIRCH
+% algorithm requires further phases of cluster amalgamation to optimise
+% search time when adding future items. By contrast when QB assigns an
+% item to a node it stays there, and clusters are not amalgamated.
 
 Choice of orientation can become an issue when using the MDF distance
 and adding streamlines together, because the diffusion signal is
@@ -572,6 +597,33 @@ Here $K$ is the number of points $\mathbf{x}_{i}$ and $\mathbf{x}_{i}'$ on the t
 and $|\mathbf{x}-\mathbf{x'}|$ denotes the euclidean distance between two points $\mathbf{x}$ and
 $\mathbf{x'}$.
 
+MDF makes the space of streamlines (suitably defined as equivalence
+classes under flipping) into a metric space.
+
+A short paragraph starting with “There are risks in the established
+terminology ...”  We can prove that MDF is a metric (not just a
+semi-metric): A metric space is an ordered pair  where  is a set and  is
+a metric on , i.e., a function such that for any , the following holds:
+(non-negative), iff   (identity of indiscernibles), (symmetry) and
+(triangle inequality) .  (I started trying to rewrite this in a more
+formal way but am not entirely happy with where it is going!)  A
+streamline s+ is an oriented polyline (s1, s2, … , sp) in R3 and s- ,
+the flip of s+, is the reverse streamline (sp, sp-1, … , s1). A track x
+is an unoriented polyline [x1, x2, … , xp]. We identify a track x with
+the pair of streamlines {x+, x-}. Henceforth we assume that streamlines
+and tracks have the same number p of points. The (direct) distance
+d(s1,s2) between two streamlines s1, and s2 is the sum of the euclidean
+distances between corresponding points. The minimum distance flipped
+mdf(x1, x2) between two tracks x1 and x2 is min(d(x1+, x2+), d(x1+,
+x2-)). Note that d(x1+, x2+) = d(x1-, x2-) and d(x1+, x2-) =  d(x1-,
+x2+).  We claim that the space of p-tracks is a metric space when
+equipped with mdf. The first three axioms are clearly satisfied. To
+prove the triangle inequality let us assume that x, y and z are tracks
+and that, without loss of generality, d(x+, y+) and d(y+, z+) actually
+minimise the corresponding mdf distances. Then mdf(x, y) + mdf(y, z) =
+d(x+, y+) + d(y+, z+)  d(x+, z+) (by the triangle inequality for the
+euclidean distance)  min(d(x+, z+), d(x+, z-)) = mdf(x, z). QED.
+
 \begin{figure}
 \includegraphics[scale=0.15]{Figures/Fig_11_MDF_arcuate}
 \centering{}
@@ -581,19 +633,22 @@ $\mathbf{x'}$.
 \begin{figure}
 \includegraphics[scale=0.35]{Figures/Fig_2_distances2}
 \centering{}
-\caption{The principal distance used in this work is minimum average direct flip
-distance $\textrm{MDF}=\min(d_{\textrm{direct}},d_{\textrm{flipped}})$ which is
-a symmetric distance that can deal with the streamline bi-directionality problem; it
-works on streamlines which have the same number of points.  Another distance we use is the
-mean average distance which is again symmetric but does not require the streamlines
-to have the same number of points:
-$\textrm{MAM}_{\textrm{mean}}=(d_{mean}(\mathbf{s},\mathbf{s'})+d_{mean}(\mathbf{s'},\mathbf{s}))/2$ (see Eq.
-(\ref{eq:mean_average_distance})).  In this figure the components of both
-distances are shown; the streamlines are drawn with solid lines, and then with dashed
-lines we connect the pairs of points of the two streamlines whose distances
-contribute to the overall metric. Note that we cannot calculate the
-$\textrm{MDF}$ between the streamlines on the left of the figure because they have
-different numbers of points.
+\caption{The principal distance used in this work is minimum average
+  direct flip distance
+  $\textrm{MDF}=\min(d_{\textrm{direct}},d_{\textrm{flipped}})$ which is
+  a symmetric distance that can deal with the streamline
+  bi-directionality problem; it works on streamlines which have the same
+  number of points.  Another distance we use is the mean average
+  distance which is again symmetric but does not require the streamlines
+  to have the same number of points:
+  $\textrm{MAM}_{\textrm{mean}}=(d_{mean}(\mathbf{s},\mathbf{s'})+d_{mean}(\mathbf{s'},\mathbf{s}))/2$
+  (see Eq.  (\ref{eq:mean_average_distance})).  In this figure the
+  components of both distances are shown; the streamlines are drawn with
+  solid lines, and then with dashed lines we connect the pairs of points
+  of the two streamlines whose distances contribute to the overall
+  metric. Note that we cannot calculate the $\textrm{MDF}$ between the
+  streamlines on the left of the figure because they have different
+  numbers of points.
 \label{Flo:Distances_used}}
 \end{figure}
 
@@ -747,6 +802,8 @@ especially when comparing tractographies from different subjects because
 it does not require $M_{A}=M_{B}$.
 
 \subsection{Merging two sets of bundles\label{sub:merging}}
+
+\textbf{Do we keep this in?}
 
 We can merge bundles using medoid streamlines or centroid
 streamlines. We first set a distance threshold $\theta$ usually the same
@@ -1173,87 +1230,87 @@ streamlines.
 %   from that in rows 1 and 2.) \label{Flo:CloseToSelected}}
 % \end{figure}
 
-\subsection{QB as input to higher complexity methods\label{sub:QB_as_input}}
+% \subsection{QB as input to higher complexity methods\label{sub:QB_as_input}}
 
-We found that QB is of great value as an adjunct to many less efficient
-algorithms e.g.~hierarchical clustering, affinity propagation, nearest
-neighbours, spectral clustering and other unsupervised and supervised
-machine learning methods. We present here one example with QB as input
-to affinity propagation and one with QB as input to hierarchical
-clustering.
+% We found that QB is of great value as an adjunct to many less efficient
+% algorithms e.g.~hierarchical clustering, affinity propagation, nearest
+% neighbours, spectral clustering and other unsupervised and supervised
+% machine learning methods. We present here one example with QB as input
+% to affinity propagation and one with QB as input to hierarchical
+% clustering.
 
-Most clustering algorithms need to calculate all pairwise distances
-between streamlines; that means that for a medium sized tractography of
-\num{250000} streamlines we would need $232$ GBytes of RAM with single
-floating point precision. Something which is not and will not be
-available soon in personal computers. In those cases some people might
-hope that sparse matrices could provide a nice approximation; however
-dense tractographies produce very dense distance matrices. The
-straightforward solution to this problem is to use QB in order to first
-segment in small clusters and then use the representative streamlines
-(i.e. medoid or centroid streamlines) of these clusters with other
-higher complexity operations and merge the clusters together in bigger
-clusters.
+% Most clustering algorithms need to calculate all pairwise distances
+% between streamlines; that means that for a medium sized tractography of
+% \num{250000} streamlines we would need $232$ GBytes of RAM with single
+% floating point precision. Something which is not and will not be
+% available soon in personal computers. In those cases some people might
+% hope that sparse matrices could provide a nice approximation; however
+% dense tractographies produce very dense distance matrices. The
+% straightforward solution to this problem is to use QB in order to first
+% segment in small clusters and then use the representative streamlines
+% (i.e. medoid or centroid streamlines) of these clusters with other
+% higher complexity operations and merge the clusters together in bigger
+% clusters.
 
-The required steps are: (1) cluster each tractography using QB as
-explained in section~\ref{sub:Atlases-made-easy}); (2) gather up the
-centroid streamlines; (3) calculate MDF distances between the centroid
-streamlines; (4) use any other clustering method to segment this much
-smaller distance matrix $D$.
+% The required steps are: (1) cluster each tractography using QB as
+% explained in section~\ref{sub:Atlases-made-easy}); (2) gather up the
+% centroid streamlines; (3) calculate MDF distances between the centroid
+% streamlines; (4) use any other clustering method to segment this much
+% smaller distance matrix $D$.
 
-In the left panel of Fig.~\ref{Flo:LSC+HC+AP} we show a result where we
-used hierarchical clustering with single linkage for step (4) with a
-threshold of $20$~mm using the Python software package
-$\texttt{hcluster}$~\cite{eads-hcluster-software}. A known drawback of
-single linkage is the so-called chaining phenomenon: clusters may be
-brought together due to single elements being close to each other, even
-though many of the elements in each cluster may be very distant to each
-other. Chaining is usually considered as a disadvantage because it is
-too driven by local neighbours. Nevertheless, we can take advantage of
-this property to cluster the entire corpus callosum (CC) together (shown
-in dark red in left top of Fig.~\ref{Flo:LSC+HC+AP}) creating a fully
-automatic CC detection system.  Furthermore, we can use different
-cutting thresholds on the underlying dendrogram to amalgamate together
-different structures (see e.g.~the cingulum bundles in the same panel).
+% In the left panel of Fig.~\ref{Flo:LSC+HC+AP} we show a result where we
+% used hierarchical clustering with single linkage for step (4) with a
+% threshold of $20$~mm using the Python software package
+% $\texttt{hcluster}$~\cite{eads-hcluster-software}. A known drawback of
+% single linkage is the so-called chaining phenomenon: clusters may be
+% brought together due to single elements being close to each other, even
+% though many of the elements in each cluster may be very distant to each
+% other. Chaining is usually considered as a disadvantage because it is
+% too driven by local neighbours. Nevertheless, we can take advantage of
+% this property to cluster the entire corpus callosum (CC) together (shown
+% in dark red in left top of Fig.~\ref{Flo:LSC+HC+AP}) creating a fully
+% automatic CC detection system.  Furthermore, we can use different
+% cutting thresholds on the underlying dendrogram to amalgamate together
+% different structures (see e.g.~the cingulum bundles in the same panel).
 
-In the right panel of Fig.~\ref{Flo:LSC+HC+AP} we see an implementation
-of step (4) using the more recent algorithm, affinity propagation
-(AP)~\citep{dueck2009affinity}, which has been
-identified~\citep{malcolm2009filtered}) as being difficult or impossible
-to be used for group analysis or to cluster entire tractographies of
-many thousands of streamlines.
+% In the right panel of Fig.~\ref{Flo:LSC+HC+AP} we see an implementation
+% of step (4) using the more recent algorithm, affinity propagation
+% (AP)~\citep{dueck2009affinity}, which has been
+% identified~\citep{malcolm2009filtered}) as being difficult or impossible
+% to be used for group analysis or to cluster entire tractographies of
+% many thousands of streamlines.
 
-Here we see in the bottom right panel of (see Fig.~\ref{Flo:LSC+HC+AP})
-how nicely AP, after the simplification provided by QB, has clustered
-arcuate, longitudinal occipitofrontal fasciculus and other structures
-known from the literature. The input of AP was the negative distance
-matrix $-D$, the preference weights were set to matrix
-$\mathtt{median}(-D)$ and the hierarchical clustering parameter was set
-to $20$~mm.  For affinity propagation we used the Python library
-\texttt{scikit-learn}.
+% Here we see in the bottom right panel of (see Fig.~\ref{Flo:LSC+HC+AP})
+% how nicely AP, after the simplification provided by QB, has clustered
+% arcuate, longitudinal occipitofrontal fasciculus and other structures
+% known from the literature. The input of AP was the negative distance
+% matrix $-D$, the preference weights were set to matrix
+% $\mathtt{median}(-D)$ and the hierarchical clustering parameter was set
+% to $20$~mm.  For affinity propagation we used the Python library
+% \texttt{scikit-learn}.
 
-\begin{figure}
-\begin{centering}
-\includegraphics[scale=0.6]{Figures/Fig_8_QB_with_others}
-\par\end{centering}
-\caption{QB was used to cluster an entire set of $10$ tractographies
-  together (\num{2500000} streamlines). The resulting QB representation
-  was used as input to hierarchical clustering (HC) using single linkage
-  (left) and to affinity propagation (AP, right). Colours encode cluster
-  labels. HC results in 19 clusters, AP in 23. QB facilitates
-  significantly the operation of the other two algorithms which would
-  not be able to cluster the entire data sets on current computers. Note
-  the top left panel where QB+HC have managed to cluster the entire CC
-  in one bundle.\label{Flo:LSC+HC+AP}}
-\end{figure}
+% \begin{figure}
+% \begin{centering}
+% \includegraphics[scale=0.6]{Figures/Fig_8_QB_with_others}
+% \par\end{centering}
+% \caption{QB was used to cluster an entire set of $10$ tractographies
+%   together (\num{2500000} streamlines). The resulting QB representation
+%   was used as input to hierarchical clustering (HC) using single linkage
+%   (left) and to affinity propagation (AP, right). Colours encode cluster
+%   labels. HC results in 19 clusters, AP in 23. QB facilitates
+%   significantly the operation of the other two algorithms which would
+%   not be able to cluster the entire data sets on current computers. Note
+%   the top left panel where QB+HC have managed to cluster the entire CC
+%   in one bundle.\label{Flo:LSC+HC+AP}}
+% \end{figure}
 
-While clustering methods of higher order complexity such as HC and AP
-have considerable theoretical appeal and have a deserved reputation for
-being able discover meaningful structure in data sets they are simply
-impracticable when more than a few thousand items are being
-clustered. Using QB to pre-process the tractography puts the whole data
-set, condensed to its centroid streamlines, within the feasible range of
-these higher order algorithms.
+% While clustering methods of higher order complexity such as HC and AP
+% have considerable theoretical appeal and have a deserved reputation for
+% being able discover meaningful structure in data sets they are simply
+% impracticable when more than a few thousand items are being
+% clustered. Using QB to pre-process the tractography puts the whole data
+% set, condensed to its centroid streamlines, within the feasible range of
+% these higher order algorithms.
 
 % \subsection{Medoids replace ROI masks\label{sub:exemplars_vs_ROIs}}
 
@@ -1328,7 +1385,7 @@ these higher order algorithms.
 % the purple one, and in the lower panel we see their improved alignment
 % after applying our algorithm.
 
-% \textbf{Metric}. SMD is proposed here for registration of trajectory
+*% \textbf{Metric}. SMD is proposed here for registration of trajectory
 % data sets, but one could equally use mutual
 % information~\citep{maes1997multimodality} or the correlation
 % ratio~\citep{roche1998correlation} for registration of volumetric data
@@ -1388,7 +1445,9 @@ these higher order algorithms.
 %   before (left) and after (right) QB-based direct registration.\label{Flo:direct_registration}}
 % \end{figure}
 
-\subsection{Quality Control\label{sub:short_tracks}}
+\subsection{Limitations of QB\label{sub:short_tracks}}
+
+\textbf{Hangout notes say: short vs long and MDF}
 
 We have not so far taken account of short streamlines in this
 report. That is perfectly valid because (a) the longer streamlines are
