@@ -14,7 +14,7 @@
    height="382.19507"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.0 r9654"
+   inkscape:version="0.48.3.1 r9886"
    sodipodi:docname="arcuate_small_fibers.svg">
   <defs
      id="defs4">
@@ -100,10 +100,10 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1280"
-     inkscape:window-height="995"
-     inkscape:window-x="1920"
-     inkscape:window-y="56"
+     inkscape:window-width="1317"
+     inkscape:window-height="744"
+     inkscape:window-x="49"
+     inkscape:window-y="24"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
@@ -164,27 +164,6 @@
        height="174.46185"
        x="454.32736"
        y="337.0556" />
-    <path
-       style="fill:#000000;stroke:#000000;stroke-width:0.15392581px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 269.64554,234.32003 8.33651,10.28286 13.63758,-17.39724 3.1374,5.58084 2.10436,-12.80278 c -3.30131,-0.29591 -6.65152,-0.55217 -10.57966,-0.33989 l 3.29583,4.06531 z"
-       id="path2160"
-       sodipodi:nodetypes="cccccccc"
-       inkscape:connector-curvature="0" />
-    <path
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccccccc"
-       id="path3074"
-       d="m 467.90361,215.76934 -9.69593,9.01241 18.27913,12.43063 -5.35603,3.5074 12.91573,1.2343 c 0.0721,-3.31377 0.10137,-6.67364 -0.3759,-10.57846 l -3.83328,3.56306 z"
-       style="fill:#000000;stroke:#000000;stroke-width:0.15392581px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       inkscape:transform-center-y="-7.7046348" />
-    <path
-       inkscape:transform-center-y="1.0093417"
-       style="fill:#000000;stroke:#000000;stroke-width:0.15392581px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 495.08397,353.83002 -7.53086,-10.88671 -14.92038,16.31041 -2.70417,-5.80315 -3.07134,12.60582 c 3.26929,0.54592 6.59033,1.0561 10.52325,1.14299 l -2.97734,-4.30406 z"
-       id="path3076"
-       sodipodi:nodetypes="cccccccc"
-       inkscape:connector-curvature="0"
-       inkscape:transform-center-x="-6.9338165" />
     <text
        xml:space="preserve"
        style="font-size:19.06799507px;font-style:italic;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans Italic"
@@ -255,7 +234,7 @@
          sodipodi:role="line"
          id="tspan3873"
          x="559.93011"
-         y="375.08417">long</tspan></text>
+         y="375.08417">long </tspan></text>
     <text
        xml:space="preserve"
        style="font-size:10.06682873px;font-style:italic;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans Italic"
