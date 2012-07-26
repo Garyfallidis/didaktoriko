@@ -40,7 +40,7 @@ Nimmo-Smith]{Eleftherios~Garyfallidis\,$^{1,*}$, Matthew~Brett\,$^{2}$,
   Ian~Nimmo-Smith\,$^{3}$\footnote{to whom correspondence should be
     addressed. e-mail: garyfallidis@gmail.com}}
 
-\address{\,$^{1}$University of Cambridge, Cambridge, UK\\
+\address{\,$^{1}$Wolfson College, University of Cambridge, Cambridge, UK\\
   \,$^{2}$University of California, Henry H. Wheeler, Jr. Brain Imaging Center, Berkeley, CA.\\
   \,$^{3}$MRC Cognition and Brain Sciences Unit, Cambridge, UK.\\
   \,$^{4}$Wolfson Brain Imaging Centre, University of Cambridge,
@@ -63,10 +63,14 @@ solution we present a simple, compact, tailor-made clustering algorithm,
 QuickBundles (QB), that overcomes the complexity of these large data
 sets and provides informative clusters in seconds. Each QB cluster can
 be represented by a single centroid streamline; collectively these
-centroid streamlines can be taken as a faithful representation of the
-tractography. We demonstrate how these centroid streamlines can be used
-as input to clustering algorithms of higher order complexity which
-currently cannot be implemented on full data sets.
+centroid streamlines can be taken as an effective representation of the
+tractography. We provide a number of tests to show how the QB reduction
+has good consistency and robustness. We show how the QB reduction helps
+with the correspondence problem for multiple subjects.
+
+% We demonstrate how these centroid streamlines can be used
+% as input to clustering algorithms of higher order complexity which
+% currently cannot be implemented on full data sets.
 % We also show the
 % further potential of QB to find landmarks, create atlases, compare and
 % register tractographies
@@ -283,19 +287,25 @@ data set.
 
 Most authors agree that unsupervised learning with tractographies is a
 difficult problem as the data sets are very large, dense, cluttered with
-noisy streamlines which could have no anatomic relevance, and actual
-bundles are frequently tangled together in several areas. Furthermore,
-we note that there is wide disagreement on the number of clusters
-(from 10 to 60). Because of the difficulty of the problem an
-international contest was also organized by SchLab in Pittsburgh
-University (PBC Brain Connectivity Challenge - IEEE ICDM) in
-$2009$. The competition did not identify any directly
-viable solutions. We think that in order to find big clusters a lot of
+noisy streamlines which could have no anatomic relevance, and the actual
+anatomical bundles are interwoven in a complicated way in several
+regions. 
+% Furthermore, we note that there is wide disagreement on the
+% number of clusters (from 10 to 60). Because of the difficulty of the
+% problem an international contest was also organized by SchLab in
+% Pittsburgh University (PBC Brain Connectivity Challenge - IEEE ICDM) in
+% $2009$. The competition did not identify any directly viable
+% solutions. 
+We think that in order to find larger anatomical clusters a lot of
 anatomical prior knowledge needs to be introduced in a way that is not
-yet established.  Nevertheless, the clustering that we propose
+yet established.  
+
+For these reasons we propose to take a step back so that the
+tractography is in a suitable form for working with neuroanatomists to
+capture this prior knowledge. The clustering that we propose
 concentrates on reducing the complexity of the data rather than finding
-bundles with anatomical relevance. We believe this step is more useful
-at this stage of tractography analysis research.
+bundles with hopefully anatomical relevance. We believe this step is
+more useful at this stage of tractography analysis research.
 
 %
 \begin{figure*}[htp]
@@ -393,10 +403,11 @@ current list of clusters. Clusters are held in a list which is extended
 according to need. Unlike amalgamation clustering algorithms such as
 $k$-means~\citep{steinhaus1956division, macqueen1967some} or
 BIRCH~\citep{zhang1997birch}, there is no reassignment or updating phase
--- once an item is assigned to a cluster it stays there, and clusters
-are not amalgamated.
+in QB -- once an item is assigned to a cluster it stays there, and
+clusters are not amalgamated. QB derives its speed and efficiency from
+this laziness.
 
-A streamline is a ordered sequence of points in $\mathbb{R}^{3}$.  The
+A streamline is a ordered sequence of points in $\mathbb{R}^{3}$.  A
 clustering algorithm needs a measure of distance between two
 streamlines, and QB uses a particular distance measure that we call
 minimum average direct flip (MDF).  The MDF measure requires that each
@@ -558,8 +569,7 @@ it to a centroid streamline according to which direction produced
 the MDF value.
 
 The complete QB algorithm is described in formal detail in
-Algorithm~\ref{Alg:QuickBundles} and a simple step by step visual
-example is given in Fig.~\ref{Fig:LSC_simple}.  One of the reasons why
+Algorithm~\ref{Alg:QuickBundles}.  One of the reasons why
 QB has on average linear time complexity derives from the structure of
 the cluster node: we only save the sum of current streamlines
 $\mathbf{h}$ in the cluster and the sum is cumulative; moreover there is
