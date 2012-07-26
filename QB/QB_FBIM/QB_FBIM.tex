@@ -137,12 +137,12 @@ the MDF distance (see section~\ref{sub:track-distances})
 \citep{EGMB10}. An interesting result with this method was that they
 could automatically find the different sub-bundles of the Arcuate
 Fasciculus region in accordance with the supervised labeling described
-in \citet{catani2005perisylvian}. In common with \citet{Visser2010} 
-the algorithm that we present in this
-paper also uses the minimum average flip (MDF) metric as a measure of
-distance between streamlines. \citet{gerig2004analysis} also used
-hierarchical clustering with a symmetrised version of closest point
-distances, $\mathrm{MA}\mathrm{M}_{\mathrm{avg}}$ and
+in \citet{catani2005perisylvian}. In common with \citet{Visser2010} the
+algorithm that we present in this paper also uses the minimum average
+flip (MDF) distance function as a measure of distance between
+streamlines. \citet{gerig2004analysis} also used hierarchical clustering
+with a symmetrised version of closest point distances,
+$\mathrm{MA}\mathrm{M}_{\mathrm{avg}}$ and
 $\mathrm{MA}\mathrm{M}_{\mathrm{max}}$ (Hausdorff). However, they tested
 their method only with two bundles: Uncinate Fasciculus and the
 Corticospinal Tract.
@@ -395,17 +395,17 @@ time that is linear in the number of streamlines $N$. QB is an extended
 update on our preliminary work~\citet{EGMB10}.
 
 In QB each item, a streamline, is a fixed-length ordered sequence of
-points in $\mathbb{R}^{3}$, and QB uses metrics and amalgamations which
-take account of and preserve this structure.  Moreover each item is
-either added to an existing cluster on the basis of the distances
-between the cluster descriptor of the item and the descriptors of the
-current list of clusters. Clusters are held in a list which is extended
-according to need. Unlike amalgamation clustering algorithms such as
-$k$-means~\citep{steinhaus1956division, macqueen1967some} or
-BIRCH~\citep{zhang1997birch}, there is no reassignment or updating phase
-in QB -- once an item is assigned to a cluster it stays there, and
-clusters are not amalgamated. QB derives its speed and efficiency from
-this laziness.
+points in $\mathbb{R}^{3}$, and QB uses comparison functions and
+amalgamations which take account of and preserve this structure.
+Moreover each item is either added to an existing cluster on the basis
+of the distances between the cluster descriptor of the item and the
+descriptors of the current list of clusters. Clusters are held in a list
+which is extended according to need. Unlike amalgamation clustering
+algorithms such as $k$-means~\citep{steinhaus1956division,
+  macqueen1967some} or BIRCH~\citep{zhang1997birch}, there is no
+reassignment or updating phase in QB -- once an item is assigned to a
+cluster it stays there, and clusters are not amalgamated. QB derives its
+speed and efficiency from this laziness.
 
 A streamline is a ordered sequence of points in $\mathbb{R}^{3}$.  A
 clustering algorithm needs a measure of distance between two
@@ -477,7 +477,7 @@ streamlines in the cluster. One summary of the cluster node is the centroid or
         \STATE $\mathbf{append}(C,c_{M+1})$
 	\STATE $M\leftarrow M+1$
 \ENDIF
-\ENDFOR 
+o\ENDFOR 
 \end{algorithmic}
 %\end{boxedalgorithmic}
 \caption{QuickBundles}
@@ -581,15 +581,19 @@ once and a streamline is assigned to one cluster only.
 A wide range of approaches have been taken in the literature for
 representing or coding for tractographies. The approach we have taken
 with streamline coding has gone in parallel with the selection of
-appropriate metrics for inter-streamline distances.  Numerous
-inter-streamline distance metrics have been proposed~\citep{Ding2003,
+appropriate functions for inter-streamline distances.  Numerous
+inter-streamline distance functions have been proposed~\citep{Ding2003,
   MaddahIPMI2007, zhang2005dti}. The most common is the Hausdorff
 distance~\citep[and many other studies]{corouge2004towards}. There are
-two primary disadvantages of this metric: (1) it ignores the sequential
+two primary disadvantages of this function: (1) it ignores the sequential
 nature of the streamlines and treats each streamline simply as a cloud
-of points, and (2) its computation requires every point on the first
+of points, and (2) its computation requires every point  the first
 streamline to be compared with every point on the second streamline, and
-vice versa. For these reasons we have opted to use a very simple
+vice versa. 
+
+A further property of Hausdorff-type  
+
+For these reasons we have opted to use a very simple
 symmetric distance \citep{EGMB10, Visser2010} which we call Minimum
 average Direct-Flip (MDF) distance $MDF(\mathbf{s},\mathbf{s'})$ between
 streamline $\mathbf{s}$ and streamline $\mathbf{s'}$, see
@@ -696,15 +700,14 @@ in often use $K=12$ which is a good trade-off between streamline
 resolution and dimensionality reduction.
 
 In some stages in the analysis of tractographies we find a use for
-metrics from the family of Hausdorff distances which for simplicity we
-denote as MAM distances -- short for Minimum, or Maximum, or Mean,
-Average Minimum distance (MAM). We mostly use the Mean version of this
-family, see Eq.~(\ref{eq:mean_average_distance}) but the others are
-potentially useful as they can weight different properties of the
-streamlines. These distances are slower to compute but they can work
-with different number of segments on streamlines that is useful for some
-applications. The equations below show the formulation of these
-distances:
+Hausdorff-type distance functions which for simplicity we denote as MAM
+distances -- short for Minimum, or Maximum, or Mean, Average Minimum
+distance (MAM). We mostly use the Mean version of this family, see
+Eq.~(\ref{eq:mean_average_distance}) but the others are potentially
+useful as they can weight different properties of the streamlines. These
+distances are slower to compute but they can work with different number
+of segments on streamlines that is useful for some applications. The
+equations below show the formulation of these distances:
 
 \begin{eqnarray}
 d_{\textrm{mean}}(s,s') & = & \frac{1}{K_{A}}\sum_{i=1}^{K}d(x_{i},s'),\nonumber \\
@@ -764,7 +767,7 @@ streamlines with possibly different numbers of points we could instead
 use $\mathbf{e}_{3}={\displaystyle \argmin_{\mathbf{s} \in
     c}}\,{\displaystyle \sum_{\mathbf{s'}\in
     c}}\mathrm{MAM}(\mathbf{s'},\mathbf{s})$.  Here $\mathrm{MAM}$ can
-be any one of the Hausdorff MAM metrics (REFERENCE?).  Identification of
+be any one of the Hausdorff MAM distance functions.  Identification of
 medoid streamlines of type $\mathbf{e}_{2}$ and $\mathbf{e}_{3}$ will
 be efficient only for small bundles of less than $5000$ streamlines
 because we need to calculate all pairwise distances in the bundle. We
@@ -788,11 +791,12 @@ Being able to compare results of clusterings is crucial for creating
 stable brain imaging procedures, and therefore it is necessary to
 develop a way to compare different clusterings of the same subject or
 different subjects. Although we recognise that this is a difficult
-problem, we propose the following approach with a novel metric which we
-call Bundle Adjacency (BA). This metric works as follows. Let us assume
-that we have gathered the medoid streamlines from clustering $A$ in
-$E_{A}=[\mathbf{e}_{1},...,\mathbf{e}_{M_{A}}]$ and from clustering $B$
-in $E_{B}=[\mathbf{e}_{1}^{'},...,\mathbf{e}_{M_{B}}^{'}]$ where $M_A$ ,
+problem, we propose the following approach with a novel comparison
+function which we call Bundle Adjacency (BA). This function works as
+follows. Let us assume that we have gathered the medoid streamlines from
+clustering $A$ in $E_{A}=[\mathbf{e}_{1},...,\mathbf{e}_{M_{A}}]$ and
+from clustering $B$ in
+$E_{B}=[\mathbf{e}_{1}^{'},...,\mathbf{e}_{M_{B}}^{'}]$ where $M_A$ ,
 $M_B$ denote the number of medoid streamlines of the two
 clusterings. $M_{A}$ does not need to be equal to $M_{B}$. Next we
 calculate all pairwise MDF distances between the two sets and store them
@@ -814,10 +818,10 @@ and similarly for $|m_{B\rightarrow A}\leq \theta |$.  In other words,
 $BA$ is mean of the fraction of row minima of $D_{AB}$ that are less
 than $\theta$ and the fraction of column minima less than $\theta$.
 $BA=0$ when every medoid from the one set is further than $\theta$ to
-all medoids in the other set. $BA=1$ when all medoids from one set
-have a close neighbour in the other set. This metric is very useful
-especially when comparing tractographies from different subjects because
-it does not require $M_{A}=M_{B}$.
+all medoids in the other set. $BA=1$ when all medoids from one set have
+a close neighbour in the other set. This comparison function is very
+useful especially when comparing tractographies from different subjects
+because it does not require $M_{A}=M_{B}$.
 
 \subsection{Merging two sets of bundles\label{sub:merging}}
 
@@ -988,17 +992,23 @@ this respect here.
 As a first step towards examining the robustness of QB in this respect
 we recorded the numbers of QB clusters in $20$ different random
 orderings of the tractographies of $10$ human subjects acquired as
-described in section \ref{sub:QB-Data-sets}. We removed short
+described in section \ref{sub:QB-Data-sets}. We first removed short
 streamlines shorter than $40$~mm and downsampled the streamlines at $12$
 points. Then we applied QB with threshold at $10$~mm. The mean number of
 clusters was $2645.9$ (min $1937.6$; max $3857.8$; s.d.~$653.8$). There
-is therefore a considerable between-subject variation in this metric. By
-contrast the within-subject variability of the number of clusters across
-random orderings is rather small, with mean standard deviation $12.7$
-(min $7.3$; max $17.4$). This suggests an encouraging level of
-robustness in terms of the numbers of clusters that QB creates.
+is therefore a considerable between-subject variation in this
+parameter. By contrast the within-subject variability of the number of
+clusters across random orderings is rather small, with mean standard
+deviation $12.7$ (min $7.3$; max $17.4$). While this suggests an
+encouraging level of robustness in terms of the numbers of clusters that
+QB creates it does not address the question of how similar the various
+clusterings were.
 
-\textbf{make the meaning of the above clearer}
+\citet{moberts2005evaluation} compared three flavours of hierarchical
+clustering and shared nearest neighbour in terms of their performance
+against a `gold standard'. This was three tractographies of between   labelling of the 
+
+\textbf{need to add some }
 
 We ran an experiment were we evaluated BA~(\ref{eq:TC}) between pairs of
 $10$ subjects with their tractographies warped in MNI space. This
