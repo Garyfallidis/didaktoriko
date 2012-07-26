@@ -988,32 +988,6 @@ random orderings is rather small, with mean standard deviation $12.7$
 (min $7.3$; max $17.4$). This suggests an encouraging level of
 robustness in terms of the numbers of clusters that QB creates.
 
-\textbf{make the meaning of the above clearer}
-
-We ran an experiment were we evaluated BA~(\ref{eq:TC}) between pairs of
-$10$ subjects with their tractographies warped in MNI space. This
-generated $45$ BA values with $\theta=10$~mm. We did this experiment
-twice; first by keeping only the bundles with more than $10$ streamlines
-(BA10) and secondly by keeping only the bundles with more than $100$
-streamlines (BA100). The average value for BA10 was $47\%$ and standard
-deviation $2.6\%$. As expected BA100 (bigger landmarks) did better with
-average value of $53\%$ and standard deviation $4.9\%$. The difference
-between BA10 and BA100 is highly significant: Student's t$=4.692$,
-df=88, $p=1.97\times10^{-5}$, two-sided; and, as a precaution against
-non-normality of the underlying distributions, Mann-Whitney U = 530.,
-$p=5.65\times10^{-5}$. If we think that the small bundles of size $<100$
-are more idiosyncratic or possibly more likely to reflect noise in the
-data, whereas larger bundles are more indicative of substantial
-structures and landmarks in the tractographies, then we are encouraged
-to see that on average the centroid streamlines of $50\%$ of larger
-bundles of each tractography lie within $10$~mm of those of the other
-tractographies. This supports the notion that QB can be used to find
-agreements between different brains by concentrating on the larger (more
-important) clusters. We will see further evidence for this below
-(section \ref{sub:Atlases-made-easy}).
-
-\textbf{say more about why 50\% is significant -- and add in
-  \textit{Hungarian matching} data (74\%) from thesis}
 
 As a further test we compared QB with $12$ point streamlines and
 distance threshold at $\theta=10$~mm versus some timings reported from
@@ -1139,19 +1113,6 @@ full tractography at real time. In addition we have developed fast and
 efficient ways of identifying broken or wandering streamlines by using
 the rapid data compression of QB to identify short or erratic centroid
 streamlines.
-
-
-\begin{figure*}[htp]
-\centerline{\includegraphics[width=180mm]{Figures/Fig_12_All_Brains.eps}}
-\caption{QuickBundles centroids of the largest 100 clusters for 10 subjects. Full tractographies are also presented using high transparency. \label{Flo:BAs}}
-\end{figure*}
-
-\begin{figure}
-\begin{centering}
-\includegraphics[scale=0.2]{Figures/Fig_13_BAs}
-\par\end{centering}
-\caption{Bundle Adjacencies for the 45 pairings of 10 subjects with different distance thresholds. \label{Flo:BAs}}
-\end{figure}
 
 
 
@@ -1481,6 +1442,31 @@ streamlines.
 % \caption{Tractographies from two different subjects
 %   before (left) and after (right) QB-based direct registration.\label{Flo:direct_registration}}
 % \end{figure}
+
+\subsection{Group Comparisons \label{sub:group_comp}}
+
+We warped the tractographies of $10$ healthy subsects (see section \ref{sub:QB-Data-sets}) in MNI space and applied QuickBundles on each tractography using distance threshold $\theta=10$~mm and downsampling at $18$ points. For every subject we only considered the largest $100$ QB clusters i.e. the clusters which contained the highest number of streamlines. The purpose of this experiment was to identify a similarity measure between the streamlines of the different subjects. In Fig.~\ref{Flo:BAs} we observe both the complete tractographies and the centoid tracks which correspond to the $100$ largest clusters. Because the complete tractographies are very big containing hundreds of thousands of tracks we visualize them using high transparency so that at least some of the underlying structures are still visible. At the contrary the  
+
+For this purpose we evaluated BA~(\ref{eq:TC}) between pairs of these $10$ warped tractographies. This generated $45$ BA values with $\theta=10$~mm. We also generated another $45$ BA values with $\theta=20$~mm.  
+In Fig.~\ref{Flo:BAs_plot} we can see!
+
+
+\textbf{say more about why 50\% is significant -- and add in
+  \textit{Hungarian matching} data (74\%) from thesis}
+
+\begin{figure*}[htp]
+\centerline{\includegraphics[width=180mm]{Figures/Fig_12_All_Brains.eps}}
+\caption{QuickBundles centroids of the largest 100 clusters for 10 subjects. Full tractographies are also presented using high transparency. \label{Flo:BAs}}
+\end{figure*}
+
+\begin{figure}
+\begin{centering}
+\includegraphics[scale=0.25]{Figures/Fig_13_BAs}
+\par\end{centering}
+\caption{Bundle Adjacencies for the 45 pairings of 10 subjects with different distance thresholds. \label{Flo:BAs_plot}}
+\end{figure}
+
+
 
 \subsection{Limitations of QB\label{sub:short_tracks}}
 
