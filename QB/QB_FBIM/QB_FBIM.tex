@@ -392,7 +392,7 @@ issue.
 QuickBundles (QB) is a surprisingly simple and very fast algorithm which
 can reduce tractography representation to an accessible structure in a
 time that is linear in the number of streamlines $N$. QB is an extended
-update on our preliminary work~\citet{EGMB10}.
+update on our preliminary work~\citet{EGMB10}. With the term bundles we mean here streamlines which are at close proximity according to a streamline-based distance, therefore, they have similar spatial and shape characteristics and not necessary directly correspondence to neuroanatomy tracts.
 
 In QB each item, a streamline, is a fixed-length ordered sequence of
 points in $\mathbb{R}^{3}$, and QB uses comparison functions and
@@ -1458,40 +1458,25 @@ streamlines.
 
 \subsection{Group Comparisons \label{sub:group_comp}}
 
-We warped the tractographies of $10$ healthy subsects (see section \ref{sub:QB-Data-sets}) in MNI space and applied QuickBundles on each tractography using distance threshold $\theta=10$~mm and downsampling of $18$ points. For every subject we only considered the largest $100$ QB clusters i.e. the clusters which contained the highest number of streamlines. The purpose of this experiment was to identify a global similarity measure between the streamlines of the different subjects. In Fig.~\ref{Flo:BAs} we present both the complete tractographies and the centoid tracks which correspond to the $100$ largest clusters. Because the complete tractographies are very large containing hundreds of thousands of tracks ($\mu=\num{171002.5}$ and $\sigma=\num{23879.9}$) we visualize them using low opacity so that at least an overall projection of the streamlines can be observed. The purpose of this is to show empeirically the variability of the streamlines across subjects. At the contrary, the centroids of the $100$ biggest clusters for the $10$ subjects are easily observed with full opacity in Fig.~\ref{Flo:BAs}. We will use these centroids next to study numerically the variability between the streamlines of these subjects. 
-
-For this purpose we evaluated BA~(\ref{eq:TC}) between all pairs of these $10$ warped tractographies. This generated ${10}\choose{2}$=$45$ BA values with $\theta=10$~mm. We also generated another $45$ BA values with $\theta=20$~mm.  
-In Fig.~\ref{Flo:BAs_plot} we can see!
-
-Mean Number of Clusters 4818.6 794.44775788
-Mean Number of Streamlines 171002.5 23879.9655496
-Mean Number of Coverage 16.1888357544 1.40347827362
-Mean Length in 100 Clusters 73.6285625 43.9425477186
-
-bas10
-min 0.385 max 0.595 mean 0.480666666667 std 0.0495042085753
-argmin (3, 5)
-argmax (3, 4)
-
-bas20
-min 0.72 max 0.885 mean 0.8 std 0.0321455025366
-argmin (6, 9)
-argmax (3, 4)
-
-
-\textbf{say more about why 50\% is significant -- and add in
-  \textit{Hungarian matching} data (74\%) from thesis}
+We warped $10$ tractographies each belonging to a different healthy subsect (see section \ref{sub:QB-Data-sets}) in MNI space and applied QuickBundles on each tractography independently using distance threshold $\theta=10$~mm and downsampling of $18$ points. For every subject we only considered the biggest $100$ QB clusters i.e. the clusters which contained the highest number of streamlines. The purpose of this experiment was to identify a global similarity measure between the streamlines of the different subjects. 
 
 \begin{figure*}[htp]
 \centerline{\includegraphics[width=180mm]{Figures/Fig_12_All_Brains.eps}}
-\caption{QuickBundles centroids of the largest 100 clusters for 10 subjects. Full tractographies are also presented using high transparency. \label{Flo:BAs}}
+\caption{QuickBundles centroids of the biggest 100 clusters for 10 subjects. Full tractographies are also presented using high transparency. \label{Flo:BAs}}
 \end{figure*}
+
+In Fig.~\ref{Flo:BAs} we present both the complete tractographies and the centoid tracks which correspond to the $100$ biggest clusters. Because the complete tractographies are very large containing hundreds of thousands of tracks ($\mu=\num{171002.5}$ and $\sigma=\num{23879.9}$) we visualize them using low opacity so that at least an overall projection of the streamlines can be observed. The purpose of this is to show empirically the variability of the streamlines across subjects. At the contrary, the centroids of the $100$ biggest clusters for the $10$ subjects are easily observed with full opacity in Fig.~\ref{Flo:BAs}. The mean number of streamlines in the $100$ biggest clusters was $\num{4818.6}$ with $\sigma=\num{794.4}$. These clusters covered on average $16.18\%$ with $\sigma=1.4\%$ of the total number of streamlines. The average length of the centroids of the clusters was $73.6$~mm with $\sigma=43.9$~mm. We will use these centroids as a method to study the variability between the streamlines across different subjects. 
 
 \begin{figure}
 \centerline{\includegraphics[scale=0.24]{Figures/Fig_13_BAs}}
 \caption{Bundle Adjacencies for the 45 pairs of 10 subjects with two different distance thresholds. \label{Flo:BAs_plot}}
 \end{figure}
 
+For this purpose we evaluated Bundle Adjacencies (BAs)~(\ref{eq:TC}) between all pairs of these $100$ centroids of each of the $10$ tractographies. This generated ${10}\choose{2}$=$45$ BA values with $\theta=10$~mm (BA10). We also generated another $45$ BA values with $\theta=20$~mm (BA20). Noticeable here is that the distance threshold for BA is twice higher than the initial distance threshold for QB. In Fig.~\ref{Flo:BAs_plot} the results of this experiment are presented.
+
+When used BA10 the most dissimilar subjects were subjects 4 and 6 with BA10(4,6)=0.385. The most similar subjects were 4 and 5 with BA10(4,5)=0.595. The mean BA10 was 0.48 with $\sigma=0.049$. With BA20 the most dissimilar subjects were subjects 7 and 10 with BA20(7,10)=0.72. The most similar subjects were, in agreement with BA10, 4 and 5 with BA20(4,5)=0.885. The mean BA20 was 0.8 with $\sigma=0.032$.
+
+In future work we would like to study how the length of the big clusters affects BA. In this experiment there was a great variability on centroid lengths (s $\mu=73.6$~mm, $\sigma=43.9$~mm). If we suppose that shorter streamlines are more likely to be noise artifacts we would expect that by concentrating on longer streamlines we would have a more robust similarity measure for tractography comparison.
 
 
 \subsection{Limitations of QB\label{sub:short_tracks}}
