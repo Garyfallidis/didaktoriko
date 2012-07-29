@@ -936,6 +936,93 @@ Finally, quality control of tractographies is an important issue and we
 show how QB can be used as a fast tool to identify clusters containing
 long or short streamlines (\ref{sub:short_tracks}).
 
+\subsection{The QB Representation\label{QB_Representation}}
+
+One of the major benefits of applying QB to tractographies is that it
+can provide meaningful simplifications and find structures that were
+previously invisible or difficult to locate because of the high density
+of the tractography. For example we used QB to cluster the corticospinal
+tract (CST). This bundle was part of the data sets provided by the
+Pittsburgh Brain Competition (PBC2009-ICDM) and it was selected by an
+expert. The QB representation is clearly shown in Fig.\ref{Flo:cst_pbc}
+where every cluster is represented by a single centroid streamline. To
+generate this clustering we used a tight threshold of $10$~mm. We
+observe that only a few centroid streamlines travel the full distance
+from bottom to top and that they are many streamlines that are broken
+(i.e. shorter than what was initially expected) or highly divergent.
+
+Another interesting feature of QB is that it can be used to merge or
+split different structures by changing the distance threshold.  This is
+shown in Fig.~\ref{Flo:simulated_orbits}; on the left we see simulated
+paths made from simple sinusoidal and helicoidal functions packed
+together. The colour coding is used to distinguish the three different
+structures. With a lower threshold the three different structures remain
+separated but when we use a higher threshold the red and blue bundles
+are represented by only one cluster indicated by the purple centroid
+streamline.
+
+\begin{figure*}
+\begin{centering}
+\includegraphics[width=160mm]{Figures/Fig_5_helix_phantom}
+\par\end{centering}
+\caption{Left: $3$ bundles of simulated trajectories; red, blue and
+  green consisting of $150$ streamlines each. All $450$ streamlines are
+  clustered together using QB. Middle and Right: centroid streamlines
+  using thresholds $1$ and $8$ respectively.  At low threshold the
+  underlying structure is reflected in a more detailed
+  representation. At higher threshold, closer bundles merge
+  together. Here the red and blue bundle have merged together in one
+  cluster represented by the purple centroid
+  streamline.\label{Flo:simulated_orbits}}
+\end{figure*}
+
+Similarly, with the simulations shown in Fig.\ref{Flo:simulated_orbits}
+we can see the same effect on real streamlines, e.g. those of the fornix
+shown at the left panel of Fig.~\ref{Flo:QB_fornix} where we can obtain
+different number of clusters at different thresholds. In that way we can
+stress thinner or larger sub-bundles inside other bigger bundles.
+
+A full tractography containing $\num{250000}$ streamlines was clustered
+using QB with a distance threshold of $10$~mm
+(Fig.~\ref{Flo:QB_fornix}).  We produced a useful reduction of the
+initial tractography leaving only $763$ centroid streamlines. Bundles
+smaller than $10$ streamlines were removed. Every streamline shown here
+represents an entire cluster containing from $10$ to $\num{5000}$
+streamlines each.
+
+\begin{figure*}[htp]
+\centerline{\includegraphics[width=160mm]{Figures/Fig_6_QB_fornix}}
+\caption{NEW: QB clustering of the Fornix bundle. The original Fornix
+  ($1076$ streamlines) is shown on the left panel using a standard
+  orientation colormap. We observe that the Fornix consists of two long
+  distant legs (left and right Fimbria) and a thicker upper part (Body
+  of Fornix). We show here how QB will be able to distinguish the parts
+  of the Fornix at different resolutions. With is a $15$~mm threshold QB
+  generates 4 clusters shown on the second panel with distinct
+  colors. Here the left and right Fimbria are clearly distinguished from
+  the Body. A last cluster (with blue) exposes a shorter part of the
+  Body which is probably due to noise in the data. With a $18$~mm
+  threshold only two clusters are created. Both Fibria are brought
+  together as one cluster. A property useful for studies which want to
+  use both Fimbria as one. With a $20$~mm threshold the entire Fornix is
+  one cluster. A case useful for interactive applications because now
+  the entire Fornix can be described by only on centroid streamline. In
+  all cases the streamlines of the Fornix were downsampled to have $18$
+  points.\label{Flo:QB_fornix}}
+\end{figure*}
+
+The centroid streamlines can be thought as fast access points to explore
+the entire data set (see Fig.~\ref{Flo:QB_fornix}). With an appropriate
+visualization tool we can click on a streamline and obtain the entire
+cluster/bundle that it represents. Visualizing an entire data set of
+that size is impossible on standard graphic cards and most visualization
+tools e.g.~Trackvis (trackvis.org) or DSI Studio
+(dsi-studio.labsolver.org) can only show a small random sample of the
+full tractography at real time. In addition we have developed fast and
+efficient ways of identifying broken or wandering streamlines by using
+the rapid data compression of QB to identify short or erratic centroid
+streamlines.
+
 \subsection{Complexity and timings\label{sub:Complexity}}
 
 To apply QB to a data set we need to specify three key parameters: $K$,
@@ -1054,93 +1141,6 @@ respectively.
 % \end{tabular}
 % \par\end{centering}
 % \end{table}
-
-\subsection{The QB Representation\label{QB_Representation}}
-
-One of the major benefits of applying QB to tractographies is that it
-can provide meaningful simplifications and find structures that were
-previously invisible or difficult to locate because of the high density
-of the tractography. For example we used QB to cluster the corticospinal
-tract (CST). This bundle was part of the data sets provided by the
-Pittsburgh Brain Competition (PBC2009-ICDM) and it was selected by an
-expert. The QB representation is clearly shown in Fig.\ref{Flo:cst_pbc}
-where every cluster is represented by a single centroid streamline. To
-generate this clustering we used a tight threshold of $10$~mm. We
-observe that only a few centroid streamlines travel the full distance
-from bottom to top and that they are many streamlines that are broken
-(i.e. shorter than what was initially expected) or highly divergent.
-
-Another interesting feature of QB is that it can be used to merge or
-split different structures by changing the distance threshold.  This is
-shown in Fig.~\ref{Flo:simulated_orbits}; on the left we see simulated
-paths made from simple sinusoidal and helicoidal functions packed
-together. The colour coding is used to distinguish the three different
-structures. With a lower threshold the three different structures remain
-separated but when we use a higher threshold the red and blue bundles
-are represented by only one cluster indicated by the purple centroid
-streamline.
-
-\begin{figure*}
-\begin{centering}
-\includegraphics[width=160mm]{Figures/Fig_5_helix_phantom}
-\par\end{centering}
-\caption{Left: $3$ bundles of simulated trajectories; red, blue and
-  green consisting of $150$ streamlines each. All $450$ streamlines are
-  clustered together using QB. Middle and Right: centroid streamlines
-  using thresholds $1$ and $8$ respectively.  At low threshold the
-  underlying structure is reflected in a more detailed
-  representation. At higher threshold, closer bundles merge
-  together. Here the red and blue bundle have merged together in one
-  cluster represented by the purple centroid
-  streamline.\label{Flo:simulated_orbits}}
-\end{figure*}
-
-Similarly, with the simulations shown in Fig.\ref{Flo:simulated_orbits}
-we can see the same effect on real streamlines, e.g. those of the fornix
-shown at the left panel of Fig.~\ref{Flo:QB_fornix} where we can obtain
-different number of clusters at different thresholds. In that way we can
-stress thinner or larger sub-bundles inside other bigger bundles.
-
-A full tractography containing $\num{250000}$ streamlines was clustered
-using QB with a distance threshold of $10$~mm
-(Fig.~\ref{Flo:QB_fornix}).  We produced a useful reduction of the
-initial tractography leaving only $763$ centroid streamlines. Bundles
-smaller than $10$ streamlines were removed. Every streamline shown here
-represents an entire cluster containing from $10$ to $\num{5000}$
-streamlines each.
-
-\begin{figure*}[htp]
-\centerline{\includegraphics[width=160mm]{Figures/Fig_6_QB_fornix}}
-\caption{NEW: QB clustering of the Fornix bundle. The original Fornix
-  ($1076$ streamlines) is shown on the left panel using a standard
-  orientation colormap. We observe that the Fornix consists of two long
-  distant legs (left and right Fimbria) and a thicker upper part (Body
-  of Fornix). We show here how QB will be able to distinguish the parts
-  of the Fornix at different resolutions. With is a $15$~mm threshold QB
-  generates 4 clusters shown on the second panel with distinct
-  colors. Here the left and right Fimbria are clearly distinguished from
-  the Body. A last cluster (with blue) exposes a shorter part of the
-  Body which is probably due to noise in the data. With a $18$~mm
-  threshold only two clusters are created. Both Fibria are brought
-  together as one cluster. A property useful for studies which want to
-  use both Fimbria as one. With a $20$~mm threshold the entire Fornix is
-  one cluster. A case useful for interactive applications because now
-  the entire Fornix can be described by only on centroid streamline. In
-  all cases the streamlines of the Fornix were downsampled to have $18$
-  points.\label{Flo:QB_fornix}}
-\end{figure*}
-
-The centroid streamlines can be thought as fast access points to explore
-the entire data set (see Fig.~\ref{Flo:QB_fornix}). With an appropriate
-visualization tool we can click on a streamline and obtain the entire
-cluster/bundle that it represents. Visualizing an entire data set of
-that size is impossible on standard graphic cards and most visualization
-tools e.g.~Trackvis (trackvis.org) or DSI Studio
-(dsi-studio.labsolver.org) can only show a small random sample of the
-full tractography at real time. In addition we have developed fast and
-efficient ways of identifying broken or wandering streamlines by using
-the rapid data compression of QB to identify short or erratic centroid
-streamlines.
 
 
 
