@@ -55,8 +55,7 @@ Nimmo-Smith]{Eleftherios~Garyfallidis\,$^{1,*}$, Matthew~Brett\,$^{2}$,
 
 \begin{abstract}
 
-\section{}
-Diffusion MR white matter tractographies are very large data sets which
+\section*{} Diffusion MR white matter tractographies are very large data sets which
 are hard to visualize, interact with, and interpret in a clinically
 acceptable time scale, despite numerous proposed approaches. As a
 solution we present a simple, compact, tailor-made clustering algorithm,
@@ -302,8 +301,8 @@ We think that in order to find larger anatomical clusters a lot of
 anatomical prior knowledge needs to be introduced in a way that is not
 yet established.  
 
-For these reasons we propose to take a step back so that the
-tractography is in a suitable form for working with neuroanatomists to
+For these reasons we propose to take a step back to first get the
+tractography into a suitable form for working with neuroanatomists to
 capture this prior knowledge. The clustering that we propose
 concentrates on reducing the complexity of the data rather than finding
 bundles with hopefully anatomical relevance. We believe this step is
@@ -333,18 +332,26 @@ size $\mathcal{O}(N^2)$.  This number of computations puts a very heavy
 load on clustering algorithms, making them hard to use for everyday
 analysis as it is difficult to compute all these distances or store them
 in memory. For the same reason, no current algorithm is practical for
-real time clustering on a large number of streamlines. The heavy
-computational demands of clustering add a further overhead to the use of
-tractography for clinical applications but also puts a barrier on
-understanding and interpreting the quality of diffusion MR data sets.
+real time clustering on a large number of streamlines -- despite the
+innovations in tractography clustering algorithms there is no parallel
+uptake by anatomists or clinicians. The heavy computational demands of
+clustering add a further overhead to the use of tractography for
+clinical applications but also puts a barrier on understanding and
+interpreting the quality of diffusion MR data sets. Moreover methods
+described as `automatic' in reality require significant intervention
+using neuroanatomical knowledge.
 
-To address these key issues of time and space we present a stable,
-generally linear time clustering algorithm that can generate meaningful
-clusters of streamlines in seconds with minimum memory consumption. Our
-approach is extremely straightforward and we do not need to calculate
-all pairwise distances unlike most existing methods. Furthermore we can
-update our clustering online or in parallel. In this way we can overcome
-the previous barriers of space and time.
+In fact tractographies have high levels of redundancy with very many
+quite similar streamlines. Our approach is to take advantage of this to
+reduce the size and dimensionality of the datasets as a precursor for
+higher complexity classification and/or input from experts. To address
+thes key issues of time and space we present a stable, generally linear
+time clustering algorithm that can generate meaningful clusters of
+streamlines in seconds with minimum memory consumption. Our approach is
+extremely straightforward and we do not need to calculate all pairwise
+distances unlike most existing methods. Furthermore we can update our
+clustering online or in parallel. In this way we can overcome the
+previous barriers of space and time.
 
 We show that we can generate these clusters \textasciitilde1000 times
 faster than any other available method before even applying further
@@ -405,62 +412,44 @@ $\mathcal{O}(KL)$ inter-point distances when comparing streamlines of
 $K$ and $L$ points.
 
 For these reasons we have opted to use a rather simpler symmetric
-distance function~\citep{EGMB10, Visser2010} which we call the Minimum
-average Direct-Flip (MDF) distance $MDF(\mathbf{s},\mathbf{s'})$ between
-streamline $\mathbf{s}$ and streamline $\mathbf{s'}$, see
-Eq.~(\ref{eq:direct_flip_distance}). This distance can be applied only
-when both streamlines have the same number of points. Therefore we
-assume that an initial downsampling of streamlines has been implemented,
-where all segments on a streamline have approximately the same length,
-and all streamlines have the same number of points $K$, and segments
-$K-1$, which are much less than the number of points or segments in the
-typical raw streamline.  Under this assumption MDF is defined as:
+distance function~\citep{EGMB10, Visser2010} which we call the minimum
+average direct-flip (MDF) distance MDF$(s,t)$ between streamlines $s$
+and $t$, see Eq.~(\ref{eq:direct_flip_distance}). This distance can be
+applied only when both streamlines have the same number of
+points. Therefore we assume that an initial downsampling of streamlines
+has been implemented, where all segments on a streamline have
+approximately the same length, and all streamlines have the same number
+of points $K$, and segments $K-1$, which are much less than the number
+of points or segments in the typical raw streamline. We make this
+assumption in what follows.
 
+As it has no preferred orientation, a streamline $s=[s_1, s_2, \ldots, s_K]$ is equivalent to
+two ordered polylines: $s = (s_1, s_2, \ldots, s_K)$ in $\mathbb{R}^3$
+and its flipped version $s^F = (s_K, s_{K-1}, \ldots, s_1)$.  With this
+notation the direct, flipped and MDF distances are defined as follows:
 \begin{eqnarray}
-\textrm{MDF}(\mathbf{s},\mathbf{s'}) & = & \min(d_{\textrm{direct}}(\mathbf{s},\mathbf{s'}),d_{\textrm{flipped}}(\mathbf{s},\mathbf{s'}))\,\,\textrm{where}\label{eq:direct_flip_distance}\\
-d_{\textrm{direct}}(\mathbf{s},\mathbf{s'}) & = & \frac{1}{K}\sum_{i=1}^{K}|s_{i}-s_{i}'|,\,\,\textrm{and}\nonumber\\
-d_{\textrm{flipped}}(\mathbf{s},\mathbf{s'}) & = & \frac{1}{K}\sum_{i=1}^{K}|s_{i}-s_{K-i}'|.\nonumber
+  d_{\textrm{direct}}(s, t) = d(s, t) & = & \frac{1}{K}\sum_{i=1}^{K}|s_{i}-t_{i}|,\,\,\nonumber\\
+  d_{\textrm{flipped}}(s, t) & = & d(s,t^F),\nonumber\\
+  \textrm{MDF}(s, t) & = & \min(d_{\textrm{direct}}(s, t), d_{\textrm{flipped}}(s, t))\label{eq:direct_flip_distance}.
 \end{eqnarray}
 \noindent
-Here $K$ is the number of points $s_{i}$ and $x_{i}'$ on the two
-streamlines $\mathbf{s}$ and $\mathbf{s'}$ and $|x-x'|$ denotes the
-euclidean distance between two points $x$ and $x'$. Clearly the MDF
-distance between two streamlines of length $K$ requires just the
-calculation of just $2K$ inter-point distances.
+Here $|x-y|$ denotes the euclidean distance between two points $x$ and
+$y$. Clearly the MDF distance between two streamlines of $K$ points
+requires just the calculation of just $2K$ inter-point distances. The
+direct distance $d_{\mathrm{direct}}(s, t)$ between two streamlines $s$,
+and $t$ is the mean of the euclidean distances between corresponding
+points.
 
 The MDF distance is in fact a metric on the space of streamlines.
 Obviously MDF distances are non-negative, are zero if and only if the
 two streamlines are identical, and symmetrical.  The triangle inequality
-is established as follows.
-
-With the number of points $K$ fixed, we define a \textit{streamline}
-$\mathbf{s^+}$ is an ordered polyline $(s_1, s_2, \ldots, s_K)$ in
-$\mathbb{R}^3$ and $\mathbf{s^-}$ , the \textit{flip} of $\mathbf{s^+}$,
-as the reversed streamline $(s_K, s_{K-1}, \ldots, s_1)$.  A
-\textit{chain} $\mathbf{s}$ is an unoriented polyline $[s_1,
-s_2,\ldots , s_K]$. We identify the chain $\mathbf{s}$ with the
-unordered pair of streamlines $\{\mathbf{s^+}, \mathbf{s^-}\}$. Henceforth we
-assume that chains and streamlines have the same number $K$ of
-points. The (direct) distance $d(\mathbf{s_1},\mathbf{s_2})$ between two
-streamlines $\mathbf{s_1}$, and $\mathbf{s_2}$ is the mean of the euclidean
-distances between corresponding points. The minimum distance flipped
-distance $\mathrm{MDF}(\mathbf{s_1}, \mathbf{s_2})$ between two
-streamlines $\mathbf{s_1}$ and $\mathbf{s_2}$ is $\min(d(\mathbf{s_1^+},
-\mathbf{s_2^+}), d(\mathbf{s_1^+}, \mathbf{s_2^-}))$. Note that
-$d(\mathbf{s_1^+}, \mathbf{s_2^+}) = d(\mathbf{s_1^-}, \mathbf{s_2^-})$
-and $d(\mathbf{s_1^+}, \mathbf{s_2^-}) = d(\mathbf{s_1^-},
-\mathbf{s_2^+})$.
-
-To prove the triangle inequality for the MDF distance function let us
-assume that $\mathbf{x}$, $\mathbf{y}$ and $\mathbf{z}$ are tracks and
-that, without loss of generality, $d(\mathbf{x^+}, \mathbf{y^+})$ and
-$d(\mathbf{y^+}, \mathbf{z^+})$ actually minimise the corresponding MDF
-distances. Then $\mathrm{MDF}(\mathbf{x}, \mathbf{y}) +
-\mathrm{MDF}(\mathbf{y}, \mathbf{z}) = d(\mathbf{x^+}, \mathbf{y^+}) +
-d(\mathbf{y^+}, \mathbf{z^+}) \ge d(\mathbf{x^+}, \mathbf{z^+})$ (by the
-triangle inequality for the euclidean distance) $ \ge
-\min(d(\mathbf{x^+}, \mathbf{z^+}), d(\mathbf{x^+}, \mathbf{z^-})) =
-\mathrm{MDF}(\mathrm{x}, \mathrm{z})$.
+is established as follows. Let $s$, $t$ and $u$ be three streamlines
+and assume, without loss of generality, that $d(s,t)$ and $d(t,u)$ actually
+minimise the corresponding MDF distances $\mathrm{MDF}(s,t)$ and
+$\mathrm{MDF}(t,u)$. (If not, we replace e.g.~$t$ by $t^F$) Then
+$\mathrm{MDF}(s, t) + \mathrm{MDF}(t, u) = d(s, t) + d(t, u) \ge d(s,
+u)$ (by the triangle inequality for the euclidean distance) $ \ge
+\min(d(s,u), d(s, u^F) = \mathrm{MDF}(s, u)$.
 
 \begin{figure}
 \includegraphics[scale=0.15]{Figures/Fig_11_MDF_arcuate}
@@ -497,14 +486,13 @@ understand, from the simplest case of parallel equi-length streamlines
 to the most complicated with very divergent streamlines. 
 
 Another advantage of the MDF distance function is that it separates
-short streamlines from long streamlines; a streamline $\mathbf{s}$ that
-is half the length of streamline $\mathbf{s'}$ will be relatively poorly
-matched on MDF to $\mathbf{s'}$. This is consistent with our proposed
-approach to leave decisions about the status of short versus long
-streamlines till after applying a clustering when one can determine
-whether there are several similar short streamlines -- perhaps
-reflecting a damaged fiber tract -- or localised noise if there are only
-a few similar streamlines.
+short streamlines from long streamlines; a streamline $s$ that is a
+portion of a streamline $s'$ will be relatively poorly matched on MDF to
+$s'$. This is consistent with our proposed approach to leave decisions
+about the status of short versus long streamlines till after applying a
+clustering.At this stage one can determine whether there are several
+similar short streamlines -- perhaps reflecting a damaged fiber tract --
+or localised noise if there are only a few similar streamlines.
 
 A further important advantage of having streamlines with the same number
 of points is that we can easily do pairwise calculations on them; for
@@ -522,13 +510,15 @@ have higher resolution.  We found empirically that this is not an
 important issue and that for clustering purposes even downsampling to
 only $K=3$ points in total can be useful \cite{EGMB10}. Depending on the
 application, more or fewer points can be used. In the results presented
-in often use $K=12$ which is a good trade-off between streamline
+we often use $K=12$ which achieves a good trade-off between streamline
 resolution and dimensionality reduction.
 
-In some stages in the analysis of tractographies we find a use for
-Hausdorff-type distance functions which for simplicity we denote as MAM
-distances -- short for Minimum (or Maximum, or Mean) Average Minimum
-distance (MAM). We mostly use the Mean version of this family, see
+In some later stages in the analysis of tractographies. e.g.~for merging
+clusters, we find a use for Hausdorff-type distance functions which for
+simplicity we denote as MAM distances -- short for Minimum (or Maximum,
+or Mean) Average Minimum distance (MAM). (In this nomenclature the
+classical Hausdorff distance is the Maximum Average Minimum distance.)
+We mostly use the Mean version of this family, see
 Eq.~(\ref{eq:mean_average_distance}) but the others are potentially
 useful as they can weight different properties of the streamlines. As
 noted above, these distances are slower to compute but they can work
@@ -547,17 +537,17 @@ d(x,s') & = & \min_{j=1,...,K'}|x-x_{j}'|.\nonumber \\
 
 
 \noindent
-where the number of points $K=\#s$ and $K'=\#s'$ on the two streamlines
-are not necessarily the same. For the same threshold value
+where the number of points $K$ and $K'$ on the two streamlines are not
+necessarily the same. For the same threshold value
 $\textrm{MAM}_{\textrm{min}}$, $\textrm{MAM}_{\textrm{max}}$ and
 $\textrm{MAM}_{\textrm{mean}}$ will give different results. For example,
 $\textrm{MAM}_{\textrm{min}}$ will bring together more short streamlines
 with long streamlines than $\textrm{MAM}_{\textrm{max}}$, and
-$\textrm{MAM}_{\textrm{mean}}$ will have an in-between effect.
-Other distances than the minimum MAM see
-Eq.~(\ref{eq:minimum_distance}) or maximum MAM see
-Eq.~(\ref{eq:maximum distance}) can be used.  However, we have not
-investigated them in this work in relation to clustering algorithms.
+$\textrm{MAM}_{\textrm{mean}}$ will have an in-between effect.  Other
+distances than $d(x_{i},s')$ can be used in
+Eq.~\ref{eq:minimum_distance} and Eq.~\ref{eq:maximum_distance}.
+However, we have not investigated them in this work in relation to
+clustering algorithms.
 
 \subsection{The QB algorithm\label{sub:QB-description}}
 
@@ -798,10 +788,12 @@ represented by real streamlines.
 \subsection{Bundle Adjacency Comparisons\label{sub:Tightness-comparisons-1}}
 
 We have found rather few systematic ways to compare different clustering
-results for tractographies in the literature
-\citep{moberts2005evaluation}.  
+results directly for tractographies in the literature beyond that of
+\citep{moberts2005evaluation} who quantify the agreement between a
+clustering and a tractography labelled by their team.
 
-\textbf{add more about Moberts}
+\textbf{Something about Agreement based measure - how they a slow and no
+  use for comparing different datasets}
 
 Being able to compare results of clusterings is crucial for creating
 stable brain imaging procedures, and therefore it is necessary to
@@ -1020,6 +1012,12 @@ contrast the within-subject variability of the number of clusters across
 random orderings is rather small, with mean standard deviation $12.7$
 (min $7.3$; max $17.4$). This suggests an encouraging level of
 robustness in terms of the numbers of clusters that QB creates.
+
+For each of $10$ tractographies the $66$ pairings of QB clusterings for
+$12$ different orderings were evaluated. Optimal matched agreements
+between each pair of clusterings were created using the Hungarian
+Algorithm~\cite{Kuhn1955} to create a mapping between each pair of
+clusters; the mean agreement was 74\% (s.d.~0.39\%).
 
 As a further test we compared QB with $12$ point streamlines and
 distance threshold at $\theta=10$~mm versus some timings reported from
