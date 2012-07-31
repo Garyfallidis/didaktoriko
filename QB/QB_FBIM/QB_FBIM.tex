@@ -312,17 +312,17 @@ more useful at this stage of tractography analysis research.
 \begin{figure*}[htp]
 \centerline{\includegraphics[width=160mm]{Figures/Fig_4_cst_simplification_relabeled_triple.eps}}
     % \par\end{centering}
-\caption{Part of the CST bundle (blue) consisting of \num{11041}
+\caption{Part of the CST bundle (left in blue) consisting of \num{11041}
   streamlines. At first glance it looks as though all streamlines have a
   similar shape, and possibly converge towards the bottom, and fan out
   towards the top. However, this is a misreading caused by the opaque
   density when all the streamlines are visualised.  QB can help us see
   the finer structure of the bundle and identify its elements. In the
-  middle we see the 16 QB centroid streamlines of the CST. We can
-  now clearly obvserve that several parts which looked homogeneous are
-  actually broken bundles or bundles with very different shape. On the
-  right panel we see the streamlines coloured according to their cluster
-  label. The distance threshold used here was
+  middle we see the 16 QB centroid streamlines of the CST. We can now
+  clearly observe that several parts which looked homogeneous are
+  actually broken bundles or bundles with rather different shapes. On
+  the right panel we see the streamlines coloured according to their
+  cluster label. The distance threshold used here was
   $10$~mm. \label{Flo:cst_pbc}}
 \end{figure*}
 
@@ -388,7 +388,21 @@ cluster from a few hundred to many millions of streamlines.
 There is no current unsupervised anatomical segmentation method that can
 have general usability without expert knowledge
 integration. Nonetheless, neuroanatomists often disagree on definition
-of major structures [cite]. \textbf{well there's the old 'extreme capsule fibre system' (Schmahmann, Pandya, Makris, Petrides) vs. 'fronto-occipital fasciculus' (Catani, Wakana, Mori, (i.e JHU peeps)). I'm not sure so many people disagree on names so much as disagree on the appropriate names to use for tractography since tractography often can't distinguish between small bundles e.g. SLF I-III and IV (arcuate). Some people would prefer to just say SLF for tractography or temporal part of SLF(that's Wakana et al. 2007, 2004). I think there may possibly be some overlap between the superior occipitofrontal fasciculus and one of SLF I-III not 100\% sure but Thiebaut de Schotten (e.g. 2008) \& Catani use SOF terminology some people use the proper names for the corpus callosum segments whereas other people just say something like anterior, mid, posterior}. What we propose is to create a method that simplifies the tractography at the level where distinction is not an issue.
+of major structures [cite]. \textbf{well there's the old 'extreme
+  capsule fibre system' (Schmahmann, Pandya, Makris, Petrides)
+  vs. 'fronto-occipital fasciculus' (Catani, Wakana, Mori, (i.e JHU
+  peeps)). I'm not sure so many people disagree on names so much as
+  disagree on the appropriate names to use for tractography since
+  tractography often can't distinguish between small bundles e.g. SLF
+  I-III and IV (arcuate). Some people would prefer to just say SLF for
+  tractography or temporal part of SLF(that's Wakana et al. 2007,
+  2004). I think there may possibly be some overlap between the superior
+  occipitofrontal fasciculus and one of SLF I-III not 100\% sure but
+  Thiebaut de Schotten (e.g. 2008) \& Catani use SOF terminology some
+  people use the proper names for the corpus callosum segments whereas
+  other people just say something like anterior, mid, posterior}. What
+we propose is to create a method that simplifies the tractography at the
+level where distinction is not an issue.
 
 \begin{methods}
 
@@ -405,7 +419,7 @@ inter-streamline distance functions have been proposed~\citep{Ding2003,
 distance~\citep[and many other studies]{corouge2004towards}. There are
 two primary disadvantages of this function: it ignores the sequential
 nature of the streamlines and treats each streamline simply as a cloud
-of points, and its computation requires every point the first streamline
+of points, and its computation requires every point on the first streamline
 to be compared with every point on the second streamline, and vice
 versa. Thus the Hausdorff distance requires the calculation
 $\mathcal{O}(KL)$ inter-point distances when comparing streamlines of
@@ -428,17 +442,17 @@ two ordered polylines: $s = (s_1, s_2, \ldots, s_K)$ in $\mathbb{R}^3$
 and its flipped version $s^F = (s_K, s_{K-1}, \ldots, s_1)$.  With this
 notation the direct, flipped and MDF distances are defined as follows:
 \begin{eqnarray}
-  d_{\textrm{direct}}(s, t) = d(s, t) & = & \frac{1}{K}\sum_{i=1}^{K}|s_{i}-t_{i}|,\,\,\nonumber\\
-  d_{\textrm{flipped}}(s, t) & = & d(s,t^F),\nonumber\\
+  d_{\textrm{direct}}(s, t) = d(s, t) & = & \frac{1}{K}\sum_{i=1}^{K}|s_{i}-t_{i}|,\nonumber\\
+  d_{\textrm{flipped}}(s, t) & = & d(s,t^F) = d(s^F,t),\nonumber\\
   \textrm{MDF}(s, t) & = & \min(d_{\textrm{direct}}(s, t), d_{\textrm{flipped}}(s, t))\label{eq:direct_flip_distance}.
 \end{eqnarray}
 \noindent
 Here $|x-y|$ denotes the euclidean distance between two points $x$ and
-$y$. Clearly the MDF distance between two streamlines of $K$ points
-requires just the calculation of just $2K$ inter-point distances. The
-direct distance $d_{\mathrm{direct}}(s, t)$ between two streamlines $s$,
-and $t$ is the mean of the euclidean distances between corresponding
-points.
+$y$. The direct distance $d_{\mathrm{direct}}(s, t)$ between two
+streamlines $s$, and $t$ is the mean of the euclidean distances between
+corresponding points. Clearly the MDF distance between two streamlines
+of $K$ points requires the calculation of just $2K$ inter-point
+distances.
 
 The MDF distance is in fact a metric on the space of streamlines.
 Obviously MDF distances are non-negative, are zero if and only if the
@@ -489,9 +503,9 @@ short streamlines from long streamlines; a streamline $s$ that is a
 portion of a streamline $s'$ will be relatively poorly matched on MDF to
 $s'$. This is consistent with our proposed approach to leave decisions
 about the status of short versus long streamlines till after applying a
-clustering.At this stage one can determine whether there are several
-similar short streamlines -- perhaps reflecting a damaged fiber tract --
-or localised noise if there are only a few similar streamlines.
+clustering. At this later stage one can determine whether there are
+several similar short streamlines -- perhaps reflecting a damaged fiber
+tract -- or localised noise if there are only a few similar streamlines.
 
 A further important advantage of having streamlines with the same number
 of points is that we can easily do pairwise calculations on them; for
@@ -501,16 +515,17 @@ key property that we exploit in the QB clustering algorithm.
 
 Care needs to be given to choosing the number of points required in a
 streamline (streamline downsampling). We always keep the endpoints
-intact and then downsample in equidistant segments. One consequence of
-short streamlines having the same number of points as long streamlines
-is that more of the curvature information from the long streamlines is
-lost relative to the short streamlines i.e. the short streamlines will
-have higher resolution.  We found empirically that this is not an
-important issue and that for clustering purposes even downsampling to
-only $K=3$ points in total can be useful \cite{EGMB10}. Depending on the
-application, more or fewer points can be used. In the results presented
-we often use $K=12$ which achieves a good trade-off between streamline
-resolution and dimensionality reduction.
+intact and then downsample into segments of equal lengths. One
+consequence of short streamlines having the same number of points as
+long streamlines is that more of the curvature information from the long
+streamlines is lost relative to the short streamlines i.e. the short
+streamlines will have higher resolution.  We found empirically that this
+is not an important issue and that for clustering purposes even
+downsampling to only $K=3$ points in total can be useful
+\citep{EGMB10}. Depending on the application, more or fewer points can
+be used. In the results presented we often use $K=12$ which achieves a
+good trade-off between streamline resolution and dimensionality
+reduction.
 
 In some later stages in the analysis of tractographies. e.g.~for merging
 clusters, we find a use for Hausdorff-type distance functions which for
@@ -737,62 +752,159 @@ $\mathbf{h}$ in the cluster and the sum is cumulative; moreover there is
 no recalculation of clusters, the streamlines are passed through only
 once and a streamline is assigned to one cluster only.
 
-\subsection{Medoid streamlines\label{sub:medoids}}
+\subsection{The QB Representation\label{QB_Representation}}
 
-The centroid streamlines created by QB have very nice properties as they
-represent an average streamline which can stand as the most
-characteristic feature of the cluster that they belong to. However, now
-that we have segmented our tractography into small bundles, we can
-calculate many more potentially important descriptors for the
-cluster. One of the most useful approaches is the calculation of
-medoids.
+One of the major benefits of applying QB to tractographies is that it
+can provide meaningful simplifications and find features that were
+previously invisible or difficult to locate because of the high density
+of the tractography. For example we used QB to cluster part of the
+corticospinal tract (CST). This bundle was labelled in the data sets
+provided by the Pittsburgh Brain Competition (PBC2009-ICDM) and it was
+selected by an expert. The QB representation is clearly shown in
+Fig.\ref{Flo:cst_pbc} where every cluster is represented by a single
+centroid streamline. To generate this clustering we used a tight
+threshold of $10$~mm. We observe that only a few centroid streamlines
+travel the full distance from bottom to top and that they are many
+streamlines that are broken (i.e. shorter than what was initially
+expected) or highly divergent.
 
-Here the idea is to identify an actual streamline belonging to the
-tractography which corresponds in some way to the centroid streamline. In
-other words to find an medoid (medoid) streamline. Centroid streamlines
-do not necessarily coincide with real streamlines as they are just the
-outcome of large amalgamations. There are many strategies for how to
-select good medoids for the bundles. A very fast procedure that we use
-in our work is to find which real streamline from the cluster $c$ is
-closest (by MDF distance) to the centroid streamline $\mathbf{v}$. We
-will call this medoid streamline $\mathbf{e}_{1}$,
-i.e.~$\mathbf{e}_{1}={\displaystyle \argmin_{\mathbf{s} \in
-    c}}\textrm{\,\ MDF}(\mathbf{v},\mathbf{s})$.  The computational
-complexity of finding $\mathbf{e}_{1}$ is still linear in cluster size,
-and that will be very useful if we have created clusterings with
-clusters containing more than \textasciitilde5000 streamlines (depending
-on system memory).
+Another interesting feature of QB is that it can be used to merge or
+split different structures by changing the distance threshold.  This is
+shown in Fig.~\ref{Flo:simulated_orbits}; on the left we see simulated
+paths made from simple sinusoidal and helicoidal functions packed
+together. The colour coding is used to distinguish the three different
+structures. With a lower threshold the three different structures remain
+separated but when we use a higher threshold the red and blue bundles
+are represented by only one cluster indicated by the purple centroid
+streamline.
 
-A different medoid can be defined as the most typical streamline among
-all streamlines in the bundle, which we denote by
-$\mathbf{e}_{2}={\displaystyle \argmin_{\mathbf{s} \in
-    c}}\,{\displaystyle \sum_{s'\in
-    c}}\mathrm{MDF}(\mathbf{s'},\mathbf{s})$, or if we want to work with
-streamlines with possibly different numbers of points we could instead
-use $\mathbf{e}_{3}={\displaystyle \argmin_{\mathbf{s} \in
-    c}}\,{\displaystyle \sum_{\mathbf{s'}\in
-    c}}\mathrm{MAM}(\mathbf{s'},\mathbf{s})$.  Here $\mathrm{MAM}$ can
-be any one of the Hausdorff MAM distance functions.  Identification of
-medoid streamlines of type $\mathbf{e}_{2}$ and $\mathbf{e}_{3}$ will
-be efficient only for small bundles of less than $5000$ streamlines
-because we need to calculate all pairwise distances in the bundle. We
-show below many applications of the medoids.
+\begin{figure*}
+\begin{centering}
+\includegraphics[width=160mm]{Figures/Fig_5_helix_phantom}
+\par\end{centering}
+\caption{Left: $3$ bundles of simulated trajectories; red, blue and
+  green consisting of $150$ streamlines each. All $450$ streamlines are
+  clustered together using QB. Middle and Right: centroid streamlines
+  using thresholds $1$ and $8$ respectively.  At low threshold the
+  underlying structure is reflected in a more detailed
+  representation. At higher threshold, closer bundles merge
+  together. Here the red and blue bundle have merged together in one
+  cluster represented by the purple centroid
+  streamline.\label{Flo:simulated_orbits}}
+\end{figure*}
 
-In summary, a centroid (centroid) streamline is the average of all
-streamlines in the cluster. We call it centroid because it does not
-really exist in the real data set, and to distinguish it from medoid
-(medoid) streamlines which are again descriptors of the cluster but are
-represented by real streamlines.
+We can see similar effects with real streamlines, for instance those of
+the fornix shown at the left panel of Fig.~\ref{Flo:QB_fornix} where we
+can obtain different numbers of clusters at different thresholds. In
+that way we can stress thinner or thicker sub-bundles contained inside
+other bigger bundles.
 
-\subsection{Bundle Adjacency Comparisons\label{sub:Tightness-comparisons-1}}
+A full tractography containing $\num{250000}$ streamlines was clustered
+using QB with a distance threshold of $10$~mm
+(Fig.~\ref{Flo:QB_fornix}).  We produced a useful reduction of the
+initial tractography leaving only $763$ centroid streamlines. Bundles
+smaller than $10$ streamlines were then removed. Every streamline shown
+represents an entire cluster containing from $10$ to $\num{5000}$
+streamlines each.
+
+\begin{figure*}[htp]
+\centerline{\includegraphics[width=160mm]{Figures/Fig_6_QB_fornix}}
+\caption{QB clustering of the Fornix bundle. The original Fornix
+  ($1076$ streamlines) is shown on the left panel using a standard
+  orientation colormap. We observe that the Fornix consists of two long
+  distant legs (left and right Fimbria) and a thicker upper part (Body
+  of Fornix). We show here how QB will be able to distinguish the parts
+  of the Fornix at different resolutions. With is a $15$~mm threshold QB
+  generates 4 clusters shown on the second panel with distinct
+  colors. Here the left and right Fimbria are clearly distinguished from
+  the Body. A last cluster (with blue) exposes a shorter part of the
+  Body which is probably due to noise in the data. With a $18$~mm
+  threshold only two clusters are created. Both Fibria are brought
+  together as one cluster. A property useful for studies which want to
+  use both Fimbria as one. With a $20$~mm threshold the entire Fornix is
+  one cluster. A case useful for interactive applications because now
+  the entire Fornix can be described by only on centroid streamline. In
+  all cases the streamlines of the Fornix were downsampled to have $18$
+  points.\label{Flo:QB_fornix}}
+\end{figure*}
+
+The centroid streamlines can be thought as fast access points to explore
+the entire data set (see Fig.~\ref{Flo:QB_fornix}). With an appropriate
+visualization tool we can click on a streamline and obtain the entire
+cluster/bundle that it represents. Visualizing an entire data set of
+this size is impossible on standard graphic cards and most visualization
+tools. For example Trackvis (trackvis.org) or DSI Studio
+(dsi-studio.labsolver.org) can only show a small random sample of the
+full tractography in real time. In addition we have developed fast and
+efficient ways of identifying broken or wandering streamlines by using
+the rapid data compression of QB to identify short or erratic centroid
+streamlines.
+
+% \subsection{Medoid streamlines\label{sub:medoids}}
+
+% The centroid streamlines created by QB have very nice properties as they
+% represent an average streamline which can stand as the most
+% characteristic feature of the cluster that they belong to. However, now
+% that we have segmented our tractography into small bundles, we can
+% calculate many more potentially important descriptors for the
+% cluster. One of the most useful approaches is the calculation of
+% medoids.
+
+% Here the idea is to identify an actual streamline belonging to the
+% tractography which corresponds in some way to the centroid streamline. In
+% other words to find an medoid (medoid) streamline. Centroid streamlines
+% do not necessarily coincide with real streamlines as they are just the
+% outcome of large amalgamations. There are many strategies for how to
+% select good medoids for the bundles. A very fast procedure that we use
+% in our work is to find which real streamline from the cluster $c$ is
+% closest (by MDF distance) to the centroid streamline $\mathbf{v}$. We
+% will call this medoid streamline $\mathbf{e}_{1}$,
+% i.e.~$\mathbf{e}_{1}={\displaystyle \argmin_{\mathbf{s} \in
+%     c}}\textrm{\,\ MDF}(\mathbf{v},\mathbf{s})$.  The computational
+% complexity of finding $\mathbf{e}_{1}$ is still linear in cluster size,
+% and that will be very useful if we have created clusterings with
+% clusters containing more than \textasciitilde5000 streamlines (depending
+% on system memory).
+
+% A different medoid can be defined as the most typical streamline among
+% all streamlines in the bundle, which we denote by
+% $\mathbf{e}_{2}={\displaystyle \argmin_{\mathbf{s} \in
+%     c}}\,{\displaystyle \sum_{s'\in
+%     c}}\mathrm{MDF}(\mathbf{s'},\mathbf{s})$, or if we want to work with
+% streamlines with possibly different numbers of points we could instead
+% use $\mathbf{e}_{3}={\displaystyle \argmin_{\mathbf{s} \in
+%     c}}\,{\displaystyle \sum_{\mathbf{s'}\in
+%     c}}\mathrm{MAM}(\mathbf{s'},\mathbf{s})$.  Here $\mathrm{MAM}$ can
+% be any one of the Hausdorff MAM distance functions.  Identification of
+% medoid streamlines of type $\mathbf{e}_{2}$ and $\mathbf{e}_{3}$ will
+% be efficient only for small bundles of less than $5000$ streamlines
+% because we need to calculate all pairwise distances in the bundle. We
+% show below many applications of the medoids.
+
+% In summary, a centroid (centroid) streamline is the average of all
+% streamlines in the cluster. We call it centroid because it does not
+% really exist in the real data set, and to distinguish it from medoid
+% (medoid) streamlines which are again descriptors of the cluster but are
+% represented by real streamlines.
+
+\subsection{Comparison of clusterings\label{sub:Tightness-comparisons-1}}
 
 We have found rather few systematic ways to compare different clustering
 results directly for tractographies in the literature beyond that of
 \citep{moberts2005evaluation} who quantify the agreement between a
-clustering and a tractography labelled by their team.
+clustering and a tractography labelled by their team. The measure of
+agreement that they found best was the Adjusted Rand Index which depends
+on the availability of a labelled `gold standard'.
 
-\textbf{Something about Agreement based measure - how they a slow and no
-  use for comparing different datasets}
+In \cite{Garyfallidis_thesis} we have looked at a number of different
+measures of agreement that do not require a prior labelled data set. Of
+these we found the Matched Agreements (optimsed using the Hungarian
+Method) to be effective. However both this and the Adjusted Rand Index
+require the calculation of the $M \times N$ matrix which counts the
+number of streamlines in the intersection of all pairs of clusters, one
+from each of the two clusterings. A further fundamental disadvantage is
+that these methods do not work with clusterings of different
+tractographies.
 
 Being able to compare results of clusterings is crucial for creating
 stable brain imaging procedures, and therefore it is necessary to
@@ -800,11 +912,11 @@ develop a way to compare different clusterings of the same subject or
 different subjects. Although we recognise that this is a difficult
 problem, we propose the following approach with a novel comparison
 function which we call Bundle Adjacency (BA). This function works as
-follows. Let us assume that we have gathered the medoid streamlines from
+follows. Let us assume that we have gathered the centroid streamlines from
 clustering $A$ in $E_{A}=[\mathbf{e}_{1},...,\mathbf{e}_{M_{A}}]$ and
 from clustering $B$ in
 $E_{B}=[\mathbf{e}_{1}^{'},...,\mathbf{e}_{M_{B}}^{'}]$ where $M_A$ ,
-$M_B$ denote the number of medoid streamlines of the two
+$M_B$ denote the number of centroid streamlines of the two
 clusterings. $M_{A}$ does not need to be equal to $M_{B}$. Next we
 calculate all pairwise MDF distances between the two sets and store them
 in rectangular matrix $D_{AB}$. The mimima of the rows of $D_{AB}$
@@ -820,39 +932,39 @@ BA=\frac{1}{2}\left(\frac{|m_{A\rightarrow B}\leq \theta |}{M_{A}}+\frac{|m_{B\r
 \end{equation}
 
 \noindent where $|m_{A\rightarrow B}\leq \theta |$ denotes the number of
-medoids from A which had a neighbour in B that is closer than $\theta$
+centroids from A which had a neighbour in B that is closer than $\theta$
 and similarly for $|m_{B\rightarrow A}\leq \theta |$.  In other words,
 $BA$ is mean of the fraction of row minima of $D_{AB}$ that are less
 than $\theta$ and the fraction of column minima less than $\theta$.
-$BA=0$ when every medoid from the one set is further than $\theta$ to
-all medoids in the other set. $BA=1$ when all medoids from one set have
+$BA=0$ when every centroid from the one set is further than $\theta$ to
+all centroids in the other set. $BA=1$ when all centroids from one set have
 a close neighbour in the other set. This comparison function is very
 useful especially when comparing tractographies from different subjects
 because it does not require $M_{A}=M_{B}$.
 
-\subsection{Merging two sets of bundles\label{sub:merging}}
+% \subsection{Merging two sets of bundles\label{sub:merging}}
 
-\textbf{Do we keep this in?}
+% \textbf{Do we keep this in?}
 
-We can merge bundles using medoid streamlines or centroid
-streamlines. We first set a distance threshold $\theta$ usually the same
-as the one we used for the QBs in the previous step. Assume now that we
-have gathered the centroid streamlines from clustering A in
-$V_{A}=[\mathbf{v}_{1},...,\mathbf{v}_{M_{A}}]$ and from clustering $B$
-in $V_{B}=[\mathbf{v}_{1}^{'},...,\mathbf{v}_{M_{B}}^{'}]$ where $M_A$
-and $M_B$ denote the number of centroid streamlines of each clustering.
-$M_{A}$ can be different from $M_{B}$. (1) For every
-$\mathbf{v}_{i}^{'}$ in $V_{B}$ we find the closest $\mathbf{v}_{j}$ in
-$V_{A}$ and store the distance between these two streamlines. Therefore
-we now have a set of minimum distances from $V_{B}$ to $V_{A}$. The size
-of this set is equal to $M_{B}|$. (2) We merge those clusters from B
-whose centroid streamlines have minimum distances (e.g. MDF) smaller than
-$\theta$ into the corresponding clusters of A, and if a centroid
-streamline in $V_{B}$ has no sub-threshold neighbour in $V_{A}$ then its
-cluster becomes a new cluster in the final clustering. In that way
-clusters from the two sets ho have very similar features will merge
-together, and, if not, new clusters will be created, and we will not
-have any loss of information from the two sets of clusters.
+% We can merge bundles using medoid streamlines or centroid
+% streamlines. We first set a distance threshold $\theta$ usually the same
+% as the one we used for the QBs in the previous step. Assume now that we
+% have gathered the centroid streamlines from clustering A in
+% $V_{A}=[\mathbf{v}_{1},...,\mathbf{v}_{M_{A}}]$ and from clustering $B$
+% in $V_{B}=[\mathbf{v}_{1}^{'},...,\mathbf{v}_{M_{B}}^{'}]$ where $M_A$
+% and $M_B$ denote the number of centroid streamlines of each clustering.
+% $M_{A}$ can be different from $M_{B}$. (1) For every
+% $\mathbf{v}_{i}^{'}$ in $V_{B}$ we find the closest $\mathbf{v}_{j}$ in
+% $V_{A}$ and store the distance between these two streamlines. Therefore
+% we now have a set of minimum distances from $V_{B}$ to $V_{A}$. The size
+% of this set is equal to $M_{B}|$. (2) We merge those clusters from B
+% whose centroid streamlines have minimum distances (e.g. MDF) smaller than
+% $\theta$ into the corresponding clusters of A, and if a centroid
+% streamline in $V_{B}$ has no sub-threshold neighbour in $V_{A}$ then its
+% cluster becomes a new cluster in the final clustering. In that way
+% clusters from the two sets ho have very similar features will merge
+% together, and, if not, new clusters will be created, and we will not
+% have any loss of information from the two sets of clusters.
 
 \subsection{\label{sub:QB-Data-sets}Data sets}
 
@@ -936,93 +1048,6 @@ Finally, quality control of tractographies is an important issue and we
 show how QB can be used as a fast tool to identify clusters containing
 long or short streamlines (\ref{sub:short_tracks}).
 
-\subsection{The QB Representation\label{QB_Representation}}
-
-One of the major benefits of applying QB to tractographies is that it
-can provide meaningful simplifications and find structures that were
-previously invisible or difficult to locate because of the high density
-of the tractography. For example we used QB to cluster the corticospinal
-tract (CST). This bundle was part of the data sets provided by the
-Pittsburgh Brain Competition (PBC2009-ICDM) and it was selected by an
-expert. The QB representation is clearly shown in Fig.\ref{Flo:cst_pbc}
-where every cluster is represented by a single centroid streamline. To
-generate this clustering we used a tight threshold of $10$~mm. We
-observe that only a few centroid streamlines travel the full distance
-from bottom to top and that they are many streamlines that are broken
-(i.e. shorter than what was initially expected) or highly divergent.
-
-Another interesting feature of QB is that it can be used to merge or
-split different structures by changing the distance threshold.  This is
-shown in Fig.~\ref{Flo:simulated_orbits}; on the left we see simulated
-paths made from simple sinusoidal and helicoidal functions packed
-together. The colour coding is used to distinguish the three different
-structures. With a lower threshold the three different structures remain
-separated but when we use a higher threshold the red and blue bundles
-are represented by only one cluster indicated by the purple centroid
-streamline.
-
-\begin{figure*}
-\begin{centering}
-\includegraphics[width=160mm]{Figures/Fig_5_helix_phantom}
-\par\end{centering}
-\caption{Left: $3$ bundles of simulated trajectories; red, blue and
-  green consisting of $150$ streamlines each. All $450$ streamlines are
-  clustered together using QB. Middle and Right: centroid streamlines
-  using thresholds $1$ and $8$ respectively.  At low threshold the
-  underlying structure is reflected in a more detailed
-  representation. At higher threshold, closer bundles merge
-  together. Here the red and blue bundle have merged together in one
-  cluster represented by the purple centroid
-  streamline.\label{Flo:simulated_orbits}}
-\end{figure*}
-
-Similarly, with the simulations shown in Fig.\ref{Flo:simulated_orbits}
-we can see the same effect on real streamlines, e.g. those of the fornix
-shown at the left panel of Fig.~\ref{Flo:QB_fornix} where we can obtain
-different number of clusters at different thresholds. In that way we can
-stress thinner or larger sub-bundles inside other bigger bundles.
-
-A full tractography containing $\num{250000}$ streamlines was clustered
-using QB with a distance threshold of $10$~mm
-(Fig.~\ref{Flo:QB_fornix}).  We produced a useful reduction of the
-initial tractography leaving only $763$ centroid streamlines. Bundles
-smaller than $10$ streamlines were removed. Every streamline shown here
-represents an entire cluster containing from $10$ to $\num{5000}$
-streamlines each.
-
-\begin{figure*}[htp]
-\centerline{\includegraphics[width=160mm]{Figures/Fig_6_QB_fornix}}
-\caption{NEW: QB clustering of the Fornix bundle. The original Fornix
-  ($1076$ streamlines) is shown on the left panel using a standard
-  orientation colormap. We observe that the Fornix consists of two long
-  distant legs (left and right Fimbria) and a thicker upper part (Body
-  of Fornix). We show here how QB will be able to distinguish the parts
-  of the Fornix at different resolutions. With is a $15$~mm threshold QB
-  generates 4 clusters shown on the second panel with distinct
-  colors. Here the left and right Fimbria are clearly distinguished from
-  the Body. A last cluster (with blue) exposes a shorter part of the
-  Body which is probably due to noise in the data. With a $18$~mm
-  threshold only two clusters are created. Both Fibria are brought
-  together as one cluster. A property useful for studies which want to
-  use both Fimbria as one. With a $20$~mm threshold the entire Fornix is
-  one cluster. A case useful for interactive applications because now
-  the entire Fornix can be described by only on centroid streamline. In
-  all cases the streamlines of the Fornix were downsampled to have $18$
-  points.\label{Flo:QB_fornix}}
-\end{figure*}
-
-The centroid streamlines can be thought as fast access points to explore
-the entire data set (see Fig.~\ref{Flo:QB_fornix}). With an appropriate
-visualization tool we can click on a streamline and obtain the entire
-cluster/bundle that it represents. Visualizing an entire data set of
-that size is impossible on standard graphic cards and most visualization
-tools e.g.~Trackvis (trackvis.org) or DSI Studio
-(dsi-studio.labsolver.org) can only show a small random sample of the
-full tractography at real time. In addition we have developed fast and
-efficient ways of identifying broken or wandering streamlines by using
-the rapid data compression of QB to identify short or erratic centroid
-streamlines.
-
 \subsection{Complexity and timings\label{sub:Complexity}}
 
 To apply QB to a data set we need to specify three key parameters: $K$,
@@ -1072,6 +1097,41 @@ suitable for fast and linear time clustering.
   with size $N$ from \numrange{e5}{e6} (x-axis)\label{Flo:Speed1}}
 \end{figure}
 
+As a further test we compared QB with $12$ point streamlines and a
+distance threshold of $10$~mm with some timings reported from other
+state of the art methods found in the literature. Unfortunately timings
+have be rather rarely reported up till -- possibly because as most
+algorithms were very slow on full data sets. With $\num{1000}$
+streamlines \citet{wang2010tractography}'s algorithm took $30$ whereas
+QB took $0.07$.  $\num{14400}$ seconds were required for the method of
+\citet{wang2010tractography} to cluster $\num{60000}$ streamlines; QB
+took $14.7$.  In a third study a substantial tractography of size
+$\num{400000}$ was clustered by \citet{Visser2010} in $\num{75000}$; QB
+completed this task in $160.1$. The speed-up factors in these three
+comparisons were $429$, $980$ and $468$ respectively.  Though this
+experiment was performed using a single CPU core we see the valuable
+speedup that QB achieves, holding out the prospect of real-time
+clustering on data sets of up to than \num{20000} streamlines.
+% (see Table~\ref{Flo:timings}).
+
+% \begin{table}
+% \scriptsize\addtolength{\tabcolsep}{-5pt}
+% \caption{Performance timings for QB compared with some timings
+%   reported in the literature.\label{Flo:timings}}
+% \begin{centering}
+% \begin{tabular}{ccccc}
+% \hline 
+% %\hline
+% Number of streamlines ($N$) & Algorithms & Timings (secs) & QB (secs) & Speedup\tabularnewline
+% \hline
+% $1000$ & \citet{wang2010tractography} & $30$ & $0.07$ & $429$\tabularnewline
+% $\num{60000}$ & \citet{wang2010tractography} & $\num{14400}$ & $14.7$ & $980$\tabularnewline
+% $\num{400000}$ & \citet{Visser2010} & $\num{75000}$ & $160.1$ & $468$\tabularnewline
+% \hline
+% \end{tabular}
+% \par\end{centering}
+% \end{table}
+
 \subsection{Stability of QB\label{sub:Comparisons}}
 
 One of the disadvantages of most clustering algorithms is that they give
@@ -1099,50 +1159,15 @@ random orderings is rather small, with mean standard deviation $12.7$
 (min $7.3$; max $17.4$). This suggests an encouraging level of
 robustness in terms of the numbers of clusters that QB creates.
 
-For each of $10$ tractographies the $66$ pairings of QB clusterings for
-$12$ different orderings were evaluated. Optimal matched agreements
-between each pair of clusterings were created using the Hungarian
-Algorithm~\cite{Kuhn1955} to create a mapping between each pair of
-clusters; the mean agreement was 74\% (s.d.~0.39\%).
+We investigated how consistent QB clusterings are when data sets are
+ro-ordered.  Twelve different random ordering were generated for each of
+$10$ tractographies and the corresping QB clusterings were computed with
+MDF thershold 10mm.  For each subject the $66$ pairings of QB
+clusterings were compared using the matched agreements index and then
+averaged. Across subjects the mean matched agreement was 74\% (s.d.~0.39\%).
 
-As a further test we compared QB with $12$ point streamlines and
-distance threshold at $\theta=10$~mm versus some timings reported from
-other state of the art methods found in the literature. Unfortunately
-timings were very rarely reported up till now as most algorithms were
-very slow on full data sets. This experiment was performed using a
-single CPU core. Nonetheless the speedup that QB offers is obviously of
-great importance and holds out the prospect of real-time clustering on
-data sets of fewer than \num{20000} streamlines.
-% (see Table~\ref{Flo:timings}).
-
-With $\num{1000}$ streamlines \citet{wang2010tractography}'s algorithm
-took $30$ whereas QB took $0.07$.  $\num{14400}$ seconds were required
-for the method of \citet{wang2010tractography} to cluster $\num{60000}$
-streamlines; QB took $14.7$.  In a third study a substantial
-tractography of size $\num{400000}$ was clustered by \citet{Visser2010}
-in $\num{75000}$; QB completed this task in $160.1$. The speed-up
-factors in these three comparisons were $429$, $980$ and $468$
-respectively.
-
-% \begin{table}
-% \scriptsize\addtolength{\tabcolsep}{-5pt}
-% \caption{Performance timings for QB compared with some timings
-%   reported in the literature.\label{Flo:timings}}
-% \begin{centering}
-% \begin{tabular}{ccccc}
-% \hline 
-% %\hline
-% Number of streamlines ($N$) & Algorithms & Timings (secs) & QB (secs) & Speedup\tabularnewline
-% \hline
-% $1000$ & \citet{wang2010tractography} & $30$ & $0.07$ & $429$\tabularnewline
-% $\num{60000}$ & \citet{wang2010tractography} & $\num{14400}$ & $14.7$ & $980$\tabularnewline
-% $\num{400000}$ & \citet{Visser2010} & $\num{75000}$ & $160.1$ & $468$\tabularnewline
-% \hline
-% \end{tabular}
-% \par\end{centering}
-% \end{table}
-
-
+\textbf{Split half results for QB centroids vs. equivalent random
+  subsets of streamlines}
 
 % \subsection{Tractographic atlases and landmarks\label{sub:Atlases-made-easy}}
 
