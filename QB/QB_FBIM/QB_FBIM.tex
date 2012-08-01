@@ -1155,8 +1155,8 @@ clusters was $2645.9$ (min $1937.6$; max $3857.8$; s.d.~$653.8$). There
 is therefore a considerable between-subject variation in this metric. By
 contrast the within-subject variability of the number of clusters across
 random orderings is rather small, with mean standard deviation $12.7$
-(min $7.3$; max $17.4$). This suggests an encouraging level of
-robustness in terms of the numbers of clusters that QB creates.
+(min $7.3$; max $17.4$). This suggests a good level of consistency in
+terms of the numbers of clusters that QB creates.
 
 We investigated how consistent QB clusterings are when data sets are
 ro-ordered.  Twelve different random ordering were generated for each of
@@ -1172,11 +1172,22 @@ threshold $10$mm was derived for $T_1$. Denote by $C_1$ and $c_1$ the
 set of centroids and the number of them. Let $R_1$ be a random subset of
 $T_1$ of size $c_1$. Using the measures described in
 section~\ref{sub:Tightness-comparisons-1} we found that with closeness
-threshold $10$mm the mean coverage (s.d.) of $T_1$ by $C_1$ was $99.9$\%
-($0.007$\%), of $T_2$ by $C_1$ was $99.3$\% ($0.07$\%) and of $T_1$ by
-$R_1$ was $90.5$\% ($0.41$\%). The mean sparseness (s.d.) at this
-theshold of $C_1$ in $T_1$ was [...], of $C_1$ in $T_2$ was [...], and
-of $R_1$ in $T_1$ was [...].
+threshold $10$mm the mean coverage (s.d.) of $T_1$ by $C_1$ was
+$99.96$\% ($\pm 0.007$\%), of $T_2$ by $C_1$ was $99.31$\% ($0.08$\%)
+and of $T_2$ by $R_1$ was $90.49$\% ($\pm 0.41$\%). The mean sparseness
+(s.d.) at this threshold of $C_1$ in $T_1$ was $2.44$ ($\pm 0.08$), of
+$C_1$ in $T_2$ was $2.44$ ($\pm 0.08$), and of $R_1$ in $T_2$ was $5.57$
+($\pm 0.50$).
+
+The same analyses were performed with QB clusterings for distance
+threshold $20$mm and with closeness threshold $20$mm. (Note that these
+two threshold do not have to be the same.) we found that with closeness
+threshold $10$mm the mean coverage (s.d.) of $T_1$ by $C_1$ was
+$99.99$\% ($\pm 0.004$\%), of $T_2$ by $C_1$ was $99.91$\% ($\pm 0.02$\%)
+and of $T_2$ by $R_1$ was $95.86$\% ($\pm 0.62$\%). The mean sparseness
+(s.d.) at this threshold of $C_1$ in $T_1$ was $3.54$ ($\pm 0.18$), of
+$C_1$ in $T_2$ was $3.54$ ($\pm 0.18$), and of $R_1$ in $T_2$ was $6.53$
+($\pm 0.93$).
 
 % \subsection{Tractographic atlases and landmarks\label{sub:Atlases-made-easy}}
 
@@ -1510,7 +1521,7 @@ of $R_1$ in $T_1$ was [...].
 We warped $10$ tractographies each belonging to a different healthy
 subsect (see section \ref{sub:QB-Data-sets}) in MNI space and applied
 QuickBundles on each tractography independently using distance threshold
-$\theta=10$~mm and downsampling of $18$ points. For every subject we
+$10$~mm and downsampling of $18$ points. For every subject we
 only considered the biggest $100$ QB clusters i.e. the clusters which
 contained the highest number of streamlines. The purpose of this
 experiment was to identify a global similarity measure between the
@@ -1526,19 +1537,19 @@ streamlines of the different subjects.
 In Fig.~\ref{Flo:BAs} we present both the complete tractographies and
 the centroid tracks which correspond to the $100$ biggest
 clusters. Because the complete tractographies are very large containing
-hundreds of thousands of tracks ($\mu=\num{171002.5}$ and
-$\sigma=\num{23879.9}$) we visualize them using low opacity so that at
-least an overall projection of the streamlines can be observed. The
-purpose of this is to show empirically the variability of the
-streamlines across subjects. At the contrary, the centroids of the $100$
-biggest clusters for the $10$ subjects are easily observed with full
-opacity in Fig.~\ref{Flo:BAs}. The mean number of streamlines in the
-$100$ biggest clusters was $\num{4818.6}$ with
-$\sigma=\num{794.4}$. These clusters covered on average $16.18\%$ with
-$\sigma=1.4\%$ of the total number of streamlines. The average length of
-the centroids of the clusters was $73.6$~mm with $\sigma=43.9$~mm. We
-will use these centroids as a method to study the variability between
-the streamlines across different subjects.
+hundreds of thousands of tracks (mean$=\num{171002.5}\pm\num{23879.9}$)
+we visualize them using low opacity so that at least an overall
+projection of the streamlines can be observed. The purpose of this is to
+show empirically the variability of the streamlines across subjects. At
+the contrary, the centroids of the $100$ biggest clusters for the $10$
+subjects are easily observed with full opacity in
+Fig.~\ref{Flo:BAs}. The mean number of streamlines in the $100$ biggest
+clusters was $\num{4818.6}$ ($\pm \num{794.4}$). These clusters covered
+on average $16.18\%$ ($\pm\\num{1.4}\%$) of the total number of
+streamlines. The average length of the centroids of the clusters was
+$73.6$~mm ($\pm\num{43.9}$~mm. We will use these centroids as a method
+to study the variability between the streamlines across different
+subjects.
 
 \begin{figure}
 \centerline{\includegraphics[scale=0.24]{Figures/Fig_13_BAs}}
@@ -1557,14 +1568,14 @@ results of this experiment are presented.
 
 When used BA10 the most dissimilar subjects were subjects 4 and 6 with
 BA10(4,6)=0.385. The most similar subjects were 4 and 5 with
-BA10(4,5)=0.595. The mean BA10 was 0.48 with $\sigma=0.049$. With BA20
+BA10(4,5)=0.595. The mean BA10 was 0.48 ($\pm\num{0.049}$. With BA20
 the most dissimilar subjects were subjects 7 and 10 with
 BA20(7,10)=0.72. The most similar subjects were, in agreement with BA10,
-4 and 5 with BA20(4,5)=0.885. The mean BA20 was 0.8 with $\sigma=0.032$.
+4 and 5 with BA20(4,5)=0.885. The mean BA20 was 0.8 $\pm\num{0.032}$.
 
 In future work we would like to study how the length of the big clusters
 affects BA. In this experiment there was a great variability on centroid
-lengths ($\mu=73.6$~mm, $\sigma=43.9$~mm). If we suppose that shorter
+lengths (mean $73.6$~mm $\pm\num{43.9}$~mm). If we suppose that shorter
 streamlines are more likely to be noise artifacts we would expect that
 by concentrating on longer streamlines we would have a more robust
 similarity measure for tractography comparison.
