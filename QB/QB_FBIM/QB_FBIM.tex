@@ -908,39 +908,59 @@ tractographies.
 
 Being able to compare results of clusterings is crucial for creating
 stable brain imaging procedures, and therefore it is necessary to
-develop a way to compare different clusterings of the same subject or
-different subjects. Although we recognise that this is a difficult
-problem, we propose the following approach with a novel comparison
-function which we call Bundle Adjacency (BA). This function works as
-follows. Let us assume that we have gathered the centroid streamlines from
-clustering $A$ in $E_{A}=[\mathbf{e}_{1},...,\mathbf{e}_{M_{A}}]$ and
-from clustering $B$ in
-$E_{B}=[\mathbf{e}_{1}^{'},...,\mathbf{e}_{M_{B}}^{'}]$ where $M_A$ ,
-$M_B$ denote the number of centroid streamlines of the two
-clusterings. $M_{A}$ does not need to be equal to $M_{B}$. Next we
-calculate all pairwise MDF distances between the two sets and store them
-in rectangular matrix $D_{AB}$. The mimima of the rows of $D_{AB}$
-provide the distance to the nearest streamline in $B$ of each streamline
-in $A$ ($m_{A\rightarrow B}$) and similarly the minima of the columns of
-$D_{AB}$ the distance to the nearest streamline in $A$ of each
-streamline in $B$ ($m_{B\rightarrow A}$). From these correspondences we
-only keep those distances that are smaller than a tight threshold
-$\theta$. Then we define BA to be
+develop a way to compare different tractography clusterings or different
+sets of streamlines from the same subject or different subjects.
 
-\begin{equation}
-BA=\frac{1}{2}\left(\frac{|m_{A\rightarrow B}\leq \theta |}{M_{A}}+\frac{|m_{B\rightarrow A}\leq \theta |}{M_{B}}\right)\label{eq:TC}
-\end{equation}
+Although we recognise that these are difficult problem, we propose the
+following approach with three novel comparison functions which we call
+Coverage, Sparsity and Bundle Adjacency (BA).
 
-\noindent where $|m_{A\rightarrow B}\leq \theta |$ denotes the number of
-centroids from A which had a neighbour in B that is closer than $\theta$
-and similarly for $|m_{B\rightarrow A}\leq \theta |$.  In other words,
-$BA$ is mean of the fraction of row minima of $D_{AB}$ that are less
-than $\theta$ and the fraction of column minima less than $\theta$.
-$BA=0$ when every centroid from the one set is further than $\theta$ to
-all centroids in the other set. $BA=1$ when all centroids from one set have
-a close neighbour in the other set. This comparison function is very
-useful especially when comparing tractographies from different subjects
-because it does not require $M_{A}=M_{B}$.
+If $S$ and $T$ are sets of streamlines, and $\theta>0$ is selected as a
+threshold, we say that $s \in S$ has a $\theta$-neighbour in $T$ if
+$\min_{t\in T}[\mathrm{MDF}(s,t)<\theta]$; we define the Coverage of $S$
+by $T$ as the fraction of streamlines in $S$ that have a
+$\theta$-neighbour in $T$: $|\{s \in S
+\,\mathrm{has~a}~\theta\mathrm{-neighbour~in}~T\}|/|S|$; and we define
+the Sparsity of $T$ in $S$ as the average number of $\theta$-neighbours
+in $T$ for streamlines in $S$. Bundle Adjacency is a symmetric to
+measure of the similarity of the two sets of streamlines $S$ and $T$. BA
+is the average of the $\theta$-coverages of $T$ by $S$ and of $S$ by
+$T$: $\mathrm{BA}(S,T) = (\mathrm{Coverage}(S,T) +
+\mathrm{Coverage}(T,S))/2$.
+
+If $S$ is a good approximation to $T$ then $S$ will have high coverage
+of $T$; if $S$ has low redundancy as an approximation to $T$ then the
+sparsity of $S$ in $T$ will be low; and if $S$ and $T$ 
+
+% Let us assume that we
+% have gathered the centroid streamlines from clustering $A$ in
+% $E_{A}=[\mathbf{e}_{1},...,\mathbf{e}_{M_{A}}]$ and from clustering $B$
+% in $E_{B}=[\mathbf{e}_{1}^{'},...,\mathbf{e}_{M_{B}}^{'}]$ where $M_A$ ,
+% $M_B$ denote the number of centroid streamlines of the two
+% clusterings. $M_{A}$ does not need to be equal to $M_{B}$. Next we
+% calculate all pairwise MDF distances between the two sets and store them
+% in rectangular matrix $D_{AB}$. The mimima of the rows of $D_{AB}$
+% provide the distance to the nearest streamline in $B$ of each streamline
+% in $A$ ($m_{A\rightarrow B}$) and similarly the minima of the columns of
+% $D_{AB}$ the distance to the nearest streamline in $A$ of each
+% streamline in $B$ ($m_{B\rightarrow A}$). From these correspondences we
+% only keep those distances that are smaller than a tight threshold
+% $\theta$. Then we define BA to be
+
+% \begin{equation}
+% BA=\frac{1}{2}\left(\frac{|m_{A\rightarrow B}\leq \theta |}{M_{A}}+\frac{|m_{B\rightarrow A}\leq \theta |}{M_{B}}\right)\label{eq:TC}
+% \end{equation}
+
+% \noindent where $|m_{A\rightarrow B}\leq \theta |$ denotes the number of
+% centroids from A which had a neighbour in B that is closer than $\theta$
+% and similarly for $|m_{B\rightarrow A}\leq \theta |$.  In other words,
+% $BA$ is mean of the fraction of row minima of $D_{AB}$ that are less
+% than $\theta$ and the fraction of column minima less than $\theta$.
+% $BA=0$ when every centroid from the one set is further than $\theta$ to
+% all centroids in the other set. $BA=1$ when all centroids from one set have
+% a close neighbour in the other set. This comparison function is very
+% useful especially when comparing tractographies from different subjects
+% because it does not require $M_{A}=M_{B}$.
 
 % \subsection{Merging two sets of bundles\label{sub:merging}}
 
@@ -1164,10 +1184,20 @@ ro-ordered.  Twelve different random ordering were generated for each of
 $10$ tractographies and the corresping QB clusterings were computed with
 MDF thershold 10mm.  For each subject the $66$ pairings of QB
 clusterings were compared using the matched agreements index and then
-averaged. Across subjects the mean matched agreement was 74\% (s.d.~0.39\%).
+averaged. Across subjects the mean matched agreement was 74.1\% (s.d.~0.39\%).
 
-\textbf{Split half results for QB centroids vs. equivalent random
-  subsets of streamlines}
+We further tested the way in which the set of QB centroids reduce the
+dimensionality of tractographies. We split each of the 10 tractographies
+randomly into two halves $T_1$ and $T_2$.  The QB clustering at distance
+threshold $10$mm was derived for $T_1$. Denote by $C_1$ and $c_1$ the
+set of centroids and the number of them. Let $R_1$ be a random subset of
+$T_1$ of size $c_1$. Using the measures described in
+section~\ref{sub:Tightness-comparisons-1} we found that with closeness
+threshold $10$mm the mean coverage (s.d.) of $T_1$ by $C_1$ was $99.9$\%
+($0.007$\%), of $T_2$ by $C_1$ was $99.3$\% ($0.07$\%) and of $T_1$ by
+$R_1$ was $90.5$\% ($0.41$\%). The mean sparseness (s.d.) at this
+theshold of $C_1$ in $T_1$ was [...], of $C_1$ in $T_2$ was [...], and
+of $R_1$ in $T_1$ was [...].
 
 % \subsection{Tractographic atlases and landmarks\label{sub:Atlases-made-easy}}
 
@@ -1498,25 +1528,67 @@ averaged. Across subjects the mean matched agreement was 74\% (s.d.~0.39\%).
 
 \subsection{Group Comparisons \label{sub:group_comp}}
 
-We warped $10$ tractographies each belonging to a different healthy subsect (see section \ref{sub:QB-Data-sets}) in MNI space and applied QuickBundles on each tractography independently using distance threshold $\theta=10$~mm and downsampling of $18$ points. For every subject we only considered the biggest $100$ QB clusters i.e. the clusters which contained the highest number of streamlines. The purpose of this experiment was to identify a global similarity measure between the streamlines of the different subjects. 
+We warped $10$ tractographies each belonging to a different healthy
+subsect (see section \ref{sub:QB-Data-sets}) in MNI space and applied
+QuickBundles on each tractography independently using distance threshold
+$\theta=10$~mm and downsampling of $18$ points. For every subject we
+only considered the biggest $100$ QB clusters i.e. the clusters which
+contained the highest number of streamlines. The purpose of this
+experiment was to identify a global similarity measure between the
+streamlines of the different subjects.
 
 \begin{figure*}[htp]
 \centerline{\includegraphics[width=180mm]{Figures/Fig_12_All_Brains.eps}}
-\caption{QuickBundles centroids of the biggest 100 clusters for 10 subjects. Full tractographies are also presented using high transparency. \label{Flo:BAs}}
+\caption{QuickBundles centroids of the biggest 100 clusters for 10
+  subjects. Full tractographies are also presented using high
+  transparency. \label{Flo:BAs}}
 \end{figure*}
 
-In Fig.~\ref{Flo:BAs} we present both the complete tractographies and the centoid tracks which correspond to the $100$ biggest clusters. Because the complete tractographies are very large containing hundreds of thousands of tracks ($\mu=\num{171002.5}$ and $\sigma=\num{23879.9}$) we visualize them using low opacity so that at least an overall projection of the streamlines can be observed. The purpose of this is to show empirically the variability of the streamlines across subjects. At the contrary, the centroids of the $100$ biggest clusters for the $10$ subjects are easily observed with full opacity in Fig.~\ref{Flo:BAs}. The mean number of streamlines in the $100$ biggest clusters was $\num{4818.6}$ with $\sigma=\num{794.4}$. These clusters covered on average $16.18\%$ with $\sigma=1.4\%$ of the total number of streamlines. The average length of the centroids of the clusters was $73.6$~mm with $\sigma=43.9$~mm. We will use these centroids as a method to study the variability between the streamlines across different subjects. 
+In Fig.~\ref{Flo:BAs} we present both the complete tractographies and
+the centroid tracks which correspond to the $100$ biggest
+clusters. Because the complete tractographies are very large containing
+hundreds of thousands of tracks ($\mu=\num{171002.5}$ and
+$\sigma=\num{23879.9}$) we visualize them using low opacity so that at
+least an overall projection of the streamlines can be observed. The
+purpose of this is to show empirically the variability of the
+streamlines across subjects. At the contrary, the centroids of the $100$
+biggest clusters for the $10$ subjects are easily observed with full
+opacity in Fig.~\ref{Flo:BAs}. The mean number of streamlines in the
+$100$ biggest clusters was $\num{4818.6}$ with
+$\sigma=\num{794.4}$. These clusters covered on average $16.18\%$ with
+$\sigma=1.4\%$ of the total number of streamlines. The average length of
+the centroids of the clusters was $73.6$~mm with $\sigma=43.9$~mm. We
+will use these centroids as a method to study the variability between
+the streamlines across different subjects.
 
 \begin{figure}
 \centerline{\includegraphics[scale=0.24]{Figures/Fig_13_BAs}}
-\caption{Bundle Adjacencies for the 45 pairs of 10 subjects with two different distance thresholds. \label{Flo:BAs_plot}}
+\caption{Bundle Adjacencies for the 45 pairs of 10 subjects with two
+  different distance thresholds. \label{Flo:BAs_plot}}
 \end{figure}
 
-For this purpose we evaluated Bundle Adjacencies (BAs)~(\ref{eq:TC}) between all pairs of these $100$ centroids of each of the $10$ tractographies. This generated ${10}\choose{2}$=$45$ BA values with $\theta=10$~mm (BA10). We also generated another $45$ BA values with $\theta=20$~mm (BA20). Noticeable here is that the distance threshold for BA is twice higher than the initial distance threshold for QB. In Fig.~\ref{Flo:BAs_plot} the results of this experiment are presented.
+For this purpose we evaluated Bundle Adjacencies
+(BA, see section~\ref{sub:Tightness-comparisons-1}) between all pairs of these
+$100$ centroids of each of the $10$ tractographies. This generated
+${10}\choose{2}$=$45$ BA values with $\theta=10$~mm (BA10). We also
+generated another $45$ BA values with $\theta=20$~mm (BA20). Noticeable
+here is that the distance threshold for BA is twice higher than the
+initial distance threshold for QB. In Fig.~\ref{Flo:BAs_plot} the
+results of this experiment are presented.
 
-When used BA10 the most dissimilar subjects were subjects 4 and 6 with BA10(4,6)=0.385. The most similar subjects were 4 and 5 with BA10(4,5)=0.595. The mean BA10 was 0.48 with $\sigma=0.049$. With BA20 the most dissimilar subjects were subjects 7 and 10 with BA20(7,10)=0.72. The most similar subjects were, in agreement with BA10, 4 and 5 with BA20(4,5)=0.885. The mean BA20 was 0.8 with $\sigma=0.032$.
+When used BA10 the most dissimilar subjects were subjects 4 and 6 with
+BA10(4,6)=0.385. The most similar subjects were 4 and 5 with
+BA10(4,5)=0.595. The mean BA10 was 0.48 with $\sigma=0.049$. With BA20
+the most dissimilar subjects were subjects 7 and 10 with
+BA20(7,10)=0.72. The most similar subjects were, in agreement with BA10,
+4 and 5 with BA20(4,5)=0.885. The mean BA20 was 0.8 with $\sigma=0.032$.
 
-In future work we would like to study how the length of the big clusters affects BA. In this experiment there was a great variability on centroid lengths ($\mu=73.6$~mm, $\sigma=43.9$~mm). If we suppose that shorter streamlines are more likely to be noise artifacts we would expect that by concentrating on longer streamlines we would have a more robust similarity measure for tractography comparison.
+In future work we would like to study how the length of the big clusters
+affects BA. In this experiment there was a great variability on centroid
+lengths ($\mu=73.6$~mm, $\sigma=43.9$~mm). If we suppose that shorter
+streamlines are more likely to be noise artifacts we would expect that
+by concentrating on longer streamlines we would have a more robust
+similarity measure for tractography comparison.
 
 
 \subsection{Limitations of QB\label{sub:short_tracks}}
