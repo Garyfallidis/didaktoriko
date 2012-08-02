@@ -91,6 +91,24 @@ $10^6$) depending principally on the number of seed points used to
 generate the tractography but also on how the tractography propagation 
 algorithm handles voxels with underlying fiber crossings.
 
+\begin{figure*}[htp]
+\centerline{\includegraphics[width=160mm]{Figures/Fig_4_cst_simplification_relabeled_triple.eps}}
+    % \par\end{centering}
+\caption{Part of the CST bundle (left in blue) consisting of \num{11041}
+  streamlines. At first glance it looks as though all streamlines have a
+  similar shape, and possibly converge towards the bottom, and fan out
+  towards the top. However, this is a misreading caused by the opaque
+  density when all the streamlines are visualised.  QB can help us see
+  the finer structure of the bundle and identify its elements. In the
+  middle we see the 16 QB centroid streamlines of the CST. We can now
+  clearly observe that several parts which looked homogeneous are
+  actually broken bundles or bundles with rather different shapes. On
+  the right panel we see the streamlines coloured according to their
+  cluster label. The distance threshold used here was
+  $10$~mm. \label{Flo:cst_pbc}}
+\end{figure*}
+
+
 The size of these tractographies makes them difficult to interpret and
 visualize. A clustering of some kind seems to be an obvious route to
 simplify the complexity of these data sets and provide a useful
@@ -174,7 +192,7 @@ the number of clusters.  They also used this approach for direct
 registration of tractographies but only with tractographies from the
 same subject.
 
-\Citet{ElKouby2005} created a ROI-based connectivity matrix where the
+\citet{ElKouby2005} created a ROI-based connectivity matrix where the
 $i,j$th entry of the matrix holds the number of streamlines which
 connect $ROI_{i}$ to $ROI_{j}$. K-means was used afterwards on the rows
 of the matrix to cluster the streamlines. This technique can be used for
@@ -200,6 +218,7 @@ Nystrom approximation: working on a subset and avoid generating the
 complete affinity/distance matrix. Later in \citet{o2009tract} they
 tried group analysis on prespecified bundles.
 
+
 \citet{Maddah_MICCA2005} used B-spline representations of streamlines
 referenced to an atlas, and then the streamlines were clustered based on
 the labeled atlas. Later \citet{maddah2006statistical} using a similar
@@ -207,7 +226,7 @@ streamline representation (quintic B-splines) calculated a model for
 each bundle as the average and standard deviation of that parametric
 representation. In this way they created an atlas which is used as a
 prior for expectation-maximization (EM) clustering of the Corpus
-Callosum streamlines into Witelson subdivisions \citep{witelson1989hand}
+Callosum streamlines into Witelson subdivisions \citet{witelson1989hand}
 using population averages. Later in \citet{Maddah_IEEEBI2008} showed
 that it is possible to combine spatial priors with metrics for the shape
 of the streamlines in order to guide the clustering process.
@@ -247,7 +266,7 @@ creates a sharper atlas from a set of subjects based on three bundles:
 Corpus Callosum, Cingulum and Fornix. This work used an initial
 spectral clustering \citep{ODonnell_IEEETMI07} to label the bundles and
 then updated these labels iteratively while performing bundle-wise
-registration using a poly-affine framework \citep{Arsigny2009}.
+registration using a poly-affine framework \citet{Arsigny2009}.
 
 Often it is useful to use some protocols in order to add prior
 information to the automated learning process. Protocols to manually
@@ -263,7 +282,7 @@ The first and most common one makes use of streamline distances and
 calculates distance matrices. The most prevailing approaches here for
 deciphering the distance matrix are with Hierarchical and Spectral
 Clustering which are applied only on random subsets of the initial
-tractography. For example  \citet{ODonnell_IEEETMI07} used only \num{10000} (~10\% of the initial tractography) and \citet{Visser2010} used recombinations of \num{10000} tracks. The second trend, and the less common, favours avoiding
+tractography. For example, \citet{ODonnell_IEEETMI07} used only \num{10000} (~10\% of the initial tractography) and \citet{Visser2010} used recombinations of \num{10000} tracks. The second trend, and the less common, favours avoiding
 streamline distances because the computation of the distance matrix is
 memory intensive. In this case using Dirichlet Processes or Currents or
 Connectivity based parcellation seem to be some viable solutions. For
@@ -302,24 +321,6 @@ capture this prior knowledge. The clustering that we propose
 concentrates on reducing the complexity of the data rather than finding
 bundles with hopefully anatomical relevance. We believe this step is
 more useful at this stage of tractography analysis research.
-
-%
-\begin{figure*}[htp]
-\centerline{\includegraphics[width=160mm]{Figures/Fig_4_cst_simplification_relabeled_triple.eps}}
-    % \par\end{centering}
-\caption{Part of the CST bundle (left in blue) consisting of \num{11041}
-  streamlines. At first glance it looks as though all streamlines have a
-  similar shape, and possibly converge towards the bottom, and fan out
-  towards the top. However, this is a misreading caused by the opaque
-  density when all the streamlines are visualised.  QB can help us see
-  the finer structure of the bundle and identify its elements. In the
-  middle we see the 16 QB centroid streamlines of the CST. We can now
-  clearly observe that several parts which looked homogeneous are
-  actually broken bundles or bundles with rather different shapes. On
-  the right panel we see the streamlines coloured according to their
-  cluster label. The distance threshold used here was
-  $10$~mm. \label{Flo:cst_pbc}}
-\end{figure*}
 
 Most of these proposed tractography clustering algorithms are very slow
 and many need to calculate a matrix of inter-streamline distances of
@@ -381,7 +382,9 @@ cluster from a few hundred to many millions of streamlines.
 % anatomical segmentation.
 
 There is no current unsupervised anatomical segmentation method that can
-have general usability without expert knowledge integration. Nonetheless, neuroanatomists often disagree on definition of major structures \citep{schmahmann2009fiber} [cite]. \textbf{well there's the old 'extreme capsule fibre system' (Schmahmann, Pandya, Makris, Petrides) vs. 'fronto-occipital fasciculus' (Catani, Wakana, Mori, (i.e JHU peeps)). I'm not sure so many people disagree on names so much as disagree on the appropriate names to use for tractography since tractography often can't distinguish between small bundles e.g. SLF I-III and IV (arcuate). Some people would prefer to just say SLF for tractography or temporal part of SLF(that's Wakana et al. 2007, 2004). I think there may possibly be some overlap between the superior occipitofrontal fasciculus and one of SLF I-III not 100\% sure but Thiebaut de Schotten (e.g. 2008) \& Catani use SOF terminology some people use the proper names for the corpus callosum segments whereas other people just say something like anterior, mid, posterior}. What we propose is to create a method that simplifies the tractography at the level where distinction is not an issue.
+have general usability without expert knowledge integration. Nonetheless, neuroanatomists often disagree on definition of major structures or on which streamlines correspond to actual tracts \citet{schmahmann2009fiber}, \citet{makris2005segmentation}, \citet{frey2008dissociating}, \citet{catani2005perisylvian}, \citet{moriBook}, \citet{fernandez2012high}, \citet{verstynen2011vivo}. 
+%\textbf{well there's the old 'extreme capsule fibre system' (Schmahmann, Pandya, Makris, Petrides) vs. 'fronto-occipital fasciculus' (Catani, Wakana, Mori, (i.e JHU peeps)). I'm not sure so many people disagree on names so much as disagree on the appropriate names to use for tractography since tractography often can't distinguish between small bundles e.g. SLF I-III and IV (arcuate). Some people would prefer to just say SLF for tractography or temporal part of SLF(that's Wakana et al. 2007, 2004). I think there may possibly be some overlap between the superior occipitofrontal fasciculus and one of SLF I-III not 100\% sure but Thiebaut de Schotten (e.g. 2008) \& Catani use SOF terminology some people use the proper names for the corpus callosum segments whereas other people just say something like anterior, mid, posterior}. 
+What we propose is to create a method that simplifies the tractography at the level where distinction is not an issue.
 
 \begin{methods}
 
@@ -390,9 +393,7 @@ have general usability without expert knowledge integration. Nonetheless, neuroa
 \subsection{\label{sub:track-distances}Streamline distances and preprocessing}
 
 A wide range of approaches have been taken in the literature for
-representing or coding for tractographies. The approach we have taken
-with streamline coding has gone in parallel with the selection of
-appropriate functions for inter-streamline distances.  Numerous
+representing or coding for tractographies~\citet{Guevara2010, chung2010cosine}. The approach we have taken with streamline coding has gone in parallel with the selection of appropriate functions for inter-streamline distances.  Numerous
 inter-streamline distance functions have been proposed~\citep{Ding2003,
   MaddahIPMI2007, zhang2005dti}. The most common is the Hausdorff
 distance~\citep[and many other studies]{corouge2004towards}. There are
@@ -404,12 +405,34 @@ versa. Thus the Hausdorff distance requires the calculation
 $\mathcal{O}(KL)$ inter-point distances when comparing streamlines of
 $K$ and $L$ points.
 
+\begin{figure}
+\includegraphics[scale=0.35]{Figures/Fig_2_distances2}
+\centering{}
+\caption{The principal distance used in this work is minimum average
+  direct flip distance
+  $\textrm{MDF}=\min(d_{\textrm{direct}},d_{\textrm{flipped}})$ which is
+  a symmetric distance function that can deal with the streamline
+  bi-directionality problem; it works on streamlines which have the same
+  number of points.  Another distance we use is the mean average
+  distance which is again symmetric but does not require the streamlines
+  to have the same number of points: $\textrm{MAM}_{\textrm{mean}} =
+  (d_{mean}(s, s') + d_{mean}(s',s))/2$ (see Eq.~(\ref{eq:mean_average_distance})).  In this
+  figure the components of both distances are shown; the streamlines are
+  drawn with solid lines, and then with dashed lines we connect the
+  pairs of points of the two streamlines whose distances contribute to
+  the overall metric. Note that we cannot calculate the $\textrm{MDF}$
+  between the streamlines on the left of the figure because they have
+  different numbers of points.
+  \label{Flo:Distances_used}}
+\end{figure}
+
+
 For these reasons we have opted to use a rather simpler symmetric
 distance function~\citep{EGMB10, Visser2010} which we call the minimum
 average direct-flip (MDF) distance MDF$(s,t)$ between streamlines $s$
 and $t$, see Eq.~(\ref{eq:direct_flip_distance}). This distance can be
 applied only when both streamlines have the same number of
-points. Therefore we assume that an initial downsampling of streamlines
+points, see Fig.~\ref{Flo:Distances_used}. Therefore we assume that an initial downsampling of streamlines
 has been implemented, where all segments on a streamline have
 approximately the same length, and all streamlines have the same number
 of points $K$, and segments $K-1$, which are much less than the number
@@ -442,7 +465,7 @@ minimise the corresponding MDF distances $\mathrm{MDF}(s,t)$ and
 $\mathrm{MDF}(t,u)$. (If not, we replace e.g.~$t$ by $t^F$) Then
 $\mathrm{MDF}(s, t) + \mathrm{MDF}(t, u) = d(s, t) + d(t, u) \ge d(s,
 u)$ (by the triangle inequality for the euclidean distance) $ \ge
-\min(d(s,u), d(s, u^F) = \mathrm{MDF}(s, u)$.
+\min(d(s,u), d(s, u^F)) = \mathrm{MDF}(s, u)$.
 
 \begin{figure}
 \includegraphics[scale=0.15]{Figures/Fig_11_MDF_arcuate}
@@ -450,26 +473,6 @@ u)$ (by the triangle inequality for the euclidean distance) $ \ge
 \caption{Color coding shows MDF distances from centroid to every other track in the bundle.\label{Flo:MDF_arcuate}}
 \end{figure}
 
-\begin{figure}
-\includegraphics[scale=0.35]{Figures/Fig_2_distances2}
-\centering{}
-\caption{The principal distance used in this work is minimum average
-  direct flip distance
-  $\textrm{MDF}=\min(d_{\textrm{direct}},d_{\textrm{flipped}})$ which is
-  a symmetric distance function that can deal with the streamline
-  bi-directionality problem; it works on streamlines which have the same
-  number of points.  Another distance we use is the mean average
-  distance which is again symmetric but does not require the streamlines
-  to have the same number of points: $\textrm{MAM}_{\textrm{mean}} =
-  (d_{mean}(s, s') + d_{mean}(s',s))/2$ (see Eq.~(\ref{eq:mean_average_distance})).  In this
-  figure the components of both distances are shown; the streamlines are
-  drawn with solid lines, and then with dashed lines we connect the
-  pairs of points of the two streamlines whose distances contribute to
-  the overall metric. Note that we cannot calculate the $\textrm{MDF}$
-  between the streamlines on the left of the figure because they have
-  different numbers of points.
-  \label{Flo:Distances_used}}
-\end{figure}
 
 The main advantages of the MDF distance are that it is fast to compute,
 it takes account of streamline direction issues through consideration of
