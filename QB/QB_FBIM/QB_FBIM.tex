@@ -1131,18 +1131,18 @@ terms of the numbers of clusters that QB creates.
 We investigated how consistent QB clusterings are when data sets are
 ro-ordered.  Twelve different random ordering were generated for each of
 $10$ tractographies and the corresping QB clusterings were computed with
-MDF thershold 10mm.  For each subject the $66$ pairings of QB
+MDF thershold $10$~mm.  For each subject the $66$ pairings of QB
 clusterings were compared using the matched agreements index and then
 averaged. Across subjects the mean matched agreement was 74.1\% (s.d.~0.39\%).
 
 We further tested the way in which the set of QB centroids reduce the
 dimensionality of tractographies. We split each of the 10 tractographies
 randomly into two halves $T_1$ and $T_2$.  The QB clustering at distance
-threshold $10$mm was derived for $T_1$. Denote by $C_1$ and $c_1$ the
+threshold $10$~mm was derived for $T_1$. Denote by $C_1$ and $c_1$ the
 set of centroids and the number of them. Let $R_1$ be a random subset of
 $T_1$ of size $c_1$. Using the measures described in
 section~\ref{sub:Tightness-comparisons-1} we found that with closeness
-threshold $10$mm the mean coverage (s.d.) of $T_1$ by $C_1$ was
+threshold $10$~mm the mean coverage (s.d.) of $T_1$ by $C_1$ was
 $99.96$\% ($\pm 0.007$\%), of $T_2$ by $C_1$ was $99.31$\% ($0.08$\%)
 and of $T_2$ by $R_1$ was $90.49$\% ($\pm 0.41$\%). The mean sparseness
 (s.d.) at this threshold of $C_1$ in $T_1$ was $2.44$ ($\pm 0.08$), of
@@ -1158,6 +1158,8 @@ and of $T_2$ by $R_1$ was $95.86$\% ($\pm 0.62$\%). The mean sparseness
 (s.d.) at this threshold of $C_1$ in $T_1$ was $3.54$ ($\pm 0.18$), of
 $C_1$ in $T_2$ was $3.54$ ($\pm 0.18$), and of $R_1$ in $T_2$ was $6.53$
 ($\pm 0.93$).
+
+XXX why the split halves is more preferable than the standard full tractography random tracks coverage?
 
 % \subsection{Tractographic atlases and landmarks\label{sub:Atlases-made-easy}}
 
@@ -1501,7 +1503,7 @@ streamlines of the different subjects.
 \centerline{\includegraphics[width=180mm]{Figures/Fig_12_All_Brains.eps}}
 \caption{QuickBundles centroids of the biggest 100 clusters for 10
   subjects. Full tractographies are also presented using high
-  transparency. \label{Flo:BAs}}
+  transparency. All streamlines are visualized with the same standard orientation colormap. \label{Flo:BAs}}
 \end{figure*}
 
 In Fig.~\ref{Flo:BAs} we present both the complete tractographies and
@@ -1515,9 +1517,9 @@ the contrary, the centroids of the $100$ biggest clusters for the $10$
 subjects are easily observed with full opacity in
 Fig.~\ref{Flo:BAs}. The mean number of streamlines in the $100$ biggest
 clusters was $\num{4818.6}$ ($\pm \num{794.4}$). These clusters covered
-on average $16.18\%$ ($\pm\\num{1.4}\%$) of the total number of
+on average $16.18\%$ ($\pm\num{1.4}\%$) of the total number of
 streamlines. The average length of the centroids of the clusters was
-$73.6$~mm ($\pm\num{43.9}$~mm. We will use these centroids as a method
+$73.6$~mm ($\pm\num{43.9}$~mm). We will use these centroids as a method
 to study the variability between the streamlines across different
 subjects.
 
@@ -1538,7 +1540,7 @@ results of this experiment are presented.
 
 When used BA10 the most dissimilar subjects were subjects 4 and 6 with
 BA10(4,6)=0.385. The most similar subjects were 4 and 5 with
-BA10(4,5)=0.595. The mean BA10 was 0.48 ($\pm\num{0.049}$. With BA20
+BA10(4,5)=0.595. The mean BA10 was 0.48 ($\pm\num{0.049}$). With BA20
 the most dissimilar subjects were subjects 7 and 10 with
 BA20(7,10)=0.72. The most similar subjects were, in agreement with BA10,
 4 and 5 with BA20(4,5)=0.885. The mean BA20 was 0.8 $\pm\num{0.032}$.
