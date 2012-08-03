@@ -1057,39 +1057,19 @@ theory. We created the following experiment to investigate this claim
 and we found empirically that the average case is actually
 $\mathcal{O}(N)$ for tractographies (see Fig.\ref{Flo:Speed1}).  In this
 experiment we timed the duration of QB clustering of tractographies
-containing from \num{e5} to \num{e6} streamlines, with different initial
-number of points per streamline ($3,6,12$ and $18$) and different QB
-thresholds ($10,15,20,25$~mm). These results were obtained using a
-single thread Intel(R) CPU E5420 at 2.50GHz on a standard PC. The
-results can be seen in Fig.~\ref{Flo:Speed1}. We observe how the
-linearity of the QB algorithm with respect to $N$ only reduces slightly
-even when we use a very low threshold such as $10$ ~mm which can
-generate many thousand of clusters. This experiment concludes that QB is
-suitable for fast and linear time clustering.
+containing from \num{50000} to \num{500000} streamlines in steps of \num{50000}, with $12$  points per streamline and different QB thresholds ($20,25,30$~mm). These results were obtained using a single thread Intel(R) CPU E5420 at 2.50GHz on a standard notebook. The results for a single subject can be seen in Fig.~\ref{Flo:Speed1}. The same pattern was observed for the rest of the $9$ subjects. This experiment concludes that QB is suitable for fast and linear time clustering of tractographies.
 
 \begin{figure}
 \noindent \begin{centering}
 \includegraphics[scale=0.3]{Figures/Fig_3_timings}
 \par\end{centering}
-\caption{Time comparisons of QB using different number of points per
-  streamline, different distance thresholds and different number of
-  streamlines. QB is a very efficient algorithm whose performance is
-  controlled by just three parameters. (1) the initial downsampling $K$
-  of the streamlines exemplified in four sub-diagrams: 3 points (A), 6
-  points (B) 12 points (C), 18 points (D). (2) the distance threshold
-  $\theta$ in millimeters shown in 4 colours: 10~mm (blue), 15~mm
-  (green), 20~mm (red), 25~mm (cyan). The final parameter, not shown
-  explicitly in these diagrams, is the underlying structure of the data
-  which is expressed by the resulting number of clusters.  We used a
-  full tractography to generate these figures without removing or
-  preselecting any parts. Random subsets of the tractography were chosen
-  with size $N$ from \numrange{e5}{e6} (x-axis)\label{Flo:Speed1}}
+\caption{Time comparisons of QB using different distance thresholds and different number of streamlines. Time increases linearly as the number of streamlines increases. \label{Flo:Speed1}}
 \end{figure}
 
 As a further test we compared QB with $12$ point streamlines and a
 distance threshold of $10$~mm with some timings reported from other
 state of the art methods found in the literature. Unfortunately timings
-have be rather rarely reported up till -- possibly because as most
+have be rather rarely reported up till today -- possibly because as most
 algorithms were very slow on full data sets. With $\num{1000}$
 streamlines \citet{wang2010tractography}'s algorithm took $30$ whereas
 QB took $0.07$.  $\num{14400}$ seconds were required for the method of
@@ -1100,7 +1080,7 @@ completed this task in $160.1$. The speed-up factors in these three
 comparisons were $429$, $980$ and $468$ respectively.  Though this
 experiment was performed using a single CPU core we see the valuable
 speedup that QB achieves, holding out the prospect of real-time
-clustering on data sets of up to than \num{20000} streamlines.
+clustering on data sets of up to \num{20000} streamlines.
 % (see Table~\ref{Flo:timings}).
 
 % \begin{table}
