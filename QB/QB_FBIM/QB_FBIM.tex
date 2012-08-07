@@ -739,7 +739,13 @@ can provide meaningful simplifications and find features that were
 previously invisible or difficult to locate because of the high density
 of the tractography. For example we used QB to cluster part of the
 corticospinal tract (CST). This bundle was labelled in the data sets
-provided by PBC (\ref{sub:QB-Data-sets}) and it was selected by an expert. The QB representation is clearly shown in Fig.~\ref{Flo:cst_pbc} where every cluster is represented by a single centroid streamline. To generate this clustering we used a tight threshold of $10$~mm. We observe that only a few centroid streamlines travel the full distance from bottom to top and that they are many streamlines that are broken (i.e. shorter than what was initially expected) or highly divergent.
+provided by PBC (\ref{sub:QB-Data-sets}) and it was selected by an
+expert. The QB representation is clearly shown in Fig.~\ref{Flo:cst_pbc}
+where every cluster is represented by a single centroid streamline. To
+generate this clustering we used a tight threshold of $10$~mm. We
+observe that only a few centroid streamlines travel the full distance
+from bottom to top and that they are many streamlines that are broken
+(i.e. shorter than what was initially expected) or highly divergent.
 
 Another interesting feature of QB is that it can be used to merge or
 split different structures by changing the distance threshold.  This is
@@ -862,21 +868,29 @@ other bigger bundles.
 
 \subsection{Comparison of clusterings\label{sub:Tightness-comparisons-1}}
 
-We have found rather few systematic ways to compare different clustering
-results directly for tractographies in the literature beyond that of
-\citep{moberts2005evaluation} who quantify the agreement between a
-clustering and a tractography labelled by their team. The measure of
-agreement that they found best was the Adjusted Rand Index which depends
-on the availability of a labelled `gold standard'.
-
-In \cite{Garyfallidis_thesis} we have looked at a number of different
-measures of agreement that do not require a prior labelled data set. Of
-these we found the Matched Agreements (optimized using the Hungarian
-Method) to be effective. However both this and the Adjusted Rand Index
-require the calculation of the $M \times N$ matrix which counts the
+We have found rather few systematic ways available in the literature to
+compare different clustering results for tractographies directly, beyond
+that of \citep{moberts2005evaluation} who quantify the agreement between
+a clustering and a `gold standard' tractography labelled by their team.
+We have used a more symmetrical measure of agreement between two
+clusterings that do not require a prior labelled data set.  It is called
+Optimised Matched Agreement (OMA). As with the Adjusted Rand Index
+\citep{moberts2005evaluation}, OMA requires the calculation of the $M
+\times N$ cross-classification matrix $X=(x_{ij})$ which counts the
 number of streamlines in the intersection of all pairs of clusters, one
-from each of the two clusterings. A further fundamental disadvantage is
-that these methods do not work with clusterings of different
+from each of the two clusterings.  Here $\mathcal{A}=\{A_i:i=1\dots M\}$
+and $\mathcal{B}=\{B_j:j=1\ldots N\}$ are the two clusterings, and
+$x_{ij}=|A_i \cap B_j|$. As there is no \textit{a priori} correspondence
+or \textit{matching} between the clusters in $\mathcal{A}$ and those in
+$\mathcal{B}$, and vice versa, we need to find one empirically. If
+$j=\pi(i)$ is such a matching then the matched agreement is
+$\mathrm{MA}(\pi) = \sum_{i=1}^M x_{i,\pi(i)}$. A matching $\pi$ that
+yields OMA by maximising $\mathrm{MA}(\pi)$ can be found using the
+Hungarian Algorithm~\citep{Kuhn1955}.
+
+As well as the computational overheads in calculating the
+cross-classification matrix, a further fundamental disadvantage of these
+methods is that they do not work with clusterings of different
 tractographies.
 
 Being able to compare results of clusterings is crucial for creating
@@ -886,24 +900,25 @@ sets of streamlines from the same subject or different subjects.
 
 Although we recognise that these are difficult problems, we propose the
 following approach with three novel comparison functions which we call
-Coverage, Sparsity and Bundle Adjacency (BA).
+\textit{coverage}, \textit{sparsity} and \textit{bundle adjacency} (BA).
 
 If $S$ and $T$ are sets of streamlines, and $\theta>0$ is selected as a
 threshold, we say that $s \in S$ has a $\theta$-neighbour in $T$ if
-$\min_{t\in T}[\mathrm{MDF}(s,t)<\theta]$; we define the Coverage of $S$
+$\min_{t\in T}[\mathrm{MDF}(s,t)<\theta]$; we define the coverage of $S$
 by $T$ as the fraction of streamlines in $S$ that have a
 $\theta$-neighbour in $T$: $|\{s \in S
 \,\mathrm{has~a}~\theta\mathrm{-neighbour~in}~T\}|/|S|$; and we define
-the Sparsity of $T$ in $S$ as the average number of $\theta$-neighbours
-in $T$ for streamlines in $S$. Bundle Adjacency is a symmetric to
-measure of the similarity of the two sets of streamlines $S$ and $T$. BA
-is the average of the $\theta$-coverages of $T$ by $S$ and of $S$ by
-$T$: $\mathrm{BA}(S,T) = (\mathrm{Coverage}(S,T) +
+the sparsity of $T$ in $S$ as the average number of $\theta$-neighbours
+in $T$ for streamlines in $S$. BA is a symmetric measure of the
+similarity of the two sets of streamlines $S$ and $T$. BA is the average
+of the $\theta$-coverages of $T$ by $S$ and of $S$ by $T$:
+$\mathrm{BA}(S,T) = (\mathrm{Coverage}(S,T) +
 \mathrm{Coverage}(T,S))/2$.
 
 If $S$ is a good approximation to $T$ then $S$ will have high coverage
 of $T$; if $S$ has low redundancy as an approximation to $T$ then the
-sparsity of $S$ in $T$ will be low; and if $S$ and $T$ XXXX
+sparsity of $S$ in $T$ will be low; and if $S$ and $T$ are globally
+similar then BA will high.
 
 % Let us assume that we
 % have gathered the centroid streamlines from clustering $A$ in
@@ -994,11 +1009,15 @@ approved by the Cambridge Psychology Research Ethics Committee (CPREC).
 For the reconstruction of the $10$ human data sets we used Generalized
 Q-Sampling \citep{Yeh2010} with diffusion sampling length $1.2$ and for
 the tractography propagation we used EuDX (Euler integration with
-trilinear interpolation, \citep{Garyfallidis_thesis}), angular threshold \ang{60}, total weighting $0.5$, propagation step size $0.5$ and quantitative anisotropy stopping threshold $0.0239$ (see Fig.~\ref{Flo:arcuate_close}).
+trilinear interpolation, \citep{Garyfallidis_thesis}), angular threshold
+\ang{60}, total weighting $0.5$, propagation step size $0.5$ and
+quantitative anisotropy stopping threshold $0.0239$ (see
+Fig.~\ref{Flo:arcuate_close}).
 
-\textbf{PBC human subjects}. We also used labelled data sets by experts(see Fig.~\ref{Flo:cst_pbc} and \ref{Flo:QB_fornix}), from the freely
-available tractography database used in the Pittsburgh Brain Competition
-Fall $2009$, ICDM (pbc.lrdc.pitt.edu).
+\textbf{PBC human subjects}. We also used labelled data sets by
+experts(see Fig.~\ref{Flo:cst_pbc} and \ref{Flo:QB_fornix}), from the
+freely available tractography database used in the Pittsburgh Brain
+Competition Fall $2009$, ICDM (pbc.lrdc.pitt.edu).
 
 \end{methods}
 
@@ -1006,13 +1025,18 @@ Fall $2009$, ICDM (pbc.lrdc.pitt.edu).
 
 In this section we justify our claims about the speed and linear
 complexity of QB (\ref{sub:Complexity}). Next we demonstrate the
-robustness of QB as a method for clustering tractographies (\ref{sub:Comparisons}). In \ref{sub:group_comp} we show a new way to find similarities across different tractographies and in \label{sub:short_tracks} we discuss about some potential limitations of our methods and possible workarounds.
+robustness of QB as a method for clustering tractographies
+(\ref{sub:Comparisons}). In \ref{sub:group_comp} we show a new way to
+find similarities across different tractographies and
+in \ref{sub:short_tracks} we discuss about some potential limitations
+of our methods and possible workarounds.
 
-XXX WHERE THIS SHOULD GO?
-In \ref{QB_Representation} we illustrate the high level of clarity and
-simplification that the QB representation can bring to a tractography,
-and how adjustment of the distance threshold $\theta$ can be used to
-merge or split clusters.
+% XXX WHERE THIS SHOULD GO?
+% In \ref{QB_Representation} we illustrate the high level of clarity and
+% simplification that the QB representation can bring to a tractography,
+% and how adjustment of the distance threshold $\theta$ can be used to
+% merge or split clusters.
+
 % In \ref{sub:Atlases-made-easy} we show how the
 % QB representations for a group of subjects can be mapped into a common
 % space and then reclustered to generate a multi-subject atlas of white
@@ -1057,13 +1081,22 @@ theory. We created the following experiment to investigate this claim
 and we found empirically that the average case is actually
 $\mathcal{O}(N)$ for tractographies (see Fig.\ref{Flo:Speed1}).  In this
 experiment we timed the duration of QB clustering of tractographies
-containing from \num{50000} to \num{500000} streamlines in steps of \num{50000}, with $12$  points per streamline and different QB thresholds ($20,25,30$~mm). These results were obtained using a single thread Intel(R) CPU E5420 at 2.50GHz on a standard notebook. The results for a single subject can be seen in Fig.~\ref{Flo:Speed1}. The same pattern was observed for the rest of the $9$ subjects. This experiment concludes that QB is suitable for fast and linear time clustering of tractographies.
+containing from \num{50000} to \num{500000} streamlines in steps of
+\num{50000}, with $12$ points per streamline and different QB thresholds
+($20,25,30$~mm). These results were obtained using a single thread
+Intel(R) CPU E5420 at 2.50GHz on a standard notebook. The results for a
+single subject can be seen in Fig.~\ref{Flo:Speed1}. The same pattern
+was observed for the rest of the $9$ subjects. This experiment concludes
+that QB is suitable for fast and linear time clustering of
+tractographies.
 
 \begin{figure}
 \noindent \begin{centering}
 \includegraphics[scale=0.3]{Figures/Fig_3_timings}
 \par\end{centering}
-\caption{Time comparisons of QB using different distance thresholds and different number of streamlines. Time increases linearly as the number of streamlines increases. \label{Flo:Speed1}}
+\caption{Time comparisons of QB using different distance thresholds and
+  different number of streamlines. Time increases linearly as the number
+  of streamlines increases. \label{Flo:Speed1}}
 \end{figure}
 
 As a further test we compared QB with $12$ point streamlines and a
@@ -1110,10 +1143,10 @@ recognised with k-means, expectation-maximization
 where it is common practice to try a number of different random initial
 configurations. The same holds for QB so if there are not distinct
 clusters such that the distance between any pair of clusters is
-supra-threshold, then with different permutations of the same
-tractography we will typically see similar number of clusters but
-different underlying clusters. We will examine the robustness of QB in
-this respect here.
+supra-threshold and the diameter of all clusters is sub-threshold, then
+with different permutations of the same tractography we will typically
+see similar number of clusters but different underlying clusters. We
+will examine the robustness of QB in this respect.
 
 As a first step towards examining the robustness of QB in this respect
 we recorded the numbers of QB clusters in $20$ different random
@@ -1126,40 +1159,50 @@ is therefore a considerable between-subject variation in this metric. By
 contrast the within-subject variability of the number of clusters across
 random orderings is rather small, with mean standard deviation $12.7$
 (min $7.3$; max $17.4$). This suggests a good level of consistency in
-terms of the numbers of clusters that QB creates.
+the data reduction achieved by QB.
 
-We investigated how consistent QB clusterings are when data sets are
-ro-ordered.  Twelve different random ordering were generated for each of
-$10$ tractographies and the corresping QB clusterings were computed with
-MDF thershold $10$~mm.  For each subject the $66$ pairings of QB
+Next we investigated how consistent QB clusterings are when data sets
+are re-ordered. Twelve different random ordering were generated for each
+of $10$ tractographies and the corresping QB clusterings were computed
+with MDF thershold $10$~mm. For each subject the $66$ pairings of QB
 clusterings were compared using the matched agreements index and then
-averaged. Across subjects the mean matched agreement was 74.1\% (s.d.~0.39\%).
+averaged. Across subjects the OMA (\ref{sub:Tightness-comparisons-1})
+was 74.1\% ($\pm 0.39$\%) which can be interpreted as a good level of
+agreement~\citep{altman1991}.
 
-We further tested the way in which the set of QB centroids reduce the
-dimensionality of tractographies. We split each of the 10 tractographies
-randomly into two halves $T_1$ and $T_2$.  The QB clustering at distance
-threshold $10$~mm was derived for $T_1$. Denote by $C_1$ and $c_1$ the
-set of centroids and the number of them. Let $R_1$ be a random subset of
-$T_1$ of size $c_1$. Using the measures described in
-section~\ref{sub:Tightness-comparisons-1} we found that with closeness
-threshold $10$~mm the mean coverage (s.d.) of $T_1$ by $C_1$ was
-$99.96$\% ($\pm 0.007$\%), of $T_2$ by $C_1$ was $99.31$\% ($0.08$\%)
-and of $T_2$ by $R_1$ was $90.49$\% ($\pm 0.41$\%). The mean sparseness
-(s.d.) at this threshold of $C_1$ in $T_1$ was $2.44$ ($\pm 0.08$), of
-$C_1$ in $T_2$ was $2.44$ ($\pm 0.08$), and of $R_1$ in $T_2$ was $5.57$
-($\pm 0.50$).
+As well as checking that QB created sets of centroids with good coverage
+and sparsity statistics, we go on to show that the performance of QB
+generalises to sets of streamlines different from the training set, and
+is superior to a random sample of streamlines. We split each of the 10
+tractographies randomly into two halves $T_1$ (training set) and $T_2$
+(test set). The QB clustering at distance threshold $10$~mm was derived
+for $T_1$. Denote by $C_1$ and $c_1$ the set of centroids and the number
+of them. Let $R_1$ be a random subset of $T_1$ of size $c_1$. Using the
+measures described in section~\ref{sub:Tightness-comparisons-1} we found
+that with closeness threshold $10$~mm the mean coverage (s.d.) of $T_1$
+by $C_1$ was $99.96$\% ($\pm 0.007$\%), of $T_2$ by $C_1$ was $99.31$\%
+($0.08$\%) and of $T_2$ by $R_1$ was $90.49$\% ($\pm 0.41$\%). The mean
+sparseness (s.d.) at this threshold of $C_1$ in $T_1$ was $2.44$ ($\pm
+0.08$), of $C_1$ in $T_2$ was $2.44$ ($\pm 0.08$), and of $R_1$ in $T_2$
+was $5.57$ ($\pm 0.50$).
 
 The same analyses were performed with QB clusterings for distance
-threshold $20$mm and with closeness threshold $20$mm. (Note that these
-two threshold do not have to be the same.) we found that with closeness
-threshold $10$mm the mean coverage (s.d.) of $T_1$ by $C_1$ was
-$99.99$\% ($\pm 0.004$\%), of $T_2$ by $C_1$ was $99.91$\% ($\pm 0.02$\%)
-and of $T_2$ by $R_1$ was $95.86$\% ($\pm 0.62$\%). The mean sparseness
-(s.d.) at this threshold of $C_1$ in $T_1$ was $3.54$ ($\pm 0.18$), of
-$C_1$ in $T_2$ was $3.54$ ($\pm 0.18$), and of $R_1$ in $T_2$ was $6.53$
-($\pm 0.93$).
+threshold $20$mm and with closeness threshold $20$mm. (Note that though
+we have selected the same values here for the two threshold they do not
+have to be the same.) We found that with closeness threshold $10$mm the
+mean coverage (s.d.) of $T_1$ by $C_1$ was $99.99$\% ($\pm 0.004$\%), of
+$T_2$ by $C_1$ was $99.91$\% ($\pm 0.02$\%) and of $T_2$ by $R_1$ was
+$95.86$\% ($\pm 0.62$\%). The mean sparseness (s.d.) at this threshold
+of $C_1$ in $T_1$ was $3.54$ ($\pm 0.18$), of $C_1$ in $T_2$ was $3.54$
+($\pm 0.18$), and of $R_1$ in $T_2$ was $6.53$ ($\pm 0.93$).
 
-XXX why the split halves is more preferable than the standard full tractography random tracks coverage?
+We conclude from these analyses that QB has good coverage and sparsity
+both the training set and the test set of streamlines, while an
+equivalent random selection of streamlines has worse coverage and
+sparsity. Moreover the performance of QB is better with the lower
+closeness threshold. The poor performance of random subsets is to be
+expected as they will oversample in dense parts of the tractography
+space, and undersample in sparser regions.
 
 % \subsection{Tractographic atlases and landmarks\label{sub:Atlases-made-easy}}
 
@@ -1490,10 +1533,11 @@ XXX why the split halves is more preferable than the standard full tractography 
 
 
 \begin{figure*}[htp]
-\centerline{\includegraphics[width=180mm]{Figures/Fig_12_All_Brains.eps}}
-\caption{QuickBundles centroids of the biggest 100 clusters for 10
-  subjects. Full tractographies are also presented using high
-  transparency. All streamlines are visualized with the same standard orientation colormap. \label{Flo:BAs}}
+  \centerline{\includegraphics[width=180mm]{Figures/Fig_12_All_Brains.eps}}
+  \caption{QuickBundles centroids of the biggest 100 clusters for 10
+    subjects. Full tractographies are also presented using high
+    transparency. All streamlines are visualized with the same standard
+    orientation colormap. \label{Flo:BAs}}
 \end{figure*}
 
 
@@ -1531,21 +1575,22 @@ subjects.
   different distance thresholds. \label{Flo:BAs_plot}}
 \end{figure}
 
-For this purpose we evaluated Bundle Adjacencies
-(BA, see section~\ref{sub:Tightness-comparisons-1}) between all pairs of these
-$100$ centroids of each of the $10$ tractographies. This generated
-${10}\choose{2}$=$45$ BA values with $\theta=10$~mm (BA10). We also
-generated another $45$ BA values with $\theta=20$~mm (BA20). Noticeable
-here is that the distance threshold for BA is twice higher than the
-initial distance threshold for QB. In Fig.~\ref{Flo:BAs_plot} the
-results of this experiment are presented.
+For this purpose we evaluated BA (see
+section~\ref{sub:Tightness-comparisons-1}) between all pairs of these
+$100$ centroids of each of the $10$ tractographies. This generated $45$
+BA values with $\theta=10$~mm (BA10). We also generated another $45$ BA
+values with $\theta=20$~mm (BA20). It is noticeable here that the
+distance threshold for BA is twice that if the initial QB distance
+threshold. The results of this experiment are presented in
+Fig.~\ref{Flo:BAs_plot}.
 
-When used BA10 the most dissimilar subjects were subjects 4 and 6 with
-BA10(4,6)=0.385. The most similar subjects were 4 and 5 with
-BA10(4,5)=0.595. The mean BA10 was 0.48 ($\pm\num{0.049}$). With BA20
-the most dissimilar subjects were subjects 7 and 10 with
-BA20(7,10)=0.72. The most similar subjects were, in agreement with BA10,
-4 and 5 with BA20(4,5)=0.885. The mean BA20 was 0.8 $\pm\num{0.032}$.
+For BA10 the most dissimilar subjects were subjects 4 and 6 with
+BA10(4,6)=38.5\%. The most similar subjects were 4 and 5 with
+BA10(4,5)=59.5\%. The mean BA10 was 48\% ($\pm\num{4.9}$\%). With
+BA20 the most dissimilar subjects were subjects 7 and 10 with
+BA20(7,10)=72\%. The most similar subjects were, in agreement with BA10,
+4 and 5 with BA20(4,5)=88.5\%. The mean BA20 was 80\%
+($\pm\num{3.2}$\%).
 
 In future work we would like to study how the length of the big clusters
 affects BA. In this experiment there was a great variability on centroid
@@ -1557,21 +1602,37 @@ similarity measure for tractography comparison.
 
 \subsection{Limitations of QB\label{sub:short_tracks}}
 
-Usually taking short streamlines into account is not valid because (a) the longer streamlines are more likely to be used as useful landmarks when comparing or registering different subjects because it is more likely for them to exist in most subjects, (b) removing short streamlines facilitates the usage of
-distance based clustering (no need for manually setting the distance
-threshold) and interaction with the tractography, (c) typically one
-first wants to see the overall representation of the tractography and
-later go to the details. MDF distance often separates shorter from longer neighbouring streamlines which is both a strength and a limitation according to application. Nonetheless, after having clustered the longer
-streamlines there are many ways to assign the smaller bundles to their
-closest longer bundles. For this purpose we recommend to use a different
+Usually taking short streamlines into account is not valid because (a)
+the longer streamlines are more likely to be used as useful landmarks
+when comparing or registering different subjects because it is more
+likely for them to exist in most subjects, (b) removing short
+streamlines facilitates the usage of distance based clustering (no need
+for manually setting the distance threshold) and interaction with the
+tractography, (c) typically one first wants to see the overall
+representation of the tractography and later go to the details. MDF
+distance often separates shorter from longer neighbouring streamlines
+which is both a strength and a limitation according to
+application. Nonetheless, after having clustered the longer streamlines
+there are many ways to assign the smaller bundles to their closest
+longer bundles. For this purpose we recommend to use a different
 distance from MDF for example the minimum version of MAM referred to as
 $\textrm{MAM}_{\textrm{min}}$ in Eq.~(\ref{eq:minimum_distance}).
 
 %
 \begin{figure}
-\centerline{\hspace{-1.5mm}\includegraphics[scale=0.65]{Figures/Fig_10_arcuate_small_fibers}}
-\caption{What could be considered as the strength and limitation of QB is that short streamlines will be clustered differently than longer streamlines although they may belong in the same anatomical bundle. This can be solved by. Colormap here encodes streamline length. A: a single centroid streamline, B: $245$ actual streamlines closer than $15$~mm (MDF distance), C: the streamlines
-  from B clustered with $23$ centroid streamlines using QuickBundles, D: $\num{3421}$ actual streamlines closer than $6$~mm ($\textrm{MAM}_{\textrm{min}}$ distance) from the centroid streamlines in C are shown. We can see that a great number of short streamlines have been brought together along with the streamlines in B. \label{Flo:arcuate_close}}
+  \centerline{\hspace{-1.5mm}\includegraphics[scale=0.65]{Figures/Fig_10_arcuate_small_fibers}}
+\caption{What could be considered as the strength and limitation of QB
+  is that short streamlines will be clustered differently than longer
+  streamlines although they may belong in the same anatomical
+  bundle. This can be solved by. Colormap here encodes streamline
+  length. A: a single centroid streamline, B: $245$ actual streamlines
+  closer than $15$~mm (MDF distance), C: the streamlines from B
+  clustered with $23$ centroid streamlines using QuickBundles, D:
+  $\num{3421}$ actual streamlines closer than $6$~mm
+  ($\textrm{MAM}_{\textrm{min}}$ distance) from the centroid streamlines
+  in C are shown. We can see that a great number of short streamlines
+  have been brought together along with the streamlines in
+  B. \label{Flo:arcuate_close}}
 \end{figure}
 
 Here we discuss some simple strategies for clustering short fibres. The
@@ -1582,13 +1643,26 @@ $10$~mm and then cluster the short streamlines (<$100$~mm) to a lower
 threshold and assign them to their closest long streamline bundle from
 the first clustering using the $MAM_{min}$ distance.
 
-2. Read and cluster the tractography of a subject, pick a centroid streamline from that atlas and then find the closest streamlines from the subject to that selected streamline using MDF, cluster the closest streamlines found from the previous step and for each one of these new centroid streamlines find the closest
-streamlines using the $\textrm{MAM}_{\textrm{min}}$ distance. We should
-now have an amalgamation of shorter and longer streamlines in one
-cluster.
+2. Read and cluster the tractography of a subject, pick a centroid
+streamline from that atlas and then find the closest streamlines from
+the subject to that selected streamline using MDF, cluster the closest
+streamlines found from the previous step and for each one of these new
+centroid streamlines find the closest streamlines using the
+$\textrm{MAM}_{\textrm{min}}$ distance. We should now have an
+amalgamation of shorter and longer streamlines in one cluster.
 
 An example of this second strategy is shown in
-Fig.~\ref{Flo:arcuate_close}. \textbf{A}: a single centroid streamline of interest from the region of arcuate fasciculus is selected Fig.~\ref{Flo:arcuate_close} (top row, centre); \textbf{B}: the streamlines of the subject closer than 15~mm (MDF) from the selected cluster are shown and clustered with a distance threshold of $6.25$~mm in \textbf{C}; \textbf{D}: from every centroid streamline in \textbf{C} we find the closest streamlines using the $\textrm{MAM}_{\textrm{min}}$ distance from the entire tractography. In this way we managed to bring together in a semi-automatic fashion an entire bundle consisting both of long and short streamlines by just selecting initially a single representative streamline.
+Fig.~\ref{Flo:arcuate_close}. \textbf{A}: a single centroid streamline
+of interest from the region of arcuate fasciculus is selected
+Fig.~\ref{Flo:arcuate_close} (top row, centre); \textbf{B}: the
+streamlines of the subject closer than 15~mm (MDF) from the selected
+cluster are shown and clustered with a distance threshold of $6.25$~mm
+in \textbf{C}; \textbf{D}: from every centroid streamline in \textbf{C}
+we find the closest streamlines using the $\textrm{MAM}_{\textrm{min}}$
+distance from the entire tractography. In this way we managed to bring
+together in a semi-automatic fashion an entire bundle consisting both of
+long and short streamlines by just selecting initially a single
+representative streamline.
 
 \section{Discussion and conclusion}
 
@@ -1615,18 +1689,24 @@ separable by distances then there is a global solution independent of
 orderings. This is often visible in smaller subsets of the initial
 tractography.
 
-Other algorithms previously too slow to be used on the entire tractography can now be used efficiently too if they start by clustering on the output of QB rather than the initial full tractography.
+Other algorithms previously too slow to be used on the entire
+tractography can now be used efficiently too if they start by clustering
+on the output of QB rather than the initial full tractography.
 
 We saw that QB is a linear time clustering method based on streamline
 distances, which is on average linear time $\mathcal{O}(N)$ where $N$ is
 the number of streamlines and with worst case $\mathcal{O}(N^{2})$ when
 every streamline is a singleton cluster itself. Therefore QB is the
 fastest known tractography clustering method and even real-time on
-smaller tractographies (<\num{20000} streamlines - depending on system CPU). We also showed that it uses a negligible amount of memory.
+smaller tractographies (<\num{20000} streamlines - depending on system
+CPU). We also showed that it uses a negligible amount of memory.
 
 QB is fully automatic and very robust as when we use it we can find good
-agreements even between different subjects. Additionally, it can be used to
-explore multiple tractographies and find correspondences or similarities between different tractographies. This can be facilitated by the use of Bundle Adjacency(BA) a new similarity measure introduced in this paper. 
+agreements even between different subjects. Additionally, it can be used
+to explore multiple tractographies and find correspondences or
+similarities between different tractographies. This can be facilitated
+by the use of Bundle Adjacency(BA) a new similarity measure introduced
+in this paper.
 
 QB can be used as well for reducing the dimensionality of the data sets
 at the time of interaction providing an alternative way to ROIs using
@@ -1635,11 +1715,18 @@ obscured streamlines not visible to the user at first
 instance. Therefore QB opens up the road to create rapid tools for
 exploring tractographies of any size.
 
-In the future we would like to investigate different ways to merge QB clusters by integrating prior information from neuroanatomists. We are currently working on developing interactive tools which exploit the simplification that QB provides (see \citet{GaryfallidisHBM2012}). 
+In the future we would like to investigate different ways to merge QB
+clusters by integrating prior information from neuroanatomists. We are
+currently working on developing interactive tools which exploit the
+simplification that QB provides (see \citet{GaryfallidisHBM2012}).
 
 We have shown results with data from simulations, single and multiple
 real subjects. The code for QuickBundles is freely available at
 $\texttt{dipy.org}$.
+
+\section*{Acknowledgements}
+We gratefully acknowledge valuable discussions with Arno Klein and John
+Griffiths on various aspects of this work.
 
 \section*{Disclosure/Conflict-of-Interest Statement}
 There are no conflicts of interest relating to this work.
