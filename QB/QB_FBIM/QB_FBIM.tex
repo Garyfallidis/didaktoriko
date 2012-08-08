@@ -638,9 +638,9 @@ An example of the QB centroid is presented in Fig.~\ref{Flo:MDF_arcuate}.
 \IF{$m < \theta$} 
 \STATE \# append to current cluster
 	\IF{$\texttt{flip}_{l}$ is $1$} 
-		\STATE $c_{l}.h \leftarrow c_{l}.h + \textbf{reverse}(\textbf{t})$
+		\STATE $c_{l}.h \leftarrow c_{l}.h + t^F)$
 	\ELSE
-		\STATE $c_{l}.h \leftarrow c_{l}.h + \textbf{t}$
+		\STATE $c_{l}.h \leftarrow c_{l}.h + t$
 	\ENDIF
 	\STATE $c_{l}.n \leftarrow c_{l}.n + 1$
 	\STATE \textbf{append}($c_{l}.I$,$i$)
@@ -823,7 +823,7 @@ other bigger bundles.
 \end{figure*}
 
 In order to quantify the dimensionality reduction it achieves we applied
-QB clustering to the 10 PBC data sets (\ref{sub:QB-Data-sets}). The mean
+QB clustering to the 10 human subject data sets (\ref{sub:QB-Data-sets}). The mean
 data compression (ratio of tractography size to number of QB clusters)
 was $34.4:1$ with a $10$~mm threshold and $230.4:1$ with a $20$~mm
 threshold.
@@ -1700,8 +1700,8 @@ tractographies which generate streamlines (e.g. probabilistic or
 deterministic) and it is independent of the reconstruction model. QB is
 supported by a distance function MDF on the space of streamlines which
 makes it a metric space. QB can achieve compression ratios of the order
-of 200:1 while preserving characteristic information about the
-tractography.
+of 200:1 depending on the distance threshold while preserving
+characteristic information about the tractography.
 
 In common with mainstream clustering algorithms such as k-means,
 k-centers and expectation maximization, QB is not a global clustering
