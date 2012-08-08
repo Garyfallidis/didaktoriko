@@ -650,7 +650,7 @@ An example of the QB centroid is presented in Fig.~\ref{Flo:MDF_arcuate}.
         \STATE \textbf{append}$(C,c_{M+1})$
 	\STATE $M\leftarrow M+1$
 \ENDIF
-o\ENDFOR 
+\ENDFOR 
 \end{algorithmic}
 %\end{boxedalgorithmic}
 \caption{QuickBundles}
@@ -817,7 +817,7 @@ other bigger bundles.
   together as one cluster. A property useful for studies which want to
   use both Fimbria as one. With a $20$~mm threshold the entire Fornix is
   one cluster. A case useful for interactive applications because now
-  the entire Fornix can be described by only on centroid streamline. In
+  the entire Fornix can be described by only one centroid streamline. In
   all cases the streamlines of the Fornix were downsampled to have $18$
   points.\label{Flo:QB_fornix}}
 \end{figure*}
@@ -942,7 +942,7 @@ $\mathrm{BA}(S,T) = (\mathrm{coverage}(S,T) +
 If $S$ is a good approximation to $T$ then $S$ will have high coverage
 of $T$; if $S$ has low redundancy as an approximation to $T$ then the
 sparsity of $S$ in $T$ will be low; and if $S$ and $T$ are globally
-similar then BA will high.
+similar then BA will be high.
 
 % Let us assume that we
 % have gathered the centroid streamlines from clustering $A$ in
@@ -1136,8 +1136,8 @@ $\num{400000}$ was clustered by \citet{Visser2010} in $\num{75000}$; QB
 completed this task in $160.1$. The speed-up factors in these three
 comparisons were $429$, $980$ and $468$ respectively.  Though this
 experiment was performed using a single CPU core we see the valuable
-speedup that QB achieves, holding out the prospect of real-time (less than 1~second)
-clustering on data sets of up to \num{20000} streamlines.
+speedup that QB achieves, holding out the prospect of real-time (less
+than 1~second) clustering on data sets of up to \num{20000} streamlines.
 % (see Table~\ref{Flo:timings}).
 
 % \begin{table}
@@ -1158,7 +1158,7 @@ clustering on data sets of up to \num{20000} streamlines.
 % \par\end{centering}
 % \end{table}
 
-\subsection{Consistency of QB \label{sub:Comparisons}}
+\subsection{Stability of QB \label{sub:Comparisons}}
 
 One of the disadvantages of most clustering algorithms is that they give
 different results with different initial conditions; for example this is
@@ -1204,18 +1204,18 @@ of them. Let $R_1$ be a random subset of $T_1$ of size $c_1$. Using the
 measures described in section~\ref{sub:Tightness-comparisons-1} we found
 that with closeness threshold $10$~mm the mean coverage (s.d.) of $T_1$
 by $C_1$ was $99.96$\% ($\pm 0.007$\%), of $T_2$ by $C_1$ was $99.31$\%
-($0.08$\%) and of $T_2$ by $R_1$ was $90.49$\% ($\pm 0.41$\%). The mean
-sparseness (s.d.) at this threshold of $C_1$ in $T_1$ was $2.44$ ($\pm
+($\pm 0.08$\%) and of $T_2$ by $R_1$ was $90.49$\% ($\pm 0.41$\%). The mean
+sparsity (s.d.) at this threshold of $C_1$ in $T_1$ was $2.44$ ($\pm
 0.08$), of $C_1$ in $T_2$ was $2.44$ ($\pm 0.08$), and of $R_1$ in $T_2$
 was $5.57$ ($\pm 0.50$).
 
 The same analyses were performed with QB clusterings for distance
-threshold $20$mm and with closeness threshold $20$mm. (Note that though
+threshold $20$mm and with distance threshold $20$mm. (Note that though
 we have selected the same values here for the two threshold they do not
-have to be the same.) We found that with closeness threshold $10$mm the
+have to be the same.) We found that with distance threshold $10$mm the
 mean coverage (s.d.) of $T_1$ by $C_1$ was $99.99$\% ($\pm 0.004$\%), of
 $T_2$ by $C_1$ was $99.91$\% ($\pm 0.02$\%) and of $T_2$ by $R_1$ was
-$95.86$\% ($\pm 0.62$\%). The mean sparseness (s.d.) at this threshold
+$95.86$\% ($\pm 0.62$\%). The mean sparsity (s.d.) at this threshold
 of $C_1$ in $T_1$ was $3.54$ ($\pm 0.18$), of $C_1$ in $T_2$ was $3.54$
 ($\pm 0.18$), and of $R_1$ in $T_2$ was $6.53$ ($\pm 0.93$).
 
@@ -1617,7 +1617,7 @@ BA20(7,10)=72\%. The most similar subjects were, in agreement with BA10,
 ($\pm\num{3.2}$\%).
 
 In future work we would like to study how the length of the big clusters
-affects BA. In this experiment there was a great variability on centroid
+affects BA. In this experiment there was a great variability of centroid
 lengths (mean $73.6$~mm $\pm\num{43.9}$~mm). If we suppose that shorter
 streamlines are more likely to be noise artifacts we would expect that
 by concentrating on longer streamlines we would have a more robust
