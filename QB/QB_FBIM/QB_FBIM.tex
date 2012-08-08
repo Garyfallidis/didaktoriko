@@ -1087,7 +1087,7 @@ of our methods and possible workarounds.
 
 \subsection{Complexity and timings\label{sub:Complexity}}
 
-To apply QB to a data set we need to specify three key parameters: $K$,
+The execution time of QB is affected by the following parameters: $K$,
 the fixed number of downsampled points per streamline; $\theta$ the
 distance threshold, which controls the heterogeneity of clusters; and
 $N$ the size of the subset of the tractography on which the clustering
@@ -1128,12 +1128,12 @@ distance threshold of $10$~mm with some timings reported from other
 state of the art methods found in the literature. Unfortunately timings
 have be rather rarely reported up till today -- possibly because as most
 algorithms were very slow on full data sets. With $\num{1000}$
-streamlines \citet{wang2010tractography}'s algorithm took $30$ whereas
-QB took $0.07$.  $\num{14400}$ seconds were required for the method of
+streamlines \citet{wang2010tractography}'s algorithm took $30$s whereas
+QB took $0.07$s.  $\num{14400}$ seconds were required for the method of
 \citet{wang2010tractography} to cluster $\num{60000}$ streamlines; QB
-took $14.7$.  In a third study a substantial tractography of size
-$\num{400000}$ was clustered by \citet{Visser2010} in $\num{75000}$; QB
-completed this task in $160.1$. The speed-up factors in these three
+took $14.7$s.  In a third study a substantial tractography of size
+$\num{400000}$ was clustered by \citet{Visser2010} in $\num{75000}$s; QB
+completed this task in $160.1$s. The speed-up factors in these three
 comparisons were $429$, $980$ and $468$ respectively.  Though this
 experiment was performed using a single CPU core we see the valuable
 speedup that QB achieves, holding out the prospect of real-time (less than 1~second)
@@ -1185,7 +1185,7 @@ random orderings is rather small, with mean standard deviation $12.7$
 the data reduction achieved by QB.
 
 Next we investigated how consistent QB clusterings are when data sets
-are re-ordered. Twelve different random ordering were generated for each
+are re-ordered. Twelve different random orderings were generated for each
 of $10$ tractographies and the corresping QB clusterings were computed
 with MDF threshold $10$~mm. For each subject the $66$ pairings of QB
 clusterings were compared using the optimised matched agreements index
@@ -1202,7 +1202,7 @@ tractographies randomly into two halves $T_1$ (training set) and $T_2$
 for $T_1$. Denote by $C_1$ and $c_1$ the set of centroids and the number
 of them. Let $R_1$ be a random subset of $T_1$ of size $c_1$. Using the
 measures described in section~\ref{sub:Tightness-comparisons-1} we found
-that with closeness threshold $10$~mm the mean coverage (s.d.) of $T_1$
+that with distance threshold $10$~mm the mean coverage (s.d.) of $T_1$
 by $C_1$ was $99.96$\% ($\pm 0.007$\%), of $T_2$ by $C_1$ was $99.31$\%
 ($0.08$\%) and of $T_2$ by $R_1$ was $90.49$\% ($\pm 0.41$\%). The mean
 sparseness (s.d.) at this threshold of $C_1$ in $T_1$ was $2.44$ ($\pm
@@ -1210,9 +1210,9 @@ sparseness (s.d.) at this threshold of $C_1$ in $T_1$ was $2.44$ ($\pm
 was $5.57$ ($\pm 0.50$).
 
 The same analyses were performed with QB clusterings for distance
-threshold $20$mm and with closeness threshold $20$mm. (Note that though
-we have selected the same values here for the two threshold they do not
-have to be the same.) We found that with closeness threshold $10$mm the
+threshold $20$mm and with distance threshold $20$mm. (Note that though
+we have selected the same values here for the two thresholds they do not
+have to be the same.) We found that with distance threshold $10$mm the
 mean coverage (s.d.) of $T_1$ by $C_1$ was $99.99$\% ($\pm 0.004$\%), of
 $T_2$ by $C_1$ was $99.91$\% ($\pm 0.02$\%) and of $T_2$ by $R_1$ was
 $95.86$\% ($\pm 0.62$\%). The mean sparseness (s.d.) at this threshold
@@ -1669,11 +1669,7 @@ threshold and assign them to their closest long streamline bundle from
 the first clustering using the $\mathrm{MAM}_{\mathrm{min}}$ distance.
 
 2. Read and cluster the tractography of a subject, pick a centroid
-streamline from that atlas and then find the closest streamlines from
-the subject to that selected streamline using MDF, cluster the closest
-streamlines found from the previous step and for each one of these new
-centroid streamlines find the closest streamlines using the
-$\textrm{MAM}_{\textrm{min}}$ distance. We should now have an
+streamline and then find the closest streamlines to that selected streamline using MDF, cluster the closest streamlines found from the previous step and for each one of these new centroid streamlines find the closest streamlines using the $\textrm{MAM}_{\textrm{min}}$ distance. We should now have an
 amalgamation of shorter and longer streamlines in one cluster.
 
 An example of this second strategy is shown in
