@@ -67,13 +67,6 @@ tractography. We provide a number of tests to show how the QB reduction
 has good consistency and robustness. We show how the QB reduction can
 help in the search for similarities across several subjects.
 
-% We demonstrate how these centroid streamlines can be used
-% as input to clustering algorithms of higher order complexity which
-% currently cannot be implemented on full data sets.
-% We also show the
-% further potential of QB to find landmarks, create atlases, compare and
-% register tractographies
-
 \section{Keywords:} Tractography, Diffusion MRI, Fiber clustering, White
 matter Segmentation, Dimensionality Reduction, Clustering algorithms, DTI.
 
@@ -93,7 +86,6 @@ algorithm handles voxels with underlying fiber crossings.
 
 \begin{figure*}[htp]
 \centerline{\includegraphics[width=160mm]{Figures/Fig_4_cst_simplification_relabeled_triple.eps}}
-    % \par\end{centering}
 \caption{Part of the CST bundle (left in blue) consisting of \num{11041}
   streamlines. At first glance it looks as though all streamlines have a
   similar shape, and possibly converge towards the bottom, and fan out
@@ -114,15 +106,9 @@ visualize. A clustering of some kind seems to be an obvious route to
 simplify the complexity of these data sets and provide a useful
 segmentation.  As a result, during the last 10 years there have been
 numerous efforts by many researchers to address both unsupervised and
-supervised learning problems of brain tractography. 
-% Though these studies
-% do provide many useful ideas, all these methods suffer ultimately from
-% lack of practical efficiency.
-% During the last $10$ years there have been numerous efforts from many
-% researchers to address the unsupervised and supervised learning problems
-% of brain tractography. 
-As far as we know all these methods suffer from low efficiency, however 
-they provide many useful ideas which we describe in this section.
+supervised learning problems of brain tractography.  As far as we know
+all these methods suffer from low efficiency, however they provide many
+useful ideas which we describe in this section.
 
 Tractography clustering algorithms are rarely compared in the
 literature.  In this regard, \citet{moberts2005evaluation} is an
@@ -155,12 +141,8 @@ algorithm that we present in this paper also uses the minimum average
 flip (MDF) distance function as a measure of distance between
 streamlines. \citet{gerig2004analysis} also used hierarchical clustering
 with a symmetrised version of two closest point Hausdorff-type
-distances.
-% $\mathrm{MA}\mathrm{M}_{\mathrm{avg}}$ and
-% $\mathrm{MA}\mathrm{M}_{\mathrm{max}}$ (Hausdorff). 
-However, they tested
-their method only with two bundles: Uncinate Fasciculus and the
-Corticospinal Tract.
+distances. However, they tested their method only with two bundles:
+Uncinate Fasciculus and the Corticospinal Tract.
 
 \citet{Guevara2010} combined a great number of different algorithms from
 hierarchical clustering to 3D watershed on streamline extremities.  They
@@ -196,8 +178,6 @@ same subject.
 $i,j$th entry of the matrix holds the number of streamlines which
 connect $ROI_{i}$ to $ROI_{j}$. K-means was used afterwards on the rows
 of the matrix to cluster the streamlines. 
-% This technique can be used for
-% clustering bundles across subjects.
 
 \citet{brun2004clustering} used the mean and covariance of the
 streamline as the feature space and normalized cuts based on a graph
@@ -301,23 +281,13 @@ provide a solution for this issue of efficiency and most of the methods
 would require from many hours to many days to run on a standard sized
 data set.
 
-% The method we propose in this document can provide a solution
-% to this problem and it is an extensive update of our preliminary work
-% described in \citet{EGMB10}.
-
 Most authors agree that unsupervised learning with tractographies is a
 difficult problem as the data sets are very large, dense, cluttered with
 noisy streamlines which could have no anatomic relevance, and the actual
-anatomical bundles are interwoven in a complicated way in several brain regions.
-% Furthermore, we note that there is wide disagreement on the
-% number of clusters (from 10 to 60). Because of the difficulty of the
-% problem an international contest was also organized by SchLab in
-% Pittsburgh University (PBC Brain Connectivity Challenge - IEEE ICDM) in
-% $2009$. The competition did not identify any directly viable
-% solutions. 
-We think that in order to find larger anatomical clusters a significant
-amount of anatomical prior knowledge needs to be introduced in a way
-that is not yet established.
+anatomical bundles are interwoven in a complicated way in several brain
+regions.  We think that in order to find larger anatomical clusters a
+significant amount of anatomical prior knowledge needs to be introduced
+in a way that is not yet established.
 
 For these reasons we propose to take a step back to first get the
 tractography into a suitable form for working with neuroanatomists to
@@ -358,50 +328,22 @@ faster than any other available method before even applying further
 acceleration through parallel processing, and that it can be used to
 cluster from a few hundred to many millions of streamlines.
 
-% Moreover our new algorithm leads to many valuable additional results. QB
-% can either be used on its own to explore the neuroanatomy directly, or
-% it can be used as a precursor tool which reduces the dimensionality of
-% the data, which can then be used as an input to other algorithms of
-% higher order complexity, resulting in their greater efficiency. Beyond
-% the use of this algorithm to simplify tractographies, we show how it can
-% help find landmarks, create atlases, and compare and register
-% tractographies.
-
-% \subsection{Focus}
-
-% Many published methods on tractography segmentation - some evidence of
-% lengthy computation time - because of size of datasets on top of
-% complexity of segmentation methods - lack of evidence that methods have
-% been taken up and used for practical problems - ‘automatic’
-% classification in reality requires significant intervention by
-% neuroanatomists - data sets have high redundancy with many rather
-% similar tracks - our approach is to reduce the size and dimensionality
-% of the datasets by QB as a precursor for higher complexity
-% classification and/or input from experts. We provide a number of tests
-% to show how the QB reduction has good consistency, robustness etc. We
-% show one application involving multiple subjects - to look at the
-% correspondence problem and hint at the power of the QB approach.
-
-% Data reduction - preprocessing - unsupervised - automatic. No claims for
-% anatomical segmentation.
-
 There is no current unsupervised anatomical segmentation method that can
 have general usability without expert knowledge
 integration. Nonetheless, neuroanatomists often disagree on definition
 of major structures or on which streamlines correspond to actual tracts
 \citep{schmahmann2009fiber, makris2005segmentation,
-frey2008dissociating,catani2005perisylvian,
-moriBook, fernandez2012high, verstynen2011vivo}.
-%\textbf{well there's the old 'extreme capsule fibre system' (Schmahmann, Pandya, Makris, Petrides) vs. 'fronto-occipital fasciculus' (Catani, Wakana, Mori, (i.e JHU peeps)). I'm not sure so many people disagree on names so much as disagree on the appropriate names to use for tractography since tractography often can't distinguish between small bundles e.g. SLF I-III and IV (arcuate). Some people would prefer to just say SLF for tractography or temporal part of SLF(that's Wakana et al. 2007, 2004). I think there may possibly be some overlap between the superior occipitofrontal fasciculus and one of SLF I-III not 100\% sure but Thiebaut de Schotten (e.g. 2008) \& Catani use SOF terminology some people use the proper names for the corpus callosum segments whereas other people just say something like anterior, mid, posterior}. 
-What we propose is to create a method that simplifies the tractography
-at the level where such distinctions are not an issue (see
-Fig.~\ref{Flo:cst_pbc}).
+  frey2008dissociating,catani2005perisylvian, moriBook,
+  fernandez2012high, verstynen2011vivo}.  What we propose is to create a
+method that simplifies the tractography at the level where such
+distinctions are not an issue (see Fig.~\ref{Flo:cst_pbc}).
 
 \begin{methods}
 
 \section{Methods and Materials}
 
-\subsection{\label{sub:track-distances}Streamline distances and preprocessing}
+\subsection{\label{sub:track-distances}Streamline distances and
+  preprocessing}
 
 A wide range of approaches have been taken in the literature for
 representing or coding for tractographies~\citep{Guevara2010,
@@ -429,8 +371,8 @@ inter-point distances when comparing streamlines of $K$ and $L$ points.
   number of points.  Another distance we use is the mean average
   distance which is again symmetric but does not require the streamlines
   to have the same number of points: $\textrm{MAM}_{\textrm{mean}} =
-  (d_{mean}(s, s') + d_{mean}(s',s))/2$ (see Eq.~(\ref{eq:mean_average_distance})).  In this
-  figure the components of both distances are shown; the streamlines are
+  (d_{mean}(s, s') + d_{mean}(s',s))/2$ (see Eq.~(\ref{eq:mean_average_distance})). 
+  In this figure the components of both distances are shown; the streamlines are
   drawn with solid lines, and then with dashed lines we connect the
   pairs of points of the two streamlines whose distances contribute to
   the overall metric. Note that we cannot calculate the $\textrm{MDF}$
@@ -483,7 +425,8 @@ u)$ (by the triangle inequality for the euclidean distance) $ \ge
 \begin{figure}
 \includegraphics[scale=0.15]{Figures/Fig_11_MDF_arcuate}
 \centering{}
-\caption{Color coding shows MDF distances from QB centroid to every other track in the bundle.\label{Flo:MDF_arcuate}}
+\caption{Color coding shows MDF distances from QB centroid to every
+  other track in the bundle.\label{Flo:MDF_arcuate}}
 \end{figure}
 
 
@@ -588,22 +531,21 @@ minimum average direct flip (MDF).  The MDF measure requires that each
 streamline be resampled to have $K$ points. We have described the MDF measure
 and the resampling in section~\ref{sub:track-distances}.
 
-We index the streamlines with $i = 1 \dots N$ where $s_{i}$ is
-the $K\times3$ matrix representing streamline $i$.
-
-QB stores information about clusters in \emph{cluster nodes}.  The
-cluster node is defined as $c=(I,h,n)$ where $I$ is the list of
-the integer indices $i = 1 \dots N$ of the streamlines in that cluster,
-$n$ is the number of streamlines in the cluster, and $h$ is the
-\emph{streamline sum}. $h$ is a $K \times3$ matrix which can be
-updated online when a streamline is added to a cluster and is equal to:
+QB stores information about clusters in \emph{cluster nodes}. We index
+the streamlines with $i = 1 \dots N$ where $s_{i}$ is the $K\times3$
+matrix representing streamline $i$.  A cluster node is defined as a
+triple $c=(I,h,n)$ where $I$ is the list of the integer indices $i = 1
+\dots N$ of the streamlines in that cluster, $n$ is the number of
+streamlines in the cluster, and $h$ is the \emph{streamline sum}. $h$ is
+a $K \times3$ matrix which can be updated online when a streamline is
+added to a cluster and is equal to:
 \begin{equation}
   h=\sum_{i=1}^{n}s_{i}
 \end{equation} 
 where $s_{i}$ is the $K\times3$ matrix representing streamline $i$,
 $\Sigma$ here represents matrix addition, and $n$ is the number of
-streamlines in the cluster. One summary of the cluster node is the centroid or
-\emph{virtual} streamline $v$ where:
+streamlines in the cluster. One summary of the cluster node is the
+centroid streamline $v$ where:
 \begin{equation}
   v = h / n
 \end{equation}
@@ -619,7 +561,7 @@ An example of the QB centroid is presented in Fig.~\ref{Flo:MDF_arcuate}.
 \STATE $C\leftarrow[c_{1}]$
 \STATE $M\leftarrow1$ 
 \FOR{$i=2$ to $N$}
-	\STATE $\textbf{t}\leftarrow T_{i}$
+	\STATE $t\leftarrow s_{i}$
 	\STATE $\texttt{alld}\leftarrow\textbf{infinity}(M)$ \# distance buffer
 	\STATE $\texttt{flip}\leftarrow\textbf{zeros}(M)$ \# flipping check buffer
 	\FOR{$k=1$ to $M$ }
@@ -670,74 +612,12 @@ $c_{e}=(I,h,n)$, and update $c_{e}\leftarrow(\mathbf{append}(I,i), h+s,
 n+1)$; otherwise create a new cluster $c_{M+1}\leftarrow([i],s_{i},1)$,
 $M\leftarrow M+1$.
 
-%\subsection{QB Step-by-step\label{sub:QB_step_by_step}}
-
-% \begin{figure*}[t]
-% \centering\includegraphics[width=160mm,angle=0]{Figures/Fig_1_QB_algorithm}
-% \caption{This is a step-by-step explanation of how QuickBundles proceeds
-%   when clustering six streamlines (top left) resulting in three bundles
-%   (blue, red and green, bottom right)}
-% \label{Fig:LSC_simple}
-% \end{figure*}
-
-% Fig.~\ref{Fig:LSC_simple} illustrates the operation of QB step by step.
-% Initially in panel (i) 6 unclustered streamlines ($A-F$) are presented;
-% imagine that the distance threshold $\theta$ used here is the same as
-% the MDF distance (Eq.~\ref{eq:direct_flip_distance}) between $B$ and
-% $E$: $\theta = \mathrm{MDF}(B,E)$. The algorithm starts and in (ii) we
-% see that streamline $A$ was selected; as no other clusters exist
-% streamline $A$ becomes the first cluster (labelled with purple color)
-% and the centroid streamline of that cluster is identical with $A$ as seen
-% in (iii); next in (iv) streamline $B$ is selected and we calculate the
-% MDF distance between $B$ and the centroid streamline of the other
-% clusters. For the moment there is only one cluster to compare so QB
-% calculates MDF ($B$,centroid-purple) and this is obviously bigger than
-% threshold $\theta$ ($\theta = \mathrm{MDF}(B,E)$).  Therefore a new
-% cluster is assigned for $B$, and $B$ becomes the centroid streamline of
-% that cluster as shown in (v). In (vi) the next streamline $C$ is
-% selected and this is again far away from both purple and blue centroids;
-% therefore another cluster is created and $C$ is the centroid of the blue
-% cluster as shown in (vii).  In (viii) streamline $D$ is selected and
-% after we have calculated MDF($D$,purple), MDF($D$,Blue) and
-% MDF($D$,green) it is obvious that $D$ belongs to the purple cluster as
-% MDF($D$,purple) is smaller and lower than threshold as shown in (ix).
-% However we can now see in (x) that things change for the purple cluster
-% because the centroid streamline is not anymore made by only one
-% streamline but it is the average of $D$ and $A$ shown with a dashed
-% line. In (xi) $E$ is the current streamline and will be assigned to the
-% green cluster as shown in (xii) because MDF($E$,centroid green) =
-% MDF($E$,$B$) = $\theta$, and in (xiii) we see the updated centroid
-% streamline for the green cluster which is equal to $(B+E)/2$ where `$+$'
-% means streamline addition. In (xiv) the last streamline is picked and
-% compared with the centroid streamlines of the other 3 clusters; obviously
-% MDF($F$,purple) is the only distance smaller than threshold, and so F is
-% assigned to the purple cluster in (xv).  Finally, in (xvi) the centroid
-% purple streamline is updated as $(D+A+F)/3$. As there are no more
-% streamlines to select, the algorithm stops. We can see that all three
-% clusters have been found and all streamlines have been assigned
-% successfully to a cluster.  Popular amalgamation clustering algorithms
-% such as $k$-means~\citep{steinhaus1956division, macqueen1967some}
-% require iterative reassignment of items to different clusters and hence
-% do not run in linear time. Others such as BIRCH~\citep{zhang1997birch}
-% have linear time performance while imposing limits on the size and
-% spread of clusters; BIRCH clusters may be contiguous and the BIRCH
-% algorithm requires further phases of cluster amalgamation to optimise
-% search time when adding future items. By contrast when QB assigns an
-% item to a node it stays there, and clusters are not amalgamated.
-
-Choice of orientation can become an issue when 
-% using the MDF distance and 
-adding streamlines together, because 
-% the diffusion signal is symmetric around the origin, and therefore the $K \times 3$ 
-streamlines
-can equivalently have their points ordered $1 \dots K$ or be flipped with
-order $K \dots 1$.
-% ; the diffusion signal does not allow us to distinguish
-% betweeen these two directions. 
-A step in QB takes account of the
-possibility of needing to perform such a flip of a streamline before adding
-it to a centroid streamline according to which direction produced
-the MDF value.
+Choice of orientation can become an issue when adding streamlines
+together, because streamlines can equivalently have their points ordered
+$1 \dots K$ or be flipped with order $K \dots 1$.  A step in QB takes
+account of the possibility of needing to perform such a flip of a
+streamline before adding it to a centroid streamline according to which
+direction produced the MDF value.
 
 The complete QB algorithm is described in formal detail in
 Algorithm~\ref{Alg:QuickBundles}.  One of the reasons why
@@ -793,14 +673,6 @@ can obtain different numbers of clusters at different thresholds. In
 that way we can stress thinner or thicker sub-bundles contained inside
 other bigger bundles.
 
-%A full tractography containing $\num{250000}$ streamlines was clustered
-%using QB with a distance threshold of $10$~mm
-%(Fig.~\ref{Flo:QB_fornix}).  We produced a useful reduction of the
-%initial tractography leaving only $763$ centroid streamlines. Bundles
-%smaller than $10$ streamlines were then removed. Every streamline shown
-%represents an entire cluster containing from $10$ to $\num{5000}$
-%streamlines each.
-
 \begin{figure*}[htp]
 \centerline{\includegraphics[width=160mm]{Figures/Fig_6_QB_fornix}}
 \caption{QB clustering of the Fornix bundle. The original Fornix
@@ -827,65 +699,6 @@ QB clustering to the 10 human subject data sets (\ref{sub:QB-Data-sets}). The me
 data compression (ratio of tractography size to number of QB clusters)
 was $34.4:1$ with a $10$~mm threshold and $230.4:1$ with a $20$~mm
 threshold.
-
-%The centroid streamlines can be thought as fast access points to explore
-%the entire data set (see Fig.~\ref{Flo:QB_fornix}). With an appropriate
-%visualization tool we can click on a streamline and obtain the entire
-%cluster/bundle that it represents. Visualizing an entire data set of
-%this size is impossible on standard graphic cards and most visualization
-%tools. For example Trackvis (trackvis.org) or DSI Studio
-%(dsi-studio.labsolver.org) can only show a small random sample of the
-%full tractography in real time. In addition we have developed fast and
-%efficient ways of identifying broken or wandering streamlines by using
-%the rapid data compression of QB to identify short or erratic centroid
-%streamlines.
-
-% \subsection{Medoid streamlines\label{sub:medoids}}
-
-% The centroid streamlines created by QB have very nice properties as they
-% represent an average streamline which can stand as the most
-% characteristic feature of the cluster that they belong to. However, now
-% that we have segmented our tractography into small bundles, we can
-% calculate many more potentially important descriptors for the
-% cluster. One of the most useful approaches is the calculation of
-% medoids.
-
-% Here the idea is to identify an actual streamline belonging to the
-% tractography which corresponds in some way to the centroid streamline. In
-% other words to find an medoid (medoid) streamline. Centroid streamlines
-% do not necessarily coincide with real streamlines as they are just the
-% outcome of large amalgamations. There are many strategies for how to
-% select good medoids for the bundles. A very fast procedure that we use
-% in our work is to find which real streamline from the cluster $c$ is
-% closest (by MDF distance) to the centroid streamline $\mathbf{v}$. We
-% will call this medoid streamline $\mathbf{e}_{1}$,
-% i.e.~$\mathbf{e}_{1}={\displaystyle \argmin_{\mathbf{s} \in
-%     c}}\textrm{\,\ MDF}(\mathbf{v},\mathbf{s})$.  The computational
-% complexity of finding $\mathbf{e}_{1}$ is still linear in cluster size,
-% and that will be very useful if we have created clusterings with
-% clusters containing more than \textasciitilde5000 streamlines (depending
-% on system memory).
-
-% A different medoid can be defined as the most typical streamline among
-% all streamlines in the bundle, which we denote by
-% $\mathbf{e}_{2}={\displaystyle \argmin_{\mathbf{s} \in
-%     c}}\,{\displaystyle \sum_{s'\in
-%     c}}\mathrm{MDF}(\mathbf{s'},\mathbf{s})$, or if we want to work with
-% streamlines with possibly different numbers of points we could instead
-% use $\mathbf{e}_{3}={\displaystyle \argmin_{\mathbf{s} \in
-%     c}}\,{\displaystyle \sum_{\mathbf{s'}\in
-%     c}}\mathrm{MAM}(\mathbf{s'},\mathbf{s})$.  Here $\mathrm{MAM}$ can
-% be any one of the Hausdorff MAM distance functions.  Identification of
-% medoid streamlines of type $\mathbf{e}_{2}$ and $\mathbf{e}_{3}$ will
-% be efficient only for small bundles of less than $5000$ streamlines
-% because we need to calculate all pairwise distances in the bundle. We
-% show below many applications of the medoids.
-
-% In summary, a centroid (centroid) streamline is the average of all
-% streamlines in the cluster. We call it centroid because it does not
-% really exist in the real data set, and to distinguish it from medoid
-% (medoid) streamlines which are again descriptors of the cluster but are
-% represented by real streamlines.
 
 \subsection{Comparison of clusterings\label{sub:Tightness-comparisons-1}}
 
@@ -915,9 +728,7 @@ to 80\% corresponding to a `good' strength of agreement.
 As well as the computational overheads in calculating the
 cross-classification matrix, a further fundamental disadvantage of these
 methods is that they do not work with clusterings of different
-tractographies.
-
-Being able to compare results of clusterings is crucial for creating
+tractographies. Being able to compare results of clusterings is crucial for creating
 stable brain imaging procedures, and therefore it is necessary to
 develop a way to compare different tractography clusterings or different
 sets of streamlines from the same subject or different subjects.
@@ -928,75 +739,29 @@ following approach with three novel comparison functions which we call
 
 If $S$ and $T$ are sets of streamlines, and $\theta>0$ is selected as a
 threshold, we say that $s \in S$ has a $\theta$-neighbour in $T$ if
-$\min_{t\in T}[\mathrm{MDF}(s,t)<\theta]$; we define the coverage of $S$
+$\min_{t\in T}[\mathrm{MDF}(s,t)<\theta]$. We define the coverage of $S$
 by $T$ as the fraction of streamlines in $S$ that have a
-$\theta$-neighbour in $T$: $|\{s \in S
-\,\mathrm{has~a}~\theta\mathrm{-neighbour~in}~T\}|/|S|$; and we define
-the sparsity of $T$ in $S$ as the average number of $\theta$-neighbours
-in $T$ for streamlines in $S$. BA is a symmetric measure of the
-similarity of the two sets of streamlines $S$ and $T$. BA is the average
-of the $\theta$-coverages of $T$ by $S$ and of $S$ by $T$:
-$\mathrm{BA}(S,T) = (\mathrm{coverage}(S,T) +
-\mathrm{coverage}(T,S))/2$.
+$\theta$-neighbour in $T$: $$|\{s \in S
+\,\mathrm{has~a}~\theta\mathrm{-neighbour~in}~T\}|/|S|.\nonumber$$ Coverage ranges
+between 0 (when no streamline in S has a close enough neighbour in T)
+and 1 (when every streamline in S has a neighbour in T).
+
+We define the sparsity of $T$ in $S$ as the average number of
+$\theta$-neighbours in $T$ for streamlines in
+$S$: $$\sum_{s \in S}|\{t \in
+T:t\,\mathrm{is~a}~\theta\mathrm{-neighbour~of}~s\}|/|S|.\nonumber$$.
+
+BA is a symmetric measure of the similarity of the two sets of
+streamlines $S$ and $T$. BA is the average of the $\theta$-coverages of
+$T$ by $S$ and of $S$ by $T$: $\mathrm{BA}(S,T) =
+(\mathrm{coverage}(S,T) + \mathrm{coverage}(T,S))/2$. BA ranges between
+0, when no streamlines of S or T have neighbours in the other set, and 1
+when they all do.
 
 If $S$ is a good approximation to $T$ then $S$ will have high coverage
 of $T$; if $S$ has low redundancy as an approximation to $T$ then the
 sparsity of $S$ in $T$ will be low; and if $S$ and $T$ are globally
 similar then BA will be high.
-
-% Let us assume that we
-% have gathered the centroid streamlines from clustering $A$ in
-% $E_{A}=[\mathbf{e}_{1},...,\mathbf{e}_{M_{A}}]$ and from clustering $B$
-% in $E_{B}=[\mathbf{e}_{1}^{'},...,\mathbf{e}_{M_{B}}^{'}]$ where $M_A$ ,
-% $M_B$ denote the number of centroid streamlines of the two
-% clusterings. $M_{A}$ does not need to be equal to $M_{B}$. Next we
-% calculate all pairwise MDF distances between the two sets and store them
-% in rectangular matrix $D_{AB}$. The mimima of the rows of $D_{AB}$
-% provide the distance to the nearest streamline in $B$ of each streamline
-% in $A$ ($m_{A\rightarrow B}$) and similarly the minima of the columns of
-% $D_{AB}$ the distance to the nearest streamline in $A$ of each
-% streamline in $B$ ($m_{B\rightarrow A}$). From these correspondences we
-% only keep those distances that are smaller than a tight threshold
-% $\theta$. Then we define BA to be
-
-% \begin{equation}
-% BA=\frac{1}{2}\left(\frac{|m_{A\rightarrow B}\leq \theta |}{M_{A}}+\frac{|m_{B\rightarrow A}\leq \theta |}{M_{B}}\right)\label{eq:TC}
-% \end{equation}
-
-% \noindent where $|m_{A\rightarrow B}\leq \theta |$ denotes the number of
-% centroids from A which had a neighbour in B that is closer than $\theta$
-% and similarly for $|m_{B\rightarrow A}\leq \theta |$.  In other words,
-% $BA$ is mean of the fraction of row minima of $D_{AB}$ that are less
-% than $\theta$ and the fraction of column minima less than $\theta$.
-% $BA=0$ when every centroid from the one set is further than $\theta$ to
-% all centroids in the other set. $BA=1$ when all centroids from one set have
-% a close neighbour in the other set. This comparison function is very
-% useful especially when comparing tractographies from different subjects
-% because it does not require $M_{A}=M_{B}$.
-
-% \subsection{Merging two sets of bundles\label{sub:merging}}
-
-% \textbf{Do we keep this in?}
-
-% We can merge bundles using medoid streamlines or centroid
-% streamlines. We first set a distance threshold $\theta$ usually the same
-% as the one we used for the QBs in the previous step. Assume now that we
-% have gathered the centroid streamlines from clustering A in
-% $V_{A}=[\mathbf{v}_{1},...,\mathbf{v}_{M_{A}}]$ and from clustering $B$
-% in $V_{B}=[\mathbf{v}_{1}^{'},...,\mathbf{v}_{M_{B}}^{'}]$ where $M_A$
-% and $M_B$ denote the number of centroid streamlines of each clustering.
-% $M_{A}$ can be different from $M_{B}$. (1) For every
-% $\mathbf{v}_{i}^{'}$ in $V_{B}$ we find the closest $\mathbf{v}_{j}$ in
-% $V_{A}$ and store the distance between these two streamlines. Therefore
-% we now have a set of minimum distances from $V_{B}$ to $V_{A}$. The size
-% of this set is equal to $M_{B}|$. (2) We merge those clusters from B
-% whose centroid streamlines have minimum distances (e.g. MDF) smaller than
-% $\theta$ into the corresponding clusters of A, and if a centroid
-% streamline in $V_{B}$ has no sub-threshold neighbour in $V_{A}$ then its
-% cluster becomes a new cluster in the final clustering. In that way
-% clusters from the two sets ho have very similar features will merge
-% together, and, if not, new clusters will be created, and we will not
-% have any loss of information from the two sets of clusters.
 
 \subsection{\label{sub:QB-Data-sets}Data sets}
 
@@ -1055,36 +820,6 @@ find similarities across different tractographies and
 in \ref{sub:short_tracks} we discuss about some potential limitations
 of our methods and possible workarounds.
 
-% XXX WHERE THIS SHOULD GO?
-% In \ref{QB_Representation} we illustrate the high level of clarity and
-% simplification that the QB representation can bring to a tractography,
-% and how adjustment of the distance threshold $\theta$ can be used to
-% merge or split clusters.
-
-% In \ref{sub:Atlases-made-easy} we show how the
-% QB representations for a group of subjects can be mapped into a common
-% space and then reclustered to generate a multi-subject atlas of white
-% matter tractographies. We show moreover how the resulting atlas can be
-% used to access clusters in the individual tractographies that have a
-% good correspondence bewteen subjects. Both the speed of performance and
-% the data reduction provided by QB make this innovation a practical
-% research tool. 
-%Tractography clustering algorithms have not to date been able to work on
-%full tractography data sets. 
-% We show in \ref{sub:QB_as_input} how using
-% the QB representation of the tractography as input to higher complexity
-% clustering methods brings full tractographies within their effective
-% range.
-% We indicate
-% (\ref{sub:exemplars_vs_ROIs}) medoids streamlines from the QB
-% representation can improve on interaction with tractographies and can be
-% used for the direct registration of tractographies
-%(\ref{sub:direct_registration}).  
-% \noindent
-%Finally, quality control of tractographies is an important issue and we
-%show how QB can be used as a fast tool to identify clusters containing
-%long or short streamlines (\ref{sub:short_tracks}).
-
 \subsection{Complexity and timings\label{sub:Complexity}}
 
 The execution time of QB is affected by the following parameters: $K$,
@@ -1138,25 +873,6 @@ comparisons were $429$, $980$ and $468$ respectively.  Though this
 experiment was performed using a single CPU core we see the valuable
 speedup that QB achieves, holding out the prospect of real-time (less than 1~second)
 clustering on data sets of up to \num{20000} streamlines.
-% (see Table~\ref{Flo:timings}).
-
-% \begin{table}
-% \scriptsize\addtolength{\tabcolsep}{-5pt}
-% \caption{Performance timings for QB compared with some timings
-%   reported in the literature.\label{Flo:timings}}
-% \begin{centering}
-% \begin{tabular}{ccccc}
-% \hline 
-% %\hline
-% Number of streamlines ($N$) & Algorithms & Timings (secs) & QB (secs) & Speedup\tabularnewline
-% \hline
-% $1000$ & \citet{wang2010tractography} & $30$ & $0.07$ & $429$\tabularnewline
-% $\num{60000}$ & \citet{wang2010tractography} & $\num{14400}$ & $14.7$ & $980$\tabularnewline
-% $\num{400000}$ & \citet{Visser2010} & $\num{75000}$ & $160.1$ & $468$\tabularnewline
-% \hline
-% \end{tabular}
-% \par\end{centering}
-% \end{table}
 
 \subsection{Stability of QB \label{sub:Comparisons}}
 
@@ -1227,334 +943,6 @@ closeness threshold. The poor performance of random subsets is to be
 expected as they will oversample in dense parts of the tractography
 space, and undersample in sparser regions.
 
-% \subsection{Tractographic atlases and landmarks\label{sub:Atlases-made-easy}}
-
-% We have used QB to construct a robust tractographic atlas in MNI space
-% with data from 10 subjects. First we used the FSL toolbox using steps
-% similar to those in~\citet{Smith2006NeuroImage} to register each
-% subject's FA volume with the standard FSL template (\texttt{FMRIB58}) in
-% MNI space. Next we applied the resulting non-linear transformations to
-% the tractographies. This required technical solutions which are detailed
-% in the DIPY software package.
-
-% Having all tractographies in MNI space is especially useful because we
-% can now compare them against available templates or against each other
-% and calculate different statistics. However this is not where we stop;
-% we proceed to generate a tractographic atlas using QB clusterings.
-
-% \textbf{Tractographic Atlases} For each subjects, (a) load the warped
-% tractography, (b) downsample the streamlines to have only $12$ points, (c) calculate
-% and store QB clustering with a $10$~mm threshold, (d) merge all
-% clusterings again with a $10$~mm threshold as explained in
-% section~\ref{sub:merging}. When creating an atlas by merging
-% many different subjects the most important issue is what one removes
-% from the atlas as outliers.  QB here provides a possible solution for
-% this problem. From the distribution of cluster sizes we find that $20\%$
-% of the largest clusters had more than $90\%$ of all streamlines. This shows
-% that there is much agreement between the biggest bundles of different
-% subjects.  We will use this property to create a solid atlas in which we
-% keep the biggest bundles (landmarks) and remove small bundles
-% (outliers).
-
-% This atlas has been constructed without considering whether there are
-% inter-subject differences in white matter organisation. Outliers might
-% represent genuine differences in anatomy and the corresponding atlas
-% clusters can be explored to see how many subjects they relate to. With a
-% larger database QB can thus be used to create a probabilistic
-% tractography atlas with which to identify differences in morphology in
-% an analogous manner to that achieved for the cingulate and parasingulate
-% sulci by \citet{paus1996human}.
-
-% \textbf{Finding and Using Landmarks} One can use this atlas or similar
-% atlases created from more subjects in order to select specific
-% structures and study these structures directly in different subjects
-% without using any of the standard ROI based methods.
-
-% A simple example is given in Fig.~\ref{Flo:CloseToSelected}. In the
-% first row we see a tractographic atlas joined by merging the QB
-% clusterings of $10$ healthy subjects as described in the previous
-% section. Then from these clusters represented by their centroid streamlines we
-% keep only $196$ biggest clusters i.e. those which contain the highest
-% number of streamlines, so that we are sure that there is enough agreement
-% from the different tractographies. From these we pick by way of an
-% example $19$ centroid streamlines (see Tab.~\ref{Flo:structures} which
-% correspond to well known bundle structures in the literature:
-
-% \begin{table}
-% \small\addtolength{\tabcolsep}{-5pt}
-% \caption{The 17 fiber bundles chosen for the analysis in Fig.~\ref{Flo:CloseToSelected}.\label{Flo:structures}}
-% \begin{centering}
-% \begin{tabular}{lll}
-% \hline 
-% %\hline
-% Abbreviation & Structure \tabularnewline
-% \hline
-% GCC   & genu of corpus callosum \tabularnewline
-% BCC   & body of corpus callosum \tabularnewline 
-% SCC   & splenium \tabularnewline
-% CP    & pons cerebellar peduncle \tabularnewline
-% ARC-L & left arcuate fasciculus \tabularnewline
-% ARC-R & right arcuate fasciculus \tabularnewline
-% IFO-L & left inferior occipitofrontal fasciculus \tabularnewline
-% IFO-R & right inferior occipitofrontal fasciculus \tabularnewline
-% FX-R  & right fornix \tabularnewline
-% FX-L  & left fornix  \tabularnewline
-% OR    & optic radiation  \tabularnewline
-% CGL-L & left cingulum  \tabularnewline
-% CGL-R & right cingulum  \tabularnewline
-% CST-L & left corticospinal tract  \tabularnewline
-% CST-R & right corticospinal tract \tabularnewline
-% UNC-L & left uncinate \tabularnewline
-% UNC-R & right uncinate \tabularnewline
-% \hline
-% \end{tabular}
-% \par\end{centering}
-% \end{table}
-
-% These $19$ streamlines are coloured randomly. Then on the second row we show,
-% for the first $6$ of these selected centroid streamlines, the streamlines
-% closer than $20$~mm from $3$ arbitrarily selected subjects. Similarly,
-% on the third row the streamlines closer than $15$~mm to the next $7$ selected
-% streamlines. Finally on the last row we bring the streamlines from the same $3$
-% subjects which are closer than $18$~mm.  The colours used for the
-% selected streamlines are automatically assigned from the colours assigned to
-% the streamlines picked from the atlas. We can see that there is a significant
-% reliability and continuity both within and between subjects even though
-% we have only selected a very small number of centroid
-% streamlines. Using a similar procedure we could create a list of bundles of
-% every subject and then compare the subjects at the level of bundles.
-
-% %
-% \begin{figure}
-% \begin{centering}
-% \includegraphics[scale=0.5]{Figures/Fig_7_close_distance}
-% \par\end{centering}
-% \caption{A novel way to do comparisons between subjects. Correspondence
-%   between different subjects (last $3$ rows) and a few landmarks picked
-%   from the tractographic atlas generated by merging QB clusterings of
-%   $10$ subjects (top row). The fact that we can see this amount of
-%   agreement and continuity on the last $3$ rows from so few centroid
-%   streamlines provides a new robust way to statistical comparison between
-%   tractographic data sets. (Rows 3 and 4 are from different viewpoints
-%   from that in rows 1 and 2.) \label{Flo:CloseToSelected}}
-% \end{figure}
-
-% \subsection{QB as input to higher complexity methods\label{sub:QB_as_input}}
-
-% We found that QB is of great value as an adjunct to many less efficient
-% algorithms e.g.~hierarchical clustering, affinity propagation, nearest
-% neighbours, spectral clustering and other unsupervised and supervised
-% machine learning methods. We present here one example with QB as input
-% to affinity propagation and one with QB as input to hierarchical
-% clustering.
-
-% Most clustering algorithms need to calculate all pairwise distances
-% between streamlines; that means that for a medium sized tractography of
-% \num{250000} streamlines we would need $232$ GBytes of RAM with single
-% floating point precision. Something which is not and will not be
-% available soon in personal computers. In those cases some people might
-% hope that sparse matrices could provide a nice approximation; however
-% dense tractographies produce very dense distance matrices. The
-% straightforward solution to this problem is to use QB in order to first
-% segment in small clusters and then use the representative streamlines
-% (i.e. medoid or centroid streamlines) of these clusters with other
-% higher complexity operations and merge the clusters together in bigger
-% clusters.
-
-% The required steps are: (1) cluster each tractography using QB as
-% explained in section~\ref{sub:Atlases-made-easy}); (2) gather up the
-% centroid streamlines; (3) calculate MDF distances between the centroid
-% streamlines; (4) use any other clustering method to segment this much
-% smaller distance matrix $D$.
-
-% In the left panel of Fig.~\ref{Flo:LSC+HC+AP} we show a result where we
-% used hierarchical clustering with single linkage for step (4) with a
-% threshold of $20$~mm using the Python software package
-% $\texttt{hcluster}$~\cite{eads-hcluster-software}. A known drawback of
-% single linkage is the so-called chaining phenomenon: clusters may be
-% brought together due to single elements being close to each other, even
-% though many of the elements in each cluster may be very distant to each
-% other. Chaining is usually considered as a disadvantage because it is
-% too driven by local neighbours. Nevertheless, we can take advantage of
-% this property to cluster the entire corpus callosum (CC) together (shown
-% in dark red in left top of Fig.~\ref{Flo:LSC+HC+AP}) creating a fully
-% automatic CC detection system.  Furthermore, we can use different
-% cutting thresholds on the underlying dendrogram to amalgamate together
-% different structures (see e.g.~the cingulum bundles in the same panel).
-
-% In the right panel of Fig.~\ref{Flo:LSC+HC+AP} we see an implementation
-% of step (4) using the more recent algorithm, affinity propagation
-% (AP)~\citep{dueck2009affinity}, which has been
-% identified~\citep{malcolm2009filtered}) as being difficult or impossible
-% to be used for group analysis or to cluster entire tractographies of
-% many thousands of streamlines.
-
-% Here we see in the bottom right panel of (see Fig.~\ref{Flo:LSC+HC+AP})
-% how nicely AP, after the simplification provided by QB, has clustered
-% arcuate, longitudinal occipitofrontal fasciculus and other structures
-% known from the literature. The input of AP was the negative distance
-% matrix $-D$, the preference weights were set to matrix
-% $\mathtt{median}(-D)$ and the hierarchical clustering parameter was set
-% to $20$~mm.  For affinity propagation we used the Python library
-% \texttt{scikit-learn}.
-
-% \begin{figure}
-% \begin{centering}
-% \includegraphics[scale=0.6]{Figures/Fig_8_QB_with_others}
-% \par\end{centering}
-% \caption{QB was used to cluster an entire set of $10$ tractographies
-%   together (\num{2500000} streamlines). The resulting QB representation
-%   was used as input to hierarchical clustering (HC) using single linkage
-%   (left) and to affinity propagation (AP, right). Colours encode cluster
-%   labels. HC results in 19 clusters, AP in 23. QB facilitates
-%   significantly the operation of the other two algorithms which would
-%   not be able to cluster the entire data sets on current computers. Note
-%   the top left panel where QB+HC have managed to cluster the entire CC
-%   in one bundle.\label{Flo:LSC+HC+AP}}
-% \end{figure}
-
-% While clustering methods of higher order complexity such as HC and AP
-% have considerable theoretical appeal and have a deserved reputation for
-% being able discover meaningful structure in data sets they are simply
-% impracticable when more than a few thousand items are being
-% clustered. Using QB to pre-process the tractography puts the whole data
-% set, condensed to its centroid streamlines, within the feasible range of
-% these higher order algorithms.
-
-% \subsection{Medoids replace ROI masks\label{sub:exemplars_vs_ROIs}}
-
-% Medical practitioners and neuroanatomists often argue that when they use
-% multiple spherical or rectangular masks to select some bundles many
-% streamlines are thrown away because they are small and the mask operations
-% cannot get hold of them. Our method provides a solution to this problem
-% as it can identify broken or smaller bundles inside other bigger bundles
-% which are otherwise very difficult or even sometimes impossible to
-% identify visually or with the use of masks. Our method attacks this
-% problem and suggests a very efficient and robust solution which sets the
-% limit for unsupervised clustering of tractographies and facilitates
-% tractography exploration and interpretation. The point here is that one
-% can now use medoid streamlines as access points into the full tractography
-% and with a single click on that medoid streamline obtain the entire bundle.
-% Therefore a super-bundle can be created just with with a few clicks
-% based on a selection from medoid streamlines.
-
-% In order to create this system we implemented a 3D
-% visualization/interaction system for tractographies based on QB in
-% Python and OpenGL. This code is available online at $\texttt{fos.me}$.
-
-
-% \subsection{Direct Tractography Registration\label{sub:direct_registration}}
-
-% Direct tractography registration is a recently described problem with
-% only a small number of publications \citep{leemans2006multiscale,
-%   mayer2008bundles, mayerdirect, mayer2011supervised,
-%   durrleman2010registration, zvitia2008adaptive, Zvitia2010,
-%   ZiyanMICCAI07}, and so far as we know there are no publicly available
-% solutions. By direct registration we mean that no other information
-% apart from the tractographies themselves is used to guide the
-% registration. This is in contrast to
-% section~\ref{sub:Atlases-made-easy}) where we used FA registration
-% mappings applied to tractographies which is also most commonly used in
-% the literature along with other Tensor based
-% methods~\cite{goh2006algebraic}.
-
-% We now describe our algorithm which is efficient and simple
-% to use, completely automatic and provides an evidently robust direct
-% rigid tractography registration algorithm available in seconds. This
-% algorithm could be of great use when comparing healthy versus severely
-% diseased brains e.g.~stroke or vegetative state patients when non-rigid
-% registration is not recommended because of severe asymmetries in the
-% diseased brains. The algorithm is based on the robustness of QB to find
-% good representative descriptors.
-
-% Let $T_{A}$, and $T_{B}$ the two tractographies to be aligned in native
-% space. The required steps are: (1) all streamlines with length smaller than
-% $100$~mm and longer than $300$~mm are removed from the data sets. (This
-% will reduce the size of each tractography to about $1/4$ of its initial
-% size i.e.~\textasciitilde \num{200000} streamlines. While all the subjects
-% are adults, this filtering may have different effects depending on brain
-% size. We have not investigated this question at present); (2) downsample
-% both tractographies equidistantly to $12$ points; (3) run QB with
-% distance threshold at $10$~mm for both tractographies; (4) collect all
-% medoid streamlines from clusters containing more than $0.2\%$ of all
-% streamlines; (5) assuming we have these now in $E_{A}$ and $E_{B}$, calculate
-% all pairwise distances $D=\mathtt{MDF}(E_{A},E_{B})$ and save them in
-% rectangular matrix $D$; (6) use the modified Powell's method
-% \citep{fletcher1987practical} to minimize the symmetric distance
-% function $\mathrm{SMD}=\sum_{i}\min_{j}D(i,j)+\sum_{j}\min_{i}D(i,j)$
-% over rigid rotations of $E_{B}$ starting with zeroed initial conditions;
-% (7) after each iteration of the optimization, $E_{B}$ is transformed by
-% the resulting rigid rotation and $\mathrm{SMD}$ is recalculated. To
-% ensure smooth rotations we use the Rodriguez rotation formula.
-
-% In Fig.\ref{Flo:direct_registration} A we see the result of this
-% algorithm applied to two tractographies represented by their
-% medoid streamlines, depicted in orange and purple. We can see in the
-% upper panel that the orange tractography is misaligned with respect to
-% the purple one, and in the lower panel we see their improved alignment
-% after applying our algorithm.
-
-% \textbf{Metric}. SMD is proposed here for registration of trajectory
-% data sets, but one could equally use mutual
-% information~\citep{maes1997multimodality} or the correlation
-% ratio~\citep{roche1998correlation} for registration of volumetric data
-% sets. Nonetheless, the advantage of SMD is that it comes from robust
-% landmarks generated by QB which bring together local and global
-% components. Initially, it was not clear if we should use SMD or just the
-% sum of all distances $\mathrm{SD}=\sum_{i,j}D(i,j)$. Therefore, we made
-% a small experiment to validate the smoothness and convexity of these two
-% cost functions. We plotted both functions under a single-axis
-% translation or a single-angle rotation of the same tractography as show
-% in Fig.~\ref{Flo:direct_registration} B and C. From, these two diagrams
-% we can see that although for translations only the SD was entirely
-% convex, with rotations the SD had stronger local minima which is not a
-% good property for registration. Furthermore, the SMD had steeper
-% gradients towards the global minimum which is a positive indicator for
-% faster convergence.
-
-% \textbf{Experiments}. The first large scale experiment took place using
-% the same tractography of a single individual copied and transformed
-% $1000$ times with range of all three angles from \ang{-45} to \ang{45}
-% and range of all x,y,z translations from \numrange{-113}{113}~mm. Then
-% we registered all transformed tractographies to the static one and
-% calculated all pairwise MDF distances storing them in a square matrix
-% $D$. We would expect that if the registration was correct then the sum
-% of all diagonals elements of $D$ would be close to $0$. This was
-% confirmed with both cost functions used SD and SMD getting close to zero
-% $99.8\%$ of the time however SMD was always closer to perfect alignment
-% than SD. Consequently we chose SMD as a better cost function for direct
-% tractography registration.
-
-% We used GQI-based tractographies from $10$ subjects, and registered all
-% 45 possible pairs. Comparing different tractographies is not a trivial
-% problem however we can use the bundle adjacency (BA) metric explained in
-% section \ref{sub:Tightness-comparisons-1}.  We can report that the mean
-% initial BA was $34.8\%\pm8.0\%$ and the mean final BA after applying our
-% direct registration method was $48.1\%\pm6.1\%$. This was a
-% statistically highly significant improvement
-% ($t_{\text{\textrm{paired}}}(44)=11.2$, $p\leq10^{-13}$). These BA
-% values are comparable to those reported in
-% section~\ref{sub:Tightness-comparisons-1}. We are planning in the future
-% to compare this registration method against other standard methods which
-% are common in the literature.
-
-% It should be noted that both BA and SMD are derived from the same
-% distance matrix $D_{AB}$ between the two sets of centroid
-% streamlines. However, using BA to assess a registration that has minimised
-% SMD is less circular than might appear at first sight; the minimization
-% of SMD depends on all the entries of $D$ as it is the mean of all those
-% entries, while BA depends on the separate minimizations of the rows and
-% columns of $D$.
-
-% \begin{figure}
-% \begin{centering}
-% \includegraphics[scale=1.0]{Figures/Fig_9_QB_registration2_only_landscape}
-% \par\end{centering}
-% \caption{Tractographies from two different subjects
-%   before (left) and after (right) QB-based direct registration.\label{Flo:direct_registration}}
-% \end{figure}
-
-
 \begin{figure*}[htp]
   \centerline{\includegraphics[width=180mm]{Figures/Fig_12_All_Brains.eps}}
   \caption{QuickBundles centroids of the biggest 100 clusters for 10
@@ -1592,12 +980,6 @@ $73.6$~mm ($\pm\num{43.9}$~mm). We will use these centroids as a method
 to study the variability between the streamlines across different
 subjects.
 
-\begin{figure}
-\centerline{\includegraphics[scale=0.24]{Figures/Fig_13_BAs}}
-\caption{Bundle Adjacencies for the 45 pairs of 10 subjects with two
-  different distance thresholds. \label{Flo:BAs_plot}}
-\end{figure}
-
 For this purpose we evaluated BA (see
 section~\ref{sub:Tightness-comparisons-1}) between all pairs of these
 $100$ centroids of each of the $10$ tractographies. This generated $45$
@@ -1605,8 +987,6 @@ BA values with $\theta=10$~mm (BA10). We also generated another $45$ BA
 values with $\theta=20$~mm (BA20). It is noticeable here that the
 distance threshold for BA is twice that of the initial QB distance
 threshold. 
-% The results of this experiment are presented in
-% Fig.~\ref{Flo:BAs_plot}.
 
 For BA10 the most dissimilar subjects were subjects 4 and 6 with
 BA10(4,6)=38.5\%. The most similar subjects were 4 and 5 with
@@ -1622,7 +1002,6 @@ lengths (mean $73.6$~mm $\pm\num{43.9}$~mm). If we suppose that shorter
 streamlines are more likely to be noise artifacts we would expect that
 by concentrating on longer streamlines we would have a more robust
 similarity measure for tractography comparison.
-
 
 \subsection{Limitations of QB\label{sub:short_tracks}}
 
@@ -1642,7 +1021,6 @@ longer clusters. For this purpose we recommend to use a different
 distance from MDF for example the minimum version of MAM referred to as
 $\textrm{MAM}_{\textrm{min}}$ in Eq.~(\ref{eq:minimum_distance}).
 
-%
 \begin{figure}
   \centerline{\hspace{-1.5mm}\includegraphics[scale=0.65]{Figures/Fig_10_arcuate_small_fibers}}
   \caption{What could be considered as the strength and limitation of QB
@@ -1669,8 +1047,12 @@ threshold and assign them to their closest long streamline bundle from
 the first clustering using the $\mathrm{MAM}_{\mathrm{min}}$ distance.
 
 2. Read and cluster the tractography of a subject, pick a centroid
-streamline and then find the closest streamlines to that selected streamline using MDF, cluster the closest streamlines found from the previous step and for each one of these new centroid streamlines find the closest streamlines using the $\textrm{MAM}_{\textrm{min}}$ distance. We should now have an
-amalgamation of shorter and longer streamlines in one cluster.
+streamline and then find the closest streamlines to that selected
+streamline using MDF, cluster the closest streamlines found from the
+previous step and for each one of these new centroid streamlines find
+the closest streamlines using the $\textrm{MAM}_{\textrm{min}}$
+distance. We should now have an amalgamation of shorter and longer
+streamlines in one cluster.
 
 An example of this second strategy is shown in
 Fig.~\ref{Flo:arcuate_close}. A single centroid streamline of interest
