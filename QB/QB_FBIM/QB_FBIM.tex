@@ -315,7 +315,7 @@ In fact tractographies have high levels of redundancy with very many
 quite similar streamlines. Our approach is to take advantage of this to
 reduce the size and dimensionality of the datasets as a precursor for
 higher complexity classification and/or input from experts. To address
-thes key issues of time and space we present a stable, generally linear
+these key issues of time and space we present a stable, generally linear
 time clustering algorithm that can generate meaningful clusters of
 streamlines in seconds with minimum memory consumption. Our approach is
 extremely straightforward and we do not need to calculate all pairwise
@@ -735,32 +735,35 @@ sets of streamlines from the same subject or different subjects.
 
 Although we recognise that these are difficult problems, we propose the
 following approach with three novel comparison functions which we call
-\emph{coverage}, \emph{sparsity} and \emph{bundle adjacency} (BA).
+\emph{coverage}, \emph{overlap} and \emph{bundle adjacency} (BA).
 
 If $S$ and $T$ are sets of streamlines, and $\theta>0$ is selected as a
 threshold, we say that $s \in S$ has a $\theta$-neighbour in $T$ if
 $\min_{t\in T}[\mathrm{MDF}(s,t)<\theta]$. We define the coverage of $S$
 by $T$ as the fraction of streamlines in $S$ that have a
-$\theta$-neighbour in $T$: $$|\{s \in S
-\,\mathrm{has~a}~\theta\mathrm{-neighbour~in}~T\}|/|S|.\nonumber$$ Coverage ranges
-between 0 (when no streamline in S has a close enough neighbour in T)
-and 1 (when every streamline in S has a neighbour in T).
+$\theta$-neighbour in $T$: $$\mathrm{coverage}(S,T) = |\{s \in S
+\,\mathrm{has~a}~\theta\mathrm{-neighbour~in}~T\}|/|S|.\nonumber$$
+Coverage ranges between 0 (when no streamline in S has a close enough
+neighbour in T) and 1 (when every streamline in S has a neighbour in T).
 
-We define the sparsity of $T$ in $S$ as the average number of
+We define the overlap of $T$ in $S$ as the average number of
 $\theta$-neighbours in $T$ for streamlines in
-$S$: $$\sum_{s \in S}|\{t \in
+$S$: $$\mathrm{overlap}(S,T)=\sum_{s \in S}|\{t \in
 T:t\,\mathrm{is~a}~\theta\mathrm{-neighbour~of}~s\}|/|S|.\nonumber$$.
+Overlap can take any non-negative value, with higher values indicating
+possible redundancy of $T$ in $S$; if $T$ has several similar
+streamlines then this will tend to boost overlap.
 
 BA is a symmetric measure of the similarity of the two sets of
 streamlines $S$ and $T$. BA is the average of the $\theta$-coverages of
-$T$ by $S$ and of $S$ by $T$: $\mathrm{BA}(S,T) =
-(\mathrm{coverage}(S,T) + \mathrm{coverage}(T,S))/2$. BA ranges between
+$T$ by $S$ and of $S$ by $T$: $$\mathrm{BA}(S,T) =
+(\mathrm{coverage}(S,T) + \mathrm{coverage}(T,S))/2.$$ BA ranges between
 0, when no streamlines of S or T have neighbours in the other set, and 1
 when they all do.
 
 If $S$ is a good approximation to $T$ then $S$ will have high coverage
 of $T$; if $S$ has low redundancy as an approximation to $T$ then the
-sparsity of $S$ in $T$ will be low; and if $S$ and $T$ are globally
+overlap of $S$ in $T$ will be low; and if $S$ and $T$ are globally
 similar then BA will be high.
 
 \subsection{\label{sub:QB-Data-sets}Data sets}
@@ -910,7 +913,7 @@ and then averaged. Across subjects the mean OMA
 be interpreted as a good level of agreement~\citep{altman1995}.
 
 As well as checking that QB created sets of centroids with good coverage
-and sparsity statistics, we went on to show that the performance of QB
+and overlap statistics, we went on to show that the performance of QB
 generalises to sets of streamlines different from the training set, and
 is superior to a random sample of streamlines. We split each of the 10
 tractographies randomly into two halves $T_1$ (training set) and $T_2$
@@ -921,7 +924,7 @@ measures described in section~\ref{sub:Tightness-comparisons-1} we found
 that with distance threshold $10$~mm the mean coverage (s.d.) of $T_1$
 by $C_1$ was $99.96$\% ($\pm 0.007$\%), of $T_2$ by $C_1$ was $99.31$\%
 ($\pm 0.08$\%) and of $T_2$ by $R_1$ was $90.49$\% ($\pm 0.41$\%). The mean
-sparsity (s.d.) at this threshold of $C_1$ in $T_1$ was $2.44$ ($\pm
+overlap (s.d.) at this threshold of $C_1$ in $T_1$ was $2.44$ ($\pm
 0.08$), of $C_1$ in $T_2$ was $2.44$ ($\pm 0.08$), and of $R_1$ in $T_2$
 was $5.57$ ($\pm 0.50$).
 
@@ -931,17 +934,17 @@ we have selected the same values here for the two thresholds they do not
 have to be the same.) We found that with distance threshold $10$mm the
 mean coverage (s.d.) of $T_1$ by $C_1$ was $99.99$\% ($\pm 0.004$\%), of
 $T_2$ by $C_1$ was $99.91$\% ($\pm 0.02$\%) and of $T_2$ by $R_1$ was
-$95.86$\% ($\pm 0.62$\%). The mean sparsity (s.d.) at this threshold
+$95.86$\% ($\pm 0.62$\%). The mean overlap (s.d.) at this threshold
 of $C_1$ in $T_1$ was $3.54$ ($\pm 0.18$), of $C_1$ in $T_2$ was $3.54$
 ($\pm 0.18$), and of $R_1$ in $T_2$ was $6.53$ ($\pm 0.93$).
 
-We conclude from these analyses that QB has good coverage and sparsity
-both the training set and the test set of streamlines, while an
-equivalent random selection of streamlines has worse coverage and
-sparsity. Moreover the performance of QB is better with the lower
-closeness threshold. The poor performance of random subsets is to be
-expected as they will oversample in dense parts of the tractography
-space, and undersample in sparser regions.
+We conclude from these analyses that QB has good coverage and overlap
+properties with respect to the training set and to the test set of
+streamlines, while an equivalent random selection of streamlines has
+worse coverage and overlap. Moreover the performance of QB is better
+with the lower closeness threshold. The poor performance of random
+subsets is to be expected as they will oversample in denser parts of the
+tractography space, and undersample in sparser regions.
 
 \begin{figure*}[htp]
   \centerline{\includegraphics[width=180mm]{Figures/Fig_12_All_Brains.eps}}
