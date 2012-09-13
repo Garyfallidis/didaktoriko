@@ -64,28 +64,30 @@ Nimmo-Smith]{Eleftherios~Garyfallidis\,$^{1,3,*}$, Frank~Yeh and
 \subsection{Overview}
 
 Between one to two thirds of imaging voxels in the human brain's white
-matter are thought to contain multiple fibre bundle crossings~\cite{Behrens2007NeuroImage},
-in which case the Diffusion Tensor model proposed by Basser et al.~\cite{Basser1994}
-breaks down. High Angular Resolution Diffusion Imaging (HARDI) methods
-\cite{Tuch2002} such as Diffusion Spectrum Imaging (DSI)~\cite{callaghan1988nmr},
-\cite{wedeen2005mapping} or Higher Order Tensors~\cite{ozarslan2003generalized},
-\cite{barmpoutis2009regularized} and many more reconstruction methods
-have been proposed to overcome the limitations of the Diffusion Tensor.
-These methods can be divided into those which need specific acquisition
-parametrizations, and those which can be used independently of q-space
-structure. For instance, for Q-ball Imaging~\cite{Tuch2004} sampling
-needs to be on one or more spherical grids, and in Generalized Q-sampling
-Imaging (GQI)~\cite{Yeh2010}, requires sampling on a Cartesian grid;
-by contrast DTI can be used independently of q-space structure. A
-further division considers the level of model assumptions for the
-diffusion process. Although all methods have some underlying assumptions
-we generally separate them in model-based and model-free. Model-based
-methods like the Single Tensor or Multi Tensor require a number of
-parameters to be fitted. By contrast, in model-free methods fitting
-is not necessary and the directionality of the underlying tissue can
-be approximated by some re-parametrization or re-transformation of
-the signal. The latter is usually more efficient than fitting models
-with many parameters which typically call for iterative methods.
+matter are thought to contain multiple fibre bundle
+crossings~\citep{Behrens2007NeuroImage}, in which case the Diffusion
+Tensor model proposed by \citet{Basser1994BiophysicalJ} breaks down. High Angular
+Resolution Diffusion Imaging (HARDI) methods \citep{Tuch2002} such as
+Diffusion Spectrum Imaging (DSI)~\citep{callaghan1988nmr,
+  wedeen2005mapping} or Higher Order
+Tensors~\citep{ozarslan2003generalized}, \citet{barmpoutis2009regularized}
+and many more reconstruction methods have been proposed to overcome the
+limitations of the Diffusion Tensor.  These methods can be divided into
+those which need specific acquisition parametrizations, and those which
+can be used independently of q-space structure. For instance, for Q-ball
+Imaging~\citep{Tuch2004} sampling needs to be on one or more spherical
+grids, and in Generalized Q-sampling Imaging (GQI)~\citep{Yeh2010},
+requires sampling on a Cartesian grid; by contrast DTI can be used
+independently of q-space structure. A further division considers the
+level of model assumptions for the diffusion process. Although all
+methods have some underlying assumptions we generally separate them in
+model-based and model-free. Model-based methods like the Single Tensor
+or Multi Tensor require a number of parameters to be fitted. By
+contrast, in model-free methods fitting is not necessary and the
+directionality of the underlying tissue can be approximated by some
+re-parametrization or re-transformation of the signal. The latter is
+usually more efficient than fitting models with many parameters which
+typically call for iterative methods.
 
 This chapter presents, evaluates and compares different model-free
 methods for the reconstruction of orientation distribution functions
@@ -102,8 +104,8 @@ the current state-of-the art methods i.e. DSI and GQI.
 \subsection{Theory}
 
 We start from the classical formulation shown in Eq.~\ref{eq:kq}
-of joint k-space and q-space imaging described in Callaghan~\cite{Callaghan1991OUP},
-\cite{callaghan1988nmr} using the narrow pulse gradient spin echo
+of joint k-space and q-space imaging described in \citet{Callaghan1991OUP} and
+\citet{callaghan1988nmr} using the narrow pulse gradient spin echo
 (PGSE) sequence of Tanner and Stejskal \begin{eqnarray}
 RF(\mathbf{k},\mathbf{q}) & = & \int\rho(\mathbf{v})\exp(i2\pi\mathbf{k}\cdot\mathbf{v})\int P_{\Delta}(\mathbf{v},\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})\, d\mathbf{r\,}d\mathbf{v}\label{eq:kq}\end{eqnarray}
 
@@ -134,12 +136,12 @@ S(\mathbf{q}) & = & S_{0}\int P(\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})d
 
 
 By applying the 3D Fourier transform in Eq.~\ref{eq:S} we can reconstruct
-the average propagator also known as the diffusion spectrum \cite{Wedeen}
+the average propagator also known as the diffusion spectrum \citep{Wedeen}
 or diffusion propagator\begin{eqnarray}
 P(\mathbf{r}) & = & S_{0}^{-1}\int S(\mathbf{q})\exp(-i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}\label{eq:P}\end{eqnarray}
 
 
-\noindent It was shown by Wedeen et al. \cite{Wedeen} that the dMRI
+\noindent It was shown by \citet{Wedeen} that the dMRI
 signal is positive for any type of spin motion without net flux (i.e.~spin
 displacements due to thermal molecular agitation) or other random
 fluxes such as intravoxel incoherent motion. Under this assumption
@@ -171,7 +173,7 @@ values. Often, to obtain data for the complete grid of $515$ q-vectors
 (which also means that we need to collect $515$ diffusion weighted
 volumes), the overall acquisition time would be too long and a smaller
 number of unique q-vectors are employed for just a single hemisphere
-usually between $101$ to $257$ points~\cite{Kuo}. This is valid
+usually between $101$ to $257$ points~\citep{Kuo}. This is valid
 because the underlying self-diffusion process is symmetric and so
 the signal is symmetric, therefore the vectors can be mapped on the
 other hemisphere to create the full q-space. 
@@ -182,32 +184,31 @@ summation of $P(\mathbf{r})$\foreignlanguage{british}{\begin{equation}
 \psi_{DSI}(\hat{\mathbf{u}})=\int_{0}^{\infty}P(r\hat{\mathbf{u}})r^{2}dr\label{eq:ODF_DSI}\end{equation}
 }
 
-\noindent This defines the \foreignlanguage{british}{orientation
+\noindent This defines the orientation
 density function (ODF) for DSI which measures the quantity of diffusion
-in the direction of the unit vector $\mathbf{\hat{u}}$ where $\mathbf{r=}r\hat{\mathbf{u}}$.}
+in the direction of the unit vector $\mathbf{\hat{u}}$ where $\mathbf{r=}r\hat{\mathbf{u}}$.
 
-\selectlanguage{british}%
-Note at this point that in order to find the ODF we have to first
-create the diffusion propagator by \foreignlanguage{english}{applying}
-the Fourier transform on the lattice. \foreignlanguage{english}{Yeh
-et al.~\cite{Yeh2010} proposed a direct way to calculate a slightly
-different ODF using the Cosine transform.}
+Note at this point that in order to find the ODF we have to first create
+the diffusion propagator by applying the Fourier transform on the
+lattice. \citet{Yeh2010} proposed a direct way to calculate a slightly
+different ODF using the Cosine transform.
 
-\selectlanguage{english}%
 In order to represent the average propagator in the scale of spin
-quantity Yeh et al.~\cite{Yeh2010} introduced the \emph{spin density
-function }$Q$ which is estimated by scaling the average propagator
-$P_{\Delta}$ with the spin density $\rho$, i.e. $Q(\mathbf{r})=\rho P(\mathbf{r})=S_{0}P(\mathbf{r})$.
-From Eq.~\ref{eq:S} we obtain\foreignlanguage{british}{\begin{eqnarray}
-S(\mathbf{q}) & = & \int Q(\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}\label{eq:W2Q}\end{eqnarray}
-}We can apply the Fourier transform again to Eq.~\ref{eq:W2Q} and
-obtain\begin{eqnarray}
-Q(\mathbf{r}) & = & \int S(\mathbf{q})exp(-i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{q}\label{eq:Q2S_complex}\end{eqnarray}
-Because\foreignlanguage{british}{ $Q(\mathbf{r})$} is real and $S(\mathbf{q})$
-is symmetric (even), i.e. $S(\mathbf{q})=S(-\mathbf{q})$, we can
-use directly the Fourier Cosine transform (see section \ref{sub:The-cosine-transform})
-to calculate\begin{eqnarray}
-Q(\mathbf{r}) & = & \int S(\mathbf{q})cos(2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{q}\label{eq:cosine_transform}\end{eqnarray}
+quantity \citet{Yeh2010} introduced the \emph{spin density
+  function }$Q$ which is estimated by scaling the average propagator
+$P_{\Delta}$ with the spin density $\rho$, i.e. $Q(\mathbf{r})=\rho
+P(\mathbf{r})=S_{0}P(\mathbf{r})$.  From Eq.~\ref{eq:S} we obtain
+\begin{eqnarray} S(\mathbf{q}) & = & \int
+  Q(\mathbf{r})\exp(i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}\label{eq:W2Q}\end{eqnarray}
+We can apply the Fourier transform again to Eq.~\ref{eq:W2Q} and
+obtain\begin{eqnarray} Q(\mathbf{r}) & = & \int
+  S(\mathbf{q})exp(-i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{q}\label{eq:Q2S_complex}\end{eqnarray}
+Because $Q(\mathbf{r})$ is real and
+$S(\mathbf{q})$ is symmetric (even),
+i.e. $S(\mathbf{q})=S(-\mathbf{q})$, we can use directly the Fourier
+Cosine transform (see section \ref{sub:The-cosine-transform}) to
+calculate\begin{eqnarray} Q(\mathbf{r}) & = & \int
+  S(\mathbf{q})cos(2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{q}\label{eq:cosine_transform}\end{eqnarray}
 
 
 \noindent and obtain the {}``spin'' orientation distribution function
@@ -233,7 +234,7 @@ be written in a simple matrix form\begin{eqnarray}
 $\bm{\psi}{}_{GQI}$ as a $M$-dimensional vector with components
 corresponding to the selected directions $\hat{\mathbf{u}}$ on the
 ODF sphere, $\mathbf{s}$ is a vector with all the signal values,
-D=0.00251~\cite{canalesrodriguez2009mdq} \foreignlanguage{british}{where
+D=0.00251~\citep{canalesrodriguez2009} \foreignlanguage{british}{where
 $D$ is a constant known as the free water diffusion coefficient},
 $G$ is the $N\times3$ matrix with the gradient vectors, $\mathbf{b}$
 is the $N\times1$ matrix with the b-values and $\mathbb{1}$ is the
@@ -284,8 +285,8 @@ fibres using different Cartesian lattice q-space reconstruction methods. }
 
 
 A new method for the calculation of the real ODF is proposed here.
-This is based on the theoretical work done by Aganj et al.~\cite{aganj2010reconstruction}
-and Canales-Rodriguez et al.~\cite{Canales-Rodriguez2009} using
+This is based on the theoretical work done by \citet{aganj2010reconstruction}
+and \citet{canalesrodriguez2009} using
 two important theorems from Fourier Analysis
 \begin{enumerate}
 \item The Fourier transform of $P(\mathbf{r})r^{2}=-\nabla^{2}E(\mathbf{q})$
@@ -310,7 +311,7 @@ is the Laplacian operator and $E(q)=S(q)/S_{0}$ is the normalized
 diffusion signal. Eq. \ref{eq:ODF_DNI} has the advantage that no
 Fourier transform is necessary. We need however, a way to calculate
 the Laplacian of the signal. This can be analytically derived for
-a spherical grid \cite{aganj2010reconstruction} and we propose here
+a spherical grid \citep{aganj2010reconstruction} and we propose here
 that it can be directly calculated in a cubic grid using the standard
 3D discrete Laplacian filter which is given by the 3D kernel defined
 by the following $3\times3\times3$ array: }
@@ -390,14 +391,14 @@ Apart from the visual confirmation, further supporting evidence that
 equatorial integration is crucial for derivation of directionality
 can be seen in Eq.~\ref{eq:ODF_DNI} where an equatorial integral
 creates a connection between the real ODF and the signal. The Funk-Radon
-Transform (FRT) used by \cite{Tuch2004} is another example where
+Transform (FRT) used by \citet{Tuch2004} is another example where
 equatorial integration is employed using the reconstruction sphere.
 We will see next that DNI and FRT are just a subset of the EIT.
 
 With EIT the most important goal is to try to identify the orientational
 variation in the signal in the most accurate way by generating a spherical
 density. However, it is possible to calculate additionally the classical
-ODF as defined by Wedeen et al.~\cite{Wedeen}.
+ODF as defined by \citet{Wedeen}.
 
 The EIT shown in Eq.~\ref{eq:ODF_EIT} consists of an integration
 along the equator and along radial lines. A function $F$ of the signal
@@ -478,28 +479,28 @@ commonly found in the literature.
 
 \subsection{Other methods}
 
-Pickalov et al.~\cite{pickalov2006tra} proposed a new method for
+\citet{pickalov2006tra} proposed a new method for
 reconstructing the diffusion propagator by applying an iterative inverse
 Radon transform on measurements along many radial lines; computing
 1D tomographic projections to reconstruct the 3D EAP. This technique
 measures DW images along a few radial lines of q-space but still requires
 hundreds of samples to reliably recover the EAP. Currently, to reconstruct
 the EAP, the state-of-the-art model-free techniques apart from diffusion
-spectrum imaging are hybrid diffusion imaging (HYDI)~\cite{wu2007hybrid}
-and multiple q-shell diffusion propagator imaging (mq-DPI)~\cite{descoteaux2010multiple}.
+spectrum imaging are hybrid diffusion imaging (HYDI)~\citep{wu2007hybrid}
+and multiple q-shell diffusion propagator imaging (mq-DPI)~\citep{descoteaux2010multiple}.
 HYDI acquires the signal values on five concentric spherical q-space
 shells, then interpolates onto a cubic grid and applies the standard
 Fourier transform in the same way as DSI. In mq-DPI the EAP is calculated
 by solving Laplace's equation for the diffusion signal using a real
 and symmetric modifi{}ed spherical harmonic basis. The EAP can be
 found analytically by the inversion of a linear system using Laplace-Beltrami
-regularization. In addition, Exact Q-ball imaging (EQBI)~\cite{canalesrodriguez2009mdq}
+regularization. In addition, Exact Q-ball imaging (EQBI)~\citep{canalesrodriguez2009}
 provides a different method to calculate the ODF analytically using
-multiple spherical q-space shells. Similarly, Aganj et al.~\cite{Aganj2010},
+multiple spherical q-space shells. Similarly, \citet{Aganj2010},
 proposed an analytical solution for the multi-shell case by incorporating
 a mono-exponential or bi-exponential model (CSA-ODF). Another method
 for finding a directional distribution on the sphere was proposed
-by Özarslan et al.~\cite{ozarslan2006resolution} called the diffusion
+by \citet{ozarslan2006resolution} called the diffusion
 orientation transform (DOT). This method calculates a different statistic
 $P(r_{0}\mathbf{\hat{u}})$, the probability of finding a particle
 initially at the origin at the point $r_{0}\mathbf{\hat{u}}$, using
@@ -508,8 +509,7 @@ CSA with DOT which is \foreignlanguage{british}{\begin{equation}
 \psi_{CSA}(\hat{\mathbf{u}})=\int_{0}^{\infty}DOT(r\hat{\mathbf{u}})r^{2}dr\label{eq:CSAandDOT}\end{equation}
 }
 
-\selectlanguage{british}%
-J\foreignlanguage{english}{ansons et al.~\cite{JansonsPAS2003} proposed
+\citet{JansonsPAS2003} proposed
 a different function on the sphere than the ODFs described above,
 to be used on data sets acquired on a single spherical q-space shell.
 They called this spherical function persistent angular structure (PAS).
@@ -519,38 +519,37 @@ is used in order to identify many parameters. PAS is a statistic on
 the sphere defined as $PAS(\hat{\mathbf{u}})=\exp(\lambda_{0}+\sum_{j=1}^{N}\lambda_{j}\cos(\mathbf{q}_{j}\cdot k\hat{\mathbf{u}}))$
 where $\lambda$ are the unknown parameters, $k$ is constant and
 $N$ is the number of DWIs. The relationship $\int PAS(\hat{\mathbf{u}})\exp(i\mathbf{q}_{j}\cdot k\hat{\mathbf{u}})d\hat{\mathbf{u}}=E(\mathbf{q}_{j})$
-provides the bridge between PAS and the diffusion signal ($E(\mathbf{q})$).}
+provides the bridge between PAS and the diffusion signal ($E(\mathbf{q})$).
 
 \selectlanguage{english}%
 The first publication of using spherical harmonic expansions with
 diffusivity profiles, which are now quite common in the literature,
-was by Alexander et al.~\cite{alexander2002detection}. Q-ball imaging
-was introduced by Tuch~\cite{Tuch2004} and a new ODF defined as
+was by \citet{alexander2002detection}. Q-ball imaging
+was introduced by \citet{Tuch2004} and a new ODF defined as
 $\psi(\mathbf{\hat{u}})=\frac{1}{Z}\int_{0}^{\infty}P(r\mathbf{\hat{u}})dr$
 where $Z$ is a normalization constant. It was later provided for
 Q-Ball imaging a fast and analytical solution using spherical harmonics
-(SH) and Laplace-Beltrami regularization \cite{Descoteaux2007}. Tournier
-et al. \cite{tournier2004direct}, \cite{Tournier2007} introduced
+(SH) and Laplace-Beltrami regularization \citep{Descoteaux2007MagResMed}. \citet{tournier2004direct} and \citet{Tournier2007} introduced
 a spherical deconvolution method where first the SH coefficients were
 estimated, then single fiber ODFs were used as a deconvolution kernel
 estimated from the real data. Then, the sharper fODF (fiber orientation
 distribution function) was obtained by a simple linear transformation
-\cite{descoteaux2007deterministic}. Other deconvolution approaches
-were proposed in \cite{sakaie2007objective} and \cite{yeh2011estimation}.
+\citep{descoteaux2007deterministic}. Other deconvolution approaches
+were proposed in \citet{sakaie2007objective} and \citet{yeh2011estimation}.
 
-On Tensor related methods we have the classical Single Tensor \cite{Basser1994},
-Sticks and Ball\cite{Behrens2007NeuroImage}, Multi-Tensor \cite{pasternak2008variational},
-\cite{liu2004characterizing} and Higher Rank Tensors \cite{ozarslan2003generalized},
-\cite{barmpoutis2009regularized}. In addition there are also model
+On Tensor related methods we have the classical Single Tensor~\citep{Basser1994BiophysicalJ},
+Sticks and Ball~\citep{Behrens2007NeuroImage}, Multi-Tensor~\citep{pasternak2008variational,
+liu2004characterizing} and Higher Rank Tensors \citep{ozarslan2003generalized,
+barmpoutis2009regularized}. In addition there are also model
 based methods which try to calculate non-Gaussian properties, for
-example the Kurtosis Tensor~\cite{jensen2005diffusional},~\cite{lu2006three}
+example the Kurtosis Tensor~\citep{jensen2005diffusional, lu2006three}
 which is used in Diffusion Kurtosis Imaging (DKI).
 
 Finally, new model-based methods are emerging which are trying to
 calculate statistics like the axonal thickness distribution from dMRI
 data sets. These are usually based on model free and restricted components;
-CHARMED~\cite{assaf2005composite}, \cite{assaf2004new}, AxCaliber~\cite{assaf2008axcaliber}
-and the orientation invariant ActiveAx \cite{alexander2010orientationally}
+CHARMED~\citep{assaf2005composite, assaf2004new}, AxCaliber~\citep{assaf2008axcaliber}
+and the orientation invariant ActiveAx~\citep{alexander2010orientationally}
 are some well known methods of this type. Q-space Imaging (QSI) can
 be used to identify distributions of axon-diameter too \cite{ong2010quantifying}.
 
@@ -682,7 +681,7 @@ We have used a triangulation of the unit sphere (which we refer to
 simply as 'sphere') obtained by triangular subdivision of a regular
 icosahedron. It is symmetric over the z-axis, i.e.~for each vertex
 $(x,\, y,\, z)$ there is a corresponding vertex $(x,\, y,\,-z)$
-in the opposite hemisphere. The same sphere was used in \cite{Yeh2010}
+in the opposite hemisphere. The same sphere was used in \citet{Yeh2010}
 for GQI reconstructions. Every face (triangle) corresponds to a list
 of the $3$ indices of the $3$ vertices on the sphere. The idea here
 is that we can travel from face to face and nullify all points on
@@ -699,7 +698,7 @@ was a local maxima then only points \textbf{b} could be alternative
 local maxima for \textbf{a} but none of the unlabeled points could
 be a second peak. Nevertheless, we found Alg.~\ref{Alg:PeakFinding}
 to be extremely useful and fast. The same algorithm was used also
-in \cite{Yeh2010} but it was not documented as such.
+in \citet{Yeh2010} but it was not documented as such.
 
 %
 \begin{figure}
@@ -724,7 +723,7 @@ type of {}``smoothing'' to reduce the effect of noise in the real
 data sets. DSI uses a Hanning filter and then avoids sampling from
 low values in \textbf{r}-space. In GQI, smoothing is controlled from
 a scalar parameter; the diffusion sampling length and in spherical
-harmonic inversion methods \cite{Descoteaux2007MagResMed}, \cite{aganj2010reconstruction}
+harmonic inversion methods \citep{Descoteaux2007MagResMed, aganj2010reconstruction}
 the amount of smoothing is controlled by using only a number of the
 first components of the SH series. 
 
@@ -811,8 +810,7 @@ angle of $25^{\circ}$. }
 \end{figure}
 
 
-For single voxel simulations we used the model proposed in Behrens
-et al.~\cite{Behrens2007NeuroImage}; the multi-compartment model
+For single voxel simulations we used the model proposed in \citet{Behrens2007NeuroImage}; the multi-compartment model
 also known as Sticks and Ball which simulates the diffusion signal
 as\begin{equation}
 S_{i}=S_{0}((1-\sum_{j=1}^{N}f_{j})\exp(-b_{i}d)+\sum_{j=1}^{N}f_{j}\exp(-b_{i}d\cos(\theta_{ij})^{2}))\label{eq:sticks_ball_eq}\end{equation}
@@ -820,7 +818,7 @@ S_{i}=S_{0}((1-\sum_{j=1}^{N}f_{j})\exp(-b_{i}d)+\sum_{j=1}^{N}f_{j}\exp(-b_{i}d
 $\mathbf{\hat{g}}_{i}$ and fibre (stick) unit direction $\mathbf{\hat{u}}_{j}$.
 The amount of representation for every fibre is given by $f$ and
 $d$ is the diffusivity value for the entire model. A Multi Tensor
-\cite{liu2004characterizing} approach was also created for software
+\citep{liu2004characterizing} approach was also created for software
 phantoms using the formula\foreignlanguage{british}{\begin{equation}
 S_{i}=S_{0}\sum_{j=1}^{N}\exp(-b\mathbf{\hat{g}}^{T}D_{j}\mathbf{\hat{g}})\label{eq:multitensor}\end{equation}
 where $D_{j}$ is the diffusion tensor for every fibre $j$.}
@@ -1024,7 +1022,7 @@ DNI or fast DNI (EITL). }
 A software phantom generation tool was developed which can simulate
 the diffusion weighted signal for one or more fibres represented by
 different discrete 3D orbital functions. This work is an extension
-of the phantom developed by Correia et al.~\cite{Correia2009} which
+of the phantom developed by \citet{Correia2009} which
 supported only paths with analytically calculated derivatives.
 
 The idea here is that we first create any orbital function $f(t):\mathbb{R}\rightarrow\mathbb{R}^{3}$
@@ -1124,7 +1122,7 @@ and ended at position $(1,-1,0)$. (e) We added the two volumes together
 to create an 'x' shape (see Fig.~\ref{Flo:x-shape-thin-tensor},~\ref{Flo:x-shape-fat-tensor}).
 (f) We added Rician noise with SNR=$5$. As in this chapter we concentrate
 on Cartesian Lattice Q-space acquisitions we generated b-vectors and
-b-values using a keyhole Cartesian sampling grid \cite{Tuch2002ThesisMIT}
+b-values using a keyhole Cartesian sampling grid \citep{Tuch2002ThesisMIT}
 with $515$ q-vectors. The maximum b-value was $11,538$ and the minimum
 was $0$. Two sets of simulation experiments were performed each using
 a Tensor of different shapes.
@@ -1158,7 +1156,7 @@ In the second experiment shown in Fig.~\ref{Flo:x-shape-fat-tensor}
 and Fig.~\ref{Flo:x-shape-fat-tensor-zoomed} we used a much less
 anisotropic prolate tensor with$\lambda_{\parallel}=1.7\times10^{-3}$
 \foreignlanguage{british}{$\textrm{mm}^{2}/\textrm{sec}$} and $\lambda_{\perp}=0.3\times10^{-3}\textrm{mm}^{2}/\textrm{sec}$.
-The values of $\lambda$ are based in \cite{Canales-Rodriguez2009}.
+The values of $\lambda$ are based in \citet{canalesrodriguez2009}.
 It is well known that noise has higher effect on less anisotropic
 areas. We can see this effect by comparing the overlapped FAs of these
 two two figures (\ref{Flo:x-shape-thin-tensor}, \ref{Flo:x-shape-fat-tensor}).
@@ -1269,7 +1267,7 @@ with a 32 channels head coil. The field of view was $210\times210\,\textrm{mm}^{
 matrix size $96\times96$, and slice thickness $3\textrm{\,\textrm{mm}}$.
 $44$ slices were acquired and the voxel resolution was $2.2\times2.2\times3.0\,\textrm{mm}^{3}$.
 A $258$-point half grid acquisition scheme with a maximum b-value
-of $8011\,\textrm{s}/\textrm{mm}^{2}$ also known as DSI515~\cite{Wedeen2008}
+of $8011\,\textrm{s}/\textrm{mm}^{2}$ also known as DSI515~\citep{Wedeen}
 was used. The total acquisition time was $34\,\textrm{min}$ with
 TR=$8200\,\textrm{ms}$ and TE=$165\,\textrm{ms}$.
 
@@ -1331,7 +1329,7 @@ EITL, EITL2 is smaller as a result of the application of angular weighting.}
 We also tested our results with another human brain data set generated
 at a 3T scanner (TIM Trio, Siemens) at the Medical Research Council
 Cognition and Brain Sciences Unit, Cambridge, UK. We used Siemens
-advanced diffusion work-in-progress sequence, and STEAM \cite{merboldt1992diffusion,MAB04}
+advanced diffusion work-in-progress sequence, and STEAM \citep{merboldt1992diffusion,MAB04}
 as the diffusion preparation method. The field of view was $240\times240\,\textrm{mm}^{2}$,
 matrix size $96\times96$, and slice thickness $2.5\,\textrm{mm}$
 (no gap). $55$ slices were acquired to achieve full brain coverage,
@@ -1410,7 +1408,7 @@ For illustration purposes the upper part of Fig.~\ref{Flo:real_101_CBU}
 is depicted again in Fig.~\ref{Flo:real_101_CBU_left_up}, and the
 region with purple shading from Fig.~\ref{Flo:real_101_CBU_left_up}
 is given at an even higher resolution in Fig.~\ref{Flo:real_101_CBU_left_up_zoomed}.
-We used Mayavi \cite{ramachandran2011mayavi}, a Python visualization
+We used Mayavi \citep{ramachandran2011mayavi}, a Python visualization
 library based on VTK to make the visualizations shown in the figures
 of this section.
 
@@ -1418,8 +1416,8 @@ Although less directions were used in this acquisition scheme we obtain
 a similarly accurate depiction of the underlying white matter structure
 in comparison with that of $258$ directions. This gives great hope
 that we can use grid-based reconstruction methods with half-grid sequences
-with $~100$ gradient directions. This was also shown by \cite{Kuo}
-and \cite{Yeh2010} who used similar number of directions. 
+with $~100$ gradient directions. This was also shown by \citet{Kuo}
+and \citet{Yeh2010} who used similar number of directions. 
 
 In all the figures with real data sets we can see single fibres as
 those usually found at the center of CC, and $2$ or $3$-fibre crossings
@@ -1440,14 +1438,14 @@ $200$ or more dimensions in each voxel and it can be cumbersome to
 use them directly for subject comparisons or visualization purposes.
 For this purpose most people use simple scalar summarizing metrics
 e.g. Tensor-based FA, MD or ODF-based such as the Generalized FA (GFA)
-\cite{Tuch2002}. In this section we will show that a similar scalar
+\citep{Tuch2002}. In this section we will show that a similar scalar
 function like FA can be constructed non-parametrically. We call this
 NPA which stands for non-parametric anisotropy. We will also start
 experimenting with metrics that have more than one scalar value and
 can represent more accurately the directionality in each voxel that
 is lost with FA, GFA and MD. We will investigate and explain here
 the realms and robustness of Quantitative Anisotropy which was first
-introduced by Yeh et al. \cite{Yeh2010}.
+introduced by \citet{Yeh2010}.
 
 
 \subsubsection{Non-parametric Anisotropy}
@@ -1459,9 +1457,9 @@ on diffusion weighted MR imaging (dMRI). This underlines the need
 for valid and reliable measures which can indicate the degree of local
 organisation of white matter in the brain. The measures listed above
 are based on the parametric simple diffusion tensor (SDT or DTI) model
-\cite{Basser1994} which works well when there is a single dominant
+\citet{Basser1994BiophysicalJ} which works well when there is a single dominant
 fibre direction. When the local organization is more complex however,
-the information it provides is not so valid \cite{Yeh2010,Tuch2002ThesisMIT}.
+the information it provides is not so valid \citep{Yeh2010,Tuch2002ThesisMIT}.
 We show how model-free, alternatives can yield non-parametric anisotropy
 (NPA). These are constructed from the GQI ODF. We apply exact analytical
 results which show the form of the GQI-ODF when the single tensor
@@ -1533,7 +1531,7 @@ where FA would be unable to give an informative result and also extend
 it to other types of ODFs. In summary, we have shown that an informative
 new scalar anisotropy function (NPA) can be calculated without fitting
 just from the GQI ODF which promises to be a model-free proxy for
-FA. NPA differs from GFA \cite{Tuch2004} in that it uses just $3$
+FA. NPA differs from GFA \citep{Tuch2004} in that it uses just $3$
 values of the GQI ODF with a geometric relationship instead of the
 entire ODF. 
 
@@ -1572,7 +1570,7 @@ compartment at a range of signal to noise ratios.}
 
 \subsubsection{Quantitative Anisotropy\label{sub:Quantitative-Anisotropy}}
 
-Quantitative anisotropy (QA) was first used by Yeh et al.~\cite{Yeh2010}
+Quantitative anisotropy (QA) was first used by \citet{Yeh2010}
 as a way of representing the peaks of the ODF with as few values as
 possible. This works in the following way: a) we create the ODF, b)
 we find the peaks using Alg. \ref{Alg:PeakFinding}, c) then $QA_{i}$
@@ -1677,7 +1675,7 @@ to differentiate between different brain fibre populations.
 
 Twelve healthy volunteers aged between $18$ and $40$ were scanned
 on a 3T scanner (TIM Trio, Siemens), using Siemens advanced diffusion
-work-in-progress sequence, and STEAM \cite{merboldt1992diffusion,MAB04}
+work-in-progress sequence, and STEAM \citep{merboldt1992diffusion,MAB04}
 as the diffusion preparation method. The field of view was $240\times240\,\textrm{mm}^{2}$,
 matrix size $96\times96$, and slice thickness $2.5\,\textrm{mm}$
 (no gap). $55$ slices were acquired to achieve full brain coverage,
@@ -1685,11 +1683,11 @@ and the voxel resolution was $2.5\times2.5\times2.5\,\textrm{mm}^{3}$.
 Two sampling schemes were considered: a 102-point grid acquisition
 with a maximum b-value of $4,000\,\textrm{s}/\textrm{mm}^{2}$, and
 a single shell acquisition using $118$ non-collinear gradient directions
-and a b-value of $1,000\,\textrm{s}/\textrm{mm}^{2}$ \cite{correia_garyfallidis2011}.
+and a b-value of $1,000\,\textrm{s}/\textrm{mm}^{2}$ \citep{correia_garyfallidis2011}.
 The two acquisition schemes were matched for total acquisition time
 in (14 min 37~s), voxel resolution, and bandwidth. FA, MD and $QA_{0}$
 maps were then generated for each acquisition scheme and for the $12$
-volunteers using $\texttt{DIPY}$ \cite{garyfallidis2011dipy}. All
+volunteers using $\texttt{DIPY}$ \citep{garyfallidis2011dipy}. All
 the FA datasets were non-linearly registered into MNI space using
 FSL tools, and the same transformation parameters were applied to
 MD and $QA_{0}$ maps . Fourteen ROIs of different brain regions were
@@ -1709,7 +1707,7 @@ also calculated, as a measure of each metric\textquoteright{}s comparability
 between subjects. The contrast-to-scatter ratio (CSR) (calculated
 for FA in Eq.~\ref{eq:CSR_FA}) is a good measure of a metric\textquoteright{}s
 ability to differentiate between different brain fibre populations
-\cite{correia_garyfallidis2011}. \begin{eqnarray}
+\citep{correia_garyfallidis2011}. \begin{eqnarray}
 CSR(FA) & = & \frac{mean(FA)_{ROI_{1}}-mean(FA)_{ROI_{2}}}{\sqrt{var(FA)_{ROI_{1}}+var(FA)_{ROI_{2}}}}\label{eq:CSR_FA}\end{eqnarray}
 
 
@@ -1761,7 +1759,7 @@ sampling scheme designed for GQI are still suitable for analysis,
 since they do not show poorer performance when compared to a single
 shell and low b-value acquisition. In fact, the overall results suggest
 that the $102$ grid sampling produces slightly more robust results
-than the $118$ shell acquisition. A previous study \cite{correia2009looking}
+than the $118$ shell acquisition. A previous study \citep{correia2009looking}
 has shown that metrics such as MD and FA benefit from the use of multiple
 b-values, which could explain the better performance of the $102$
 grid scheme.
@@ -1769,17 +1767,18 @@ grid scheme.
 \section{Discussion and Conclusion}
 
 Non-parametric methods have the advantage of representing the signal
-with minimum number of assumptions and without needing any fitting.
-For many years there has been a trend in science to prefer model-based
+with minimum number of assumptions and without needing any fitting.  For
+many years there has been a trend in science to prefer model-based
 rather than model free (non-parametric) methods. This is perhaps because
 model-based can be easier to describe, and allow the use of popular
-Bayesian approaches more readily. However, there are some crucial
-issues with fitting: (a) Usually the interesting models have many
-parameters and that makes fitting very slow. (b) Commonly non-linear
-fitting is needed and accurate fitting is not trivial. (c) Often the
-model does not represent precisely the complexity of the real problem.
-(d) The more complex the model, the more difficult to fit \cite{rice2006mathematical},
-\cite{lee1997bayesian},\cite{montgomery2001introduction}. 
+Bayesian approaches more readily. However, there are some crucial issues
+with fitting: (a) Usually the interesting models have many parameters
+and that makes fitting very slow. (b) Commonly non-linear fitting is
+needed and accurate fitting is not trivial. (c) Often the model does not
+represent precisely the complexity of the real problem.  (d) The more
+complex the model, the more difficult to fit
+\citep{rice2006mathematical, lee1997bayesian,
+montgomery2001introduction}.
 
 Non-parametric methods avoid fitting model parameters and that gives
 them a big advantage. The focus of this chapter was on introducing
@@ -1808,7 +1807,7 @@ EIT gives as good results with real data sets.
 
 The EIT finds the ODF directly without creating the diffusion propagator.
 If for some purpose the diffusion propagator is still required, then
-DSI or DPI \cite{descoteaux2010multiple} are favourable. It could
+DSI or DPI \citep{descoteaux2010multiple} are favourable. It could
 be interesting in the future to try and recover the propagator using
 ideas from the EIT. However, nearly always the propagator is not needed
 for the analysis. Furthermore, comparing 4D densities like the propagator
