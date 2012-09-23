@@ -1656,7 +1656,7 @@ The complete QB algorithm is described in formal detail in Alg.
 \begin_inset Float algorithm
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -1946,6 +1946,19 @@ leftarrow d$
 
 
 \backslash
+hspace*{2em} $
+\backslash
+textbf{EndFor}$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 hspace*{2em} $m 
 \backslash
 leftarrow 
@@ -2140,19 +2153,6 @@ leftarrow M + 1$
 hspace*{2em} $
 \backslash
 textbf{EndIf}$ 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{2em} $
-\backslash
-textbf{EndFor}$ 
 \backslash
 
 \backslash

@@ -283,11 +283,11 @@ noindent
 \begin_inset Formula $RF$
 \end_inset
 
- represents the complex RF signal measured at spatial wave number 
+ represents the complex RF signal measured at spatial wave vector 
 \begin_inset Formula $\mathbf{k}$
 \end_inset
 
- and magnetic gradient wave number 
+ and magnetic gradient wave vector 
 \begin_inset Formula $\mathbf{q}$
 \end_inset
 
@@ -320,7 +320,7 @@ noindent
  is the diffusion displacement.
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 the narrow pulse approximation allows us to easily understand the intrinsic
@@ -519,7 +519,7 @@ reference "eq:P"
  
 \begin_inset Formula 
 \begin{eqnarray}
-P(\mathbf{r}) & = & S_{0}^{-1}\int|S(\mathbf{q})|\exp(-i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}\label{eq:P_modulus}
+P(\mathbf{r}) & = & S_{0}^{-1}\int|S(\mathbf{q})|\exp(-i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{q}\label{eq:P_modulus}
 \end{eqnarray}
 
 \end_inset
@@ -533,7 +533,7 @@ The modulus of the signal coincides with the output of the standard MRI
  It represents the density of the average relative spin displacement in
  a voxel.
  In other words, 
-\begin_inset Formula $P(\mathbf{r})\, d\mathbf{r}$
+\begin_inset Formula $P(\mathbf{r})$
 \end_inset
 
  is a measure of the probability that a spin in a chosen voxel , during
@@ -562,8 +562,8 @@ reference "Flo:ODF"
 \end_layout
 
 \begin_layout Standard
-In the classical Q-ball acquisition, at each location, diffusion-weighted
- images are acquired for 
+In the classical DSI acquisition, at each location, diffusion-weighted images
+ are acquired for 
 \begin_inset Formula $N=515$
 \end_inset
 
@@ -874,7 +874,7 @@ spin
 \begin{eqnarray}
 \psi_{GQI}(\mathbf{\hat{u}}) & = & \intop_{0}^{\lambda}Q(r\mathbf{\hat{u}})dr\label{eq:SDF}\\
  & = & \intop_{0}^{\lambda}\int S(\mathbf{q})\cos(2\pi r\mathbf{q}\cdot\mathbf{\hat{u}})d\mathbf{q}dr\\
- & = & \int S(\mathbf{q})\mathtt{sinc}(2\pi r\mathbf{q}\cdot\mathbf{\hat{u}})d\mathbf{q}
+ & = & \lambda\int S(\mathbf{q})\mathtt{sinc}(2\pi\lambda\mathbf{q}\cdot\mathbf{\hat{u}})d\mathbf{q}
 \end{eqnarray}
 
 \end_inset
@@ -913,7 +913,7 @@ noindent
  written in a simple matrix form
 \begin_inset Formula 
 \begin{eqnarray}
-\bm{\psi}_{GQI}= & \mathbf{s}\cdot\mathtt{sinc}((6D\cdot G\circ\mathbf{b}\circ\mathbb{1})\cdot G)\lambda/\pi\label{eq:GQI_analytical}
+\bm{\psi}_{GQI}= & \mathbf{s}\cdot\mathtt{sinc}((6D\cdot G\circ\mathbf{b}\circ\mathbb{1})\cdot U^{T})\lambda/\pi\label{eq:GQI_analytical}
 \end{eqnarray}
 
 \end_inset
@@ -1054,7 +1054,7 @@ spin
 \begin_inset Formula 
 \begin{eqnarray}
 \psi_{GQI2}(\mathbf{\hat{u}}) & = & \intop_{0}^{\lambda}Q(r\mathbf{\hat{u}})r^{2}dr\label{eq:SDF2}\\
- & = & \lambda^{3}\int S(\mathbf{q})H(2\pi r\mathbf{q}\cdot\mathbf{\hat{u}})d\mathbf{q}
+ & = & \lambda^{3}\int S(\mathbf{q})H(2\pi\lambda\mathbf{q}\cdot\mathbf{\hat{u}})d\mathbf{q}
 \end{eqnarray}
 
 \end_inset
@@ -1090,7 +1090,7 @@ noindent
 This equation can be similarly implemented with a simple matrix transform
 \begin_inset Formula 
 \begin{eqnarray*}
-\bm{\psi}_{GQI2} & = & \mathbf{s}\cdot\mathtt{H}((6D\cdot G\circ\mathbf{b}\circ\mathbb{1})\cdot G)\lambda^{3}/\pi
+\bm{\psi}_{GQI2} & = & \mathbf{s}\cdot\mathtt{H}((6D\cdot G\circ\mathbf{b}\circ\mathbb{1})\cdot U^{T})\lambda^{3}/\pi
 \end{eqnarray*}
 
 \end_inset
@@ -1172,6 +1172,384 @@ name "Flo:beautiful-triple-crossing"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Other methods
+\end_layout
+
+\begin_layout Standard
+Pickalov et al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pickalov2006tra"
+
+\end_inset
+
+ proposed a new method for reconstructing the diffusion propagator by applying
+ an iterative inverse Radon transform on measurements along many radial
+ lines; computing 1D tomographic projections to reconstruct the 3D EAP.
+ This technique measures DW images along a few radial lines of q-space but
+ still requires hundreds of samples to reliably recover the EAP.
+ Currently, to reconstruct the EAP, the state-of-the-art model-free techniques
+ apart from diffusion spectrum imaging are hybrid diffusion imaging (HYDI)
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wu2007hybrid"
+
+\end_inset
+
+ and multiple q-shell diffusion propagator imaging (mq-DPI)
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "descoteaux2010multiple"
+
+\end_inset
+
+.
+ HYDI acquires the signal values on five concentric spherical q-space shells,
+ then interpolates onto a cubic grid and applies the standard Fourier transform
+ in the same way as DSI.
+ In mq-DPI the EAP is calculated by solving Laplace's equation for the diffusion
+ signal using a real and symmetric modiﬁed spherical harmonic basis.
+ The EAP can be found analytically by the inversion of a linear system using
+ Laplace-Beltrami regularization.
+ In addition, Exact Q-ball imaging (EQBI)
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "canalesrodriguez2009mdq"
+
+\end_inset
+
+ provides a different method to calculate the ODF analytically using multiple
+ spherical q-space shells.
+ Similarly, Aganj et al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Aganj2010"
+
+\end_inset
+
+, proposed an analytical solution for the multi-shell case by incorporating
+ a mono-exponential or bi-exponential model (CSA-ODF).
+ Another method for finding a directional distribution on the sphere was
+ proposed by Özarslan et al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ozarslan2006resolution"
+
+\end_inset
+
+ called the diffusion orientation transform (DOT).
+ This method calculates a different statistic 
+\begin_inset Formula $P(r_{0}\mathbf{\hat{u}})$
+\end_inset
+
+, the probability of finding a particle initially at the origin at the point
+ 
+\begin_inset Formula $r_{0}\mathbf{\hat{u}}$
+\end_inset
+
+, using spherical harmonics.
+ Not surprisingly there is a relationship connecting CSA with DOT which
+ is 
+\lang british
+
+\begin_inset Formula 
+\begin{equation}
+\psi_{CSA}(\hat{\mathbf{u}})=\int_{0}^{\infty}DOT(r\hat{\mathbf{u}})r^{2}dr\label{eq:CSAandDOT}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+J
+\lang english
+ansons et al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "JansonsPAS2003"
+
+\end_inset
+
+ proposed a different function on the sphere than the ODFs described above,
+ to be used on data sets acquired on a single spherical q-space shell.
+ They called this spherical function persistent angular structure (PAS).
+ This method has very good angular resolution.
+ It uses the principle of maximum entropy however, it is rather slow as
+ it nonlinear fitting is used in order to identify many parameters.
+ PAS is a statistic on the sphere defined as 
+\begin_inset Formula $PAS(\hat{\mathbf{u}})=\exp(\lambda_{0}+\sum_{j=1}^{N}\lambda_{j}\cos(\mathbf{q}_{j}\cdot k\hat{\mathbf{u}}))$
+\end_inset
+
+ where 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ are the unknown parameters, 
+\begin_inset Formula $k$
+\end_inset
+
+ is constant and 
+\begin_inset Formula $N$
+\end_inset
+
+ is the number of DWIs.
+ The relationship 
+\begin_inset Formula $\int PAS(\hat{\mathbf{u}})\exp(i\mathbf{q}_{j}\cdot k\hat{\mathbf{u}})d\hat{\mathbf{u}}=E(\mathbf{q}_{j})$
+\end_inset
+
+ provides the bridge between PAS and the diffusion signal (
+\begin_inset Formula $E(\mathbf{q})$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+The first publication of using spherical harmonic expansions with diffusivity
+ profiles, which are now quite common in the literature, was by Alexander
+ et al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "alexander2002detection"
+
+\end_inset
+
+.
+ Q-ball imaging was introduced by Tuch
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tuch2004"
+
+\end_inset
+
+ and a new ODF defined as 
+\begin_inset Formula $\psi(\mathbf{\hat{u}})=\frac{1}{Z}\int_{0}^{\infty}P(r\mathbf{\hat{u}})dr$
+\end_inset
+
+ where 
+\begin_inset Formula $Z$
+\end_inset
+
+ is a normalization constant.
+ It was later provided for Q-Ball imaging a fast and analytical solution
+ using spherical harmonics (SH) and Laplace-Beltrami regularization 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Descoteaux2007"
+
+\end_inset
+
+.
+ Tournier et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tournier2004direct"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tournier2007"
+
+\end_inset
+
+ introduced a spherical deconvolution method where first the SH coefficients
+ were estimated, then single fiber ODFs were used as a deconvolution kernel
+ estimated from the real data.
+ Then, the sharper fODF (fiber orientation distribution function) was obtained
+ by a simple linear transformation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "descoteaux2007deterministic"
+
+\end_inset
+
+.
+ Other deconvolution approaches were proposed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sakaie2007objective"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "yeh2011estimation"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+On Tensor related methods we have the classical Single Tensor 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Basser1994"
+
+\end_inset
+
+, Sticks and Ball
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Behrens2007NeuroImage"
+
+\end_inset
+
+, Multi-Tensor 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pasternak2008variational"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "liu2004characterizing"
+
+\end_inset
+
+ and Higher Rank Tensors 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ozarslan2003generalized"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "barmpoutis2009regularized"
+
+\end_inset
+
+.
+ In addition there are also model based methods which try to calculate non-Gauss
+ian properties, for example the Kurtosis Tensor
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jensen2005diffusional"
+
+\end_inset
+
+,
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lu2006three"
+
+\end_inset
+
+ which is used in Diffusion Kurtosis Imaging (DKI).
+\end_layout
+
+\begin_layout Standard
+Finally, new model-based methods are emerging which are trying to calculate
+ statistics like the axonal thickness distribution from dMRI data sets.
+ These are usually based on model free and restricted components; CHARMED
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "assaf2005composite"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "assaf2004new"
+
+\end_inset
+
+, AxCaliber
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "assaf2008axcaliber"
+
+\end_inset
+
+ and the orientation invariant ActiveAx 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "alexander2010orientationally"
+
+\end_inset
+
+ are some well known methods of this type.
+ Q-space Imaging (QSI) can be used to identify distributions of axon-diameter
+ too 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ong2010quantifying"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Diffusion Nabla Imaging
 \end_layout
 
 \begin_layout Standard
@@ -2151,380 +2529,6 @@ reference "Tab:EIT_table"
 \end_layout
 
 \begin_layout Subsection
-Other methods
-\end_layout
-
-\begin_layout Standard
-Pickalov et al.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "pickalov2006tra"
-
-\end_inset
-
- proposed a new method for reconstructing the diffusion propagator by applying
- an iterative inverse Radon transform on measurements along many radial
- lines; computing 1D tomographic projections to reconstruct the 3D EAP.
- This technique measures DW images along a few radial lines of q-space but
- still requires hundreds of samples to reliably recover the EAP.
- Currently, to reconstruct the EAP, the state-of-the-art model-free techniques
- apart from diffusion spectrum imaging are hybrid diffusion imaging (HYDI)
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "wu2007hybrid"
-
-\end_inset
-
- and multiple q-shell diffusion propagator imaging (mq-DPI)
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "descoteaux2010multiple"
-
-\end_inset
-
-.
- HYDI acquires the signal values on five concentric spherical q-space shells,
- then interpolates onto a cubic grid and applies the standard Fourier transform
- in the same way as DSI.
- In mq-DPI the EAP is calculated by solving Laplace's equation for the diffusion
- signal using a real and symmetric modiﬁed spherical harmonic basis.
- The EAP can be found analytically by the inversion of a linear system using
- Laplace-Beltrami regularization.
- In addition, Exact Q-ball imaging (EQBI)
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "canalesrodriguez2009mdq"
-
-\end_inset
-
- provides a different method to calculate the ODF analytically using multiple
- spherical q-space shells.
- Similarly, Aganj et al.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Aganj2010"
-
-\end_inset
-
-, proposed an analytical solution for the multi-shell case by incorporating
- a mono-exponential or bi-exponential model (CSA-ODF).
- Another method for finding a directional distribution on the sphere was
- proposed by Özarslan et al.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "ozarslan2006resolution"
-
-\end_inset
-
- called the diffusion orientation transform (DOT).
- This method calculates a different statistic 
-\begin_inset Formula $P(r_{0}\mathbf{\hat{u}})$
-\end_inset
-
-, the probability of finding a particle initially at the origin at the point
- 
-\begin_inset Formula $r_{0}\mathbf{\hat{u}}$
-\end_inset
-
-, using spherical harmonics.
- Not surprisingly there is a relationship connecting CSA with DOT which
- is 
-\lang british
-
-\begin_inset Formula 
-\begin{equation}
-\psi_{CSA}(\hat{\mathbf{u}})=\int_{0}^{\infty}DOT(r\hat{\mathbf{u}})r^{2}dr\label{eq:CSAandDOT}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang british
-J
-\lang english
-ansons et al.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "JansonsPAS2003"
-
-\end_inset
-
- proposed a different function on the sphere than the ODFs described above,
- to be used on data sets acquired on a single spherical q-space shell.
- They called this spherical function persistent angular structure (PAS).
- This method has very good angular resolution.
- It uses the principle of maximum entropy however, it is rather slow as
- it nonlinear fitting is used in order to identify many parameters.
- PAS is a statistic on the sphere defined as 
-\begin_inset Formula $PAS(\hat{\mathbf{u}})=\exp(\lambda_{0}+\sum_{j=1}^{N}\lambda_{j}\cos(\mathbf{q}_{j}\cdot k\hat{\mathbf{u}}))$
-\end_inset
-
- where 
-\begin_inset Formula $\lambda$
-\end_inset
-
- are the unknown parameters, 
-\begin_inset Formula $k$
-\end_inset
-
- is constant and 
-\begin_inset Formula $N$
-\end_inset
-
- is the number of DWIs.
- The relationship 
-\begin_inset Formula $\int PAS(\hat{\mathbf{u}})\exp(i\mathbf{q}_{j}\cdot k\hat{\mathbf{u}})d\hat{\mathbf{u}}=E(\mathbf{q}_{j})$
-\end_inset
-
- provides the bridge between PAS and the diffusion signal (
-\begin_inset Formula $E(\mathbf{q})$
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Standard
-The first publication of using spherical harmonic expansions with diffusivity
- profiles, which are now quite common in the literature, was by Alexander
- et al.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "alexander2002detection"
-
-\end_inset
-
-.
- Q-ball imaging was introduced by Tuch
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Tuch2004"
-
-\end_inset
-
- and a new ODF defined as 
-\begin_inset Formula $\psi(\mathbf{\hat{u}})=\frac{1}{Z}\int_{0}^{\infty}P(r\mathbf{\hat{u}})dr$
-\end_inset
-
- where 
-\begin_inset Formula $Z$
-\end_inset
-
- is a normalization constant.
- It was later provided for Q-Ball imaging a fast and analytical solution
- using spherical harmonics (SH) and Laplace-Beltrami regularization 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Descoteaux2007"
-
-\end_inset
-
-.
- Tournier et al.
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "tournier2004direct"
-
-\end_inset
-
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Tournier2007"
-
-\end_inset
-
- introduced a spherical deconvolution method where first the SH coefficients
- were estimated, then single fiber ODFs were used as a deconvolution kernel
- estimated from the real data.
- Then, the sharper fODF (fiber orientation distribution function) was obtained
- by a simple linear transformation 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "descoteaux2007deterministic"
-
-\end_inset
-
-.
- Other deconvolution approaches were proposed in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "sakaie2007objective"
-
-\end_inset
-
- and 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "yeh2011estimation"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-On Tensor related methods we have the classical Single Tensor 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Basser1994"
-
-\end_inset
-
-, Sticks and Ball
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Behrens2007NeuroImage"
-
-\end_inset
-
-, Multi-Tensor 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "pasternak2008variational"
-
-\end_inset
-
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "liu2004characterizing"
-
-\end_inset
-
- and Higher Rank Tensors 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "ozarslan2003generalized"
-
-\end_inset
-
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "barmpoutis2009regularized"
-
-\end_inset
-
-.
- In addition there are also model based methods which try to calculate non-Gauss
-ian properties, for example the Kurtosis Tensor
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "jensen2005diffusional"
-
-\end_inset
-
-,
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "lu2006three"
-
-\end_inset
-
- which is used in Diffusion Kurtosis Imaging (DKI).
-\end_layout
-
-\begin_layout Standard
-Finally, new model-based methods are emerging which are trying to calculate
- statistics like the axonal thickness distribution from dMRI data sets.
- These are usually based on model free and restricted components; CHARMED
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "assaf2005composite"
-
-\end_inset
-
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "assaf2004new"
-
-\end_inset
-
-, AxCaliber
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "assaf2008axcaliber"
-
-\end_inset
-
- and the orientation invariant ActiveAx 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "alexander2010orientationally"
-
-\end_inset
-
- are some well known methods of this type.
- Q-space Imaging (QSI) can be used to identify distributions of axon-diameter
- too 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "ong2010quantifying"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
 Implementation 
 \end_layout
 
@@ -2676,7 +2680,7 @@ A much faster algorithm than the standard EIT is described here.
  every vertex in the reconstruction sphere so we can then precompute the
  indices of the vertices that are near the equator of every vertex (inside
  an equatorial zone).
- This becomes clear in see Fig.
+ This becomes clear in Fig.
 \begin_inset space ~
 \end_inset
 
@@ -2853,34 +2857,6 @@ leq z
 
 
 \backslash
-textbf{EndFor} 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-textbf{For} $
-\backslash
-hat{
-\backslash
-bm{u}}_{i}$ in $U$ 
-\backslash
-textbf{Do}
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
 hspace*{2em} $
 \backslash
 mathbb{B}(
@@ -2913,6 +2889,34 @@ hspace*{4em} where $F(E(q_{k}
 hat{
 \backslash
 bm{u}}_{i}))$ is interpolated on the lattice.
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{EndFor} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{For} $
+\backslash
+hat{
+\backslash
+bm{u}}_{i}$ in $U$ 
+\backslash
+textbf{Do}
 \backslash
 
 \backslash
@@ -3278,6 +3282,92 @@ textbf{Do}
 
 \backslash
 hspace*{4em} $P[f_1]=P[f_2]=0$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{4em} 
+\backslash
+textbf{continue} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} 
+\backslash
+textbf{If} $d_1 
+\backslash
+geq d_0$ 
+\backslash
+textbf{and} $d_2$ 
+\backslash
+textbf{Do}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{4em} $P[f_0]=P[f_2]=0$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{4em} 
+\backslash
+textbf{continue} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} 
+\backslash
+textbf{If} $d_2 
+\backslash
+geq d_0$ 
+\backslash
+textbf{and} $d_1$ 
+\backslash
+textbf{Do}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{4em} $P[f_0]=P[f_1]=0$ 
 \backslash
 
 \backslash
@@ -7560,7 +7650,7 @@ reference "Flo:QA_directions"
 \end_inset
 
 .
- Of course the most important property of QA is that it can resolve crossings
+ Of course the most important property of QA is that it can represent crossings
  and assign a weight for every peak.
  We will make great use of these weightings in Chapter 3.
  for the creation of tractographies.
@@ -7695,6 +7785,11 @@ s have not been compared to those of FA.
  (first component of QA) obtained with grid and shell sampling schemes,
  in terms of their precision and ability to differentiate between different
  brain fibre populations.
+ Therefore, we will try to test next the hypothesis that 
+\begin_inset Formula $QA_{0}$
+\end_inset
+
+ can be as used for subject comparisons.
 \end_layout
 
 \begin_layout Standard
