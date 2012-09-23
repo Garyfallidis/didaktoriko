@@ -1,5 +1,5 @@
-#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -15,18 +15,26 @@
 \usepackage{siunitx}
 \end_preamble
 \use_default_options true
+\maintain_unincluded_children false
 \language english
+\language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman palatino
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing onehalf
 \use_hyperref false
@@ -34,9 +42,18 @@
 \use_geometry true
 \use_amsmath 1
 \use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \leftmargin 20page%
 \topmargin 15page%
 \rightmargin 15page%
@@ -51,9 +68,11 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
-\author "Eleftherios Garyfallidis,,," 
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\author 1 "" 
+\author 3 "Eleftherios Garyfallidis,,," 
 \end_header
 
 \begin_body
@@ -221,10 +240,12 @@ d, where all segments on a track have the same length, and all tracks have
 \noun off
 \color none
 
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \textrm{MDF}(s_{A},s_{B}) & = & \min(d_{\texttt{direct}},d_{\textrm{\texttt{flipped}}}),\,\textrm{where}\label{eq:direct_flip_distance}\\
 d_{\textrm{\texttt{direct}}}(s_{A},s_{B}) & = & \frac{1}{K}\sum_{i=1}^{K}||\mathbf{x}_{i}^{A}-\mathbf{x}_{i}^{B}||_{2}\,\textrm{and}\nonumber \\
-d_{\texttt{flipped}}(s_{A},s_{B}) & = & \frac{1}{K}\sum_{i=1}^{K}||\mathbf{x}_{i}^{A}-\mathbf{x}_{K-i}^{B}||_{2}\nonumber \end{eqnarray}
+d_{\texttt{flipped}}(s_{A},s_{B}) & = & \frac{1}{K}\sum_{i=1}^{K}||\mathbf{x}_{i}^{A}-\mathbf{x}_{K-i}^{B}||_{2}\nonumber 
+\end{eqnarray}
 
 \end_inset
 
@@ -299,14 +320,16 @@ reference "eq:mean_average_distance"
  These distances are slower to compute than MDF but they can work with different
  number of segments on tracks; a property that is useful for some applications.
  The equations below show the formulation of these distances:
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 d_{\textrm{avg}}(s_{A},s_{B}) & = & \frac{1}{K_{A}}\sum_{i=1}^{K_{A}}d(x_{i}^{A},s_{B}),\nonumber \\
 d_{\textrm{min}}(s_{A},s_{B}) & = & \min_{j=1,...,K_{B}}d(\mathbf{x}_{i}^{A},s_{B}),\,\textrm{and}\label{eq:mininum_distance}\\
 d_{\textrm{max}}(s_{A},s_{B}) & = & \max_{j=1,...,K_{B}}d(\mathbf{x}_{i}^{A},s_{B})\,\textrm{where}\label{eq:maximum distance}\\
 d(\mathbf{x},s_{B}) & = & \min_{j=1,...,K_{B}}||\mathbf{x}-\mathbf{x}_{j}^{B}||_{2}.\nonumber \\
 \textrm{MAM}_{\textrm{min}}(s_{A},s_{B}) & = & \min(d_{\textrm{avg}}(s_{A},s_{B}),d_{\textrm{avg}}(s_{B},s_{A}))\label{eq:min_average_distance}\\
 \textrm{MAM}_{\textrm{max}}(s_{A},s_{B}) & = & \max(d_{\textrm{avg}}(s_{A},s_{B}),d_{\textrm{avg}}(s_{B},s_{A}))\nonumber \\
-\textrm{MAM}_{\textrm{avg}}(s_{A},s_{B}) & = & (d_{\textrm{avg}}(s_{A},s_{B})+d_{\textrm{avg}}(s_{B},s_{A}))/2\label{eq:mean_average_distance}\end{eqnarray}
+\textrm{MAM}_{\textrm{avg}}(s_{A},s_{B}) & = & (d_{\textrm{avg}}(s_{A},s_{B})+d_{\textrm{avg}}(s_{B},s_{A}))/2\label{eq:mean_average_distance}
+\end{eqnarray}
 
 \end_inset
 
@@ -429,7 +452,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename QB/Fig_2_distances2.png
+	filename QB/Thesis/Fig_2_distances2.png
 	lyxscale 20
 	scale 60
 	rotateOrigin center
@@ -1456,7 +1479,6 @@ status open
 
 \begin_layout Plain Layout
  
-
 \begin_inset Formula $\texttt{braincompetition.org}$
 \end_inset
 
@@ -2204,8 +2226,10 @@ QB creates an online list of cluster nodes.
 
  is a matrix which can be updated online when a track is added to a cluster
  and is equal to
-\begin_inset Formula \begin{equation}
-h=\sum_{i=1}^{n}s_{i}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+h=\sum_{i=1}^{n}s_{i}
+\end{equation}
 
 \end_inset
 
@@ -2473,8 +2497,10 @@ QB can be extended for specific applications to contain more information
 
  to obtain second order information and in that way we could calculate the
  variance of the cluster where 
-\begin_inset Formula \[
-h^{(2)}\leftarrow(\sum_{i,j}\mathbf{x}_{ij}^{2},\sum_{i,j}\mathbf{y}_{ij}^{2},\sum_{i,j}\mathbf{z}_{ij}^{2},\sum_{i,j}\mathbf{x}_{ij}\mathbf{y}_{ij},\sum_{i,j}\mathbf{y}_{ij}\mathbf{z}_{ij},\sum_{i,j}\mathbf{x}_{ij}\mathbf{z}_{ij})\]
+\begin_inset Formula 
+\[
+h^{(2)}\leftarrow(\sum_{i,j}\mathbf{x}_{ij}^{2},\sum_{i,j}\mathbf{y}_{ij}^{2},\sum_{i,j}\mathbf{z}_{ij}^{2},\sum_{i,j}\mathbf{x}_{ij}\mathbf{y}_{ij},\sum_{i,j}\mathbf{y}_{ij}\mathbf{z}_{ij},\sum_{i,j}\mathbf{x}_{ij}\mathbf{z}_{ij})
+\]
 
 \end_inset
 
@@ -2598,7 +2624,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename QB/Fig_4_cst_simplification_relabeled.png
+	filename QB/Thesis/Fig_4_cst_simplification_relabeled.png
 	lyxscale 10
 	scale 30
 	rotateOrigin center
@@ -3305,7 +3331,7 @@ tabcolsep}{-5pt}
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -4092,9 +4118,11 @@ Maximum probability matching.
 \begin_inset Formula $\mathcal{B}$
 \end_inset
 
-,
-\begin_inset Formula \[
-\mathrm{MPM}(\mathcal{A}|\mathcal{B})={\displaystyle \sum_{j=1}^{n}\frac{b_{j}}{N}\thinspace\max_{i}p_{i|\mathcal{B_{j}}}.}\]
+, 
+\begin_inset Formula 
+\[
+\mathrm{MPM}(\mathcal{A}|\mathcal{B})={\displaystyle \sum_{j=1}^{n}\frac{b_{j}}{N}\thinspace\max_{i}p_{i|\mathcal{B_{j}}}.}
+\]
 
 \end_inset
 
@@ -4108,8 +4136,10 @@ We define
 
 .
  A further simplification is to use the symmetrized value
-\begin_inset Formula \[
-\mathrm{MPM(\mathcal{A},}\mathcal{B})=[\mathrm{MPM}(\mathcal{A}|\mathcal{B})+\mathrm{MPM}(\mathcal{B}|\mathcal{A})]/2.\]
+\begin_inset Formula 
+\[
+\mathrm{MPM(\mathcal{A},}\mathcal{B})=[\mathrm{MPM}(\mathcal{A}|\mathcal{B})+\mathrm{MPM}(\mathcal{B}|\mathcal{A})]/2.
+\]
 
 \end_inset
 
@@ -4269,14 +4299,18 @@ The total number of pairs from
 \end_inset
 
  is 
-\begin_inset Formula \[
-\mathtt{split}(\mathcal{A}|\mathcal{B}){\displaystyle =\sum_{i=1}^{m}}\bigl({\displaystyle \sum_{1\le j\ne j'\le n}n_{ij}n_{ij'}}\bigr)=\mathtt{lumped}(\mathcal{B}|\mathcal{A}).\]
+\begin_inset Formula 
+\[
+\mathtt{split}(\mathcal{A}|\mathcal{B}){\displaystyle =\sum_{i=1}^{m}}\bigl({\displaystyle \sum_{1\le j\ne j'\le n}n_{ij}n_{ij'}}\bigr)=\mathtt{lumped}(\mathcal{B}|\mathcal{A}).
+\]
 
 \end_inset
 
  Similarly, 
-\begin_inset Formula \[
-\mathtt{lumped}(\mathcal{A}|\mathcal{B}){\displaystyle =\sum_{j=1}^{n}}\bigl({\displaystyle \sum_{1\le i\ne i'\le m}n_{ij}n_{i'j}}\bigr)=\mathtt{split}(\mathcal{B}|\mathcal{A}).\]
+\begin_inset Formula 
+\[
+\mathtt{lumped}(\mathcal{A}|\mathcal{B}){\displaystyle =\sum_{j=1}^{n}}\bigl({\displaystyle \sum_{1\le i\ne i'\le m}n_{ij}n_{i'j}}\bigr)=\mathtt{split}(\mathcal{B}|\mathcal{A}).
+\]
 
 \end_inset
 
@@ -4285,14 +4319,18 @@ The total number of pairs from
 
 \begin_layout Standard
 Completeness and Correctness are defined in terms of these quantities: 
-\begin_inset Formula \[
-\mathtt{completeness}(\mathcal{A}|\mathcal{B})=1-\mathtt{split}(\mathcal{A}|\mathcal{B})/\mathtt{together}(\mathcal{A})\]
+\begin_inset Formula 
+\[
+\mathtt{completeness}(\mathcal{A}|\mathcal{B})=1-\mathtt{split}(\mathcal{A}|\mathcal{B})/\mathtt{together}(\mathcal{A})
+\]
 
 \end_inset
 
  and 
-\begin_inset Formula \[
-\mathtt{correctness}(\mathcal{A}|\mathcal{B})=1-\mathtt{lumped}(\mathcal{A}|\mathcal{B})/\mathtt{apart}(\mathcal{A}).\]
+\begin_inset Formula 
+\[
+\mathtt{correctness}(\mathcal{A}|\mathcal{B})=1-\mathtt{lumped}(\mathcal{A}|\mathcal{B})/\mathtt{apart}(\mathcal{A}).
+\]
 
 \end_inset
 
@@ -4305,14 +4343,18 @@ Completeness and Correctness are defined in terms of these quantities:
 \end_inset
 
  are defined as 
-\begin_inset Formula \[
-\mathtt{\mathtt{completeness}(\mathcal{A},\mathcal{B})=[completeness}(\mathcal{A}|\mathcal{B})+\mathtt{completeness}(\mathcal{B}|\mathcal{A})]/2\]
+\begin_inset Formula 
+\[
+\mathtt{\mathtt{completeness}(\mathcal{A},\mathcal{B})=[completeness}(\mathcal{A}|\mathcal{B})+\mathtt{completeness}(\mathcal{B}|\mathcal{A})]/2
+\]
 
 \end_inset
 
 
-\begin_inset Formula \[
-\mathtt{\mathtt{correctness}(\mathcal{A},\mathcal{B})=[correctness}(\mathcal{A}|\mathcal{B})+\mathtt{correctness}(\mathcal{B}|\mathcal{A})]/2.\]
+\begin_inset Formula 
+\[
+\mathtt{\mathtt{correctness}(\mathcal{A},\mathcal{B})=[correctness}(\mathcal{A}|\mathcal{B})+\mathtt{correctness}(\mathcal{B}|\mathcal{A})]/2.
+\]
 
 \end_inset
 
@@ -4360,8 +4402,10 @@ Our fifth metric is Cohen's
 \end_layout
 
 \begin_layout LyX-Code
-\begin_inset Formula \[
-\kappa=\mathtt{\frac{p_{agreement}-\mathtt{p_{chance\: agreement}}}{1-p_{chance\: agreement}}}.\]
+\begin_inset Formula 
+\[
+\kappa=\mathtt{\frac{p_{agreement}-\mathtt{p_{chance\: agreement}}}{1-p_{chance\: agreement}}}.
+\]
 
 \end_inset
 
@@ -4374,8 +4418,10 @@ This can be simply represented in terms of the overlap matrix
 \end_inset
 
  by the formula:
-\begin_inset Formula \[
-\kappa(T)=\frac{{\displaystyle \sum_{i=1}^{M}}t_{ii}/N-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{i}/N^{2}}{1-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{i}/N^{2}},\]
+\begin_inset Formula 
+\[
+\kappa(T)=\frac{{\displaystyle \sum_{i=1}^{M}}t_{ii}/N-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{i}/N^{2}}{1-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{i}/N^{2}},
+\]
 
 \end_inset
 
@@ -4413,8 +4459,10 @@ where
 \end_inset
 
  over all possible correspondences:
-\begin_inset Formula \[
-\kappa_{\max}=\max_{\pi}\kappa(T_{\pi})=\frac{{\displaystyle \sum_{i=1}^{M}}t_{i\pi(i)}/N-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{\pi(i)}/N^{2}}{1-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{\pi(i)}/N^{2}},\]
+\begin_inset Formula 
+\[
+\kappa_{\max}=\max_{\pi}\kappa(T_{\pi})=\frac{{\displaystyle \sum_{i=1}^{M}}t_{i\pi(i)}/N-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{\pi(i)}/N^{2}}{1-{\displaystyle \sum_{i=1}^{M}}r_{i}c_{\pi(i)}/N^{2}},
+\]
 
 \end_inset
 
@@ -4534,7 +4582,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="7">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -4984,8 +5032,10 @@ key "moberts2005evaluation"
 
 .
  Then we define BA (Bundle Adjacency) to be
-\begin_inset Formula \begin{equation}
-BA=\frac{1}{2}\left(\frac{|E_{A\rightarrow B}\leq\theta|}{|E_{A}|}+\frac{|E_{B\rightarrow A}\leq\theta|}{|E_{B}|}\right)\end{equation}
+\begin_inset Formula 
+\begin{equation}
+BA=\frac{1}{2}\left(\frac{|E_{A\rightarrow B}\leq\theta|}{|E_{A}|}+\frac{|E_{B\rightarrow A}\leq\theta|}{|E_{B}|}\right)
+\end{equation}
 
 \end_inset
 
@@ -5505,7 +5555,7 @@ name "Flo:winding"
 QB can also simplify detection of tracks which are very dissimilar to others
  and therefore very distant from all other clusters.
  Usually, when we use a QB threshold of about 
-\change_inserted 2 1319698782
+\change_inserted 3 1319698782
 
 \begin_inset Formula $10$
 \end_inset
@@ -6071,7 +6121,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename QB/Fig_7_close_distance.png
+	filename QB/Thesis/Fig_7_close_distance.png
 	lyxscale 30
 	scale 70
 
@@ -6688,10 +6738,13 @@ initially
 \noun default
 \color inherit
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \forall i,k:\: A(i,k)=\begin{cases}
 {\displaystyle \sum_{i':i'\neq i}} & \max[0,\: R(i',k)],\: for\:\: k=i\\
-\min & \left[0,\: r(k,k)+{\displaystyle \sum\max_{i':i'\notin\{i,k\}}[0,r(i',k)]}\right],\: for\:\: k\neq i\end{cases}\end{equation}
+\min & \left[0,\: r(k,k)+{\displaystyle \sum\max_{i':i'\notin\{i,k\}}[0,r(i',k)]}\right],\: for\:\: k\neq i
+\end{cases}
+\end{equation}
 
 \end_inset
 
@@ -7482,7 +7535,7 @@ key "fletcher1987practical"
 \end_inset
 
  will be transformed by a rigid rotation and 
-\change_inserted 2 1319745183
+\change_inserted 3 1319745183
 
 \begin_inset Formula $\mathrm{SMD}$
 \end_inset
@@ -7497,7 +7550,7 @@ key "fletcher1987practical"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -7517,7 +7570,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename QB/Fig_9_QB_registration2_only_landscape.png
+	filename QB/Thesis/Fig_9_QB_registration2_only_landscape.png
 	lyxscale 30
 	scale 140
 
@@ -7719,7 +7772,7 @@ Experiments
 .
  The first large scale experiment took place using the same tractography
  of a single individual copied and transformed 
-\change_inserted 2 1319745405
+\change_inserted 3 1319745405
 
 \begin_inset Formula $1,000$
 \end_inset
@@ -8041,7 +8094,7 @@ ELEF: If there is a track like that we want to know about it!
 \begin_layout Standard
 2.
  Read the tractography of a single subject,
-\change_deleted 2 1319745849
+\change_deleted 3 1319745849
  
 \change_unchanged
  use a tractographic atlas as the one created in section 

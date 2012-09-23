@@ -100,7 +100,14 @@ key "Behrens2007NeuroImage"
 
 \end_inset
 
-, in which case the Diffusion Tensor model proposed by Basser et al.
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tournier2008"
+
+\end_inset
+
+ in which case the Diffusion Tensor model proposed by Basser et al.
 \begin_inset space ~
 \end_inset
 
@@ -312,10 +319,34 @@ noindent
 
  is the diffusion displacement.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+the narrow pulse approximation allows us to easily understand the intrinsic
+ Fourier relationship between the MR signal and the underlying water mobility
+ that is a mirror of the tissue compartmentation.
+ However, in practice, the duration of the diffusion-encoding gradient is
+ not negligible compared to the diffusion time (i.e., ), so the formalism
+ developed above must be reexamined.
+ Interestingly, the reconstruction described in Eq.
+ [4]
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-The k-space reconstruction gives us diffusion weighted image data 
+The k-space reconstruction with the narrow pulse approximation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wedeen"
+
+\end_inset
+
+ gives us diffusion weighted image data 
 \begin_inset Formula $S$
 \end_inset
 
@@ -423,7 +454,7 @@ key "Wedeen"
  or diffusion propagator
 \begin_inset Formula 
 \begin{eqnarray}
-P(\mathbf{r}) & = & S_{0}^{-1}\int S(\mathbf{q})\exp(-i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{r}\label{eq:P}
+P(\mathbf{r}) & = & S_{0}^{-1}\int S(\mathbf{q})\exp(-i2\pi\mathbf{q}\cdot\mathbf{r})d\mathbf{q}\label{eq:P}
 \end{eqnarray}
 
 \end_inset

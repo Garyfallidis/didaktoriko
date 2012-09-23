@@ -2388,9 +2388,9 @@ name "sub:Orientation-Distribution"
 \begin_layout Standard
 
 \lang british
-Since the primary interest of dMRI is the way that the signal depends on
- the direction of underlying fibre orientations; it is the orientation informati
-on of the diffusion propagator (see Eq.
+Since one of the primary interests of dMRI is the way that the signal depends
+ on the direction of underlying fibre orientations; it is the orientation
+ information of the diffusion propagator (see Eq.
 \begin_inset space ~
 \end_inset
 
