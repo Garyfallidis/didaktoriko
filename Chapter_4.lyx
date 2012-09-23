@@ -3781,10 +3781,892 @@ Comparisons within- and between-subjects
 \end_layout
 
 \begin_layout Subsubsection
+Comparison of clusterings
+\end_layout
+
+\begin_layout Standard
+We have found rather few systematic ways available in the literature to
+ compare different clustering results for tractographies directly, beyond
+ that of 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "moberts2005evaluation"
+
+\end_inset
+
+ who quantified the agreement between a clustering and a `gold standard'
+ tractography labelled by their team.
+ We have used a more symmetrical measure of agreement between two clusterings
+ that do not require a prior labelled data set.
+ It is called Optimised Matched Agreement (OMA).
+ As with the Adjusted Rand Index
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "moberts2005evaluation"
+
+\end_inset
+
+, OMA requires the calculation of the
+\begin_inset Formula $M\times N$
+\end_inset
+
+ cross-classification matrix 
+\begin_inset Formula $X=(x_{ij})$
+\end_inset
+
+ which counts the number of streamlines in the intersection of all pairs
+ of clusters, one from each of the two clusterings.
+ Here 
+\begin_inset Formula $\mathcal{A}=\{A_{i}:i=1\dots M\}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}=\{B_{j}:j=1\ldots N\}$
+\end_inset
+
+ are the two clusterings, and 
+\begin_inset Formula $x_{ij}=|A_{i}\cap B_{j}|$
+\end_inset
+
+.
+ As there is no 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+emph{a priori}
+\end_layout
+
+\end_inset
+
+ correspondence or 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+emph{matching}
+\end_layout
+
+\end_inset
+
+ between the clusters in 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ and those in 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+, and vice versa, we need to find one empirically.
+ If 
+\begin_inset Formula $j=\pi(i)$
+\end_inset
+
+ is such a matching then the matched agreement is 
+\begin_inset Formula $\mathrm{MA}(\pi)=\sum_{i=1}^{M}x_{i,\pi(i)}$
+\end_inset
+
+.
+ A matching 
+\begin_inset Formula $\pi$
+\end_inset
+
+ that yields OMA by maximising 
+\begin_inset Formula $\mathrm{MA}(\pi)$
+\end_inset
+
+ can be found using the Hungarian Algorithm
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kuhn1955"
+
+\end_inset
+
+.
+ The interpretation of the OMA statistic is analogous to that of the well-known
+ Kappa measure of inter-rater agreement
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "altman1995"
+
+\end_inset
+
+, with the range 61% to 80% corresponding to a `good' strength of agreement.
+\end_layout
+
+\begin_layout Standard
+As well as the computational overheads in calculating the cross classification
+ matrix, a further fundamental disadvantage of these methods is that they
+ do not work with clusterings of different tractographies.
+ Being able to compare results of clusterings is crucial for creating stable
+ brain imaging procedures, and therefore it is necessary to develop a way
+ to compare different tractography clusterings or different sets of streamlines
+ from the same subject or different subjects.
+\end_layout
+
+\begin_layout Standard
+Although we recognise that these are difficult problems, we propose the
+ following approach with three novel comparison functions which we call
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+emph{coverage}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+emph{overlap}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+emph{bundle adjacency}
+\end_layout
+
+\end_inset
+
+ (BA).
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $S$
+\end_inset
+
+ and 
+\begin_inset Formula $T$
+\end_inset
+
+ are sets of streamlines, and 
+\begin_inset Formula $\theta>0$
+\end_inset
+
+ is selected as a threshold, we say that 
+\begin_inset Formula $s\in S$
+\end_inset
+
+ has a 
+\begin_inset Formula $\theta$
+\end_inset
+
+-neighbour in 
+\begin_inset Formula $T$
+\end_inset
+
+ if 
+\begin_inset Formula $\min_{t\in T}[\mathrm{MDF}(s,t)<\theta]$
+\end_inset
+
+.
+ We define the coverage of 
+\begin_inset Formula $S$
+\end_inset
+
+ by 
+\begin_inset Formula $T$
+\end_inset
+
+ as the fraction of streamlines in 
+\begin_inset Formula $S$
+\end_inset
+
+ that have a $
+\backslash
+theta$-neighbour in 
+\begin_inset Formula $T$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\mathrm{coverage}(S,T)=|\{s\in S\,\mathrm{has~a}~\theta\mathrm{-neighbour~in}~T\}|/|S|.
+\]
+
+\end_inset
+
+ Coverage ranges between 0 (when no streamline in S has a close enough neighbour
+ in T) and 1 (when every streamline in S has a neighbour in T).
+\end_layout
+
+\begin_layout Standard
+We define the overlap of 
+\begin_inset Formula $T$
+\end_inset
+
+ in 
+\begin_inset Formula $S$
+\end_inset
+
+ as the average number of 
+\begin_inset Formula $\theta$
+\end_inset
+
+-neighbours in 
+\begin_inset Formula $T$
+\end_inset
+
+ for streamlines in 
+\begin_inset Formula $S$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\mathrm{overlap}(S,T)=\sum_{s\in S}|\{t\in T:t\,\mathrm{is~a}~\theta\mathrm{-neighbour~of}~s\}|/|S|.
+\]
+
+\end_inset
+
+ Overlap can take any non-negative value, with higher values indicating
+ possible redundancy of 
+\begin_inset Formula $T$
+\end_inset
+
+ in 
+\begin_inset Formula $S$
+\end_inset
+
+; if 
+\begin_inset Formula $T$
+\end_inset
+
+ has several similar streamlines then this will tend to boost overlap.
+\end_layout
+
+\begin_layout Standard
+BA is a symmetric measure of the similarity of the two sets of streamlines
+ 
+\begin_inset Formula $S$
+\end_inset
+
+ and 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ BA is the average of the 
+\begin_inset Formula $\theta$
+\end_inset
+
+-coverages of 
+\begin_inset Formula $T$
+\end_inset
+
+ by 
+\begin_inset Formula $S$
+\end_inset
+
+ and of 
+\begin_inset Formula $S$
+\end_inset
+
+ by 
+\begin_inset Formula $T$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\mathrm{BA}(S,T)=(\mathrm{coverage}(S,T)+\mathrm{coverage}(T,S))/2.
+\]
+
+\end_inset
+
+ BA ranges between 0, when no streamlines of S or T have neighbours in the
+ other set, and 1 when they all do.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $S$
+\end_inset
+
+ is a good approximation to 
+\begin_inset Formula $T$
+\end_inset
+
+ then 
+\begin_inset Formula $S$
+\end_inset
+
+ will have high coverage of 
+\begin_inset Formula $T$
+\end_inset
+
+; if 
+\begin_inset Formula $S$
+\end_inset
+
+ has low redundancy as an approximation to 
+\begin_inset Formula $T$
+\end_inset
+
+ then the overlap of 
+\begin_inset Formula $S$
+\end_inset
+
+ in 
+\begin_inset Formula $T$
+\end_inset
+
+ will be low; and if 
+\begin_inset Formula $S$
+\end_inset
+
+ and 
+\begin_inset Formula $T$
+\end_inset
+
+ are globally similar then BA will be high.
+\end_layout
+
+\begin_layout Subsubsection
 Robustness under reordering
 \end_layout
 
 \begin_layout Standard
+One of the disadvantages of most clustering algorithms is that they give
+ different results with different initial conditions; for example this is
+ recognised with k-means, expectation-maximization 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dempster1977maximum"
+
+\end_inset
+
+ and k-centers 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gonzalez1985clustering"
+
+\end_inset
+
+ where it is common practice to try a number of different random initial
+ configurations.
+ The same holds for QB so if there are not distinct clusters such that the
+ distance between any pair of clusters is supra-threshold and the diameter
+ of all clusters is sub-threshold, then with different permutations of the
+ same tractography we will typically see similar number of clusters but
+ different underlying clusters.
+ We will examine the robustness of QB in this respect.
+\end_layout
+
+\begin_layout Standard
+As a first step we recorded the numbers of QB clusters in 
+\begin_inset Formula $20$
+\end_inset
+
+ different random orderings of the tractographies of 
+\begin_inset Formula $10$
+\end_inset
+
+ human subjects.
+ We first removed short streamlines shorter than 
+\begin_inset Formula $40$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+mm and downsampled the streamlines at 
+\begin_inset Formula $12$
+\end_inset
+
+ points.
+ Then we applied QB with threshold at 
+\begin_inset Formula $10$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+mm.
+ The mean number of clusters was 
+\begin_inset Formula $2645.9$
+\end_inset
+
+ (min 
+\begin_inset Formula $1937.6$
+\end_inset
+
+; max 
+\begin_inset Formula $3857.8$
+\end_inset
+
+; s.d.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $653.8$
+\end_inset
+
+).
+ There is therefore a considerable between-subject variation in this metric.
+ By contrast the within-subject variability of the number of clusters across
+ random orderings is rather small, with mean standard deviation 
+\begin_inset Formula $12.7$
+\end_inset
+
+ (min 
+\begin_inset Formula $7.3$
+\end_inset
+
+; max 
+\begin_inset Formula $17.4$
+\end_inset
+
+).
+ This suggests a good level of consistency in the data reduction achieved
+ by QB.
+\end_layout
+
+\begin_layout Standard
+Next we investigated how consistent QB clusterings are when data sets are
+ re-ordered.
+ Twelve different random orderings were generated for each of 
+\begin_inset Formula $10$
+\end_inset
+
+ tractographies and the corresping QB clusterings were computed with MDF
+ threshold 
+\begin_inset Formula $10$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+mm.
+ For each subject the $66$ pairings of QB clusterings were compared using
+ the optimised matched agreements index and then averaged.
+ Across subjects the mean OMA was 74.1% (
+\begin_inset Formula $\pm0.39$
+\end_inset
+
+%) which can be interpreted as a good level of agreement
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "altman1995"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+As well as checking that QB created sets of centroids with good coverage
+ and overlap statistics, we went on to show that the performance of QB generalis
+es to sets of streamlines different from the training set, and is superior
+ to a random sample of streamlines.
+ We split each of the 10 tractographies randomly into two halves 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ (training set) and 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ (test set).
+ The QB clustering at distance threshold 
+\begin_inset Formula $10$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+mm was derived for 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+.
+ Denote by 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{1}$
+\end_inset
+
+ the set of centroids and the number of them.
+ Let 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+ be a random subset of 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ of size 
+\begin_inset Formula $c_{1}$
+\end_inset
+
+.
+ Using the measures described in previous section we found that with distance
+ threshold 
+\begin_inset Formula $10$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+mm the mean coverage (s.d.) of 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ by 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+ was 
+\begin_inset Formula $99.96$
+\end_inset
+
+% (
+\begin_inset Formula $\pm0.007$
+\end_inset
+
+%), of 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ by 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+ was 
+\begin_inset Formula $99.31$
+\end_inset
+
+% (
+\begin_inset Formula $\pm0.08$
+\end_inset
+
+%) and of 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ by 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+ was 
+\begin_inset Formula $90.49$
+\end_inset
+
+% (
+\begin_inset Formula $\pm0.41$
+\end_inset
+
+%).
+ The mean overlap (s.d.) at this threshold of 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+ in 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ was 
+\begin_inset Formula $2.44$
+\end_inset
+
+ (
+\begin_inset Formula $\pm0.08$
+\end_inset
+
+), of 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+ in 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ was 
+\begin_inset Formula $2.44$
+\end_inset
+
+ (
+\begin_inset Formula $\pm0.08$
+\end_inset
+
+), and of 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+ in 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ was 
+\begin_inset Formula $5.57$
+\end_inset
+
+ (
+\begin_inset Formula $\pm0.50$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+The same analyses were performed with QB clusterings for distance threshold
+ 
+\begin_inset Formula $20$
+\end_inset
+
+mm and with distance threshold 
+\begin_inset Formula $20$
+\end_inset
+
+mm.
+ (Note that though we have selected the same values here for the two thresholds
+ they do not have to be the same.) We found that with distance threshold
+ 
+\begin_inset Formula $10$
+\end_inset
+
+mm the mean coverage (s.d.) of 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ by 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+ was 
+\begin_inset Formula $99.99$
+\end_inset
+
+% (
+\begin_inset Formula $\pm0.004$
+\end_inset
+
+%), of 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ by 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+ was 
+\begin_inset Formula $99.91$
+\end_inset
+
+% (
+\begin_inset Formula $\pm0.02$
+\end_inset
+
+%) and of 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ by 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+ was 
+\begin_inset Formula $95.86$
+\end_inset
+
+% (
+\begin_inset Formula $\pm0.62$
+\end_inset
+
+%).
+ The mean overlap (s.d.) at this threshold of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$C_1$
+\end_layout
+
+\end_inset
+
+ in 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ was 
+\begin_inset Formula $3.54$
+\end_inset
+
+ (
+\begin_inset Formula $\pm0.18$
+\end_inset
+
+), of 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+ in 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ was 
+\begin_inset Formula $3.54$
+\end_inset
+
+ (
+\begin_inset Formula $\pm0.18$
+\end_inset
+
+), and of 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+ in 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ was 
+\begin_inset Formula $6.53$
+\end_inset
+
+ (
+\begin_inset Formula $\pm0.93$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+We conclude from these analyses that QB has good coverage and overlap properties
+ with respect to the training set and to the test set of streamlines, while
+ an equivalent random selection of streamlines has worse coverage and overlap.
+ Moreover the performance of QB is better with the lower closeness threshold.
+ The poor performance of random subsets is to be expected as they will oversampl
+e in denser parts of the tractography space, and undersample in sparser
+ regions.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 As mentioned earlier, QB shares the behaviour of most clustering algorithms
  in that different orderings of the tracks give rise to different clusterings.
  As a first step towards examining the robustness of QB in this respect
@@ -3859,6 +4741,11 @@ mm.
  of clusters that QB creates.
  We now consider ways of measuring and comparing the contents of the clusters
  in a clustering.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
