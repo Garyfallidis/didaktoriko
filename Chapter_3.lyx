@@ -5838,13 +5838,29 @@ status open
 \end_inset
 
  with options 
-\begin_inset Formula $\texttt{-model cylcyl nldt\_pos}$
+\begin_inset Formula $\texttt{-model}$
+\end_inset
+
+ 
+\begin_inset Formula $\texttt{cylcyl}$
+\end_inset
+
+ 
+\begin_inset Formula $\texttt{nldt\_pos}$
 \end_inset
 
 .
  The probabilistic tractography was generated using Pico PDFs sampled from
  a Watson distribution (
-\begin_inset Formula $\texttt{picopdfs -pdf -watson}$
+\begin_inset Formula $\texttt{picopdfs}$
+\end_inset
+
+ 
+\begin_inset Formula $\texttt{-pdf}$
+\end_inset
+
+ 
+\begin_inset Formula $\texttt{-watson}$
 \end_inset
 
 ).

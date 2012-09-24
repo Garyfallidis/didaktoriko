@@ -729,7 +729,7 @@ key "Guevara2010"
  They first divided the tractography into left-right hemisphere, inter-hemispher
 ic and cerebellum subsets.
  They then created further subsets of different track length, used hierarchical
- clustering based on the random voxel parcels, used watershed over extremities
+ clustering based on the random voxel par- cels, used watershed over extremities
  and finally used hierarchical clustering to merge the different sub-bundles
  using the Hausdorff distance (see section 
 \begin_inset CommandInset ref

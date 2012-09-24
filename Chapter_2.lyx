@@ -5635,7 +5635,7 @@ reference "Flo:x-shape-thin-tensor-zoomed"
 
 \end_inset
 
- we used a more anisotropic prolate tensor for the simulation with eigenvalues
+ we used a more aniso- tropic prolate tensor for the simulation with eigenvalues
  
 \begin_inset Formula $\lambda_{\parallel}=1.4\times10^{-3}$
 \end_inset
