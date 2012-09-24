@@ -3782,6 +3782,13 @@ Comparisons within- and between-subjects
 
 \begin_layout Subsubsection
 Comparison of clusterings
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Comparison-of-clusterings"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3817,7 +3824,7 @@ key "moberts2005evaluation"
 
 \end_inset
 
-, OMA requires the calculation of the
+, OMA requires the calculation of the 
 \begin_inset Formula $M\times N$
 \end_inset
 
@@ -4030,9 +4037,11 @@ If
 \begin_inset Formula $S$
 \end_inset
 
- that have a $
-\backslash
-theta$-neighbour in 
+ that have a 
+\begin_inset Formula $\theta$
+\end_inset
+
+-neighbour in 
 \begin_inset Formula $T$
 \end_inset
 
@@ -4178,6 +4187,22 @@ If
 \end_inset
 
  are globally similar then BA will be high.
+ More details on BA are presented in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Tightness-comparisons-1"
+
+\end_inset
+
+ and there is a detailed explanation of classification measures like MA
+ in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Measures-to-compare"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4750,6 +4775,13 @@ mm.
 
 \begin_layout Subsubsection
 Measures to compare classifications
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Measures-to-compare"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5957,7 +5989,14 @@ noindent
 \begin_inset Formula $\theta$
 \end_inset
 
-.
+ (see a similar definition of BA in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Comparison-of-clusterings"
+
+\end_inset
+
+).
  In other words, BA is the mean of the fraction of row minima of 
 \begin_inset Formula $D_{AB}$
 \end_inset
@@ -7405,726 +7444,6 @@ In order to create this system we implemented a 3D visualization and interaction
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Subsection
-Affinity Propagation
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Affinity-Propagation"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Affinity propagation (AP) is a recent 
-\begin_inset Formula $O(N^{2})$
-\end_inset
-
- clustering method invented by Frey et al.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "frey2007clustering"
-
-\end_inset
-
- and Dueck et al.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "dueck2009affinity"
-
-\end_inset
-
- which is inspired by loopy belief propagation 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "pearl1988probabilistic"
-
-\end_inset
-
- and other recent innovations in graphical models and more specifically
- is an instance of the max-sum algorithm in factor graphs.
- For the completeness of this thesis and because AP is a relatively new
- algorithm we give a short description of the AP in this section.
- AP is an exemplar based clustering method where the center of a cluster
- is a real data point (exemplar) as in k-medoids, and k-centres rather than
- an average virtual point as in k-means.
- AP starts by simultaneously considering all data points as potential exemplars.
- Each data point is a node in a network and AP recursively transmits real-valued
- messages along the edges of the network until a good set of exemplars and
- corresponding clusters emerges.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[th!]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename last_figures/affinity_propagation_ok2.png
-	lyxscale 40
-	scale 40
-	rotateOrigin center
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Simple example of affinity propagation (AP) at work where it can precisely
- identify 
-\begin_inset Formula $4$
-\end_inset
-
- different normal distributions with means 
-\begin_inset Formula $(1,1),\;(-1,-1),\:(1,-1),\,(-2,2)$
-\end_inset
-
- and standard deviation 
-\begin_inset Formula $0.5$
-\end_inset
-
-.
- You can see the exemplars - most representative actual points - with thicker
- dots perfectly aligned with the means.
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Fig:AP_2d"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-AP takes as input a collection of similarities between data points, where
- the similarity 
-\begin_inset Formula $S(i,k)$
-\end_inset
-
- indicates how well the data point with index 
-\begin_inset Formula $k$
-\end_inset
-
- is suited to be the exemplar for data point 
-\begin_inset Formula $i$
-\end_inset
-
-.
- In order to understand AP we can think just for the moment that we try
- to cluster 2D data points and each similarity is expressed as the negative
- Euclidean distance 
-\begin_inset Formula $S(i,k)=-||x_{i}-x_{k}||^{2}$
-\end_inset
-
- (see Fig.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Fig:AP_2d"
-
-\end_inset
-
-) therefore 
-\begin_inset Formula $S$
-\end_inset
-
- for the moment is the negative complete squared distance matrix.
- Rather than requiring the number of clusters to be prespecified, AP adds
- a real number (preference weights) to the diagonal elements of 
-\begin_inset Formula $S$
-\end_inset
-
-, one for each data point so that larger values of 
-\begin_inset Formula $S(k,k)$
-\end_inset
-
- are more likely to become exemplars.
- For simplicity, we can choose the 
-\begin_inset Formula $median(S)$
-\end_inset
-
- as the common preference weight for all points; in this way we do not enforce
- any 
-\emph on
-a priori
-\emph default
- information for one point to be an exemplar any more than any other point.
- For some applications this could be an appropriate requirement.
- There are two different messages exchanged between points: (1) responsibilities
- 
-\begin_inset Formula $R(i,k)=S(i,k)-{\displaystyle \max_{k':k'\neq k}}[S(i,k')+A(i,k')]$
-\end_inset
-
- and (2) availabilities which are 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-initially 
-\begin_inset Formula $A(i,k)=0$
-\end_inset
-
- and then equal to
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-
-\begin_inset Formula 
-\begin{equation}
-\forall i,k:\: A(i,k)=\begin{cases}
-{\displaystyle \sum_{i':i'\neq i}} & \max[0,\: R(i',k)],\: for\:\: k=i\\
-\min & \left[0,\: r(k,k)+{\displaystyle \sum\max_{i':i'\notin\{i,k\}}[0,r(i',k)]}\right],\: for\:\: k\neq i
-\end{cases}
-\end{equation}
-
-\end_inset
-
-A very interesting fact is the way we get the final exemplars using AP.
- After the messages have converged, there are two ways you can identify
- exemplars: 
-\end_layout
-
-\begin_layout Enumerate
-For data point 
-\begin_inset Formula $i$
-\end_inset
-
-, 
-\begin_inset Formula $if\:\: R(i,i)+A(i,i)>0$
-\end_inset
-
-, then data point 
-\begin_inset Formula $i$
-\end_inset
-
- is an exemplar.
- 
-\end_layout
-
-\begin_layout Enumerate
-For data point 
-\begin_inset Formula $i$
-\end_inset
-
-, 
-\begin_inset Formula $if\:\: R(i,i)+A(i,i)>R(i,j)+A(i,j)$
-\end_inset
-
-, for all 
-\begin_inset Formula $i$
-\end_inset
-
- not equal to 
-\begin_inset Formula $j$
-\end_inset
-
-, then data point 
-\begin_inset Formula $i$
-\end_inset
-
- is an exemplar.
-\end_layout
-
-\begin_layout Standard
-Therefore, the availabilities and responsibilities are added to identify
- exemplars.
- For point 
-\begin_inset Formula $i$
-\end_inset
-
-, the value of 
-\begin_inset Formula $k$
-\end_inset
-
- that maximizes 
-\begin_inset Formula $A(i,k)+R(i,k)$
-\end_inset
-
- either identifies 
-\begin_inset Formula $i$
-\end_inset
-
- as an exemplar if 
-\begin_inset Formula $k=i$
-\end_inset
-
-, or identifies the data point that is the exemplar for point 
-\begin_inset Formula $i$
-\end_inset
-
-.
- The message passing procedure is terminated either after a fixed number
- of iterations, or after changes in the messages stay low, or local decisions
- stay constant; also the messages are damped - combining previous with current
- message - to avoid numerical oscillations.
- 
-\end_layout
-
-\begin_layout Standard
-Of course, when we need to calculate distances between many points then
- the distance matrix becomes too big for the available memory.
- In that case, if we are lucky and the data sets are sparse then we can
- use AP on sparse matrices.
- When the data sets are not sparse, as it is the case with tractographies,
- we need to reduce the dimensionality of the data sets and this is why QB
- can be very handy.
- The complete algorithm for AP is given in Alg.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:AP"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[th!]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-textbf{Input} Similarity/affinity matrix $S$ where the diagonal elements
- of $S(k,k)$ indicate the a priori preference for $k$ to be chosen as an
- exemplar 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-textbf{Output} Clustering $CAP 
-\backslash
-leftarrow 
-\backslash
-{c_{1},...,c_{k},...,c_{|CAP|}
-\backslash
-}$, where a cluster $c 
-\backslash
-leftarrow (I,
-\backslash
-mathbf{e},N) $
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-$
-\backslash
-forall i,k:
-\backslash
-: A(i,k)
-\backslash
-leftarrow R(i,k) 
-\backslash
-leftarrow 0$
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-$S 
-\backslash
-leftarrow S+n$ 
-\backslash
-# remove degeneracies
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-$d 
-\backslash
-leftarrow 0.5$ 
-\backslash
-# set damping factor
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-last
-\backslash
-_iter $
-\backslash
-leftarrow$ $100$ 
-\backslash
-# last iteration 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-$
-\backslash
-textbf{For}$ iter $=1$ to last
-\backslash
-_iter $
-\backslash
-textbf{Do}$ 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{2em} $R_{old} 
-\backslash
-leftarrow R$
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{2em} $
-\backslash
-forall i,k:
-\backslash
-: R(i,k) 
-\backslash
-leftarrow S(i,k)-max_{k':k'
-\backslash
-neq k}[S(i,k')+A(i,k')]$ 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{2em} $R 
-\backslash
-leftarrow (1-d)R+d*R_{old}$ 
-\backslash
-# dampen responsibilities 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{2em} $A_{old} 
-\backslash
-leftarrow A$ 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{2em} 
-\backslash
-# update availabilities 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{2em} $
-\backslash
-forall i,k:
-\backslash
-: A(i,k) 
-\backslash
-leftarrow 
-\backslash
-begin{cases} 
-\backslash
-sum_{i':i'
-\backslash
-neq i} & max[0,
-\backslash
-: R(i',k)],
-\backslash
-: k=i
-\backslash
-
-\backslash
- 
-\backslash
-min & 
-\backslash
-left[0,
-\backslash
-: 	R(k,k)+{
-\backslash
-displaystyle 
-\backslash
-sum
-\backslash
-max_{i':i'
-\backslash
-notin
-\backslash
-{i,k
-\backslash
-}}[0,R(i',k)]}
-\backslash
-right],
-\backslash
-: k
-\backslash
-neq i
-\backslash
-end{cases}$ 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{2em} $A 
-\backslash
-leftarrow (1-d)A+dA_{old}$ 
-\backslash
-# dampen availabilities 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-$
-\backslash
-forall i, I_{e} 
-\backslash
-leftarrow argmax
-\backslash
-: S(i,I_{d})$ 
-\backslash
-# find indices of exemplars 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-$I_{e}(I_{d}) 
-\backslash
-leftarrow 1:size
-\backslash
-: (I_{d})$ 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-$L 
-\backslash
-leftarrow I_{d}(I_{e})$ 
-\backslash
-# assign labels 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-$C_{AP} 
-\backslash
-leftarrow 
-\backslash
-{c_{0},...,c_{k},...,c_{|C_{AP}|}
-\backslash
-}$ 
-\backslash
-# clustering output
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-# where a cluster $c 
-\backslash
-leftarrow (I,
-\backslash
-mathbf{e},N)$ holds the AP exemplars $
-\backslash
-mathbf{e}$,
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-# the indices $I$ of the cluster elements and $N$ the number of elements
- 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-caption{Affinity Propagation}
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:AP"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
