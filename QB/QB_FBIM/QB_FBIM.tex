@@ -387,12 +387,10 @@ distance function~\citep{EGMB10, Visser2010} which we call the minimum
 average direct-flip (MDF) distance, see
 Eq.~(\ref{eq:direct_flip_distance}). MDF can be applied only when both
 streamlines have the same number of points, see
-Fig.~\ref{Flo:Distances_used}. Therefore we assume that an initial
-downsampling of streamlines has been implemented, where all segments on
-a streamline have approximately the same length, and all streamlines
-have the same number of points $K$, which are much fewer than the number
-of points in the typical raw streamline. We make this assumption in what
-follows.
+Fig.~\ref{Flo:Distances_used}. Therefore we assume from now on that an initial
+downsampling of streamlines has been implemented, where all streamlines
+have the same number of points $K$, and all segments on
+any streamline are of approximately equal length.
 
 As it has no preferred orientation, a streamline $s=[s_1, s_2, \ldots, s_K]$ is equivalent to
 two ordered polylines: $s = (s_1, s_2, \ldots, s_K)$ in $\mathbb{R}^3$
@@ -703,30 +701,30 @@ threshold.
 \subsection{Comparison of clusterings\label{sub:Tightness-comparisons-1}}
 
 We have found rather few systematic ways available in the literature to
-compare different clustering results for tractographies directly, beyond
+directly compare different clustering results for tractographies, beyond
 that of \citet{moberts2005evaluation} who quantified the agreement
 between a clustering and a `gold standard' tractography labelled by
 their team.  We have used a more symmetrical measure of agreement
 between two clusterings that do not require a prior labelled data set.
-It is called Optimised Matched Agreement (OMA). As with the Adjusted
-Rand Index \citep{moberts2005evaluation}, OMA requires the calculation
-of the $M \times N$ cross-classification matrix $X=(x_{ij})$ which
-counts the number of streamlines in the intersection of all pairs of
-clusters, one from each of the two clusterings.  Here
+It is called the \emph{optimised matched agreement} (OMA). As with the \emph{adjusted
+Rand index}~\citep{moberts2005evaluation}, OMA requires the calculation
+of the $M \times N$ streamline cross-classification matrix $X=(x_{ij})$. This
+counts the number of streamlines in all pairwise intersections of
+clusters, one from each of the two clusterings.  If
 $\mathcal{A}=\{A_i:i=1\dots M\}$ and $\mathcal{B}=\{B_j:j=1\ldots N\}$
-are the two clusterings, and $x_{ij}=|A_i \cap B_j|$. As there is no
+are the two clusterings, then $x_{ij}=|A_i \cap B_j|$. As there is no
 \emph{a priori} correspondence or \emph{matching} between the
 clusters in $\mathcal{A}$ and those in $\mathcal{B}$, and vice versa, we
-need to find one empirically. If $j=\pi(i)$ is such a matching then the
-matched agreement is $\mathrm{MA}(\pi) = \sum_{i=1}^M x_{i,\pi(i)}$. A
+need to find one empirically. If $j=\pi(i)$ is a possible matching then the corresponding
+\emph{matched agreement} is $\mathrm{MA}(\pi) = \sum_{i=1}^M x_{i,\pi(i)}$. A
 matching $\pi$ that yields OMA by maximising $\mathrm{MA}(\pi)$ can be
 found using the Hungarian Algorithm~\citep{Kuhn1955}. The interpretation
 of the OMA statistic is analogous to that of the well-known Kappa
 measure of inter-rater agreement~\citep{altman1995}, with the range 61\%
 to 80\% corresponding to a `good' strength of agreement.
 
-As well as the computational overheads in calculating the
-cross-classification matrix, a further fundamental disadvantage of these
+Besides the considerable computational overheads in calculating the
+cross-classification matrix, there is a further fundamental disadvantage of these
 methods is that they do not work with clusterings of different
 tractographies. Being able to compare results of clusterings is crucial for creating
 stable brain imaging procedures, and therefore it is necessary to
