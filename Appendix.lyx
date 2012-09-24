@@ -1,5 +1,5 @@
-#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -8,18 +8,26 @@
 \numberwithin{table}{section}
 \end_preamble
 \use_default_options true
+\maintain_unincluded_children false
 \language english
+\language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman palatino
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing onehalf
 \use_hyperref false
@@ -27,9 +35,18 @@
 \use_geometry true
 \use_amsmath 1
 \use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \leftmargin 20page%
 \topmargin 15page%
 \rightmargin 15page%
@@ -37,15 +54,16 @@
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -344,14 +362,16 @@ Let
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 F(s) & = & \int_{-\infty}^{\infty}f(t)e^{its}dt\\
  & = & \int_{0}^{\infty}f(t)e^{its}dt+\int_{-\infty}^{0}f(t)e^{its}dt\\
  & = & \int_{0}^{\infty}f(t)e^{its}dt-\int_{-\infty}^{0}f(-t)e^{-its}dt\\
  & = & \int_{0}^{\infty}f(t)e^{its}dt+\int_{0}^{\infty}f(t)e^{-its}dt\\
  & = & \int_{0}^{\infty}f(t)[e^{its}+e^{-its}]dt\\
  & = & \int_{0}^{\infty}f(t)[\cos(its)+i\sin(its)+\cos(its)-i\sin(its)]dt\\
- & = & 2\int_{0}^{\infty}f(t)cos(st)dt\end{eqnarray*}
+ & = & 2\int_{0}^{\infty}f(t)cos(st)dt
+\end{eqnarray*}
 
 \end_inset
 
@@ -413,9 +433,11 @@ From Fourier analysis we know that if
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \mathfrak{F\mathrm{(xP(\mathbf{r}))}} & = & i\frac{\partial E(\mathbf{q})}{\partial\mathbf{q}_{x}}\\
-\mathfrak{F\mathrm{(x^{2}P(\mathbf{r}))}} & = & -\frac{\partial^{2}E(\mathbf{q})}{\partial\mathbf{q}_{x}^{2}}\end{eqnarray*}
+\mathfrak{F\mathrm{(x^{2}P(\mathbf{r}))}} & = & -\frac{\partial^{2}E(\mathbf{q})}{\partial\mathbf{q}_{x}^{2}}
+\end{eqnarray*}
 
 \end_inset
 
@@ -441,8 +463,10 @@ where
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
-\mathfrak{F\mathrm{(r^{2}P(\mathbf{r}))}} & = & -\frac{\partial^{2}E(\mathbf{q})}{\partial\mathbf{q}_{x}^{2}}-\frac{\partial^{2}E(\mathbf{q})}{\partial\mathbf{q}_{y}^{2}}-\frac{\partial^{2}E(\mathbf{q})}{\partial\mathbf{q}_{z}^{2}}=-\nabla^{2}E(\mathbf{q})\end{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathfrak{F\mathrm{(r^{2}P(\mathbf{r}))}} & = & -\frac{\partial^{2}E(\mathbf{q})}{\partial\mathbf{q}_{x}^{2}}-\frac{\partial^{2}E(\mathbf{q})}{\partial\mathbf{q}_{y}^{2}}-\frac{\partial^{2}E(\mathbf{q})}{\partial\mathbf{q}_{z}^{2}}=-\nabla^{2}E(\mathbf{q})
+\end{eqnarray*}
 
 \end_inset
 
@@ -522,9 +546,11 @@ with the z-axis having
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \int_{0}^{\infty}f(r\hat{\mathbf{z})}dr & = & \int_{0}^{\infty}f(0,0,z)dz\\
- & = & \frac{1}{2}\int\int\int_{\mathbb{R}^{3}}f(x,y,z)\delta(x)\delta(y)dxdydz\end{eqnarray*}
+ & = & \frac{1}{2}\int\int\int_{\mathbb{R}^{3}}f(x,y,z)\delta(x)\delta(y)dxdydz
+\end{eqnarray*}
 
 \end_inset
 
@@ -559,8 +585,10 @@ The factor
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
-\int\int\int_{\mathbb{R}^{3}}f(x,y,z)g^{*}(x,y,z)dxdydz & =\quad\quad\quad\quad\quad\quad\quad\quad\end{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
+\int\int\int_{\mathbb{R}^{3}}f(x,y,z)g^{*}(x,y,z)dxdydz & =\quad\quad\quad\quad\quad\quad\quad\quad
+\end{eqnarray*}
 
 \end_inset
 
@@ -575,8 +603,10 @@ The factor
 \color none
 \lang british
 
-\begin_inset Formula \begin{eqnarray*}
-(2\pi)^{-3}\int\int\int_{\mathbb{R}^{3}}f(q_{x},q_{y},q_{z})\hat{g}^{*}(q_{x},q_{y},q_{z})dq_{x}dq_{y}dq_{z}\end{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
+(2\pi)^{-3}\int\int\int_{\mathbb{R}^{3}}f(q_{x},q_{y},q_{z})\hat{g}^{*}(q_{x},q_{y},q_{z})dq_{x}dq_{y}dq_{z}
+\end{eqnarray*}
 
 \end_inset
 
@@ -592,10 +622,12 @@ Furthermore,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \int_{0}^{\infty}f(r\hat{\mathbf{z})} & = & \int\int\int_{\mathbb{R}^{3}}\frac{1}{2}f(x,y,z)g(x,y,z)dxdydz\\
  & = & \frac{1}{2(2\pi)^{3}}\int\int\int_{\mathbb{R}^{3}}f(q_{x},q_{y},q_{z})2\pi\delta(q_{z})dq_{x}dq_{y}dq_{z}\\
- & = & \frac{1}{8\pi^{2}}\int_{-\infty}^{\infty}\hat{f}(q_{x},q_{y},0)dq_{x}dq_{y}\end{eqnarray*}
+ & = & \frac{1}{8\pi^{2}}\int_{-\infty}^{\infty}\hat{f}(q_{x},q_{y},0)dq_{x}dq_{y}
+\end{eqnarray*}
 
 \end_inset
 
@@ -628,8 +660,10 @@ reference "eq:W"
 \end_inset
 
  can be written in the form
-\begin_inset Formula \begin{eqnarray}
-S(\mathbf{q}) & = & S_{0}exp(-b\mathbf{q}^{T}D\mathbf{q})\label{eq:Tensor}\end{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
+S(\mathbf{q}) & = & S_{0}exp(-b\mathbf{q}^{T}D\mathbf{q})\label{eq:Tensor}
+\end{eqnarray}
 
 \end_inset
 
@@ -681,8 +715,10 @@ reference "eq:Tensor"
 
 \begin_layout Standard
 \align center
-\begin_inset Formula \begin{eqnarray}
-Q(\mathbf{R}) & = & \int S_{0}\exp(-b\mathbf{q}^{T}D\mathbf{q})\exp(-j2\pi\mathbf{q}\cdot\mathbf{R})d\mathbf{q}\label{eq:FourierW}\end{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
+Q(\mathbf{R}) & = & \int S_{0}\exp(-b\mathbf{q}^{T}D\mathbf{q})\exp(-j2\pi\mathbf{q}\cdot\mathbf{R})d\mathbf{q}\label{eq:FourierW}
+\end{eqnarray}
 
 \end_inset
 
@@ -694,13 +730,15 @@ The same equation in its triple integral form can be written as
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 Q(R) & =S_{0} & \iiint\exp(-b\sum_{i=1}^{3}q_{i}^{2}\lambda_{i}-j2\pi\sum_{i=1}^{3}q_{i}R_{i})dq_{1}dq_{2}dq_{3}\nonumber \\
  & =S_{0} & \iiint\prod_{i=1}^{3}exp(-bq_{i}^{2}\lambda_{i}-j2\pi q_{i}R_{i})dq_{1}dq_{2}dq_{3}\nonumber \\
  & =S_{0} & \prod_{i=1}^{3}\int\exp(-bq_{i}^{2}\lambda_{i}-j2\pi q_{i}R_{i})dq_{i}\nonumber \\
  & =S_{0} & \prod_{i=1}^{3}\int\exp(-b\lambda_{i}[q_{i}^{2}+\frac{j2\pi R_{i}}{b\lambda_{i}}q_{i}])dq_{i}\nonumber \\
  & =S_{0} & \prod_{i=1}^{3}\int\exp\{-b\lambda_{i}[(q_{i}+\frac{j\pi R_{i}}{b\lambda_{i}})^{2}+\frac{\pi^{2}R_{i}^{2}}{b^{2}\lambda_{i}^{2}}]\}\nonumber \\
- & =S_{0} & \prod_{i=1}^{3}\int\exp\{-b\lambda_{i}(q_{i}+\frac{j\pi R_{i}}{b\lambda_{i}})^{2}\}exp\{-\frac{\pi^{2}R_{i}^{2}}{b\lambda_{i}}\}\label{eq:NextQ}\end{eqnarray}
+ & =S_{0} & \prod_{i=1}^{3}\int\exp\{-b\lambda_{i}(q_{i}+\frac{j\pi R_{i}}{b\lambda_{i}})^{2}\}exp\{-\frac{\pi^{2}R_{i}^{2}}{b\lambda_{i}}\}\label{eq:NextQ}
+\end{eqnarray}
 
 \end_inset
 
@@ -741,9 +779,11 @@ reference "eq:NextQ"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 Q(\mathbf{R}) & =S_{0} & \prod_{i=1}^{3}\sqrt{\frac{\pi}{b\lambda_{i}}}\exp(-\frac{\pi^{2}R_{i}^{2}}{b\lambda_{i}})\nonumber \\
- & =S_{0} & \left(\frac{\pi}{b}\right)^{3/2}\frac{1}{\sqrt{\prod_{i=1}^{3}\lambda_{i}}}\exp(-\frac{\,\,\pi^{2}}{b}\mathbf{R}^{T}D^{-1}\mathbf{R})\label{eq:TensorQ}\end{eqnarray}
+ & =S_{0} & \left(\frac{\pi}{b}\right)^{3/2}\frac{1}{\sqrt{\prod_{i=1}^{3}\lambda_{i}}}\exp(-\frac{\,\,\pi^{2}}{b}\mathbf{R}^{T}D^{-1}\mathbf{R})\label{eq:TensorQ}
+\end{eqnarray}
 
 \end_inset
 
@@ -826,9 +866,11 @@ reference "eq:TensorQ"
 
 .
  Using that last change of variables we can now write 
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \psi_{Q}(\mathbf{r},\mathbf{\hat{u}}) & = & \intop_{0}^{L_{\Delta}}Q(\mathbf{r},L\mathbf{\hat{u}})dL\nonumber \\
- & = & \alpha\intop_{0}^{L_{\Delta}}\exp(-L^{2}\frac{k}{2})dL\label{eq:TensorQ2}\end{eqnarray}
+ & = & \alpha\intop_{0}^{L_{\Delta}}\exp(-L^{2}\frac{k}{2})dL\label{eq:TensorQ2}
+\end{eqnarray}
 
 \end_inset
 
@@ -863,9 +905,11 @@ reference "eq:TensorQ2"
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \psi_{Q}(\mathbf{\hat{u}}) & = & \frac{\alpha}{\sqrt{k}}\intop_{0}^{\sqrt{k}L_{\Delta}}e^{-m^{2}/2}dm\\
- & = & \alpha\sqrt{\frac{2\pi}{k}}\left[CDF(\sqrt{k}L_{\Delta})-\frac{1}{2}\right]\label{eq:spinodf_cdf}\end{eqnarray}
+ & = & \alpha\sqrt{\frac{2\pi}{k}}\left[CDF(\sqrt{k}L_{\Delta})-\frac{1}{2}\right]\label{eq:spinodf_cdf}
+\end{eqnarray}
 
 \end_inset
 
@@ -933,8 +977,10 @@ key "Tuch2004"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\psi_{p_{\Delta}}=\frac{1}{Z}\sqrt{\frac{\pi\tau}{\mathbf{u}^{T}D^{-1}\mathbf{u}}}\label{eq:tuchs_gaussian_odf}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\psi_{p_{\Delta}}=\frac{1}{Z}\sqrt{\frac{\pi\tau}{\mathbf{u}^{T}D^{-1}\mathbf{u}}}\label{eq:tuchs_gaussian_odf}
+\end{equation}
 
 \end_inset
 
@@ -942,8 +988,10 @@ key "Tuch2004"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
-\frac{Z}{\sqrt{\pi\tau}} & = & \iintop_{S^{2}}(\mathbf{u}^{T}D^{-1}\mathbf{u})^{-\frac{1}{2}}d\mathbf{u}\label{eq:spherical_integral_Z}\end{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
+\frac{Z}{\sqrt{\pi\tau}} & = & \iintop_{S^{2}}(\mathbf{u}^{T}D^{-1}\mathbf{u})^{-\frac{1}{2}}d\mathbf{u}\label{eq:spherical_integral_Z}
+\end{eqnarray}
 
 \end_inset
 
@@ -989,9 +1037,11 @@ reference "eq:spherical_integral_Z"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 MHG & = & \iiint f_{D}(x)e^{-|x|^{2}}dx\label{eq:hole_space_known}\\
- & = & \intop_{0}^{\infty}\left[\iint f_{D}(ru)du\right]e^{-r^{2}}r^{2}dr,\qquad x=ru\:(polar)\label{eq:hole_space_polar}\end{eqnarray}
+ & = & \intop_{0}^{\infty}\left[\iint f_{D}(ru)du\right]e^{-r^{2}}r^{2}dr,\qquad x=ru\:(polar)\label{eq:hole_space_polar}
+\end{eqnarray}
 
 \end_inset
 
@@ -1008,10 +1058,12 @@ However, we know that
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 MHG & = & \intop_{0}^{\infty}\left[\iint f_{D}(u)du\right]e^{-r^{2}}rdr\\
  & = & \iint f_{D}(u)du\intop_{0}^{\infty}re^{-r^{2}}dr\\
- & = & \frac{1}{2}\iint f_{D}(u)du\end{eqnarray*}
+ & = & \frac{1}{2}\iint f_{D}(u)du
+\end{eqnarray*}
 
 \end_inset
 
@@ -1052,9 +1104,11 @@ key "olver2010nist"
 
  (19.31.2) & (19.16.9).
  Therefore, 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \frac{Z}{\sqrt{\pi\tau}} & = & 2MHG\\
- & = & \frac{2\pi^{\frac{3}{2}}\Gamma(1)}{\sqrt{det(I)}\Gamma(\frac{3}{2})}R_{-\frac{1}{2}}(\frac{1}{2},\frac{1}{2},\frac{1}{2};\lambda_{1},\lambda_{2},\lambda_{3})\end{eqnarray*}
+ & = & \frac{2\pi^{\frac{3}{2}}\Gamma(1)}{\sqrt{det(I)}\Gamma(\frac{3}{2})}R_{-\frac{1}{2}}(\frac{1}{2},\frac{1}{2},\frac{1}{2};\lambda_{1},\lambda_{2},\lambda_{3})
+\end{eqnarray*}
 
 \end_inset
 
@@ -1114,6 +1168,726 @@ Given
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+Affinity Propagation
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Affinity-Propagation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Affinity propagation (AP) is a recent 
+\begin_inset Formula $O(N^{2})$
+\end_inset
+
+ clustering method invented by Frey et al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "frey2007clustering"
+
+\end_inset
+
+ and Dueck et al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dueck2009affinity"
+
+\end_inset
+
+ which is inspired by loopy belief propagation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pearl1988probabilistic"
+
+\end_inset
+
+ and other recent innovations in graphical models and more specifically
+ is an instance of the max-sum algorithm in factor graphs.
+ For the completeness of this thesis and because AP is a relatively new
+ algorithm we give a short description of the AP in this section.
+ AP is an exemplar based clustering method where the center of a cluster
+ is a real data point (exemplar) as in k-medoids, and k-centres rather than
+ an average virtual point as in k-means.
+ AP starts by simultaneously considering all data points as potential exemplars.
+ Each data point is a node in a network and AP recursively transmits real-valued
+ messages along the edges of the network until a good set of exemplars and
+ corresponding clusters emerges.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename last_figures/affinity_propagation_ok2.png
+	lyxscale 40
+	scale 40
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Simple example of affinity propagation (AP) at work where it can precisely
+ identify 
+\begin_inset Formula $4$
+\end_inset
+
+ different normal distributions with means 
+\begin_inset Formula $(1,1),\;(-1,-1),\:(1,-1),\,(-2,2)$
+\end_inset
+
+ and standard deviation 
+\begin_inset Formula $0.5$
+\end_inset
+
+.
+ You can see the exemplars - most representative actual points - with thicker
+ dots perfectly aligned with the means.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Fig:AP_2d"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+AP takes as input a collection of similarities between data points, where
+ the similarity 
+\begin_inset Formula $S(i,k)$
+\end_inset
+
+ indicates how well the data point with index 
+\begin_inset Formula $k$
+\end_inset
+
+ is suited to be the exemplar for data point 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ In order to understand AP we can think just for the moment that we try
+ to cluster 2D data points and each similarity is expressed as the negative
+ Euclidean distance 
+\begin_inset Formula $S(i,k)=-||x_{i}-x_{k}||^{2}$
+\end_inset
+
+ (see Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Fig:AP_2d"
+
+\end_inset
+
+) therefore 
+\begin_inset Formula $S$
+\end_inset
+
+ for the moment is the negative complete squared distance matrix.
+ Rather than requiring the number of clusters to be prespecified, AP adds
+ a real number (preference weights) to the diagonal elements of 
+\begin_inset Formula $S$
+\end_inset
+
+, one for each data point so that larger values of 
+\begin_inset Formula $S(k,k)$
+\end_inset
+
+ are more likely to become exemplars.
+ For simplicity, we can choose the 
+\begin_inset Formula $median(S)$
+\end_inset
+
+ as the common preference weight for all points; in this way we do not enforce
+ any 
+\emph on
+a priori
+\emph default
+ information for one point to be an exemplar any more than any other point.
+ For some applications this could be an appropriate requirement.
+ There are two different messages exchanged between points: (1) responsibilities
+ 
+\begin_inset Formula $R(i,k)=S(i,k)-{\displaystyle \max_{k':k'\neq k}}[S(i,k')+A(i,k')]$
+\end_inset
+
+ and (2) availabilities which are 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+initially 
+\begin_inset Formula $A(i,k)=0$
+\end_inset
+
+ and then equal to
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\begin{equation}
+\forall i,k:\: A(i,k)=\begin{cases}
+{\displaystyle \sum_{i':i'\neq i}} & \max[0,\: R(i',k)],\: for\:\: k=i\\
+\min & \left[0,\: r(k,k)+{\displaystyle \sum\max_{i':i'\notin\{i,k\}}[0,r(i',k)]}\right],\: for\:\: k\neq i
+\end{cases}
+\end{equation}
+
+\end_inset
+
+A very interesting fact is the way we get the final exemplars using AP.
+ After the messages have converged, there are two ways you can identify
+ exemplars: 
+\end_layout
+
+\begin_layout Enumerate
+For data point 
+\begin_inset Formula $i$
+\end_inset
+
+, 
+\begin_inset Formula $if\:\: R(i,i)+A(i,i)>0$
+\end_inset
+
+, then data point 
+\begin_inset Formula $i$
+\end_inset
+
+ is an exemplar.
+ 
+\end_layout
+
+\begin_layout Enumerate
+For data point 
+\begin_inset Formula $i$
+\end_inset
+
+, 
+\begin_inset Formula $if\:\: R(i,i)+A(i,i)>R(i,j)+A(i,j)$
+\end_inset
+
+, for all 
+\begin_inset Formula $i$
+\end_inset
+
+ not equal to 
+\begin_inset Formula $j$
+\end_inset
+
+, then data point 
+\begin_inset Formula $i$
+\end_inset
+
+ is an exemplar.
+\end_layout
+
+\begin_layout Standard
+Therefore, the availabilities and responsibilities are added to identify
+ exemplars.
+ For point 
+\begin_inset Formula $i$
+\end_inset
+
+, the value of 
+\begin_inset Formula $k$
+\end_inset
+
+ that maximizes 
+\begin_inset Formula $A(i,k)+R(i,k)$
+\end_inset
+
+ either identifies 
+\begin_inset Formula $i$
+\end_inset
+
+ as an exemplar if 
+\begin_inset Formula $k=i$
+\end_inset
+
+, or identifies the data point that is the exemplar for point 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ The message passing procedure is terminated either after a fixed number
+ of iterations, or after changes in the messages stay low, or local decisions
+ stay constant; also the messages are damped - combining previous with current
+ message - to avoid numerical oscillations.
+ 
+\end_layout
+
+\begin_layout Standard
+Of course, when we need to calculate distances between many points then
+ the distance matrix becomes too big for the available memory.
+ In that case, if we are lucky and the data sets are sparse then we can
+ use AP on sparse matrices.
+ When the data sets are not sparse, as it is the case with tractographies,
+ we need to reduce the dimensionality of the data sets and this is why QB
+ can be very handy.
+ The complete algorithm for AP is given in Alg.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:AP"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[th!]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Input} Similarity/affinity matrix $S$ where the diagonal elements
+ of $S(k,k)$ indicate the a priori preference for $k$ to be chosen as an
+ exemplar 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Output} Clustering $CAP 
+\backslash
+leftarrow 
+\backslash
+{c_{1},...,c_{k},...,c_{|CAP|}
+\backslash
+}$, where a cluster $c 
+\backslash
+leftarrow (I,
+\backslash
+mathbf{e},N) $
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$
+\backslash
+forall i,k:
+\backslash
+: A(i,k)
+\backslash
+leftarrow R(i,k) 
+\backslash
+leftarrow 0$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$S 
+\backslash
+leftarrow S+n$ 
+\backslash
+# remove degeneracies
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$d 
+\backslash
+leftarrow 0.5$ 
+\backslash
+# set damping factor
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+last
+\backslash
+_iter $
+\backslash
+leftarrow$ $100$ 
+\backslash
+# last iteration 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$
+\backslash
+textbf{For}$ iter $=1$ to last
+\backslash
+_iter $
+\backslash
+textbf{Do}$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} $R_{old} 
+\backslash
+leftarrow R$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} $
+\backslash
+forall i,k:
+\backslash
+: R(i,k) 
+\backslash
+leftarrow S(i,k)-max_{k':k'
+\backslash
+neq k}[S(i,k')+A(i,k')]$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} $R 
+\backslash
+leftarrow (1-d)R+d*R_{old}$ 
+\backslash
+# dampen responsibilities 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} $A_{old} 
+\backslash
+leftarrow A$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} 
+\backslash
+# update availabilities 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} $
+\backslash
+forall i,k:
+\backslash
+: A(i,k) 
+\backslash
+leftarrow 
+\backslash
+begin{cases} 
+\backslash
+sum_{i':i'
+\backslash
+neq i} & max[0,
+\backslash
+: R(i',k)],
+\backslash
+: k=i
+\backslash
+
+\backslash
+ 
+\backslash
+min & 
+\backslash
+left[0,
+\backslash
+: 	R(k,k)+{
+\backslash
+displaystyle 
+\backslash
+sum
+\backslash
+max_{i':i'
+\backslash
+notin
+\backslash
+{i,k
+\backslash
+}}[0,R(i',k)]}
+\backslash
+right],
+\backslash
+: k
+\backslash
+neq i
+\backslash
+end{cases}$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{2em} $A 
+\backslash
+leftarrow (1-d)A+dA_{old}$ 
+\backslash
+# dampen availabilities 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$
+\backslash
+forall i, I_{e} 
+\backslash
+leftarrow argmax
+\backslash
+: S(i,I_{d})$ 
+\backslash
+# find indices of exemplars 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$I_{e}(I_{d}) 
+\backslash
+leftarrow 1:size
+\backslash
+: (I_{d})$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$L 
+\backslash
+leftarrow I_{d}(I_{e})$ 
+\backslash
+# assign labels 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$C_{AP} 
+\backslash
+leftarrow 
+\backslash
+{c_{0},...,c_{k},...,c_{|C_{AP}|}
+\backslash
+}$ 
+\backslash
+# clustering output
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+# where a cluster $c 
+\backslash
+leftarrow (I,
+\backslash
+mathbf{e},N)$ holds the AP exemplars $
+\backslash
+mathbf{e}$,
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+# the indices $I$ of the cluster elements and $N$ the number of elements
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+caption{Affinity Propagation}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:AP"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
