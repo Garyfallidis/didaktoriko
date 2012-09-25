@@ -7022,33 +7022,13 @@ In addition to the SDT a two compartment model with an isotropic component
 \end_inset
 
  
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang british
+\begin_inset Formula $\textrm{mm}^{2}/\textrm{s}$
+\end_inset
 
-\backslash
-textrm{mm}^{2}/
-\backslash
-textrm{s}
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-\lang english
 .
  For each acquisition scheme and fibre type, the “ideal” (noise-free) diffusion
- weighted signals were calculated according to the SDT model, assuming a
- constant ideal value of the baseline signal 
+ weighted signals were calculated according to the SDT mo- del, assuming
+ a constant ideal value of the baseline signal 
 \begin_inset Formula $S_{0}=100$
 \end_inset
 
