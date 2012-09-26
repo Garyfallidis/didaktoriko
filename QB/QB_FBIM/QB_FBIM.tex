@@ -107,8 +107,23 @@ simplify the complexity of these data sets and provide a useful
 segmentation. As a result, during the last 10 years there have been
 numerous efforts by many researchers to address both unsupervised and
 supervised learning problems of brain tractography.  As far as we know
-all these methods suffer from low efficiency, however they provide many
+all these methods suffer from low time efficiency, however they provide many
 useful ideas which we describe in this section.
+
+%-----------------------------------------------------------------------
+
+In the tractography literature we find approaches which use unsupervised and/or supervised learning techniques to create bundles i.e. groupings of streamlines with similar spatial and shape characteristics. In supervised learning there will be often a training and a test set. In the training set experts will have provided the anatomical labels for a set of manually segmented streamline bundles. Those bundles will now correspond to tracts e.g. the corticospinal tract or the arcuate fasciculus. The difficulty will be then to identify similar structures in the test set with unlabeled streamlines. In unsupervised learning we try to create a partitioning of the streamlines without knowing the labels. In this work we used unsupervised learning to reduce in a smart way the number of streamlines and make the manual segmentation of bundles much easier. We believe that a complete unsupervised method cannot directly create anatomically valid bundles without extensive prior information preferably from experts or atlases. This is because anatomical bundles differ very much both in lenghts and in shape and there is not a single distance threshold which can cluster all of them with anatomical correspondence. If one uses such extensive priors then it will be wiser to use supervised learning algorithms. Therefore, we think that unsupervised leargning should be used primarily for dimensionality reduction of these large data sets. 
+
+Unfortunately, most clustering (unsupervised learning) algorithms are at the best case $\mathcal{O}(N^2)$ and they need to calculate all pairwise distances between every streamline in order to create a distance matrix. We found that most authors tried to create that distance matrix using Hierarchical or Spectral Clustering. However, the had too use only a subset of the data because the calculations were heavy and the distance matrix too big for standard memory. For example for 1 million streamlines you would need 3.6 TBytes with 4Bytes floating point precision.
+
+Hierarchical
+Spectral Clustering
+Graphs/Spanning Trees
+Gaussian Processes
+Hierarchical Dirichlet Process
+Currents
+
+%#######################################################################
 
 Tractography clustering algorithms are rarely compared in the
 literature.  In this regard, \citet{moberts2005evaluation} is an
@@ -272,6 +287,8 @@ this case using Dirichlet Processes or Currents or Connectivity based
 parcellation seem to be some viable solutions. For further recent
 overviews see \citet{ODonnell_IEEETMI07} and
 \citet{wang2010tractography}.
+
+%###########################################################
 
 All the same, if clustering is to be used in clinical practice or to
 make neuroscientists' analysis more efficient and practical we need
