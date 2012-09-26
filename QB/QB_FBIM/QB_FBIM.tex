@@ -706,63 +706,64 @@ that of \citet{moberts2005evaluation} who quantified the agreement
 between a clustering and a `gold standard' tractography labelled by
 their team.  We have used a more symmetrical measure of agreement
 between two clusterings that do not require a prior labelled data set.
-It is called the \emph{optimised matched agreement} (OMA). As with the \emph{adjusted
-Rand index}~\citep{moberts2005evaluation}, OMA requires the calculation
-of the $M \times N$ streamline cross-classification matrix $X=(x_{ij})$. This
-counts the number of streamlines in all pairwise intersections of
-clusters, one from each of the two clusterings.  If
-$\mathcal{A}=\{A_i:i=1\dots M\}$ and $\mathcal{B}=\{B_j:j=1\ldots N\}$
-are the two clusterings, then $x_{ij}=|A_i \cap B_j|$. As there is no
-\emph{a priori} correspondence or \emph{matching} between the
-clusters in $\mathcal{A}$ and those in $\mathcal{B}$, and vice versa, we
-need to find one empirically. If $j=\pi(i)$ is a possible matching then the corresponding
-\emph{matched agreement} is $\mathrm{MA}(\pi) = \sum_{i=1}^M x_{i,\pi(i)}$. A
+It is called the \emph{optimised matched agreement} (OMA). As with the
+\emph{adjusted Rand index} (ARI)~\citep{moberts2005evaluation}, OMA requires
+the calculation of the $M \times N$ streamline cross-classification
+matrix $X=(x_{ij})$. The entries of $X$ are the counts of the number of streamlines in all
+pairwise intersections of clusters, one from each of the two
+clusterings.  If $\mathcal{A}=\{A_i:i=1\dots M\}$ and
+$\mathcal{B}=\{B_j:j=1\ldots N\}$ are the two clusterings, then
+$x_{ij}=|A_i \cap B_j|$. As there is no \emph{a priori} correspondence
+or \emph{matching} between the clusters in $\mathcal{A}$ and those in
+$\mathcal{B}$, and vice versa, we need to find one empirically. If
+$j=\pi(i)$ is a possible matching then the corresponding \emph{matched
+  agreement} is $\mathrm{MA}(\pi) = \sum_{i=1}^M x_{i,\pi(i)}$. A
 matching $\pi$ that yields OMA by maximising $\mathrm{MA}(\pi)$ can be
 found using the Hungarian Algorithm~\citep{Kuhn1955}. The interpretation
 of the OMA statistic is analogous to that of the well-known Kappa
 measure of inter-rater agreement~\citep{altman1995}, with the range 61\%
 to 80\% corresponding to a `good' strength of agreement.
 
-Besides the considerable computational overheads in calculating the
-cross-classification matrix, there is a further fundamental disadvantage of these
-methods is that they do not work with clusterings of different
-tractographies. Being able to compare results of clusterings is crucial for creating
-stable brain imaging procedures, and therefore it is necessary to
-develop a way to compare different tractography clusterings or different
-sets of streamlines from the same subject or different subjects.
+However these statistics heve their limitations. Not only are there
+considerable computational overheads in calculating the
+cross-classification matrix, there is also a fundamental disadvantage
+because they do not work with clusterings of different
+tractographies. Being able to compare results of clusterings across
+brains is crucial for creating stable brain imaging procedures, and
+therefore it is necessary to develop a way to compare different
+tractography clusterings on different sets of streamlines from the same
+or different subjects.
 
 Although we recognise that these are difficult problems, we propose the
 following approach with three novel comparison functions which we call
-\emph{coverage}, \emph{overlap} and \emph{bundle adjacency} (BA).
+\emph{coverage}, \emph{overlap} and \emph{bundle adjacency}. These
+metrics aim to quantify how well a data reduction performs. Ideally most
+points of the full data set should be near to the reduced set
+(coverage), but not too many (overlap).
 
-If $S$ and $T$ are sets of streamlines, and $\theta>0$ is selected as a
-threshold, we say that $s \in S$ has a $\theta$-neighbour in $T$ if
-$\min_{t\in T}[\mathrm{MDF}(s,t)<\theta]$. We define the coverage of $S$
-by $T$ as the fraction of streamlines in $S$ that have a
-$\theta$-neighbour in $T$: $$\mathrm{coverage}(S,T) = |\{s \in S
-\,\mathrm{has~a}~\theta\mathrm{-neighbour~in}~T\}|/|S|.\nonumber$$
-Coverage ranges between 0 (when no streamline in S has a close enough
-neighbour in T) and 1 (when every streamline in S has a neighbour in T).
+Let $S$ and $T$ be two sets of streamlines, and let $\theta>0$ be a
+selected threshold. We will say that $s \in S$ is
+$\theta$-\emph{approximated} by $T$ if there is at least one streamline
+$t \in T$ with $\mathrm{MDF}(s,t})\le \theta$. We define coverage of $S$
+by $T$ as the fraction of $S$ that is $\theta$-approximated by $T$. Coverage
+ranges between 0 (when all streamlines in $S$ are too far from $T$) and
+1 (when every streamline in $S$ is $\theta$-approximated by $T$).
 
-We define the overlap of $T$ in $S$ as the average number of
-$\theta$-neighbours in $T$ for streamlines in
-$S$: $$\mathrm{overlap}(S,T)=\sum_{s \in S}|\{t \in
-T:t\,\mathrm{is~a}~\theta\mathrm{-neighbour~of}~s\}|/|S|.\nonumber$$
-Overlap can take any non-negative value, with higher values indicating
-possible redundancy of $T$ in $S$; if $T$ has several similar
-streamlines then this will tend to boost overlap.
+We define the \emph{overlap} of $T$ in $S$ as the average number of
+approximating streamlines in $T$ that for $\theta$-approximate
+streamlines in $S$.  Overlap is undefined of no streamlines in $S$ are
+approximated by $T$, otherwise it can take any value greater then or
+equal to 1, with higher values indicating the degree of redundancy of
+$T$ in $S$; if $T$ has several similar streamlines then this will tend
+to boost overlap.
 
-BA is a symmetric measure of the similarity of the two sets of
-streamlines $S$ and $T$. BA is the average of the $\theta$-coverages of
-$T$ by $S$ and of $S$ by $T$: $$\mathrm{BA}(S,T) =
-(\mathrm{coverage}(S,T) + \mathrm{coverage}(T,S))/2.$$ BA ranges between
-0, when no streamlines of S or T have neighbours in the other set, and 1
-when they all do.
-
-If $S$ is a good approximation to $T$ then $S$ will have high coverage
-of $T$; if $S$ has low redundancy as an approximation to $T$ then the
-overlap of $S$ in $T$ will be low; and if $S$ and $T$ are globally
-similar then BA will be high.
+Coverage and overlap measure how well one set approximates another. In
+order to compare two reductions of possibly different data sets we
+define the symmetric measure \emph{bundle adjacency} (BA).  BA is the
+average of the coverage of $T$ by $S$ and the coverage of $S$ by
+$T$: $$\mathrm{BA}(S,T) = (\mathrm{coverage}(S,T) +
+\mathrm{coverage}(T,S))/2.$$ BA ranges between 0, when no streamlines of
+S or T have neighbours in the other set, and 1 when they all do.
 
 \subsection{\label{sub:QB-Data-sets}Data sets}
 
