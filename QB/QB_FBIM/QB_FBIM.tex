@@ -55,7 +55,7 @@ Nimmo-Smith]{Eleftherios~Garyfallidis\,$^{1,3,*}$, Matthew~Brett\,$^{2}$,
 
 \begin{abstract}
 \noindent
-Diffusion MR data sets produce large numbers of streamlines which
+Diffusion MR datasets produce large numbers of streamlines which
 are hard to visualize, interact with, and interpret in a clinically
 acceptable time scale, despite numerous proposed approaches. As a
 solution we present a simple, compact, tailor-made clustering algorithm,
@@ -77,7 +77,7 @@ matter Segmentation, Dimensionality Reduction, Clustering algorithms, DTI.
 
 Following the acquisition of diffusion MR scans, processes of
 reconstruction and integration are performed to create a tractography: a
-data set composed of streamlines, which are sequences of points in 3D
+dataset composed of streamlines, which are sequences of points in 3D
 space. Irrespective of the types of reconstruction and integration, a
 tractography can contain a very large number of streamlines (up to
 $10^6$) depending principally on the number of seed points used to
@@ -103,240 +103,34 @@ algorithm handles voxels with underlying fiber crossings.
 
 The size of these tractographies makes them difficult to interpret and
 visualize. A clustering of some kind seems to be an obvious route to
-simplify the complexity of these data sets and provide a useful
+simplify the complexity of these datasets and provide a useful
 segmentation. As a result, during the last 10 years there have been
 numerous efforts by many researchers to address both unsupervised and
 supervised learning problems of brain tractography.  As far as we know
-all these methods suffer from low time efficiency, however they provide many
-useful ideas which we describe in this section.
+all these methods suffer from low time efficiency, i.e. they are very slow to be used in practice. 
 
-%-----------------------------------------------------------------------
+%------------------------------------------------------------------------------
 
-In the tractography literature we find approaches which use unsupervised and/or supervised learning techniques to create bundles i.e. groupings of streamlines with similar spatial and shape characteristics. In supervised learning there will be often a training and a test set. In the training set experts will have provided the anatomical labels for a set of manually segmented streamline bundles. Those bundles will now correspond to tracts e.g. the corticospinal tract or the arcuate fasciculus. The difficulty will be then to identify similar structures in the test set with unlabeled streamlines. 
+In tractography literature we can find approaches which use unsupervised and/or supervised learning algorithms to create bundles i.e. groupings of streamlines with similar spatial and shape characteristics. In supervised learning the datasets are devided into a training and a test set. For the training set experts will have provided the anatomical labels for a set of manually segmented streamline bundles. Those bundles will now correspond to tracts e.g. the corticospinal tract or the arcuate fasciculus. The difficulty will be then to identify similar structures in the test set with unlabeled streamlines. 
 
-In unsupervised learning we try to create a partitioning of the streamlines without knowing the labels. In this work we used unsupervised learning to reduce in a smart way the number of streamlines and make the manual segmentation of bundles much easier. We believe that a complete unsupervised method cannot directly create anatomically valid bundles without extensive prior information preferably from experts or atlases. This is because anatomical bundles differ very much both in lenghts and in shape and there is not a single streamline distance threshold which can cluster all of them with anatomical correspondence. If one uses such extensive priors then it will be wiser to use supervised learning algorithms. Therefore, we think that unsupervised leargning should be used primarily for dimensionality reduction of these large data sets. 
+In unsupervised learning the focus is to create a partitioning of the streamlines without knowing the labels. In this work we used unsupervised learning to reduce in an simple and efficient way the number of streamlines and make manual segmentation of bundles and tractography exploration a less time consuming task. 
 
-Unfortunately, most clustering (unsupervised learning) algorithms are at the best case $\mathcal{O}(N^2)$ and they need to calculate all pairwise distances between every streamline in order to create a distance matrix. We found that most authors tried to create that distance matrix using Hierarchical or Spectral Clustering. However, the had too use only a subset of the data because the calculations were heavy and the distance matrix too big for standard memory. For example for 1 million streamlines you would need 3.6 TBytes with 4Bytes floating point precision.
+We believe that a complete unsupervised method cannot directly create anatomically valid bundles without extensive prior information preferably from experts or atlases. Nevertheless, when such extensive priors are used this becomes a supervised learning problem. This is because anatomical bundles differ very much both in lenghts and in shape \citet{schmahmann2009fiber} and there is not a single threshold which can cluster a full dataset with anatomical correspondence (see \citet{Guevara2010}). If one uses such extensive priors then it will be wiser to use supervised learning algorithms. Therefore, we propose that unsupervised learning should be used primarily for dimensionality reduction or simplification of these large datasets. This is also the concentration of the approach that we propose here.
 
-%Hierarchical
-\citet{gerig2004analysis} 
-\citet{moberts2005evaluation} 
-\citet*{zhang2005dti} 
-\citet{Tsai2007} 
-\citet{zhang2008identifying} 
-\citet{jianu2009exploring} 
-\citet{Visser2010} 
-\citet{Guevara2010}
+Most clustering (unsupervised learning algorithms) are at the best case $\mathcal{O}(N^2)$ where $N$ the total number of streamlines and they need to calculate all pairwise distances between every streamline in order to create a distance matrix. We found that most authors tried to create similar distance matrices using hierarchical clustering (see \citet{gerig2004analysis, moberts2005evaluation, zhang2005dti, Tsai2007, zhang2008identifying, jianu2009exploring, Visser2010, Guevara2010}) or spectral clustering (see \citet{ODonnell_IEEETMI07, o2009tract, jonasson2005fiber, ziyan2009consistency}) or affinity propagation (see \citet{leemans17new, malcolm2009filtered}). However, they had to use only a subset of the complete dataset because the calculations were heavy and the distance matrix too big for computers with standard memory capacity. For example, \citet{ODonnell_IEEETMI07} used only \num{10000} streamlines (~10\% of the initial tractography) and \citet{Visser2010} used recombinations of \num{10000} streamlines.
+We give here an example of how large that distance matrix can be used with a full dataset. Just for 100 thousand streamlines 38 GBytes are required and for 1 million streamlines 3.6 TBytes of memory are required (4 bytes floating point precision). 
 
-
-%Spectral Clustering
-\citet{ODonnell_IEEETMI07, o2009tract, jonasson2005fiber, ziyan2009consistency}
-
-%Affinity Propagation
-\citet*{leemans17new, malcolm2009filtered}
-
-%Graphs/Spanning Trees
-\citet{brun2004clustering}
-\citet{ElKouby2005} 
-
-%K-nearest neighbours
-\citet{Ding2003a, moberts2005evaluation}
-
-%Gaussian Processes
-\citet{wassermann2010unsupervised}
-
-%Hierarchical Dirichlet Process
-\citet{wang2010tractography} 
-
-%Currents
-\citet{Durrleman2009, durrleman2010registration}
-
-%Addaptive Mean Shift
-\citet{zvitia2008adaptive, Zvitia2010} 
-
-% K-means
-\citet{ElKouby2005}
-
-% Expectation Maximization
-\citet{Maddah_IEEEBI2008} 
+Other methods have also been used that use graph theoretic approaches (see \citet{brun2004clustering, ElKouby2005}), k-nearest neighbours (see \citet{Ding2003a, moberts2005evaluation}), gaussian processes (see \citet{wassermann2010unsupervised}), hierarchical dirichlet processes (see \citet{wang2010tractography}), currents (see \citet{Durrleman2009, durrleman2010registration}), adaptive mean shift (see \citet{zvitia2008adaptive, Zvitia2010}), k-means (see \citet{ElKouby2005}) and expectation maximization (see \citet{Maddah_IEEEBI2008}). 
 
 %Distances
-\citet{zhang2003visualizing, corouge2004towards, Corouge2004, Corouge2006}
+%\citet{zhang2003visualizing, corouge2004towards, Corouge2004, Corouge2006}
 %me and Visser
 
 %Representation
-B-splines \citet{Maddah_MICCA2005}  
-quintic B-splines \citet{maddah2006statistical}   
-
-
-%#######################################################################
-
-\section{Old Introduction}
-
-Tractography clustering algorithms are rarely compared in the
-literature.  In this regard, \citet{moberts2005evaluation} is an
-exception. \citeauthor{moberts2005evaluation} evaluated different
-popular hierarchical clustering methods including a less common one,
-shared nearest neighbor (SNN), against a gold standard segmentation by
-physicians. The authors concluded that single-link clustering with mean
-average distance was the method which performed best.
-
-\citet{wang2010tractography} proposed a nonparametric Bayesian framework
-using hierarchical Dirichlet processes mixture model (HDPM). This is one
-of the very few methods not based on distances. In this work a
-streamline is modeled as a discrete distribution over a codebook of
-discretized orientations and voxel regions. The authors explain that
-calculating pairwise distances is very time consuming and therefore they
-avoid using them. Their approach automatically learns the number of
-clusters from data with Dirichlet processes priors but it is still not
-efficient enough for real time operation. A disadvantage of this method
-is that the priors do not originate from anatomical knowledge.
-
-\citet{Visser2010} used hierarchical clustering and fuzzy c-means
-together with recombination of subsets of the same tractography to
-reduce the effect of the large data sets on the distance matrix based on
-the MDF distance (see section~\ref{sub:track-distances})
-\citep{EGMB10}. An interesting result with this method was that they
-could automatically find the different sub-bundles of the Arcuate
-Fasciculus region in accordance with the supervised labeling described
-in \citet{catani2005perisylvian}. In common with \citet{Visser2010} the
-algorithm that we present in this paper also uses the minimum average
-flip (MDF) distance function as a measure of distance between
-streamlines. \citet{gerig2004analysis} also used hierarchical clustering
-with a symmetrised version of two closest point Hausdorff-type
-distances. However, they tested their method only with two bundles:
-Uncinate Fasciculus and the Corticospinal Tract.
-
-\citet{Guevara2010} combined a great number of different algorithms from
-hierarchical clustering to 3D watershed on streamline extremities.  They
-first divided the tractography into left-right hemisphere,
-inter-hemispheric and cerebellum subsets. They then create further
-subsets of different streamline length, use hierarchical clustering
-based on the random voxel parcels, use watershed over extremities and
-finally use hierarchical clustering to merge the different sub-bundles
-using the Hausdorff distance (see section
-\ref{sub:track-distances}). This work stressed the need to divide the
-data set between shorter and longer streamlines.
-
-\citet{Tsai2007} used a combination of cluster methods based on minimum
-spanning trees, locally linear embedding and k-means.  They were able to
-incorporate both local and global structures by changing a few
-parameters. The main advantage of this method was that it showed a way
-to merge a long chain of neighbouring structures into one cluster.
-
-\citet*{zhang2005dti} used an agglomerative hierarchical clustering
-using the same distance as in \citet{zhang2003visualizing} and later in
-\citet{zhang2008identifying} combined distance-based single linkage
-hierarchical clustering with expert labeling of specific
-bundles. 
-
-\citet{zvitia2008adaptive, Zvitia2010} used adaptive mean shift. This is
-a clustering algorithm which finds automatically the number of clusters
-for example in contrast with k-means that the user needs to prespecify
-the number of clusters.  They also used this approach for direct
-registration of tractographies but only with tractographies from the
-same subject.
-
-\citet{ElKouby2005} created a ROI-based connectivity matrix where the
-$i,j$th entry of the matrix holds the number of streamlines which
-connect $ROI_{i}$ to $ROI_{j}$. K-means was used afterwards on the rows
-of the matrix to cluster the streamlines. 
-
-\citet{brun2004clustering} used the mean and covariance of the
-streamline as the feature space and normalized cuts based on a graph
-theoretic approach for the segmentation. \citet{Ding2003a} used
-k-nearest neighbours, another agglomerative approach, applied to
-corresponding streamline segments. \citet{corouge2004towards} used
-different types of streamline distances, e.g. Hausdorff distances, and
-higher order geometric properties such as torsion and curvature, and in
-\citet{Corouge2004} and \citet{Corouge2006} used Generalized Procrustes
-Analysis and Principal Components Analysis (PCA) to analyze the shape of
-bundles.
-
-\citet{ODonnell_IEEETMI07} created a tractographic atlas using spectral
-embedding and expert anatomical labeling. They then automatically
-segmented using spectral clustering and expressed the streamlines as
-points in the embedded space to the closest existing atlas clusters. The
-full affinity matrix was too big to compute therefore they used the
-Nystrom approximation: working on a subset and avoid generating the
-complete affinity/distance matrix. Later in \citet{o2009tract} they
-performed group analysis on pre-specified bundles.
-
-
-\citet{Maddah_MICCA2005} used B-spline representations of streamlines
-referenced to an atlas, and then the streamlines were clustered based on
-the labeled atlas. Later \citet{maddah2006statistical} using a similar
-streamline representation (quintic B-splines) calculated a model for
-each bundle as the average and standard deviation of that parametric
-representation. In this way they created an atlas which is used as a
-prior for expectation-maximization (EM) clustering of the Corpus
-Callosum streamlines into Witelson subdivisions \citet{witelson1989hand}
-using population averages. Later in \citet{Maddah_IEEEBI2008} showed
-that it is possible to combine spatial priors with metrics for the shape
-of the streamlines in order to guide the clustering process.
-
-\citet{jonasson2005fiber} created a large $N\times N$ co-occurrence
-matrix, where $N$ is the number of the fibers to cluster.  The
-co-occurrence matrix contained the number of times that two fibers share
-the same voxel. They then used spectral clustering.
-\citet{jianu2009exploring} presented a new method for visualizing and
-navigating through tractography data combining dendrograms from
-hierarchical clustering along with 3D- and 2D-embeddings using the
-approximation that \citet{chalmers1996linear} introduced for the
-technique of \citet{eades1984heuristic}.
-
-\citet{Durrleman2009} introduced electrical current models of fibre
-bundles where a fibre is seen as a set of wires sending information in
-one direction at constant rate. Currents have good diffeomorphic
-properties and can be used for registration of bundles as shown in
-\citet{Durrleman2009} and later in \citet{durrleman2010registration}.
-This methodology does not impose point-to-point or fibre-to-fibre
-correspondences, however it is sensitive to fibre density and
-orientation of the bundles and it is computationally expensive.
-
-\citet*{leemans17new} used affinity propagation to cluster the
-fronto-occipital fibres, Cingulum and Arcuate Fasciculus after reducing
-the complexity of the data sets using additional frontal and occipital
-boolean masks on the right cerebrum. Results however were shown on a
-very small part of the entire tractography where clustering is a much
-easier problem.  Later \citet{malcolm2009filtered} used affinity
-propagation to cluster a full brain tractography created using filtered
-tractography and suggested that affinity propagation is not suitable for
-group clustering of tractographies.
-
-\citet{ziyan2009consistency} introduced a probabilistic registration and
-clustering algorithm based on expectation-maximization (EM) which
-creates a sharper atlas from a set of subjects based on three bundles:
-Corpus Callosum, Cingulum and Fornix. This work used an initial
-spectral clustering \citep{ODonnell_IEEETMI07} to label the bundles and
-then updated these labels iteratively while performing bundle-wise
-registration using a poly-affine framework \citet{Arsigny2009}.
-
-Often it is useful to have some anatomical guidelines in order to add
-prior information to the automated learning process. Protocols to
-manually label $11$ major white matter tracts were described in
-\citet{Wakana2007NeuroImage} using ROIs to include or exclude
-streamlines generated by deterministic tractography.
-\citet{Hua2008NeuroImage} used regions of interest together with
-probabilistic tractography in order to create probability maps of known
-fibre bundles.
-
-From this short overview we observe two main trends in the literature.
-The first and most common one makes use of streamline distances and
-calculates distance matrices. The most prevailing approaches here for
-deciphering the distance matrix are with Hierarchical and Spectral
-Clustering which are applied only on random subsets of the initial
-tractography. For example, \citet{ODonnell_IEEETMI07} used only
-\num{10000} streamlines (~10\% of the initial tractography) and
-\citet{Visser2010} used recombinations of \num{10000} streamlines. The
-second trend, and the less common, favours avoiding streamline distances
-because the computation of the distance matrix is memory intensive. In
-this case using Dirichlet Processes or Currents or Connectivity based
-parcellation seem to be some viable solutions. For further recent
-overviews see \citet{ODonnell_IEEETMI07} and
-\citet{wang2010tractography}.
-
-%###########################################################
+%Discretization \citet{EGMB10}, \citet{Visser2010}
+%B-splines \citet{Maddah_MICCA2005}  
+%quintic B-splines \citet{maddah2006statistical}   
+%Fourier descriptors
 
 All the same, if clustering is to be used in clinical practice or to
 make neuroscientists' analysis more efficient and practical we need
@@ -344,10 +138,10 @@ algorithms that can provide useful clusters and cluster descriptors in
 acceptable time. None of the papers covered in this literature review
 provide a solution for this issue of efficiency and most of the methods
 would require from many hours to many days to run on a standard sized
-data set.
+dataset.
 
 Most authors agree that unsupervised learning with tractographies is a
-difficult problem as the data sets are very large, dense, cluttered with
+difficult problem as the datasets are very large, dense, cluttered with
 noisy streamlines which could have no anatomic relevance, and the actual
 anatomical bundles are interwoven in a complicated way in several brain
 regions.  We think that in order to find larger anatomical clusters a
@@ -372,7 +166,7 @@ innovations in tractography clustering algorithms there is no parallel
 uptake by anatomists or clinicians. The heavy computational demands of
 clustering add a further overhead to the use of tractography for
 clinical applications but also put a barrier on understanding and
-interpreting the quality of diffusion MR data sets. Moreover methods
+interpreting the quality of diffusion MR datasets. Moreover methods
 described as `automatic' in reality require significant intervention
 using neuroanatomical knowledge.
 
@@ -383,14 +177,13 @@ higher complexity classification and/or input from experts. To address
 these key issues of time and space we present a stable, generally linear
 time clustering algorithm that can generate meaningful clusters of
 streamlines in seconds with minimum memory consumption. Our approach is
-extremely straightforward and we do not need to calculate all pairwise
+ straightforward and we do not need to calculate all pairwise
 distances unlike most existing methods. Furthermore we can update our
 clustering online. In this way we can overcome the previous barriers of
 space and time.
 
-We show that we can generate these clusters \textasciitilde1000 times
-faster than any other available method before even applying further
-acceleration through parallel processing, and that it can be used to
+We show that we can generate these clusters times much faster than any other 
+available method, and that it can be used to
 cluster from a few hundred to many millions of streamlines.
 
 There is no current unsupervised anatomical segmentation method that can
@@ -696,7 +489,7 @@ One of the major benefits of applying QB to tractographies is that it
 can provide meaningful simplifications and find features that were
 previously invisible or difficult to locate because of the high density
 of the tractography. For example we used QB to cluster part of the
-corticospinal tract (CST). This bundle was labelled in the data sets
+corticospinal tract (CST). This bundle was labelled in the datasets
 provided by PBC (\ref{sub:QB-Data-sets}) and it was selected by an
 expert. The QB representation is clearly shown in Fig.~\ref{Flo:cst_pbc}
 where every cluster is represented by a single centroid streamline. To
@@ -758,7 +551,7 @@ other bigger bundles.
 \end{figure*}
 
 In order to quantify the dimensionality reduction it achieves we applied
-QB clustering to the 10 human subject data sets (\ref{sub:QB-Data-sets}). The mean
+QB clustering to the 10 human subject datasets (\ref{sub:QB-Data-sets}). The mean
 data compression (ratio of tractography size to number of QB clusters)
 was $34.4:1$ with a $10$~mm threshold and $230.4:1$ with a $20$~mm
 threshold.
@@ -770,7 +563,7 @@ directly compare different clustering results for tractographies, beyond
 that of \citet{moberts2005evaluation} who quantified the agreement
 between a clustering and a `gold standard' tractography labelled by
 their team.  We have used a more symmetrical measure of agreement
-between two clusterings that do not require a prior labelled data set.
+between two clusterings that do not require a prior labelled dataset.
 It is called the \emph{optimised matched agreement} (OMA). As with the
 \emph{adjusted Rand index} (ARI)~\citep{moberts2005evaluation}, OMA requires
 the calculation of the $M \times N$ streamline cross-classification
@@ -803,7 +596,7 @@ Although we recognise that these are difficult problems, we propose the
 following approach with three novel comparison functions which we call
 \emph{coverage}, \emph{overlap} and \emph{bundle adjacency}. These
 metrics aim to quantify how well a data reduction performs. Ideally most
-points of the full data set should be near to the reduced set
+points of the full dataset should be near to the reduced set
 (coverage), but not too many (overlap).
 
 Let $S$ and $T$ be two sets of streamlines, and let $\theta>0$ be a
@@ -823,7 +616,7 @@ $T$ in $S$; if $T$ has several similar streamlines then this will tend
 to boost overlap.
 
 Coverage and overlap measure how well one set approximates another. In
-order to compare two reductions of possibly different data sets we
+order to compare two reductions of possibly different datasets we
 define the symmetric measure \emph{bundle adjacency} (BA).  BA is the
 average of the coverage of $T$ by $S$ and the coverage of $S$ by
 $T$: $$\mathrm{BA}(S,T) = (\mathrm{coverage}(S,T) +
@@ -832,7 +625,7 @@ S or T have neighbours in the other set, and 1 when they all do.
 
 \subsection{\label{sub:QB-Data-sets}Data sets}
 
-We applied QuickBundles to a variety of data sets: simulations, $10$
+We applied QuickBundles to a variety of datasets: simulations, $10$
 human tractographies collected and processed by ourselves, and one
 tractography with segmented bundles which was available online.
 
@@ -862,7 +655,7 @@ acquisition \citep{Yeh2010} with a maximum $b$-value of $4000\,
 with TR=$8200\,\textrm{ms}$ and TE=$69\,\textrm{ms}$. The experiment was
 approved by the Cambridge Psychology Research Ethics Committee (CPREC).
 
-For the reconstruction of the $10$ human data sets we used Generalized
+For the reconstruction of the $10$ human datasets we used Generalized
 Q-Sampling \citep{Yeh2010} with diffusion sampling length $1.2$ and for
 the tractography propagation we used EuDX (Euler integration with
 trilinear interpolation, \citet{Garyfallidis_thesis}), angular threshold
@@ -870,7 +663,7 @@ trilinear interpolation, \citet{Garyfallidis_thesis}), angular threshold
 quantitative anisotropy stopping threshold $0.0239$ (see
 Fig.~\ref{Flo:arcuate_close}).
 
-\textbf{PBC human subjects}. We also used labelled data sets by
+\textbf{PBC human subjects}. We also used labelled datasets by
 experts(see Fig.~\ref{Flo:cst_pbc} and \ref{Flo:QB_fornix}), from the
 freely available tractography database used in the Pittsburgh Brain
 Competition Fall $2009$, ICDM (pbc.lrdc.pitt.edu).
@@ -929,7 +722,7 @@ As a further test we compared QB with $12$ point streamlines and a
 distance threshold of $10$~mm with some timings reported from other
 state of the art methods found in the literature. Unfortunately timings
 have be rather rarely reported up till today -- possibly because as most
-algorithms were very slow on full data sets. With $\num{1000}$
+algorithms were very slow on full datasets. With $\num{1000}$
 streamlines \citet{wang2010tractography}'s algorithm took $30$s whereas
 QB took $0.07$.  $\num{14400}$ seconds were required for the method of
 \citet{wang2010tractography} to cluster $\num{60000}$ streamlines; QB
@@ -939,7 +732,7 @@ completed this task in $160.1$s. The speed-up factors in these three
 comparisons were $429$, $980$ and $468$ respectively.  Though this
 experiment was performed using a single CPU core we see the valuable
 speedup that QB achieves, holding out the prospect of real-time (less than 1~second)
-clustering on data sets of up to \num{20000} streamlines.
+clustering on datasets of up to \num{20000} streamlines.
 
 \subsection{Stability of QB \label{sub:Comparisons}}
 
@@ -967,7 +760,7 @@ random orderings is rather small, with mean standard deviation $12.7$
 (min $7.3$; max $17.4$). This suggests a good level of consistency in
 the data reduction achieved by QB.
 
-Next we investigated how consistent QB clusterings are when data sets
+Next we investigated how consistent QB clusterings are when datasets
 are re-ordered. Twelve different random orderings were generated for each
 of $10$ tractographies and the corresping QB clusterings were computed
 with MDF threshold $10$~mm. For each subject the $66$ pairings of QB
@@ -1140,7 +933,7 @@ We have presented a novel and powerful algorithm -- QuickBundles
 revealing the detailed anatomy of the densely packed white matter which
 has recently attracted much scientific attention; it can also be used
 for any trajectory clustering problem and it is recommended when large
-data sets are involved. QB can be used with all types of diffusion MRI
+datasets are involved. QB can be used with all types of diffusion MRI
 tractographies which generate streamlines (e.g. probabilistic or
 deterministic) and it is independent of the reconstruction model. QB is
 supported by a distance function MDF on the space of streamlines which
@@ -1151,7 +944,7 @@ characteristic information about the tractography.
 In common with mainstream clustering algorithms such as k-means,
 k-centers and expectation maximization, QB is not a global clustering
 method therefore it can give different results under different initial
-conditions of the data set when there is no obvious distance threshold
+conditions of the dataset when there is no obvious distance threshold
 which can separate the clusters into meaningful bundles; for example we
 should expect different clusters under different permutations/orderings
 of the streamlines in a densely packed tractography. However, we found
