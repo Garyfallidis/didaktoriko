@@ -107,20 +107,72 @@ simplify the complexity of these datasets and provide a useful
 segmentation. As a result, during the last 10 years there have been
 numerous efforts by many researchers to address both unsupervised and
 supervised learning problems of brain tractography.  As far as we know
-all these methods suffer from low time efficiency, i.e. they are very slow to be used in practice. 
+all these methods suffer from low time efficiency, i.e.~they are very
+slow when used in practice.
 
 %------------------------------------------------------------------------------
 
-In tractography literature we can find approaches which use unsupervised and/or supervised learning algorithms to create bundles i.e. groupings of streamlines with similar spatial and shape characteristics. In supervised learning the datasets are devided into a training and a test set. For the training set experts will have provided the anatomical labels for a set of manually segmented streamline bundles. Those bundles will now correspond to tracts e.g. the corticospinal tract or the arcuate fasciculus. The difficulty will be then to identify similar structures in the test set with unlabeled streamlines. 
+In tractography literature we can find approaches which use unsupervised
+and/or supervised learning algorithms to create bundles i.e. groupings
+of streamlines with similar spatial and shape characteristics. In
+supervised learning the datasets are divided into a training and a test
+set. For the training set experts will have provided the anatomical
+labels for a set of manually segmented streamline bundles. Those bundles
+will now correspond to tracts e.g.~the corticospinal tract or the
+arcuate fasciculus. The task then will be to identify similar
+structures amongst the unlabeled streamlines in the test set.
 
-In unsupervised learning the focus is to create a partitioning of the streamlines without knowing the labels. In this work we used unsupervised learning to reduce in an simple and efficient way the number of streamlines and make manual segmentation of bundles and tractography exploration a less time consuming task. 
+In unsupervised learning the focus is on creating a partitioning of the
+streamlines without knowing any labels. In this work we used
+unsupervised learning to reduce in an simple and efficient way the
+number of streamlines and make manual segmentation of bundles and
+tractography exploration a less time consuming task.
 
-We believe that a complete unsupervised method cannot directly create anatomically valid bundles without extensive prior information preferably from experts or atlases. Nevertheless, when such extensive priors are used this becomes a supervised learning problem. This is because anatomical bundles differ very much both in lenghts and in shape \citet{schmahmann2009fiber} and there is not a single threshold which can cluster a full dataset with anatomical correspondence (see \citet{Guevara2010}). If one uses such extensive priors then it will be wiser to use supervised learning algorithms. Therefore, we propose that unsupervised learning should be used primarily for dimensionality reduction or simplification of these large datasets. This is also the concentration of the approach that we propose here.
+We believe that a complete unsupervised method cannot directly create
+anatomically valid bundles without extensive prior information
+preferably from experts or atlases. Nevertheless, even when such
+extensive priors are used this is still a supervised learning
+problem. This is because anatomical bundles differ across very much both
+in lengths and in shape \citet{schmahmann2009fiber} and there is not a
+single threshold which can cluster a full dataset with anatomical
+correspondence (see \citet{Guevara2010}). If one uses such extensive
+priors then it will be wiser to use supervised learning
+algorithms. Therefore, we propose that unsupervised learning should be
+used primarily for dimensionality reduction or simplification of these
+large datasets. This is also the focus of the approach that we propose
+here.
 
-Most clustering (unsupervised learning algorithms) are at the best case $\mathcal{O}(N^2)$ where $N$ the total number of streamlines and they need to calculate all pairwise distances between every streamline in order to create a distance matrix. We found that most authors tried to create similar distance matrices using hierarchical clustering (see \citet{gerig2004analysis, moberts2005evaluation, zhang2005dti, Tsai2007, zhang2008identifying, jianu2009exploring, Visser2010, Guevara2010}) or spectral clustering (see \citet{ODonnell_IEEETMI07, o2009tract, jonasson2005fiber, ziyan2009consistency}) or affinity propagation (see \citet{leemans17new, malcolm2009filtered}). However, they had to use only a subset of the complete dataset because the calculations were heavy and the distance matrix too big for computers with standard memory capacity. For example, \citet{ODonnell_IEEETMI07} used only \num{10000} streamlines (~10\% of the initial tractography) and \citet{Visser2010} used recombinations of \num{10000} streamlines.
-We give here an example of how large that distance matrix can be used with a full dataset. Just for 100 thousand streamlines 38 GBytes are required and for 1 million streamlines 3.6 TBytes of memory are required (4 bytes floating point precision). 
+Most clustering (unsupervised learning algorithms) are in the best case
+of complexity $\mathcal{O}(N^2)$ where $N$ the total number of
+streamlines: they require the calculation of all pairwise distances
+between streamlines in order to create a distance matrix. \textbf{We
+  found that most authors tried to create similar distance matrices
+  using hierarchical clustering} (see \citet{gerig2004analysis,
+  moberts2005evaluation, zhang2005dti, Tsai2007, zhang2008identifying,
+  jianu2009exploring, Visser2010, Guevara2010}) or spectral clustering
+(see \citet{ODonnell_IEEETMI07, o2009tract, jonasson2005fiber,
+  ziyan2009consistency}) or affinity propagation (see
+\citet{leemans17new, malcolm2009filtered}). However, they had to restict
+themselves to only a subset of the complete dataset because the
+calculations were heavy and the distance matrix too big for computers
+with standard memory capacity. For example, \citet{ODonnell_IEEETMI07}
+used only \num{10000} streamlines (~10\% of the initial tractography)
+and \citet{Visser2010} used recombinations of \num{10000} streamlines.
+We give here an example of how large that distance matrix can be if used
+with a full dataset. Just for \num{100000} streamlines 38 GBytes are
+required and for 1 million streamlines 3.6 TBytes of memory are required
+(4 bytes floating point precision).
 
-Other methods have also been used that use graph theoretic approaches (see \citet{brun2004clustering, ElKouby2005}), k-nearest neighbours (see \citet{Ding2003a, moberts2005evaluation}), gaussian processes (see \citet{wassermann2010unsupervised}), hierarchical dirichlet processes (see \citet{wang2010tractography}), currents (see \citet{Durrleman2009, durrleman2010registration}), adaptive mean shift (see \citet{zvitia2008adaptive, Zvitia2010}), k-means (see \citet{ElKouby2005}) and expectation maximization (see \citet{Maddah_IEEEBI2008}). 
+Other clustering methods have also been proposed that use graph
+theoretic approaches (see \citet{brun2004clustering, ElKouby2005}),
+k-nearest neighbours (see \citet{Ding2003a, moberts2005evaluation}),
+gaussian processes (see \citet{wassermann2010unsupervised}),
+hierarchical dirichlet processes (see \citet{wang2010tractography}),
+currents (see \citet{Durrleman2009, durrleman2010registration}),
+adaptive mean shift (see \citet{zvitia2008adaptive, Zvitia2010}),
+k-means (see \citet{ElKouby2005}) and expectation maximization (see
+\citet{Maddah_IEEEBI2008}). \textbf{Are we going to say anything about
+  the time efficiency of these methods too?}
 
 %Distances
 %\citet{zhang2003visualizing, corouge2004towards, Corouge2004, Corouge2006}
@@ -157,18 +209,20 @@ more useful at this stage of tractography analysis research.
 
 Most of these proposed tractography clustering algorithms are very slow
 and many need to calculate a matrix of inter-streamline distances of
-size $\mathcal{O}(N^2)$.  This number of computations puts a very heavy
-load on clustering algorithms, making them hard to use for everyday
-analysis as it is difficult to compute all these distances or store them
-in memory. For the same reason, no current algorithm is practical for
-real time clustering on a large number of streamlines -- despite the
-innovations in tractography clustering algorithms there is no parallel
-uptake by anatomists or clinicians. The heavy computational demands of
-clustering add a further overhead to the use of tractography for
-clinical applications but also put a barrier on understanding and
-interpreting the quality of diffusion MR datasets. Moreover methods
-described as `automatic' in reality require significant intervention
-using neuroanatomical knowledge.
+size $\mathcal{O}(N^2)$.  \textbf{Isn't this repetitive?} This number of
+computations puts a very heavy load on clustering algorithms, making
+them hard to use for everyday analysis as it is difficult to compute all
+these distances or store them in memory. For the same reason, no current
+algorithm is practical for real time clustering on a large number of
+streamlines -- despite the innovations in tractography clustering
+algorithms there is no parallel uptake by anatomists or clinicians. The
+heavy computational demands of clustering add a further overhead to the
+use of tractography for clinical applications but also put a barrier on
+understanding and interpreting the quality of diffusion MR
+datasets. Moreover methods described as `automatic' in reality require
+significant intervention using neuroanatomical knowledge. \textbf{In
+  fact isn't all this covered earlier on in this version of the
+  Introduction?}
 
 In fact tractographies have high levels of redundancy with very many
 quite similar streamlines. Our approach is to take advantage of this to
@@ -582,13 +636,14 @@ of the OMA statistic is analogous to that of the well-known Kappa
 measure of inter-rater agreement~\citep{altman1995}, with the range 61\%
 to 80\% corresponding to a `good' strength of agreement.
 
-However these statistics heve their limitations. Not only are there
-considerable computational overheads in calculating the
-cross-classification matrix, there is also a fundamental disadvantage
-because they do not work with clusterings of different
-tractographies. Being able to compare results of clusterings across
-brains is crucial for creating stable brain imaging procedures, and
-therefore it is necessary to develop a way to compare different
+We will use OMA to compare the different clusterings that arise when the
+streamlines in the tractography are shuffled. However this statistic has
+its limitations. Not only are there considerable computational overheads
+in calculating the cross-classification matrix, there is also a
+fundamental disadvantage because they do not work with clusterings of
+different tractographies. Being able to compare results of clusterings
+across brains is crucial for creating stable brain imaging procedures,
+and therefore it is necessary to develop a way to compare different
 tractography clusterings on different sets of streamlines from the same
 or different subjects.
 
