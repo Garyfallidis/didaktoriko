@@ -313,9 +313,9 @@ average direct-flip (MDF) distance, see
 Eq.~(\ref{eq:direct_flip_distance}). MDF can be applied only when both
 streamlines have the same number of points, see
 Fig.~\ref{Flo:Distances_used}. Therefore we assume from now on that an initial
-downsampling of streamlines has been implemented, where all streamlines
-have the same number of points $K$, and all segments on
-any streamline are of approximately equal length.
+discretization of streamlines has been implemented, where all streamlines
+have the same number of points $K$, and all segments of
+each streamline have equal length.
 
 As it has no preferred orientation, a streamline $s=[s_1, s_2, \ldots, s_K]$ is equivalent to
 two ordered polylines: $s = (s_1, s_2, \ldots, s_K)$ in $\mathbb{R}^3$
@@ -376,15 +376,14 @@ streamline. We will see in the next section how streamline addition is a
 key property that we exploit in the QB clustering algorithm.
 
 Care needs to be given to choosing the number of points required in a
-streamline (streamline downsampling). We always keep the endpoints
-intact and then downsample into segments of equal lengths. One
+streamline (streamline discretization). We always keep the endpoints
+intact and then discretize into segments of equal lengths. One
 consequence of short streamlines having the same number of points as
 long streamlines is that more of the curvature information from the long
 streamlines is lost relative to the short streamlines i.e. the short
 streamlines will have higher resolution.  We found empirically that this
 is not an important issue and that for clustering purposes even
-downsampling to only $K=3$ points in total can be useful
-\citep{EGMB10}. Depending on the application, more or fewer points can
+discretizing to only $K=3$ points per streamline can produce useful clusterings \citep{EGMB10}. Depending on the application, more or fewer points can
 be used. In the results presented we often use $K=12$ which achieves a
 good trade-off between streamline resolution and dimensionality
 reduction.
@@ -613,7 +612,7 @@ other bigger bundles.
   use both Fimbria as one. With a $20$~mm threshold the entire Fornix is
   one cluster. A case useful for interactive applications because now
   the entire Fornix can be described by only one centroid streamline. In
-  all cases the streamlines of the Fornix were downsampled to have $18$
+  all cases the streamlines of the Fornix were discretized to have $18$
   points.\label{Flo:QB_fornix}}
 \end{figure*}
 
@@ -751,7 +750,7 @@ of our methods and possible workarounds.
 \subsection{Complexity and timings\label{sub:Complexity}}
 
 The execution time of QB is affected by the following parameters: $K$,
-the fixed number of downsampled points per streamline; $\theta$ the
+the fixed number of discretized points per streamline; $\theta$ the
 distance threshold, which controls the heterogeneity of clusters; and
 $N$ the size of the subset of the tractography on which the clustering
 will be performed. When $\theta$ is higher, fewer more heterogeneous
@@ -819,7 +818,7 @@ will examine the robustness of QB in this respect.
 As a first step we recorded the numbers of QB clusters in $20$ different
 random orderings of the tractographies of $10$ human subjects acquired
 as described in section \ref{sub:QB-Data-sets}. We first removed short
-streamlines shorter than $40$~mm and downsampled the streamlines at $12$
+streamlines shorter than $40$~mm and discreatized the streamlines at $12$
 points. Then we applied QB with threshold at $10$~mm. The mean number of
 clusters was $2645.9$ (min $1937.6$; max $3857.8$; s.d.~$653.8$). There
 is therefore a considerable between-subject variation in this metric. By
@@ -885,7 +884,7 @@ tractography space, and undersample in sparser regions.
 We warped $10$ tractographies each belonging to a different healthy
 subsect (see section \ref{sub:QB-Data-sets}) in MNI space and applied
 QuickBundles on each tractography independently using distance threshold
-$10$~mm and downsampling of $18$ points. For every subject we
+$10$~mm and discretizing of $18$ points. For every subject we
 only considered the biggest $100$ QB clusters i.e. the clusters which
 contained the highest number of streamlines. The purpose of this
 experiment was to identify a global similarity measure between the
