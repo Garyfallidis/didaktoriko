@@ -130,9 +130,12 @@ tractography exploration a less time consuming task.
 
 We believe that a complete unsupervised method cannot directly create
 anatomically valid bundles without extensive prior information
-preferably from experts or atlases. This is because anatomical bundles differ considerably both in lengths and in shape
-(see \citet{schmahmann2009fiber}) and there is not a single threshold which can cluster a full dataset with anatomical
-correspondence (see \citet{Guevara2010}). Furthermore, if one uses such extensive priors then it will be more suitable to use supervised learning
+preferably from experts or atlases. This is because anatomical bundles
+differ considerably both in lengths and in shape (see
+\citet{schmahmann2009fiber}) and there is not a single threshold which
+can cluster a full dataset with anatomical correspondence (see
+\citet{Guevara2010}). Furthermore, if one uses such extensive priors
+then it will be more suitable to use supervised learning
 algorithms. Therefore, we propose that unsupervised learning should be
 used primarily for dimensionality reduction or simplification of these
 large datasets. This is also the focus of the approach that we propose
@@ -141,32 +144,12 @@ here.
 Most clustering (unsupervised learning algorithms) are in the best case
 of complexity $\mathcal{O}(N^2)$ where $N$ the total number of
 streamlines: they require the calculation of all pairwise distances
-<<<<<<< HEAD
-between streamlines in order to create a distance matrix. Most authors
-based their work on hierarchical clustering for which they needed
-dustance matrices of this type. \textbf{We found that most authors tried
-  to create similar distance matrices using hierarchical clustering}
-(see \citet{gerig2004analysis, moberts2005evaluation, zhang2005dti,
-  Tsai2007, zhang2008identifying, jianu2009exploring, Visser2010,
-  Guevara2010}) or spectral clustering (see \citet{ODonnell_IEEETMI07,
-  o2009tract, jonasson2005fiber, ziyan2009consistency}) or affinity
-propagation (see \citet{leemans17new, malcolm2009filtered}). However,
-they had to restict themselves to only a subset of the complete dataset
-because the calculations were heavy and the distance matrix too big for
-computers with standard memory capacity. For example,
-\citet{ODonnell_IEEETMI07} used only \num{10000} streamlines (~10\% of
-the initial tractography) and \citet{Visser2010} used recombinations of
-\num{10000} streamlines.  We give here an example of how large that
-distance matrix can be if used with a full dataset. Just for
-\num{100000} streamlines 38 GBytes are required and for 1 million
-streamlines 3.6 TBytes of memory are required (4 bytes floating point
-precision).
-=======
-between streamlines in order to create a distance matrix. We
-  found that most authors tried to create these distance matrices as input to  hierarchical clustering (see \citet{
-  moberts2005evaluation, zhang2005dti, Tsai2007, zhang2008identifying, jianu2009exploring, Visser2010, Guevara2010,
-  Guevara12}) or spectral clustering
-(see \citet{ODonnell_IEEETMI07, o2009tract, jonasson2005fiber,
+between streamlines in order to create a distance matrix. We found that
+most authors tried to create these distance matrices as input to
+hierarchical clustering (see \citet{ moberts2005evaluation,
+  zhang2005dti, Tsai2007, zhang2008identifying, jianu2009exploring,
+  Visser2010, Guevara2010, Guevara12}) or spectral clustering (see
+\citet{ODonnell_IEEETMI07, o2009tract, jonasson2005fiber,
   ziyan2009consistency}) or affinity propagation (see
 \citet{leemans17new, malcolm2009filtered}). However, they had to restict
 themselves to only a subset of the complete dataset because the
@@ -178,18 +161,20 @@ We give here an example of how large that distance matrix can be if used
 with a full dataset. Just for \num{100000} streamlines 38 GBytes are
 required and for 1 million streamlines 3.6 TBytes of memory are required
 (4 bytes floating point precision).
->>>>>>> a25656b44e152cb9e77f86835e1e10c845afaa54
 
 Other clustering methods have also been proposed that use graph
-theoretic approaches (see \citet{brun2004clustering, gerig2004analysis, ElKouby2005}),
-k-nearest neighbours (see \citet{Ding2003a, moberts2005evaluation}),
-gaussian processes (see \citet{wassermann2010unsupervised}),
-hierarchical dirichlet processes (see \citet{wang2010tractography}),
-currents (see \citet{Durrleman2009, durrleman2010registration}),
-adaptive mean shift (see \citet{zvitia2008adaptive, Zvitia2010}),
-k-means (see \citet{ElKouby2005}) and expectation maximization (see
-\citet{Maddah_IEEEBI2008}). These methods although often try to avoid distance matrices they still suffer from low time
-efficiency. All the same, if clustering is to be used in clinical practice or to make neuroscientists' analysis more efficient and practical we need
+theoretic approaches (see \citet{brun2004clustering, gerig2004analysis,
+  ElKouby2005}), k-nearest neighbours (see \citet{Ding2003a,
+  moberts2005evaluation}), gaussian processes (see
+\citet{wassermann2010unsupervised}), hierarchical dirichlet processes
+(see \citet{wang2010tractography}), currents (see \citet{Durrleman2009,
+  durrleman2010registration}), adaptive mean shift (see
+\citet{zvitia2008adaptive, Zvitia2010}), k-means (see
+\citet{ElKouby2005}) and expectation maximization (see
+\citet{Maddah_IEEEBI2008}). These methods although often try to avoid
+distance matrices they still suffer from low time efficiency. All the
+same, if clustering is to be used in clinical practice or to make
+neuroscientists' analysis more efficient and practical we need
 algorithms that can provide useful clusters and cluster descriptors in
 acceptable time. None of the papers covered in this literature review
 provide a solution for this issue of efficiency and most of the methods
