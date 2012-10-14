@@ -3694,7 +3694,7 @@ Probabilistic tractography aims to identify all the possible tracks by assigning
  All the weights of all the tracks together sum to 1.
  This is possible by generating samples from a probability distribution
  for every pixel.
- In this toy example shown in Fig.
+ In this simple example shown in Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
