@@ -140,29 +140,7 @@ here.
 
 Most clustering (unsupervised learning algorithms) are in the best case
 of complexity $\mathcal{O}(N^2)$ where $N$ the total number of
-streamlines: they require the calculation of all pairwise distances
-<<<<<<< HEAD
-between streamlines in order to create a distance matrix. Most authors
-based their work on hierarchical clustering for which they needed
-dustance matrices of this type. \textbf{We found that most authors tried
-  to create similar distance matrices using hierarchical clustering}
-(see \citet{gerig2004analysis, moberts2005evaluation, zhang2005dti,
-  Tsai2007, zhang2008identifying, jianu2009exploring, Visser2010,
-  Guevara2010}) or spectral clustering (see \citet{ODonnell_IEEETMI07,
-  o2009tract, jonasson2005fiber, ziyan2009consistency}) or affinity
-propagation (see \citet{leemans17new, malcolm2009filtered}). However,
-they had to restict themselves to only a subset of the complete dataset
-because the calculations were heavy and the distance matrix too big for
-computers with standard memory capacity. For example,
-\citet{ODonnell_IEEETMI07} used only \num{10000} streamlines (~10\% of
-the initial tractography) and \citet{Visser2010} used recombinations of
-\num{10000} streamlines.  We give here an example of how large that
-distance matrix can be if used with a full dataset. Just for
-\num{100000} streamlines 38 GBytes are required and for 1 million
-streamlines 3.6 TBytes of memory are required (4 bytes floating point
-precision).
-=======
-between streamlines in order to create a distance matrix. We
+streamlines: they require the calculation of all pairwise distances between streamlines in order to create a distance matrix. We
   found that most authors tried to create these distance matrices as input to  hierarchical clustering (see \citet{
   moberts2005evaluation, zhang2005dti, Tsai2007, zhang2008identifying, jianu2009exploring, Visser2010, Guevara2010,
   Guevara12}) or spectral clustering
@@ -178,7 +156,6 @@ We give here an example of how large that distance matrix can be if used
 with a full dataset. Just for \num{100000} streamlines 38 GBytes are
 required and for 1 million streamlines 3.6 TBytes of memory are required
 (4 bytes floating point precision).
->>>>>>> a25656b44e152cb9e77f86835e1e10c845afaa54
 
 Other clustering methods have also been proposed that use graph
 theoretic approaches (see \citet{brun2004clustering, gerig2004analysis, ElKouby2005}),
@@ -305,7 +282,6 @@ inter-point distances when comparing streamlines of $K$ and $L$ points.
   different numbers of points.
   \label{Flo:Distances_used}}
 \end{figure}
-
 
 For these reasons we have opted to use a rather simpler symmetric
 distance function~\citep{EGMB10, Visser2010} which we call the minimum
