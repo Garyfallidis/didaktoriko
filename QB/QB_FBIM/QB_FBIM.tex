@@ -816,19 +816,19 @@ see similar number of clusters but different underlying clusters. We
 will examine the robustness of QB in this respect.
 
 As a first step we recorded the numbers of QB clusters in $20$ different
-random orderings of the tractographies of $10$ human subjects acquired
+random permutations of the tractographies of $10$ human subjects acquired
 as described in section \ref{sub:QB-Data-sets}. We first removed short
 streamlines shorter than $40$~mm and discreatized the streamlines at $12$
 points. Then we applied QB with threshold at $10$~mm. The mean number of
 clusters was $2645.9$ (min $1937.6$; max $3857.8$; s.d.~$653.8$). There
 is therefore a considerable between-subject variation in this metric. By
 contrast the within-subject variability of the number of clusters across
-random orderings is rather small, with mean standard deviation $12.7$
+random permutations is rather small, with mean standard deviation $12.7$
 (min $7.3$; max $17.4$). This suggests a good level of consistency in
 the data reduction achieved by QB.
 
 Next we investigated how consistent QB clusterings are when datasets
-are re-ordered. Twelve different random orderings were generated for each
+are re-ordered. Twelve different random permutations were generated for each
 of $10$ tractographies and the corresping QB clusterings were computed
 with MDF threshold $10$~mm. For each subject the $66$ pairings of QB
 clusterings were compared using the optimised matched agreements index
@@ -1013,12 +1013,11 @@ k-centers and expectation maximization, QB is not a global clustering
 method therefore it can give different results under different initial
 conditions of the dataset when there is no obvious distance threshold
 which can separate the clusters into meaningful bundles; for example we
-should expect different clusters under different permutations/orderings
-of the streamlines in a densely packed tractography. However, we found
+should expect different clusters under different permutations of the streamlines in a densely packed tractography. However, we found
 that there is good agreement even between two clusterings of the same
-tractography with different orderings. If the clusters are truly
+tractography with different permutations. If the clusters are truly
 separable by distances then there is a global solution independent of
-orderings. This is often visible in smaller subsets of the initial
+permutations. This is often visible in smaller subsets of the initial
 tractography. 
 
 Other algorithms previously too slow to be used on the entire
@@ -1042,10 +1041,11 @@ in this paper.
 
 The reduction in dimensionality of the data achieved by QB means that
 BOIs (bundles of interest) can be selected as an alternative to ROIs for
-interrogating the data. We also showed that QB can be used to find
-obscured streamlines not visible to the user at first
-instance. Therefore QB opens up the road to create rapid tools for
-exploring tractographies of any size.
+interrogating or labeling the datasets.  Our experience with ROI-based matter atlases (WMAs) is that they cannot
+differentiate fibre directions i.e. several different bundles could cross an ROI. Therefore, ROIs constructed with a WMA
+do not lead to anatomical bundles and typically lead to large sprawling sets of streamlines. BOIs seem to be a solution
+to this problem and BOI creation can be facilitated by QB. Furthermore, we showed that QB can be used to find obscured
+streamlines not visible to the user at first instance. Therefore, QB opens up the road to create rapid tools for exploring tractographies of any size.
 
 In the future we would like to investigate different ways to merge QB
 clusters by integrating prior information from neuroanatomists. We are
