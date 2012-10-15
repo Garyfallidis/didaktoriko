@@ -289,9 +289,9 @@ average direct-flip (MDF) distance, see
 Eq.~(\ref{eq:direct_flip_distance}). MDF can be applied only when both
 streamlines have the same number of points, see
 Fig.~\ref{Flo:Distances_used}. Therefore we assume from now on that an initial
-discretization of streamlines has been implemented, where all streamlines
+discretization of streamlines has been applied, so that all streamlines
 have the same number of points $K$, and all segments of
-each streamline have equal length.
+each streamline have equal length. This is a achieved by a simple linear interpolation.
 
 As it has no preferred orientation, a streamline $s=[s_1, s_2, \ldots, s_K]$ is equivalent to
 two ordered polylines: $s = (s_1, s_2, \ldots, s_K)$ in $\mathbb{R}^3$
@@ -388,9 +388,7 @@ d(x,s') & = & \min_{j=1,...,K'}|x-x_{j}'|.\nonumber \\
 
 \noindent
 where the number of points $K$ and $K'$ on the two streamlines are not
-necessarily the same. For the same threshold value
-$\textrm{MAM}_{\textrm{min}}$, $\textrm{MAM}_{\textrm{max}}$ and
-$\textrm{MAM}_{\textrm{mean}}$ will give different results. For example,
+necessarily the same. For the same distance value $\textrm{MAM}_{\textrm{min}}$, $\textrm{MAM}_{\textrm{max}}$ and $\textrm{MAM}_{\textrm{mean}}$ will give different results. For example,
 $\textrm{MAM}_{\textrm{min}}$ will bring together more short streamlines
 with long streamlines than $\textrm{MAM}_{\textrm{max}}$, and
 $\textrm{MAM}_{\textrm{mean}}$ will have an in-between effect.  Other
@@ -578,7 +576,7 @@ other bigger bundles.
   orientation colormap. We observe that the Fornix consists of two long
   distant legs (left and right Fimbria) and a thicker upper part (Body
   of Fornix). We show here how QB will be able to distinguish the parts
-  of the Fornix at different resolutions. With is a $15$~mm threshold QB
+  of the Fornix at different resolutions. With a $15$~mm threshold QB
   generates 4 clusters shown on the second panel with distinct
   colors. Here the left and right Fimbria are clearly distinguished from
   the Body. A last cluster (with blue) exposes a shorter part of the
@@ -586,9 +584,8 @@ other bigger bundles.
   threshold only two clusters are created. Both Fibria are brought
   together as one cluster. A property useful for studies which want to
   use both Fimbria as one. With a $20$~mm threshold the entire Fornix is
-  one cluster. A case useful for interactive applications because now
-  the entire Fornix can be described by only one centroid streamline. In
-  all cases the streamlines of the Fornix were discretized to have $18$
+  one cluster. This is useful for interactive applications because now
+  the entire Fornix can be described by only one centroid streamline. The streamlines of the Fornix were discretized to have $18$
   points.\label{Flo:QB_fornix}}
 \end{figure*}
 
@@ -761,21 +758,20 @@ tractographies.
   of streamlines increases. \label{Flo:Speed1}}
 \end{figure}
 
-As a further test we compared QB with $12$ point streamlines and a
-distance threshold of $10$~mm with some timings reported from other
-state of the art methods found in the literature. Unfortunately timings
-have be rather rarely reported up till today -- possibly because as most
-algorithms were very slow on full datasets. With $\num{1000}$
-streamlines \citet{wang2010tractography}'s algorithm took $30$s whereas
-QB took $0.07$.  $\num{14400}$ seconds were required for the method of
-\citet{wang2010tractography} to cluster $\num{60000}$ streamlines; QB
-took $14.7$s.  In a third study a substantial tractography of size
-$\num{400000}$ was clustered by \citet{Visser2010} in $\num{75000}$s; QB
-completed this task in $160.1$s. The speed-up factors in these three
-comparisons were $429$, $980$ and $468$ respectively.  Though this
-experiment was performed using a single CPU core we see the valuable
-speedup that QB achieves, holding out the prospect of real-time (less than 1~second)
-clustering on datasets of up to \num{20000} streamlines.
+%As a further test we compared QB with $12$ point streamlines and a
+%distance threshold of $10$~mm with some timings reported from other
+%state of the art methods found in the literature. Unfortunately timings
+%have be rather rarely reported up till today -- possibly because as most
+%algorithms were very slow on full datasets. With $\num{1000}$
+%streamlines \citet{wang2010tractography}'s algorithm took $30$s whereas
+%QB took $0.07$.  $\num{14400}$ seconds were required for the method of
+%\citet{wang2010tractography} to cluster $\num{60000}$ streamlines; QB
+%took $14.7$s.  In a third study a substantial tractography of size
+%$\num{400000}$ was clustered by \citet{Visser2010} in $\num{75000}$s; QB
+%completed this task in $160.1$s. The speed-up factors in these three
+%comparisons were $429$, $980$ and $468$ respectively.  Though this
+%experiment was performed using a single CPU core we see the valuable
+%speedup that QB achieves, holding out the prospect of real-time (less than 1~second) clustering on datasets of up to \num{20000} streamlines.
 
 \subsection{Stability of QB \label{sub:Comparisons}}
 
