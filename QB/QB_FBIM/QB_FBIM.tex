@@ -758,20 +758,13 @@ tractographies.
   of streamlines increases. \label{Flo:Speed1}}
 \end{figure}
 
-%As a further test we compared QB with $12$ point streamlines and a
-%distance threshold of $10$~mm with some timings reported from other
-%state of the art methods found in the literature. Unfortunately timings
-%have be rather rarely reported up till today -- possibly because as most
-%algorithms were very slow on full datasets. With $\num{1000}$
-%streamlines \citet{wang2010tractography}'s algorithm took $30$s whereas
-%QB took $0.07$.  $\num{14400}$ seconds were required for the method of
-%\citet{wang2010tractography} to cluster $\num{60000}$ streamlines; QB
-%took $14.7$s.  In a third study a substantial tractography of size
-%$\num{400000}$ was clustered by \citet{Visser2010} in $\num{75000}$s; QB
-%completed this task in $160.1$s. The speed-up factors in these three
-%comparisons were $429$, $980$ and $468$ respectively.  Though this
-%experiment was performed using a single CPU core we see the valuable
-%speedup that QB achieves, holding out the prospect of real-time (less than 1~second) clustering on datasets of up to \num{20000} streamlines.
+As a further test we compared QB (with $12$ point streamlines and a
+distance threshold of $10$~mm) with timings reported from the fastest
+state of the art methods found in the literature. These methods have different goals that those of QB however we think that it is useful to show the important speedup that QB offers for the same number of streamlines. With $\num{1000}$
+streamlines \citet{wang2010tractography}'s algorithm took $30$s whereas
+QB took $0.07$s.  $\num{14400}$ seconds were required for the same method of to cluster $\num{60000}$ streamlines; QB
+took $14.7$s.  In a third study a substantial tractography of size $\num{400000}$ was clustered by \citet{Visser2010} in
+$\num{75000}$s; QB completed this task in only $160.1$s. The speed-up factors in these three comparisons were $429$, $980$ and $468$ respectively. Therefore, we  see the valuable speedup that QB achieves, holding out the prospect of real-time (less than 1~second) clustering on datasets of up to \num{20000} streamlines.
 
 \subsection{Stability of QB \label{sub:Comparisons}}
 
