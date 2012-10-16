@@ -368,9 +368,10 @@ long streamlines is that more of the curvature information from the long
 streamlines is lost relative to the short streamlines i.e. the short
 streamlines will have higher resolution.  We found empirically that this
 is not an important issue and that for clustering purposes even
-discretizing to only $K=3$ points per streamline can produce useful clusterings \citep{EGMB10}. Depending on the application, more or fewer points can
-be used. In the results presented we often use $K=12$ which achieves a
-good trade-off between streamline resolution and memory size
+discretizing to only $K=3$ points per streamline can produce useful
+clusterings \citep{EGMB10}. Depending on the application, more or fewer
+points can be used. In the results presented we often use $K=12$ which
+achieves a good trade-off between streamline resolution and memory size
 reduction.
 
 In some later stages in the analysis of tractographies. e.g.~for merging
@@ -634,7 +635,7 @@ measure of inter-rater agreement~\citep{altman1995}, with the range 61\%
 to 80\% corresponding to a `good' strength of agreement.
 
 We will use OMA to compare the different clusterings that arise when the
-streamlines in the tractography are shuffled. However this statistic has
+streamlines in the tractography are permuted. However this statistic has
 its limitations. Not only are there considerable computational overheads
 in calculating the cross-classification matrix, there is also a
 fundamental disadvantage because they do not work with clusterings of
@@ -648,32 +649,35 @@ Although we recognise that these are difficult problems, we propose the
 following approach with three novel comparison functions which we call
 \emph{coverage}, \emph{overlap} and \emph{bundle adjacency}. These
 metrics aim to quantify how well a data reduction performs. Ideally most
-points of the full dataset should be near to the reduced set
-(coverage), but not too many (overlap).
+points of the full dataset should be near to the reduced set (coverage),
+but not too many (overlap).
 
 Let $S$ and $T$ be two sets of streamlines, and let $\theta>0$ be a
 selected threshold. We will say that $s \in S$ is
-$\theta$-\emph{approximated} by $T$ if there is at least one streamline
-$t \in T$ with $\mathrm{MDF}(s,t)\le \theta$. We define coverage of $S$
-by $T$ as the fraction of $S$ that is $\theta$-approximated by $T$. Coverage
-ranges between 0 (when all streamlines in $S$ are too far from $T$) and
-1 (when every streamline in $S$ is $\theta$-approximated by $T$).
+$\theta$-\emph{approximated} by $T$ if there is at least one streamline 
+$t \in T$ with $\mathrm{MDF}(s,t)\le \theta$. We define the
+\emph{coverage} of $S$ by $T$ as the fraction of $S$ that is
+$\theta$-approximated by $T$. Coverage ranges between 0 (worst case,
+when all streamlines in $S$ are too far from $T$) and 1 (best case, when
+every streamline in $S$ is $\theta$-approximated by $T$).
 
-We define the \emph{overlap} of $T$ in $S$ as the average number of
-approximating streamlines in $T$ that for $\theta$-approximate
-streamlines in $S$.  Overlap is undefined of no streamlines in $S$ are
-approximated by $T$, otherwise it can take any value greater then or
-equal to 1, with higher values indicating the degree of redundancy of
-$T$ in $S$; if $T$ has several similar streamlines then this will tend
-to boost overlap.
+However we recognise that while $T$ may have good coverage of $S$ there
+may be some redundanc, so we define the \emph{overlap} of $T$ in $S$ as
+the average number of approximating streamlines in $T$ for
+$\theta$-approximated streamlines in $S$.  Overlap is undefined if no
+streamlines in $S$ are approximated by $T$, otherwise it can take any
+value greater then or equal to 1, with higher values indicating greater
+degrees of redundancy of $T$ in $S$; if $T$ has several similar
+streamlines then this will tend to boost overlap.
 
-Coverage and overlap measure how well one set approximates another. In
-order to compare two reductions of possibly different datasets we
-define the symmetric measure \emph{bundle adjacency} (BA).  BA is the
-average of the coverage of $T$ by $S$ and the coverage of $S$ by
-$T$: $$\mathrm{BA}(S,T) = (\mathrm{coverage}(S,T) +
-\mathrm{coverage}(T,S))/2.$$ BA ranges between 0, when no streamlines of
-S or T have neighbours in the other set, and 1 when they all do.
+Coverage and overlap will typically measure how well a smaller set of
+streamlines acts as a reduction of a larger set. In order to compare two
+reductions of possibly different datasets we define the symmetric
+measure \emph{bundle adjacency} (BA).  BA is the average of the coverage
+of $T$ by $S$ and the coverage of $S$ by $T$: $$\mathrm{BA}(S,T) =
+(\mathrm{coverage}(S,T) + \mathrm{coverage}(T,S))/2.$$ BA ranges between
+0, when no streamlines of S or T have neighbours in the other set, and 1
+when they all do.
 
 \subsection{\label{sub:QB-Data-sets}Data sets}
 
@@ -798,28 +802,32 @@ clusters such that the distance between any pair of clusters is
 supra-threshold and the diameter of all clusters is sub-threshold, then
 with different permutations of the same tractography we will typically
 see similar number of clusters but different underlying clusters. We
-will examine the robustness of QB in this respect.
+will examine the stability of QB in this respect.
 
 As a first step we recorded the numbers of QB clusters in $20$ different
-random orderings of the tractographies of $10$ human subjects acquired
-as described in section \ref{sub:QB-Data-sets}. We first removed short
-streamlines shorter than $40$~mm and discreatized the streamlines at $12$
-points. Then we applied QB with threshold at $10$~mm. The mean number of
-clusters was $2645.9$ (min $1937.6$; max $3857.8$; s.d.~$653.8$). There
-is therefore a considerable between-subject variation in this metric. By
+random permutations of the tractographies of $10$ human subjects as
+described in section \ref{sub:QB-Data-sets}. We first removed short
+streamlines shorter than $40$~mm and down-sampled them to $12$
+points. Then we applied QB with threshold at $10$~mm to the permuted
+data sets. The average mean number of clusters was $2645.9$ (min
+$1937.6$; max $3857.8$; s.d.~$653.8$; $N=12$). There is therefore a
+considerable between-subject variation in the number of clusters. By
 contrast the within-subject variability of the number of clusters across
-random orderings is rather small, with mean standard deviation $12.7$
-(min $7.3$; max $17.4$). This suggests a good level of consistency in
-the data reduction achieved by QB.
+random permutations is rather small, with average standard deviation
+$12.7$ (min $7.3$; max $17.4$). This suggests that QB may be achieve
+some degree of consistency in terms of the numbers of derived clusters,
+and in a manner that may reflect between subject differences. However
+this does not say anything about the similarity of these clusterings.
 
-Next we investigated how consistent QB clusterings are when datasets
-are re-ordered. Twelve different random orderings were generated for each
-of $10$ tractographies and the corresping QB clusterings were computed
-with MDF threshold $10$~mm. For each subject the $66$ pairings of QB
-clusterings were compared using the optimised matched agreements index
-and then averaged. Across subjects the mean OMA
-(\ref{sub:Tightness-comparisons-1}) was 74.1\% ($\pm 0.39$\%) which can
-be interpreted as a good level of agreement~\citep{altman1995}.
+So next we investigated how consistent the QB clusterings are when
+datasets are permuted. Twelve different random permutations were
+generated for each of $10$ tractographies and the corresponding QB
+clusterings were computed with MDF threshold $10$~mm. For each subject
+the $66$ pairings of QB clusterings were compared using the optimised
+matched agreements (OMA) index and then averaged. Across subjects the
+mean OMA (\ref{sub:Tightness-comparisons-1}) was 74.1\% ($\pm 0.39$\%)
+which can be interpreted as a good level of
+agreement~\citep{altman1995}.
 
 As well as checking that QB created sets of centroids with good coverage
 and overlap statistics, we went on to show that the performance of QB
