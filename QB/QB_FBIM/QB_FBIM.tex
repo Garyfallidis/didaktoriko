@@ -130,12 +130,9 @@ tractography exploration a less time consuming task.
 
 We believe that a complete unsupervised method cannot directly create
 anatomically valid bundles without extensive prior information
-preferably from experts or atlases. This is because anatomical bundles
-differ considerably both in lengths and in shape (see
-\citet{schmahmann2009fiber}) and there is not a single threshold which
-can cluster a full dataset with anatomical correspondence (see
-\citet{Guevara2010}). Furthermore, if one uses such extensive priors
-then it will be more suitable to use supervised learning
+preferably from experts or atlases. This is because anatomical bundles differ considerably both in lengths and in shape
+(see \citet{schmahmann2009fiber}) and there is not a single threshold which can cluster a full dataset with anatomical
+correspondence (see \citet{Guevara2010}). Furthermore, if one uses such extensive priors then it will be more suitable to use supervised learning
 algorithms. Therefore, we propose that unsupervised learning should be
 used primarily for dimensionality reduction or simplification of these
 large datasets. This is also the focus of the approach that we propose
@@ -143,13 +140,11 @@ here.
 
 Most clustering (unsupervised learning algorithms) are in the best case
 of complexity $\mathcal{O}(N^2)$ where $N$ the total number of
-streamlines: they require the calculation of all pairwise distances
-between streamlines in order to create a distance matrix. We found that
-most authors tried to create these distance matrices as input to
-hierarchical clustering (see \citet{ moberts2005evaluation,
-  zhang2005dti, Tsai2007, zhang2008identifying, jianu2009exploring,
-  Visser2010, Guevara2010, Guevara12}) or spectral clustering (see
-\citet{ODonnell_IEEETMI07, o2009tract, jonasson2005fiber,
+streamlines: they require the calculation of all pairwise distances between streamlines in order to create a distance matrix. We
+  found that most authors tried to create these distance matrices as input to  hierarchical clustering (see \citet{
+  moberts2005evaluation, zhang2005dti, Tsai2007, zhang2008identifying, jianu2009exploring, Visser2010, Guevara2010,
+  Guevara12}) or spectral clustering
+(see \citet{ODonnell_IEEETMI07, o2009tract, jonasson2005fiber,
   ziyan2009consistency}) or affinity propagation (see
 \citet{leemans17new, malcolm2009filtered}). However, they had to restict
 themselves to only a subset of the complete dataset because the
@@ -163,18 +158,15 @@ required and for 1 million streamlines 3.6 TBytes of memory are required
 (4 bytes floating point precision).
 
 Other clustering methods have also been proposed that use graph
-theoretic approaches (see \citet{brun2004clustering, gerig2004analysis,
-  ElKouby2005}), k-nearest neighbours (see \citet{Ding2003a,
-  moberts2005evaluation}), gaussian processes (see
-\citet{wassermann2010unsupervised}), hierarchical dirichlet processes
-(see \citet{wang2010tractography}), currents (see \citet{Durrleman2009,
-  durrleman2010registration}), adaptive mean shift (see
-\citet{zvitia2008adaptive, Zvitia2010}), k-means (see
-\citet{ElKouby2005}) and expectation maximization (see
-\citet{Maddah_IEEEBI2008}). These methods although often try to avoid
-distance matrices they still suffer from low time efficiency. All the
-same, if clustering is to be used in clinical practice or to make
-neuroscientists' analysis more efficient and practical we need
+theoretic approaches (see \citet{brun2004clustering, gerig2004analysis, ElKouby2005}),
+k-nearest neighbours (see \citet{Ding2003a, moberts2005evaluation}),
+gaussian processes (see \citet{wassermann2010unsupervised}),
+hierarchical dirichlet processes (see \citet{wang2010tractography}),
+currents (see \citet{Durrleman2009, durrleman2010registration}),
+adaptive mean shift (see \citet{zvitia2008adaptive, Zvitia2010}),
+k-means (see \citet{ElKouby2005}) and expectation maximization (see
+\citet{Maddah_IEEEBI2008}). These methods although often try to avoid distance matrices they still suffer from low time
+efficiency. All the same, if clustering is to be used in clinical practice or to make neuroscientists' analysis more efficient and practical we need
 algorithms that can provide useful clusters and cluster descriptors in
 acceptable time. None of the papers covered in this literature review
 provide a solution for this issue of efficiency and most of the methods
@@ -291,16 +283,15 @@ inter-point distances when comparing streamlines of $K$ and $L$ points.
   \label{Flo:Distances_used}}
 \end{figure}
 
-
 For these reasons we have opted to use a rather simpler symmetric
 distance function~\citep{EGMB10, Visser2010} which we call the minimum
 average direct-flip (MDF) distance, see
 Eq.~(\ref{eq:direct_flip_distance}). MDF can be applied only when both
 streamlines have the same number of points, see
 Fig.~\ref{Flo:Distances_used}. Therefore we assume from now on that an initial
-discretization of streamlines has been implemented, where all streamlines
+discretization of streamlines has been applied, so that all streamlines
 have the same number of points $K$, and all segments of
-each streamline have equal length.
+each streamline have equal length. This is a achieved by a simple linear interpolation.
 
 As it has no preferred orientation, a streamline $s=[s_1, s_2, \ldots, s_K]$ is equivalent to
 two ordered polylines: $s = (s_1, s_2, \ldots, s_K)$ in $\mathbb{R}^3$
@@ -368,10 +359,9 @@ long streamlines is that more of the curvature information from the long
 streamlines is lost relative to the short streamlines i.e. the short
 streamlines will have higher resolution.  We found empirically that this
 is not an important issue and that for clustering purposes even
-discretizing to only $K=3$ points per streamline can produce useful
-clusterings \citep{EGMB10}. Depending on the application, more or fewer
-points can be used. In the results presented we often use $K=12$ which
-achieves a good trade-off between streamline resolution and memory size
+discretizing to only $K=3$ points per streamline can produce useful clusterings \citep{EGMB10}. Depending on the application, more or fewer points can
+be used. In the results presented we often use $K=12$ which achieves a
+good trade-off between streamline resolution and memory size
 reduction.
 
 In some later stages in the analysis of tractographies. e.g.~for merging
@@ -398,9 +388,7 @@ d(x,s') & = & \min_{j=1,...,K'}|x-x_{j}'|.\nonumber \\
 
 \noindent
 where the number of points $K$ and $K'$ on the two streamlines are not
-necessarily the same. For the same threshold value
-$\textrm{MAM}_{\textrm{min}}$, $\textrm{MAM}_{\textrm{max}}$ and
-$\textrm{MAM}_{\textrm{mean}}$ will give different results. For example,
+necessarily the same. For the same distance value $\textrm{MAM}_{\textrm{min}}$, $\textrm{MAM}_{\textrm{max}}$ and $\textrm{MAM}_{\textrm{mean}}$ will give different results. For example,
 $\textrm{MAM}_{\textrm{min}}$ will bring together more short streamlines
 with long streamlines than $\textrm{MAM}_{\textrm{max}}$, and
 $\textrm{MAM}_{\textrm{mean}}$ will have an in-between effect.  Other
@@ -588,7 +576,7 @@ other bigger bundles.
   orientation colormap. We observe that the Fornix consists of two long
   distant legs (left and right Fimbria) and a thicker upper part (Body
   of Fornix). We show here how QB will be able to distinguish the parts
-  of the Fornix at different resolutions. With is a $15$~mm threshold QB
+  of the Fornix at different resolutions. With a $15$~mm threshold QB
   generates 4 clusters shown on the second panel with distinct
   colors. Here the left and right Fimbria are clearly distinguished from
   the Body. A last cluster (with blue) exposes a shorter part of the
@@ -596,9 +584,8 @@ other bigger bundles.
   threshold only two clusters are created. Both Fibria are brought
   together as one cluster. A property useful for studies which want to
   use both Fimbria as one. With a $20$~mm threshold the entire Fornix is
-  one cluster. A case useful for interactive applications because now
-  the entire Fornix can be described by only one centroid streamline. In
-  all cases the streamlines of the Fornix were discretized to have $18$
+  one cluster. This is useful for interactive applications because now
+  the entire Fornix can be described by only one centroid streamline. The streamlines of the Fornix were discretized to have $18$
   points.\label{Flo:QB_fornix}}
 \end{figure*}
 
@@ -635,7 +622,7 @@ measure of inter-rater agreement~\citep{altman1995}, with the range 61\%
 to 80\% corresponding to a `good' strength of agreement.
 
 We will use OMA to compare the different clusterings that arise when the
-streamlines in the tractography are permuted. However this statistic has
+streamlines in the tractography are shuffled. However this statistic has
 its limitations. Not only are there considerable computational overheads
 in calculating the cross-classification matrix, there is also a
 fundamental disadvantage because they do not work with clusterings of
@@ -649,35 +636,32 @@ Although we recognise that these are difficult problems, we propose the
 following approach with three novel comparison functions which we call
 \emph{coverage}, \emph{overlap} and \emph{bundle adjacency}. These
 metrics aim to quantify how well a data reduction performs. Ideally most
-points of the full dataset should be near to the reduced set (coverage),
-but not too many (overlap).
+points of the full dataset should be near to the reduced set
+(coverage), but not too many (overlap).
 
 Let $S$ and $T$ be two sets of streamlines, and let $\theta>0$ be a
 selected threshold. We will say that $s \in S$ is
-$\theta$-\emph{approximated} by $T$ if there is at least one streamline 
-$t \in T$ with $\mathrm{MDF}(s,t)\le \theta$. We define the
-\emph{coverage} of $S$ by $T$ as the fraction of $S$ that is
-$\theta$-approximated by $T$. Coverage ranges between 0 (worst case,
-when all streamlines in $S$ are too far from $T$) and 1 (best case, when
-every streamline in $S$ is $\theta$-approximated by $T$).
+$\theta$-\emph{approximated} by $T$ if there is at least one streamline
+$t \in T$ with $\mathrm{MDF}(s,t)\le \theta$. We define coverage of $S$
+by $T$ as the fraction of $S$ that is $\theta$-approximated by $T$. Coverage
+ranges between 0 (when all streamlines in $S$ are too far from $T$) and
+1 (when every streamline in $S$ is $\theta$-approximated by $T$).
 
-However we recognise that while $T$ may have good coverage of $S$ there
-may be some redundanc, so we define the \emph{overlap} of $T$ in $S$ as
-the average number of approximating streamlines in $T$ for
-$\theta$-approximated streamlines in $S$.  Overlap is undefined if no
-streamlines in $S$ are approximated by $T$, otherwise it can take any
-value greater then or equal to 1, with higher values indicating greater
-degrees of redundancy of $T$ in $S$; if $T$ has several similar
-streamlines then this will tend to boost overlap.
+We define the \emph{overlap} of $T$ in $S$ as the average number of
+approximating streamlines in $T$ that for $\theta$-approximate
+streamlines in $S$.  Overlap is undefined of no streamlines in $S$ are
+approximated by $T$, otherwise it can take any value greater then or
+equal to 1, with higher values indicating the degree of redundancy of
+$T$ in $S$; if $T$ has several similar streamlines then this will tend
+to boost overlap.
 
-Coverage and overlap will typically measure how well a smaller set of
-streamlines acts as a reduction of a larger set. In order to compare two
-reductions of possibly different datasets we define the symmetric
-measure \emph{bundle adjacency} (BA).  BA is the average of the coverage
-of $T$ by $S$ and the coverage of $S$ by $T$: $$\mathrm{BA}(S,T) =
-(\mathrm{coverage}(S,T) + \mathrm{coverage}(T,S))/2.$$ BA ranges between
-0, when no streamlines of S or T have neighbours in the other set, and 1
-when they all do.
+Coverage and overlap measure how well one set approximates another. In
+order to compare two reductions of possibly different datasets we
+define the symmetric measure \emph{bundle adjacency} (BA).  BA is the
+average of the coverage of $T$ by $S$ and the coverage of $S$ by
+$T$: $$\mathrm{BA}(S,T) = (\mathrm{coverage}(S,T) +
+\mathrm{coverage}(T,S))/2.$$ BA ranges between 0, when no streamlines of
+S or T have neighbours in the other set, and 1 when they all do.
 
 \subsection{\label{sub:QB-Data-sets}Data sets}
 
@@ -774,21 +758,13 @@ tractographies.
   of streamlines increases. \label{Flo:Speed1}}
 \end{figure}
 
-As a further test we compared QB with $12$ point streamlines and a
-distance threshold of $10$~mm with some timings reported from other
-state of the art methods found in the literature. Unfortunately timings
-have be rather rarely reported up till today -- possibly because as most
-algorithms were very slow on full datasets. With $\num{1000}$
+As a further test we compared QB (with $12$ point streamlines and a
+distance threshold of $10$~mm) with timings reported from the fastest
+state of the art methods found in the literature. These methods have different goals that those of QB however we think that it is useful to show the important speedup that QB offers for the same number of streamlines. With $\num{1000}$
 streamlines \citet{wang2010tractography}'s algorithm took $30$s whereas
-QB took $0.07$.  $\num{14400}$ seconds were required for the method of
-\citet{wang2010tractography} to cluster $\num{60000}$ streamlines; QB
-took $14.7$s.  In a third study a substantial tractography of size
-$\num{400000}$ was clustered by \citet{Visser2010} in $\num{75000}$s; QB
-completed this task in $160.1$s. The speed-up factors in these three
-comparisons were $429$, $980$ and $468$ respectively.  Though this
-experiment was performed using a single CPU core we see the valuable
-speedup that QB achieves, holding out the prospect of real-time (less than 1~second)
-clustering on datasets of up to \num{20000} streamlines.
+QB took $0.07$s.  $\num{14400}$ seconds were required for the same method of to cluster $\num{60000}$ streamlines; QB
+took $14.7$s.  In a third study a substantial tractography of size $\num{400000}$ was clustered by \citet{Visser2010} in
+$\num{75000}$s; QB completed this task in only $160.1$s. The speed-up factors in these three comparisons were $429$, $980$ and $468$ respectively. Therefore, we  see the valuable speedup that QB achieves, holding out the prospect of real-time (less than 1~second) clustering on datasets of up to \num{20000} streamlines.
 
 \subsection{Stability of QB \label{sub:Comparisons}}
 
@@ -802,32 +778,28 @@ clusters such that the distance between any pair of clusters is
 supra-threshold and the diameter of all clusters is sub-threshold, then
 with different permutations of the same tractography we will typically
 see similar number of clusters but different underlying clusters. We
-will examine the stability of QB in this respect.
+will examine the robustness of QB in this respect.
 
 As a first step we recorded the numbers of QB clusters in $20$ different
-random permutations of the tractographies of $10$ human subjects as
-described in section \ref{sub:QB-Data-sets}. We first removed short
-streamlines shorter than $40$~mm and down-sampled them to $12$
-points. Then we applied QB with threshold at $10$~mm to the permuted
-data sets. The average mean number of clusters was $2645.9$ (min
-$1937.6$; max $3857.8$; s.d.~$653.8$; $N=12$). There is therefore a
-considerable between-subject variation in the number of clusters. By
+random permutations of the tractographies of $10$ human subjects acquired
+as described in section \ref{sub:QB-Data-sets}. We first removed short
+streamlines shorter than $40$~mm and discreatized the streamlines at $12$
+points. Then we applied QB with threshold at $10$~mm. The mean number of
+clusters was $2645.9$ (min $1937.6$; max $3857.8$; s.d.~$653.8$). There
+is therefore a considerable between-subject variation in this metric. By
 contrast the within-subject variability of the number of clusters across
-random permutations is rather small, with average standard deviation
-$12.7$ (min $7.3$; max $17.4$). This suggests that QB may be achieve
-some degree of consistency in terms of the numbers of derived clusters,
-and in a manner that may reflect between subject differences. However
-this does not say anything about the similarity of these clusterings.
+random permutations is rather small, with mean standard deviation $12.7$
+(min $7.3$; max $17.4$). This suggests a good level of consistency in
+the data reduction achieved by QB.
 
-So next we investigated how consistent the QB clusterings are when
-datasets are permuted. Twelve different random permutations were
-generated for each of $10$ tractographies and the corresponding QB
-clusterings were computed with MDF threshold $10$~mm. For each subject
-the $66$ pairings of QB clusterings were compared using the optimised
-matched agreements (OMA) index and then averaged. Across subjects the
-mean OMA (\ref{sub:Tightness-comparisons-1}) was 74.1\% ($\pm 0.39$\%)
-which can be interpreted as a good level of
-agreement~\citep{altman1995}.
+Next we investigated how consistent QB clusterings are when datasets
+are re-ordered. Twelve different random permutations were generated for each
+of $10$ tractographies and the corresping QB clusterings were computed
+with MDF threshold $10$~mm. For each subject the $66$ pairings of QB
+clusterings were compared using the optimised matched agreements index
+and then averaged. Across subjects the mean OMA
+(\ref{sub:Tightness-comparisons-1}) was 74.1\% ($\pm 0.39$\%) which can
+be interpreted as a good level of agreement~\citep{altman1995}.
 
 As well as checking that QB created sets of centroids with good coverage
 and overlap statistics, we went on to show that the performance of QB
@@ -892,7 +864,11 @@ projection of the streamlines can be observed. The purpose of this is to
 show empirically the variability of the streamlines across subjects. At
 the contrary, the centroids of the $100$ biggest clusters for the $10$
 subjects are easily observed with full opacity in
-Fig.~\ref{Flo:BAs}. The mean number of streamlines in the $100$ biggest
+Fig.~\ref{Flo:BAs}. Each tractography has been substantially simplified by QB such that by visual inspection shows
+considerable similarities, as well as an interesting range of individual differences. No such visual comparisons could
+begin to be made based on the whole brain images because the datasets are too dense to draw any conlusions. 
+
+The mean number of streamlines in the $100$ biggest
 clusters was $\num{4818.6}$ ($\pm \num{794.4}$). These clusters covered
 on average $16.18\%$ ($\pm\num{1.4}\%$) of the total number of
 streamlines. The average length of the centroids of the clusters was
@@ -1006,12 +982,11 @@ k-centers and expectation maximization, QB is not a global clustering
 method therefore it can give different results under different initial
 conditions of the dataset when there is no obvious distance threshold
 which can separate the clusters into meaningful bundles; for example we
-should expect different clusters under different permutations/orderings
-of the streamlines in a densely packed tractography. However, we found
+should expect different clusters under different permutations of the streamlines in a densely packed tractography. However, we found
 that there is good agreement even between two clusterings of the same
-tractography with different orderings. If the clusters are truly
+tractography with different permutations. If the clusters are truly
 separable by distances then there is a global solution independent of
-orderings. This is often visible in smaller subsets of the initial
+permutations. This is often visible in smaller subsets of the initial
 tractography. 
 
 Other algorithms previously too slow to be used on the entire
@@ -1035,10 +1010,11 @@ in this paper.
 
 The reduction in dimensionality of the data achieved by QB means that
 BOIs (bundles of interest) can be selected as an alternative to ROIs for
-interrogating the data. We also showed that QB can be used to find
-obscured streamlines not visible to the user at first
-instance. Therefore QB opens up the road to create rapid tools for
-exploring tractographies of any size.
+interrogating or labeling the datasets.  Our experience with ROI-based matter atlases (WMAs) is that they cannot
+differentiate fibre directions i.e. several different bundles could cross an ROI. Therefore, ROIs constructed with a WMA
+do not lead to anatomical bundles and typically lead to large sprawling sets of streamlines. BOIs seem to be a solution
+to this problem and BOI creation can be facilitated by QB. Furthermore, we showed that QB can be used to find obscured
+streamlines not visible to the user at first instance. Therefore, QB opens up the road to create rapid tools for exploring tractographies of any size.
 
 In the future we would like to investigate different ways to merge QB
 clusters by integrating prior information from neuroanatomists. We are
