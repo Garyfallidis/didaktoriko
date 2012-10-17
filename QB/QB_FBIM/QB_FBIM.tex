@@ -850,7 +850,13 @@ tractography space, and undersample in sparser regions.
 We warped $10$ tractographies each belonging to a different healthy
 subsect (see section \ref{sub:QB-Data-sets}) in MNI space and applied
 QuickBundles on each tractography independently using distance threshold
-$10$~mm and discretizing of $18$ points. For every subject we
+$10$~mm and discretizing of $18$ points. 
+In order to warp the streamlines we first warped FAs from native space to MNI
+space using the FSL tools. Then we applied the (continuously resampled)
+displacements to the points in the tractographies in native space in order to
+warp them to MNI space. The code for doing this is available in dipy.org, module dipy.external.fsl, functions create\_displacements and warp\_displacements\_tracks.
+
+For every subject we
 only considered the biggest $100$ QB clusters i.e. the clusters which
 contained the highest number of streamlines. The purpose of this
 experiment was to identify a global similarity measure between the
