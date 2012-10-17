@@ -817,8 +817,9 @@ overlap (s.d.) at this threshold of $C_1$ in $T_1$ was $2.44$ ($\pm
 0.08$), of $C_1$ in $T_2$ was $2.44$ ($\pm 0.08$), and of $R_1$ in $T_2$
 was $5.57$ ($\pm 0.50$).
 
-The same analyses were performed with QB clusterings for distance
-threshold $20$mm and with distance threshold $20$mm. (Note that though
+The same analysis was performed with QB clusterings with distance
+threshold $20$mm and comparing against streamlines which had again $20$mm MDF
+distance from the representatives. (Note that though
 we have selected the same values here for the two thresholds they do not
 have to be the same.) We found that with distance threshold $10$mm the
 mean coverage (s.d.) of $T_1$ by $C_1$ was $99.99$\% ($\pm 0.004$\%), of
@@ -849,7 +850,13 @@ tractography space, and undersample in sparser regions.
 We warped $10$ tractographies each belonging to a different healthy
 subsect (see section \ref{sub:QB-Data-sets}) in MNI space and applied
 QuickBundles on each tractography independently using distance threshold
-$10$~mm and discretizing of $18$ points. For every subject we
+$10$~mm and discretizing of $18$ points. 
+In order to warp the streamlines we first warped FAs from native space to MNI
+space using the FSL tools. Then we applied the (continuously resampled)
+displacements to the points in the tractographies in native space in order to
+warp them to MNI space. The code for doing this is available in dipy.org, module dipy.external.fsl, functions create\_displacements and warp\_displacements\_tracks.
+
+For every subject we
 only considered the biggest $100$ QB clusters i.e. the clusters which
 contained the highest number of streamlines. The purpose of this
 experiment was to identify a global similarity measure between the
