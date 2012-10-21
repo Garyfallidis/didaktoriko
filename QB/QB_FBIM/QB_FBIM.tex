@@ -818,26 +818,36 @@ random selection of streamlines. [D] Next we will show how well QB
 clustering on a subset of a tractography data set serves as an
 approximation to the remainder of the data set.
 
-[A] As a first step we recorded the numbers of QB clusters in $20$ different
-random permutations of the tractographies of $10$ human subjects acquired
-as described in section \ref{sub:QB-Data-sets}. We first removed short
-streamlines shorter than $40$~mm and downsampled the streamlines to $12$
-points. Then we applied QB with threshold at $10$~mm. The mean number of
-clusters was $2645.9$ (min $1937.6$; max $3857.8$; s.d.~$653.8$). There
-is therefore a considerable between-subject variation in this metric. By
-contrast the within-subject variability of the number of clusters across
-random permutations is rather small, with mean standard deviation $12.7$
-(min $7.3$; max $17.4$). This suggests a good level of consistency in
-the data reduction achieved by QB.
+[A - now revised] We recorded the numbers of QB clusters in $20$
+different random permutations of the tractographies of $10$ human
+subjects acquired as described in section
+\ref{sub:QB-Data-sets}. Streamlines shorter than $40$~mm were first
+removed and then the remaining streamlines were downsampled to $12$
+points. Then we applied QB with a threshold of $10$~mm. The mean number
+of clusters across subjects was $2645.9$ (min $1937.6$; max $3857.8$;
+s.d.~$653.8$). There is therefore a considerable between-subject
+variation in this metric. By contrast the within-subject variability of
+the number of clusters across random permutations is rather small, with
+mean standard deviation $12.7$ (min.~$7.3$; max.~$17.4$). The standard
+error of the individual subject means above is (worst case) $\pm 3.9$
+which gives strong assurance that 20 random permutations are adequate to
+get reliable subject level estimates and that there is minimal fluction
+across these permutations. This suggests a good level of consistency in
+the data reduction achieved by QB. [Prompted by a reviwer comment I did
+do a correlation of #clusters with #streamlines and it was not
+particularly strong which is use as indirect evidence that QB reponds to
+structure rather than just to tractography size. It would not be hard to
+recalculate this.]
 
 [B] Next we investigated how consistent QB clusterings are when datasets
-are re-ordered. Twelve different random permutations were generated for each
-of $10$ tractographies and the corresponding QB clusterings were computed
-with MDF threshold $10$~mm. For each subject the $66$ pairings of QB
-clusterings were compared using the optimised matched agreements index
-and then averaged. Across subjects the mean OMA
-(\ref{sub:Tightness-comparisons-1}) was 74.1\% ($\pm 0.39$\%) which can
-be interpreted as a good level of agreement~\citep{altman1995}.
+are re-ordered. Twelve different random permutations were generated for
+each of $10$ tractographies and the corresponding QB clusterings were
+computed with MDF threshold $10$~mm. For each subject the $66$ pairings
+of QB clusterings were compared using the optimised matched agreements
+index and then averaged. Across subjects the mean OMA
+(\ref{sub:Tightness-comparisons-1}) was 74.1\% ($\pm 0.39$\%). This can
+be interpreted as a good level of agreement~\citep{altman1995} - [though
+I think I need to say more ...]
 
 [at the moment this is C and D] As well as checking that QB created sets
 of centroids with good coverage and overlap statistics, we went on to
@@ -855,6 +865,17 @@ $99.96$\% ($\pm 0.007$\%), of $T_2$ by $C_1$ was $99.31$\% ($\pm
 overlap (s.d.) at this threshold of $C_1$ in $T_1$ was $2.44$ ($\pm
 0.08$), of $C_1$ in $T_2$ was $2.44$ ($\pm 0.08$), and of $R_1$ in $T_2$
 was $5.57$ ($\pm 0.50$).
+
+Now for an attempt to tabulate this:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{crr}
+Threshold & Coverage (s.d.) & Overlap (s.d.) \\
+$10$~mm \\ 
+$20$~mm \\
+\end{tabular}
+\end{table}
 
 [more of the above] The same analysis was performed with QB clusterings
 with distance threshold $20$mm and comparing against streamlines which
