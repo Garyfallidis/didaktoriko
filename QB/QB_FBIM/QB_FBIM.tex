@@ -792,85 +792,98 @@ $980$ and $468$ respectively. Therefore, we see the valuable speedup
 that QB achieves, holding out the prospect of real-time (less than
 1~second) clustering on datasets of up to \num{20000} streamlines.
 
-\subsection{Stability of QB \label{sub:Comparisons}}
+\subsection{Robustness and effectiveness of QB  clustering\label{sub:Comparisons}}
 
-\textbf{THIS SECTION IS UNDER RECONSTRUCTIN!}
+% \textbf{THIS SECTION IS UNDER RECONSTRUCTION!}
 
-% One of the disadvantages of most clustering algorithms is that they give
-% different results with different initial conditions; for example this is
-% recognised with k-means, expectation-maximization
-% \citep{dempster1977maximum} and k-centers \citep{gonzalez1985clustering}
-% where it is common practice to try a number of different random initial
-% configurations. The same holds for QB so if there are not distinct
-% clusters such that the distance between any pair of clusters is
-% supra-threshold and the diameter of all clusters is sub-threshold, then
-% with different permutations of the same tractography we will typically
-% see similar number of clusters but different underlying clusters. We
-% will examine the robustness of QB in this respect.
+One of the disadvantages of most clustering algorithms is that they give
+different results with different initial conditions; for example this is
+recognised with k-means, expectation-maximization
+\citep{dempster1977maximum} and k-centers \citep{gonzalez1985clustering}
+where it is common practice to try a number of different random initial
+configurations. The same holds for QB so if there are not distinct
+clusters such that the distance between any pair of clusters is
+supra-threshold and the diameter of all clusters is sub-threshold, then
+with different permutations of the same tractography we will typically
+see similar number of clusters but different underlying clusters. We
+will examine the robustness of QB in this respect in a number of ways.
 
-% As a first step we recorded the numbers of QB clusters in $20$ different
-% random permutations of the tractographies of $10$ human subjects acquired
-% as described in section \ref{sub:QB-Data-sets}. We first removed short
-% streamlines shorter than $40$~mm and discreatized the streamlines at $12$
-% points. Then we applied QB with threshold at $10$~mm. The mean number of
-% clusters was $2645.9$ (min $1937.6$; max $3857.8$; s.d.~$653.8$). There
-% is therefore a considerable between-subject variation in this metric. By
-% contrast the within-subject variability of the number of clusters across
-% random permutations is rather small, with mean standard deviation $12.7$
-% (min $7.3$; max $17.4$). This suggests a good level of consistency in
-% the data reduction achieved by QB.
+[A] First we look at the stability of the number of clusters with
+respect to random permutations. [B] Next we will use optimised matching
+agreement (OMA) to establish how well the detailed content of QB
+clustering is preserved under random permutation. [C] Next we will show
+using the coverage and overlap metrics how the QB centroids is a better
+reduction of the tractography data set than an equivalent number of
+random selection of streamlines. [D] Next we will show how well QB
+clustering on a subset of a tractography data set serves as an
+approximation to the remainder of the data set.
 
-% Next we investigated how consistent QB clusterings are when datasets
-% are re-ordered. Twelve different random permutations were generated for each
-% of $10$ tractographies and the corresping QB clusterings were computed
-% with MDF threshold $10$~mm. For each subject the $66$ pairings of QB
-% clusterings were compared using the optimised matched agreements index
-% and then averaged. Across subjects the mean OMA
-% (\ref{sub:Tightness-comparisons-1}) was 74.1\% ($\pm 0.39$\%) which can
-% be interpreted as a good level of agreement~\citep{altman1995}.
+[A] As a first step we recorded the numbers of QB clusters in $20$ different
+random permutations of the tractographies of $10$ human subjects acquired
+as described in section \ref{sub:QB-Data-sets}. We first removed short
+streamlines shorter than $40$~mm and downsampled the streamlines to $12$
+points. Then we applied QB with threshold at $10$~mm. The mean number of
+clusters was $2645.9$ (min $1937.6$; max $3857.8$; s.d.~$653.8$). There
+is therefore a considerable between-subject variation in this metric. By
+contrast the within-subject variability of the number of clusters across
+random permutations is rather small, with mean standard deviation $12.7$
+(min $7.3$; max $17.4$). This suggests a good level of consistency in
+the data reduction achieved by QB.
 
-% As well as checking that QB created sets of centroids with good coverage
-% and overlap statistics, we went on to show that the performance of QB
-% generalises to sets of streamlines different from the training set, and
-% is superior to a random sample of streamlines. We split each of the 10
-% tractographies randomly into two halves $T_1$ (training set) and $T_2$
-% (test set). The QB clustering at distance threshold $10$~mm was derived
-% for $T_1$. Denote by $C_1$ and $c_1$ the set of centroids and the number
-% of them. Let $R_1$ be a random subset of $T_1$ of size $c_1$. Using the
-% measures described in section~\ref{sub:Tightness-comparisons-1} we found
-% that with distance threshold $10$~mm the mean coverage (s.d.) of $T_1$
-% by $C_1$ was $99.96$\% ($\pm 0.007$\%), of $T_2$ by $C_1$ was $99.31$\%
-% ($\pm 0.08$\%) and of $T_2$ by $R_1$ was $90.49$\% ($\pm 0.41$\%). The mean
-% overlap (s.d.) at this threshold of $C_1$ in $T_1$ was $2.44$ ($\pm
-% 0.08$), of $C_1$ in $T_2$ was $2.44$ ($\pm 0.08$), and of $R_1$ in $T_2$
-% was $5.57$ ($\pm 0.50$).
+[B] Next we investigated how consistent QB clusterings are when datasets
+are re-ordered. Twelve different random permutations were generated for each
+of $10$ tractographies and the corresponding QB clusterings were computed
+with MDF threshold $10$~mm. For each subject the $66$ pairings of QB
+clusterings were compared using the optimised matched agreements index
+and then averaged. Across subjects the mean OMA
+(\ref{sub:Tightness-comparisons-1}) was 74.1\% ($\pm 0.39$\%) which can
+be interpreted as a good level of agreement~\citep{altman1995}.
 
-% The same analysis was performed with QB clusterings with distance
-% threshold $20$mm and comparing against streamlines which had again $20$mm MDF
-% distance from the representatives. (Note that though
-% we have selected the same values here for the two thresholds they do not
-% have to be the same.) We found that with distance threshold $10$mm the
-% mean coverage (s.d.) of $T_1$ by $C_1$ was $99.99$\% ($\pm 0.004$\%), of
-% $T_2$ by $C_1$ was $99.91$\% ($\pm 0.02$\%) and of $T_2$ by $R_1$ was
-% $95.86$\% ($\pm 0.62$\%). The mean overlap (s.d.) at this threshold
-% of $C_1$ in $T_1$ was $3.54$ ($\pm 0.18$), of $C_1$ in $T_2$ was $3.54$
-% ($\pm 0.18$), and of $R_1$ in $T_2$ was $6.53$ ($\pm 0.93$).
+[at the moment this is C and D] As well as checking that QB created sets
+of centroids with good coverage and overlap statistics, we went on to
+show that the performance of QB generalises to sets of streamlines
+different from the training set, and is superior to a random sample of
+streamlines. We split each of the 10 tractographies randomly into two
+halves $T_1$ (training set) and $T_2$ (test set). The QB clustering at
+distance threshold $10$~mm was derived for $T_1$. Denote by $C_1$ and
+$c_1$ the set of centroids and the number of them. Let $R_1$ be a random
+subset of $T_1$ of size $c_1$. Using the measures described in
+section~\ref{sub:Tightness-comparisons-1} we found that with distance
+threshold $10$~mm the mean coverage (s.d.) of $T_1$ by $C_1$ was
+$99.96$\% ($\pm 0.007$\%), of $T_2$ by $C_1$ was $99.31$\% ($\pm
+0.08$\%) and of $T_2$ by $R_1$ was $90.49$\% ($\pm 0.41$\%). The mean
+overlap (s.d.) at this threshold of $C_1$ in $T_1$ was $2.44$ ($\pm
+0.08$), of $C_1$ in $T_2$ was $2.44$ ($\pm 0.08$), and of $R_1$ in $T_2$
+was $5.57$ ($\pm 0.50$).
 
-% We conclude from these analyses that QB has good coverage and overlap
-% properties with respect to the training set and to the test set of
-% streamlines, while an equivalent random selection of streamlines has
-% worse coverage and overlap. Moreover the performance of QB is better
-% with the lower closeness threshold. The poor performance of random
-% subsets is to be expected as they will oversample in denser parts of the
-% tractography space, and undersample in sparser regions.
+[more of the above] The same analysis was performed with QB clusterings
+with distance threshold $20$mm and comparing against streamlines which
+had again $20$mm MDF distance from the representatives. (Note that
+though we have selected the same values here for the two thresholds they
+do not have to be the same.) We found that with distance threshold
+$10$mm the mean coverage (s.d.) of $T_1$ by $C_1$ was $99.99$\% ($\pm
+0.004$\%), of $T_2$ by $C_1$ was $99.91$\% ($\pm 0.02$\%) and of $T_2$
+by $R_1$ was $95.86$\% ($\pm 0.62$\%). The mean overlap (s.d.) at this
+threshold of $C_1$ in $T_1$ was $3.54$ ($\pm 0.18$), of $C_1$ in $T_2$
+was $3.54$ ($\pm 0.18$), and of $R_1$ in $T_2$ was $6.53$ ($\pm 0.93$).
 
-% \begin{figure*}[htp]
-%   \centerline{\includegraphics[width=180mm]{Figures/Fig_12_All_Brains.eps}}
-%   \caption{QuickBundles centroids of the biggest 100 clusters for 10
-%     subjects. Full tractographies are also presented using high
-%     transparency. All streamlines are visualized with the same standard
-%     orientation colormap. \label{Flo:BAs}}
-% \end{figure*}
+[do we need to add anything on bundle adjacency?]
+
+We conclude from these analyses that QB has good coverage and overlap
+properties with respect to the training set and to the test set of
+streamlines, while an equivalent random selection of streamlines has
+worse coverage and overlap. Moreover the performance of QB is better
+with the lower closeness threshold. The poor performance of random
+subsets is to be expected as they will oversample in denser parts of the
+tractography space, and undersample in sparser regions.
+
+\begin{figure*}[htp]
+  \centerline{\includegraphics[width=180mm]{Figures/Fig_12_All_Brains.eps}}
+  \caption{QuickBundles centroids of the biggest 100 clusters for 10
+    subjects. Full tractographies are also presented using high
+    transparency. All streamlines are visualized with the same standard
+    orientation colormap. \label{Flo:BAs}}
+\end{figure*}
 
 
 \subsection{Group Comparisons \label{sub:group_comp}}
@@ -878,11 +891,13 @@ that QB achieves, holding out the prospect of real-time (less than
 We warped $10$ tractographies each belonging to a different healthy
 subsect (see section \ref{sub:QB-Data-sets}) in MNI space and applied
 QuickBundles on each tractography independently using distance threshold
-$10$~mm and discretizing of $18$ points. 
-In order to warp the streamlines we first warped FAs from native space to MNI
-space using the FSL tools. Then we applied the (continuously resampled)
-displacements to the points in the tractographies in native space in order to
-warp them to MNI space. The code for doing this is available in dipy.org, module dipy.external.fsl, functions create\_displacements and warp\_displacements\_tracks.
+$10$~mm and discretizing of $18$ points.  In order to warp the
+streamlines we first warped FAs from native space to MNI space using the
+FSL tools. Then we applied the (continuously resampled) displacements to
+the points in the tractographies in native space in order to warp them
+to MNI space. The code for doing this is available in dipy.org, module
+dipy.external.fsl, functions create\_displacements and
+warp\_displacements\_tracks.
 
 For every subject we
 only considered the biggest $100$ QB clusters i.e. the clusters which
