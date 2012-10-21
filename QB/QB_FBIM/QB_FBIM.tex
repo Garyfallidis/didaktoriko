@@ -19,6 +19,7 @@
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 
 \usepackage{multirow}
+\usepackage{rotating}
 
 \makeatletter
 \newfloat{algorithm}{H}{loa}[section]
@@ -870,17 +871,17 @@ was $5.57$ ($\pm 0.50$).
 
 Now for an attempt to tabulate this:
 
-\begin{table}[h]{QB centroid comparisons with split half and random subsets}
-\centering
+\begin{table}[th]{QB centroid comparisons with split half and random subsets}
+%\centering
 \begin{tabular}{rrrr}
 \hline
-Threshold & Comparison & Coverage \% (s.d.) & Overlap (s.d.) \\
+Thresholds & Comparison & Coverage \% (s.d.) & Overlap (s.d.) \\
 \hline
-\multirow{3}{*}{$10$~mm} & Self & 99.96 (0.007) & 4.99* (0.10*)\\   
+\multirow{3}{*}{$10$~mm/$10$~mm} & Self & 99.96 (0.007) & 4.99* (0.10*)\\   
 & Other half & 99.96 (0.007) & 4.99* (0.10*)\\   
 & Random & 99.96 (0.007) & 4.99* (0.10*)\\   
 \hline
-\multirow{3}{*}{$20$~mm} & Self & 99.96 (0.007) & 4.99* (0.10*)\\   
+\multirow{3}{*}{$20$~mm/$20$~mm} & Self & 99.96 (0.007) & 4.99* (0.10*)\\   
 & Other half & 99.96 (0.007) & 4.99* (0.10*)\\
 & Random & 99.96 (0.007) & 4.99* (0.10*)\\   
 \hline   
