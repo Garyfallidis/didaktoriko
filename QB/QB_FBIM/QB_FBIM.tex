@@ -18,6 +18,8 @@
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 
+\usepackage{multirow}
+
 \makeatletter
 \newfloat{algorithm}{H}{loa}[section]
 \floatname{algorithm}{Algorithm}
@@ -833,13 +835,13 @@ error of the individual subject means above is (worst case) $\pm 3.9$
 which gives strong assurance that 20 random permutations are adequate to
 get reliable subject level estimates and that there is minimal fluction
 across these permutations. This suggests a good level of consistency in
-the data reduction achieved by QB. [Prompted by a reviwer comment I did
-do a correlation of #clusters with #streamlines and it was not
+the data reduction achieved by QB. [Prompted by a reveiwer comment I did
+do a correlation of \#clusters with \#streamlines and it was not
 particularly strong which is use as indirect evidence that QB reponds to
 structure rather than just to tractography size. It would not be hard to
 recalculate this.]
 
-[B] Next we investigated how consistent QB clusterings are when datasets
+[B - partially rewritten] Next we investigated how consistent QB clusterings are when datasets
 are re-ordered. Twelve different random permutations were generated for
 each of $10$ tractographies and the corresponding QB clusterings were
 computed with MDF threshold $10$~mm. For each subject the $66$ pairings
@@ -868,12 +870,20 @@ was $5.57$ ($\pm 0.50$).
 
 Now for an attempt to tabulate this:
 
-\begin{table}[h]
+\begin{table}[h]{QB centroid comparisons with split half and random subsets}
 \centering
-\begin{tabular}{crr}
-Threshold & Coverage (s.d.) & Overlap (s.d.) \\
-$10$~mm \\ 
-$20$~mm \\
+\begin{tabular}{rrrr}
+\hline
+Threshold & Comparison & Coverage \% (s.d.) & Overlap (s.d.) \\
+\hline
+\multirow{3}{*}{$10$~mm} & Self & 99.96 (0.007) & 4.99* (0.10*)\\   
+& Other half & 99.96 (0.007) & 4.99* (0.10*)\\   
+& Random & 99.96 (0.007) & 4.99* (0.10*)\\   
+\hline
+\multirow{3}{*}{$20$~mm} & Self & 99.96 (0.007) & 4.99* (0.10*)\\   
+& Other half & 99.96 (0.007) & 4.99* (0.10*)\\
+& Random & 99.96 (0.007) & 4.99* (0.10*)\\   
+\hline   
 \end{tabular}
 \end{table}
 
