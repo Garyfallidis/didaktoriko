@@ -80,7 +80,7 @@ matter Segmentation, Dimensionality Reduction, Clustering algorithms, DTI.
 
 Following the acquisition of diffusion MR scans, processes of
 reconstruction and integration are performed to create a tractography: a
-data set composed of streamlines, which are sequences of points in 3D
+dataset composed of streamlines, which are sequences of points in 3D
 space. Irrespective of the types of reconstruction and integration, a
 tractography can contain a very large number of streamlines (up to
 $10^6$) depending principally on the number of seed points used to
@@ -136,7 +136,7 @@ anatomically valid bundles without extensive prior information
 preferably from experts or atlases. This is because anatomical bundles
 differ considerably both in lengths and in shape (see
 \citet{schmahmann2009fiber}) and there is not a single threshold which
-can cluster a full data set with anatomical correspondence (see
+can cluster a full dataset with anatomical correspondence (see
 \citet{Guevara2010}). Furthermore, if one uses such extensive priors
 then it will be more suitable to use supervised learning
 algorithms. Therefore, we propose that unsupervised learning should be
@@ -155,13 +155,13 @@ hierarchical clustering (see \citet{ moberts2005evaluation,
 \citet{ODonnell_IEEETMI07, o2009tract, jonasson2005fiber,
   ziyan2009consistency}) or affinity propagation (see
 \citet{leemans17new, malcolm2009filtered}). However, they had to restrict
-themselves to only a subset of the complete data set because the
+themselves to only a subset of the complete dataset because the
 calculations were heavy and the distance matrix too big for computers
 with standard memory capacity. For example, \citet{ODonnell_IEEETMI07}
 used only \num{10000} streamlines (~10\% of the initial tractography)
 and \citet{Visser2010} used recombinations of \num{10000} streamlines.
 We give here an example of how large that distance matrix can be if used
-with a full data set. Just for \num{100000} streamlines 38 GBytes are
+with a full dataset. Just for \num{100000} streamlines 38 GBytes are
 required and for 1 million streamlines 3.6 TBytes of memory are required
 (4 bytes floating point precision).
 
@@ -182,7 +182,7 @@ algorithms that can provide useful clusters and cluster descriptors in
 acceptable time. None of the papers covered in this literature review
 provide a solution for this issue of efficiency and most of the methods
 would require from many hours to many days to run on a standard sized
-data set.
+dataset.
 
 %Distances
 %\citet{zhang2003visualizing, corouge2004towards, Corouge2004, Corouge2006}
@@ -622,7 +622,7 @@ directly compare different clustering results for tractographies, beyond
 that of \citet{moberts2005evaluation} who quantified the agreement
 between a clustering and a `gold standard' tractography labeled by
 their team.  We have used a more symmetrical measure of agreement
-between two clusterings that do not require a prior labeled data set.
+between two clusterings that do not require a prior labeled dataset.
 It is called the \emph{optimized matched agreement} (OMA). As with the
 \emph{adjusted Rand index} (ARI)~\citep{moberts2005evaluation}, OMA
 requires the calculation of the $M \times N$ streamline
@@ -658,7 +658,7 @@ three novel comparison functions which we call \emph{coverage},
 \emph{overlap} and \emph{bundle adjacency}. The first two metrics aim to
 quantify how well a data reduction performs, and the third quantifies
 how similar two reduction are to each other. Ideally most points of the
-full data set should be near to the reduced set (coverage), but not too
+full dataset should be near to the reduced set (coverage), but not too
 many (overlap).
 
 Let $S$ and $T$ be two sets of streamlines, and let $\theta>0$ be a
@@ -817,10 +817,10 @@ respect to random permutations. [B] Next we will use optimized matching
 agreement (OMA) to establish how well the detailed content of QB
 clustering is preserved under random permutation. [C] Next we will show
 using the coverage and overlap metrics how the QB centroids is a better
-reduction of the tractography data set than an equivalent number of
+reduction of the tractography dataset than an equivalent number of
 random selection of streamlines. [D] Next we will show how well QB
-clustering on a subset of a tractography data set serves as an
-approximation to the remainder of the data set.
+clustering on a subset of a tractography dataset serves as an
+approximation to the remainder of the dataset.
 
 [A] We recorded the numbers of QB clusters in $20$ different random
 permutations of the tractographies of $10$ human subjects acquired as
@@ -833,7 +833,7 @@ between-subject variation in this metric. Some of this inter-subject
 variability is related to the sizes of the tractographies: the
 correlation between number of QB clusters and full tractography size
 (r=0.867, N=10, threshold=10~mm). The correlation with full tractography
-size drops to r=0.xxx when the same number (14000) of streamlines were
+size only drops to r=0.786 when random samples of constant size (14000) were
 clustered.  Though there is clearly some link with tractography size,
 the fact that nearly 50\% ($1-r^2=0.463$) of the variability is not
 explained this way supports the view that the variety of QB clusters
@@ -848,12 +848,13 @@ subject level estimates and that there is minimal fluctuation across these
 permutations. This suggests a good level of consistency in the data
 reduction achieved by QB.
 
-[B] Next we investigated how consistent QB clusterings are when data
-sets are re-ordered. Twelve different random permutations were generated
-for each of $10$ tractographies and the corresponding QB clusterings
-were computed with MDF threshold $10$~mm. For each subject the $66$
-pairings of QB clusterings were compared using the optimized matched
-agreements index and then averaged. Across subjects the mean OMA
+[B - these figures are from the thesis] Next we investigated how
+consistent QB clusterings are when data sets are re-ordered. Twelve
+different random permutations were generated for each of $10$
+tractographies and the corresponding QB clusterings were computed with
+MDF threshold $10$~mm. For each subject the $66$ pairings of QB
+clusterings were compared using the optimized matched agreements index
+and then averaged. Across subjects the mean OMA
 (\ref{sub:Tightness-comparisons-1}) was 74.1\% ($\pm 0.39$\%). This can
 be interpreted as a good level of agreement~\citep{altman1995} - [though
 I think I need to say more ...]
@@ -1070,7 +1071,7 @@ characteristic information about the tractography.
 In common with mainstream clustering algorithms such as k-means,
 k-centers and expectation maximization, QB is not a global clustering
 method therefore it can give different results under different initial
-conditions of the data set when there is no obvious distance threshold
+conditions of the dataset when there is no obvious distance threshold
 which can separate the clusters into meaningful bundles; for example we
 should expect different clusters under different permutations of the
 streamlines in a densely packed tractography. However, we found that
