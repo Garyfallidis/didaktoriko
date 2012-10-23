@@ -822,22 +822,23 @@ random selection of streamlines. [D] Next we will show how well QB
 clustering on a subset of a tractography dataset serves as an
 approximation to the remainder of the dataset.
 
-[A] We recorded the numbers of QB clusters in $20$ different random
+[A] We recorded the numbers of QB clusters in $25$ different random
 permutations of the tractographies of $10$ human subjects acquired as
 described in section \ref{sub:QB-Data-sets}. Streamlines shorter than
 $40$~mm were first removed and then the remaining streamlines were down
 sampled to $12$ points. The mean number of retained streamlines was
 $\num{98159.5}$ ($\pm \num{14298.0}$). Then we applied QB with a
 threshold of $10$~mm. The mean number of clusters across subjects was
-$\num{4149.2}$ ($\pm \num{831.0}$). There is therefore a considerable
-between-subject variation in this metric. Some of this inter-subject
-variability is related to the sizes of the tractographies: the
-correlation between number of QB clusters and full tractography size was
-calculated (r=0.867, N=10, threshold=10~mm). The correlation with full
-tractography size only drops to r=0.786 when the clustering was
+$\num{4149.2}$ ($\pm \num{831.0}$), representing a data compression
+ratio of about 20:1. There is therefore a considerable between-subject
+variation in this metric. Some of this inter-subject variability is
+related to the sizes of the tractographies: the correlation between
+number of QB clusters and full tractography size was calculated
+(r=0.867, N=10, threshold=10~mm); however the correlation with full
+tractography size only dropped to r=0.786 when the clustering was
 performed on random samples of fixed size ($\num{80000}$).  This
 suggests that the QB clustering reflects the complexity of the full
-tractography not purely its size.
+tractography not solely its size.
 
 By contrast the within-subject variability of the number of clusters
 across random permutations is rather small, with mean standard deviation
@@ -863,8 +864,10 @@ I think I need to say more ...]
 [all these relculations will be done using to QB results of the
 reorderings as the basis for ODA, coverage, overlap statistics.]
 
-[at the moment this is C and D] As well as checking that QB created sets
-of centroids with good coverage and overlap statistics, we went on to
+Some authors (e.g.~O'Donnell;Visser) 
+
+[at the moment this is C and D] As well as checking that QB creates sets
+of centroids with good coverage and overlap statistics, we go on to
 show that the performance of QB generalizes to sets of streamlines
 different from the training set, and is superior to a random sample of
 streamlines. We split each of the 10 tractographies randomly into two
@@ -900,15 +903,15 @@ Thresholds & Comparison & Coverage \% (s.d.) & Overlap (s.d.) \\
 \end{table}
 
 [more of the above] The same analysis was performed with QB clusterings
-with distance threshold $20$mm and comparing against streamlines which
-had again $20$mm MDF distance from the representatives. (Note that
-though we have selected the same values here for the two thresholds they
-do not have to be the same.) We found that with distance threshold
-$10$mm the mean coverage (s.d.) of $T_1$ by $C_1$ was $99.99$\% ($\pm
-0.004$\%), of $T_2$ by $C_1$ was $99.91$\% ($\pm 0.02$\%) and of $T_2$
-by $R_1$ was $95.86$\% ($\pm 0.62$\%). The mean overlap (s.d.) at this
-threshold of $C_1$ in $T_1$ was $3.54$ ($\pm 0.18$), of $C_1$ in $T_2$
-was $3.54$ ($\pm 0.18$), and of $R_1$ in $T_2$ was $6.53$ ($\pm 0.93$).
+with clustering threshold $20$mm and comparing against streamlines with
+an adjacency threshold of 20mm. (Note that though we have selected the
+same values here for the two thresholds they do not have to be the
+same.) We found that with clustering threshold $10$mm the mean coverage
+(s.d.) of $T_1$ by $C_1$ was $99.99$\% ($\pm 0.004$\%), of $T_2$ by
+$C_1$ was $99.91$\% ($\pm 0.02$\%) and of $T_2$ by $R_1$ was $95.86$\%
+($\pm 0.62$\%). The mean overlap (s.d.) at this threshold of $C_1$ in
+$T_1$ was $3.54$ ($\pm 0.18$), of $C_1$ in $T_2$ was $3.54$ ($\pm
+0.18$), and of $R_1$ in $T_2$ was $6.53$ ($\pm 0.93$).
 
 [do we need to add anything on bundle adjacency?]
 
