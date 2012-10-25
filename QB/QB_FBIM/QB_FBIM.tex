@@ -835,16 +835,16 @@ permutations of the tractographies of $10$ human subjects acquired as
 described in section \ref{sub:QB-Data-sets}. Streamlines shorter than
 $40$~mm were first removed and then the remaining streamlines were down
 sampled to $12$ points. The mean number of retained streamlines was
-$\num{98159.5}$ ($\pm \num{14298.0}$). Then we applied QB with a
+\num{98159.5} ($\pm$ \num{14298.0}). Then we applied QB with a
 threshold of $10$~mm. The mean number of clusters across subjects was
-$\num{4144.0}$ ($\pm \num{830.0}$), representing a data compression
+\num{4144.0} ($\pm$ \num{830.0}), representing a data compression
 ratio of about 24:1. There is therefore a considerable between-subject
 variation in this metric. Some of this inter-subject variability is
 related to the sizes of the tractographies: the correlation between
 number of QB clusters and full tractography size was calculated
 ($r=0.867$, $N=10$, threshold=10~mm); however the correlation with full
 tractography size only marginally dipped to $r=0.786$ when the clustering was
-performed on random samples of fixed size ($\num{80000}$).  This
+performed on random samples of fixed size (\num{80000}).  This
 suggests that the QB clustering reflects the complexity of the full
 tractography not solely its size.
 
@@ -857,22 +857,38 @@ subject level estimates and that there is minimal fluctuation across these
 permutations. This suggests a good level of consistency in the data
 reduction achieved by QB.
 
-[B - these figures were originally from the thesis but I feel the
-need to recalculate them!] Next we investigated how consistent QB
-clusterings are when data sets are re-ordered. Twelve different random
-permutations were generated for each of $10$ tractographies and the
-corresponding QB clusterings were computed with MDF threshold
-$10$~mm. For each subject the $66$ pairings of QB clusterings were
-compared using the optimized matched agreements index and then
-averaged. Across subjects the mean OMA
-(\ref{sub:Tightness-comparisons-1}) was 74.1\% ($\pm 0.39$\%). This can
-be interpreted as a good level of agreement~\citep{altman1995} - [though
-I think I need to say more ...]
+[B] Next we investigated how consistent QB clusterings are when data
+sets are re-ordered. Sixteen different random permutations were
+generated for each of $10$ tractographies and the corresponding QB
+clusterings were computed with clustering threshold $10$~mm. For each
+subject the $120$ pairings of QB clusterings were compared using the
+optimized matched agreements index and then averaged. Across subjects
+the average OMA (\ref{sub:Tightness-comparisons-1}) was 72.0\% ($\pm
+0.60$\%); the average intra-subject stadard deviation was $\pm
+0.63$\%. According to the interpretation of \citep{altman1995} this
+represents a good level of agreement consistent across
+tractographies. Bearing in mind that large subsets of tractography
+streamlines present more as continuously varying shapes rather than
+discrete clusters, we propose comparing with the result of dividing a
+one-dimensional medium into slices of equal thickness. Depending on the
+offset between two such systems of slices the OMA will range between
+100\% when they coincide and 50\% when they symmetrically interleaved,
+with a mean OMA of 75\%.
 
-[all these relculations will be done using to QB results of the
-reorderings as the basis for ODA, coverage, overlap statistics.]
+[C] Recognising that large tractography datasets present too large a
+computational challenge, some authors (e.g.~\citet{ODonnell_IEEETMI07}
+and~\citet{Visser2010}) have taken random samples of streamlines (say
+\num{10000}) and applied their clustering algorithms to those. We have
+shown in [A] above that large random subsets do contain much of the
+information about the full dataset. However they inevitably are
+suboptimal reductions of the full dataset. Inevitably they overrepresent
+the denser parts of the tractography space, and they underrepresent the
+sparser regions of that space. By their construction the QB centroids
+will be more uniformly distributed in this space and thus a better
+compression of the original dataset.
+ 
+[calculations under way now ...]
 
-Some authors (e.g.~O'Donnell;Visser) 
 
 [at the moment this is C and D] As well as checking that QB creates sets
 of centroids with good coverage and overlap statistics, we go on to
