@@ -822,14 +822,6 @@ random selection of streamlines. [D] Next we will show how well QB
 clustering on a subset of a tractography dataset serves as an
 approximation to the remainder of the dataset.
 
-Grand mean: 4144.02
-
-Inter-subject s.d. 830.01
-
-Minimum 3288.76
-
-Maximum 5718.28
-
 [A] We recorded the numbers of QB clusters in $25$ different random
 permutations of the tractographies of $10$ human subjects acquired as
 described in section \ref{sub:QB-Data-sets}. Streamlines shorter than
@@ -860,23 +852,23 @@ reduction achieved by QB.
 [B] Next we investigated how consistent QB clusterings are when data
 sets are re-ordered. Sixteen different random permutations were
 generated for each of $10$ tractographies and the corresponding QB
-clusterings were computed with clustering threshold $10$~mm. For each
-subject the $120$ pairings of QB clusterings were compared using the
-optimized matched agreements index and then averaged. Across subjects
-the average OMA (\ref{sub:Tightness-comparisons-1}) was 72.0\% ($\pm
-0.60$\%); the average intra-subject stadard deviation was $\pm
-0.63$\%. According to the interpretation of \citep{altman1995} this
-represents a good level of agreement consistent across
-tractographies. Bearing in mind that large subsets of tractography
-streamlines present more as continuously varying shapes rather than
-discrete clusters, we propose comparing with the result of dividing a
-one-dimensional medium into slices of equal thickness. Depending on the
-offset between two such systems of slices the OMA will range between
-100\% when they coincide and 50\% when they symmetrically interleaved,
-with a mean OMA of 75\%.
+clusterings were computed with clustering threshold $10$~mm. (These were
+a subset of the clusterings used in [A].) For each subject the $120$
+pairings of QB clusterings were compared using the optimized matched
+agreements index and then averaged. Across subjects the average OMA
+(\ref{sub:Tightness-comparisons-1}) was 72.0\% ($\pm 0.60$\%); the
+average intra-subject stadard deviation was $\pm 0.63$\%. According to
+the interpretation of \citep{altman1995} this represents a good level of
+agreement consistent across tractographies. Bearing in mind that large
+subsets of tractography streamlines present more as continuously varying
+shapes rather than discrete clusters, we propose comparing with the
+result of dividing a one-dimensional medium into slices of equal
+thickness. Depending on the offset between two such systems of slices
+the OMA will range between 100\% when they coincide and 50\% when they
+symmetrically interleaved, with a mean OMA of 75\%.
 
 [C] Recognising that large tractography datasets present too large a
-computational challenge, some authors (e.g.~\citet{ODonnell_IEEETMI07}
+computational challenge, some authors (e.g.\,\citet{ODonnell_IEEETMI07}
 and~\citet{Visser2010}) have taken random samples of streamlines (say
 \num{10000}) and applied their clustering algorithms to those. We have
 shown in [A] above that large random subsets do contain much of the
@@ -887,27 +879,24 @@ sparser regions of that space. By their construction the QB centroids
 will be more uniformly distributed in this space and thus a better
 compression of the original dataset.
  
-[calculations under way now ...]
+% [at the moment this is C and D] As well as checking that QB creates sets
+% of centroids with good coverage and overlap statistics, we go on to
+% show that the performance of QB generalizes to sets of streamlines
+% different from the training set, and is superior to a random sample of
+% streamlines. We split each of the 10 tractographies randomly into two
+% halves $T_1$ (training set) and $T_2$ (test set). The QB clustering at
+% distance threshold $10$~mm was derived for $T_1$. Denote by $C_1$ and
+% $c_1$ the set of centroids and the number of them. Let $R_1$ be a random
+% subset of $T_1$ of size $c_1$. Using the measures described in
+% section~\ref{sub:Tightness-comparisons-1} we found that with distance
+% threshold $10$~mm the mean coverage (s.d.) of $T_1$ by $C_1$ was
+% $99.96$\% ($\pm 0.007$\%), of $T_2$ by $C_1$ was $99.31$\% ($\pm
+% 0.08$\%) and of $T_2$ by $R_1$ was $90.49$\% ($\pm 0.41$\%). The mean
+% overlap (s.d.) at this threshold of $C_1$ in $T_1$ was $2.44$ ($\pm
+% 0.08$), of $C_1$ in $T_2$ was $2.44$ ($\pm 0.08$), and of $R_1$ in $T_2$
+% was $5.57$ ($\pm 0.50$).
 
-
-[at the moment this is C and D] As well as checking that QB creates sets
-of centroids with good coverage and overlap statistics, we go on to
-show that the performance of QB generalizes to sets of streamlines
-different from the training set, and is superior to a random sample of
-streamlines. We split each of the 10 tractographies randomly into two
-halves $T_1$ (training set) and $T_2$ (test set). The QB clustering at
-distance threshold $10$~mm was derived for $T_1$. Denote by $C_1$ and
-$c_1$ the set of centroids and the number of them. Let $R_1$ be a random
-subset of $T_1$ of size $c_1$. Using the measures described in
-section~\ref{sub:Tightness-comparisons-1} we found that with distance
-threshold $10$~mm the mean coverage (s.d.) of $T_1$ by $C_1$ was
-$99.96$\% ($\pm 0.007$\%), of $T_2$ by $C_1$ was $99.31$\% ($\pm
-0.08$\%) and of $T_2$ by $R_1$ was $90.49$\% ($\pm 0.41$\%). The mean
-overlap (s.d.) at this threshold of $C_1$ in $T_1$ was $2.44$ ($\pm
-0.08$), of $C_1$ in $T_2$ was $2.44$ ($\pm 0.08$), and of $R_1$ in $T_2$
-was $5.57$ ($\pm 0.50$).
-
-Now for an attempt to tabulate this:
+% Now for an attempt to tabulate this:
 
 \begin{table}[th]{QB centroid comparisons with split half and random subsets}
 %\centering
