@@ -966,7 +966,7 @@ warp\_displacements\_tracks.
 For every subject we
 only considered the biggest $100$ QB clusters i.e. the clusters which
 contained the highest number of streamlines. The purpose of this
-experiment was to identify a global similarity measure between the
+experiment was to identify a similarity measure between the
 streamlines of the different subjects.
 
 In Fig.~\ref{Flo:BAs} we present both the complete tractographies and
@@ -1056,7 +1056,11 @@ $10$~mm and then cluster the short streamlines (<$100$~mm) to a lower
 threshold and assign them to their closest long streamline bundle from
 the first clustering using the $\mathrm{MAM}_{\mathrm{min}}$ distance.
 
+<<<<<<< HEAD
 (2.) Read and cluster the tractography of a subject, pick a centroid
+=======
+2. Cluster the tractography of a subject, pick a centroid
+>>>>>>> b9b11a9b074983e12912e307c920e8cc9e55483e
 streamline and then find the closest streamlines to that selected
 streamline using MDF, cluster the closest streamlines found from the
 previous step and for each one of these new centroid streamlines find
@@ -1080,9 +1084,7 @@ selecting initially a single representative streamline.
 We have presented a novel and powerful algorithm -- QuickBundles
 (QB). This algorithm provides simplifications to the old problem of
 revealing the detailed anatomy of the densely packed white matter which
-has recently attracted much scientific attention; it can also be used
-for any trajectory clustering problem and it is recommended when large
-data sets are involved. QB can be used with all types of diffusion MRI
+has recently attracted much scientific attention; and it is recommended when large data sets are involved. QB can be used with all types of diffusion MRI
 tractographies which generate streamlines (e.g. probabilistic or
 deterministic) and it is independent of the reconstruction model. QB is
 supported by a distance function MDF on the space of streamlines which
@@ -1115,11 +1117,7 @@ fastest known tractography clustering method and even real-time on
 smaller tractographies ($\le$~\num{20000} streamlines, depending on
 system CPU). We also showed that it uses a negligible amount of memory.
 
-QB is fully automatic and very robust as when we use it we can find good
-agreements even between different subjects. Additionally, it can be used
-to explore multiple tractographies and find correspondences or
-similarities between different tractographies. This can be facilitated
-by the use of Bundle Adjacency (BA) a new similarity measure introduced
+Additionally, QB can be used to explore multiple tractographies and find correspondences or similarities between different tractographies. This can be facilitated by the use of Bundle Adjacency (BA) a new similarity measure introduced
 in this paper.
 
 The reduction in dimensionality of the data achieved by QB means that
