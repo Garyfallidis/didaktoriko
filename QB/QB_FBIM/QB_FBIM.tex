@@ -859,47 +859,32 @@ and then averaged. Across subjects the average OMA
 (\ref{sub:Tightness-comparisons-1}) was 72.0\% ($\pm 0.60$\%); the
 average intra-subject standard deviation was $\pm 0.63$\%. According to
 \citet{altman1995} this represents a good level of agreement consistent
-across tractographies. Bearing in mind that large subsets of
-tractography streamlines appear more as continuously varying shapes
-rather than discrete clusters, we compare this with the result of
-dividing a medium into slices of equal thickness. Depending on the
-offset between two such systems of slices the OMA will range between
-100\% when they coincide and 50\% when they symmetrically interleaved,
-with a mean OMA of 75\%. we tried to quantify the worst and best case
-scenarios we use fullowing analogy - parallel lines of uniform density -
-50\% is not chance and comes from the fact that both `systems' are
-subdivisions of the medium that ...
+across tractographies. In order to quantify worst and best case
+scenarios, we consider what happens when the dataset consists of
+parallel lines of uniform spacing. The result of QB clustering is an approximate
+partitioning into equally spaced pieces. Depending on the
+offset between two such partitionings the OMA between them will range between 100\%
+when they coincide and 50\% when they are most out of phase, with a mean
+OMA of 75\% across the range of cases.
 
 [C] Recognising that large tractography datasets present a computational
 challenge, some authors (e.g.~\citet{ODonnell_IEEETMI07}
 and~\citet{Visser2010}) have taken random samples of streamlines (say
-\num{10000}[?? Elef to check]) and applied their clustering algorithms to those. We have
-shown in [A] above that large random subsets do contain much of the
-information about the full dataset. However they are suboptimal
-reductions of the full dataset: inevitably they overrepresent the denser
-parts of the tractography space, and they underrepresent the sparser
-regions of that space. By their construction the QB centroids will be
-more uniformly distributed in this space and thus a better compression
-of the original dataset. We quantify this using the coverage and overlap
-statistics (\ref{sub:Tightness-comparisons-1}).
- 
-[at the moment this is C and D] As well as checking that QB creates sets
-of centroids with good coverage and overlap statistics, we go on to
-show that the performance of QB generalizes to sets of streamlines
-different from the training set, and is superior to a random sample of
-streamlines. We split each of the 10 tractographies randomly into two
-halves $T_1$ (training set) and $T_2$ (test set). The QB clustering at
-distance threshold $10$~mm was derived for $T_1$. Denote by $C_1$ and
-$c_1$ the set of centroids and the number of them. Let $R_1$ be a random
-subset of $T_1$ of size $c_1$. Using the measures described in
-section~\ref{sub:Tightness-comparisons-1} we found that with distance
-threshold $10$~mm the mean coverage (s.d.) of $T_1$ by $C_1$ was
-$99.96$\% ($\pm 0.007$\%), of $T_2$ by $C_1$ was $99.31$\% ($\pm
-0.08$\%) and of $T_2$ by $R_1$ was $90.49$\% ($\pm 0.41$\%). The mean
-overlap (s.d.) at this threshold of $C_1$ in $T_1$ was $2.44$ ($\pm
-0.08$), of $C_1$ in $T_2$ was $2.44$ ($\pm 0.08$), and of $R_1$ in $T_2$
-was $5.57$ ($\pm 0.50$).
-
+\num{10000}[?? Elef to check]) and applied their clustering algorithms
+to those. We have shown in [A] above that large random subsets do
+contain much of the information about the full dataset. However they are
+suboptimal reductions of the full dataset: inevitably they overrepresent
+the denser parts of the tractography space, and they underrepresent the
+sparser regions of that space. By their construction the QB centroids
+will be more uniformly distributed in this space and thus a better
+compression of the original dataset. We quantify this using the coverage
+and overlap statistics (\ref{sub:Tightness-comparisons-1}). Each of the
+10 human subject tractographies was split into two halves, one of which
+was set aside. QB clusterings were derived for remaining half. The
+coverage and overlap statistics for the resulting QB centroids and for
+an equal random set of streamlines are presented in Table xxxx. This was
+done for two choices of values for the clustering threshold and
+adjacency threshold: both 10mm, and then both 20mm.
 
 \begin{table}[th]{QB centroids performance compared with random subsets}
 \small
@@ -908,14 +893,16 @@ was $5.57$ ($\pm 0.50$).
 \hline
 Thresholds & Comparison & Coverage \% (s.d.) & Overlap (s.d.) \\
 \hline
-\multirow{2}{*}{$10$~mm/$10$~mm} & Centroids & 99.96 (0.007) & 4.99* (0.10*)\\   
-& Random & 99.96 (0.007) & 4.99* (0.10*)\\   
+\multirow{2}{*}{$10$~mm/$10$~mm} & QB Centroids & 99.96 (0.007) & 2.44 (0.08)\\   
+& Random & 90.49 (0.41) & 6.16 (0.55)\\   
 \hline
-\multirow{2}{*}{$20$~mm/$20$~mm} & Centroids & 99.96 (0.007) & 4.99* (0.10*)\\   
-& Random & 99.96 (0.007) & 4.99* (0.10*)\\   
+\multirow{2}{*}{$20$~mm/$20$~mm} & QB Centroids & 99.99 (0.004) & 3.54 (0.18)\\   
+& Random & 95.86 (0.62) & 6.81 (0.93)\\   
 \hline   
 \end{tabular}
 \end{table}
+
+
 
 \begin{table}[th]{Performance of QB centroids tested on split halves of datasets}
 \small
@@ -924,11 +911,11 @@ Thresholds & Comparison & Coverage \% (s.d.) & Overlap (s.d.) \\
 \hline
 Thresholds & Comparison & Coverage \% (s.d.) & Overlap (s.d.) \\
 \hline
-\multirow{2}{*}{$10$~mm/$10$~mm} & Original & 99.96 (0.007) & 4.99* (0.10*)\\   
-& Other half & 99.96 (0.007) & 4.99* (0.10*)\\   
+\multirow{2}{*}{$10$~mm/$10$~mm} & First half & 99.96 (0.007) & 2.44 (0.08)\\   
+& Second half & 99.31 (0.08) & 2.44 (0.08)\\   
 \hline
-\multirow{2}{*}{$20$~mm/$20$~mm} & Original & 99.96 (0.007) & 4.99* (0.10*)\\   
-& Other half & 99.96 (0.007) & 4.99* (0.10*)\\
+\multirow{2}{*}{$20$~mm/$20$~mm} & First half & 99.99 (0.004) & 3.54 (0.18)\\   
+& Second half & 99.91 (0.007) & 3.54 (0.18)\\
 \hline   
 \end{tabular}
 \end{table}
