@@ -870,19 +870,19 @@ OMA of 75\% across the range of cases.
 [C] Recognising that large tractography datasets present a computational
 challenge, some authors (e.g.~\citet{ODonnell_IEEETMI07}
 and~\citet{Visser2010}) have taken random samples of streamlines (say
-\num{10000}[?? Elef to check]) and applied their clustering algorithms
-to those. We have shown in [A] above that large random subsets do
-contain much of the information about the full dataset. However they are
-suboptimal reductions of the full dataset: inevitably they overrepresent
-the denser parts of the tractography space, and they underrepresent the
-sparser regions of that space. By their construction the QB centroids
-will be more uniformly distributed in this space and thus a better
-compression of the original dataset. We quantify this using the coverage
-and overlap statistics (\ref{sub:Tightness-comparisons-1}). Each of the
-10 human subject tractographies was split into two halves, one of which
-was set aside. QB clusterings were derived for remaining half. The
-coverage and overlap statistics for the resulting QB centroids and for
-an equal random set of streamlines are presented in Table xxxx. This was
+\num{10000}) and applied their clustering algorithms to those. We have
+shown in [A] above that large random subsets do contain much of the
+information about the full dataset. However they are suboptimal
+reductions of the full dataset: inevitably they overrepresent the denser
+parts of the tractography space, and they underrepresent the sparser
+regions of that space. By their construction the QB centroids will be
+more uniformly distributed in this space and thus a better compression
+of the original dataset. We quantify this using the coverage and overlap
+statistics (\ref{sub:Tightness-comparisons-1}). Each of the 10 human
+subject tractographies was split into two halves, one of which was set
+aside. QB clusterings were derived for remaining half. The coverage and
+overlap statistics for the resulting QB centroids and for an equal
+random set of streamlines are presented in Table \ref{Tab1}. This was
 done for two choices of values for the clustering threshold and
 adjacency threshold: both 10mm, and then both 20mm.
 
@@ -915,7 +915,7 @@ to see how well they approximate a dataset from which they were not
 derived.  For this purpose the coverage and overlap statistics for the
 QB centroids were compared between the first half of the tractographies
 from which they were derived, and the second half. The results are
-presented in Table xxxx.
+presented in Table \ref{Tab2}.
 
 \begin{table}[th]
 \processtable{Performance of QB centroids tested on split halves of
