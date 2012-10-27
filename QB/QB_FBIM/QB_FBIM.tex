@@ -113,8 +113,6 @@ supervised learning problems of brain tractography.  As far as we know
 all these methods suffer from low time efficiency, i.e.~they are very
 slow when used in practice.
 
-%------------------------------------------------------------------------------
-
 In tractography literature we can find approaches which use unsupervised
 and/or supervised learning algorithms to create bundles i.e. groupings
 of streamlines with similar spatial and shape characteristics. In
@@ -640,7 +638,7 @@ maximizing $\mathrm{MA}(\pi)$ can be found using the Hungarian
 Algorithm~\citep{Kuhn1955}. The interpretation of the OMA statistic is
 analogous to that of the well-known Kappa measure of inter-rater
 agreement~\citep{altman1995}, with the range 61\% to 80\% corresponding
-to a `good' strength of agreement.
+to a good strength of agreement.
 
 We will use OMA to compare the different clusterings that arise when the
 streamlines in the tractography are shuffled. However this statistic has
@@ -657,25 +655,24 @@ Although we recognize that these are difficult problems, we introduce
 three novel comparison functions which we call \emph{coverage},
 \emph{overlap} and \emph{bundle adjacency}. The first two metrics aim to
 quantify how well a data reduction performs, and the third quantifies
-how similar two reduction are to each other. Ideally most points of the
+how similar two reductions are to each other. Ideally most points of the
 full dataset should be near to the reduced set (coverage), but not too
 many (overlap).
 
 Let $S$ and $T$ be two sets of streamlines, and let $\theta>0$ be a
-selected threshold. We will say that $s \in S$ is
-$\theta$-\emph{approximated} by $T$ if there is at least one streamline
+selected adjacency threshold. We will say that $s \in S$ is
+\emph{adjacent} to $T$ if there is at least one streamline
 $t \in T$ with $\mathrm{MDF}(s,t)\le \theta$. We define coverage of $S$
-by $T$ as the fraction of $S$ that is $\theta$-approximated by $T$. Coverage
+by $T$ as the fraction of $S$ that is adjacent to $T$. Coverage
 ranges between 0 (when all streamlines in $S$ are too far from $T$) and
-1 (when every streamline in $S$ is $\theta$-approximated by $T$).
+1 (when every streamline in $S$ is adjacent $T$).
 
 We define the \emph{overlap} of $T$ in $S$ as the average number of
-approximating streamlines in $T$ that for $\theta$-approximate
-streamlines in $S$.  Overlap is undefined of no streamlines in $S$ are
-approximated by $T$, otherwise it can take any value greater then or
-equal to 1, with higher values indicating the degree of redundancy of
-$T$ in $S$; if $T$ has several similar streamlines then this will tend
-to boost overlap.
+adjaent streamlines in $T$ across adjacent streamlines in $S$.  Overlap
+is undefined if no streamlines in $S$ are approximated by $T$, otherwise
+it can take any value greater then or equal to 1, with higher values
+indicating the degree of redundancy of $T$ in $S$; if $T$ has several
+similar streamlines then this will tend to boost overlap.
 
 Coverage and overlap measure how well one set approximates another. In
 order to compare two reductions of possibly different data sets we
@@ -855,20 +852,22 @@ reduction achieved by QB within each tractography.
 [B] Next we investigated how consistent QB clusterings are when datasets
 are permuted. Sixteen different random permutations were generated for
 each of $10$ tractographies and the corresponding QB clusterings were
-computed with clustering threshold $10$~mm. (These were a subset of the
-clusterings used in [A].) For each subject the $120$ pairings of QB
-clusterings were compared using the optimized matched agreements index
-and then averaged. Across subjects the average OMA
-(\ref{sub:Tightness-comparisons-1}) was 72.0\% ($\pm 0.60$\%); the
-average intra-subject standard deviation was $\pm 0.63$\%. According to
-\citet{altman1995} this represents a good level of agreement consistent
-across tractographies. In order to quantify worst and best case
-scenarios, we consider what happens when the dataset consists of
-parallel lines of uniform spacing. The result of QB clustering is an approximate
-partitioning into equally spaced pieces. Depending on the
-offset between two such partitionings the OMA between them will range between 100\%
-when they coincide and 50\% when they are most out of phase, with a mean
-OMA of 75\% across the range of cases.
+computed with clustering threshold $10$~mm. For each subject the $120$
+pairings of QB clusterings were compared using the optimized matched
+agreements index and then averaged. Across subjects the average OMA
+(\ref{sub:Tightness-comparisons-1}) over the \num{1200} comparisons was
+72.0\% ($\pm 0.60$\%); the average intra-subject standard deviation was
+$\pm 0.63$\%. According to \citet{altman1995} this represents a good
+level of agreement consistent across tractographies, well above chance.
+
+To motivate our understanding of worst and best case scenarios when the
+clusterings in question faithfully capture the structure of the
+underlying dataset, we consider what happens when the dataset consists
+of parallel lines of uniform spacing. The result of QB clustering is an
+approximate partitioning into equally spaced pieces. There will
+typically be an offset between two such partitionings, and the OMA between
+them will range between 100\% when they coincide and 50\% when they are
+most out of phase. 
 
 [C] Recognising that large tractography datasets present a computational
 challenge, some authors (e.g.~\citet{ODonnell_IEEETMI07}
@@ -879,7 +878,7 @@ information about the full dataset. However they are suboptimal
 reductions of the full dataset: inevitably they overrepresent the denser
 parts of the tractography space, and they underrepresent the sparser
 regions of that space. By their construction the QB centroids will be
-more uniformly distributed in this space and thus a better compression
+more uniformly distributed in this space and thus a better simplification
 of the original dataset. We quantify this using the coverage and overlap
 statistics (\ref{sub:Tightness-comparisons-1}). Each of the 10 human
 subject tractographies was split into two halves, one of which was set
@@ -887,7 +886,7 @@ aside. QB clusterings were derived for remaining half. The coverage and
 overlap statistics for the resulting QB centroids and for an equal
 random set of streamlines are presented in Table \ref{Tab1}. This was
 done for two choices of values for the clustering threshold and
-adjacency threshold: both 10mm, and then both 20mm.
+adjacency threshold: both 10~mm, and then both 20~mm.
 
 
 \begin{table}[th]
@@ -907,11 +906,12 @@ Thresholds & Comparison & Coverage \% (s.d.) & Overlap (s.d.) \\
 \end{table}
 
 We conclude from this that the QB centroids have near perfect coverage,
-and the typical streamline is adjacent to 2.5 to 3.5 centroids,
+and the typical streamline is adjacent to 2 to 4 centroids,
 depending on threshold. By comparison the random subsets have rather
 lower coverage, failing to approximate between 5\% and 10\% of the
 tractography depending on choice of threshold. Moreover the overlap
-rises strikingly to between 6 and 7.
+rises strikingly to between 6 and 7. Therefore QB has overall superior
+performance to a random set.
 
 [D] The final check on the effectiveness of QB clustering centroids is
 to see how well they approximate a dataset from which they were not
@@ -972,66 +972,64 @@ streamlines of the different subjects.
 In Fig.~\ref{Flo:BAs} we present both the complete tractographies and
 the centroid tracks which correspond to the $100$ biggest
 clusters. Because the complete tractographies are very large containing
-hundreds of thousands of tracks (mean$=\num{171002.5}\pm\num{23879.9}$)
-we visualize them using low opacity so that at least an overall
-projection of the streamlines can be observed. The purpose of this is to
-show empirically the variability of the streamlines across subjects. At
-the contrary, the centroids of the $100$ biggest clusters for the $10$
-subjects are easily observed with full opacity in
+hundreds of thousands of tracks (mean \num{171002.5},
+s.d.~\num{23879.9}) we visualize them using low opacity so that at least
+an overall projection of the streamlines can be observed. The purpose of
+this is to show empirically the variability of the streamlines across
+subjects. By contrast the centroids of the $100$ biggest clusters for
+the $10$ subjects are easily observed with full opacity in
 Fig.~\ref{Flo:BAs}. Each tractography has been substantially simplified
 by QB such that by visual inspection shows considerable similarities, as
 well as an interesting range of individual differences. No such visual
 comparisons could begin to be made based on the whole brain images
 because the data sets are too dense to draw any conclusions.
 
-The mean number of streamlines in the $100$ biggest
-clusters was $\num{4818.6}$ ($\pm \num{794.4}$). These clusters covered
-on average $16.18\%$ ($\pm\num{1.4}\%$) of the total number of
-streamlines. The average length of the centroids of the clusters was
-$73.6$~mm ($\pm\num{43.9}$~mm). We will use these centroids as a method
-to study the variability between the streamlines across different
-subjects.
+The mean total number of streamlines in the $100$ biggest clusters was
+$\num{4818.6}$ ($\pm \num{794.4}$). These clusters covered on average
+$16.18\%$ ($\pm\num{1.4}\%$) of the total number of streamlines. We will
+use these centroids as a method to study the variability between the
+streamlines across different subjects.
 
-For this purpose we evaluated BA (see
+For this purpose we evaluated bundle adjacency statistic (BA; see
 section~\ref{sub:Tightness-comparisons-1}) between all pairs of these
 $100$ centroids of each of the $10$ tractographies. This generated $45$
-BA values with $\theta=10$~mm (BA10). We also generated another $45$ BA
-values with $\theta=20$~mm (BA20). It is noticeable here that the
-clustering threshold for BA is twice that of the initial QB distance
-threshold. 
+BA values with adjacency threshold $10$~mm (BA10). We also generated
+another $45$ BA values with adjacency threshold $20$~mm (BA20). Note
+that this latter adjacency threshold for BA is twice that of the initial
+QB clustering threshold.
 
-For BA10 the most dissimilar subjects were subjects 4 and 6 with
-BA10(4,6)=38.5\%. The most similar subjects were 4 and 5 with
-BA10(4,5)=59.5\%. The mean BA10 was 48\% ($\pm\num{4.9}$\%). With
-BA20 the most dissimilar subjects were subjects 7 and 10 with
-BA20(7,10)=72\%. The most similar subjects were, in agreement with BA10,
-4 and 5 with BA20(4,5)=88.5\%. The mean BA20 was 80\%
-($\pm\num{3.2}$\%).
+For BA10 the most dissimilar subjects were subjects 4 and 6 with BA =
+38.5\%. The most similar subjects were 4 and 5 with BA = 59.5\%. The
+mean BA10 was 48\% ($\pm\num{4.9}$\%). With BA20 the most dissimilar
+subjects were subjects 7 and 10 with BA = 72\%. The most similar
+subjects were, in agreement with BA10, 4 and 5 with BA = 88.5\%. The
+mean BA20 was 80\% ($\pm\num{3.2}$\%).
 
-In future work we would like to study how the length of the big clusters
-affects BA. In this experiment there was a great variability of centroid
-lengths (mean $73.6$~mm $\pm\num{43.9}$~mm). If we suppose that shorter
+In this experiment there was a great variability of centroid lengths
+(mean $73.6$~mm $\pm\num{43.9}$~mm). If we suppose that shorter
 streamlines are more likely to be noise artifacts we would expect that
 by concentrating on longer streamlines we would have a more robust
-similarity measure for tractography comparison.
+similarity measure for tractography comparison. We propose to follow
+this up in future work by studing how the length of the big clusters
+affects BA.
 
 \subsection{Limitations of QB\label{sub:short_tracks}}
 
-Usually taking short streamlines into account is not valid because (a)
-the longer streamlines are more likely to be used as useful landmarks
-when comparing or registering different subjects because it is more
-likely for them to be present in most subjects, (b) removing short
-streamlines facilitates the usage of distance based clustering (no need
-for manually setting the clustering threshold) and interaction with the
-tractography, (c) typically one first wants to see the overall
-representation of the tractography and later go to the details. MDF
-distance often separates shorter from longer neighboring streamlines
-which is both a strength and a limitation according to
-application. Nonetheless, after having clustered the longer streamlines
-there are many ways to assign the shorter clusters to their closest
-longer clusters. For this purpose we recommend to use a different
-distance from MDF for example the minimum version of MAM referred to as
-$\textrm{MAM}_{\textrm{min}}$ in Eq.~(\ref{eq:minimum_distance}).
+In general taking short streamlines into account is less valid because
+(a) the longer streamlines have greater potential to be useful landmarks
+when comparing or registering different subjects, as they are more
+likely to be present in most subjects, (b) removing short streamlines
+facilitates the usage of distance based clustering (no need for manually
+setting the clustering threshold) and interaction with the tractography,
+(c) typically one first wants to see the overall representation of the
+tractography and later go to the details. MDF distance often separates
+shorter from longer neighboring streamlines which is both a strength and
+a limitation according to application. Nonetheless, after having
+clustered the longer streamlines there are many ways to assign the
+shorter clusters to their closest longer clusters. For this purpose we
+recommend using a different distance from MDF for example the minimum
+version of MAM referred to as $\textrm{MAM}_{\textrm{min}}$ in
+Eq.~(\ref{eq:minimum_distance}).
 
 \begin{figure}
   \centerline{\hspace{-1.5mm}\includegraphics[scale=0.65]{Figures/Fig_10_arcuate_small_fibers}}
@@ -1053,12 +1051,12 @@ Here we discuss two simple strategies for clustering short
 streamlines. The first is an unsupervised technique and the second is
 supervised.
 
-1. Cluster the long streamlines using QB with clustering threshold at
+(1.) Cluster the long streamlines using QB with clustering threshold at
 $10$~mm and then cluster the short streamlines (<$100$~mm) to a lower
 threshold and assign them to their closest long streamline bundle from
 the first clustering using the $\mathrm{MAM}_{\mathrm{min}}$ distance.
 
-2. Read and cluster the tractography of a subject, pick a centroid
+(2.) Read and cluster the tractography of a subject, pick a centroid
 streamline and then find the closest streamlines to that selected
 streamline using MDF, cluster the closest streamlines found from the
 previous step and for each one of these new centroid streamlines find
@@ -1068,12 +1066,11 @@ streamlines in one cluster.
 
 An example of this second strategy is shown in
 Fig.~\ref{Flo:arcuate_close}. A single centroid streamline of interest
-(A) from the region of arcuate fasciculus is selected
-Fig.~\ref{Flo:arcuate_close}; the streamlines closer than 15~mm (MDF) to
-the selected cluster are shown (B) and clustered with a distance
-threshold of $6.25$~mm (C); finally from every centroid streamline in C
-we find the closest streamlines (D) using the
-$\textrm{MAM}_{\textrm{min}}$ distance from the entire tractography. In
+(A) from the region of arcuate fasciculus is selected; the streamlines
+closer than 15~mm (MDF) to the selected cluster are shown (B) and
+clustered with a distance threshold of $6.25$~mm (C); finally from every
+centroid streamline in C we find the closest streamlines from the entire
+tractography (D) using the $\textrm{MAM}_{\textrm{min}}$ distance. In
 this way we managed to bring together in a semi-automatic fashion an
 entire bundle consisting both of long and short streamlines by just
 selecting initially a single representative streamline.
