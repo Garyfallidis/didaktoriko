@@ -886,11 +886,12 @@ an equal random set of streamlines are presented in Table xxxx. This was
 done for two choices of values for the clustering threshold and
 adjacency threshold: both 10mm, and then both 20mm.
 
-\begin{table}[th]{QB centroids performance compared with random subsets}
-\small
-%\centering
-\begin{tabular}{rrrr}
-\hline
+
+\begin{table}[th]
+\processtable{QB centroids performance compared with random
+subsets\label{Tab1}}
+{\begin{tabular}{rrrr}
+%\hline
 Thresholds & Comparison & Coverage \% (s.d.) & Overlap (s.d.) \\
 \hline
 \multirow{2}{*}{$10$~mm/$10$~mm} & QB Centroids & 99.96 (0.007) & 2.44 (0.08)\\   
@@ -899,7 +900,7 @@ Thresholds & Comparison & Coverage \% (s.d.) & Overlap (s.d.) \\
 \multirow{2}{*}{$20$~mm/$20$~mm} & QB Centroids & 99.99 (0.004) & 3.54 (0.18)\\   
 & Random & 95.86 (0.62) & 6.81 (0.93)\\   
 \hline   
-\end{tabular}
+\end{tabular}}{}
 \end{table}
 
 We conclude from this that the QB centroids have near perfect coverage,
@@ -916,11 +917,10 @@ QB centroids were compared between the first half of the tractographies
 from which they were derived, and the second half. The results are
 presented in Table xxxx.
 
-\begin{table}[th]{Performance of QB centroids tested on split halves of datasets}
-\small
-%\centering
-\begin{tabular}{rrrr}
-\hline
+\begin{table}[th]
+\processtable{Performance of QB centroids tested on split halves of
+datasets\label{Tab2}}
+{\begin{tabular}{rrrr}
 Thresholds & Comparison & Coverage \% (s.d.) & Overlap (s.d.) \\
 \hline
 \multirow{2}{*}{$10$~mm/$10$~mm} & First half & 99.96 (0.007) & 2.44 (0.08)\\   
@@ -929,7 +929,7 @@ Thresholds & Comparison & Coverage \% (s.d.) & Overlap (s.d.) \\
 \multirow{2}{*}{$20$~mm/$20$~mm} & First half & 99.99 (0.004) & 3.54 (0.18)\\   
 & Second half & 99.91 (0.007) & 3.54 (0.18)\\
 \hline   
-\end{tabular}
+\end{tabular}}{}
 \end{table}
 
 For each threshold, the first row repeats that of the previous table,
