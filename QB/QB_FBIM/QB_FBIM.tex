@@ -182,49 +182,6 @@ provide a solution for this issue of efficiency and most of the methods
 would require from many hours to many days to run on a standard sized
 dataset.
 
-%Distances
-%\citet{zhang2003visualizing, corouge2004towards, Corouge2004, Corouge2006}
-%me and Visser
-
-%Representation
-%Discretization \citet{EGMB10}, \citet{Visser2010}
-%B-splines \citet{Maddah_MICCA2005}  
-%quintic B-splines \citet{maddah2006statistical}   
-%Fourier descriptors
-
-
-
-%Most authors agree that unsupervised learning with tractographies is a
-%difficult problem as the data sets are very large, dense, cluttered with
-%noisy streamlines which could have no anatomic relevance, and the actual
-%anatomical bundles are interwoven in a complicated way in several brain
-%regions.  We think that in order to find larger anatomical clusters a
-%significant amount of anatomical prior knowledge needs to be introduced
-%in a way that is not yet established.
-
-%For these reasons we propose to take a step back to first get the
-%tractography into a suitable form for working with neuroanatomists to
-%capture this prior knowledge. The clustering that we propose
-%concentrates on reducing the complexity of the data rather than finding
-%bundles with hopefully anatomical relevance. We believe this step is
-%more useful at this stage of tractography analysis research.
-
-%Most of these proposed tractography clustering algorithms are very slow
-%and many need to calculate a matrix of inter-streamline distances of
-%size $\mathcal{O}(N^2)$.  \textbf{Isn't this repetitive?} This number of
-%computations puts a very heavy load on clustering algorithms, making
-%them hard to use for everyday analysis as it is difficult to compute all
-%these distances or store them in memory. For the same reason, no current
-%algorithm is practical for real time clustering on a large number of
-%streamlines -- despite the innovations in tractography clustering
-%algorithms there is no parallel uptake by anatomists or clinicians. The
-%heavy computational demands of clustering add a further overhead to the
-%use of tractography for clinical applications but also put a barrier on
-%understanding and interpreting the quality of diffusion MR
-%data sets. Moreover methods described as `automatic' in reality require
-%significant intervention using neuroanatomical knowledge. \textbf{In
-%  fact isn't all this covered earlier on in this version of the
-%  Introduction?}
 
 In fact tractographies have high levels of redundancy with very many
 quite similar streamlines. Our approach is to take advantage of this to
@@ -795,7 +752,6 @@ that QB achieves, holding out the prospect of real-time (less than
 
 \subsection{Robustness and effectiveness of QB  clustering\label{sub:Comparisons}}
 
-% \textbf{THIS SECTION IS UNDER RECONSTRUCTION!}
 
 One of the disadvantages of most clustering algorithms is that they give
 different results with different initial conditions; for example this is
