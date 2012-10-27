@@ -99,7 +99,7 @@ algorithm handles voxels with underlying fiber crossings.
   clearly observe that several parts which looked homogeneous are
   actually broken bundles or bundles with rather different shapes. On
   the right panel we see the streamlines colored according to their
-  cluster label. The distance threshold used here was
+  cluster label. The clustering threshold used here was
   $10$~mm. \label{Flo:cst_pbc}}
 \end{figure*}
 
@@ -521,7 +521,7 @@ point.  For each remaining streamline in turn $i = 2 \dots N$: (i)
 calculate the MDF distance between streamline $s_{i}$ and the centroid
 streamlines $v_{e}$ of all the current clusters $c_{e}$, $e = 1 \dots
 M$, where $v$ is defined on the fly as $v=h/n$; (iii) if any of the MDF
-values $m_{e}$ are smaller than a distance threshold $\theta$, add
+values $m_{e}$ are smaller than a clustering threshold $\theta$, add
 streamline $i$ to the cluster $e$ with the minimum value for $m_{e}$;
 $c_{e}=(I,h,n)$, and update $c_{e}\leftarrow(\mathbf{append}(I,i), h+s,
 n+1)$; otherwise create a new cluster $c_{M+1}\leftarrow([i],s_{i},1)$,
@@ -558,7 +558,7 @@ from bottom to top and that they are many streamlines that are broken
 (i.e. shorter than what was initially expected) or highly divergent.
 
 Another interesting feature of QB is that it can be used to merge or
-split different structures by changing the distance threshold.  This is
+split different structures by changing the clustering threshold.  This is
 shown in Fig.~\ref{Flo:simulated_orbits}; on the left we see simulated
 paths made from simple sinusoidal and helicoidal functions packed
 together. The color coding is used to distinguish the three different
@@ -746,7 +746,7 @@ of our methods and possible workarounds.
 
 The execution time of QB is affected by the following parameters: $K$,
 the fixed number of discretized points per streamline; $\theta$ the
-distance threshold, which controls the heterogeneity of clusters; and
+clustering threshold, which controls the heterogeneity of clusters; and
 $N$ the size of the subset of the tractography on which the clustering
 will be performed. When $\theta$ is higher, fewer more heterogeneous
 clusters are assembled, and conversely when $\theta$ is low, more
@@ -775,13 +775,13 @@ tractographies.
 \noindent \begin{centering}
 \includegraphics[scale=0.3]{Figures/Fig_3_timings}
 \par\end{centering}
-\caption{Time comparisons of QB using different distance thresholds and
+\caption{Time comparisons of QB using different clustering thresholds and
   different number of streamlines. Time increases linearly as the number
   of streamlines increases. \label{Flo:Speed1}}
 \end{figure}
 
 As a further test we compared QB (with $12$ point streamlines and a
-distance threshold of $10$~mm) with timings reported from the fastest
+clustering threshold of $10$~mm) with timings reported from the fastest
 state of the art methods found in the literature. These methods have
 different goals that those of QB however we think that it is useful to
 show the important speedup that QB offers for the same number of
@@ -954,7 +954,7 @@ datasets.
 
 We warped $10$ tractographies each belonging to a different healthy
 subject (see section \ref{sub:QB-Data-sets}) in MNI space and applied
-QuickBundles on each tractography independently using distance threshold
+QuickBundles on each tractography independently using clustering threshold
 $10$~mm and discretizing of $18$ points.  In order to warp the
 streamlines we first warped FAs from native space to MNI space using the
 FSL tools. Then we applied the (continuously resampled) displacements to
@@ -997,7 +997,7 @@ section~\ref{sub:Tightness-comparisons-1}) between all pairs of these
 $100$ centroids of each of the $10$ tractographies. This generated $45$
 BA values with $\theta=10$~mm (BA10). We also generated another $45$ BA
 values with $\theta=20$~mm (BA20). It is noticeable here that the
-distance threshold for BA is twice that of the initial QB distance
+clustering threshold for BA is twice that of the initial QB distance
 threshold. 
 
 For BA10 the most dissimilar subjects were subjects 4 and 6 with
@@ -1022,7 +1022,7 @@ the longer streamlines are more likely to be used as useful landmarks
 when comparing or registering different subjects because it is more
 likely for them to be present in most subjects, (b) removing short
 streamlines facilitates the usage of distance based clustering (no need
-for manually setting the distance threshold) and interaction with the
+for manually setting the clustering threshold) and interaction with the
 tractography, (c) typically one first wants to see the overall
 representation of the tractography and later go to the details. MDF
 distance often separates shorter from longer neighboring streamlines
@@ -1053,7 +1053,7 @@ Here we discuss two simple strategies for clustering short
 streamlines. The first is an unsupervised technique and the second is
 supervised.
 
-1. Cluster the long streamlines using QB with distance threshold at
+1. Cluster the long streamlines using QB with clustering threshold at
 $10$~mm and then cluster the short streamlines (<$100$~mm) to a lower
 threshold and assign them to their closest long streamline bundle from
 the first clustering using the $\mathrm{MAM}_{\mathrm{min}}$ distance.
@@ -1090,13 +1090,13 @@ tractographies which generate streamlines (e.g. probabilistic or
 deterministic) and it is independent of the reconstruction model. QB is
 supported by a distance function MDF on the space of streamlines which
 makes it a metric space. QB can achieve compression ratios of the order
-of 200:1 depending on the distance threshold while preserving
+of 200:1 depending on the clustering threshold while preserving
 characteristic information about the tractography.
 
 In common with mainstream clustering algorithms such as k-means,
 k-centers and expectation maximization, QB is not a global clustering
 method therefore it can give different results under different initial
-conditions of the dataset when there is no obvious distance threshold
+conditions of the dataset when there is no obvious clustering threshold
 which can separate the clusters into meaningful bundles; for example we
 should expect different clusters under different permutations of the
 streamlines in a densely packed tractography. However, we found that
