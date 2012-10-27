@@ -668,7 +668,7 @@ ranges between 0 (when all streamlines in $S$ are too far from $T$) and
 1 (when every streamline in $S$ is adjacent $T$).
 
 We define the \emph{overlap} of $T$ in $S$ as the average number of
-adjaent streamlines in $T$ across adjacent streamlines in $S$.  Overlap
+adjacent streamlines in $T$ across adjacent streamlines in $S$.  Overlap
 is undefined if no streamlines in $S$ are approximated by $T$, otherwise
 it can take any value greater then or equal to 1, with higher values
 indicating the degree of redundancy of $T$ in $S$; if $T$ has several
@@ -1010,7 +1010,7 @@ In this experiment there was a great variability of centroid lengths
 streamlines are more likely to be noise artifacts we would expect that
 by concentrating on longer streamlines we would have a more robust
 similarity measure for tractography comparison. We propose to follow
-this up in future work by studing how the length of the big clusters
+this up in future work by studying how the length of the big clusters
 affects BA.
 
 \subsection{Limitations of QB\label{sub:short_tracks}}
@@ -1056,10 +1056,7 @@ $10$~mm and then cluster the short streamlines (<$100$~mm) to a lower
 threshold and assign them to their closest long streamline bundle from
 the first clustering using the $\mathrm{MAM}_{\mathrm{min}}$ distance.
 
-<<<<<<< HEAD
-(2.) Read and cluster the tractography of a subject, pick a centroid
-=======
-2. Cluster the tractography of a subject, pick a centroid
+(2.) Cluster the tractography of a subject, pick a centroid
 >>>>>>> b9b11a9b074983e12912e307c920e8cc9e55483e
 streamline and then find the closest streamlines to that selected
 streamline using MDF, cluster the closest streamlines found from the
