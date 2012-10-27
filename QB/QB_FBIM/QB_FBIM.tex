@@ -902,7 +902,19 @@ Thresholds & Comparison & Coverage \% (s.d.) & Overlap (s.d.) \\
 \end{tabular}
 \end{table}
 
+We conclude from this that the QB centroids have near perfect coverage,
+and the typical streamline is adjacent to 2.5 to 3.5 centroids,
+depending on threshold. By comparison the random subsets have rather
+lower coverage, failing to approximate between 5\% and 10\% of the
+tractography depending on choice of threshold. Moreover the overlap
+rises strikingly to between 6 and 7.
 
+[D] The final check on the effectiveness of QB clustering centroids is
+to see how well they approximate a dataset from which they were not
+derived.  For this purpose the coverage and overlap statistics for the
+QB centroids were compared between the first half of the tractographies
+from which they were derived, and the second half. The results are
+presented in Table xxxx.
 
 \begin{table}[th]{Performance of QB centroids tested on split halves of datasets}
 \small
@@ -920,26 +932,11 @@ Thresholds & Comparison & Coverage \% (s.d.) & Overlap (s.d.) \\
 \end{tabular}
 \end{table}
 
-[more of the above] The same analysis was performed with QB clusterings
-with clustering threshold $20$mm and comparing against streamlines with
-an adjacency threshold of 20mm. (Note that though we have selected the
-same values here for the two thresholds they do not have to be the
-same.) We found that with clustering threshold $10$mm the mean coverage
-(s.d.) of $T_1$ by $C_1$ was $99.99$\% ($\pm 0.004$\%), of $T_2$ by
-$C_1$ was $99.91$\% ($\pm 0.02$\%) and of $T_2$ by $R_1$ was $95.86$\%
-($\pm 0.62$\%). The mean overlap (s.d.) at this threshold of $C_1$ in
-$T_1$ was $3.54$ ($\pm 0.18$), of $C_1$ in $T_2$ was $3.54$ ($\pm
-0.18$), and of $R_1$ in $T_2$ was $6.53$ ($\pm 0.93$).
-
-[do we need to add anything on bundle adjacency?]
-
-We conclude from these analyses that QB has good coverage and overlap
-properties with respect to the training set and to the test set of
-streamlines, while an equivalent random selection of streamlines has
-worse coverage and overlap. Moreover the performance of QB is better
-with the lower closeness threshold. The poor performance of random
-subsets is to be expected as they will oversample in denser parts of the
-tractography space, and undersample in sparser regions.
+For each threshold, the first row repeats that of the previous table,
+while the second row shows that there is only a small fall-off in
+coverage, and that the overlap is unchanged. The QB centroids are
+therefore can be taken as a valid reduction of this other half of the
+datasets.
 
 \begin{figure*}[htp]
   \centerline{\includegraphics[width=180mm]{Figures/Fig_12_All_Brains.eps}}
