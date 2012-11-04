@@ -117,17 +117,21 @@ In tractography literature we can find approaches which use unsupervised
 and/or supervised learning algorithms to create bundles i.e. groupings
 of streamlines with similar spatial and shape characteristics. In
 supervised learning the data sets are divided into a training and a test
-set. For the training set experts will have provided anatomical
-labels for a set of manually segmented streamline bundles. Those bundles
-will now correspond to tracts e.g.~the corticospinal tract or the
-arcuate fasciculus. The task then will be to identify similar
-structures amongst the unlabeled streamlines in the test set.
+set. For the training set experts will have provided anatomical labels
+for a set of manually segmented streamline bundles. Those bundles will
+now correspond to tracts e.g.~the corticospinal tract or the arcuate
+fasciculus. The task then will be to identify similar structures amongst
+the unlabeled streamlines in the test set.
 
 In unsupervised learning the focus is on creating a partitioning of the
 streamlines without knowing any labels. In this work we used
 unsupervised learning to reduce in an simple and efficient way the
 number of streamlines and make manual segmentation of bundles and
-tractography exploration a less time consuming task.
+tractography exploration a less time consuming task. By the term
+\emph{bundle} we mean here streamlines which are in close proximity
+according to a streamline-based distance, therefore, they have similar
+spatial and shape characteristics and not necessarily direct
+correspondence to neuroanatomical bundles (tracts).
 
 We believe that a complete unsupervised method cannot directly create
 anatomically valid bundles without extensive prior information
@@ -152,8 +156,8 @@ hierarchical clustering (see \citet{ moberts2005evaluation,
   Visser2010, Guevara2010, Guevara12}) or spectral clustering (see
 \citet{ODonnell_IEEETMI07, o2009tract, jonasson2005fiber,
   ziyan2009consistency}) or affinity propagation (see
-\citet{leemans17new, malcolm2009filtered}). However, they had to restrict
-themselves to only a subset of the complete dataset because the
+\citet{leemans17new, malcolm2009filtered}). However, they had to
+restrict themselves to only a subset of the complete dataset because the
 calculations were heavy and the distance matrix too big for computers
 with standard memory capacity. For example, \citet{ODonnell_IEEETMI07}
 used only \num{10000} streamlines (~10\% of the initial tractography)
@@ -172,7 +176,7 @@ theoretic approaches (see \citet{brun2004clustering, gerig2004analysis,
   durrleman2010registration}), adaptive mean shift (see
 \citet{zvitia2008adaptive, Zvitia2010}), k-means (see
 \citet{ElKouby2005}) and expectation maximization (see
-\citet{Maddah_IEEEBI2008}). These methods although often try to avoid
+\citet{Maddah_IEEEBI2008}). Although these methods often try to avoid
 distance matrices they still suffer from low time efficiency. All the
 same, if clustering is to be used in clinical practice or to make
 neuroscientists' analysis more efficient and practical we need
@@ -182,18 +186,17 @@ provide a solution for this issue of efficiency and most of the methods
 would require from many hours to many days to run on a standard sized
 dataset.
 
-
-In fact tractographies have high levels of redundancy with very many
-quite similar streamlines. Our approach is to take advantage of this to
-reduce the size and dimensionality of the data sets as a precursor for
-higher complexity classification and/or input from experts. To address
-these key issues of time and space we present a stable, generally linear
-time clustering algorithm that can generate meaningful clusters of
+In fact tractographies have high levels of redundancy with many similar
+streamlines. Our approach is to take advantage of this to reduce the
+size and dimensionality of the data sets as a precursor for higher
+complexity classification and/or input from experts. To address these
+key issues of time and space we present a stable, generally linear time
+clustering algorithm that can generate meaningful clusters of
 streamlines in seconds with minimum memory consumption. Our approach is
- straightforward and we do not need to calculate all pairwise
-distances unlike most existing methods. Furthermore we can update our
-clustering online. In this way we can overcome the previous barriers of
-space and time.
+straightforward and we do not need to calculate all pairwise distances
+unlike most existing methods. Furthermore we can update our clustering
+online, i.e.~as and when new data points become available. In this way
+we can overcome the previous barriers of space and time.
 
 We show that QuickBundles can generate these clusters many times much
 faster than any other available method, and that it can be used to
@@ -376,11 +379,7 @@ clustering algorithms.
 QuickBundles (QB) is a surprisingly simple and very fast algorithm which
 can reduce tractography representation to an accessible structure in a
 time that is linear in the number of streamlines $N$. QB is an extended
-update on our preliminary work~\citet{EGMB10}. By the term
-\emph{bundle} we mean here streamlines which are in close proximity
-according to a streamline-based distance, therefore, they have similar
-spatial and shape characteristics and not necessarily direct
-correspondence to neuroanatomical bundles (tracts).
+update on our preliminary work~\citet{EGMB10}.
 
 In QB each item, a streamline, is a fixed-length ordered sequence of
 points in $\mathbb{R}^{3}$, and QB uses comparison functions and
@@ -645,7 +644,7 @@ We applied QuickBundles to a variety of data sets: simulations, $10$
 human tractographies collected and processed by ourselves, and one
 tractography with segmented bundles which was available online.
 
-\textbf{Simulated trajectories.} We generated $3$ different bundles of
+\textbf{Simulated trajectories.} We generated $3$ different bundles of streamlines from
 parametric paths sampled at $200$ points. The streamlines were made from
 different combinations of sinusoidal and helicoidal functions.  Each
 bundle contained 150 streamlines.  For the red bundle in
@@ -737,7 +736,7 @@ tractographies.
 As a further test we compared QB (with $12$ point streamlines and a
 clustering threshold of $10$~mm) with timings reported from the fastest
 state of the art methods found in the literature. These methods have
-different goals that those of QB however we think that it is useful to
+different goals from those of QB however we think that it is useful to
 show the important speedup that QB offers for the same number of
 streamlines. With $\num{1000}$ streamlines
 \citet{wang2010tractography}'s algorithm took $30$s whereas QB took
@@ -910,14 +909,14 @@ datasets.
 
 We warped $10$ tractographies each belonging to a different healthy
 subject (see section \ref{sub:QB-Data-sets}) in MNI space and applied
-QuickBundles on each tractography independently using clustering threshold
-$10$~mm and discretizing of $18$ points.  In order to warp the
+QuickBundles on each tractography independently using clustering
+threshold $10$~mm and discretizing to $18$ points.  In order to warp the
 streamlines we first warped FAs from native space to MNI space using the
-FSL tools. Then we applied the (continuously resampled) displacements to
-the points in the tractographies in native space in order to warp them
-to MNI space. The code for doing this is available in dipy.org, module
-dipy.external.fsl, functions create\_displacements and
-warp\_displacements\_tracks.
+FSL tools (\texttt{fsl.fmrib.ox.ac.uk}). Then we applied the (continuously
+resampled) displacements to the points in the tractographies in native
+space in order to warp them to MNI space. The code for doing this is
+available in dipy.org, module dipy.external.fsl, functions
+create\_displacements and warp\_displacements\_tracks.
 
 For every subject we
 only considered the biggest $100$ QB clusters i.e. the clusters which
@@ -942,8 +941,8 @@ because the data sets are too dense to draw any conclusions.
 
 The mean total number of streamlines in the $100$ biggest clusters was
 $\num{4818.6}$ ($\pm \num{794.4}$). These clusters covered on average
-$16.18\%$ ($\pm\num{1.4}\%$) of the total number of streamlines. We will
-use these centroids as a method to study the variability between the
+$16.18\%$ ($\pm\num{1.4}\%$) of the total number of streamlines. We
+proceeded to use these centroids to study the variability between the
 streamlines across different subjects.
 
 For this purpose we evaluated bundle adjacency statistic (BA; see
@@ -969,7 +968,7 @@ similarity measure for tractography comparison. We propose to follow
 this up in future work by studying how the length of the big clusters
 affects BA.
 
-\subsection{Limitations of QB\label{sub:short_tracks}}
+\subsection{Short streamlines\label{sub:short_tracks}}
 
 In general taking short streamlines into account is less valid because
 (a) the longer streamlines have greater potential to be useful landmarks
@@ -1034,15 +1033,17 @@ selecting initially a single representative streamline.
 \section{Discussion and conclusion}
 
 We have presented a novel and powerful algorithm -- QuickBundles
-(QB). This algorithm provides simplifications to the old problem of
+(QB). This algorithm provides simplifications to the problem of
 revealing the detailed anatomy of the densely packed white matter which
-has recently attracted much scientific attention; and it is recommended when large data sets are involved. QB can be used with all types of diffusion MRI
-tractographies which generate streamlines (e.g. probabilistic or
-deterministic) and it is independent of the reconstruction model. QB is
-supported by a distance function MDF on the space of streamlines which
-makes it a metric space. QB can achieve compression ratios of the order
-of 200:1 depending on the clustering threshold while preserving
-characteristic information about the tractography.
+has recently attracted much scientific attention; and it is recommended
+when large data sets are involved. QB can be used with all types of
+diffusion MRI tractographies which generate streamlines
+(e.g. probabilistic or deterministic) and it is independent of the
+reconstruction model. QB is supported by a distance function MDF on the
+space of streamlines which makes it a metric space. QB can achieve
+compression ratios of the order of 200:1 depending on the clustering
+threshold while preserving characteristic information about the
+tractography.
 
 In common with mainstream clustering algorithms such as k-means,
 k-centers and expectation maximization, QB is not a global clustering
@@ -1069,8 +1070,10 @@ fastest known tractography clustering method and even real-time on
 smaller tractographies ($\le$~\num{20000} streamlines, depending on
 system CPU). We also showed that it uses a negligible amount of memory.
 
-Additionally, QB can be used to explore multiple tractographies and find correspondences or similarities between different tractographies. This can be facilitated by the use of Bundle Adjacency (BA) a new similarity measure introduced
-in this paper.
+Additionally, QB can be used to explore multiple tractographies and find
+correspondences or similarities between different tractographies. This
+can be facilitated by the use of Bundle Adjacency (BA) a new similarity
+measure introduced in this paper.
 
 The reduction in dimensionality of the data achieved by QB means that
 BOIs (bundles of interest) can be selected as an alternative to ROIs for
