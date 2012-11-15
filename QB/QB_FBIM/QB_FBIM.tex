@@ -79,28 +79,29 @@ matter Segmentation, Dimensionality Reduction, Clustering algorithms, DTI.
 \section{Introduction}
 
 Following the acquisition of diffusion MR scans, processes of
-reconstruction and integration are performed to create a tractography: a
-dataset composed of streamlines, which are sequences of points in 3D
-space. Irrespective of the types of reconstruction and integration, a
-tractography can contain a very large number of streamlines (up to
-$10^6$) depending principally on the number of seed points used to
-generate the tractography but also on how the tractography propagation 
-algorithm handles voxels with underlying fiber crossings.
+reconstruction and integration are performed to create a
+\emph{tractography} -- that is to say a dataset composed of streamlines,
+which are sequences of points in 3D space. Irrespective of the types of
+reconstruction and integration, a tractography can contain a very large
+number of streamlines (up to $10^6$) depending principally on the number
+of seed points used to generate the tractography but also on how the
+tractography propagation algorithm handles voxels with underlying fiber
+crossings.
 
 \begin{figure*}[htp]
 \centerline{\includegraphics[width=160mm]{Figures/Fig_4_cst_simplification_relabeled_triple.eps}}
 \caption{Part of the CST bundle (left in blue) consisting of \num{11041}
   streamlines. At first glance it looks as though all streamlines have a
   similar shape, and possibly converge towards the bottom, and fan out
-  towards the top. However, this is a misreading caused by the opaque
-  density when all the streamlines are visualized.  QB can help us see
-  the finer structure of the bundle and identify its elements. In the
-  middle we see the 16 QB centroid streamlines of the CST. We can now
-  clearly observe that several parts which looked homogeneous are
-  actually broken bundles or bundles with rather different shapes. On
-  the right panel we see the streamlines colored according to their
-  cluster label. The clustering threshold used here was
-  $10$~mm. \label{Flo:cst_pbc}}
+  towards the top. However, this is a misreading caused by the
+  unavoidable opaque density when all the streamlines are visualized.
+  QB can help us see the finer structure of the bundle and identify its
+  elements. In the middle we see the 16 QB centroid streamlines of the
+  CST. We can now clearly observe that several parts which looked
+  homogeneous are actually broken bundles or bundles with rather
+  different shapes. On the right panel we see the streamlines colored
+  according to their cluster label. The clustering threshold used here
+  was $10$~mm. \label{Flo:cst_pbc}}
 \end{figure*}
 
 
@@ -113,37 +114,38 @@ supervised learning problems of brain tractography.  As far as we know
 all these methods suffer from low time efficiency, i.e.~they are very
 slow when used in practice.
 
-In tractography literature we can find approaches which use unsupervised
-and/or supervised learning algorithms to create bundles i.e. groupings
-of streamlines with similar spatial and shape characteristics. In
-supervised learning the data sets are divided into a training and a test
-set. For the training set experts will have provided anatomical labels
-for a set of manually segmented streamline bundles. Those bundles will
-now correspond to tracts e.g.~the corticospinal tract or the arcuate
-fasciculus. The task then will be to identify similar structures amongst
-the unlabeled streamlines in the test set.
+In the tractography literature we can find approaches which use
+unsupervised and/or supervised learning algorithms to create bundles
+i.e. groupings of streamlines with similar spatial and shape
+characteristics. In supervised learning the data sets are divided into a
+training and a test set. For the training set, experts will have provided
+anatomical labels for a set of manually segmented streamline
+bundles. Those bundles will now correspond to tracts e.g.~the
+corticospinal tract or the arcuate fasciculus. The task then will be to
+identify similar structures amongst the unlabeled streamlines in the
+test set.
 
 In unsupervised learning the focus is on creating a partitioning of the
 streamlines without knowing any labels. In this work we used
-unsupervised learning to reduce in an simple and efficient way the
-number of streamlines and make manual segmentation of bundles and
-tractography exploration a less time consuming task. By the term
-\emph{bundle} we mean here streamlines which are in close proximity
-according to a streamline-based distance, therefore, they have similar
-spatial and shape characteristics and not necessarily direct
-correspondence to neuroanatomical bundles (tracts).
+unsupervised learning to reduce in a simple and efficient way the number
+of streamlines and make manual segmentation of bundles and tractography
+exploration less time consuming tasks. By the term \emph{bundle} we mean
+here streamlines which are in close proximity according to a
+streamline-based distance, therefore, they have similar spatial and
+shape characteristics and not necessarily direct correspondence to
+neuroanatomical bundles (tracts).
 
 We believe that a complete unsupervised method cannot directly create
 anatomically valid bundles without extensive prior information
 preferably from experts or atlases. This is because anatomical bundles
-differ considerably both in lengths and in shape (see
-\citet{schmahmann2009fiber}) and there is not a single threshold which
-can cluster a full dataset with anatomical correspondence (see
-\citet{Guevara2010}). Furthermore, if one uses such extensive priors
-then it will be more suitable to use supervised learning
+differ considerably both in lengths and in shape
+\citep[see][]{schmahmann2009fiber} and there is not a single threshold
+which can cluster a full dataset with anatomical correspondence
+\citep[see][]{Guevara2010}. Furthermore, if one uses such extensive
+priors then it will be more suitable to use supervised learning
 algorithms. Therefore, we propose that unsupervised learning should be
 used primarily for dimensionality reduction or simplification of these
-large data sets. This is also the focus of the approach that we propose
+large data sets. This is the focus of the approach that we propose
 here.
 
 Most clustering (unsupervised learning algorithms) are in the best case
@@ -151,34 +153,34 @@ of complexity $\mathcal{O}(N^2)$ where $N$ the total number of
 streamlines: they require the calculation of all pairwise distances
 between streamlines in order to create a distance matrix. We found that
 most authors tried to create these distance matrices as input to
-hierarchical clustering (see \citet{ moberts2005evaluation,
+hierarchical clustering \citep][see][]{ moberts2005evaluation,
   zhang2005dti, Tsai2007, zhang2008identifying, jianu2009exploring,
-  Visser2010, Guevara2010, Guevara12}) or spectral clustering (see
-\citet{ODonnell_IEEETMI07, o2009tract, jonasson2005fiber,
-  ziyan2009consistency}) or affinity propagation (see
-\citet{leemans17new, malcolm2009filtered}). However, they had to
+  Visser2010, Guevara2010, Guevara12} or spectral clustering
+\citep[see][]{ODonnell_IEEETMI07, o2009tract, jonasson2005fiber,
+  ziyan2009consistency} or affinity propagation
+\citep[see][]{leemans17new, malcolm2009filtered}. However, they had to
 restrict themselves to only a subset of the complete dataset because the
 calculations were heavy and the distance matrix too big for computers
 with standard memory capacity. For example, \citet{ODonnell_IEEETMI07}
-used only \num{10000} streamlines (~10\% of the initial tractography)
-and \citet{Visser2010} used recombinations of \num{10000} streamlines.
-We give here an example of how large that distance matrix can be if used
-with a full dataset. Just for \num{100000} streamlines 38 GBytes are
-required and for 1 million streamlines 3.6 TBytes of memory are required
-(4 bytes floating point precision).
+used only \num{10000} streamlines (\textasciitilde 10\% of the initial
+tractography) and \citet{Visser2010} used recombinations of \num{10000}
+streamlines.  We give here an example of how large that distance matrix
+can be if used with a full dataset. For just \num{100000} streamlines 38
+GBytes are required, and for 1 million streamlines 3.6 TBytes of memory
+are required (4 bytes floating point precision).
 
 Other clustering methods have also been proposed that use graph
-theoretic approaches (see \citet{brun2004clustering, gerig2004analysis,
-  ElKouby2005}), k-nearest neighbours (see \citet{Ding2003a,
-  moberts2005evaluation}), Gaussian processes (see
-\citet{wassermann2010unsupervised}), hierarchical dirichlet processes
-(see \citet{wang2010tractography}), currents (see \citet{Durrleman2009,
-  durrleman2010registration}), adaptive mean shift (see
-\citet{zvitia2008adaptive, Zvitia2010}), k-means (see
-\citet{ElKouby2005}) and expectation maximization (see
-\citet{Maddah_IEEEBI2008}). Although these methods often try to avoid
-distance matrices they still suffer from low time efficiency. All the
-same, if clustering is to be used in clinical practice or to make
+theoretic approaches \citep[see][]{brun2004clustering,
+  gerig2004analysis, ElKouby2005}, k-nearest neighbours
+\citep[see][]{Ding2003a, moberts2005evaluation}, Gaussian processes
+\citep[see][]{wassermann2010unsupervised}, hierarchical dirichlet
+processes \citep[see][]{wang2010tractography}, currents
+\citep[see][]{Durrleman2009, durrleman2010registration}, adaptive mean
+shift \citep[see][]{zvitia2008adaptive, Zvitia2010}, k-means
+\citep[see][]{ElKouby2005} and expectation maximization
+\citep[see][]{Maddah_IEEEBI2008}. Although these methods often try to
+avoid distance matrices they still suffer from low time efficiency. All
+the same, if clustering is to be used in clinical practice or to make
 neuroscientists' analysis more efficient and practical we need
 algorithms that can provide useful clusters and cluster descriptors in
 acceptable time. None of the papers covered in this literature review
