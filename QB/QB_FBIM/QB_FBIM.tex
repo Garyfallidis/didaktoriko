@@ -772,7 +772,7 @@ agreement (OMA) to establish how well the detailed content of QB
 clustering is preserved under random permutations. [C] Next we will show
 using the coverage and overlap metrics how the QB centroids are a better
 reduction of the tractography dataset than an equivalent number of
-random selection of streamlines. [D] Next we will show how well QB
+random selection of streamlines. [D] Finally we will show how well QB
 clustering on a subset of a tractography dataset serves as an
 approximation to the remainder of the dataset.
 
@@ -811,11 +811,12 @@ are permuted. Sixteen different random permutations were generated for
 each of $10$ tractographies and the corresponding QB clusterings were
 computed with clustering threshold $10$~mm. For each subject the $120$
 pairings of QB clusterings were compared using the optimized matched
-agreements index and then averaged. Across subjects the average OMA
-(\ref{sub:Tightness-comparisons-1}) over the \num{1200} comparisons was
-72.0\% ($\pm 0.60$\%); the average intra-subject standard deviation was
-$\pm 0.63$\%. According to \citet{altman1995} this represents a good
-level of agreement consistent across tractographies, well above chance.
+agreements index and then averaged. Across subjects the average OMA (see
+section \ref{sub:Tightness-comparisons-1}) over the \num{1200}
+comparisons was 72.0\% ($\pm 0.60$\%); the average intra-subject
+standard deviation was $\pm 0.63$\%. According to \citet{altman1995}
+this represents a good level of agreement consistent across
+tractographies, well above chance.
 
 To motivate our understanding of worst and best case scenarios when the
 clusterings in question faithfully capture the structure of the
@@ -837,10 +838,10 @@ parts of the tractography space, and they underrepresent the sparser
 regions of that space. By their construction the QB centroids will be
 more uniformly distributed in this space and thus a better simplification
 of the original dataset. We quantify this using the coverage and overlap
-statistics (\ref{sub:Tightness-comparisons-1}). Each of the 10 human
-subject tractographies was split into two halves, one of which was set
-aside. QB clusterings were derived for remaining half. The coverage and
-overlap statistics for the resulting QB centroids and for an equal
+statistics (see section \ref{sub:Tightness-comparisons-1}). Each of the 10 human
+subject tractographies was split into two halves, the second of which was set
+aside. QB clusterings were derived for the first halves. The coverage and
+overlap statistics for the resulting QB centroids and for an equal sized
 random set of streamlines are presented in Table \ref{Tab1}. This was
 done for two choices of values for the clustering threshold and
 adjacency threshold: both 10~mm, and then both 20~mm.
@@ -895,7 +896,7 @@ Thresholds & Comparison & Coverage \% (s.d.) & Overlap (s.d.) \\
 For each threshold, the first row repeats that of the previous table,
 while the second row shows that there is only a small fall-off in
 coverage, and that the overlap is unchanged. The QB centroids are
-therefore can be taken as a valid reduction of this other half of the
+therefore can be taken as a valid reduction of the other halves of the
 datasets.
 
 \begin{figure*}[htp]
@@ -947,7 +948,7 @@ $16.18\%$ ($\pm\num{1.4}\%$) of the total number of streamlines. We
 proceeded to use these centroids to study the variability between the
 streamlines across different subjects.
 
-For this purpose we evaluated bundle adjacency statistic (BA; see
+For this purpose we evaluated the bundle adjacency statistic (BA; see
 section~\ref{sub:Tightness-comparisons-1}) between all pairs of these
 $100$ centroids of each of the $10$ tractographies. This generated $45$
 BA values with adjacency threshold $10$~mm (BA10). We also generated
