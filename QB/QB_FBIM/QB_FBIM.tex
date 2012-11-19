@@ -921,11 +921,10 @@ space in order to warp them to MNI space. The code for doing this is
 available in \texttt{dipy.org}, module dipy.external.fsl, functions
 create\_displacements and warp\_displacements\_tracks.
 
-For every subject we
-only considered the biggest $100$ QB clusters i.e. the clusters which
-contained the highest number of streamlines. The purpose of this
-experiment was to identify a similarity measure between the
-streamlines of the different subjects.
+For every subject we only considered the biggest $100$ QB clusters
+i.e. the clusters which contained the highest number of streamlines. The
+purpose of this experiment was to identify a similarity measure between
+the streamlines of the different subjects.
 
 In Fig.~\ref{Flo:BAs} we present both the complete tractographies and
 the centroid tracks which correspond to the $100$ biggest
@@ -958,13 +957,9 @@ three largest clusters for subject 1 were identified and the
 corresponding MDF-nearest centroids were found. For all 10 subjects each
 of the corresponding clusters is shown. The red and the blue clusters
 are likely to relate to parts of the corpus callosum while the green
-clusters indicate parts of the cingulum. Further interaction with the
-data via the QB clustering will be required to achieve a more detailed
-representation of any corresponding neural tracts . We have already
-followed this kind of process for the corticospinal tract
-(Fig.~\ref{Flo:cst_pbc}) and the fornix (Fig.~\ref{Flo:QB_fornix}). We
-are developing visualisation tools to assist neuroanatomists and
-computer scientists take this work forward.
+clusters indicate parts of the cingulum.  Fig.~\ref{Flo:Corrs} gives a
+impression of the inter-subject variability in the white matter tracts
+that the centroids represent.
 
 The mean total number of streamlines in the $100$ biggest clusters was
 $\num{4818.6}$ ($\pm \num{794.4}$). These clusters covered on average
