@@ -921,18 +921,10 @@ space in order to warp them to MNI space. The code for doing this is
 available in \texttt{dipy.org}, module dipy.external.fsl, functions
 create\_displacements and warp\_displacements\_tracks.
 
-For every subject we
-only considered the biggest $100$ QB clusters i.e. the clusters which
-contained the highest number of streamlines. The purpose of this
-experiment was to identify a similarity measure between the
-streamlines of the different subjects.
-
-\begin{figure*}[htp]
-  \centerline{\includegraphics[width=180mm]{Figures/Fig_14_correspondences.eps}}
-  \caption{In accordance with Fig.~\ref{Flo:BAs} the 3 biggest clusters of
-  subject 1 are shown together with the corresponding clusters of the other 9 subjects \label{Flo:Corrs}}
-\end{figure*}
-
+For every subject we only considered the biggest $100$ QB clusters
+i.e. the clusters which contained the highest number of streamlines. The
+purpose of this experiment was to identify a similarity measure between
+the streamlines of the different subjects.
 
 In Fig.~\ref{Flo:BAs} we present both the complete tractographies and
 the centroid tracks which correspond to the $100$ biggest
@@ -948,6 +940,26 @@ by QB such that by visual inspection shows considerable similarities, as
 well as an interesting range of individual differences. No such visual
 comparisons could begin to be made based on the whole brain images
 because the data sets are too dense to draw any conclusions.
+
+\begin{figure*}[htp]
+  \centerline{\includegraphics[width=180mm]{Figures/Fig_14_correspondences.eps}}
+  \caption{Following Fig.~\ref{Flo:BAs}, the three largest clusters for
+    subject 1 are shown together with the corresponding clusters in the
+    other nine subjects. The correspondence is established by finding
+    the centroids in subjects 2-9 that are nearest to the three
+    centroids for subject 1. \label{Flo:Corrs}}
+\end{figure*}
+
+Further insights into the kind of correspondences that QB establishes
+are shown in Fig.~\ref{Flo:Corrs}. Taking the clusterings of
+Fig.~\ref{Flo:BAs} as the starting point, the centroids belonging to the
+three largest clusters for subject 1 were identified and the
+corresponding MDF-nearest centroids were found. For all 10 subjects each
+of the corresponding clusters is shown. The red and the blue clusters
+are likely to relate to parts of the corpus callosum while the green
+clusters indicate parts of the cingulum.  Fig.~\ref{Flo:Corrs} gives an
+impression of the inter-subject variability in the white matter tracts
+that the centroids represent.
 
 The mean total number of streamlines in the $100$ biggest clusters was
 $\num{4818.6}$ ($\pm \num{794.4}$). These clusters covered on average
@@ -999,7 +1011,7 @@ Eq.~(\ref{eq:minimum_distance}).
 \begin{figure}
   \centerline{\hspace{-1.5mm}\includegraphics[scale=0.65]{Figures/Fig_10_arcuate_small_fibers}}
   \caption{What could be considered as the strength and limitation of QB
-    is that short streamlines will be clustered differently than longer
+    is that short streamlines will be clustered differently from longer
     streamlines although they may belong in the same anatomical
     bundle. A solution to this problem is illustrated. The colormap here
     encodes streamline length. A: a single centroid streamline, B: the
