@@ -81,18 +81,30 @@ structure of the acquisition include diffusion tensor imaging
 grids, and Generalized Q-sampling imaging \citep*[GQI;][]{Yeh2010},
 requires the sampling to be on a cartesian grid.
 
+Another important distinction between reconstrucion methods is whether
+they are based on a (parametric) model or whether they are model-free
+(nonparametric). Parametric methods include tensor, multitensor,
+sticks-and-ball, and kurtosis models. These require fitting methods
+which are typically iterative, apart from DTI. By contrast DSI, GQI and
+spherical harmonic methods are model-free.
+
+Non-parametric methods typically derive a function $\psi$ on a 2-sphere
+$S^2$ representing all possible fiber orientations. Typically the larger
+isolated maxima of $\psi$ are taken as local estimates of the directions of
+underlying fibers.
+
 We will use some qualitative characteristics describing the geometric
-and physical properties of the dMR signal to motivate a new broad class
+and physical properties of the dMR signal to identify a broad, new class
 of reconstruction methods which require a cartesian grid q-space design.
 
 \subsection{Notes to be turned into prose}
 
-Distinction between parametric (tensor, multitensor, sticks-and-ball,
-kurtosis) and non-parametric methods (DSI, GQI, spherical harmonic
-models). For non-parametric methods typically derive a function $\psi$
-on a 2-sphere $S^2$. This sphere represents all possible fiber
-orientations. Typically the larger isolated maxima of $\psi$ on $S^2$
-are taken as local estimates of directions of underlying fibers.
+% Distinction between parametric (tensor, multitensor, sticks-and-ball,
+% kurtosis) and non-parametric methods (DSI, GQI, spherical harmonic
+% models). For non-parametric methods typically derive a function $\psi$
+% on a 2-sphere $S^2$. This sphere represents all possible fiber
+% orientations. Typically the larger isolated maxima of $\psi$ on $S^2$
+% are taken as local estimates of directions of underlying fibers.
 
 Fiber = real fiber, a packet of threads
 
