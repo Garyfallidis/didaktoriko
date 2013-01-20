@@ -72,9 +72,18 @@ each acquisition gradient.  \emph{Reconstruction} is the inverse process
 by which we identify, or estimate, or infer) the fiber directions from a
 voxel of diffusion weighted MR data. 
 
+Some reconstruction methods can be used with data from a wide range of
+acquisition designs; others by contrast require acquisition designs of a
+prescribed type. Methods which are relatively independent of the q-space
+structure of the acquisition include diffusion tensor imaging
+\citep*[DTI;][]{Basser1994BiophysicalJ}. By contrast Q-ball imaging
+\citep*[QBI;][]{Tuch2004} needs data to be sampled on one or more spherical
+grids, and Generalized Q-sampling imaging \citep*[GQI;][]{Yeh2010},
+requires the sampling to be on a cartesian grid.
+
 We will use some qualitative characteristics describing the geometric
 and physical properties of the dMR signal to motivate a new broad class
-of reconstruction methods.
+of reconstruction methods which require a cartesian grid q-space design.
 
 Distinction between parametric (tensor, multitensor, sticks-and-ball,
 kurtosis) and non-parametric methods (DSI, GQI, spherical harmonic
@@ -142,6 +151,10 @@ schemes.
 \subsection{Peak Finding\label{sub:Peak-Finding}}
 
 \subsection{Spherical Angular Smoothing\label{sub:Spherical-Angular-Smoothing}}
+
+\subsection{Data from software phantoms}
+
+\subsection{Data from humans}
 
 \end{methods}
 
