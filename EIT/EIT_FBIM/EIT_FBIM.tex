@@ -1,0 +1,202 @@
+\documentclass{bioinfo}
+\usepackage{url}
+
+\usepackage[british,english]{babel}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+% \usepackage[latin9]{inputenc}
+\usepackage{float}
+\usepackage{bm}
+\usepackage{nicefrac}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage[title]{appendix}
+\usepackage{siunitx}
+\usepackage{chngcntr}
+\usepackage{algorithmic}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\makeatletter
+\newfloat{algorithm}{H}{loa}[section]
+\floatname{algorithm}{Algorithm}
+\counterwithout{algorithm}{algorithm}
+\def\argmin{\mathop{\operator@font arg\,min}} 
+\def\argmax{\mathop{\operator@font arg\,max}} 
+\makeatother
+
+\copyrightyear{}
+\pubyear{}
+
+\begin{document}
+\firstpage{1}
+
+\title[EIT]{Diffusion Imaging Q-Space Reconstructions on Cartesian Lattices}
+
+\author[Garyfallidis, Yeh and
+Nimmo-Smith]{Eleftherios~Garyfallidis\,$^{1,4,*}$, Frank~Yeh\,$^{2,*}$, Maxime~Descoteaux\,$^{3,*}$, and
+  Ian~Nimmo-Smith\,$^{4}$\footnote{to whom correspondence should be
+    addressed. e-mail: garyfallidis@gmail.com}}
+
+\address{\,$^{1}$Wolfson College, University of Cambridge, Cambridge, UK\\
+  \,$^{2}$Carnegie~Mellon, Pittsburgh.\\
+  \,$^{3}$University of Sherbrooke, Canada.\\
+  \,$^{4}$MRC Cognition and Brain Sciences Unit, Cambridge, UK.\\}
+
+\history{}
+
+\editor{}
+
+\maketitle
+
+\begin{abstract}
+\noindent
+
+<abstract to be written once the introduction is drafted>
+
+\section{Keywords:} Diffusion Spectrum Imaging, Q-Ball Imaging,
+Diffusion MRI.
+
+\end{abstract}
+
+\section{Introduction}
+
+The fundamental principle in applying diffusion weighted MR (dMR)
+imaging to the study of the neural fiber tracts in the brain is that the
+directions of the tracts in each voxel are reflected in the way the
+strength of the dMR signal varies with the magnitude and orientation of
+each acquisition gradient.  \emph{Reconstruction} is the inverse process
+by which we identify, or estimate, or infer) the fiber directions from a
+voxel of diffusion weighted MR data. 
+
+Some reconstruction methods can be used with data from a wide range of
+acquisition designs; others by contrast require acquisition designs of a
+prescribed type. Methods which are relatively independent of the q-space
+structure of the acquisition include diffusion tensor imaging
+\citep*[DTI;][]{Basser1994BiophysicalJ}. By contrast Q-ball imaging
+\citep*[QBI;][]{Tuch2004} needs data to be sampled on one or more spherical
+grids, and Generalized Q-sampling imaging \citep*[GQI;][]{Yeh2010},
+requires the sampling to be on a cartesian grid.
+
+Another important distinction between reconstrucion methods is whether
+they are based on a (parametric) model or whether they are model-free
+(nonparametric). Parametric methods include tensor, multitensor,
+sticks-and-ball, and kurtosis models. These require fitting methods
+which are typically iterative, apart from DTI. By contrast DSI, GQI and
+spherical harmonic methods are model-free.
+
+Non-parametric methods typically derive a function $\psi$ on a 2-sphere
+$S^2$ representing all possible fiber orientations. Typically the larger
+isolated maxima of $\psi$ are taken as local estimates of the directions of
+underlying fibers.
+
+We will use some qualitative characteristics describing the geometric
+and physical properties of the dMR signal to identify a broad, new class
+of reconstruction methods which require a cartesian grid q-space design.
+
+\subsection{Notes to be turned into prose}
+
+% Distinction between parametric (tensor, multitensor, sticks-and-ball,
+% kurtosis) and non-parametric methods (DSI, GQI, spherical harmonic
+% models). For non-parametric methods typically derive a function $\psi$
+% on a 2-sphere $S^2$. This sphere represents all possible fiber
+% orientations. Typically the larger isolated maxima of $\psi$ on $S^2$
+% are taken as local estimates of directions of underlying fibers.
+
+Fiber = real fiber, a packet of threads
+
+Tract = fiber in the central nervous system (whose threads are axons)
+
+ODF = orientation density function (not necessarily normalised). However
+some ODFs are based on probabilistic assumptions where normalisation is
+required - in this case ODF stands for orientation distribution function.
+
+reconstruction sphere = spherical grid (mesh) whose vertices are the
+locations where the ODF is evaluated.
+
+estimated fiber directions = peaks (local maxima) of the ODF on the
+reconstruction sphere
+
+Goal: (1) a simple and general way to understand the diffusion
+signal. (2) reliable resolution of low angle fiber crossings. (3)
+consideration to performance (speed) of software implementations.
+Principles:
+
+we work directly on the measured signal in q-space -- dMR gradient
+spaces -- (no Fourier transform required)
+
+uses spatio-geometric properties of the signal - orthogonal information
++ additivity + decay
+
+FRT works only on spherical shells - inner and outer evaluations of the
+signal have something to contribute.
+
+Introduce a framework $\int_r \int_{orth} F O$ which creates an ODF
+where the equatorial radial projection of the contribution of signal is
+based on $F$-transformed signal strength, and $O$-transformed radial
+distance weighting
+
+Limitation: data needs to be gathered on a suitably dense cartesian grid
+in q-space - but can see how to extend to multiple shell acquisition
+schemes.
+
+
+\subsection{Overview}
+
+\subsection{Theory}
+
+\begin{methods}
+
+\section{Methods and Materials}
+
+\subsection{Equatorial Inversion Transform}
+
+\subsection{Other methods}
+
+\subsection{Implementation }
+
+\subsubsection{Standard EIT\label{sub:Standard-EIT}}
+
+\subsubsection{Fast EIT}
+
+\subsection{Peak Finding\label{sub:Peak-Finding}}
+
+\subsection{Spherical Angular Smoothing\label{sub:Spherical-Angular-Smoothing}}
+
+\subsection{Data from software phantoms}
+
+\subsection{Data from humans}
+
+\end{methods}
+
+\section{Results}
+
+\subsection{Multi-fibre Simulations\label{sub:Multi-fiber-Simulations}}
+
+\subsection{Software Phantoms\label{sub:Digital-Phantoms}}
+
+\subsection{Results with software phantoms}
+
+\subsection{Results with humans}
+
+\section{Discussion and Conclusion}
+
+\section*{Acknowledgements}
+We gratefully acknowledge valuable discussions with Matthew Brett and Marta Correia on various aspects of this work.
+
+\section*{Disclosure/Conflict-of-Interest Statement}
+There are no conflicts of interest relating to this work.
+
+\selectlanguage{british}%
+\bibliographystyle{apalike2}
+%\bibliographystyle{plainnat}
+%\bibliographystyle{IEEEabrv, IEEEtran}
+%\bibliographystyle{IEEEtran}
+%\bibliographystyle{elsarticle-harv}
+\selectlanguage{english}
+\bibliography{diffusion}
+
+\end{document}
