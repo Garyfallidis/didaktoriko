@@ -16,6 +16,13 @@
 \usepackage[title]{appendix}
 \usepackage{siunitx}
 
+% For shaded comment boxes
+\usepackage{color}
+\usepackage{framed}
+\usepackage{comment}
+\definecolor{shadecolor}{rgb}{1,1,0}
+\specialcomment{matthewsays}{\begin{shaded}}{\end{shaded}}
+
 \makeatletter
 \newfloat{algorithm}{H}{loa}[section]
 \floatname{algorithm}{Algorithm}
@@ -123,15 +130,15 @@ Current clustering techniques and the principal studies that have applied them t
 \textit{Current models} \citep{Durrleman2009,
   durrleman2010registration}.
 
-Most of these proposed tractography clustering algorithms are very slow
-and many need to calculate a matrix of inter-track distances of size
-$\mathcal{O}(N^2)$. This number of computations puts a very heavy load
-on clustering algorithms, making them too inefficient and therefore too
-impractical for everyday analysis as it is difficult to compute all
-these distances or even store them in memory. This not only adds a
-further overhead to the use of tractography for clinical applications
-but also puts a barrier on understanding and interpreting the quality of
-diffusion data sets.
+Most of these proposed tractography clustering algorithms are very slow and many
+need to calculate a matrix of inter-track distances of size $\mathcal{O}(N^2)$.
+This number of computations puts a very heavy load on clustering algorithms,
+making them hard to use for everyday analysis as it is difficult to compute all
+these distances or store them in memory. For the same reason, no current
+algorithm is practical for real time clustering on a large number of tracks. The
+heavy computational demands of clustering adds a further overhead to the use of
+tractography for clinical applications but also puts a barrier on understanding
+and interpreting the quality of diffusion data sets.
 
 To address these key issues of time and space we present a stable,
 generally linear time clustering algorithm that can generate meaningful
@@ -159,113 +166,123 @@ compare and register tractographies.
 
 \subsection{The QB algorithm\label{sub:QB-description}}
 
-QuickBundles (QB) is a notably fast algorithm which can simplify
-tractography representation in an accessible structure in a time that is
+QuickBundles (QB) is a very fast algorithm which can simplify
+tractography representation to a simple structure in a time that is
 linear in the number of tracks $N$; it is an extended update on our
 preliminary work~\citep{EGMB10}.
 
-In QB each item, a track, is a fixed-length ordered sequence of points
-in $\mathbb{R}^{3}$, and QB uses metrics and amalgamations which take
-account of and preserve this structure.  Moreover each item is either
-added to an existing cluster on the basis of a distance between the
-cluster descriptor of the item and the descriptors of the current set of
-clusters. Clusters are held in a list which is extended according to
-need. Unlike amalgamation clustering algorithms such as
-$k$-means~\citep{steinhaus1956division, macqueen1967some} or
-BIRCH~\citep{zhang1997birch}, there is no reassignment or updating phase
--- once an item is assigned to a cluster it stays there, and clusters
-are not amalgamated. For further discussion of the relationship between
-QB and BIRCH see section~\ref{sub:BIRCH}.
+In this section we give a general description of the clustering algorithm; we
+give a more formal explanation in section~\ref{sub:QB-specification}.
 
-QB creates an online list of cluster nodes. The cluster node is defined
-as $c=\{I,\mathbf{h},n\}$ where $I$ is the list of the integer indices
-of the tracks in that cluster, $\mathbf{h}$ is a $p\times3$ matrix,
-which the most important descriptor of the cluster, and $n$ is the
-number of tracks in the cluster. $\mathbf{h}$ is a matrix which can be
-updated online when a track is added to a cluster and is equal to
+A track is a ordered sequence of points in $\mathbb{R}^{3}$.  The clustering
+algorithm needs a measure of distance between two tracks, and QB uses a
+particular distance measure that we call minimum average direct flip (MDF).  The
+MDF measure requires that each track be resampled to have $K$ points. We
+describe the MDF measure and the resampling in
+section~\ref{sub:subtrack-distances}.
+
+We index the tracks with $i = 1 \dots N$ where $\mathbf{s}_{i}$ is the
+$K\times3$ matrix representing track $i$.
+
+QB stores information about clusters in \emph{cluster nodes}.  The cluster node
+is defined as $c=\{I,\mathbf{h},n\}$ where $I$ is the list of the integer
+indices $i = 1 \dots N$ of the tracks in that cluster, $n$ is the number of
+tracks in the cluster, and $h$ is the \emph{track sum}. $\mathbf{h}$ is a $p
+\times3$ matrix which can be updated online when a track is added to a cluster
+and is equal to:
+
 \begin{equation}
   \mathbf{h}=\sum_{i=1}^{n}\mathbf{s}_{i}
-\end{equation} 
-where $\mathbf{s}_{i}$ is the $K\times3$ matrix representing track $i$,
+\end{equation}
+
 $\Sigma$ here represents matrix addition, and $n$ is the number of
-tracks in the cluster. QB assumes that all tracks have the same number
-of points $K$, therefore a down-sampling of tracks, typically
-equidistant, is necessary before QB starts. A short summary of the
-algorithm follows and a formal specification is given in
-section~\ref{sub:QB-specification}.
+tracks in the cluster. One summary of the cluster node is the mean or
+\emph{virtual} track $v$ where:
 
-Select the first track $s_{0}$ and place it in the first cluster
-$c_{0}\leftarrow({0},s_{0},1)$. Then for all remaining tracks (i) go to
-next track $s_{i}$; (ii) calculate the MDF distance between this track and
-the virtual tracks of all the current clusters $c_{k}$, where a virtual track
-is defined on the fly as $\mathbf{v}=\mathbf{h}/n$; (iii) if the minimum
-MDF distance is smaller than a distance threshold
-$\theta$ add the track to the cluster
-$c_{j}=\{I,\mathbf{h},n\}$ with the minimum distance and update
-$c_{j}\leftarrow\{I\cup\{i\},\mathbf{h}+s,n+1\}$; otherwise create a new
-cluster $c_{|C|+1}\leftarrow\{\{i\},s_{i},1\}$, $|C|\leftarrow|C|+1$ where
-$|C|$ denotes the current total number of clusters. 
+\begin{equation}
+  v = \mathbf{h} / n
+\end{equation}
 
-Choice of direction can become an issue when using the MDF distance and
-adding tracks together, because tracks do not have a preferred
-direction.  A step in QB takes account of the possibility of needing to
-perform a flip of a track before adding it to a representative
-track. For further consideration of this issue
-see~\ref{sub:The-bi-directionality-problem}. The complete QB algorithm
-is described in formal detail in Alg.~\ref{Alg:QuickBundles} and a
-simple step by step visual example is given in
-Fig.~\ref{Fig:LSC_simple}.  One of the reasons why QB has on average
-linear time complexity derives from the structure of the cluster node:
-we only save the sum of current tracks in the cluster and this is
-achieved cumulatively; moreover there is no recalculation of clusters,
-the tracks are passed through only once and a track is assigned to one
-cluster only. There is more detail about this in
+The algorithm proceeds as follows.  At any one step in the algorithm we have
+$|C|$ cluster nodes. Select the first track $s_{1}$ and place it in the first
+cluster node $c_{1}\leftarrow({1},s_{1},1)$.  Obviously $|C| = 1$ at this point.
+For all remaining tracks $i = 2 \dots N$: (i) calculate the MDF distance between
+track $s_{i}$ and the virtual tracks $v_{e}$ of all the current clusters
+$c_{e}$, $e = 1 \dots |C|$, where $v$ is defined on the fly as
+$\mathbf{v}=\mathbf{h}/n$; (iii) if any of the MDF values $m_{e}$ are smaller
+than a distance threshold $\theta$, add track $i$ to the cluster $e$ with the
+minimum value for $m_{e}$; $c_{e}=\{I,\mathbf{h},n\}$, and update
+$c_{e}\leftarrow\{I\cup\{i\},\mathbf{h}+s,n+1\}$; otherwise create a new cluster
+$c_{|C|+1}\leftarrow\{\{i\},s_{i},1\}$, $|C|\leftarrow|C|+1$.
+
+Unlike amalgamation clustering algorithms such as
+$k$-means~\citep{steinhaus1956division, macqueen1967some} or
+BIRCH~\citep{zhang1997birch}, there is no reassignment or updating phase -- once
+an item is assigned to a cluster node it stays there, and clusters are not
+amalgamated. For further discussion of the relationship between QB and BIRCH see
+section~\ref{sub:BIRCH}.
+
+Choice of direction can become an issue when using the MDF distance and adding
+tracks together, because the diffusion signal is symmetric around the origin,
+and therefore the $K \times 3$ track can equivalently have its points ordered $1
+\dots K$ or be flipped with order $K \dots 1$; the diffusion signal does not
+allow us to distinguish betweeen these two directions. A step in QB takes
+account of the possibility of needing to perform a flip of a track before adding
+it to a representative track. For further consideration of this issue
+see~\ref{sub:The-bi-directionality-problem}.
+
+The complete QB algorithm is described in formal detail in
+Alg.~\ref{Alg:QuickBundles} and a simple step by step visual example is given in
+Fig.~\ref{Fig:LSC_simple}.  One of the reasons why QB has on average linear time
+complexity derives from the structure of the cluster node: we only save the sum
+of current tracks $h$ in the cluster and the sum is cumulative; moreover there
+is no recalculation of clusters, the tracks are passed through only once and a
+track is assigned to one cluster only.  There is more detail about this in
 section~\ref{sub:BIRCH}.
 
 \begin{figure}
 \includegraphics[scale=0.25]{last_figures/LSC_algorithm}
 \caption{QB step-by-step: Initially in panel (i) 6 unclustered tracks
-  (A-F) are presented; imagine that the distance threshold used is the
-  MDF distance (Eq.~\ref{eq:direct_flip_distance}) between B and E. The
-  algorithm starts and in (ii) we see that track A was selected; as no
-  other clusters exist track A becomes the first cluster
+  (A-F) are presented; imagine that the distance threshold $\theta$ used here is
+  the same as the MDF distance (Eq.~\ref{eq:direct_flip_distance}) between B and
+  E: $\theta = MDF(B,E)$. The algorithm starts and in (ii) we see that track A
+  was selected; as no other clusters exist track A becomes the first cluster
   (labelled with purple color) and the virtual track of that cluster is
-  identical with A as seen in (iii); next in (iv) track B is selected
-  and we calculate the MDF distance between B and the virtual track of
-  the other clusters. For the moment there is only one cluster to
-  compare so QB calculates MDF (B,virtual-purple) and this is obviously
-  bigger than threshold (that being MDF(B,E)) therefore a new cluster is
-  assigned for B and B becomes the virtual track of that cluster as
-  shown in (v). In (vi) the next track is selected and this is again far
-  away from both purple and blue virtuals therefore another cluster is
-  created and B is the virtual of the blue cluster as shown in (vii).
-  In (viii) track D is selected and after we have calculated
-  MDF(D,purple), MDF(D,Blue) and MDF(D,green) it is obvious that D
-  belongs to the purple cluster as MDF(D,purple) is smaller and lower
-  than threshold as shown in (ix). However we can now see in (x) that
-  things change for the purple cluster because the virtual track is not
-  anymore made by only one track but it is the average of D and A shown
-  with a dashed line. In (xi) E is the current track and will be assigned to
-  the green cluster as shown in (xii) because MDF(E,virtual green) =
-  MDF(E,B) = threshold, and in (xiii) we see the updated virtual track
-  for the green cluster which is equal to (B+E)/2 where + means track
-  addition. In (xiv) the last track is picked and compared with the
-  virtual tracks of the other 3 clusters; obviously MDF(F,purple) is the
-  only with smaller threshold, and so F is assigned to the purple
-  cluster in (xv). Finally, in (xvi) the virtual purple track is updated
-  as (D+A+F)/3. As there are no more tracks to select, the algorithm
-  stops. We can see that all three clusters have been found and all tracks
-  have been assigned successfully to a cluster.\label{Fig:LSC_simple}}
+  identical with A as seen in (iii); next in (iv) track B is selected and we
+  calculate the MDF distance between B and the virtual track of the other
+  clusters. For the moment there is only one cluster to compare so QB calculates
+  MDF (B,virtual-purple) and this is obviously bigger than threshold $\theta$
+  ($\theta = MDF(B,E)$).  Therefore a new cluster is assigned for B, and B
+  becomes the virtual track of that cluster as shown in (v). In (vi) the next
+  track C is selected and this is again far away from both purple and blue
+  virtuals; therefore another cluster is created and C is the virtual of the
+  blue cluster as shown in (vii).  In (viii) track D is selected and after we
+  have calculated MDF(D,purple), MDF(D,Blue) and MDF(D,green) it is obvious that
+  D belongs to the purple cluster as MDF(D,purple) is smaller and lower than
+  threshold as shown in (ix).  However we can now see in (x) that things change
+  for the purple cluster because the virtual track is not anymore made by only
+  one track but it is the average of D and A shown with a dashed line. In (xi) E
+  is the current track and will be assigned to the green cluster as shown in
+  (xii) because MDF(E,virtual green) = MDF(E,B) = $\theta$, and in (xiii) we see
+  the updated virtual track for the green cluster which is equal to (B+E)/2
+  where + means track addition. In (xiv) the last track is picked and compared
+  with the virtual tracks of the other 3 clusters; obviously MDF(F,purple) is
+  the only distance smaller than threshold, and so F is assigned to the purple
+  cluster in (xv).  Finally, in (xvi) the virtual purple track is updated as
+  (D+A+F)/3. As there are no more tracks to select, the algorithm stops. We can
+  see that all three clusters have been found and all tracks have been assigned
+  successfully to a cluster.
+  \label{Fig:LSC_simple}}
 \end{figure}
 
 \subsection{\label{sub:track-distances}Track distances and preprocessing}
 
-A wide range of approaches have been taken in the literature to how to
-represent or code tractographies. The approach we have taken with track
-coding has gone in parallel with the selection of appropriate metrics
-for inter-track distances.  Numerous inter-track distance metrics have
-been proposed~\citep{Ding2003, MaddahIPMI2007, zhang2005dti}. The most
-common is the Hausdorff distance~\citep[and many other
+A wide range of approaches have been taken in the literature for
+representing or coding for tractographies. The approach we have taken with track
+coding has gone in parallel with the selection of appropriate metrics for
+inter-track distances.  Numerous inter-track distance metrics have been
+proposed~\citep{Ding2003, MaddahIPMI2007, zhang2005dti}. The most common is the
+Hausdorff distance~\citep[and many other
 studies]{corouge2004towards}. There are two primary disadvantages of
 this metric: (1) it ignores the sequential nature of the tracks and
 treats each track simply as a cloud of points, and (2) its computation
@@ -277,9 +294,9 @@ track $s$ and track $s'$, see Eq.~(\ref{eq:direct_flip_distance}). This
 distance can be applied only when both tracks have the same number of
 points. Therefore we assume that an initial downscaling of tracks has
 been implemented, where all segments on a track have approximately the
-same length, and all tracks have the same number of segments, $K$, which
-is much less than the number of segments in the typical raw track. Under
-this assumption MDF is defined as:
+same length, and all tracks have the same number of points, $K$, and segments
+$K=1$, which is much less than the number of points / segments in the typical
+raw track.  Under this assumption MDF is defined as:
 
 \begin{eqnarray}
 \textrm{MDF}(s,s') & = & \min(d_{\textrm{direct}}(s,s'),d_{\textrm{flipped}}(s,s')),\,\,\textrm{where}\label{eq:direct_flip_distance}\\
@@ -293,19 +310,21 @@ $x'$.
 
 \begin{figure}
 \includegraphics[scale=0.5]{distances2}
-\centering{}\caption{The principal distance used in this work is minimum
-  average direct flip distance
-  $\textrm{MDF}=\min(d_{\textrm{direct}},d_{\textrm{flipped}})$ which is
-  a symmetric distance that can deal with the track bi-directionality
-  problem; it works on tracks which have the same number of points.
-  Another distance is the mean average distance which is again symmetric
-  but does not require the tracks to have the same number of points
-  $\textrm{MAM}_{\textrm{mean}}=(d_{mean}(s,s')+d_{mean}(s',s))/2$ (see
-  Eq. (\ref{eq:mean_average_distance})).  In this figure the components
-  of both distances are shown; the tracks are drawn with solid lines,
-  and then with dashed lines we connect the pairs of points of the two
-  tracks whose distances contribute to the overall
-  metric.\label{Flo:Distances_used}}
+\centering{}
+\caption{The principal distance used in this work is minimum average direct flip
+distance $\textrm{MDF}=\min(d_{\textrm{direct}},d_{\textrm{flipped}})$ which is
+a symmetric distance that can deal with the track bi-directionality problem; it
+works on tracks which have the same number of points.  Another distance is the
+mean average distance which is again symmetric but does not require the tracks
+to have the same number of points
+$\textrm{MAM}_{\textrm{mean}}=(d_{mean}(s,s')+d_{mean}(s',s))/2$ (see Eq.
+(\ref{eq:mean_average_distance})).  In this figure the components of both
+distances are shown; the tracks are drawn with solid lines, and then with dashed
+lines we connect the pairs of points of the two tracks whose distances
+contribute to the overall metric. Note that we cannot calculate the
+$\textrm{MDF}$ between the tracks on the left of the figure because they have
+different numbers of points.
+\label{Flo:Distances_used}}
 \end{figure}
 
 The main advantages of the MDF distance are that it is fast to compute,
@@ -313,15 +332,15 @@ it takes account of track direction issues through consideration of both
 direct and flipped tracks, and that it is easy to understand how it
 behaves, from the simplest case of parallel equi-length tracks to the
 most complicated with very divergent tracks. Another advantage is that
-it separates short tracks from long tracks and as we will see this will
-be a good way to find broken or erroneous
-tracks~(\ref{sub:erroneous}). 
+it separates short tracks from long tracks; a track A that is half the length of
+track B will be relatively poorly matched on MDF to B.  As we will see this will
+be a good way to find broken or erroneous tracks~(\ref{sub:erroneous}).
 
-Another important advantage of having tracks with the same number of
-points is that we can easily do pairwise calculations on them; for
-example add two or more tracks together to create a new average
-track. We saw in the previous section how track addition is a key
-property that we exploit in the QB clustering algorithm.
+Another important advantage of having tracks with the same number of points is
+that we can easily do pairwise calculations on them; for example add two or more
+tracks together to create a new average track. We saw in the previous section
+how track addition is a key property that we exploit in the QB clustering
+algorithm.
 
 Care needs to be given to choosing the number of points required in a
 track (track downsampling). We always keep the endpoints intact and then
@@ -337,35 +356,39 @@ in~(\ref{sub:Complexity}).
 
 \subsection{Bi-directionality and track merging\label{sub:The-bi-directionality-problem}}
 
-Because a track is a sequence of points without a preferred direction,
-it has two possible orientations when comparing it with another track.
-Most tractography methods will create tracks with arbitrary directions;
-meaning that close and similar tracks can have opposite directions.  Of
-course the tracks do not really carry directional information.  By
-direction we mean the encoding of the sequence of points which define
-the track. Thus a track may be ordered $p_{1},p_{2}\ldots
-p_{N-1},p_{N}$, or $p_{N},p_{N-1}\ldots p_{2},p_{1}$. We call this the
-bi-directionality problem. Using the MDF distance we found a way with QB
-to eliminate this problem. However, if we want to merge clusters
-together we still need to take care to minimize the effects of this
-issue.
+As we note above, a track from diffusion tractography is a sequence of points
+without a preferred direction. A track has two possible orientations when
+comparing it with another track.  By direction, we mean the ordering of track
+points. Thus a track may be ordered $p_{1},p_{2}\ldots p_{N-1},p_{N}$, or
+$p_{N},p_{N-1}\ldots p_{2},p_{1}$. We call this the bi-directionality problem.
+Most tractography methods will create tracks with arbitrary directions; meaning
+that close and similar tracks can have opposite directions.  tracks do not
+really carry directional information.  Using the MDF distance we found a way
+with QB to eliminate this problem.  However, if we want to merge clusters
+together we still need to take care to minimize the effects of this issue.
+
+\begin{matthewsays}
+  I am not quite sure what to do with this whole section if we conclude that the
+  MDF distance makes the following trick unnecessary.  Should it be fused with
+  the previous section?
+\end{matthewsays}
 
 For this purpose we devised the following technique. Choose a fixed
 point or pole $P$ in the 3D space of the tractography, possibly away
 from the mid-sagittal plane. Then re-direct all tracks so that the first
 point of every track is whichever of the two ends is closer to $P$. If
-the tractography is in native space it suffices to have the origin
-$(0,0,0)$ as the pole point; in MNI space we can use the point
-$(100,100,100)$. It is our empirical experience that this method will
-redirect correctly most tracks in the sense that similar tracks will
-have the same direction.  However there will still be a small percentage
-for which the bi-directionality problem persists. We can correct for
-these by using exemplars~(\ref{sub:exemplars}) rather than virtual
-tracks as they can misrepresent a bundle if the bundle consists of
-tracks with ambiguous directionality. The exemplars are preferable to
-the virtual tracks because of the way the latter can be influenced more
-by outliers and thus can be less representative in terms of the shape of
-real tracks in a bundle.
+the tractography points are encoded in voxel coordinates, it suffices to have
+the origin $(0,0,0)$ as the pole point. If the points are enncoded in
+millimeters in a space such as MNI, where the origin is in the center of the
+brain, we can use the point $(100,100,100)$. It is our empirical experience that
+this method will redirect correctly most tracks in the sense that similar tracks
+will have the same direction.  However there will still be a small percentage
+for which the bi-directionality problem persists. We can correct for these by
+using exemplars~(\ref{sub:exemplars}) rather than virtual tracks as virtual
+tracks can misrepresent a bundle if the bundle consists of tracks with ambiguous
+directionality. The exemplars are preferable to the virtual tracks because of
+the way the latter can be influenced more by outliers and thus can be less
+representative in terms of the shape of real tracks in a bundle.
 
 \subsection{Exemplar tracks\label{sub:exemplars}}
 
@@ -480,18 +503,26 @@ parametric paths sampled at $200$ points. The tracks were made from
 different combinations of sinusoidal and helicoidal functions.  In total
 this data set contained $450$ tracks see Fig.~\ref{Flo:simulated_orbits}.
 
+\begin{matthewsays}
+  I was not quite sure what you meant here.  Do you mean, you made three
+  parametric paths, where each path was constructed from a combination of
+  sinusoidal or helicoidal functions.  To generate the tracks for each bundle,
+  we took the parametric path and randomized the starting point across (some
+  range)?  Or something else?
+\end{matthewsays}
+
 \textbf{Human subjects.} We collected data from $10$ healthy subjects at
-the MRC-CBU 3T scanner (TIM Trio, Siemens), using Siemens advanced
-diffusion work-in-progress sequence, and STEAM
-\citep{merboldt1992diffusion,MAB04} as the diffusion preparation
+the Medical research council cognition and brain sciences unit 3 Tesla scanner
+(TIM Trio, Siemens), using Siemens advanced diffusion work-in-progress sequence,
+and STEAM \citep{merboldt1992diffusion,MAB04} as the diffusion preparation
 method. The field of view was $240\times240\,\textrm{mm}^{2}$, matrix size
 $96\times96$, and slice thickness $2.5\,\textrm{mm}$ (no gap).  $55$ slices were
 acquired to achieve full brain coverage, and the voxel resolution was
-$2.5\times2.5\times2.5\,\textrm{mm}^{3}$. A $102$-point half grid
-acquisition \citep{Yeh2010} with a maximum $b$-value of $4000\, \textrm{s/mm}^{2}$
-was used. The total acquisition time was $14'\,21''$ with
-TR=$8200\,\textrm{ms}$ and TE=$69\,\textrm{ms}$. The experiment was approved
-by the local ethical committee CPREC.
+$2.5\times2.5\times2.5\,\textrm{mm}^{3}$. A $102$-point half grid acquisition
+\citep{Yeh2010} with a maximum $b$-value of $4000\, \textrm{s/mm}^{2}$ was used.
+The total acquisition time was $14'\,21''$ with TR=$8200\,\textrm{ms}$ and
+TE=$69\,\textrm{ms}$. The experiment was approved by the Cambridge psychology
+research ethical committee (CPREC).
 
 For the reconstruction of the 10 human data sets we used Generalized
 Q-samping \citep{Yeh2010} with diffusion sampling length $1.2$ and for
@@ -761,6 +792,11 @@ search for erroneous tracks. We will concentrate here on tracks that
 loop one or many times; something that it is considered impossible to
 happen in nature.
 
+\begin{matthewsays}
+  How does the winding track idea relate to QB?  It seems that it could be used
+  on any track definition?  Maybe you could clarify in the text?
+\end{matthewsays}
+
 One of the tracks which are most likely erroneous are tracks which wind
 more than one time, like a spiral. We can detect these amongst the
 virtual tracks of a QB clustering with the following algorithm. Let's
@@ -801,6 +837,12 @@ part of small bundles containing a few tracks ($<10$) and the distance
 of the bundle they belong to from all other bundles will be much higher
 than average. This can give us another detection method for outliers.
 
+\begin{matthewsays}
+  Looking at the figure, it seems to me that any clustering could reveal the
+  structure there - is that fair?  What is it about QB that makes it
+  particularly good for this problem?
+\end{matthewsays}
+
 Finally, QB can be used to remove small or broken tracks in an
 interactive way, for example see Fig. \ref{Flo:cst_pbc} where the red
 large bundle has been merged by an expert and then with QB we can
@@ -840,31 +882,29 @@ in section \ref{sub:QB-Data-sets}. The tractographies for all subjects
 were initially in native space and the goal was to warp them in MNI
 space, using nonlinear registration.
 
-Because the registration of tractographies is generally considered a
-difficult problem with a non-unique solution we wanted to make sure that
-we are using a known, well established and robust method, therefore we
-chose to use $\texttt{fnirt}$ with the same parameters as used with the
-initial steps of TBSS~\citep{Smith2006NeuroImage}. For that reason FA
-volumes were generated from the same data sets using Tensor fitting with
-weighted least squares after skull stripping with $\texttt{bet}$ and
-parameters $\texttt{-F -f .2 -g 0}$. These FA volumes were again in
-native space therefore we needed to warp them in MNI space. For this
-purpose a standard template ($\texttt{FMRIB58\_FA\_1~mm}$) from the FSL
-toolbox was used as the reference volume. However, we wanted primarily
-to have the displacements which would do a pointwise mapping from
-native space to MNI space and we found this to be technically very
-difficult with the FSL tools as they assume that these displacements
-will be applied only on volumetric data and not with point data as those
-used in tractographies. We found a combination of $\texttt{flirt}$,
-$\texttt{invwarp}$, $\texttt{fnirtfileutils}$ and
-$\texttt{fnirtfileutils -withaff}$ which gave us the correct
-displacements. As this being very technical we will not describe it
-further here but the code is available in module
-($\texttt{dipy.external.fsl}$). It is important to note that we did not
-use eddy current correction with any of this type of data sets. This
-correction is unstable with volumes acquired with high b-values because
-there is not enough signal to guide a correct registration with the
-other volumes at lower b-values.
+Because registration of brain anatomy between any two individuals is generally
+considered a difficult problem with a non-unique solution we wanted to make sure
+that we are using a known, well established and robust method, therefore we
+chose to use $\texttt{fnirt}$ with the same parameters as used with the initial
+steps of TBSS~\citep{Smith2006NeuroImage}. For that reason FA volumes were
+generated from the same data sets using Tensor fitting with weighted least
+squares after skull stripping with $\texttt{bet}$ and parameters $\texttt{-F -f
+.2 -g 0}$. These FA volumes were again in native space therefore we needed to
+warp them in MNI space. For this purpose a standard template
+($\texttt{FMRIB58\_FA\_1~mm}$) from the FSL toolbox was used as the reference
+volume. However, we wanted primarily to have the displacements which would do a
+pointwise mapping from native space to MNI space and we found this to be
+technically very difficult with the FSL tools as they assume that these
+displacements will be applied only on volumetric data and not with point data as
+those used in tractographies. We found a combination of $\texttt{flirt}$,
+$\texttt{invwarp}$, $\texttt{fnirtfileutils}$ and $\texttt{fnirtfileutils
+-withaff}$ which gave us the correct displacements. As this being very technical
+we will not describe it further here but the code is available in our
+$\texttt{Dipy}$ software package, in module ($\texttt{dipy.external.fsl}$). It
+is important to note that we did not use eddy current correction with any of
+this type of data sets. This correction is unstable with volumes acquired with
+high b-values because there is not enough signal to guide a correct registration
+with the other volumes at lower b-values.
 
 The displacements estimated for every subject were applied
 to each tractography in its native space, mapping it into MNI
@@ -889,6 +929,13 @@ much agreement between the biggest bundles of different subjects.  We
 will use this property to create a solid atlas in which we keep the
 biggest bundles (landmarks) and remove small bundles (outliers).
 
+\begin{matthewsays}
+  Have you thought about how the atlas will deal with genuine differences in
+  subject anatomy?  For example, one well-known difference is that some subjects
+  have two cingulate gyri, and some have only one.  In this case you'd expect
+  two groups of tractographies?  What will this clustering do in that case?
+\end{matthewsays}
+
 \textbf{Finding and Using Landmarks:} One can use this atlas or similar
 atlases created from more subjects in order to select specific
 structures and study these structures directly in different subjects
@@ -900,9 +947,9 @@ clusterings of $10$ healthy subjects as described in the previous
 section. Then from these clusters represented by their virtual tracks we
 keep only $196$ biggest clusters i.e. those which contain the highest
 number of tracks, so that we are sure that there is enough agreement
-from the different tractographies and from these we pick by way of an
+from the different tractographies. From these we pick by way of an
 example $19$ virtual tracks which correspond to well known bundle
-structures in the literature: 
+structures in the literature:
 $1$ from genu of corpus callosum (GCC),
 $3$ from the body of corpus callosum (BCC), 
 $1$ from the splenium (SCC),
@@ -920,6 +967,12 @@ $1$ from left corticospinal tract (CST-L),
 $1$ from right corticospinal tract (CST-R),
 $1$ from left uncinate (UNC-L) and 
 $1$ from right uncinate (UNC-R). 
+
+\begin{matthewsays}
+  Can you make this a table?  Can you split up the corpus callosum body entry so
+  you don't have to enter the number $1$ in all the other columns?
+\end{matthewsays}
+
 These $19$ tracks are coloured randomly. Then on the second row
 we show, for the first $6$ of these selected representative tracks, the
 tracks closer than $20$~mm from $3$ arbitrarily selected
@@ -964,9 +1017,9 @@ in personal computers. In those cases some people might hope that sparse
 matrices could provide a nice approximation; however dense
 tractographies produce very dense distance matrices. The straightforward
 solution to this problem is to use QB in order to first segment in small
-clusters and then use the representatives (i.e. exemplar or virtual
-tracks) of these clusters with other higher complexity operations and
-merge the clusters together in bigger clusters.
+clusters and then use the representative tracks (i.e. exemplar or virtual
+tracks) of these clusters with other higher complexity operations and merge the
+clusters together in bigger clusters.
 
 \textbf{Procedure}:
 
@@ -983,9 +1036,9 @@ matrix $D$.
 
 \end{enumerate}
 
-In the left panel of Fig.~\ref{Flo:LSC+HC+AP} we show a result were we
+In the left panel of Fig.~\ref{Flo:LSC+HC+AP} we show a result where we
 used hierarchical clustering with single linkage for step (4) with a
-threshold of $20$~mm using the package
+threshold of $20$~mm using the Python software package
 $\texttt{hcluster}$~\citep{eads-hcluster-software}. A known drawback of
 single linkage is the so-called chaining phenomenon: clusters may be
 brought together due to single elements being close to each other, even
@@ -997,6 +1050,12 @@ dark red in left top of Fig.~\ref{Flo:LSC+HC+AP}) creating a fully
 automatic CC detection system.  Furthermore, we can use different
 cutting thresholds on the underlying dendrogram to amalgamate together
 different structures (see e.g.~the cingulum bundles in the same panel).
+
+\begin{matthewsays}
+  Maybe something at the end of the paragraph to make clear the necessity of QB
+  for this achievement?  For example, how would the QB tractography compare to
+  a full heirarchichal clustering?  Just impractical?
+\end{matthewsays}
 
 In the right panel of Fig.~\ref{Flo:LSC+HC+AP} we see an implementation
 of step (4) using the more recent algorithm, affinity propagation
@@ -1012,6 +1071,7 @@ arcuate, longitudinal occipitofrontal fasciculus and other structures
 known from the literature. The input of AP was the negative distance
 matrix $-D$, the preference weights were set to matrix $\mathtt{median}(-D)$
 and the hierarchical clustering parameter was set to $20$~mm.
+For affinity propagation we used the Python library \texttt{scikit-learn}.
 
 \begin{figure}
 \begin{centering}
@@ -1028,9 +1088,6 @@ and the hierarchical clustering parameter was set to $20$~mm.
   the entire CC in one bundle.\label{Flo:LSC+HC+AP}}
 \end{figure}
 
-For hierarchical clustering parts we used the software \texttt{hcluster}
-and for affinity propagation we used the library
-\texttt{scikit-learn}. They are both implemented in Python.
 
 \subsection{Exemplars improve on use of ROIs or masks}
 
@@ -1156,6 +1213,12 @@ section~\ref{sub:Tightness-comparisons-1}. We are planning in the future
 to compare this registration method against other standard methods which
 are common in the literature.
 
+\begin{matthewsays}
+  Sorry, I haven't really thought this through, but is the TC related to the
+  cost function for the registration?  This makes the TC invalid for an
+  independent assessment of the registration quality.
+\end{matthewsays}
+
 %
 \begin{figure}
 \begin{centering}
@@ -1237,6 +1300,10 @@ every virtual track in C we find the closest tracks using the
 
 \section{Discussion and conclusion}
 
+\begin{matthewsays}
+  Sorry - below - I didn't know what anatomy packing was.
+\end{matthewsays}
+
 We have presented a novel and powerful algorithm --
 QuickBundles (QB). This algorithm provides simplifications to the old
 problem of white matter anatomy packing which has recently attracted
@@ -1267,6 +1334,10 @@ propagation where now $M\ll N$ therefore the overall time stays linear
 on the number of tracks $N$. Other algorithms previously too slow to be
 used on the entire tractography can now be used efficiently too
 e.g.~kNN, and hierarchical clustering.
+
+\begin{matthewsays}
+  kNN is k nearest neighbors?
+\end{matthewsays}
 
 We saw that QB is a linear time clustering method based on track
 distances, which is on average linear time $\mathcal{O}(N)$ where $N$ is
